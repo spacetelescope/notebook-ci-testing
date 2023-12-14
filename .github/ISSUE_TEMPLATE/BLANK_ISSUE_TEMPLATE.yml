@@ -17,8 +17,8 @@ body:
   - type: input
     id: notebook-name
     attributes:
-      label: Notebook Name:
-      placeholder: Enter the name of the notebook here...
+      label: "Notebook Name:"
+      placeholder: "Enter the name of the notebook here..."
     validations:
       required: true
   - type: textarea
