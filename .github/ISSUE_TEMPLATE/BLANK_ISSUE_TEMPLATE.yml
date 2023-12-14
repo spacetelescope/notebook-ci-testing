@@ -5,8 +5,9 @@ labels: []
 body:
   - type: markdown
     attributes:
-      label: "WELCOME!"
+      label: 
       value: >-
+        ** WELCOME! **
         We value your input and are here to help. Please use this space to describe your question, 
         issue, or suggestion with as much detail as possible. Good descriptions include 
         specific steps to reproduce the issue, documentation of the observed versus expected behavior,
