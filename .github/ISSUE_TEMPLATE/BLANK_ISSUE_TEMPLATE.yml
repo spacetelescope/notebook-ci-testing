@@ -5,7 +5,6 @@ labels: []
 body:
   - type: markdown
     attributes:
-      label: 
       value: >-
         ** WELCOME! **
         We value your input and are here to help. Please use this space to describe your question, 
