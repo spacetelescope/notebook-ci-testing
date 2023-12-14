@@ -5,6 +5,7 @@ labels: []
 body:
   - type: markdown
     attributes:
+      label: "WELCOME!"
       value: >-
         We value your input and are here to help. Please use this space to describe your question, 
         issue, or suggestion with as much detail as possible. Good descriptions include 
@@ -15,6 +16,5 @@ body:
     id: issue-description
     attributes:
       label: Add a description
-      placeholder: Add your description here ...
     validations:
       required: true
