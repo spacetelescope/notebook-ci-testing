@@ -609,6 +609,7 @@ document.write(`
 <ul class="simple">
 <li><p>It is sometimes preferable to use another package manager - <code class="docutils literal notranslate"><span class="pre">pip</span></code> - to install necessary packages, however <code class="docutils literal notranslate"><span class="pre">conda</span></code> can be used to create <code class="docutils literal notranslate"><span class="pre">Python</span></code> environments as well as install packages. You may see both <code class="docutils literal notranslate"><span class="pre">pip</span></code> and <code class="docutils literal notranslate"><span class="pre">conda</span></code> used in these Notebooks.</p></li>
 </ul>
+<p>Developer Notes:</p>
 <p><a id = setupEnvS></a></p>
 </section>
 </section>
@@ -621,6 +622,11 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>conda<span class="w"> </span>-V
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>conda 23.10.0
 </pre></div>
 </div>
 </div>
@@ -801,6 +807,11 @@ To see the COS reference files you just downloaded:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>ls<span class="w"> </span><span class="nv">$lref</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ls: cannot access &#39;/home/runner/crds_cache/references/hst/cos&#39;: No such file or directory
 </pre></div>
 </div>
 </div>
