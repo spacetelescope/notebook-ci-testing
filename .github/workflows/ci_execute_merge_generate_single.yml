@@ -13,3 +13,8 @@ jobs:
    with:
       python-version: ${{ vars.PYTHON_VERSION }}
       filename: ${{ github.event.inputs.filename }}
+   secrets:
+      CASJOBS_PW: ${{ secrets.CASJOBS_PW }}
+      CASJOBS_USERID: ${{ secrets.CASJOBS_USERID }}
+   permissions:
+     contents: write
