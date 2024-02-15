@@ -9,7 +9,8 @@
 name: Notebook Execution and Validation
 
 on:
-   pull_request:
+   # testing pull_request_target to handle forked prs
+   pull_request_target:
     branches:
       - main
     paths:
