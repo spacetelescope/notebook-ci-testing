@@ -32,7 +32,7 @@ jobs:
    secrets:
       CASJOBS_PW: ${{ secrets.CASJOBS_PW }}
       CASJOBS_USERID: ${{ secrets.CASJOBS_USERID }}
-      CI-TOKEN: ${{ secrets.CI-TOKEN }}
+      CI-TOKEN: ${{ secrets.CITOKEN }}
    permissions:
      contents: write
 
