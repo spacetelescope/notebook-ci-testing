@@ -63,11 +63,7 @@ jobs:
           CITOKEN: ${{ secrets.CITOKEN }}
         run:
           NEW_BRANCH="fork-pr-${{ github.event.pull_request.number }}"
-          
-          git config --global user.email "action@github.com"
-          
-          git config --global user.name "GitHub Action"
-        
+
           git remote set-url origin https://x-access-token:${CITOKEN}@github.com/spacetelescope/notebook-ci-testing.git
           
           git push origin $NEW_BRANCH
