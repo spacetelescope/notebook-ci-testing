@@ -36,41 +36,45 @@ jobs:
             echo "::set-output name=is_fork::false"
           fi
 
-  handle-fork-pr:
-    needs: check-pr-source
-    if: needs.check-pr-source.outputs.is_fork == 'true'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0 # Necessary for a complete history
+handle-fork-pr:
+  needs: check-pr-source
+  if: needs.check-pr-source.outputs.is_fork == 'true'
+  runs-on: ubuntu-latest
+  steps:
+    - name: Checkout base repo main branch
+      uses: actions/checkout@v3
+      with:
+        repository: ${{ github.event.pull_request.base.repo.full_name }}
+        ref: ${{ github.event.pull_request.base.ref }}
+        fetch-depth: 0 # Fetch all history for all tags and branches
 
-      - name: Create new branch and merge PR changes
-        run: |
-          NEW_BRANCH="fork-pr-${{ github.event.pull_request.number }}"
-          git config --global user.email "action@github.com"
-          git config --global user.name "GitHub Action"
-          git checkout -b $NEW_BRANCH main
-          git pull ${{ github.event.pull_request.head.repo.clone_url }} ${{ github.event.pull_request.head.ref }}
-          git push origin $NEW_BRANCH
+    - name: Create new branch and merge PR changes
+      run: |
+        NEW_BRANCH="fork-pr-${{ github.event.pull_request.number }}"
+        git config --global user.email "action@github.com"
+        git config --global user.name "GitHub Action"
+        git checkout -b $NEW_BRANCH ${{ github.event.pull_request.base.ref }}
+        git pull ${{ github.event.pull_request.head.repo.clone_url }} ${{ github.event.pull_request.head.ref }}
+        git push origin $NEW_BRANCH
 
-      - name: Create new PR to main from the new branch
-        uses: actions/github-script@v6
-        with:
-          script: |
-            const originalDescription = `${{ github.event.pull_request.body }}\n\nOriginal PR: #${{ github.event.pull_request.number }}`;
-            const pullRequest = await github.rest.pulls.create({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              title: 'New PR for Changes from Fork: ${{ github.event.pull_request.title }}',
-              head: ${{ env.NEW_BRANCH }},
-              base: 'main',
-              body: originalDescription,
-              draft: false,
-            });
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Create new PR to main from the new branch
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const originalDescription = `${{ github.event.pull_request.body }}\n\nOriginal PR: #${{ github.event.pull_request.number }}`;
+          const pullRequest = await github.rest.pulls.create({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            title: 'New PR for Changes from Fork: ${{ github.event.pull_request.title }}',
+            head: '${{ env.NEW_BRANCH }}',
+            base: '${{ github.event.pull_request.base.ref }}',
+            body: originalDescription,
+            draft: false,
+          });
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        NEW_BRANCH: ${{ steps.create-branch.outputs.NEW_BRANCH }}
+
 
   NotebookExecutionValidation:
     needs: check-pr-source
