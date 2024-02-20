@@ -5,12 +5,10 @@
 ## Each job runs on its own runner with an independent environment, with the exception of the 
 ## HTML generation, which occurs on a single runner using the global environment.
 
-  
 name: Notebook Execution and Validation
 
 on:
-   # testing pull_request_target to handle forked prs
-   pull_request:
+  pull_request:
     branches:
       - main
     paths:
@@ -23,16 +21,32 @@ permissions:
   issues: write
   pull-requests: write
 
-
 jobs:
+  check-pr-source:
+    runs-on: ubuntu-latest
+    outputs:
+      is_fork: ${{ steps.fork-check.outputs.is_fork }}
+    steps:
+      - name: Check if PR is from a fork
+        id: fork-check
+        run: |
+          echo "PR_BASE_REPO: ${{ github.event.pull_request.base.repo.full_name }}"
+          echo "PR_HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}"
+          if [ "${{ github.event.pull_request.base.repo.full_name }}" != "${{ github.event.pull_request.head.repo.full_name }}" ]; then
+            echo "::set-output name=is_fork::true"
+          else
+            echo "::set-output name=is_fork::false"
+          fi
+
   NotebookExecutionValidation:
-   uses: spacetelescope/notebook-ci-actions/.github/workflows/ci_runner.yml@gough_test
-   with:
+    needs: check-pr-source
+    if: needs.check-pr-source.outputs.is_fork == 'false'
+    uses: spacetelescope/notebook-ci-actions/.github/workflows/ci_runner.yml@gough_test
+    with:
       python-version: ${{ vars.PYTHON_VERSION }}
-   secrets:
+    secrets:
       CASJOBS_PW: ${{ secrets.CASJOBS_PW }}
       CASJOBS_USERID: ${{ secrets.CASJOBS_USERID }}
       CITOKEN: ${{ secrets.CITOKEN }}
-   permissions:
-     contents: write
-
+    permissions:
+      contents: write
