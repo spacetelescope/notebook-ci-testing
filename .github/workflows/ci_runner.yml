@@ -85,7 +85,7 @@ jobs:
               draft: false,
             });
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.CITOKEN }}
           NEW_BRANCH: fork-pr-${{ github.event.pull_request.number }}
 
   NotebookExecutionValidation:
