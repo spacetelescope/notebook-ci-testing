@@ -49,14 +49,14 @@ jobs:
 
       - name: Set up Git with CITOKEN and push changes
         env:
-          CITOKEN: ${{ secrets.CITOKEN }}  # Ensure this matches your secret name
+          TEST_TOKEN: ${{ secrets.TEST_TOKEN }} 
         run: |
           NEW_BRANCH="fork-pr-${{ github.event.pull_request.number }}"
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
           
           # Correctly format the URL to include the CITOKEN for authentication
-          git remote set-url origin https://x-access-token:${CITOKEN}@github.com/${{ github.repository }}
+          git remote set-url origin https://x-access-token:${TEST_TOKEN}@github.com/${{ github.repository }}
           
           git checkout -b $NEW_BRANCH main
           git pull --no-rebase origin main
