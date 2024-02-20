@@ -12,9 +12,178 @@ permissions:
   id-token: write
   
 
+
+env:
+  CASJOBS_PW: ${{ secrets.CASJOBS_PW }}
+  CASJOBS_USERID: ${{ secrets.CASJOBS_USERID }}
+  GH_TOKEN: ${{ github.token }}
+
+ 
 jobs:
-  Generate_HTML:
+  identify-changed-notebooks:
     if: github.event.pull_request.merged == true
-    uses: spacetelescope/notebook-ci-actions/.github/workflows/ci_builder.yml@gough_test
-    with:
-      python-version: ${{ vars.PYTHON_VERSION }}
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    ## routine to gather only the changed notebook files and supply them to the matrix
+    - name: changed-files
+      id: get-changed-files
+      uses: tj-actions/changed-files@v42
+      with:
+        separator: ","
+        files: |
+          **/*.ipynb
+    ## convert the list of files to an array and push them into the matrix as a json object      
+    - name: set-matrix
+      id: set-matrix
+      run: |
+        IFS=',' read -r -a array <<< "${{steps.get-changed-files.outputs.all_changed_files}}"
+        echo "{$array}"
+        echo "matrix=$(jq --compact-output --null-input '$ARGS.positional' --args -- "${array[@]}")" >> $GITHUB_OUTPUT
+
+
+  execute-notebooks:
+    if: github.event.pull_request.merged == true
+    needs: identify-changed-notebooks
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    strategy:
+        fail-fast: false
+        matrix:
+            notebooks: ${{ fromJson(needs.identify-changed-notebooks.outputs.matrix) }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ inputs.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ inputs.python-version }}
+        
+      - name: Install Jupyter and nbconvert
+        run: pip install nbconvert
+
+      - name: Prepare and execute notebook
+        run: |
+          NOTEBOOK_DIR=$(dirname ${{ matrix.notebooks }})
+          
+          # Check if pre-requirements.sh exists and run it
+          if [ -f "${NOTEBOOK_DIR}/pre-requirements.sh" ]; then
+            echo "Running pre-requirements.sh in ${NOTEBOOK_DIR}"
+            chmod +x ${NOTEBOOK_DIR}/pre-requirements.sh
+            (cd $NOTEBOOK_DIR; ./pre-requirements.sh)
+          fi
+
+          # Install Python dependencies from requirements.txt if it exists
+          if [ -f "${NOTEBOOK_DIR}/requirements.txt" ]; then
+            echo "Installing requirements from ${NOTEBOOK_DIR}/requirements.txt"
+            pip install -r ${NOTEBOOK_DIR}/requirements.txt
+          fi
+          pip install nbconvert
+          pip install jupyter
+          # Execute the notebook
+          jupyter nbconvert --to notebook --execute --inplace ${{ matrix.notebooks }}
+      - name: Commit modified file on current branch
+        run: |
+          git config user.name 'CI Bot'
+          git config user.email 'action@github.com'
+          git add ${{ matrix.notebooks }}
+          git commit -m "Storing executed notebook ${{ matrix.notebooks }}"
+  
+      - name: Checkout only the file to the target branch
+        run: |
+          git fetch
+          git checkout -f gh-storage
+          git checkout @{-1} ${{ matrix.notebooks }}
+  
+      - name: Commit and push modifications to target branch
+        run: |
+          git commit -m "Storing executed notebook ${{ matrix.notebooks }}"
+  
+          MAX_RETRIES=5
+          RETRY_DELAY=10s
+          for i in $(seq 1 $MAX_RETRIES); do
+            git push origin gh-storage --force && break || {
+              echo "Push $i failed... waiting $RETRY_DELAY"
+              sleep $RETRY_DELAY
+            }
+          done
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  generate_html:
+    if: github.event.pull_request.merged == true
+    needs: execute-notebooks
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python ${{ inputs.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ inputs.python-version }}
+
+    - name: Install Jupyter and nbconvert
+      run: |
+        pip install nbconvert
+
+    # Remaining steps for installing dependencies and building HTML
+    - name: Install dependencies
+      run: |
+        pip install ghp-import jupyter-book==v0.15.1 myst-nb astroid nbval jsonschema==4.6.0
+        PATH="${PATH}:${HOME}/.local/bin"
+          
+    - name: Install dependencies for HTML build
+      run: |
+        pip install ghp-import
+        pip install jupyter-book
+        pip install myst-nb
+        pip install astroid
+        pip install nbval
+        #pip install bs4
+        #pip install lxml
+        ## test to bypass the jupyter-book lower version
+        pip install jsonschema==4.6.0
+        PATH="${PATH}:${HOME}/.local/bin"
+        
+    - name: Checkout only the file to the target branch
+      run: |
+        git checkout -f gh-storage
+        git checkout @{-1} ${{ matrix.notebooks }}
+
+    - name: Commit and push modifications to target branch
+      run: |
+        git commit -m "Storing executed notebook ${{ matrix.notebooks }}"
+
+        MAX_RETRIES=5
+        RETRY_DELAY=10s
+        for i in $(seq 1 $MAX_RETRIES); do
+          git push origin gh-storage --force && break || {
+            echo "Push $i failed... waiting $RETRY_DELAY"
+            sleep $RETRY_DELAY
+          }
+        done
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+        
+    - name: Build HTML
+      run: |
+        git fetch
+        git checkout origin/gh-storage -- notebooks/
+        jupyter-book build .
+
+    # Push the book's HTML to github-pages
+    - name: GitHub Pages action
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./_build/html
