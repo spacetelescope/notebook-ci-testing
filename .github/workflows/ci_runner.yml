@@ -52,10 +52,6 @@ jobs:
         run: |
           NEW_BRANCH="fork-pr-${{ github.event.pull_request.number }}"
           
-          git config --global user.email "action@github.com"
-          
-          git config --global user.name "GitHub Action"
-          
           git checkout -b $NEW_BRANCH main
 
       - name: Pull changes from the PR's branch
