@@ -7,96 +7,29 @@
 
 name: Notebook Execution and Validation
 
-on:
-  pull_request_target:
+on: 
+   pull_request:
     branches:
       - main
     paths:
       - 'notebooks/**.ipynb'
       - '*.yml'
-
+      
 permissions:
   contents: write
   id-token: write
   issues: write
   pull-requests: write
 
+ 
 jobs:
-  check-pr-source:
-    runs-on: ubuntu-latest
-    outputs:
-      is_fork: ${{ steps.fork-check.outputs.is_fork }}
-    steps:
-      - name: Check if PR is from a fork
-        id: fork-check
-        run: |
-          if [ "${{ github.event.pull_request.base.repo.full_name }}" != "${{ github.event.pull_request.head.repo.full_name }}" ]; then
-            echo "::set-output name=is_fork::true"
-          else
-            echo "::set-output name=is_fork::false"
-          fi
-
-  handle-fork-pr:
-    needs: check-pr-source
-    if: needs.check-pr-source.outputs.is_fork == 'true'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout base repo main branch
-        uses: actions/checkout@v3
-        with:
-          ref: main
-          persist-credentials: false
-          fetch-depth: 0
-
-      - name: Create new branch
-        run: |
-          NEW_BRANCH="fork-pr-${{ github.event.pull_request.number }}"
-          
-          git checkout -b $NEW_BRANCH main
-
-      - name: Pull changes from the PR's branch
-        run: |
-          git pull --no-rebase origin ${{ github.head_ref }}
-    
-      - name: Push changes
-        env:
-          CITOKEN: ${{ secrets.CITOKEN }}
-        run: |
-          NEW_BRANCH="fork-pr-${{ github.event.pull_request.number }}"
-          git config --global user.email "action@github.com"
-          git config --global user.name "GitHub Action"
-          git remote set-url origin https://x-access-token:${CITOKEN}@github.com/spacetelescope/notebook-ci-testing.git
-          git push --set-upstream origin $NEW_BRANCH
-
-          
-
-      - name: Create new PR to main from the new branch
-        uses: actions/github-script@v6
-        with:
-          script: |
-            const originalDescription = `${{ github.event.pull_request.body }}\n\nOriginal PR: #${{ github.event.pull_request.number }}`;
-            const pullRequest = await github.rest.pulls.create({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              title: 'New PR for Changes from Fork: ${{ github.event.pull_request.title }}',
-              head: '${{ env.NEW_BRANCH }}',
-              base: 'main',
-              body: originalDescription,
-              draft: false,
-            });
-        env:
-          GITHUB_TOKEN: ${{ secrets.CITOKEN }}
-          NEW_BRANCH: fork-pr-${{ github.event.pull_request.number }}
-
   NotebookExecutionValidation:
-    needs: check-pr-source
-    if: needs.check-pr-source.outputs.is_fork == 'false'
-    uses: spacetelescope/notebook-ci-actions/.github/workflows/ci_runner.yml@gough_test
-    with:
+   uses: spacetelescope/notebook-ci-actions/.github/workflows/ci_runner.yml@gough_test
+   with:
       python-version: ${{ vars.PYTHON_VERSION }}
-    secrets:
+   secrets:
       CASJOBS_PW: ${{ secrets.CASJOBS_PW }}
       CASJOBS_USERID: ${{ secrets.CASJOBS_USERID }}
-      CITOKEN: ${{ secrets.CITOKEN }}
-    permissions:
-      contents: write
+      TOKEN: ${{ secrets.CITOKEN }}
+   permissions:
+     contents: write
