@@ -39,7 +39,7 @@ jobs:
           fi
   
       - name: Create new branch and merge PR changes
-        if: steps.check-fork.outputs.is_fork == 'true'
+        if: needs.check-pr-source.outputs.is_fork == 'true'
         run: |
           NEW_BRANCH="pr-from-fork/${{ github.event.pull_request.number }}"
           # Setup git config
@@ -52,7 +52,7 @@ jobs:
           git push origin $NEW_BRANCH
   
       - name: Create new PR to main from the new branch with original description
-        if: steps.check-fork.outputs.is_fork == 'true'
+        if: needs.check-pr-source.outputs.is_fork == 'true'
         uses: actions/github-script@v6
         with:
           script: |
