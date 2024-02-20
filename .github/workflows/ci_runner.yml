@@ -44,6 +44,7 @@ jobs:
       - name: Checkout base repo main branch
         uses: actions/checkout@v3
         with:
+          persist-credentials: false
           ref: main
           fetch-depth: 0
 
