@@ -49,12 +49,23 @@ jobs:
           fetch-depth: 0 # Necessary for a complete history
 
       - name: Create new branch and merge PR changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           NEW_BRANCH="fork-pr-${{ github.event.pull_request.number }}"
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
-          git checkout -b $NEW_BRANCH ${{ github.event.pull_request.base.ref }}
-          git pull --no-rebase ${{ github.event.pull_request.head.repo.clone_url }} ${{ github.event.pull_request.head.ref }}
+      
+          # Set up git to use the GITHUB_TOKEN for authentication
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}
+      
+          # Checkout a new branch from 'main'
+          git checkout -b $NEW_BRANCH main
+      
+          # Pull changes from the PR's branch without rebase
+          git pull --no-rebase https://github.com/mgough-970/notebook-ci-testing.git main
+      
+          # Push the new branch to the repository
           git push origin $NEW_BRANCH
 
       - name: Create new PR to main from the new branch
