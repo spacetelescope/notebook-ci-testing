@@ -60,11 +60,11 @@ jobs:
     
       - name: Push changes
         env:
-          CITOKEN: ${{ secrets.CITOKEN }}
+          CITOKEN: ${{ secrets.TEST_TOKEN }}
         run:
           NEW_BRANCH="fork-pr-${{ github.event.pull_request.number }}"
 
-          git remote set-url origin https://x-access-token:${CITOKEN}@github.com/spacetelescope/notebook-ci-testing.git
+          git remote set-url origin https://${CITOKEN}@github.com/spacetelescope/notebook-ci-testing.git
           
           git push origin $NEW_BRANCH
           
