@@ -30,45 +30,48 @@ jobs:
       - name: Check if PR is from a fork
         id: fork-check
         run: |
-          echo "PR_BASE_REPO: ${{ github.event.pull_request.base.repo.full_name }}"
-          echo "PR_HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}"
           if [ "${{ github.event.pull_request.base.repo.full_name }}" != "${{ github.event.pull_request.head.repo.full_name }}" ]; then
             echo "::set-output name=is_fork::true"
           else
             echo "::set-output name=is_fork::false"
           fi
-  
+
+  handle-fork-pr:
+    needs: check-pr-source
+    if: needs.check-pr-source.outputs.is_fork == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Necessary for a complete history
+
       - name: Create new branch and merge PR changes
-        if: needs.check-pr-source.outputs.is_fork == 'true'
         run: |
-          NEW_BRANCH="pr-from-fork/${{ github.event.pull_request.number }}"
-          # Setup git config
+          NEW_BRANCH="fork-pr-${{ github.event.pull_request.number }}"
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
-          
-          # Create new branch and merge changes
           git checkout -b $NEW_BRANCH main
           git pull ${{ github.event.pull_request.head.repo.clone_url }} ${{ github.event.pull_request.head.ref }}
           git push origin $NEW_BRANCH
-  
-      - name: Create new PR to main from the new branch with original description
-        if: needs.check-pr-source.outputs.is_fork == 'true'
+
+      - name: Create new PR to main from the new branch
         uses: actions/github-script@v6
         with:
           script: |
-            const github = require('@actions/github');
             const originalDescription = `${{ github.event.pull_request.body }}\n\nOriginal PR: #${{ github.event.pull_request.number }}`;
             const pullRequest = await github.rest.pulls.create({
               owner: context.repo.owner,
               repo: context.repo.repo,
               title: 'New PR for Changes from Fork: ${{ github.event.pull_request.title }}',
-              head: 'pr-from-fork/${{ github.event.pull_request.number }}',
+              head: ${{ env.NEW_BRANCH }},
               base: 'main',
               body: originalDescription,
               draft: false,
             });
+        env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
+
   NotebookExecutionValidation:
     needs: check-pr-source
     if: needs.check-pr-source.outputs.is_fork == 'false'
