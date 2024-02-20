@@ -44,24 +44,25 @@ jobs:
       - name: Checkout base repo main branch
         uses: actions/checkout@v3
         with:
-          persist-credentials: false
           ref: main
           fetch-depth: 0
 
-      - name: Set up Git with CITOKEN and push changes
-        env:
-          TEST_TOKEN: ${{ secrets.TEST_TOKEN }} 
+      - name: Create new branch
         run: |
           NEW_BRANCH="fork-pr-${{ github.event.pull_request.number }}"
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
-          
-          # Correctly format the URL to include the CITOKEN for authentication
-          git remote set-url origin https://x-access-token:${TEST_TOKEN}@github.com/${{ github.repository }}
-          
           git checkout -b $NEW_BRANCH main
-          git pull --no-rebase origin main
-          git push origin $NEW_BRANCH
+
+      - name: Pull changes from the PR's branch
+        run: |
+          git pull --no-rebase origin ${{ github.head_ref }}
+
+      - name: Push changes using ad-m/github-push-action
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.CITOKEN }}
+          branch: ${{ env.NEW_BRANCH }}
 
       - name: Create new PR to main from the new branch
         uses: actions/github-script@v6
@@ -80,7 +81,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NEW_BRANCH: fork-pr-${{ github.event.pull_request.number }}
-
 
   NotebookExecutionValidation:
     needs: check-pr-source
