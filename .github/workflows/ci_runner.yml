@@ -60,8 +60,10 @@ jobs:
           git pull --no-rebase origin ${{ github.head_ref }}
 
       - name: Push changes
+        env:
+          CITOKEN: ${{ secrets.CITOKEN }}
         run:
-          git remote set-url origin https://${{ secrets.CITOKEN }}@github.com/spacetelescope/notebook-ci-testing.git 
+          git remote set-url origin https://x-access-token:${CITOKEN}@github.com/spacetelescope/notebook-ci-testing.git 
           git push origin ${{ env.NEW_BRANCH }}
           
 
