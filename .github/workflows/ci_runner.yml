@@ -61,7 +61,7 @@ jobs:
       - name: Push changes using ad-m/github-push-action
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.CITOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ env.NEW_BRANCH }}
 
       - name: Create new PR to main from the new branch
