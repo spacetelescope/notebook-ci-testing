@@ -115,27 +115,17 @@ jobs:
       contents: write
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Set up Python ${{ inputs.python-version }}
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: ${{ inputs.python-version }}
-
-    - name: Install Jupyter and nbconvert
-      run: |
-        pip install nbconvert
-
-    # Remaining steps for installing dependencies and building HTML
+        
     - name: Install dependencies
       run: |
-        pip install ghp-import jupyter-book==v0.15.1 myst-nb astroid nbval jsonschema==4.6.0
-        PATH="${PATH}:${HOME}/.local/bin"
-          
-    - name: Install dependencies for HTML build
-      run: |
         pip install ghp-import
-        pip install jupyter-book
+        pip install jupyter-book==v0.15.1
         pip install myst-nb
         pip install astroid
         pip install nbval
@@ -144,25 +134,7 @@ jobs:
         ## test to bypass the jupyter-book lower version
         pip install jsonschema==4.6.0
         PATH="${PATH}:${HOME}/.local/bin"
-        
-    - name: Checkout only the file to the target branch
-      run: |
-        git checkout -f gh-storage
-        git checkout @{-1} ${{ matrix.notebooks }}
 
-    - name: Commit and push modifications to target branch
-      run: |
-        git commit -m "Storing executed notebook ${{ matrix.notebooks }}"
-
-        MAX_RETRIES=5
-        RETRY_DELAY=10s
-        for i in $(seq 1 $MAX_RETRIES); do
-          git push origin gh-storage --force && break || {
-            echo "Push $i failed... waiting $RETRY_DELAY"
-            sleep $RETRY_DELAY
-          }
-        done
-        
     - name: Build HTML
       run: |
         git fetch
