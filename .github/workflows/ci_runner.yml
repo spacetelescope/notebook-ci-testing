@@ -59,11 +59,11 @@ jobs:
         run: |
           git pull --no-rebase origin ${{ github.head_ref }}
 
-      - name: Push changes using ad-m/github-push-action
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.CITOKEN }}
-          branch: ${{ env.NEW_BRANCH }}
+      - name: Push changes
+        run:
+          git remote set-url origin https://${{ secrets.CITOKEN }}@github.com/spacetelescope/notebook-ci-testing.git 
+          git push origin ${{ env.NEW_BRANCH }}
+          
 
       - name: Create new PR to main from the new branch
         uses: actions/github-script@v6
