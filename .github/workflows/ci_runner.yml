@@ -63,7 +63,8 @@ jobs:
         env:
           CITOKEN: ${{ secrets.CITOKEN }}
         run:
-          git remote set-url origin https://x-access-token:${CITOKEN}@github.com/spacetelescope/notebook-ci-testing.git 
+          git remote set-url origin https://x-access-token:${CITOKEN}@github.com/spacetelescope/notebook-ci-testing.git
+          
           git push origin ${{ env.NEW_BRANCH }}
           
 
