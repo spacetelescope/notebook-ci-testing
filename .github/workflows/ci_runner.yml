@@ -30,6 +30,5 @@ jobs:
    secrets:
       CASJOBS_PW: ${{ secrets.CASJOBS_PW }}
       CASJOBS_USERID: ${{ secrets.CASJOBS_USERID }}
-      CITOKEN: ${{ secrets.CITOKEN }}
    permissions:
      contents: write
