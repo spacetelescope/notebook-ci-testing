@@ -7,7 +7,7 @@ on:
 jobs:
   list-ipynb-files:
     runs-on: ubuntu-latest
-    #if: ${{ github.event.pull_request.merged == true }}
+    if: ${{ github.event.pull_request.merged == true }}
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
@@ -27,19 +27,9 @@ jobs:
           echo "Jupyter Notebook files changed:"
           echo "$FILES_LIST"
           
-          # Use Environment File to set the output variable, ensuring it's in a valid format
-          echo "files<<EOF" >> $GITHUB_OUTPUT
-          echo "$FILES_LIST" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
-
-      - name: Set matrix for next job
-        id: set-matrix
-        run: |
-          # Read the formatted list from the environment file and set it as matrix
-          FILES_LIST=$(cat $GITHUB_OUTPUT | grep '^files=' | cut -d'=' -f2-)
-          echo "matrix=<<EOF" >> $GITHUB_OUTPUT
-          echo "$FILES_LIST" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
+          # Convert the newline-separated list into a JSON array string and write it to the environment file
+          FILES_JSON=$(echo "$FILES_LIST" | jq -R -s -c 'split("\n")[:-1]')
+          echo "matrix=$FILES_JSON" >> $GITHUB_OUTPUT
 
   use-ipynb-files:
     needs: list-ipynb-files
