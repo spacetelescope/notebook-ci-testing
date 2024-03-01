@@ -39,7 +39,7 @@ jobs:
       - name: set-matrix
         id: set-matrix
         run: |
-          IFS=',' read -r -a array <<< "${{steps.identify-changed-notebooks.outputs.all_changed_files}}"
+          IFS=',' read -r -a array <<< "${{steps.get-ipynb-files.outputs.all_changed_files}}"
           echo "{$array}"
           echo "matrix=$(jq --compact-output --null-input '$ARGS.positional' --args -- "${array[@]}")" >> $GITHUB_OUTPUT
 
