@@ -7,7 +7,7 @@ on:
 jobs:
   list-ipynb-files:
     runs-on: ubuntu-latest
-    if: ${{ github.event.pull_request.merged == true }}
+    #if: ${{ github.event.pull_request.merged == true }}
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
