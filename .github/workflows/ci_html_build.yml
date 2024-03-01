@@ -36,7 +36,12 @@ jobs:
           # Convert the newline-separated list into a JSON array string and write it to the environment file
           FILES_JSON=$(echo "$FILES_LIST" | jq -R -s -c 'split("\n")[:-1]')
           echo "matrix=$FILES_JSON" >> $GITHUB_OUTPUT
-
+      - name: set-matrix
+        id: set-matrix
+        run: |
+          IFS=',' read -r -a array <<< "${{steps.identify-changed-notebooks.outputs.all_changed_files}}"
+          echo "{$array}"
+          echo "matrix=$(jq --compact-output --null-input '$ARGS.positional' --args -- "${array[@]}")" >> $GITHUB_OUTPUT
 
 
   execute-notebooks:
