@@ -1,0 +1,49 @@
+name: Process .ipynb Files in Merged PR
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  list-ipynb-files:
+    runs-on: ubuntu-latest
+    #if: ${{ github.event.pull_request.merged == true }}
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Get list of .ipynb files from the merged PR
+        id: get-ipynb-files
+        run: |
+          PR_NUMBER=${{ github.event.pull_request.number }}
+          REPO_FULL_NAME=${{ github.repository }}
+          
+          # Fetch the list of files changed in the PR using GitHub API
+          FILES_JSON=$(curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+               -H "Accept: application/vnd.github.v3+json" \
+               https://api.github.com/repos/$REPO_FULL_NAME/pulls/$PR_NUMBER/files | jq '[.[] | select(.filename | endswith(".ipynb")) | .filename]')
+          echo "Jupyter Notebook files changed: $FILES_JSON"
+          
+          # Set the output variable
+          echo "::set-output name=files::$FILES_JSON"
+
+      - name: Set matrix for next job
+        id: set-matrix
+        run: echo "::set-output name=matrix::${{ steps.get-ipynb-files.outputs.files }}"
+
+  use-ipynb-files:
+    needs: list-ipynb-files
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        file: ${{fromJson(needs.list-ipynb-files.outputs.matrix)}}
+    steps:
+      - name: Use .ipynb File in Matrix
+        run: |
+          echo "Processing .ipynb file: ${{ matrix.file }}"
+          FILE_PATH="${{ matrix.file }}"
+          echo "File Path: $FILE_PATH"
+          FILE_NAME=$(basename $FILE_PATH)
+          echo "File Name: $FILE_NAME"
