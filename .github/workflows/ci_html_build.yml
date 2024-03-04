@@ -38,7 +38,7 @@ jobs:
           FILES_JSON=$(echo "$FILES_LIST" | jq -R -s -c 'split("\n")[:-1]')
           echo "matrix=$FILES_JSON" >> $GITHUB_OUTPUT
       - name: Echo matrix content
-        run: echo "Matrix content - ${{fromJson(needs.identify-changed-notebooks.outputs.matrix)}}"
+        run: echo ${{fromJson(needs.identify-changed-notebooks.outputs.matrix)}}
 
   execute-notebooks:
     #if: github.event.pull_request.merged == true
