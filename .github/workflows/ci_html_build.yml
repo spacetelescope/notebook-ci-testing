@@ -36,11 +36,12 @@ jobs:
           # Convert the newline-separated list into a JSON array string and write it to the environment file
           FILES_JSON=$(echo "$FILES_LIST" | jq -R -s -c 'split("\n")[:-1]')
           echo "matrix=$FILES_JSON" >> $GITHUB_OUTPUT
-
+      - name: Echo matrix content
+        run: echo "Matrix content: ${{fromJson(needs.identify-changed-notebooks.outputs.matrix)}}"
 
   execute-notebooks:
     #if: github.event.pull_request.merged == true
-    #needs: identify-changed-notebooks
+    needs: identify-changed-notebooks
     runs-on: ubuntu-latest
     permissions:
       contents: write
