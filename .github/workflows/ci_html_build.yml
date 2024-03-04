@@ -53,10 +53,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Python ${{ inputs.python-version }}
+      - name: Set up Python ${{ vars.python-version }}
         uses: actions/setup-python@v5
         with:
-          python-version: ${{ inputs.python-version }}
+          python-version: ${{ vars.python-version }}
         
       - name: Install Jupyter and nbconvert
         run: pip install nbconvert
@@ -119,10 +119,10 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Set up Python ${{ inputs.python-version }}
+    - name: Set up Python ${{ vars.python-version }}
       uses: actions/setup-python@v5
       with:
-        python-version: ${{ inputs.python-version }}
+        python-version: ${{ vars.python-version }}
         
     - name: Install dependencies
       run: |
