@@ -37,7 +37,8 @@ jobs:
           FILES_JSON=$(echo "$FILES_LIST" | jq -R -s 'split("\n") | map(select(. != "")) | @json')
           echo "Formatted JSON:"
           echo "$FILES_JSON"
-          echo "::set-output name=matrix::$FILES_JSON"
+          # Use environment file to set output
+          echo "matrix=$FILES_JSON" >> $GITHUB_ENV
           
       - name: Echo matrix content
         run: echo "${{ needs.identify-changed-notebooks.outputs.matrix }}"
