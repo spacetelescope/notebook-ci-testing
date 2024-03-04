@@ -40,7 +40,7 @@ jobs:
 
   execute-notebooks:
     #if: github.event.pull_request.merged == true
-    needs: identify-changed-notebooks
+    #needs: identify-changed-notebooks
     runs-on: ubuntu-latest
     permissions:
       contents: write
