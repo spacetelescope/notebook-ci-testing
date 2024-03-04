@@ -20,21 +20,24 @@ jobs:
     - uses: actions/checkout@v4
       with:
         fetch-depth: 0
-    ## routine to gather only the changed notebook files and supply them to the matrix
-    - name: changed-files
-      id: get-changed-files
-      uses: tj-actions/changed-files@v42
-      with:
-        separator: ","
-        files: |
-          **/*.ipynb
-    ## convert the list of files to an array and push them into the matrix as a json object      
-    - name: set-matrix
-      id: set-matrix
+    - name: Get list of .ipynb files from the merged PR
+      id: get-ipynb-files
       run: |
-        IFS=',' read -r -a array <<< "${{steps.get-changed-files.outputs.all_changed_files}}"
-        echo "{$array}"
-        echo "matrix=$(jq --compact-output --null-input '$ARGS.positional' --args -- "${array[@]}")" >> $GITHUB_OUTPUT
+        PR_NUMBER=${{ github.event.pull_request.number }}
+        REPO_FULL_NAME=${{ github.repository }}
+        
+        FILES_LIST=$(curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+             -H "Accept: application/vnd.github.v3+json" \
+             https://api.github.com/repos/$REPO_FULL_NAME/pulls/$PR_NUMBER/files | jq -r '[.[] | select(.filename | endswith(".ipynb")) | .filename] | join("\n")')
+        echo "Jupyter Notebook files changed:"
+        echo "$FILES_LIST"
+        
+        FILES_JSON=$(echo "$FILES_LIST" | jq -R -s 'split("\n") | map(select(. != "")) | @json')
+        echo "Formatted JSON:"
+        echo "$FILES_JSON"
+        
+        # Use environment file to set output
+        echo "matrix=$FILES_JSON" >> $GITHUB_ENV
 
   execute-notebooks:
     #if: github.event.pull_request.merged == true
