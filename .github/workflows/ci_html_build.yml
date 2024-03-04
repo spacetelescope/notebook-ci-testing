@@ -40,7 +40,7 @@ jobs:
           echo "matrix=$FILES_JSON" >> $GITHUB_OUTPUT
           
       - name: Echo matrix content
-        run: echo "{${{fromJson(needs.identify-changed-notebooks.outputs.matrix)}}"
+        run: echo "${{ needs.identify-changed-notebooks.outputs.matrix }}"
 
   execute-notebooks:
     #if: github.event.pull_request.merged == true
