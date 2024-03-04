@@ -34,9 +34,11 @@ jobs:
           echo "Jupyter Notebook files changed:"
           echo "$FILES_LIST"
           
-          # Convert the newline-separated list into a JSON array string and write it to the environment file
-          FILES_JSON=$(echo "$FILES_LIST" | jq -R -s -c 'split(",")[:-1]')
+          FILES_JSON=$(echo "$FILES_LIST" | jq -R -s 'split("\n") | map(select(. != "")) | @json')
+          echo "Formatted JSON:"
+          echo "$FILES_JSON"
           echo "matrix=$FILES_JSON" >> $GITHUB_OUTPUT
+          
       - name: Echo matrix content
         run: echo ${{fromJson(needs.identify-changed-notebooks.outputs.matrix)}}
 
