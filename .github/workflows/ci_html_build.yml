@@ -30,11 +30,11 @@ jobs:
           # Fetch the list of files changed in the PR using GitHub API and format it as a newline-separated list
           FILES_LIST=$(curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
                -H "Accept: application/vnd.github.v3+json" \
-               https://api.github.com/repos/$REPO_FULL_NAME/pulls/$PR_NUMBER/files | jq -r '[.[] | select(.filename | endswith(".ipynb")) | .filename] | join("\n")')
+               https://api.github.com/repos/$REPO_FULL_NAME/pulls/$PR_NUMBER/files | jq -r '[.[] | select(.filename | endswith(".ipynb")) | .filename] | join(",")')
           echo "Jupyter Notebook files changed:"
           echo "$FILES_LIST"
           
-          FILES_JSON=$(echo "$FILES_LIST" | jq -R -s 'split("\n") | map(select(. != "")) | @json')
+          FILES_JSON=$(echo "$FILES_LIST" | jq -R -s 'split(",") | map(select(. != "")) | @json')
           echo "Formatted JSON:"
           echo "$FILES_JSON"
           # Use environment file to set output
