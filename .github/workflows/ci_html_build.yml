@@ -34,7 +34,8 @@ jobs:
         echo "$FILES_LIST"
         
         # Convert the list into a JSON array string
-        FILES_JSON=$(echo "$FILES_LIST" | jq -R -s -c 'split("\n")[:-1]')
+        FILES_JSON=$(echo "$FILES_LIST" | jq -R -s 'split("\n") | map(select(length > 0))')
+
         
         echo "$FILES_JSON"
         
