@@ -26,20 +26,14 @@ jobs:
         PR_NUMBER=${{ github.event.pull_request.number }}
         REPO_FULL_NAME=${{ github.repository }}
         
-        # Get the list of .ipynb files changed in the PR
-        FILES_LIST=$(curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+        # Get the list of .ipynb files changed in the PR and output as JSON array
+        FILES_JSON=$(curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
              -H "Accept: application/vnd.github.v3+json" \
-             https://api.github.com/repos/$REPO_FULL_NAME/pulls/$PR_NUMBER/files | jq -r '[.[] | select(.filename | endswith(".ipynb")) | .filename] | join("\n")')
-        echo "Jupyter Notebook files changed:"
-        echo "$FILES_LIST"
+             https://api.github.com/repos/$REPO_FULL_NAME/pulls/$PR_NUMBER/files | jq -r '[.[] | select(.filename | endswith(".ipynb")) | .filename]')
+        echo "Jupyter Notebook files changed: $FILES_JSON"
         
-        # Convert the newline-separated list into a comma-separated list within curly braces
-        FILES_JSON=$(echo "$FILES_LIST" | tr '\n' ',' | sed 's/,$//' | sed 's/^/{/' | sed 's/$/}/')
-        
-        echo "$FILES_JSON"
-        
-        # Use environment file to set output
-        echo "matrix=${FILES_JSON}" >> $GITHUB_ENV
+        # Set the output
+        echo "::set-output name=files_json::$FILES_JSON"
 
   execute-notebooks:
     #if: github.event.pull_request.merged == true
@@ -51,6 +45,7 @@ jobs:
         fail-fast: false
         matrix:
             notebooks: ${{fromJson(needs.identify-changed-notebooks.outputs.matrix)}}
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
