@@ -29,13 +29,12 @@ jobs:
         # Get the list of .ipynb files changed in the PR
         FILES_LIST=$(curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
              -H "Accept: application/vnd.github.v3+json" \
-             https://api.github.com/repos/$REPO_FULL_NAME/pulls/$PR_NUMBER/files | jq -r '[.[] | select(.filename | endswith(".ipynb")) | .filename]')
+             https://api.github.com/repos/$REPO_FULL_NAME/pulls/$PR_NUMBER/files | jq -r '[.[] | select(.filename | endswith(".ipynb")) | .filename] | join("\n")')
         echo "Jupyter Notebook files changed:"
         echo "$FILES_LIST"
         
-        # Convert the list into a JSON array string
+        # Convert the list into a JSON array string, filtering out empty strings
         FILES_JSON=$(echo "$FILES_LIST" | jq -R -s 'split("\n") | map(select(length > 0))')
-
         
         echo "$FILES_JSON"
         
