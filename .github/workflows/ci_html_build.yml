@@ -20,13 +20,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          # This token is provided by GitHub Actions and is used to authenticate in the workflow
-          token: ${{ secrets.GITHUB_TOKEN }}
-          # Fetches the repository at the pull request head commit
-          ref: ${{ github.event.pull_request.head.ref }}
-          # Repository name with owner. For forks, this will be the owner of the forked repository.
-          repository: ${{ github.event.pull_request.head.repo.full_name }}
-          # Fetches all history for all tags and branches
           fetch-depth: 0
       - name: List .ipynb files
         id: list-files
