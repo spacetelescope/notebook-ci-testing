@@ -17,39 +17,20 @@ jobs:
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
-    - uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
-    - name: Get list of .ipynb files from the merged PR
-      id: get-ipynb-files
-      run: |
-        PR_NUMBER=${{ github.event.pull_request.number }}
-        REPO_FULL_NAME=${{ github.repository }}
-        
-        # Get the list of .ipynb files changed in the PR
-        FILES_LIST=$(curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-             -H "Accept: application/vnd.github.v3+json" \
-             https://api.github.com/repos/$REPO_FULL_NAME/pulls/$PR_NUMBER/files | jq -r '[.[] | select(.filename | endswith(".ipynb")) | .filename] | join("\n")')
-        echo "Jupyter Notebook files changed:"
-        echo "$FILES_LIST"
-        
-        # Convert the list into a JSON array string, filtering out empty strings
-        FILES_JSON=$(echo "$FILES_LIST" | jq -R -s 'split("\n") | map(select(length > 0))')
-        
-        echo "$FILES_JSON"
-        
-        # Encode the JSON array as a base64 string
-        MATRIX_BASE64=$(echo "$FILES_JSON" | base64)
-        
-        # Use environment file to set output
-        echo "matrix_base64=$MATRIX_BASE64" >> $GITHUB_ENV
-    - name: Decode and use the matrix
-      run: |
-        # Decode the base64 string to JSON
-        FILES_JSON=$(echo "${{ env.matrix_base64 }}" | base64 --decode)
-        
-        # Use jq to parse FILES_JSON or directly with fromJson in GitHub Actions
-        echo $FILES_JSON
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+      - name: List .ipynb files
+        id: list-files
+        run: |
+          echo "FILES=$(git diff --name-only --diff-filter=AMR ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }} -- '*.ipynb' | xargs)"
+          echo "FILES=$FILES" >> $GITHUB_ENV
+      - name: Set matrix for job
+        id: set-matrix
+        run: |
+          echo "::set-output name=matrix::$(echo $FILES | jq -R 'split(" ") | map(select(. != "")) | {include: map({notebook: .})}')"
+
 
   execute-notebooks:
     #if: github.event.pull_request.merged == true
