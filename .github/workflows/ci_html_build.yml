@@ -32,8 +32,8 @@ jobs:
         echo "Jupyter Notebook files changed:"
         echo "$FILES_LIST"
         
-        FILES_JSON=$(echo "$FILES_LIST" | jq -R -s 'split("\n") | map(select(. != "")) | @json')
-        echo "Formatted JSON:"
+        FILES_JSON=$(echo "$FILES_LIST" | jq -r --null-input '$ARGS.positional[]' --args -- "${array[@]}" | sed 's/.*/{&}/')
+        
         echo "$FILES_JSON"
         
         # Use environment file to set output
