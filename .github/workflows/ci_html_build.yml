@@ -38,8 +38,18 @@ jobs:
         
         echo "$FILES_JSON"
         
+        # Encode the JSON array as a base64 string
+        MATRIX_BASE64=$(echo "$FILES_JSON" | base64)
+        
         # Use environment file to set output
-        echo "matrix=${FILES_JSON}" >> $GITHUB_ENV
+        echo "matrix_base64=$MATRIX_BASE64" >> $GITHUB_ENV
+    - name: Decode and use the matrix
+      run: |
+        # Decode the base64 string to JSON
+        FILES_JSON=$(echo "${{ env.matrix_base64 }}" | base64 --decode)
+        
+        # Use jq to parse FILES_JSON or directly with fromJson in GitHub Actions
+        echo $FILES_JSON
 
   execute-notebooks:
     #if: github.event.pull_request.merged == true
