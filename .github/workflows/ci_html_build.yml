@@ -13,26 +13,26 @@ env:
  
 jobs:
   identify-changed-notebooks:
-    #if: github.event.pull_request.merged == true
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     outputs:
-      matrix: ${{ steps.set-matrix.outputs.matrix }}
+      notebook-files: ${{ steps.find-notebooks.outputs.notebook-files }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      
+
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: '3.x'
-      
+
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
           pip install PyGithub
-      
-      - name: Fetch .ipynb files from merged PR
-        id: set-matrix
+
+      - name: Find .ipynb files in merged PR
+        id: find-notebooks
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -46,11 +46,22 @@ jobs:
           files = pr.get_files()
           notebooks = [f.filename for f in files if f.filename.endswith('.ipynb')]
 
-          # Set the matrix as a JSON string
-          matrix = {"notebook": notebooks}
-          print(f"::set-output name=matrix::{json.dumps(matrix)}")
+          # Output the list of notebooks as a comma-separated string
+          print(f"::set-output name=notebook-files::{','.join(notebooks)}")
 
         shell: python
+
+  set-matrix:
+    needs: identify-changed-notebooks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set Matrix
+        id: set-matrix
+        run: |
+          IFS=',' read -r -a array <<< "${{ needs.fetch-notebooks.outputs.notebook-files }}"
+          echo "{$array}"
+          echo "matrix=$(jq --compact-output --null-input '$ARGS.positional' --args -- "${array[@]}")" >> $GITHUB_OUTPUT
+          
   execute-notebooks:
     #if: github.event.pull_request.merged == true
     needs: identify-changed-notebooks
