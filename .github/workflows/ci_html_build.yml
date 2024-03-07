@@ -16,7 +16,7 @@ jobs:
     #if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     outputs:
-      notebook-files: ${{ steps.find-notebooks.outputs.notebook-files }}
+      notebook-files: ${{ steps.set-matrix.outputs.notebook-files }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -31,40 +31,33 @@ jobs:
           python -m pip install --upgrade pip
           pip install PyGithub
 
-      - name: Find .ipynb files in merged PR
-        id: find-notebooks
+      - name: Find .ipynb files in merged PR and set output
+        id: set-matrix
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           import json
           from github import Github
 
+          # Initialize the GitHub client with the provided token
           g = Github("${{ secrets.GITHUB_TOKEN }}")
           repo = g.get_repo("${{ github.repository }}")
           pr = repo.get_pull(${{ github.event.pull_request.number }})
 
+          # Fetch the list of files in the PR and filter for .ipynb files
           files = pr.get_files()
           notebooks = [f.filename for f in files if f.filename.endswith('.ipynb')]
 
-          # Output the list of notebooks as a comma-separated string
-          print(f"::set-output name=notebook-files::{','.join(notebooks)}")
+          # Print the list of notebooks for debugging
+          print("Found .ipynb files:", notebooks)
 
-        shell: python
-
-  set-matrix:
-    needs: identify-changed-notebooks
-    runs-on: ubuntu-latest
-    steps:
-      - name: Set Matrix
-        id: set-matrix
-        run: |
-          IFS=',' read -r -a array <<< "${{ needs.fetch-notebooks.outputs.notebook-files }}"
-          echo "{$array}"
-          echo "matrix=$(jq --compact-output --null-input '$ARGS.positional' --args -- "${array[@]}")" >> $GITHUB_OUTPUT
+          # Convert the list to a JSON string and set it as an output
+          notebooks_json = json.dumps(notebooks)
+          print(f"::set-output name=notebook-files::{notebooks_json}")
           
   execute-notebooks:
     #if: github.event.pull_request.merged == true
-    needs: set-matrix
+    needs: identify-changed-notebooks
     runs-on: ubuntu-latest
     permissions:
       contents: write
