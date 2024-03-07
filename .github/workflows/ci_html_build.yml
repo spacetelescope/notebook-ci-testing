@@ -16,44 +16,29 @@ jobs:
     #if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     outputs:
-      notebook-files: ${{ steps.set-matrix.outputs.notebook-files }}
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    #if: github.event.pull_request.merged == true
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/checkout@v3
         with:
-          python-version: '3.x'
+          ref: ${{ github.event.pull_request.merge_commit_sha }}
 
-      - name: Install Dependencies
+      - name: List changed files
+        id: changed_files
+        uses: jitterbit/get-changed-files@v1
+
+      - name: Filter notebooks
+        id: filter_notebooks
         run: |
-          python -m pip install --upgrade pip
-          pip install PyGithub
+          notebooks=$(echo '${{ steps.changed_files.outputs.all }}' | jq -R 'split(" ")[]' | jq 'select(endswith(".ipynb"))' | jq -s -c)
+          echo "::set-output name=notebooks::$notebooks"
 
-      - name: Find .ipynb files in merged PR and set output
+      - name: Set matrix for notebooks
         id: set-matrix
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          import json
-          from github import Github
-
-          # Initialize the GitHub client with the provided token
-          g = Github("${{ secrets.GITHUB_TOKEN }}")
-          repo = g.get_repo("${{ github.repository }}")
-          pr = repo.get_pull(${{ github.event.pull_request.number }})
-
-          # Fetch the list of files in the PR and filter for .ipynb files
-          files = pr.get_files()
-          notebooks = [f.filename for f in files if f.filename.endswith('.ipynb')]
-
-          # Print the list of notebooks for debugging
-          print("Found .ipynb files:", notebooks)
-
-          # Convert the list to a JSON string and set it as an output
-          notebooks_json = json.dumps(notebooks)
-          print(f"::set-output name=notebook-files::{notebooks_json}")
+          matrix="{\"include\":$(echo '${{ steps.filter_notebooks.outputs.notebooks }}' | jq '[.[] | {"notebook": .}]')}"
+          echo "::set-output name=matrix::$matrix"
           
   execute-notebooks:
     #if: github.event.pull_request.merged == true
