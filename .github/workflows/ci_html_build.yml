@@ -13,7 +13,7 @@ env:
  
 jobs:
   identify-changed-notebooks:
-    if: github.event.pull_request.merged == true
+    #if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     outputs:
       notebook-files: ${{ steps.find-notebooks.outputs.notebook-files }}
@@ -64,7 +64,7 @@ jobs:
           
   execute-notebooks:
     #if: github.event.pull_request.merged == true
-    needs: identify-changed-notebooks
+    needs: set-matrix
     runs-on: ubuntu-latest
     permissions:
       contents: write
