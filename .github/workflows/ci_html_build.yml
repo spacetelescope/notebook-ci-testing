@@ -24,21 +24,20 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.merge_commit_sha }}
 
-      - name: List changed files
-        id: changed_files
-        uses: jitterbit/get-changed-files@v1
-
-      - name: Filter notebooks
-        id: filter_notebooks
-        run: |
-          notebooks=$(echo '${{ steps.changed_files.outputs.all }}' | jq -R 'split(" ")[]' | jq 'select(endswith(".ipynb"))' | jq -s -c)
-          echo "::set-output name=notebooks::$notebooks"
-
-      - name: Set matrix for notebooks
+      - name: changed-files
+        id: get-changed-files
+        uses: tj-actions/changed-files@v42
+        with:
+          separator: ","
+          files: |
+            **/*.ipynb
+      ## convert the list of files to an array and push them into the matrix as a json object      
+      - name: set-matrix
         id: set-matrix
         run: |
-          matrix="{\"include\":$(echo '${{ steps.filter_notebooks.outputs.notebooks }}' | jq '[.[] | {"notebook": .}]')}"
-          echo "::set-output name=matrix::$matrix"
+          IFS=',' read -r -a array <<< "${{steps.get-changed-files.outputs.all_changed_files}}"
+          echo "{$array}"
+          echo "matrix=$(jq --compact-output --null-input '$ARGS.positional' --args -- "${array[@]}")" >> $GITHUB_OUTPUT
           
   execute-notebooks:
     #if: github.event.pull_request.merged == true
