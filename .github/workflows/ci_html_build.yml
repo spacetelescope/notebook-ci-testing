@@ -24,7 +24,8 @@ jobs:
       - id: set-matrix
         run: |
           files=$(git diff --name-only ${{ github.event.pull_request.base.sha }}...${{ github.event.pull_request.head.sha }} '*.ipynb')
-          files_json=$(echo $files | jq -R -s -c 'split("\n")[:-1]')
+          #files_json=$(echo $files | jq -R -s -c 'split("\n")[:-1]')
+          files_json=$(echo "$files" | jq -R -s -c 'split("\n")[:-1]')
           echo "::set-output name=matrix::${files_json}"
 
   execute-notebooks:
@@ -34,6 +35,7 @@ jobs:
       fail-fast: false
       matrix:
         notebook: ${{fromJson(needs.prepare_matrix.outputs.matrix)}}
+
     steps:
       - uses: actions/checkout@v3
 
