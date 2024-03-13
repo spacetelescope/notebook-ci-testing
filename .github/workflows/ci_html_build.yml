@@ -9,35 +9,48 @@ on:
 env:
   CASJOBS_PW: ${{ secrets.CASJOBS_PW }}
   CASJOBS_USERID: ${{ secrets.CASJOBS_USERID }}
-
 jobs:
-  execute-notebooks:
-    #if: github.event.pull_request.merged == true
+  prepare_matrix:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
       - uses: actions/checkout@v3
         with:
           ref: ${{ github.event.pull_request.head.sha }}
 
+      - id: set-matrix
+        run: |
+          files=$(git diff --name-only ${{ github.event.pull_request.base.sha }}...${{ github.event.pull_request.head.sha }} '*.ipynb')
+          files_json=$(echo $files | jq -R -s -c 'split("\n")[:-1]')
+          echo "::set-output name=matrix::${files_json}"
+
+  execute-notebooks:
+    needs: prepare_matrix
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        notebook: ${{fromJson(needs.prepare_matrix.outputs.matrix)}}
+    steps:
+      - uses: actions/checkout@v3
+
       - name: Setup Python
         uses: actions/setup-python@v3
         with:
-          python-version: '3.11'
+          python-version: '3.x'
 
-      - name: Install Jupyter and Execute Notebooks
+      - name: Install Dependencies (if requirements.txt exists) and Execute Notebook
         run: |
+          notebook="${{ matrix.notebook }}"
+          dir=$(dirname "$notebook")
+          if [ -f "$dir/requirements.txt" ]; then
+            pip install -r "$dir/requirements.txt"
+          fi
           pip install notebook
-          git config --global user.email "action@github.com"
-          git config --global user.name "GitHub Action"
-          files=$(git diff --name-only ${{ github.event.pull_request.base.sha }}...${{ github.event.pull_request.head.sha }} '*.ipynb')
-          for file in $files; do
-            dir=$(dirname "$file")
-            if [ -f "$dir/requirements.txt" ]; then
-              pip install -r "$dir/requirements.txt"
-            fi
-            jupyter nbconvert --to notebook --execute "$file" --inplace
-          done
-          git add $files
+          jupyter nbconvert --to notebook --execute "$notebook" --inplace
+          git add "$notebook"
           git commit -m "Execute notebooks"
           git push origin HEAD:gh-storage --force
 
