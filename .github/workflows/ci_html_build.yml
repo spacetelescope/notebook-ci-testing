@@ -1,114 +1,46 @@
 name: Build HTML on merge
 
 on:
-  pull_request_target:
-   branches:
-   - main
-   types: [closed]
+  pull_request:
+    types: [closed]
+    paths:
+      - '**.ipynb'
 
 env:
   CASJOBS_PW: ${{ secrets.CASJOBS_PW }}
   CASJOBS_USERID: ${{ secrets.CASJOBS_USERID }}
 
- 
 jobs:
-  identify-changed-notebooks:
-    #if: github.event.pull_request.merged == true
-    runs-on: ubuntu-latest
-    outputs:
-      matrix: ${{ steps.set-matrix.outputs.matrix }}
-    #if: github.event.pull_request.merged == true
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-        with:
-          ref: ${{ github.event.pull_request.merge_commit_sha }}
-
-      - name: changed-files
-        id: get-changed-files
-        uses: tj-actions/changed-files@v42
-        with:
-          separator: ","
-          files: |
-            **/*.ipynb
-      ## convert the list of files to an array and push them into the matrix as a json object      
-      - name: set-matrix
-        id: set-matrix
-        run: |
-          IFS=',' read -r -a array <<< "${{steps.get-changed-files.outputs.all_changed_files}}"
-          echo "{$array}"
-          echo "matrix=$(jq --compact-output --null-input '$ARGS.positional' --args -- "${array[@]}")" >> $GITHUB_OUTPUT
-          
   execute-notebooks:
-    #if: github.event.pull_request.merged == true
-    needs: identify-changed-notebooks
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    strategy:
-        fail-fast: false
-        matrix:
-            notebooks: ${{fromJson(needs.identify-changed-notebooks.outputs.matrix)}}
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Set up Python ${{ vars.python-version }}
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v3
         with:
-          python-version: ${{ vars.python-version }}
-        
-      - name: Install Jupyter and nbconvert
-        run: pip install nbconvert
+          ref: ${{ github.event.pull_request.head.sha }}
 
-      - name: Prepare and execute notebook
-        run: |
-          NOTEBOOK_DIR=$(dirname ${{ matrix.notebooks }})
-          
-          # Check if pre-requirements.sh exists and run it
-          if [ -f "${NOTEBOOK_DIR}/pre-requirements.sh" ]; then
-            echo "Running pre-requirements.sh in ${NOTEBOOK_DIR}"
-            chmod +x ${NOTEBOOK_DIR}/pre-requirements.sh
-            (cd $NOTEBOOK_DIR; ./pre-requirements.sh)
-          fi
+      - name: Setup Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.x'
 
-          # Install Python dependencies from requirements.txt if it exists
-          if [ -f "${NOTEBOOK_DIR}/requirements.txt" ]; then
-            echo "Installing requirements from ${NOTEBOOK_DIR}/requirements.txt"
-            pip install -r ${NOTEBOOK_DIR}/requirements.txt
-          fi
-          pip install nbconvert
-          pip install jupyter
-          # Execute the notebook
-          jupyter nbconvert --to notebook --execute --inplace ${{ matrix.notebooks }}
-      - name: Commit modified file on current branch
+      - name: Install Jupyter and Execute Notebooks
         run: |
-          git config user.name 'CI Bot'
-          git config user.email 'action@github.com'
-          git add ${{ matrix.notebooks }}
-          git commit -m "Storing executed notebook ${{ matrix.notebooks }}"
-  
-      - name: Checkout only the file to the target branch
-        run: |
-          git fetch
-          git checkout -f gh-storage
-          git checkout @{-1} ${{ matrix.notebooks }}
-  
-      - name: Commit and push modifications to target branch
-        run: |
-          git commit -m "Storing executed notebook ${{ matrix.notebooks }}"
-  
-          MAX_RETRIES=5
-          RETRY_DELAY=10s
-          for i in $(seq 1 $MAX_RETRIES); do
-            git push origin gh-storage --force && break || {
-              echo "Push $i failed... waiting $RETRY_DELAY"
-              sleep $RETRY_DELAY
-            }
+          pip install notebook
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
+          files=$(git diff --name-only ${{ github.event.pull_request.base.sha }}...${{ github.event.pull_request.head.sha }} '*.ipynb')
+          for file in $files; do
+            dir=$(dirname "$file")
+            if [ -f "$dir/requirements.txt" ]; then
+              pip install -r "$dir/requirements.txt"
+            fi
+            jupyter nbconvert --to notebook --execute "$file" --inplace
           done
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          git add $files
+          git commit -m "Execute notebooks"
+          git push origin HEAD:gh-storage --force
+
 
   generate_html:
     #if: github.event.pull_request.merged == true
