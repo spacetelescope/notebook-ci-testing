@@ -40,7 +40,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v3
         with:
-          python-version: '3.x'
+          python-version: '3.11'
 
       - name: Install Dependencies (if requirements.txt exists) and Execute Notebook
         run: |
@@ -50,7 +50,7 @@ jobs:
             pip install -r "$dir/requirements.txt"
           fi
           pip install notebook
-          jupyter nbconvert --to notebook --execute "$notebook" --inplace
+          jupyter nbconvert --to notebook --execute --inplace "$notebook" 
           git add "$notebook"
           git commit -m "Execute notebooks"
           git push origin HEAD:gh-storage --force
