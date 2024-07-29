@@ -15,19 +15,19 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
     <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -39,9 +39,9 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
-  <script src="../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
@@ -77,27 +77,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -119,8 +115,13 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
     </header>
   
 
@@ -143,6 +144,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="../../../index.html">
@@ -178,7 +181,8 @@ const thebe_selector_output = ".output, .cell_output"
 
 <li class="toctree-l1"><a class="reference internal" href="../../ACS/acs_findsat_mrt/acs_findsat_mrt_example.html">Satellite trail detection in ACS/WFC data using acstools.findsat_mrt</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ACS/acs_saturation_trails/acs_saturation_trails.html">ACS Linearity with Saturated Stars</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../ACS/acs_cte_forward_model/acs_cte_forward_model_example.html">Pixel-based ACS/WFC CTE Forward Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ACS/acs_cte_forward_model/acs_cte_forward_model_example.html">Deprecated Notebook</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="../../ACS/acs_subarrays/acs_subarrays.html">ACS Image Reduction for Subarray Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ACS/acs_sbc_dark_analysis/acs_sbc_dark_analysis.html">SBC Dark Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ACS/acs_reduction/acs_reduction.html">ACS/WFC Image Reduction</a></li>
@@ -306,7 +310,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -315,7 +319,7 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -496,10 +500,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -507,7 +511,7 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
@@ -540,7 +544,6 @@ document.write(`
   <p><a id='top'></a></p>
 <section class="tex2jax_ignore mathjax_ignore" id="stis-drizzlepac-tutorial-a-class-tocskip">
 <h1>STIS DrizzlePac Tutorial <a class="tocSkip"><a class="headerlink" href="#stis-drizzlepac-tutorial-a-class-tocskip" title="Permalink to this heading">#</a></h1>
-<p><font color="red">This notebook currently fails to execute, use as reference only</font></p>
 <h1>Table of Contents<span class="tocSkip"></span></h1>
 <div class="toc"><ul class="toc-item"><li><span><a href="#Learning-Goals" data-toc-modified-id="Learning-Goals-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Learning Goals</a></span></li><li><span><a href="#Introduction" data-toc-modified-id="Introduction-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Introduction</a></span><ul class="toc-item"><li><span><a href="#STIS-Data-Formats" data-toc-modified-id="STIS-Data-Formats-2.1"><span class="toc-item-num">2.1&nbsp;&nbsp;</span>STIS Data Formats</a></span></li></ul></li><li><span><a href="#Imports" data-toc-modified-id="Imports-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>Imports</a></span></li><li><span><a href="#Set-&amp;-Make-Directories" data-toc-modified-id="Set-&amp;-Make-Directories-4"><span class="toc-item-num">4&nbsp;&nbsp;</span>Set &amp; Make Directories</a></span></li><li><span><a href="#Setting-Up-Reference-File-Directory" data-toc-modified-id="Setting-Up-Reference-File-Directory-5"><span class="toc-item-num">5&nbsp;&nbsp;</span>Setting Up Reference File Directory</a></span></li><li><span><a href="#Downloading-Data" data-toc-modified-id="Downloading-Data-6"><span class="toc-item-num">6&nbsp;&nbsp;</span>Downloading Data</a></span></li><li><span><a href="#Download-Reference-Files" data-toc-modified-id="Download-Reference-Files-7"><span class="toc-item-num">7&nbsp;&nbsp;</span>Download Reference Files</a></span></li><li><span><a href="#CTI-Correct-CCD-Images" data-toc-modified-id="CTI-Correct-CCD-Images-8"><span class="toc-item-num">8&nbsp;&nbsp;</span>CTI Correct CCD Images</a></span></li><li><span><a href="#File-Information" data-toc-modified-id="File-Information-9"><span class="toc-item-num">9&nbsp;&nbsp;</span>File Information</a></span></li><li><span><a href="#Image-Alignment" data-toc-modified-id="Image-Alignment-10"><span class="toc-item-num">10&nbsp;&nbsp;</span>Image Alignment</a></span><ul class="toc-item"><li><span><a href="#Tips-and-Tricks-for-Using-tweakreg" data-toc-modified-id="Tips-and-Tricks-for-Using-tweakreg-10.1"><span class="toc-item-num">10.1&nbsp;&nbsp;</span>Tips and Tricks for Using <a href="https://drizzlepac.readthedocs.io/en/latest/tweakreg.html" rel="nofollow" target="_blank">tweakreg</a></a></span></li><li><span><a href="#Select-Reference-Images" data-toc-modified-id="Select-Reference-Images-10.2"><span class="toc-item-num">10.2&nbsp;&nbsp;</span>Select Reference Images</a></span></li><li><span><a href="#CCD-(CTI-Corrected)-Image-Alignment" data-toc-modified-id="CCD-(CTI-Corrected)-Image-Alignment-10.3"><span class="toc-item-num">10.3&nbsp;&nbsp;</span>CCD (CTI Corrected) Image Alignment</a></span></li><li><span><a href="#NUV-MAMA-Image-Alignment" data-toc-modified-id="NUV-MAMA-Image-Alignment-10.4"><span class="toc-item-num">10.4&nbsp;&nbsp;</span>NUV MAMA Image Alignment</a></span></li><li><span><a href="#FUV-MAMA-Image-Alignment" data-toc-modified-id="FUV-MAMA-Image-Alignment-10.5"><span class="toc-item-num">10.5&nbsp;&nbsp;</span>FUV MAMA Image Alignment</a></span></li><li><span><a href="#Testing-Alignment-Parameters" data-toc-modified-id="Testing-Alignment-Parameters-10.6"><span class="toc-item-num">10.6&nbsp;&nbsp;</span>Testing Alignment Parameters</a></span></li></ul></li><li><span><a href="#Drizzling-Images" data-toc-modified-id="Drizzling-Images-11"><span class="toc-item-num">11&nbsp;&nbsp;</span>Drizzling Images</a></span><ul class="toc-item"><li><span><a href="#CCD-(CTI-Corrected)-Image-Drizzling" data-toc-modified-id="CCD-(CTI-Corrected)-Image-Drizzling-11.1"><span class="toc-item-num">11.1&nbsp;&nbsp;</span>CCD (CTI Corrected) Image Drizzling</a></span></li><li><span><a href="#NUV-MAMA-Image-Drizzling" data-toc-modified-id="NUV-MAMA-Image-Drizzling-11.2"><span class="toc-item-num">11.2&nbsp;&nbsp;</span>NUV MAMA Image Drizzling</a></span></li><li><span><a href="#FUV-MAMA-Image-Drizzling" data-toc-modified-id="FUV-MAMA-Image-Drizzling-11.3"><span class="toc-item-num">11.3&nbsp;&nbsp;</span>FUV MAMA Image Drizzling</a></span></li></ul></li><li><span><a href="#About-this-Notebook" data-toc-modified-id="About-this-Notebook-12"><span class="toc-item-num">12&nbsp;&nbsp;</span>About this Notebook</a></span></li><li><span><a href="#Citations" data-toc-modified-id="Citations-13"><span class="toc-item-num">13&nbsp;&nbsp;</span>Citations</a></span></li></ul></div><hr class="docutils" />
 <section id="learning-goals">
@@ -729,7 +732,7 @@ document.write(`
 <li><p>A Python/Jupyter environment</p></li>
 <li><p>A Jupyter Notebook</p></li>
 </ol>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Unix-style Command Line</p></th>
 <th class="head"><p>Python/Jupyter</p></th>
@@ -743,6 +746,7 @@ document.write(`
 </tr>
 </tbody>
 </table>
+</div>
 <p>Note that this system variable must be set again with every new instance of a terminal or Notebook or the <code class="docutils literal notranslate"><span class="pre">export</span></code> command can be added to your <code class="docutils literal notranslate"><span class="pre">.bash_profile</span></code> or equivalent file.</p>
 <p>The <a class="reference external" href="https://hst-crds.stsci.edu/">Calibration Reference Data System (CRDS)</a> both stores the reference files and determines the mapping of reference files to observations. The <code class="docutils literal notranslate"><span class="pre">crds</span></code> tool can find, update, and download the best reference files for a particular observation. The <a class="reference external" href="https://hst-crds.stsci.edu/static/users_guide/index.html">documentation for <code class="docutils literal notranslate"><span class="pre">crds</span></code></a> describes many of the more advanced options. In this Notebook we provide a demonstration on how to obtain updated reference file information stored in the FITS headers of observations and download those files to a local reference file directory.</p>
 <p>First the following environment variables are needed:</p>
@@ -1863,7 +1867,7 @@ document.write(`
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1890,8 +1894,6 @@ document.write(`
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"></div>
               
             
           </div>
@@ -1936,8 +1938,8 @@ By STScI
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
-<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

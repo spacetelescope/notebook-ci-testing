@@ -15,19 +15,19 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
     <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -39,9 +39,9 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
-  <script src="../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
@@ -66,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/ACS/acs_saturation_trails/acs_saturation_trails';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Pixel-based ACS/WFC CTE Forward Model" href="../acs_cte_forward_model/acs_cte_forward_model_example.html" />
+    <link rel="next" title="Deprecated Notebook" href="../acs_cte_forward_model/acs_cte_forward_model_example.html" />
     <link rel="prev" title="Satellite trail detection in ACS/WFC data using acstools.findsat_mrt" href="../acs_findsat_mrt/acs_findsat_mrt_example.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -77,27 +77,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -119,8 +115,13 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
     </header>
   
 
@@ -143,6 +144,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="../../../index.html">
@@ -178,7 +181,8 @@ const thebe_selector_output = ".output, .cell_output"
 
 <li class="toctree-l1"><a class="reference internal" href="../acs_findsat_mrt/acs_findsat_mrt_example.html">Satellite trail detection in ACS/WFC data using acstools.findsat_mrt</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">ACS Linearity with Saturated Stars</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../acs_cte_forward_model/acs_cte_forward_model_example.html">Pixel-based ACS/WFC CTE Forward Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../acs_cte_forward_model/acs_cte_forward_model_example.html">Deprecated Notebook</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="../acs_subarrays/acs_subarrays.html">ACS Image Reduction for Subarray Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../acs_sbc_dark_analysis/acs_sbc_dark_analysis.html">SBC Dark Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../acs_reduction/acs_reduction.html">ACS/WFC Image Reduction</a></li>
@@ -306,7 +310,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -315,7 +319,7 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -496,10 +500,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -507,7 +511,7 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
@@ -646,7 +650,7 @@ document.write(`
 <h2>Imports<a class="headerlink" href="#imports" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <p>Here we list the Python packages used in this notebook. Links to the documentation for each module is provided for convenience.</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Package Name</p></th>
 <th class="head text-left"><p>module</p></th>
@@ -717,6 +721,7 @@ document.write(`
 </tr>
 </tbody>
 </table>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
@@ -737,16 +742,6 @@ document.write(`
 <span class="kn">from</span> <span class="nn">photutils</span> <span class="kn">import</span> <span class="n">CircularAperture</span>
 <span class="kn">from</span> <span class="nn">matplotlib.patches</span> <span class="kn">import</span> <span class="n">Circle</span>
 <span class="kn">from</span> <span class="nn">p_module</span> <span class="kn">import</span> <span class="n">plot</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following task in the stsci.skypac package can be run with TEAL:
-                                    skymatch                                    
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2102/4207899963.py:16: DeprecationWarning: `photutils.CircularAperture` is a deprecated alias for `photutils.aperture.CircularAperture` and will be removed in the future. Instead, please use `from photutils.aperture import CircularAperture` to silence this warning.
-  from photutils import CircularAperture
 </pre></div>
 </div>
 </div>
@@ -783,170 +778,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/jdg301byq_flc.fits to ./mastDownload/HST/jdg301byq/jdg301byq_flc.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/jdg301bwq_flc.fits to ./mastDownload/HST/jdg301bwq/jdg301bwq_flc.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/jdg301c4q_flc.fits to ./mastDownload/HST/jdg301c4q/jdg301c4q_flc.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/jdg301c6q_flc.fits to ./mastDownload/HST/jdg301c6q/jdg301c6q_flc.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/jdg302ctq_flc.fits to ./mastDownload/HST/jdg302ctq/jdg302ctq_flc.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/jdg303d7q_flc.fits to ./mastDownload/HST/jdg303d7q/jdg303d7q_flc.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/jdg303d5q_flc.fits to ./mastDownload/HST/jdg303d5q/jdg303d5q_flc.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/jdg302cvq_flc.fits to ./mastDownload/HST/jdg302cvq/jdg302cvq_flc.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/jdg302czq_flc.fits to ./mastDownload/HST/jdg302czq/jdg302czq_flc.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/jdg302cxq_flc.fits to ./mastDownload/HST/jdg302cxq/jdg302cxq_flc.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/jdg301ccq_flc.fits to ./mastDownload/HST/jdg301ccq/jdg301ccq_flc.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/jdg301ceq_flc.fits to ./mastDownload/HST/jdg301ceq/jdg301ceq_flc.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/jdg302cnq_flc.fits to ./mastDownload/HST/jdg302cnq/jdg302cnq_flc.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/jdg302clq_flc.fits to ./mastDownload/HST/jdg302clq/jdg302clq_flc.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/jdg303dnq_flc.fits to ./mastDownload/HST/jdg303dnq/jdg303dnq_flc.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/jdg303dlq_flc.fits to ./mastDownload/HST/jdg303dlq/jdg303dlq_flc.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/jdg303dbq_flc.fits to ./mastDownload/HST/jdg303dbq/jdg303dbq_flc.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/jdg303d9q_flc.fits to ./mastDownload/HST/jdg303d9q/jdg303d9q_flc.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: Found cached file ./mastDownload/HST/jdg301byq/jdg301byq_flc.fits with expected size 168330240. [astroquery.query]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: Found cached file ./mastDownload/HST/jdg301bwq/jdg301bwq_flc.fits with expected size 168330240. [astroquery.query]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: Found cached file ./mastDownload/HST/jdg301c4q/jdg301c4q_flc.fits with expected size 168330240. [astroquery.query]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: Found cached file ./mastDownload/HST/jdg301c6q/jdg301c6q_flc.fits with expected size 168330240. [astroquery.query]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: Found cached file ./mastDownload/HST/jdg301ccq/jdg301ccq_flc.fits with expected size 168330240. [astroquery.query]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: Found cached file ./mastDownload/HST/jdg301ceq/jdg301ceq_flc.fits with expected size 168330240. [astroquery.query]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: Found cached file ./mastDownload/HST/jdg303d7q/jdg303d7q_flc.fits with expected size 168330240. [astroquery.query]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: Found cached file ./mastDownload/HST/jdg303d5q/jdg303d5q_flc.fits with expected size 168330240. [astroquery.query]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: Found cached file ./mastDownload/HST/jdg303dbq/jdg303dbq_flc.fits with expected size 168330240. [astroquery.query]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: Found cached file ./mastDownload/HST/jdg303d9q/jdg303d9q_flc.fits with expected size 168330240. [astroquery.query]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: Found cached file ./mastDownload/HST/jdg303dnq/jdg303dnq_flc.fits with expected size 168215040. [astroquery.query]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: Found cached file ./mastDownload/HST/jdg303dlq/jdg303dlq_flc.fits with expected size 168215040. [astroquery.query]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: Found cached file ./mastDownload/HST/jdg302ctq/jdg302ctq_flc.fits with expected size 168330240. [astroquery.query]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: Found cached file ./mastDownload/HST/jdg302cvq/jdg302cvq_flc.fits with expected size 168330240. [astroquery.query]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: Found cached file ./mastDownload/HST/jdg302cnq/jdg302cnq_flc.fits with expected size 168330240. [astroquery.query]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: Found cached file ./mastDownload/HST/jdg302clq/jdg302clq_flc.fits with expected size 168330240. [astroquery.query]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: Found cached file ./mastDownload/HST/jdg302czq/jdg302czq_flc.fits with expected size 168330240. [astroquery.query]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: Found cached file ./mastDownload/HST/jdg302cxq/jdg302cxq_flc.fits with expected size 168330240. [astroquery.query]
-</pre></div>
-</div>
-</div>
 </div>
 <p>We’ll use the package <code class="docutils literal notranslate"><span class="pre">os</span></code> to put all of these files in our working directory for convenience.</p>
 <div class="cell docutils container">
@@ -957,64 +788,6 @@ document.write(`
     <span class="n">newfname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">oldfname</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
     <span class="n">os</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">oldfname</span><span class="p">,</span> <span class="n">newfname</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                   Local Path                    Status  Message URL 
------------------------------------------------ -------- ------- ----
-./mastDownload/HST/jdg301bwq/jdg301bwq_flc.fits COMPLETE    None None
-                   Local Path                    Status  Message URL 
------------------------------------------------ -------- ------- ----
-./mastDownload/HST/jdg301byq/jdg301byq_flc.fits COMPLETE    None None
-                   Local Path                    Status  Message URL 
------------------------------------------------ -------- ------- ----
-./mastDownload/HST/jdg301c4q/jdg301c4q_flc.fits COMPLETE    None None
-                   Local Path                    Status  Message URL 
------------------------------------------------ -------- ------- ----
-./mastDownload/HST/jdg301c6q/jdg301c6q_flc.fits COMPLETE    None None
-                   Local Path                    Status  Message URL 
------------------------------------------------ -------- ------- ----
-./mastDownload/HST/jdg301ccq/jdg301ccq_flc.fits COMPLETE    None None
-                   Local Path                    Status  Message URL 
------------------------------------------------ -------- ------- ----
-./mastDownload/HST/jdg301ceq/jdg301ceq_flc.fits COMPLETE    None None
-                   Local Path                    Status  Message URL 
------------------------------------------------ -------- ------- ----
-./mastDownload/HST/jdg302clq/jdg302clq_flc.fits COMPLETE    None None
-                   Local Path                    Status  Message URL 
------------------------------------------------ -------- ------- ----
-./mastDownload/HST/jdg302cnq/jdg302cnq_flc.fits COMPLETE    None None
-                   Local Path                    Status  Message URL 
------------------------------------------------ -------- ------- ----
-./mastDownload/HST/jdg302ctq/jdg302ctq_flc.fits COMPLETE    None None
-                   Local Path                    Status  Message URL 
------------------------------------------------ -------- ------- ----
-./mastDownload/HST/jdg302cvq/jdg302cvq_flc.fits COMPLETE    None None
-                   Local Path                    Status  Message URL 
------------------------------------------------ -------- ------- ----
-./mastDownload/HST/jdg302cxq/jdg302cxq_flc.fits COMPLETE    None None
-                   Local Path                    Status  Message URL 
------------------------------------------------ -------- ------- ----
-./mastDownload/HST/jdg302czq/jdg302czq_flc.fits COMPLETE    None None
-                   Local Path                    Status  Message URL 
------------------------------------------------ -------- ------- ----
-./mastDownload/HST/jdg303d5q/jdg303d5q_flc.fits COMPLETE    None None
-                   Local Path                    Status  Message URL 
------------------------------------------------ -------- ------- ----
-./mastDownload/HST/jdg303d7q/jdg303d7q_flc.fits COMPLETE    None None
-                   Local Path                    Status  Message URL 
------------------------------------------------ -------- ------- ----
-./mastDownload/HST/jdg303d9q/jdg303d9q_flc.fits COMPLETE    None None
-                   Local Path                    Status  Message URL 
------------------------------------------------ -------- ------- ----
-./mastDownload/HST/jdg303dbq/jdg303dbq_flc.fits COMPLETE    None None
-                   Local Path                    Status  Message URL 
------------------------------------------------ -------- ------- ----
-./mastDownload/HST/jdg303dlq/jdg303dlq_flc.fits COMPLETE    None None
-                   Local Path                    Status  Message URL 
------------------------------------------------ -------- ------- ----
-./mastDownload/HST/jdg303dnq/jdg303dnq_flc.fits COMPLETE    None None
 </pre></div>
 </div>
 </div>
@@ -1035,7 +808,7 @@ For more information, refer to Section 2.2of the <a class="reference external" h
 <section id="raw-files">
 <h4>Raw Files<a class="headerlink" href="#raw-files" title="Permalink to this heading">#</a></h4>
 <p>A standard raw image file from a subarray has the same structure as you’d expect from full frame observation from ACS/WCS.</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Ext</p></th>
 <th class="head"><p>Name</p></th>
@@ -1066,11 +839,12 @@ For more information, refer to Section 2.2of the <a class="reference external" h
 </tr>
 </tbody>
 </table>
+</div>
 </section>
 <section id="spt-files">
 <h4>SPT Files<a class="headerlink" href="#spt-files" title="Permalink to this heading">#</a></h4>
 <p>SPT files contain telemetry and engineering data from the telescope.</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Ext</p></th>
 <th class="head"><p>Name</p></th>
@@ -1091,37 +865,12 @@ For more information, refer to Section 2.2of the <a class="reference external" h
 </tr>
 </tbody>
 </table>
+</div>
 <p>You can always use <code class="docutils literal notranslate"><span class="pre">.info()</span></code> on an HDUlist for an overview of the structure.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;jdg302ctq_flc.fits&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">hdulist</span><span class="p">:</span>
     <span class="n">hdulist</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Filename: jdg302ctq_flc.fits
-No.    Name      Ver    Type      Cards   Dimensions   Format
-  0  PRIMARY       1 PrimaryHDU     289   ()      
-  1  SCI           1 ImageHDU       242   (4096, 2048)   float32   
-  2  ERR           1 ImageHDU        53   (4096, 2048)   float32   
-  3  DQ            1 ImageHDU        45   (4096, 2048)   int16   
-  4  SCI           2 ImageHDU       240   (4096, 2048)   float32   
-  5  ERR           2 ImageHDU        53   (4096, 2048)   float32   
-  6  DQ            2 ImageHDU        45   (4096, 2048)   int16   
-  7  D2IMARR       1 ImageHDU        16   (64, 32)   float32   
-  8  D2IMARR       2 ImageHDU        16   (64, 32)   float32   
-  9  D2IMARR       3 ImageHDU        16   (64, 32)   float32   
- 10  D2IMARR       4 ImageHDU        16   (64, 32)   float32   
- 11  WCSDVARR      1 ImageHDU        16   (64, 32)   float32   
- 12  WCSDVARR      2 ImageHDU        16   (64, 32)   float32   
- 13  WCSDVARR      3 ImageHDU        16   (64, 32)   float32   
- 14  WCSDVARR      4 ImageHDU        16   (64, 32)   float32   
- 15  HDRLET        1 HeaderletHDU     18   ()      
- 16  HDRLET        2 HeaderletHDU     26   ()      
- 17  WCSCORR       1 BinTableHDU     59   14R x 24C   [40A, I, A, 24A, 24A, 24A, 24A, D, D, D, D, D, D, D, D, 24A, 24A, D, D, D, D, J, 40A, 128A]   
- 18  HDRLET       18 HeaderletHDU     26   ()      
- 19  HDRLET        4 HeaderletHDU     26   ()      
 </pre></div>
 </div>
 </div>
@@ -1163,11 +912,6 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">fitsfile</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;_pam.fits&#39;</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">pname</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>jdg302ctq_flc_pam.fits
 </pre></div>
 </div>
 </div>
@@ -1275,9 +1019,6 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../../_images/0cb854ad33f7b9a0e56f3774fe5758130dbf3301f1b73b77f22a8e27cf050302.png" src="../../../_images/0cb854ad33f7b9a0e56f3774fe5758130dbf3301f1b73b77f22a8e27cf050302.png" />
-</div>
 </div>
 <p>Now by indexing our image with our cutter, we can grab just the cutout we need!</p>
 <div class="cell docutils container">
@@ -1285,9 +1026,6 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot</span><span class="o">.</span><span class="n">ds9_imitate</span><span class="p">(</span><span class="n">plt</span><span class="p">,</span> <span class="n">img_short</span><span class="p">[</span><span class="n">cutter</span><span class="p">])</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../../_images/fb32938163976b48f33fa2a7c2aaa3a5c0cdd9f7c4193334b4ef7b04835cc75c.png" src="../../../_images/fb32938163976b48f33fa2a7c2aaa3a5c0cdd9f7c4193334b4ef7b04835cc75c.png" />
 </div>
 </div>
 <p>We can visually confirm that this source is affected by saturation trails in the short exposure. What about the long exposure image? Since our images are aligned, we can use the same coordinates (and the same cutter!) as before.</p>
@@ -1297,9 +1035,6 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../../_images/ed4c09354c1d843a3637195dc8a9a73a6c148d3a4c6e5d44cbde5ecdbeffc9e4.png" src="../../../_images/ed4c09354c1d843a3637195dc8a9a73a6c148d3a4c6e5d44cbde5ecdbeffc9e4.png" />
-</div>
 </div>
 <p>We can also apply the same cutter to our DQ saturated pixel array!</p>
 <div class="cell docutils container">
@@ -1308,12 +1043,6 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f0614b07810&gt;
-</pre></div>
-</div>
-<img alt="../../../_images/99d2f2ce295c7cd99d43f4718d325f335f91b727787638f538ac8e708aa9dc82.png" src="../../../_images/99d2f2ce295c7cd99d43f4718d325f335f91b727787638f538ac8e708aa9dc82.png" />
-</div>
 </div>
 <p>As we expect, we do not see very much saturation in our short exposure image. What about our long exposure image?</p>
 <div class="cell docutils container">
@@ -1321,12 +1050,6 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">dq_long</span><span class="p">[</span><span class="n">cutter</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;bone&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f0614af5bd0&gt;
-</pre></div>
-</div>
-<img alt="../../../_images/46d5fd78dde07c4e22f8f8f83db2896ad3743868accfb04dcb529798ab823d4d.png" src="../../../_images/46d5fd78dde07c4e22f8f8f83db2896ad3743868accfb04dcb529798ab823d4d.png" />
 </div>
 </div>
 <p>Now we see a large clump of saturated pixels spilling along the y-axis!</p>
@@ -1347,12 +1070,6 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.patches.Circle at 0x7f0628d8fa50&gt;
-</pre></div>
-</div>
-<img alt="../../../_images/aceb54b808563dfc07e3f46261d24dcf335ac05e55a954f06be5cfd458c37636.png" src="../../../_images/aceb54b808563dfc07e3f46261d24dcf335ac05e55a954f06be5cfd458c37636.png" />
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1368,12 +1085,6 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">circ_patch</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.patches.Circle at 0x7f060295b190&gt;
-</pre></div>
-</div>
-<img alt="../../../_images/05d5a0d421db7ae6cd58a0af1e164280391a630e3127ed9f2766e3622335b64b.png" src="../../../_images/05d5a0d421db7ae6cd58a0af1e164280391a630e3127ed9f2766e3622335b64b.png" />
 </div>
 </div>
 <p>Since the saturated pixels extend past our extraction radius, we need to use a different method to improve photometry</p>
@@ -1392,12 +1103,6 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">bleed_kernel</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f06028428d0&gt;
-</pre></div>
-</div>
-<img alt="../../../_images/e996e90edfd68206ec2f1de783571fbc28c22e5aa0882fbfc6a6281c4eaf15e3.png" src="../../../_images/e996e90edfd68206ec2f1de783571fbc28c22e5aa0882fbfc6a6281c4eaf15e3.png" />
 </div>
 </div>
 <p>We will use the <code class="docutils literal notranslate"><span class="pre">scipy</span></code> function <code class="docutils literal notranslate"><span class="pre">convolve2d()</span></code> to convolve our cutout with our kernel. Here, <code class="docutils literal notranslate"><span class="pre">mode='same'</span></code> ensures that the returned array is the same shape as the input array.</p>
@@ -1425,12 +1130,6 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">sat_aperture</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;bone&#39;</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f0602809c50&gt;
-</pre></div>
-</div>
-<img alt="../../../_images/10f67cf827dbe7a35650da51c6ee479193b6d5cc7e81ee5e23ec04addb3e9303.png" src="../../../_images/10f67cf827dbe7a35650da51c6ee479193b6d5cc7e81ee5e23ec04addb3e9303.png" />
 </div>
 </div>
 </section>
@@ -1481,17 +1180,6 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[False False False ... False False False]
- [False False False ... False False False]
- [False False False ... False False False]
- ...
- [False False False ... False False False]
- [False False False ... False False False]
- [False False False ... False False False]]
-</pre></div>
-</div>
-</div>
 </div>
 <p>Now we can plot the resulting array to see the clump of interest isolated at the center.</p>
 <div class="cell docutils container">
@@ -1499,12 +1187,6 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">central_clump</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f06027309d0&gt;
-</pre></div>
-</div>
-<img alt="../../../_images/a32b9d8a5add1b0e07ff9dccc66f1ea1b78e84db008cae185ddd7417b7f1bb30.png" src="../../../_images/a32b9d8a5add1b0e07ff9dccc66f1ea1b78e84db008cae185ddd7417b7f1bb30.png" />
 </div>
 </div>
 <p>We can use the package <code class="docutils literal notranslate"><span class="pre">photutils</span></code> to define a circular aperture. To combine it with our mask, we need the circular aperture in mask form. Luckily, this is a built-in feature of aperture objects!</p>
@@ -1516,12 +1198,6 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">aperture_mask</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f060277b650&gt;
-</pre></div>
-</div>
-<img alt="../../../_images/63121f11761ef5d59f573e4a9a6e06a1bd74a793df119ad0baf8c66948bef4ea.png" src="../../../_images/63121f11761ef5d59f573e4a9a6e06a1bd74a793df119ad0baf8c66948bef4ea.png" />
 </div>
 </div>
 <p>To match the size of our cutout, we can create a new array with our circular aperture at the center</p>
@@ -1543,12 +1219,6 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f06026258d0&gt;
-</pre></div>
-</div>
-<img alt="../../../_images/d632a9906e0ab4979607494e71af88bb4601fdf2545b603e037d24d08463e66a.png" src="../../../_images/d632a9906e0ab4979607494e71af88bb4601fdf2545b603e037d24d08463e66a.png" />
-</div>
 </div>
 <p>We can use the <code class="docutils literal notranslate"><span class="pre">numpy</span></code> function <code class="docutils literal notranslate"><span class="pre">logical_or()</span></code> to combine both of our masks to form one boolean array.</p>
 <div class="cell docutils container">
@@ -1558,12 +1228,6 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">combined_aperture</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f060269d510&gt;
-</pre></div>
-</div>
-<img alt="../../../_images/a33563b7233a85051d351f239d259e23a10f3a7f3db6447e9bdca16314b2604e.png" src="../../../_images/a33563b7233a85051d351f239d259e23a10f3a7f3db6447e9bdca16314b2604e.png" />
 </div>
 </div>
 </section>
@@ -1602,12 +1266,6 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.9/x64/lib/python3.11/site-packages/numpy/core/fromnumeric.py:758: UserWarning: Warning: &#39;partition&#39; will ignore the &#39;mask&#39; of the MaskedArray.
-  a.partition(kth, axis=axis, kind=kind, order=order)
-</pre></div>
-</div>
-</div>
 </div>
 <p>Subtract the estimated background from our flux sum, and you’re finished!</p>
 <div class="cell docutils container">
@@ -1615,11 +1273,6 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">final_sum_short</span> <span class="o">=</span> <span class="n">flux_sum</span> <span class="o">-</span> <span class="n">bkg_sum</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">final_sum_short</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2452751.9901663903
 </pre></div>
 </div>
 </div>
@@ -1638,25 +1291,11 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>22900478.046977814
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.9/x64/lib/python3.11/site-packages/numpy/core/fromnumeric.py:758: UserWarning: Warning: &#39;partition&#39; will ignore the &#39;mask&#39; of the MaskedArray.
-  a.partition(kth, axis=axis, kind=kind, order=order)
-</pre></div>
-</div>
-</div>
 </div>
 <p>If we have recovered the lost flux with our new aperture, our star in the 400 second exposure should have ~10 times the flux as our star in the 40 second exposure.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">final_sum_long</span><span class="o">/</span><span class="n">final_sum_short</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9.336646403220037
 </pre></div>
 </div>
 </div>
@@ -1683,15 +1322,6 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 <span class="n">source_table</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">local_coords</span><span class="p">]</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">source_table</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> x    y  flux_short flux_long flux_ratio
----- --- ---------- --------- ----------
-1711 225        0.0       0.0        0.0
-1205 238        0.0       0.0        0.0
-3159 312        0.0       0.0        0.0
 </pre></div>
 </div>
 </div>
@@ -1762,53 +1392,6 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[False False False ... False False False]
- [False False False ... False False False]
- [False False False ... False False False]
- ...
- [False False False ... False False False]
- [False False False ... False False False]
- [False False False ... False False False]]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.9/x64/lib/python3.11/site-packages/numpy/core/fromnumeric.py:758: UserWarning: Warning: &#39;partition&#39; will ignore the &#39;mask&#39; of the MaskedArray.
-  a.partition(kth, axis=axis, kind=kind, order=order)
-/opt/hostedtoolcache/Python/3.11.9/x64/lib/python3.11/site-packages/numpy/core/fromnumeric.py:758: UserWarning: Warning: &#39;partition&#39; will ignore the &#39;mask&#39; of the MaskedArray.
-  a.partition(kth, axis=axis, kind=kind, order=order)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[False False False ... False False False]
- [False False False ... False False False]
- [False False False ... False False False]
- ...
- [False False False ... False False False]
- [False False False ... False False False]
- [False False False ... False False False]]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.9/x64/lib/python3.11/site-packages/numpy/core/fromnumeric.py:758: UserWarning: Warning: &#39;partition&#39; will ignore the &#39;mask&#39; of the MaskedArray.
-  a.partition(kth, axis=axis, kind=kind, order=order)
-/opt/hostedtoolcache/Python/3.11.9/x64/lib/python3.11/site-packages/numpy/core/fromnumeric.py:758: UserWarning: Warning: &#39;partition&#39; will ignore the &#39;mask&#39; of the MaskedArray.
-  a.partition(kth, axis=axis, kind=kind, order=order)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[False False False ... False False False]
- [False False False ... False False False]
- [False False False ... False False False]
- ...
- [False False False ... False False False]
- [False False False ... False False False]
- [False False False ... False False False]]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.9/x64/lib/python3.11/site-packages/numpy/core/fromnumeric.py:758: UserWarning: Warning: &#39;partition&#39; will ignore the &#39;mask&#39; of the MaskedArray.
-  a.partition(kth, axis=axis, kind=kind, order=order)
-/opt/hostedtoolcache/Python/3.11.9/x64/lib/python3.11/site-packages/numpy/core/fromnumeric.py:758: UserWarning: Warning: &#39;partition&#39; will ignore the &#39;mask&#39; of the MaskedArray.
-  a.partition(kth, axis=axis, kind=kind, order=order)
-</pre></div>
-</div>
-</div>
 </div>
 <p>Let’s take a look at our table…</p>
 <div class="cell docutils container">
@@ -1817,15 +1400,6 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div><i>Table length=3</i>
-<table id="table139663785489104" class="table-striped table-bordered table-condensed">
-<thead><tr><th>x</th><th>y</th><th>flux_short</th><th>flux_long</th><th>flux_ratio</th></tr></thead>
-<thead><tr><th>int64</th><th>int64</th><th>float64</th><th>float64</th><th>float64</th></tr></thead>
-<tr><td>1711</td><td>225</td><td>2452751.9901663903</td><td>22900478.046977814</td><td>9.336646403220037</td></tr>
-<tr><td>1205</td><td>238</td><td>525892.678433234</td><td>5258378.775894163</td><td>9.998957946249016</td></tr>
-<tr><td>3159</td><td>312</td><td>3787965.8367825253</td><td>34492877.68300236</td><td>9.105910446198848</td></tr>
-</table></div></div></div>
 </div>
 <p>While this method is an improvement for some saturated stars, it still has limitations. We can make a quick plot to show that the percentage of recovered flux decreases for brighter stars.</p>
 <div class="cell docutils container">
@@ -1844,9 +1418,6 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../../_images/ee6ca573024646fda0aeaa9586a02108557dccfcf94a78ed3c7a788ccb438efa.png" src="../../../_images/ee6ca573024646fda0aeaa9586a02108557dccfcf94a78ed3c7a788ccb438efa.png" />
 </div>
 </div>
 <section id="references">
@@ -1895,7 +1466,7 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1912,7 +1483,7 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Pixel-based ACS/WFC CTE Forward Model</p>
+        <p class="prev-next-title">Deprecated Notebook</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -2012,8 +1583,8 @@ By STScI
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
-<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
