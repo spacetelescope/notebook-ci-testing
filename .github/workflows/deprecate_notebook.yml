@@ -1,0 +1,38 @@
+name: Deprecate Notebook
+
+on:
+  workflow_dispatch:
+    inputs:
+      notebook_path:
+        description: 'Path to the Jupyter notebook'
+        required: true
+        default: 'notebooks/example.ipynb'
+
+jobs:
+  deprecate-notebook:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.11'
+
+    - name: Install jq
+      run: sudo apt-get install jq
+
+    - name: Add deprecation tag to notebook
+      run: |
+        chmod +x ../scripts/add_deprecation_tag.sh
+        ../scripts/add_deprecation_tag.sh ${{ github.event.inputs.notebook_path }}
+
+    - name: Commit changes
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+        git add ${{ github.event.inputs.notebook_path }}
+        git commit -m "Add deprecation tag to ${{ github.event.inputs.notebook_path }}"
+        git push
