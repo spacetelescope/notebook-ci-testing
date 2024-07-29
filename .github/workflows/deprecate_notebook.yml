@@ -26,8 +26,8 @@ jobs:
 
     - name: Add deprecation tag to notebook
       run: |
-        chmod +x ../scripts/add_deprecation_tag.sh
-        ../scripts/add_deprecation_tag.sh ${{ github.event.inputs.notebook_path }}
+        chmod +x .github/scripts/add_deprecation_tag.sh
+        .github/scripts/add_deprecation_tag.sh ${{ github.event.inputs.notebook_path }}
 
     - name: Commit changes
       run: |
