@@ -1,64 +1,14 @@
 # Table of contents
 # Learn more at https://jupyterbook.org/customize/toc.html
 format: jb-book
-root: index
+root: intro
 parts:
-  - caption: ACS
-    chapters:
-    - file: notebooks/ACS/README.md
-    - file: notebooks/ACS/acs_findsat_mrt/acs_findsat_mrt_example.ipynb
-    - file: notebooks/ACS/acs_saturation_trails/acs_saturation_trails.ipynb
-    - file: notebooks/ACS/acs_cte_forward_model/acs_cte_forward_model_example.ipynb
-    - file: notebooks/ACS/acs_subarrays/acs_subarrays.ipynb
-    - file: notebooks/ACS/acs_sbc_dark_analysis/acs_sbc_dark_analysis.ipynb
-    - file: notebooks/ACS/acs_reduction/acs_reduction.ipynb
-    - file: notebooks/ACS/acs_pixel_area_maps/acs_pixel_area_maps.ipynb
-    - file: notebooks/ACS/acs_polarization_tools/acs_polarization_tools.ipynb
-  - caption: COS
-    chapters:
-    - file: notebooks/COS/README.md
-    - file: notebooks/COS/Setup/Setup.ipynb
-    - file: notebooks/COS/DataDl/DataDl.ipynb
-    - file: notebooks/COS/ViewData/ViewData.ipynb
-    - file: notebooks/COS/AsnFile/AsnFile.ipynb
-    - file: notebooks/COS/CalCOS/CalCOS.ipynb
-    - file: notebooks/COS/SplitTag/SplitTag.ipynb
-    - file: notebooks/COS/DayNight/DayNight.ipynb
-    - file: notebooks/COS/LSF/LSF.ipynb
-    - file: notebooks/COS/Extract/Extract.ipynb
-  - caption: DrizzlePac
-    chapters:
-      - file: notebooks/DrizzlePac/README.md
-      - file: notebooks/DrizzlePac/Initialization/Initialization.ipynb
-      - file: notebooks/DrizzlePac/align_to_catalogs/align_to_catalogs.ipynb
-# Notebook excluded from build until build failures are fixed (See SPB-1168)
-#      - file: notebooks/DrizzlePac/align_mosaics/align_mosaics.ipynb
-      - file: notebooks/DrizzlePac/align_multiple_visits/align_multiple_visits.ipynb
-      - file: notebooks/DrizzlePac/align_sparse_fields/align_sparse_fields.ipynb
-      - file: notebooks/DrizzlePac/drizzle_wfpc2/drizzle_wfpc2.ipynb
-      - file: notebooks/DrizzlePac/mask_satellite/mask_satellite.ipynb
-      - file: notebooks/DrizzlePac/optimize_image_sampling/optimize_image_sampling.ipynb
-# Notebook excluded from build until build failures are fixed (See SPB-1160)
-#      - file: notebooks/DrizzlePac/sky_matching/sky_matching.ipynb
-      - file: notebooks/DrizzlePac/use_ds9_regions_in_tweakreg/use_ds9_regions_in_tweakreg.ipynb
-      - file: notebooks/DrizzlePac/using_updated_astrometry_solutions/using_updated_astrometry_solutions.ipynb
-  - caption: NICMOS
-    chapters:
-    - file: notebooks/NICMOS/nicmos_unit_conversion/nicmos_unit_conversion.ipynb
-  - caption: STIS
-    chapters:
-    - file: notebooks/STIS/README.md
-    - file: notebooks/STIS/cross-correlation/cross-correlation.ipynb
-    - file: notebooks/STIS/custom_ccd_darks/custom_ccd_darks.ipynb
-    - file: notebooks/STIS/drizpac_notebook/STIS_DrizzlePac_Tutorial.ipynb
-    - file: notebooks/STIS/CoronagraphyViz/STIS_Coronagraphy_Visualization_v2.ipynb
-    - file: notebooks/STIS/calstis/calstis_2d_ccd.ipynb
-    - file: notebooks/STIS/target_acquisition/target_acquisition.ipynb
-    - file: notebooks/STIS/view_data/view_data.ipynb
-    - file: notebooks/STIS/extraction/1D_Extraction.ipynb
-  - caption: WFC3
-    chapters:
-      - file: notebooks/WFC3/README.md
-  - caption: Casjobs
-    chapters:
-      - file: notebooks/casjobs/HCV_casjobs_demo.ipynb
+ - caption: Example
+   chapters:
+   - file: notebooks/example_notebook/example_notebook.ipynb
+- caption: NIRISS
+   chapters:
+   - file: notebooks/NIRISS/JWpipeNB-niriss-imaging.ipynb
+- caption: MIRI
+   chapters:
+   - file: notebooks/MIRI/JWPipeNB-MIRI-MRS.ipynb
