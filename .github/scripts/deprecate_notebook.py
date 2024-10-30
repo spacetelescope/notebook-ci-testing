@@ -5,8 +5,8 @@ from PIL import Image, ImageDraw
 from nbformat.v4 import new_notebook, new_markdown_cell
 
 def find_notebook(notebook_name, root_folder='notebooks'):
-    # Determine the repo root and target folder
-    repo_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    # Set repo_root to the top-level repository directory
+    repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../"))
     target_folder = os.path.join(repo_root, root_folder)
     
     # Walk through all subdirectories to find the notebook file
