@@ -2,7 +2,5 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 format: jb-book
 root: intro
-parts:
-- caption: NIRISS
-   chapters:
-   - file: notebooks/NIRISS/JWpipeNB-niriss-imaging.ipynb
+chapters:
+- file: notebooks/NIRISS/JWpipeNB-niriss-imaging.ipynb
