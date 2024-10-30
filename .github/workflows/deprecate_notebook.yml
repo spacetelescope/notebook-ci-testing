@@ -1,0 +1,40 @@
+name: Deprecate Notebook
+
+on:
+  workflow_dispatch:
+    inputs:
+      notebook_filename:
+        description: 'Notebook filename (e.g., example.ipynb)'
+        required: true
+
+jobs:
+  deprecate-notebook:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Fetch all history to ensure 'gh-storage' branch exists or can be created
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install nbformat pillow
+
+      - name: Deprecate Notebook
+        env:
+          NOTEBOOK_FILE: ${{ inputs.notebook_filename }}
+        run: |
+          python .github/scripts/deprecate_notebook.py "$NOTEBOOK_FILE"
+      
+      - name: Push to gh-storage branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b gh-storage || git checkout gh-storage
+          git add "notebooks/$NOTEBOOK_FILE"
+          git commit -m "Deprecate notebook $NOTEBOOK_FILE"
+          git push origin gh-storage
