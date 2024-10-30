@@ -1,22 +1,21 @@
 import sys
 import os
 import nbformat
-from PIL import Image, ImageDraw
 from nbformat.v4 import new_notebook, new_markdown_cell
 
-def find_notebook(notebook_name, root_folder='notebooks'):
-    # Set the target folder to the notebooks directory at the repository root
-    target_folder = os.path.join(os.getcwd(), root_folder)
+def find_notebook(notebook_name):
+    # Start from the repository root (current working directory in the GitHub runner)
+    repo_root = os.getcwd()
     
-    # Walk through all subdirectories to find the notebook file
-    print(f"Searching for {notebook_name} in {target_folder} and its subdirectories...")
-    for dirpath, _, filenames in os.walk(target_folder):
+    # Walk through all subdirectories in the repository to find the notebook file
+    print(f"Searching for {notebook_name} in the repository root and its subdirectories...")
+    for dirpath, _, filenames in os.walk(repo_root):
         print(f"Checking directory: {dirpath}")  # Debugging output
         if notebook_name in filenames:
             notebook_path = os.path.join(dirpath, notebook_name)
             print(f"Found notebook at: {notebook_path}")
             return notebook_path
-    print(f"{notebook_name} not found in {target_folder} or its subdirectories.")
+    print(f"Notebook {notebook_name} not found in the repository or its subfolders.")
     return None
 
 def add_deprecation_notice(notebook_path):
@@ -27,16 +26,16 @@ def add_deprecation_notice(notebook_path):
     # Add the "deprecated" tag in notebook metadata
     nb.metadata['deprecated'] = 'true'
     
-    # Create a deprecation notice image
-    img = Image.new('RGB', (800, 100), color=(255, 255, 255))
-    draw = ImageDraw.Draw(img)
-    draw.rectangle([(0, 0), (799, 99)], outline="red", width=5)
-    draw.text((10, 35), "This notebook will soon be deprecated.", fill="red")
-    img_path = 'deprecated_notice.png'
-    img.save(img_path)
+    # Create a Markdown cell with the deprecation warning
+    deprecation_warning = (
+        "**⚠️ Deprecation Notice**\n\n"
+        "**This notebook will soon be deprecated.**\n\n"
+        "Please consider using an updated version or alternative resources.\n\n"
+        "*This warning is automatically generated.*"
+    )
+    deprecation_notice_cell = new_markdown_cell(deprecation_warning)
     
-    # Add the image to the first cell as Markdown with a red border
-    deprecation_notice_cell = new_markdown_cell(f"![Deprecation Notice](attachment:{img_path})")
+    # Insert the deprecation notice at the top of the notebook
     nb.cells.insert(0, deprecation_notice_cell)
     
     # Save the modified notebook
@@ -51,4 +50,5 @@ if __name__ == "__main__":
         add_deprecation_notice(notebook_path)
         print(f"Deprecation notice added to {notebook_path}.")
     else:
-        print(f"Notebook {notebook_name} not found in notebooks/ or i
+        print(f"Notebook {notebook_name} not found in the repository or its subfolders.")
+        sys.exit(1)
