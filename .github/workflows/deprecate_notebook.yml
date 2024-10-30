@@ -16,16 +16,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Set notebook path
-        id: path
+      - name: Find notebook path
+        id: find_path
         run: |
           NOTEBOOK_NAME="${{ github.event.inputs.notebook_name }}"
-          if [ -f "$NOTEBOOK_NAME" ]; then
-            echo "notebook_path=${NOTEBOOK_NAME}" >> $GITHUB_ENV
-          else
-            echo "::error::Notebook '${NOTEBOOK_NAME}' not found."
+          NOTEBOOK_PATH=$(find ./notebooks -name "$NOTEBOOK_NAME" -type f)
+          if [ -z "$NOTEBOOK_PATH" ]; then
+            echo "::error::Notebook '${NOTEBOOK_NAME}' not found in the notebooks directory."
             exit 1
           fi
+          echo "notebook_path=$NOTEBOOK_PATH" >> $GITHUB_ENV
 
       - name: Check for deprecated tag
         id: check_deprecated
