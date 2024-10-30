@@ -6,9 +6,14 @@ from nbformat.v4 import new_notebook, new_markdown_cell
 
 def find_notebook(notebook_name, root_folder='notebooks'):
     # Walk through all subdirectories to find the notebook file
+    print(f"Searching for {notebook_name} in {root_folder} and its subdirectories...")
     for dirpath, _, filenames in os.walk(root_folder):
+        print(f"Checking directory: {dirpath}")  # Debugging output
         if notebook_name in filenames:
-            return os.path.join(dirpath, notebook_name)
+            notebook_path = os.path.join(dirpath, notebook_name)
+            print(f"Found notebook at: {notebook_path}")
+            return notebook_path
+    print(f"{notebook_name} not found in {root_folder} or its subdirectories.")
     return None
 
 def add_deprecation_notice(notebook_path):
