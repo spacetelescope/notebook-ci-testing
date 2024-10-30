@@ -3,74 +3,57 @@ name: Deprecate Notebook
 on:
   workflow_dispatch:
     inputs:
-      notebook_filename:
-        description: 'Notebook filename (e.g., example.ipynb)'
+      notebook_name:
+        description: 'The name of the notebook to deprecate (e.g., example.ipynb)'
         required: true
+        default: 'example.ipynb'
 
 jobs:
-  find_notebooks:
+  deprecate:
     runs-on: ubuntu-latest
-    outputs:
-      notebook_list: ${{ steps.find.outputs.notebook_list }}
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
 
-    - name: Find notebook files
-      id: find
-      run: |
-        notebook_files=$(find notebooks -name ${{ inputs.filename }} | jq -R -s -c 'split("\n")[:-1]')
-        #echo "::set-output name=notebook_list::$notebook_files"
-        echo "notebook_list=$notebook_files" >>$GITHUB_OUTPUT
-        
-  deprecate-notebook:
-    needs: find_notebooks
-    runs-on: ubuntu-latest
-    outputs:
-      executed_notebooks: ${{ steps.execute.outputs.executed_notebooks }}
-    strategy:
-      fail-fast: false
-      matrix: 
-        notebook: ${{fromJson(needs.find_notebooks.outputs.notebook_list)}}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 0  # Fetch all history to ensure 'gh-storage' branch exists or can be created
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.x'
-
-      - name: Install dependencies
-        run: pip install nbformat pillow
-
-      - name: Deprecate Notebook
-        env:
-          NOTEBOOK_FILE: ${{ inputs.notebook_filename }}
+      - name: Set notebook path
+        id: path
         run: |
-          python .github/scripts/deprecate_notebook.py ${{ matrix.notebook }}
-          
-      - name: Push to gh-storage branch
+          NOTEBOOK_NAME="${{ github.event.inputs.notebook_name }}"
+          if [ -f "$NOTEBOOK_NAME" ]; then
+            echo "notebook_path=${NOTEBOOK_NAME}" >> $GITHUB_ENV
+          else
+            echo "::error::Notebook '${NOTEBOOK_NAME}' not found."
+            exit 1
+          fi
+
+      - name: Check for deprecated tag
+        id: check_deprecated
         run: |
-          git config pull.rebase false
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions@github.com"
-          git checkout -b gh-storage
-          git add ${{ matrix.notebook }}
-          git commit -m 'Added executed notebook ${{ matrix.notebook }}'
-          ATTEMPTS_LEFT=3
-          until [ $ATTEMPTS_LEFT -lt 1 ]
-          do
-            git pull origin gh-storage -s recursive -X ours --allow-unrelated-histories
-            git push origin gh-storage 2>&1 | tee output.log
-            if grep -q "Updates were rejected because the remote contains work" output.log; then
-              echo "Push failed due to conflicting remote changes. Remaining attempts: $ATTEMPTS_LEFT"
-              let "ATTEMPTS_LEFT--"
-              sleep 5
-            else
-              break
-            fi
-          done
-        
+          notebook_path="${{ env.notebook_path }}"
+          if jq '.metadata.deprecated == true' "$notebook_path"; then
+            echo "::error::Notebook '${{ env.notebook_path }}' is already flagged as deprecated."
+            exit 0
+          fi
+
+      - name: Add deprecated tag
+        run: |
+          notebook_path="${{ env.notebook_path }}"
+          jq '.metadata.deprecated = true' "$notebook_path" > temp.ipynb && mv temp.ipynb "$notebook_path"
+
+      - name: Add deprecation banner
+        run: |
+          notebook_path="${{ env.notebook_path }}"
+          BANNER_CELL=$(jq -n \
+            --arg text "**⚠️ This notebook is scheduled for deprecation. Please use with caution.**" \
+            '{"cell_type": "markdown", "metadata": {"deprecation": true}, "source": [$text]}')
+          jq ".cells |= [$BANNER_CELL] + ." "$notebook_path" > temp.ipynb && mv temp.ipynb "$notebook_path"
+
+      - name: Commit and push to gh-storage branch
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git checkout -B gh-storage
+          git add "${{ env.notebook_path }}"
+          git commit -m "Deprecate notebook ${{ env.notebook_path }}"
+          git push origin gh-storage --force
