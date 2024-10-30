@@ -1,7 +1,15 @@
 import sys
+import os
 import nbformat
 from PIL import Image, ImageDraw
 from nbformat.v4 import new_notebook, new_markdown_cell
+
+def find_notebook(notebook_name, root_folder='notebooks'):
+    # Walk through all subdirectories to find the notebook file
+    for dirpath, _, filenames in os.walk(root_folder):
+        if notebook_name in filenames:
+            return os.path.join(dirpath, notebook_name)
+    return None
 
 def add_deprecation_notice(notebook_path):
     # Load the notebook
@@ -29,10 +37,11 @@ def add_deprecation_notice(notebook_path):
 
 if __name__ == "__main__":
     notebook_name = sys.argv[1]
-    notebook_path = f'notebooks/{notebook_name}'
-    try:
+    notebook_path = find_notebook(notebook_name)
+
+    if notebook_path:
         add_deprecation_notice(notebook_path)
-        print(f"Deprecation notice added to {notebook_name}.")
-    except FileNotFoundError:
-        print(f"Notebook {notebook_name} not found in notebooks/ folder.")
+        print(f"Deprecation notice added to {notebook_path}.")
+    else:
+        print(f"Notebook {notebook_name} not found in notebooks/ or its subfolders.")
         sys.exit(1)
