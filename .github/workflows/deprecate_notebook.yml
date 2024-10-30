@@ -32,9 +32,23 @@ jobs:
       
       - name: Push to gh-storage branch
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git checkout -b gh-storage || git checkout gh-storage
-          git add "notebooks/**/${{ inputs.notebook_filename }}"
-          git commit -m "Deprecate notebook ${{ inputs.notebook_filename }}"
-          git push origin gh-storage
+          git config pull.rebase false
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git checkout -b gh-storage
+          git add ${{ matrix.notebook }}
+          git commit -m 'Added executed notebook "$NOTEBOOK_FILE"'
+          ATTEMPTS_LEFT=3
+          until [ $ATTEMPTS_LEFT -lt 1 ]
+          do
+            git pull origin gh-storage -s recursive -X ours --allow-unrelated-histories
+            git push origin gh-storage 2>&1 | tee output.log
+            if grep -q "Updates were rejected because the remote contains work" output.log; then
+              echo "Push failed due to conflicting remote changes. Remaining attempts: $ATTEMPTS_LEFT"
+              let "ATTEMPTS_LEFT--"
+              sleep 5
+            else
+              break
+            fi
+          done
+        
