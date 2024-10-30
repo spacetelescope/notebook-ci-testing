@@ -8,8 +8,30 @@ on:
         required: true
 
 jobs:
-  deprecate-notebook:
+  find_notebooks:
     runs-on: ubuntu-latest
+    outputs:
+      notebook_list: ${{ steps.find.outputs.notebook_list }}
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Find notebook files
+      id: find
+      run: |
+        notebook_files=$(find notebooks -name ${{ inputs.filename }} | jq -R -s -c 'split("\n")[:-1]')
+        #echo "::set-output name=notebook_list::$notebook_files"
+        echo "notebook_list=$notebook_files" >>$GITHUB_OUTPUT
+        
+  deprecate-notebook:
+    needs: find_notebooks
+    runs-on: ubuntu-latest
+    outputs:
+      executed_notebooks: ${{ steps.execute.outputs.executed_notebooks }}
+    strategy:
+      fail-fast: false
+      matrix: 
+        notebook: ${{fromJson(needs.find_notebooks.outputs.notebook_list)}}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -28,16 +50,16 @@ jobs:
         env:
           NOTEBOOK_FILE: ${{ inputs.notebook_filename }}
         run: |
-          python .github/scripts/deprecate_notebook.py "$NOTEBOOK_FILE"
-      
+          python .github/scripts/deprecate_notebook.py ${{ matrix.notebook }}
+          
       - name: Push to gh-storage branch
         run: |
           git config pull.rebase false
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
           git checkout -b gh-storage
-          git add "$NOTEBOOK_FILE"
-          git commit -m 'Added executed notebook "$NOTEBOOK_FILE"'
+          git add ${{ matrix.notebook }}
+          git commit -m 'Added executed notebook ${{ matrix.notebook }}'
           ATTEMPTS_LEFT=3
           until [ $ATTEMPTS_LEFT -lt 1 ]
           do
