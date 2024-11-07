@@ -27,16 +27,17 @@ jobs:
           fi
           echo "notebook_path=$NOTEBOOK_PATH" >> $GITHUB_ENV
 
-      # - name: Check for deprecated tag
-      #  id: check_deprecated
-      #  run: |
-      #    notebook_path="${{ env.notebook_path }}"
-      #    if jq '.metadata.deprecated == true' "$notebook_path"; then
-      #      echo "::error::Notebook '${{ env.notebook_path }}' is already flagged as deprecated."
-      #     exit 0
-      #    fi
+      - name: Check for deprecated tag
+        id: check_deprecated
+        run: |
+          notebook_path="${{ env.notebook_path }}"
+          if jq -e '.metadata.deprecated.status == true' "$notebook_path" > /dev/null; then
+            echo "This notebook is already flagged as deprecated. Updating deprecation date only."
+            exit 0
+          fi
 
       - name: Add deprecated tag with timestamp and removal date
+        if: steps.check_deprecated.outcome == 'failure'
         run: |
           notebook_path="${{ env.notebook_path }}"
           timestamp=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
@@ -44,23 +45,10 @@ jobs:
           jq --arg ts "$timestamp" --arg rd "$removal_date" \
             '.metadata.deprecated = { "status": true, "timestamp": $ts, "removal_date": $rd }' \
             "$notebook_path" > temp.ipynb && mv temp.ipynb "$notebook_path"
-      
-      - name: Add deprecation banner with timestamp and removal date
+
+      - name: Update deprecation date if already deprecated
+        if: steps.check_deprecated.outcome == 'success'
         run: |
           notebook_path="${{ env.notebook_path }}"
-          timestamp=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
-          removal_date=$(date -u -d "$timestamp + 30 days" +"%Y-%m-%d")
-          BANNER_CELL=$(jq -n \
-            --arg text "**⚠️ This notebook is scheduled for deprecation as of $timestamp and will be removed from the main repository by $removal_date. Please use with caution.**" \
-            '{"cell_type": "markdown", "metadata": {"deprecation": true}, "source": [$text]}')
-          jq ".cells |= [$BANNER_CELL] + ." "$notebook_path" > temp.ipynb && mv temp.ipynb "$notebook_path"
+          timestamp=$(date -u +"%Y-%m-%dT%H
 
-
-      - name: Commit and push to gh-storage branch
-        run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
-          git checkout -B gh-storage
-          git add "${{ env.notebook_path }}"
-          git commit -m "Deprecate notebook ${{ env.notebook_path }}"
-          git push origin gh-storage --force
