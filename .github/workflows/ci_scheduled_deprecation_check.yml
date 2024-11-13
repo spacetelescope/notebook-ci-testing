@@ -1,6 +1,7 @@
 name: Move Deprecated Notebooks
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: '0 3 * * *'  # Runs daily at 3 AM UTC
 
@@ -46,37 +47,40 @@ jobs:
 
               # Determine the notebook's directory
               notebook_dir=$(dirname "$notebook_path")
-
-              # Checkout deprecated branch
-              git fetch origin deprecated
-              git checkout deprecated || git checkout -b deprecated
-
-              # Move the entire folder to the deprecated branch
-              git mv "$notebook_dir" .
-
-              # Commit changes on deprecated branch
-              git add .
-              git commit -m "Moved deprecated notebook $notebook_path to deprecated branch"
-
-              # Push changes to the deprecated branch
-              git push origin deprecated
-
-              # Checkout main branch
-              git checkout main
-
-              # Remove the folder from main
-              git rm -r "$notebook_dir"
-
-              # Commit changes on main branch
-              git add .
-              git commit -m "Removed deprecated notebook $notebook_path from main branch"
-
-              # Push changes to the main branch
-              git push origin main
-
-              # Return to gh-storage branch
-              git checkout gh-storage
             else
               echo "Notebook $notebook_path is not past the deprecation date ($removal_date)."
             fi
           done
+              # Checkout deprecated branch
+     #         git fetch origin deprecated
+     #         git checkout deprecated || git checkout -b deprecated
+
+              # Move the entire folder to the deprecated branch
+     #         git mv "$notebook_dir" .
+
+              # Commit changes on deprecated branch
+     #         git add .
+     #         git commit -m "Moved deprecated notebook $notebook_path to deprecated branch"
+
+              # Push changes to the deprecated branch
+     #         git push origin deprecated
+
+              # Checkout main branch
+      #        git checkout main
+
+              # Remove the folder from main
+       #       git rm -r "$notebook_dir"
+
+              # Commit changes on main branch
+       #       git add .
+        #      git commit -m "Removed deprecated notebook $notebook_path from main branch"
+
+              # Push changes to the main branch
+        #      git push origin main
+
+              # Return to gh-storage branch
+         #     git checkout gh-storage
+  #          else
+   #           echo "Notebook $notebook_path is not past the deprecation date ($removal_date)."
+   #         fi
+ #         done
