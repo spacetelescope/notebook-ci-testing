@@ -4,7 +4,8 @@ on:
   pull_request_target:
     types: [closed]
     paths:
-      - '**.ipynb'
+      - '**/.ipynb'
+      - '**/requirements.txt'
 
 env:
   CASJOBS_PW: ${{ secrets.CASJOBS_PW }}
@@ -22,11 +23,53 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
 
       - id: set-matrix
+        shell: bash
         run: |
-          files=$(git diff --name-only ${{ github.event.pull_request.base.sha }}...${{ github.event.pull_request.head.sha }} '*.ipynb')
-          #files_json=$(echo $files | jq -R -s -c 'split("\n")[:-1]')
-          files_json=$(echo "$files" | jq -R -s -c 'split("\n")[:-1]')
-          echo "::set-output name=matrix::${files_json}"
+          # Convert the comma-separated list to an array.
+          IFS=',' read -r -a files <<< "${{ steps.get-changed-files.outputs.all_changed_files }}"
+          echo "Changed files: ${files[*]}"
+          
+          # Array to hold the notebooks that will be executed.
+          notebooks=()
+          notebook_changed=false
+          
+          # First, if any changed file is a notebook, add it.
+          for file in "${files[@]}"; do
+            if [[ "$file" == *.ipynb ]]; then
+              notebook_changed=true
+              notebooks+=("$file")
+            fi
+          done
+          
+          # If no notebook file changed, look for requirements.txt changes.
+          if [ "$notebook_changed" = false ]; then
+            for file in "${files[@]}"; do
+              if [[ "$file" == *requirements.txt ]]; then
+                dir=$(dirname "$file")
+                echo "Found requirements file in folder '$dir'; gathering notebooks from that folder."
+                # Find all notebooks in the folder (only that folder, not recursing).
+                while IFS= read -r nb; do
+                  notebooks+=("$nb")
+                done < <(find "$dir" -maxdepth 1 -type f -name '*.ipynb')
+              fi
+            done
+          fi
+          
+          # Remove duplicate entries.
+          unique_notebooks=($(printf "%s\n" "${notebooks[@]}" | sort -u))
+          
+          if [ ${#unique_notebooks[@]} -eq 0 ]; then
+            echo "No relevant changes found; skipping notebook execution."
+            echo "has_notebooks=false" >> "$GITHUB_OUTPUT"
+            echo "matrix=[]" >> "$GITHUB_OUTPUT"
+          else
+            echo "Notebooks selected for testing: ${unique_notebooks[*]}"
+            echo "has_notebooks=true" >> "$GITHUB_OUTPUT"
+            # Build a JSON array for the matrix.
+            matrix_json=$(printf '%s\n' "${unique_notebooks[@]}" | jq -R . | jq -s .)
+            # Write the JSON to GITHUB_OUTPUT using the heredoc syntax.
+            printf "matrix<<EOF\n%s\nEOF\n" "$matrix_json" >> "$GITHUB_OUTPUT"
+          fi
 
   execute-notebooks:
     if: github.event.pull_request.merged == true
