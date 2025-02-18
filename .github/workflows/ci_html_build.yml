@@ -12,7 +12,8 @@ env:
   CASJOBS_USERID: ${{ secrets.CASJOBS_USERID }}
 jobs:
   prepare_matrix:
-    if: github.event.pull_request.merged == true
+    if: github.event.pull_request.merged
+    
     runs-on: ubuntu-latest
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
@@ -84,7 +85,7 @@ jobs:
           fi
           
   execute-notebooks:
-    if: github.event.pull_request.merged == true
+    if: ${{ github.event.pull_request.merged == true && needs.prepare_matrix.outputs.has_notebooks == 'true' }}
     needs: prepare_matrix
     runs-on: ubuntu-latest
     strategy:
@@ -141,7 +142,7 @@ jobs:
 
 
   generate_html:
-    if: github.event.pull_request.merged == true
+    if: ${{ github.event.pull_request.merged == true && needs.prepare_matrix.outputs.has_notebooks == 'true' }}
     needs: execute-notebooks
     runs-on: ubuntu-latest
     permissions:
