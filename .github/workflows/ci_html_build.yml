@@ -16,13 +16,25 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
+      has_notebooks: ${{ steps.set-matrix.outputs.has_notebooks }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
-          fetch-depth: 0 
-          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
 
-      - id: set-matrix
+      # Gather changed files matching notebooks or requirements.txt.
+      - name: changed-files
+        id: get-changed-files
+        uses: tj-actions/changed-files@v42
+        with:
+          separator: ","
+          files: |
+            **/*.ipynb
+            **/requirements.txt
+
+      # Process the changed file list to build a matrix of notebooks to execute.
+      - name: set-matrix
+        id: set-matrix
         shell: bash
         run: |
           # Convert the comma-separated list to an array.
@@ -70,7 +82,7 @@ jobs:
             # Write the JSON to GITHUB_OUTPUT using the heredoc syntax.
             printf "matrix<<EOF\n%s\nEOF\n" "$matrix_json" >> "$GITHUB_OUTPUT"
           fi
-
+          
   execute-notebooks:
     if: github.event.pull_request.merged == true
     needs: prepare_matrix
