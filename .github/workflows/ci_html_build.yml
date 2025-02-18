@@ -3,7 +3,9 @@ name: Build HTML on merge
 on:
   pull_request_target:
     types: [closed]
-
+    paths:
+      - '**/.ipynb'
+      - '**/requirements.txt'
 
 env:
   CASJOBS_PW: ${{ secrets.CASJOBS_PW }}
