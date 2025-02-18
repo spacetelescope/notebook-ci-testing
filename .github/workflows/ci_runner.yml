@@ -14,7 +14,7 @@ on:
       - main
     paths:
       - 'notebooks/**.ipynb'
-      - 'requirements.txt'
+      - '**/requirements.txt'
  
 jobs:
   NotebookExecutionValidation:
