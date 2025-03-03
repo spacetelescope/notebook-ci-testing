@@ -79,11 +79,16 @@ jobs:
         # Function to safely kill a process by its PID
         kill_process() {
           PID=$1
-          if ps -p $PID > /dev/null; then  # Check if the process is running
+          if [ -z "$PID" ]; then
+            echo "No PID provided. Skipping kill."
+            return 0
+          fi
+          # Check if the process is running before attempting to kill it
+          if pgrep -f $PID > /dev/null; then
             echo "Killing process with PID: $PID"
             kill $PID || echo "Failed to kill process, it may have already terminated"
           else
-            echo "Process with PID: $PID already terminated or does not exist"
+            echo "Process with PID: $PID not found or already terminated."
           fi
         }
 
@@ -104,7 +109,7 @@ jobs:
         # Kill the background monitoring process after execution completes
         if [ -n "$MONITOR_PID" ]; then
           echo "Killing monitor process with PID: $MONITOR_PID"
-          kill $MONITOR_PID || echo "Failed to kill monitor process, it may have already terminated"
+          kill_process $MONITOR_PID
         fi
 
     - name: Handle resource failure and respawn runner
