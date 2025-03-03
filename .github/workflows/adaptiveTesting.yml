@@ -68,8 +68,9 @@ jobs:
   
             if (( $(echo "$memory_usage > 90" | bc -l) )) || [ "$disk_usage" -gt 90 ]; then
               echo "Resource usage exceeded 90%, stopping execution..."
-              echo "RESOURCE_LIMIT_EXCEEDED=true" >> $GITHUB_ENV  # Set environment variable
-              break
+              echo "RESOURCE_FAILURE=true" >> $GITHUB_ENV  # Set a flag indicating failure
+              kill $!  # Kill the background process that was executing the notebook
+              break  # Exit the monitoring loop
             fi
             sleep 10  # Wait for 10 seconds before checking again
           done
@@ -87,7 +88,7 @@ jobs:
         kill $MONITOR_PID || true  # If the process has already completed, ignore the error
 
     - name: Handle resource failure and respawn runner
-      if: env.RESOURCE_LIMIT_EXCEEDED == 'true'
+      if: env.RESOURCE_FAILURE == 'true'
       run: |
         notebook_path="${{ matrix.notebook }}"
         notebook_dir=$(dirname "$notebook_path")
@@ -100,7 +101,7 @@ jobs:
         jupyter nbconvert --to notebook --execute "$notebook_path"
 
     - name: Handle resource failure and respawn with 32GB if 16GB fails
-      if: env.RESOURCE_LIMIT_EXCEEDED == 'true' && env.RUNNER == 'jwst-pipeline-notebooks-16gb'
+      if: env.RESOURCE_FAILURE == 'true' && env.RUNNER == 'jwst-pipeline-notebooks-16gb'
       run: |
         notebook_path="${{ matrix.notebook }}"
         notebook_dir=$(dirname "$notebook_path")
@@ -113,7 +114,7 @@ jobs:
         jupyter nbconvert --to notebook --execute "$notebook_path"
 
     - name: Fail the test if all attempts fail
-      if: env.RESOURCE_LIMIT_EXCEEDED == 'true' && env.RUNNER == 'jwst-pipeline-notebooks-32gb'
+      if: env.RESOURCE_FAILURE == 'true' && env.RUNNER == 'jwst-pipeline-notebooks-32gb'
       run: |
         echo "Memory or disk usage exceeded 90% on all runners. Failing the test."
         exit 1
