@@ -69,11 +69,22 @@ jobs:
             if (( $(echo "$memory_usage > 90" | bc -l) )) || [ "$disk_usage" -gt 90 ]; then
               echo "Resource usage exceeded 90%, stopping execution..."
               echo "RESOURCE_FAILURE=true" >> $GITHUB_ENV  # Set a flag indicating failure
-              kill $JUPYTER_PID || echo "Failed to kill Jupyter process, it may have already terminated"
+              kill_process $JUPYTER_PID  # Kill the jupyter nbconvert process
               break  # Exit the monitoring loop
             fi
-            sleep 10  # Wait for 10 seconds before checking again
+            sleep 10  # Wait 10 seconds before re-checking
           done
+        }
+
+        # Function to safely kill a process by its PID
+        kill_process() {
+          PID=$1
+          if ps -p $PID > /dev/null; then  # Check if the process is running
+            echo "Killing process with PID: $PID"
+            kill $PID || echo "Failed to kill process, it may have already terminated"
+          else
+            echo "Process with PID: $PID already terminated or does not exist"
+          fi
         }
 
         # Start monitoring in the background
@@ -91,8 +102,10 @@ jobs:
         wait $JUPYTER_PID
 
         # Kill the background monitoring process after execution completes
-        echo "Killing monitor process with PID: $MONITOR_PID"
-        kill $MONITOR_PID || echo "Failed to kill monitor process, it may have already terminated"
+        if [ -n "$MONITOR_PID" ]; then
+          echo "Killing monitor process with PID: $MONITOR_PID"
+          kill $MONITOR_PID || echo "Failed to kill monitor process, it may have already terminated"
+        fi
 
     - name: Handle resource failure and respawn runner
       if: env.RESOURCE_FAILURE == 'true'
@@ -101,9 +114,8 @@ jobs:
         notebook_dir=$(dirname "$notebook_path")
         echo "Resource usage exceeded 90%, respawning runner for notebook: $notebook_path"
         
-        # Respawn with 16GB
+        # Try again with a larger runner (16GB)
         echo "runs-on: jwst-pipeline-notebooks-16gb" >> $GITHUB_ENV
-        # Run the same steps again
         pip install -r "$notebook_dir/requirements.txt"
         jupyter nbconvert --to notebook --execute "$notebook_path"
 
@@ -114,9 +126,8 @@ jobs:
         notebook_dir=$(dirname "$notebook_path")
         echo "16GB runner failed, respawning with 32GB runner for notebook: $notebook_path"
         
-        # Respawn with 32GB
+        # Try again with a larger runner (32GB)
         echo "runs-on: jwst-pipeline-notebooks-32gb" >> $GITHUB_ENV
-        # Run the same steps again
         pip install -r "$notebook_dir/requirements.txt"
         jupyter nbconvert --to notebook --execute "$notebook_path"
 
