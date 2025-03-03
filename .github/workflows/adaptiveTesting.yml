@@ -29,16 +29,15 @@ jobs:
       run: |
         # Find all notebooks under the notebooks/ folder and create a matrix
         notebooks=$(find notebooks/ -type f -name "*.ipynb")
-        echo "notebooks=$notebooks" >> $GITHUB_ENV
-        # Saving notebooks as a JSON array to be used in the matrix
-        echo "notebooks=[\"$(echo $notebooks | sed 's/ /", "/g')\"]" >> $GITHUB_ENV
+        # Convert the space-separated notebook list into a JSON array
+        echo "::set-output name=notebooks::[\"$(echo $notebooks | sed 's/ /", "/g')\"]"
 
   test-notebooks:
     needs: find-notebooks
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        notebook: ${{ fromJson(env.notebooks) }}
+        notebook: ${{ fromJson(needs.find-notebooks.outputs.notebooks) }}
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
