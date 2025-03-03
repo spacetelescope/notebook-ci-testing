@@ -83,10 +83,10 @@ jobs:
         jupyter nbconvert --to notebook --execute "$notebook_path"
 
         # Kill the background monitoring process after execution completes
-        kill $MONITOR_PID
+        kill $MONITOR_PID || true  # If the process has already completed, ignore the error
 
     - name: Handle resource failure and respawn runner
-      if: steps.monitor.outcome == 'failure'
+      if: failure()
       run: |
         notebook_path="${{ matrix.notebook }}"
         notebook_dir=$(dirname "$notebook_path")
@@ -99,7 +99,7 @@ jobs:
         jupyter nbconvert --to notebook --execute "$notebook_path"
 
     - name: Handle resource failure and respawn with 32GB if 16GB fails
-      if: steps.monitor.outcome == 'failure' && env.RUNNER == 'jwst-pipeline-notebooks-16gb'
+      if: failure() && env.RUNNER == 'jwst-pipeline-notebooks-16gb'
       run: |
         notebook_path="${{ matrix.notebook }}"
         notebook_dir=$(dirname "$notebook_path")
@@ -112,7 +112,7 @@ jobs:
         jupyter nbconvert --to notebook --execute "$notebook_path"
 
     - name: Fail the test if all attempts fail
-      if: steps.monitor.outcome == 'failure' && env.RUNNER == 'jwst-pipeline-notebooks-32gb'
+      if: failure() && env.RUNNER == 'jwst-pipeline-notebooks-32gb'
       run: |
         echo "Memory or disk usage exceeded 90% on all runners. Failing the test."
         exit 1
