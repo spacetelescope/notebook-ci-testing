@@ -73,17 +73,19 @@ jobs:
           fi
           sleep 10  # Wait for 10 seconds before checking again
         done &
-        
+        # Capture the PID of the background process
+        echo "monitor_pid=$!" >> $GITHUB_ENV
+
     - name: Test notebook execution (in place)
       run: |
         notebook_path="${{ matrix.notebook }}"
         # Run the notebook in place (overwrite the original notebook)
         jupyter nbconvert --to notebook --execute "$notebook_path"
-        
+
     - name: Stop monitoring after notebook execution
       run: |
-        # Kill the background process after execution completes
-        kill %1
+        # Kill the background monitoring process using the stored PID
+        kill ${{ env.monitor_pid }}
 
     - name: Handle resource failure and respawn runner
       if: steps.monitor.outcome == 'failure'
@@ -103,16 +105,4 @@ jobs:
       run: |
         notebook_path="${{ matrix.notebook }}"
         notebook_dir=$(dirname "$notebook_path")
-        echo "16GB runner failed, respawning with 32GB runner for notebook: $notebook_path"
-        
-        # Respawn with 32GB
-        echo "runs-on: jwst-pipeline-notebooks-32gb" >> $GITHUB_ENV
-        # Run the same steps again
-        pip install -r "$notebook_dir/requirements.txt"
-        jupyter nbconvert --to notebook --execute "$notebook_path"
-
-    - name: Fail the test if all attempts fail
-      if: steps.monitor.outcome == 'failure' && env.RUNNER == 'jwst-pipeline-notebooks-32gb'
-      run: |
-        echo "Memory or disk usage exceeded 90% on all runners. Failing the test."
-        exit 1
+        echo "16GB runner failed, respawning with 32GB runner for noteboo
