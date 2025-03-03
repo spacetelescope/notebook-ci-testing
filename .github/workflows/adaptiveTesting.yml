@@ -1,0 +1,113 @@
+name: Adaptive Runner Testing
+
+on:
+  workflow_call:
+    inputs:
+      python-version:
+        description: 'Python version to use'
+        required: true
+        type: string
+  workflow_dispatch:
+    inputs:
+      python-version:
+        description: 'Python version to use'
+        required: true
+        type: string
+
+jobs:
+  find-notebooks:
+    runs-on: ubuntu-latest
+    outputs:
+      notebooks: ${{ steps.notebooks.outputs.notebooks }}
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Find all notebooks
+      id: notebooks
+      run: |
+        # Find all notebooks under the notebooks/ folder and create a matrix
+        notebooks=$(find notebooks/ -type f -name "*.ipynb")
+        echo "notebooks=${notebooks}" >> $GITHUB_ENV
+        echo "::set-output name=notebooks::${notebooks}"
+
+  test-notebooks:
+    needs: find-notebooks
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        notebook: ${{ fromJson(needs.find-notebooks.outputs.notebooks) }}
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ inputs.python-version }}
+
+    - name: Install Python packages
+      run: |
+        # Install Jupyter, nbconvert, and any other required dependencies
+        python -m pip install --upgrade pip
+        pip install jupyter nbconvert
+        notebook_dir=$(dirname "${{ matrix.notebook }}")
+        pip install -r "$notebook_dir/requirements.txt"
+      
+    - name: Test notebook execution
+      run: |
+        notebook_path="${{ matrix.notebook }}"
+        jupyter nbconvert --to notebook --execute "$notebook_path" --output "$notebook_path.tested.ipynb"
+
+    - name: Monitor memory and disk usage
+      id: monitor
+      run: |
+        # Monitor memory and disk usage every 10 seconds
+        echo "Monitoring memory and disk usage..."
+        while true; do
+          memory_usage=$(free -m | grep Mem | awk "{print $3/$2 * 100.0}")
+          disk_usage=$(df / | grep / | awk "{print $5}" | sed "s/%//")
+          echo "Memory usage: ${memory_usage}%"
+          echo "Disk usage: ${disk_usage}%"
+
+          if (( $(echo "$memory_usage > 90" | bc -l) )) || [ "$disk_usage" -gt 90 ]; then
+            echo "Resource usage exceeded 90%, exiting..."
+            exit 1
+          fi
+
+          sleep 10  # Wait for 10 seconds before checking again
+        done
+      continue-on-error: true
+
+    - name: Handle resource failure and respawn runner
+      if: steps.monitor.outcome == 'failure'
+      run: |
+        notebook_path="${{ matrix.notebook }}"
+        notebook_dir=$(dirname "$notebook_path")
+        echo "Resource usage exceeded 90%, respawning runner for notebook: $notebook_path"
+        
+        # Respawn with 16GB
+        echo "runs-on: jwst-pipeline-notebooks-16gb" >> $GITHUB_ENV
+        # Run the same steps again
+        pip install -r "$notebook_dir/requirements.txt"
+        jupyter nbconvert --to notebook --execute "$notebook_path" --output "$notebook_path.tested.ipynb"
+
+    - name: Handle resource failure and respawn with 32GB if 16GB fails
+      if: steps.monitor.outcome == 'failure' && env.RUNNER == 'jwst-pipeline-notebooks-16gb'
+      run: |
+        notebook_path="${{ matrix.notebook }}"
+        notebook_dir=$(dirname "$notebook_path")
+        echo "16GB runner failed, respawning with 32GB runner for notebook: $notebook_path"
+        
+        # Respawn with 32GB
+        echo "runs-on: jwst-pipeline-notebooks-32gb" >> $GITHUB_ENV
+        # Run the same steps again
+        pip install -r "$notebook_dir/requirements.txt"
+        jupyter nbconvert --to notebook --execute "$notebook_path" --output "$notebook_path.tested.ipynb"
+
+    - name: Fail the test if all attempts fail
+      if: steps.monitor.outcome == 'failure' && env.RUNNER == 'jwst-pipeline-notebooks-32gb'
+      run: |
+        echo "Memory or disk usage exceeded 90% on all runners. Failing the test."
+        exit 1
