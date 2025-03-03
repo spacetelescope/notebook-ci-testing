@@ -69,7 +69,7 @@ jobs:
             if (( $(echo "$memory_usage > 90" | bc -l) )) || [ "$disk_usage" -gt 90 ]; then
               echo "Resource usage exceeded 90%, stopping execution..."
               echo "RESOURCE_FAILURE=true" >> $GITHUB_ENV  # Set a flag indicating failure
-              kill $JUPYTER_PID  # Kill the background process running the notebook
+              kill $JUPYTER_PID || echo "Failed to kill Jupyter process, it may have already terminated"
               break  # Exit the monitoring loop
             fi
             sleep 10  # Wait for 10 seconds before checking again
@@ -79,17 +79,20 @@ jobs:
         # Start monitoring in the background
         monitor_resources &
         MONITOR_PID=$!  # Capture the PID of the monitoring process
+        echo "Started resource monitoring with PID: $MONITOR_PID"
 
         # Run the notebook in place (overwrite the original notebook) in the background
         notebook_path="${{ matrix.notebook }}"
         jupyter nbconvert --to notebook --execute "$notebook_path" &
         JUPYTER_PID=$!  # Capture the PID of the jupyter nbconvert process
+        echo "Started jupyter nbconvert with PID: $JUPYTER_PID"
 
         # Wait for the Jupyter process to complete
         wait $JUPYTER_PID
 
         # Kill the background monitoring process after execution completes
-        kill $MONITOR_PID || true  # If the process has already completed, ignore the error
+        echo "Killing monitor process with PID: $MONITOR_PID"
+        kill $MONITOR_PID || echo "Failed to kill monitor process, it may have already terminated"
 
     - name: Handle resource failure and respawn runner
       if: env.RESOURCE_FAILURE == 'true'
