@@ -56,28 +56,63 @@ jobs:
         notebook_dir=$(dirname "${{ matrix.notebook }}")
         pip install -r "$notebook_dir/requirements.txt"
       
+    - name: Start memory and disk usage monitoring in background
+      id: monitor
+      run: |
+        # Start a background process to monitor memory and disk usage
+        # This will run in the background and monitor resources while the notebook executes
+        while true; do
+          memory_usage=$(free -m | grep Mem | awk '{print $3/$2 * 100.0}')
+          disk_usage=$(df / | grep / | awk '{print $5}' | sed 's/%//')
+          echo "Memory usage: ${memory_usage}%"
+          echo "Disk usage: ${disk_usage}%"
+
+          if (( $(echo "$memory_usage > 90" | bc -l) )) || [ "$disk_usage" -gt 90 ]; then
+            echo "Resource usage exceeded 90%, stopping execution..."
+            exit 1
+          fi
+          sleep 10  # Wait for 10 seconds before checking again
+        done &
+        
     - name: Test notebook execution (in place)
       run: |
         notebook_path="${{ matrix.notebook }}"
         # Run the notebook in place (overwrite the original notebook)
         jupyter nbconvert --to notebook --execute "$notebook_path"
-
-    - name: Monitor memory and disk usage
-      id: monitor
+        
+    - name: Stop monitoring after notebook execution
       run: |
-        # Monitor memory and disk usage every 10 seconds
-        echo "Monitoring memory and disk usage..."
-        while true; do
-          memory_usage=$(free -m | grep Mem | awk "{print $3/$2 * 100.0}")
-          disk_usage=$(df / | grep / | awk "{print $5}" | sed "s/%//")
-          echo "Memory usage: ${memory_usage}%"
-          echo "Disk usage: ${disk_usage}%"
+        # Kill the background process after execution completes
+        kill %1
 
-          if (( $(echo "$memory_usage > 90" | bc -l) )) || [ "$disk_usage" -gt 90 ]; then
-            echo "Resource usage exceeded 90%, exiting..."
-            exit 1
-          fi
+    - name: Handle resource failure and respawn runner
+      if: steps.monitor.outcome == 'failure'
+      run: |
+        notebook_path="${{ matrix.notebook }}"
+        notebook_dir=$(dirname "$notebook_path")
+        echo "Resource usage exceeded 90%, respawning runner for notebook: $notebook_path"
+        
+        # Respawn with 16GB
+        echo "runs-on: jwst-pipeline-notebooks-16gb" >> $GITHUB_ENV
+        # Run the same steps again
+        pip install -r "$notebook_dir/requirements.txt"
+        jupyter nbconvert --to notebook --execute "$notebook_path"
 
-          sleep 10  # Wait for 10 seconds before checking again
-        done
-      continue-on-error: true 
+    - name: Handle resource failure and respawn with 32GB if 16GB fails
+      if: steps.monitor.outcome == 'failure' && env.RUNNER == 'jwst-pipeline-notebooks-16gb'
+      run: |
+        notebook_path="${{ matrix.notebook }}"
+        notebook_dir=$(dirname "$notebook_path")
+        echo "16GB runner failed, respawning with 32GB runner for notebook: $notebook_path"
+        
+        # Respawn with 32GB
+        echo "runs-on: jwst-pipeline-notebooks-32gb" >> $GITHUB_ENV
+        # Run the same steps again
+        pip install -r "$notebook_dir/requirements.txt"
+        jupyter nbconvert --to notebook --execute "$notebook_path"
+
+    - name: Fail the test if all attempts fail
+      if: steps.monitor.outcome == 'failure' && env.RUNNER == 'jwst-pipeline-notebooks-32gb'
+      run: |
+        echo "Memory or disk usage exceeded 90% on all runners. Failing the test."
+        exit 1
