@@ -37,6 +37,7 @@ jobs:
       fail-fast: false
     outputs:
       resource-failure: ${{ steps.execute.outputs.resource-failure }}
+      execution-failure: ${{ steps.execute.outputs.execution-failure }}
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -58,9 +59,10 @@ jobs:
     - name: Execute notebook with resource monitoring
       id: execute
       run: |
-        # Function to monitor resources and return status
         execute_with_monitoring() {
-          jupyter nbconvert --to notebook --execute "${{ matrix.notebook }}" --output executed_notebook.ipynb &
+          echo "Starting execution of ${{ matrix.notebook }}"
+          jupyter nbconvert --to notebook --execute "${{ matrix.notebook }}" --output executed_notebook.ipynb \
+            --ExecutePreprocessor.timeout=600 --ExecutePreprocessor.allow_errors=false &
           JUPYTER_PID=$!
           
           while kill -0 $JUPYTER_PID 2>/dev/null; do
@@ -69,22 +71,29 @@ jobs:
             echo "Memory: ${memory_usage}% | Disk: ${disk_usage}%"
             
             if (( $(echo "$memory_usage > 90" | bc -l) )) || [ "$disk_usage" -gt 90 ]; then
-              echo "Resource usage exceeded 90%"
+              echo "Resource usage exceeded 90%, terminating..."
               kill -TERM $JUPYTER_PID
-              wait $JUPYTER_PID
+              sleep 2  # Give it a moment to shut down
+              wait $JUPYTER_PID || true
               echo "resource-failure=true" >> $GITHUB_OUTPUT
               return 1
             fi
             sleep 5
           done
           
-          # Wait for natural completion
+          echo "Waiting for natural completion..."
           wait $JUPYTER_PID
-          return $?
+          EXIT_CODE=$?
+          if [ $EXIT_CODE -ne 0 ]; then
+            echo "Notebook execution failed naturally (not resource-related)"
+            echo "execution-failure=true" >> $GITHUB_OUTPUT
+            return $EXIT_CODE
+          fi
+          echo "Notebook completed successfully"
+          return 0
         }
 
-        # Execute with trap for cleanup
-        trap 'kill -TERM $JUPYTER_PID 2>/dev/null' EXIT
+        trap 'kill -TERM $JUPYTER_PID 2>/dev/null; wait $JUPYTER_PID 2>/dev/null || true' EXIT
         if ! execute_with_monitoring; then
           exit 1
         fi
@@ -99,6 +108,7 @@ jobs:
       fail-fast: false
     outputs:
       resource-failure: ${{ steps.execute.outputs.resource-failure }}
+      execution-failure: ${{ steps.execute.outputs.execution-failure }}
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -121,7 +131,9 @@ jobs:
       id: execute
       run: |
         execute_with_monitoring() {
-          jupyter nbconvert --to notebook --execute "${{ matrix.notebook }}" --output executed_notebook.ipynb &
+          echo "Starting execution of ${{ matrix.notebook }} on 16GB runner"
+          jupyter nbconvert --to notebook --execute "${{ matrix.notebook }}" --output executed_notebook.ipynb \
+            --ExecutePreprocessor.timeout=600 --ExecutePreprocessor.allow_errors=false &
           JUPYTER_PID=$!
           
           while kill -0 $JUPYTER_PID 2>/dev/null; do
@@ -130,20 +142,29 @@ jobs:
             echo "Memory: ${memory_usage}% | Disk: ${disk_usage}%"
             
             if (( $(echo "$memory_usage > 90" | bc -l) )) || [ "$disk_usage" -gt 90 ]; then
-              echo "Resource usage exceeded 90%"
+              echo "Resource usage exceeded 90%, terminating..."
               kill -TERM $JUPYTER_PID
-              wait $JUPYTER_PID
+              sleep 2
+              wait $JUPYTER_PID || true
               echo "resource-failure=true" >> $GITHUB_OUTPUT
               return 1
             fi
             sleep 5
           done
           
+          echo "Waiting for natural completion..."
           wait $JUPYTER_PID
-          return $?
+          EXIT_CODE=$?
+          if [ $EXIT_CODE -ne 0 ]; then
+            echo "Notebook execution failed naturally (not resource-related)"
+            echo "execution-failure=true" >> $GITHUB_OUTPUT
+            return $EXIT_CODE
+          fi
+          echo "Notebook completed successfully"
+          return 0
         }
 
-        trap 'kill -TERM $JUPYTER_PID 2>/dev/null' EXIT
+        trap 'kill -TERM $JUPYTER_PID 2>/dev/null; wait $JUPYTER_PID 2>/dev/null || true' EXIT
         if ! execute_with_monitoring; then
           exit 1
         fi
@@ -178,7 +199,9 @@ jobs:
       id: execute
       run: |
         execute_with_monitoring() {
-          jupyter nbconvert --to notebook --execute "${{ matrix.notebook }}" --output executed_notebook.ipynb &
+          echo "Starting execution of ${{ matrix.notebook }} on 32GB runner"
+          jupyter nbconvert --to notebook --execute "${{ matrix.notebook }}" --output executed_notebook.ipynb \
+            --ExecutePreprocessor.timeout=600 --ExecutePreprocessor.allow_errors=false &
           JUPYTER_PID=$!
           
           while kill -0 $JUPYTER_PID 2>/dev/null; do
@@ -187,19 +210,27 @@ jobs:
             echo "Memory: ${memory_usage}% | Disk: ${disk_usage}%"
             
             if (( $(echo "$memory_usage > 90" | bc -l) )) || [ "$disk_usage" -gt 90 ]; then
-              echo "Resource usage exceeded 90% on all runners"
+              echo "Resource usage exceeded 90% on final runner, failing..."
               kill -TERM $JUPYTER_PID
-              wait $JUPYTER_PID
+              sleep 2
+              wait $JUPYTER_PID || true
               return 1
             fi
             sleep 5
           done
           
+          echo "Waiting for natural completion..."
           wait $JUPYTER_PID
-          return $?
+          EXIT_CODE=$?
+          if [ $EXIT_CODE -ne 0 ]; then
+            echo "Notebook execution failed naturally (not resource-related)"
+            return $EXIT_CODE
+          fi
+          echo "Notebook completed successfully"
+          return 0
         }
 
-        trap 'kill -TERM $JUPYTER_PID 2>/dev/null' EXIT
+        trap 'kill -TERM $JUPYTER_PID 2>/dev/null; wait $JUPYTER_PID 2>/dev/null || true' EXIT
         if ! execute_with_monitoring; then
           echo "Notebook failed on all runners"
           exit 1
