@@ -84,7 +84,7 @@ jobs:
             return 0
           fi
           # Check if the process is running before attempting to kill it
-          if pgrep -f $PID > /dev/null; then
+          if ps -p $PID > /dev/null; then
             echo "Killing process with PID: $PID"
             kill $PID || echo "Failed to kill process, it may have already terminated"
           else
