@@ -102,7 +102,6 @@ jobs:
             echo "Setting resource-failure=true for ${{ matrix.notebook }}"
             echo "resource-failure=true" >> $GITHUB_OUTPUT
           fi
-          # Always complete successfully to allow dependent jobs
           echo "Step completed for ${{ matrix.notebook }}"
           return 0
         }
@@ -119,16 +118,12 @@ jobs:
 
   retry-16gb:
     needs: test-notebook
-    # Check if any matrix job set resource-failure
     if: contains(needs.test-notebook.outputs.resource-failure, 'true')
     runs-on: jwst-pipeline-notebooks-16gb
     strategy:
       matrix:
-        # Only retry notebooks that failed due to resources
         notebook: ${{ fromJson(needs.find-notebooks.outputs.notebooks) }}
       fail-fast: false
-    # Only run this matrix instance if this notebook failed due to resources
-    if: ${{ steps.execute.outputs.resource-failure == 'true' }}
     outputs:
       resource-failure: ${{ steps.execute.outputs.resource-failure }}
       execution-failure: ${{ steps.execute.outputs.execution-failure }}
@@ -150,8 +145,19 @@ jobs:
           pip install -r "$notebook_dir/requirements.txt"
         fi
 
+    - name: Check if this notebook needs retry
+      id: check-retry
+      run: |
+        # Only proceed if this specific notebook had a resource failure
+        if [ "${{ steps.execute.outputs.resource-failure }}" != "true" ]; then
+          echo "Skipping ${{ matrix.notebook }} - no resource failure in previous run"
+          exit 0
+        fi
+        echo "Proceeding with retry for ${{ matrix.notebook }}"
+
     - name: Execute notebook with resource monitoring
       id: execute
+      if: steps.check-retry.outcome == 'success' && steps.execute.outputs.resource-failure == 'true'
       run: |
         execute_with_monitoring() {
           echo "Starting execution of ${{ matrix.notebook }} on 16GB runner"
@@ -200,7 +206,6 @@ jobs:
       matrix:
         notebook: ${{ fromJson(needs.find-notebooks.outputs.notebooks) }}
       fail-fast: false
-    if: ${{ steps.execute.outputs.resource-failure == 'true' }}
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -219,8 +224,18 @@ jobs:
           pip install -r "$notebook_dir/requirements.txt"
         fi
 
+    - name: Check if this notebook needs retry
+      id: check-retry
+      run: |
+        if [ "${{ steps.execute.outputs.resource-failure }}" != "true" ]; then
+          echo "Skipping ${{ matrix.notebook }} - no resource failure in 16GB run"
+          exit 0
+        fi
+        echo "Proceeding with retry for ${{ matrix.notebook }}"
+
     - name: Execute notebook with resource monitoring
       id: execute
+      if: steps.check-retry.outcome == 'success' && steps.execute.outputs.resource-failure == 'true'
       run: |
         execute_with_monitoring() {
           echo "Starting execution of ${{ matrix.notebook }} on 32GB runner"
