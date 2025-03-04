@@ -22,22 +22,21 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-
     - name: Find all notebooks
       id: notebooks
       run: |
         notebooks=$(find notebooks/ -type f -name "*.ipynb" | jq -R -s -c 'split("\n")[:-1]')
         echo "notebooks=$notebooks" >> $GITHUB_OUTPUT
 
-  test-notebooks:
+  test-notebook:
     needs: find-notebooks
     runs-on: ubuntu-latest
     strategy:
       matrix:
         notebook: ${{ fromJson(needs.find-notebooks.outputs.notebooks) }}
-    continue-on-error: true
+      fail-fast: false
     outputs:
-      resource-failure: ${{ steps.test-result.outputs.resource-failure }}
+      resource-failure: ${{ steps.execute.outputs.resource-failure }}
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -47,7 +46,7 @@ jobs:
       with:
         python-version: ${{ inputs.python-version }}
 
-    - name: Install Python packages
+    - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install jupyter nbconvert
@@ -56,55 +55,43 @@ jobs:
           pip install -r "$notebook_dir/requirements.txt"
         fi
 
-    - name: Run memory and disk monitoring alongside notebook execution
-      id: test-result
+    - name: Execute notebook with resource monitoring
+      id: execute
       run: |
         monitor_resources() {
-          while true; do
+          while kill -0 $1 2>/dev/null; do
             memory_usage=$(free -m | awk '/Mem:/ {print $3/$2 * 100.0}')
             disk_usage=$(df / | tail -1 | awk '{print $5}' | sed 's/%//')
-            echo "Memory usage: ${memory_usage}%"
-            echo "Disk usage: ${disk_usage}%"
+            echo "Memory: ${memory_usage}% | Disk: ${disk_usage}%"
             
             if (( $(echo "$memory_usage > 90" | bc -l) )) || [ "$disk_usage" -gt 90 ]; then
-              echo "Resource usage exceeded 90%, stopping execution..."
               echo "resource-failure=true" >> $GITHUB_OUTPUT
-              if [ -n "$JUPYTER_PID" ]; then
-                kill -TERM "$JUPYTER_PID" 2>/dev/null || true
-                wait "$JUPYTER_PID" 2>/dev/null || true
-              fi
+              kill -TERM $1
+              wait $1
               exit 1
             fi
-            sleep 10
+            sleep 5
           done
         }
 
-        # Run the notebook in the background
         jupyter nbconvert --to notebook --execute "${{ matrix.notebook }}" --output executed_notebook.ipynb &
         JUPYTER_PID=$!
-        
-        # Start monitoring in the background
-        monitor_resources &
+        monitor_resources $JUPYTER_PID &
         MONITOR_PID=$!
-
-        # Wait for Jupyter to complete naturally
         wait $JUPYTER_PID
-        EXIT_CODE=$?
-
-        # Clean up monitoring process
-        kill -TERM $MONITOR_PID 2>/dev/null || true
+        kill -TERM $MONITOR_PID 2>/dev/null
         wait $MONITOR_PID 2>/dev/null || true
 
-        # Exit with the Jupyter exit code
-        exit $EXIT_CODE
-
-  handle-resource-failure:
-    if: needs.test-notebooks.outputs.resource-failure == 'true'
-    needs: test-notebooks
+  retry-16gb:
+    needs: test-notebook
+    if: needs.test-notebook.outputs.resource-failure == 'true'
     runs-on: jwst-pipeline-notebooks-16gb
     strategy:
       matrix:
         notebook: ${{ fromJson(needs.find-notebooks.outputs.notebooks) }}
+      fail-fast: false
+    outputs:
+      resource-failure: ${{ steps.execute.outputs.resource-failure }}
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -114,7 +101,7 @@ jobs:
       with:
         python-version: ${{ inputs.python-version }}
 
-    - name: Install Python packages
+    - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install jupyter nbconvert
@@ -123,17 +110,41 @@ jobs:
           pip install -r "$notebook_dir/requirements.txt"
         fi
 
-    - name: Retry notebook execution
+    - name: Execute notebook with resource monitoring
+      id: execute
       run: |
-        jupyter nbconvert --to notebook --execute "${{ matrix.notebook }}" --output executed_notebook.ipynb
+        monitor_resources() {
+          while kill -0 $1 2>/dev/null; do
+            memory_usage=$(free -m | awk '/Mem:/ {print $3/$2 * 100.0}')
+            disk_usage=$(df / | tail -1 | awk '{print $5}' | sed 's/%//')
+            echo "Memory: ${memory_usage}% | Disk: ${disk_usage}%"
+            
+            if (( $(echo "$memory_usage > 90" | bc -l) )) || [ "$disk_usage" -gt 90 ]; then
+              echo "resource-failure=true" >> $GITHUB_OUTPUT
+              kill -TERM $1
+              wait $1
+              exit 1
+            fi
+            sleep 5
+          done
+        }
 
-  handle-resource-failure-32gb:
-    if: failure() && needs.test-notebooks.outputs.resource-failure == 'true'
-    needs: handle-resource-failure
+        jupyter nbconvert --to notebook --execute "${{ matrix.notebook }}" --output executed_notebook.ipynb &
+        JUPYTER_PID=$!
+        monitor_resources $JUPYTER_PID &
+        MONITOR_PID=$!
+        wait $JUPYTER_PID
+        kill -TERM $MONITOR_PID 2>/dev/null
+        wait $MONITOR_PID 2>/dev/null || true
+
+  retry-32gb:
+    needs: retry-16gb
+    if: needs.retry-16gb.outputs.resource-failure == 'true'
     runs-on: jwst-pipeline-notebooks-32gb
     strategy:
       matrix:
         notebook: ${{ fromJson(needs.find-notebooks.outputs.notebooks) }}
+      fail-fast: false
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -143,7 +154,7 @@ jobs:
       with:
         python-version: ${{ inputs.python-version }}
 
-    - name: Install Python packages
+    - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install jupyter nbconvert
@@ -152,6 +163,29 @@ jobs:
           pip install -r "$notebook_dir/requirements.txt"
         fi
 
-    - name: Retry notebook execution on 32GB runner
+    - name: Execute notebook with resource monitoring
+      id: execute
       run: |
-        jupyter nbconvert --to notebook --execute "${{ matrix.notebook }}" --output executed_notebook.ipynb
+        monitor_resources() {
+          while kill -0 $1 2>/dev/null; do
+            memory_usage=$(free -m | awk '/Mem:/ {print $3/$2 * 100.0}')
+            disk_usage=$(df / | tail -1 | awk '{print $5}' | sed 's/%//')
+            echo "Memory: ${memory_usage}% | Disk: ${disk_usage}%"
+            
+            if (( $(echo "$memory_usage > 90" | bc -l) )) || [ "$disk_usage" -gt 90 ]; then
+              echo "Resource usage exceeded 90% on all runners"
+              kill -TERM $1
+              wait $1
+              exit 1
+            fi
+            sleep 5
+          done
+        }
+
+        jupyter nbconvert --to notebook --execute "${{ matrix.notebook }}" --output executed_notebook.ipynb &
+        JUPYTER_PID=$!
+        monitor_resources $JUPYTER_PID &
+        MONITOR_PID=$!
+        wait $JUPYTER_PID
+        kill -TERM $MONITOR_PID 2>/dev/null
+        wait $MONITOR_PID 2>/dev/null || true
