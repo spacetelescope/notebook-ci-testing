@@ -37,6 +37,8 @@ jobs:
       matrix:
         notebook: ${{ fromJson(needs.find-notebooks.outputs.notebooks) }}
     continue-on-error: true  # Allow other notebooks to continue even if one fails
+    outputs:
+      resource-failure: ${{ steps.test-result.outputs.resource-failure }}  # Set output flag for failure
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -54,6 +56,7 @@ jobs:
         pip install -r "$notebook_dir/requirements.txt"
 
     - name: Run memory and disk monitoring alongside notebook execution
+      id: test-result
       run: |
         monitor_resources() {
           while true; do
@@ -61,9 +64,10 @@ jobs:
             disk_usage=$(df / | grep / | awk '{print $5}' | sed 's/%//')
             echo "Memory usage: ${memory_usage}%"
             echo "Disk usage: ${disk_usage}%"
+  
             if (( $(echo "$memory_usage > 90" | bc -l) )) || [ "$disk_usage" -gt 90 ]; then
               echo "Resource usage exceeded 90%, stopping execution..."
-              echo "RESOURCE_FAILURE=true" >> $GITHUB_ENV
+              echo "::set-output name=resource-failure::true"  # Set output resource failure flag
               kill_process $JUPYTER_PID
               break
             fi
@@ -97,7 +101,7 @@ jobs:
         fi
 
   handle-resource-failure:
-    if: env.RESOURCE_FAILURE == 'true'
+    if: ${{ needs.test-notebooks.outputs.resource-failure == 'true' }}
     runs-on: jwst-pipeline-notebooks-16gb
     needs: test-notebooks
     steps:
@@ -122,7 +126,7 @@ jobs:
         jupyter nbconvert --to notebook --execute "$notebook_path"
 
   handle-resource-failure-32gb:
-    if: env.RESOURCE_FAILURE == 'true' && needs.handle-resource-failure.result == 'failure'
+    if: ${{ needs.handle-resource-failure.outputs.resource-failure == 'true' }}
     runs-on: jwst-pipeline-notebooks-32gb
     needs: handle-resource-failure
     steps:
@@ -132,7 +136,7 @@ jobs:
         jupyter nbconvert --to notebook --execute "$notebook_path"
 
   fail-test:
-    if: env.RESOURCE_FAILURE == 'true' && needs.handle-resource-failure-32gb.result == 'failure'
+    if: ${{ needs.handle-resource-failure-32gb.outputs.resource-failure == 'true' }}
     runs-on: ubuntu-latest
     needs: handle-resource-failure-32gb
     steps:
