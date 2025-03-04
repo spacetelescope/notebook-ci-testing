@@ -36,8 +36,7 @@ jobs:
         notebook: ${{ fromJson(needs.find-notebooks.outputs.notebooks) }}
       fail-fast: false
     outputs:
-      resource-failure: ${{ steps.set-outputs.outputs.resource-failure }}
-      execution-failure: ${{ steps.set-outputs.outputs.execution-failure }}
+      resource-failures: ${{ steps.aggregate-outputs.outputs.resource-failures }}
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -59,6 +58,11 @@ jobs:
     - name: Execute notebook with resource monitoring
       id: execute
       run: |
+        # Initialize failure tracking file if it doesn't exist
+        if [ ! -f failures.json ]; then
+          echo "{}" > failures.json
+        fi
+
         execute_with_monitoring() {
           echo "Starting execution of ${{ matrix.notebook }}"
           
@@ -94,13 +98,13 @@ jobs:
             EXIT_CODE=$?
             if [ $EXIT_CODE -ne 0 ]; then
               echo "Notebook execution failed naturally (exit code: $EXIT_CODE)"
-              echo "EXECUTION_FAILED=true" >> $GITHUB_ENV
             else
               echo "Notebook completed successfully"
             fi
           else
             echo "Setting resource-failure=true for ${{ matrix.notebook }}"
-            echo "RESOURCE_FAILED=true" >> $GITHUB_ENV
+            # Update failures.json with this notebook
+            jq --arg notebook "${{ matrix.notebook }}" '. + {($notebook): true}' failures.json > tmp.json && mv tmp.json failures.json
           fi
           echo "Step completed for ${{ matrix.notebook }}"
         }
@@ -111,36 +115,29 @@ jobs:
         execute_with_monitoring
 
     - name: Aggregate outputs
-      id: set-outputs
+      id: aggregate-outputs
       run: |
-        # Aggregate results for this matrix instance
-        if [ "${{ env.RESOURCE_FAILED }}" = "true" ]; then
-          echo "resource-failure=true" >> $GITHUB_OUTPUT
+        # Set job-level output with all failures
+        if [ -f failures.json ]; then
+          echo "resource-failures=$(cat failures.json)" >> $GITHUB_OUTPUT
         else
-          echo "resource-failure=false" >> $GITHUB_OUTPUT
-        fi
-        if [ "${{ env.EXECUTION_FAILED }}" = "true" ]; then
-          echo "execution-failure=true" >> $GITHUB_OUTPUT
-        else
-          echo "execution-failure=false" >> $GITHUB_OUTPUT
+          echo "resource-failures={}" >> $GITHUB_OUTPUT
         fi
 
     - name: Debug outputs
       run: |
-        echo "Resource failure for ${{ matrix.notebook }}: ${{ steps.set-outputs.outputs.resource-failure }}"
-        echo "Execution failure for ${{ matrix.notebook }}: ${{ steps.set-outputs.outputs.execution-failure }}"
+        echo "Resource failures: ${{ steps.aggregate-outputs.outputs.resource-failures }}"
 
   retry-16gb:
     needs: test-notebook
-    if: needs.test-notebook.outputs.resource-failure == 'true'
+    if: needs.test-notebook.outputs.resource-failures != '{}'
     runs-on: jwst-pipeline-notebooks-16gb
     strategy:
       matrix:
         notebook: ${{ fromJson(needs.find-notebooks.outputs.notebooks) }}
       fail-fast: false
     outputs:
-      resource-failure: ${{ steps.execute.outputs.resource-failure }}
-      execution-failure: ${{ steps.execute.outputs.execution-failure }}
+      resource-failures: ${{ steps.execute.outputs.resource-failures }}
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -162,8 +159,9 @@ jobs:
     - name: Check if this notebook needs retry
       id: check-retry
       run: |
-        # Check if this specific notebook had a resource failure
-        if [ "${{ needs.test-notebook.outputs.resource-failure }}" != "true" ]; then
+        # Parse the JSON to check if this notebook failed
+        FAILED=$(echo '${{ needs.test-notebook.outputs.resource-failures }}' | jq -r '."${{ matrix.notebook }}" // false')
+        if [ "$FAILED" != "true" ]; then
           echo "Skipping ${{ matrix.notebook }} - no resource failure in previous run"
           exit 0
         fi
@@ -173,12 +171,18 @@ jobs:
       id: execute
       if: steps.check-retry.outcome == 'success'
       run: |
+        # Initialize failure tracking for this job
+        if [ ! -f failures.json ]; then
+          echo "{}" > failures.json
+        fi
+
         execute_with_monitoring() {
           echo "Starting execution of ${{ matrix.notebook }} on 16GB runner"
           jupyter nbconvert --to notebook --execute "${{ matrix.notebook }}" --output executed_notebook.ipynb \
             --ExecutePreprocessor.timeout=600 --ExecutePreprocessor.allow_errors=false &
           JUPYTER_PID=$!
           
+          RESOURCE_EXCEEDED=false
           while kill -0 $JUPYTER_PID 2>/dev/null; do
             memory_usage=$(free -m | awk '/Mem:/ {print $3/$2 * 100.0}')
             disk_usage=$(df / | tail -1 | awk '{print $5}' | sed 's/%//')
@@ -189,32 +193,34 @@ jobs:
               kill -TERM $JUPYTER_PID
               sleep 2
               wait $JUPYTER_PID || true
-              echo "resource-failure=true" >> $GITHUB_OUTPUT
-              return 1
+              RESOURCE_EXCEEDED=true
+              break
             fi
             sleep 5
           done
           
-          echo "Waiting for natural completion..."
-          wait $JUPYTER_PID
-          EXIT_CODE=$?
-          if [ $EXIT_CODE -ne 0 ]; then
-            echo "Notebook execution failed naturally (not resource-related)"
-            echo "execution-failure=true" >> $GITHUB_OUTPUT
-            return $EXIT_CODE
+          if [ "$RESOURCE_EXCEEDED" = "false" ]; then
+            echo "Waiting for natural completion..."
+            wait $JUPYTER_PID
+            EXIT_CODE=$?
+            if [ $EXIT_CODE -ne 0 ]; then
+              echo "Notebook execution failed naturally (not resource-related)"
+              return $EXIT_CODE
+            fi
+            echo "Notebook completed successfully"
+          else
+            echo "Setting resource-failure=true for ${{ matrix.notebook }} on 16GB"
+            jq --arg notebook "${{ matrix.notebook }}" '. + {($notebook): true}' failures.json > tmp.json && mv tmp.json failures.json
           fi
-          echo "Notebook completed successfully"
-          return 0
         }
 
         trap 'kill -TERM $JUPYTER_PID 2>/dev/null; wait $JUPYTER_PID 2>/dev/null || true' EXIT
-        if ! execute_with_monitoring; then
-          exit 1
-        fi
+        execute_with_monitoring
+        echo "resource-failures=$(cat failures.json)" >> $GITHUB_OUTPUT
 
   retry-32gb:
     needs: retry-16gb
-    if: needs.retry-16gb.outputs.resource-failure == 'true'
+    if: needs.retry-16gb.outputs.resource-failures != '{}'
     runs-on: jwst-pipeline-notebooks-32gb
     strategy:
       matrix:
@@ -241,7 +247,8 @@ jobs:
     - name: Check if this notebook needs retry
       id: check-retry
       run: |
-        if [ "${{ needs.retry-16gb.outputs.resource-failure }}" != "true" ]; then
+        FAILED=$(echo '${{ needs.retry-16gb.outputs.resource-failures }}' | jq -r '."${{ matrix.notebook }}" // false')
+        if [ "$FAILED" != "true" ]; then
           echo "Skipping ${{ matrix.notebook }} - no resource failure in 16GB run"
           exit 0
         fi
