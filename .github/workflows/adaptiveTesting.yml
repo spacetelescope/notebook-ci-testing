@@ -61,10 +61,13 @@ jobs:
       run: |
         execute_with_monitoring() {
           echo "Starting execution of ${{ matrix.notebook }}"
-          jupyter nbconvert --to notebook --execute "${{ matrix.notebook }}" --output executed_notebook.ipynb \
+          
+          timeout 3600 jupyter nbconvert --to notebook --execute "${{ matrix.notebook }}" \
+            --output executed_notebook.ipynb \
             --ExecutePreprocessor.timeout=600 --ExecutePreprocessor.allow_errors=false &
           JUPYTER_PID=$!
           
+          RESOURCE_EXCEEDED=false
           while kill -0 $JUPYTER_PID 2>/dev/null; do
             memory_usage=$(free -m | awk '/Mem:/ {print $3/$2 * 100.0}')
             disk_usage=$(df / | tail -1 | awk '{print $5}' | sed 's/%//')
@@ -73,30 +76,38 @@ jobs:
             if (( $(echo "$memory_usage > 90" | bc -l) )) || [ "$disk_usage" -gt 90 ]; then
               echo "Resource usage exceeded 90%, terminating..."
               kill -TERM $JUPYTER_PID
-              sleep 2  # Give it a moment to shut down
+              sleep 5
+              if kill -0 $JUPYTER_PID 2>/dev/null; then
+                echo "Process still running, forcing termination..."
+                kill -KILL $JUPYTER_PID
+              fi
               wait $JUPYTER_PID || true
-              echo "resource-failure=true" >> $GITHUB_OUTPUT
-              return 1
+              RESOURCE_EXCEEDED=true
+              break
             fi
             sleep 5
           done
           
-          echo "Waiting for natural completion..."
-          wait $JUPYTER_PID
-          EXIT_CODE=$?
-          if [ $EXIT_CODE -ne 0 ]; then
-            echo "Notebook execution failed naturally (not resource-related)"
-            echo "execution-failure=true" >> $GITHUB_OUTPUT
-            return $EXIT_CODE
+          if [ "$RESOURCE_EXCEEDED" = "false" ]; then
+            echo "Waiting for natural completion..."
+            wait $JUPYTER_PID
+            EXIT_CODE=$?
+            if [ $EXIT_CODE -ne 0 ]; then
+              echo "Notebook execution failed naturally (exit code: $EXIT_CODE)"
+              echo "execution-failure=true" >> $GITHUB_OUTPUT
+              return 0
+            fi
+            echo "Notebook completed successfully"
+          else
+            echo "resource-failure=true" >> $GITHUB_OUTPUT
           fi
-          echo "Notebook completed successfully"
           return 0
         }
 
-        trap 'kill -TERM $JUPYTER_PID 2>/dev/null; wait $JUPYTER_PID 2>/dev/null || true' EXIT
-        if ! execute_with_monitoring; then
-          exit 1
-        fi
+        trap 'if [ -n "$JUPYTER_PID" ] && kill -0 $JUPYTER_PID 2>/dev/null; then kill -TERM $JUPYTER_PID; sleep 2; kill -KILL $JUPYTER_PID 2>/dev/null || true; wait $JUPYTER_PID || true; fi' EXIT
+        
+        unset JUPYTER_PID
+        execute_with_monitoring
 
   retry-16gb:
     needs: test-notebook
