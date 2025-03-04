@@ -66,9 +66,9 @@ jobs:
         execute_with_monitoring() {
           echo "Starting execution of ${{ matrix.notebook }}"
           
-          timeout 3600 jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=3000 "${{ matrix.notebook }}" \
+          timeout 3600 jupyter nbconvert --to notebook --execute "${{ matrix.notebook }}" \
             --output executed_notebook.ipynb \
-            --ExecutePreprocessor.timeout=600 --ExecutePreprocessor.allow_errors=false &
+            --ExecutePreprocessor.timeout=3000 --ExecutePreprocessor.allow_errors=false &
           JUPYTER_PID=$!
           
           RESOURCE_EXCEEDED=false
@@ -178,8 +178,8 @@ jobs:
 
         execute_with_monitoring() {
           echo "Starting execution of ${{ matrix.notebook }} on 16GB runner"
-          jupyter nbconvert --to notebook --execute "${{ matrix.notebook }}" --ExecutePreprocessor.timeout=3000 --output executed_notebook.ipynb \
-            --ExecutePreprocessor.timeout=600 --ExecutePreprocessor.allow_errors=false &
+          jupyter nbconvert --to notebook --execute "${{ matrix.notebook }}" --output executed_notebook.ipynb \
+            --ExecutePreprocessor.timeout=3000 --ExecutePreprocessor.allow_errors=false &
           JUPYTER_PID=$!
           
           RESOURCE_EXCEEDED=false
@@ -261,8 +261,8 @@ jobs:
       run: |
         execute_with_monitoring() {
           echo "Starting execution of ${{ matrix.notebook }} on 32GB runner"
-          jupyter nbconvert --to notebook --execute "${{ matrix.notebook }}" --ExecutePreprocessor.timeout=3000 --output executed_notebook.ipynb \
-            --ExecutePreprocessor.timeout=600 --ExecutePreprocessor.allow_errors=false &
+          jupyter nbconvert --to notebook --execute "${{ matrix.notebook }}"  --output executed_notebook.ipynb \
+            --ExecutePreprocessor.timeout=3000 --ExecutePreprocessor.allow_errors=false &
           JUPYTER_PID=$!
           
           while kill -0 $JUPYTER_PID 2>/dev/null; do
