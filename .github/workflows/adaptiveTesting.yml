@@ -9,17 +9,6 @@ on:
         type: string
   workflow_dispatch:
     inputs:
-      python-version:name: Test Notebooks
-
-on:
-  workflow_call:
-    inputs:
-      python-version:
-        description: 'Python version to use'
-        required: true
-        type: string
-  workflow_dispatch:
-    inputs:
       python-version:
         description: 'Python version to use'
         required: true
