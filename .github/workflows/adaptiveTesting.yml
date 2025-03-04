@@ -81,7 +81,9 @@ jobs:
             echo "No PID provided. Skipping kill."
             return 0
           fi
+          # Check if the process is running before attempting to kill it
           if ps -p $PID > /dev/null; then
+            echo "Killing process with PID: $PID"
             kill $PID || echo "Failed to kill process."
           else
             echo "Process with PID: $PID already terminated."
@@ -91,9 +93,12 @@ jobs:
         monitor_resources &
 
         notebook_path="${{ matrix.notebook }}"
+        # Start the jupyter nbconvert process in the background and capture its PID
         jupyter nbconvert --to notebook --execute "$notebook_path" &
-        JUPYTER_PID=$!
+        JUPYTER_PID=$!  # Capture the PID of the jupyter nbconvert process
+        echo "Started jupyter nbconvert with PID: $JUPYTER_PID"
 
+        # Wait for the Jupyter process to complete
         wait $JUPYTER_PID
 
         if [ -n "$MONITOR_PID" ]; then
