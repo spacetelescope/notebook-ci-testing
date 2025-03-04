@@ -25,8 +25,12 @@ jobs:
     - name: Find all notebooks
       id: notebooks
       run: |
-        # Ensure we always output a valid JSON array, even if no notebooks are found
-        NOTEBOOKS=$(find notebooks/ -type f -name "*.ipynb" 2>/dev/null | jq -R -s -c 'split("\n") | map(select(. != ""))' || echo '[]')
+        # Find notebooks and ensure no empty entries
+        NOTEBOOKS=$(find notebooks/ -type f -name "*.ipynb" 2>/dev/null | jq -R -s -c 'split("\n") | map(select(length > 0))' || echo '[]')
+        # If the result is an empty array or invalid, default to '[]'
+        if [ -z "$NOTEBOOKS" ] || [ "$NOTEBOOKS" = '[""]' ]; then
+          NOTEBOOKS='[]'
+        fi
         echo "notebooks=$NOTEBOOKS" >> $GITHUB_OUTPUT
         echo "Found notebooks: $NOTEBOOKS"
     - name: Debug output
@@ -143,11 +147,11 @@ jobs:
 
   retry-16gb:
     needs: test-notebook
-    if: needs.test-notebook.outputs.has-resource-failures == 'true'
+    if: needs.test-notebook.outputs.has-resource-failures == 'true' && fromJson(needs.find-notebooks.outputs.notebooks) != '[]'
     runs-on: jwst-pipeline-notebooks-16gb
     strategy:
       matrix:
-        notebook: ${{ fromJson(needs.find-notebooks.outputs.notebooks || '[]') }}  # Fallback to empty array
+        notebook: ${{ fromJson(needs.find-notebooks.outputs.notebooks) }}
       fail-fast: false
     outputs:
       resource-failures: ${{ steps.execute.outputs.resource-failures }}
@@ -238,11 +242,11 @@ jobs:
 
   retry-32gb:
     needs: retry-16gb
-    if: needs.retry-16gb.outputs.has-resource-failures == 'true'
+    if: needs.retry-16gb.outputs.has-resource-failures == 'true' && fromJson(needs.find-notebooks.outputs.notebooks) != '[]'
     runs-on: jwst-pipeline-notebooks-32gb
     strategy:
       matrix:
-        notebook: ${{ fromJson(needs.find-notebooks.outputs.notebooks || '[]') }}
+        notebook: ${{ fromJson(needs.find-notebooks.outputs.notebooks) }}
       fail-fast: false
     steps:
     - name: Checkout code
@@ -284,32 +288,4 @@ jobs:
           
           while kill -0 $JUPYTER_PID 2>/dev/null; do
             memory_usage=$(free -m | awk '/Mem:/ {print $3/$2 * 100.0}')
-            disk_usage=$(df / | tail -1 | awk '{print $5}' | sed 's/%//')
-            echo "Memory: ${memory_usage}% | Disk: ${disk_usage}%"
-            
-            if (( $(echo "$memory_usage > 90" | bc -l) )) || [ "$disk_usage" -gt 90 ]; then
-              echo "Resource usage exceeded 90% on final runner, failing..."
-              kill -TERM $JUPYTER_PID
-              sleep 2
-              wait $JUPYTER_PID || true
-              return 1
-            fi
-            sleep 5
-          done
-          
-          echo "Waiting for natural completion..."
-          wait $JUPYTER_PID
-          EXIT_CODE=$?
-          if [ $EXIT_CODE -ne 0 ]; then
-            echo "Notebook execution failed naturally (not resource-related)"
-            return $EXIT_CODE
-          fi
-          echo "Notebook completed successfully"
-          return 0
-        }
-
-        trap 'kill -TERM $JUPYTER_PID 2>/dev/null; wait $JUPYTER_PID 2>/dev/null || true' EXIT
-        if ! execute_with_monitoring; then
-          echo "Notebook failed on all runners"
-          exit 1
-        fi
+            disk_usage=$(df / | tail -1 | awk '{print $5}' | sed 's/%//
