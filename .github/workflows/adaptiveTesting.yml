@@ -21,7 +21,7 @@ jobs:
       notebooks: ${{ steps.notebooks.outputs.notebooks }}
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4  # Updated to latest version
+      uses: actions/checkout@v4
 
     - name: Find all notebooks
       id: notebooks
@@ -43,7 +43,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Set up Python
-      uses: actions/setup-python@v5  # Updated to latest version
+      uses: actions/setup-python@v5
       with:
         python-version: ${{ inputs.python-version }}
 
@@ -69,21 +69,34 @@ jobs:
             if (( $(echo "$memory_usage > 90" | bc -l) )) || [ "$disk_usage" -gt 90 ]; then
               echo "Resource usage exceeded 90%, stopping execution..."
               echo "resource-failure=true" >> $GITHUB_OUTPUT
-              pkill -P $$
+              if [ -n "$JUPYTER_PID" ]; then
+                kill -TERM "$JUPYTER_PID" 2>/dev/null || true
+                wait "$JUPYTER_PID" 2>/dev/null || true
+              fi
               exit 1
             fi
             sleep 10
           done
         }
 
+        # Run the notebook in the background
+        jupyter nbconvert --to notebook --execute "${{ matrix.notebook }}" --output executed_notebook.ipynb &
+        JUPYTER_PID=$!
+        
         # Start monitoring in the background
         monitor_resources &
+        MONITOR_PID=$!
 
-        # Run the notebook
-        jupyter nbconvert --to notebook --execute "${{ matrix.notebook }}" --output executed_notebook.ipynb
+        # Wait for Jupyter to complete naturally
+        wait $JUPYTER_PID
+        EXIT_CODE=$?
 
-        # Stop monitoring
-        pkill -P $$
+        # Clean up monitoring process
+        kill -TERM $MONITOR_PID 2>/dev/null || true
+        wait $MONITOR_PID 2>/dev/null || true
+
+        # Exit with the Jupyter exit code
+        exit $EXIT_CODE
 
   handle-resource-failure:
     if: needs.test-notebooks.outputs.resource-failure == 'true'
