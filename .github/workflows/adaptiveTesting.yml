@@ -95,12 +95,15 @@ jobs:
             if [ $EXIT_CODE -ne 0 ]; then
               echo "Notebook execution failed naturally (exit code: $EXIT_CODE)"
               echo "execution-failure=true" >> $GITHUB_OUTPUT
-              return 0
+            else
+              echo "Notebook completed successfully"
             fi
-            echo "Notebook completed successfully"
           else
+            echo "Setting resource-failure=true for ${{ matrix.notebook }}"
             echo "resource-failure=true" >> $GITHUB_OUTPUT
           fi
+          # Always complete successfully to allow dependent jobs
+          echo "Step completed for ${{ matrix.notebook }}"
           return 0
         }
 
@@ -109,14 +112,23 @@ jobs:
         unset JUPYTER_PID
         execute_with_monitoring
 
+    - name: Debug outputs
+      run: |
+        echo "Resource failure: ${{ steps.execute.outputs.resource-failure }}"
+        echo "Execution failure: ${{ steps.execute.outputs.execution-failure }}"
+
   retry-16gb:
     needs: test-notebook
-    if: needs.test-notebook.outputs.resource-failure == 'true'
+    # Check if any matrix job set resource-failure
+    if: contains(needs.test-notebook.outputs.resource-failure, 'true')
     runs-on: jwst-pipeline-notebooks-16gb
     strategy:
       matrix:
+        # Only retry notebooks that failed due to resources
         notebook: ${{ fromJson(needs.find-notebooks.outputs.notebooks) }}
       fail-fast: false
+    # Only run this matrix instance if this notebook failed due to resources
+    if: ${{ steps.execute.outputs.resource-failure == 'true' }}
     outputs:
       resource-failure: ${{ steps.execute.outputs.resource-failure }}
       execution-failure: ${{ steps.execute.outputs.execution-failure }}
@@ -182,12 +194,13 @@ jobs:
 
   retry-32gb:
     needs: retry-16gb
-    if: needs.retry-16gb.outputs.resource-failure == 'true'
+    if: contains(needs.retry-16gb.outputs.resource-failure, 'true')
     runs-on: jwst-pipeline-notebooks-32gb
     strategy:
       matrix:
         notebook: ${{ fromJson(needs.find-notebooks.outputs.notebooks) }}
       fail-fast: false
+    if: ${{ steps.execute.outputs.resource-failure == 'true' }}
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
