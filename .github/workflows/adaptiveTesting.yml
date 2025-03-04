@@ -25,12 +25,13 @@ jobs:
     - name: Find all notebooks
       id: notebooks
       run: |
-        # Find notebooks and ensure no empty entries
-        NOTEBOOKS=$(find notebooks/ -type f -name "*.ipynb" 2>/dev/null | jq -R -s -c 'split("\n") | map(select(length > 0))' || echo '[]')
-        # If the result is an empty array or invalid, default to '[]'
-        if [ -z "$NOTEBOOKS" ] || [ "$NOTEBOOKS" = '[""]' ]; then
-          NOTEBOOKS='[]'
-        fi
+        # Write to a temp file to build the JSON array
+        echo "[]" > notebook_list.json
+        find notebooks/ -type f -name "*.ipynb" 2>/dev/null | while IFS= read -r notebook; do
+          jq --arg nb "$notebook" '. += [$nb]' notebook_list.json > tmp.json && mv tmp.json notebook_list.json
+        done
+        # Ensure valid JSON and set output
+        NOTEBOOKS=$(jq -c . notebook_list.json)
         echo "notebooks=$NOTEBOOKS" >> $GITHUB_OUTPUT
         echo "Found notebooks: $NOTEBOOKS"
     - name: Debug output
@@ -147,7 +148,7 @@ jobs:
 
   retry-16gb:
     needs: test-notebook
-    if: needs.test-notebook.outputs.has-resource-failures == 'true' && fromJson(needs.find-notebooks.outputs.notebooks) != '[]'
+    if: needs.test-notebook.outputs.has-resource-failures == 'true'
     runs-on: jwst-pipeline-notebooks-16gb
     strategy:
       matrix:
@@ -157,15 +158,30 @@ jobs:
       resource-failures: ${{ steps.execute.outputs.resource-failures }}
       has-resource-failures: ${{ steps.execute.outputs.has-resource-failures }}
     steps:
+    - name: Validate matrix
+      id: validate-matrix
+      run: |
+        NOTEBOOKS='${{ needs.find-notebooks.outputs.notebooks }}'
+        if [ -z "$NOTEBOOKS" ] || [ "$NOTEBOOKS" = '[]' ]; then
+          echo "No valid notebooks found, skipping retry-16gb"
+          echo "skip=true" >> $GITHUB_OUTPUT
+        else
+          echo "Valid notebooks found: $NOTEBOOKS"
+          echo "skip=false" >> $GITHUB_OUTPUT
+        fi
+
     - name: Checkout code
+      if: steps.validate-matrix.outputs.skip != 'true'
       uses: actions/checkout@v4
 
     - name: Set up Python
+      if: steps.validate-matrix.outputs.skip != 'true'
       uses: actions/setup-python@v5
       with:
         python-version: ${{ inputs.python-version }}
 
     - name: Install dependencies
+      if: steps.validate-matrix.outputs.skip != 'true'
       run: |
         python -m pip install --upgrade pip
         pip install jupyter nbconvert
@@ -176,6 +192,7 @@ jobs:
 
     - name: Check if this notebook needs retry
       id: check-retry
+      if: steps.validate-matrix.outputs.skip != 'true'
       run: |
         FAILED=$(echo '${{ needs.test-notebook.outputs.resource-failures }}' | jq -r '."${{ matrix.notebook }}" // false')
         if [ "$FAILED" != "true" ]; then
@@ -186,7 +203,7 @@ jobs:
 
     - name: Execute notebook with resource monitoring
       id: execute
-      if: steps.check-retry.outcome == 'success'
+      if: steps.validate-matrix.outputs.skip != 'true' && steps.check-retry.outcome == 'success'
       run: |
         if [ ! -f failures.json ]; then
           echo "{}" > failures.json
@@ -242,22 +259,37 @@ jobs:
 
   retry-32gb:
     needs: retry-16gb
-    if: needs.retry-16gb.outputs.has-resource-failures == 'true' && fromJson(needs.find-notebooks.outputs.notebooks) != '[]'
+    if: needs.retry-16gb.outputs.has-resource-failures == 'true'
     runs-on: jwst-pipeline-notebooks-32gb
     strategy:
       matrix:
         notebook: ${{ fromJson(needs.find-notebooks.outputs.notebooks) }}
       fail-fast: false
     steps:
+    - name: Validate matrix
+      id: validate-matrix
+      run: |
+        NOTEBOOKS='${{ needs.find-notebooks.outputs.notebooks }}'
+        if [ -z "$NOTEBOOKS" ] || [ "$NOTEBOOKS" = '[]' ]; then
+          echo "No valid notebooks found, skipping retry-32gb"
+          echo "skip=true" >> $GITHUB_OUTPUT
+        else
+          echo "Valid notebooks found: $NOTEBOOKS"
+          echo "skip=false" >> $GITHUB_OUTPUT
+        fi
+
     - name: Checkout code
+      if: steps.validate-matrix.outputs.skip != 'true'
       uses: actions/checkout@v4
 
     - name: Set up Python
+      if: steps.validate-matrix.outputs.skip != 'true'
       uses: actions/setup-python@v5
       with:
         python-version: ${{ inputs.python-version }}
 
     - name: Install dependencies
+      if: steps.validate-matrix.outputs.skip != 'true'
       run: |
         python -m pip install --upgrade pip
         pip install jupyter nbconvert
@@ -268,6 +300,7 @@ jobs:
 
     - name: Check if this notebook needs retry
       id: check-retry
+      if: steps.validate-matrix.outputs.skip != 'true'
       run: |
         FAILED=$(echo '${{ needs.retry-16gb.outputs.resource-failures }}' | jq -r '."${{ matrix.notebook }}" // false')
         if [ "$FAILED" != "true" ]; then
@@ -278,7 +311,7 @@ jobs:
 
     - name: Execute notebook with resource monitoring
       id: execute
-      if: steps.check-retry.outcome == 'success'
+      if: steps.validate-matrix.outputs.skip != 'true' && steps.check-retry.outcome == 'success'
       run: |
         execute_with_monitoring() {
           echo "Starting execution of ${{ matrix.notebook }} on 32GB runner"
@@ -288,4 +321,32 @@ jobs:
           
           while kill -0 $JUPYTER_PID 2>/dev/null; do
             memory_usage=$(free -m | awk '/Mem:/ {print $3/$2 * 100.0}')
-            disk_usage=$(df / | tail -1 | awk '{print $5}' | sed 's/%//
+            disk_usage=$(df / | tail -1 | awk '{print $5}' | sed 's/%//')
+            echo "Memory: ${memory_usage}% | Disk: ${disk_usage}%"
+            
+            if (( $(echo "$memory_usage > 90" | bc -l) )) || [ "$disk_usage" -gt 90 ]; then
+              echo "Resource usage exceeded 90% on final runner, failing..."
+              kill -TERM $JUPYTER_PID
+              sleep 2
+              wait $JUPYTER_PID || true
+              return 1
+            fi
+            sleep 5
+          done
+          
+          echo "Waiting for natural completion..."
+          wait $JUPYTER_PID
+          EXIT_CODE=$?
+          if [ $EXIT_CODE -ne 0 ]; then
+            echo "Notebook execution failed naturally (not resource-related)"
+            return $EXIT_CODE
+          fi
+          echo "Notebook completed successfully"
+          return 0
+        }
+
+        trap 'kill -TERM $JUPYTER_PID 2>/dev/null; wait $JUPYTER_PID 2>/dev/null || true' EXIT
+        if ! execute_with_monitoring; then
+          echo "Notebook failed on all runners"
+          exit 1
+        fi
