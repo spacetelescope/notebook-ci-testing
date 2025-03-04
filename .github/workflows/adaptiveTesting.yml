@@ -36,8 +36,8 @@ jobs:
         notebook: ${{ fromJson(needs.find-notebooks.outputs.notebooks) }}
       fail-fast: false
     outputs:
-      resource-failure: ${{ steps.execute.outputs.resource-failure }}
-      execution-failure: ${{ steps.execute.outputs.execution-failure }}
+      resource-failure: ${{ steps.set-outputs.outputs.resource-failure }}
+      execution-failure: ${{ steps.set-outputs.outputs.execution-failure }}
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -94,16 +94,15 @@ jobs:
             EXIT_CODE=$?
             if [ $EXIT_CODE -ne 0 ]; then
               echo "Notebook execution failed naturally (exit code: $EXIT_CODE)"
-              echo "execution-failure=true" >> $GITHUB_OUTPUT
+              echo "EXECUTION_FAILED=true" >> $GITHUB_ENV
             else
               echo "Notebook completed successfully"
             fi
           else
             echo "Setting resource-failure=true for ${{ matrix.notebook }}"
-            echo "resource-failure=true" >> $GITHUB_OUTPUT
+            echo "RESOURCE_FAILED=true" >> $GITHUB_ENV
           fi
           echo "Step completed for ${{ matrix.notebook }}"
-          return 0
         }
 
         trap 'if [ -n "$JUPYTER_PID" ] && kill -0 $JUPYTER_PID 2>/dev/null; then kill -TERM $JUPYTER_PID; sleep 2; kill -KILL $JUPYTER_PID 2>/dev/null || true; wait $JUPYTER_PID || true; fi' EXIT
@@ -111,14 +110,29 @@ jobs:
         unset JUPYTER_PID
         execute_with_monitoring
 
+    - name: Aggregate outputs
+      id: set-outputs
+      run: |
+        # Aggregate results for this matrix instance
+        if [ "${{ env.RESOURCE_FAILED }}" = "true" ]; then
+          echo "resource-failure=true" >> $GITHUB_OUTPUT
+        else
+          echo "resource-failure=false" >> $GITHUB_OUTPUT
+        fi
+        if [ "${{ env.EXECUTION_FAILED }}" = "true" ]; then
+          echo "execution-failure=true" >> $GITHUB_OUTPUT
+        else
+          echo "execution-failure=false" >> $GITHUB_OUTPUT
+        fi
+
     - name: Debug outputs
       run: |
-        echo "Resource failure: ${{ steps.execute.outputs.resource-failure }}"
-        echo "Execution failure: ${{ steps.execute.outputs.execution-failure }}"
+        echo "Resource failure for ${{ matrix.notebook }}: ${{ steps.set-outputs.outputs.resource-failure }}"
+        echo "Execution failure for ${{ matrix.notebook }}: ${{ steps.set-outputs.outputs.execution-failure }}"
 
   retry-16gb:
     needs: test-notebook
-    if: contains(needs.test-notebook.outputs.resource-failure, 'true')
+    if: needs.test-notebook.outputs.resource-failure == 'true'
     runs-on: jwst-pipeline-notebooks-16gb
     strategy:
       matrix:
@@ -148,8 +162,8 @@ jobs:
     - name: Check if this notebook needs retry
       id: check-retry
       run: |
-        # Only proceed if this specific notebook had a resource failure
-        if [ "${{ steps.execute.outputs.resource-failure }}" != "true" ]; then
+        # Check if this specific notebook had a resource failure
+        if [ "${{ needs.test-notebook.outputs.resource-failure }}" != "true" ]; then
           echo "Skipping ${{ matrix.notebook }} - no resource failure in previous run"
           exit 0
         fi
@@ -157,7 +171,7 @@ jobs:
 
     - name: Execute notebook with resource monitoring
       id: execute
-      if: steps.check-retry.outcome == 'success' && steps.execute.outputs.resource-failure == 'true'
+      if: steps.check-retry.outcome == 'success'
       run: |
         execute_with_monitoring() {
           echo "Starting execution of ${{ matrix.notebook }} on 16GB runner"
@@ -200,7 +214,7 @@ jobs:
 
   retry-32gb:
     needs: retry-16gb
-    if: contains(needs.retry-16gb.outputs.resource-failure, 'true')
+    if: needs.retry-16gb.outputs.resource-failure == 'true'
     runs-on: jwst-pipeline-notebooks-32gb
     strategy:
       matrix:
@@ -227,7 +241,7 @@ jobs:
     - name: Check if this notebook needs retry
       id: check-retry
       run: |
-        if [ "${{ steps.execute.outputs.resource-failure }}" != "true" ]; then
+        if [ "${{ needs.retry-16gb.outputs.resource-failure }}" != "true" ]; then
           echo "Skipping ${{ matrix.notebook }} - no resource failure in 16GB run"
           exit 0
         fi
@@ -235,7 +249,7 @@ jobs:
 
     - name: Execute notebook with resource monitoring
       id: execute
-      if: steps.check-retry.outcome == 'success' && steps.execute.outputs.resource-failure == 'true'
+      if: steps.check-retry.outcome == 'success'
       run: |
         execute_with_monitoring() {
           echo "Starting execution of ${{ matrix.notebook }} on 32GB runner"
