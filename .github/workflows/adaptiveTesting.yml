@@ -103,7 +103,6 @@ jobs:
             fi
           else
             echo "Setting resource-failure=true for ${{ matrix.notebook }}"
-            # Update failures.json with this notebook
             jq --arg notebook "${{ matrix.notebook }}" '. + {($notebook): true}' failures.json > tmp.json && mv tmp.json failures.json
           fi
           echo "Step completed for ${{ matrix.notebook }}"
@@ -117,12 +116,14 @@ jobs:
     - name: Aggregate outputs
       id: aggregate-outputs
       run: |
-        # Set job-level output with all failures
-        if [ -f failures.json ]; then
-          echo "resource-failures=$(cat failures.json)" >> $GITHUB_OUTPUT
-        else
-          echo "resource-failures={}" >> $GITHUB_OUTPUT
+        # Ensure failures.json exists
+        if [ ! -f failures.json ]; then
+          echo "{}" > failures.json
         fi
+        # Compact JSON and set as output
+        FAILURES=$(jq -c . failures.json)
+        echo "resource-failures=$FAILURES" >> $GITHUB_OUTPUT
+        echo "Aggregated resource failures: $FAILURES"
 
     - name: Debug outputs
       run: |
@@ -171,7 +172,6 @@ jobs:
       id: execute
       if: steps.check-retry.outcome == 'success'
       run: |
-        # Initialize failure tracking for this job
         if [ ! -f failures.json ]; then
           echo "{}" > failures.json
         fi
@@ -216,7 +216,8 @@ jobs:
 
         trap 'kill -TERM $JUPYTER_PID 2>/dev/null; wait $JUPYTER_PID 2>/dev/null || true' EXIT
         execute_with_monitoring
-        echo "resource-failures=$(cat failures.json)" >> $GITHUB_OUTPUT
+        FAILURES=$(jq -c . failures.json)
+        echo "resource-failures=$FAILURES" >> $GITHUB_OUTPUT
 
   retry-32gb:
     needs: retry-16gb
