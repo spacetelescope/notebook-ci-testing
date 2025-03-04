@@ -58,29 +58,36 @@ jobs:
     - name: Execute notebook with resource monitoring
       id: execute
       run: |
-        monitor_resources() {
-          while kill -0 $1 2>/dev/null; do
+        # Function to monitor resources and return status
+        execute_with_monitoring() {
+          jupyter nbconvert --to notebook --execute "${{ matrix.notebook }}" --output executed_notebook.ipynb &
+          JUPYTER_PID=$!
+          
+          while kill -0 $JUPYTER_PID 2>/dev/null; do
             memory_usage=$(free -m | awk '/Mem:/ {print $3/$2 * 100.0}')
             disk_usage=$(df / | tail -1 | awk '{print $5}' | sed 's/%//')
             echo "Memory: ${memory_usage}% | Disk: ${disk_usage}%"
             
             if (( $(echo "$memory_usage > 90" | bc -l) )) || [ "$disk_usage" -gt 90 ]; then
+              echo "Resource usage exceeded 90%"
+              kill -TERM $JUPYTER_PID
+              wait $JUPYTER_PID
               echo "resource-failure=true" >> $GITHUB_OUTPUT
-              kill -TERM $1
-              wait $1
-              exit 1
+              return 1
             fi
             sleep 5
           done
+          
+          # Wait for natural completion
+          wait $JUPYTER_PID
+          return $?
         }
 
-        jupyter nbconvert --to notebook --execute "${{ matrix.notebook }}" --output executed_notebook.ipynb &
-        JUPYTER_PID=$!
-        monitor_resources $JUPYTER_PID &
-        MONITOR_PID=$!
-        wait $JUPYTER_PID
-        kill -TERM $MONITOR_PID 2>/dev/null
-        wait $MONITOR_PID 2>/dev/null || true
+        # Execute with trap for cleanup
+        trap 'kill -TERM $JUPYTER_PID 2>/dev/null' EXIT
+        if ! execute_with_monitoring; then
+          exit 1
+        fi
 
   retry-16gb:
     needs: test-notebook
@@ -113,29 +120,33 @@ jobs:
     - name: Execute notebook with resource monitoring
       id: execute
       run: |
-        monitor_resources() {
-          while kill -0 $1 2>/dev/null; do
+        execute_with_monitoring() {
+          jupyter nbconvert --to notebook --execute "${{ matrix.notebook }}" --output executed_notebook.ipynb &
+          JUPYTER_PID=$!
+          
+          while kill -0 $JUPYTER_PID 2>/dev/null; do
             memory_usage=$(free -m | awk '/Mem:/ {print $3/$2 * 100.0}')
             disk_usage=$(df / | tail -1 | awk '{print $5}' | sed 's/%//')
             echo "Memory: ${memory_usage}% | Disk: ${disk_usage}%"
             
             if (( $(echo "$memory_usage > 90" | bc -l) )) || [ "$disk_usage" -gt 90 ]; then
+              echo "Resource usage exceeded 90%"
+              kill -TERM $JUPYTER_PID
+              wait $JUPYTER_PID
               echo "resource-failure=true" >> $GITHUB_OUTPUT
-              kill -TERM $1
-              wait $1
-              exit 1
+              return 1
             fi
             sleep 5
           done
+          
+          wait $JUPYTER_PID
+          return $?
         }
 
-        jupyter nbconvert --to notebook --execute "${{ matrix.notebook }}" --output executed_notebook.ipynb &
-        JUPYTER_PID=$!
-        monitor_resources $JUPYTER_PID &
-        MONITOR_PID=$!
-        wait $JUPYTER_PID
-        kill -TERM $MONITOR_PID 2>/dev/null
-        wait $MONITOR_PID 2>/dev/null || true
+        trap 'kill -TERM $JUPYTER_PID 2>/dev/null' EXIT
+        if ! execute_with_monitoring; then
+          exit 1
+        fi
 
   retry-32gb:
     needs: retry-16gb
@@ -166,26 +177,30 @@ jobs:
     - name: Execute notebook with resource monitoring
       id: execute
       run: |
-        monitor_resources() {
-          while kill -0 $1 2>/dev/null; do
+        execute_with_monitoring() {
+          jupyter nbconvert --to notebook --execute "${{ matrix.notebook }}" --output executed_notebook.ipynb &
+          JUPYTER_PID=$!
+          
+          while kill -0 $JUPYTER_PID 2>/dev/null; do
             memory_usage=$(free -m | awk '/Mem:/ {print $3/$2 * 100.0}')
             disk_usage=$(df / | tail -1 | awk '{print $5}' | sed 's/%//')
             echo "Memory: ${memory_usage}% | Disk: ${disk_usage}%"
             
             if (( $(echo "$memory_usage > 90" | bc -l) )) || [ "$disk_usage" -gt 90 ]; then
               echo "Resource usage exceeded 90% on all runners"
-              kill -TERM $1
-              wait $1
-              exit 1
+              kill -TERM $JUPYTER_PID
+              wait $JUPYTER_PID
+              return 1
             fi
             sleep 5
           done
+          
+          wait $JUPYTER_PID
+          return $?
         }
 
-        jupyter nbconvert --to notebook --execute "${{ matrix.notebook }}" --output executed_notebook.ipynb &
-        JUPYTER_PID=$!
-        monitor_resources $JUPYTER_PID &
-        MONITOR_PID=$!
-        wait $JUPYTER_PID
-        kill -TERM $MONITOR_PID 2>/dev/null
-        wait $MONITOR_PID 2>/dev/null || true
+        trap 'kill -TERM $JUPYTER_PID 2>/dev/null' EXIT
+        if ! execute_with_monitoring; then
+          echo "Notebook failed on all runners"
+          exit 1
+        fi
