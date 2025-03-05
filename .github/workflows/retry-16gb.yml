@@ -70,7 +70,7 @@ jobs:
             fi
           else
             echo "Resource failure detected on 16GB for ${{ inputs.notebook }}"
-            exit 1  # Trigger failure for further handling if needed
+            exit 1
           fi
         }
 
