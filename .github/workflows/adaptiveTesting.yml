@@ -10,6 +10,12 @@ on:
         description: 'Python version to use'
         required: true
         default: '3.x'  # Default version if none provided
+  workflow_call:
+    inputs:
+      python-version:
+        description: 'Python version to use'
+        required: true
+        default: '3.x'  # Default version if none provided
 
 jobs:
   run-notebooks:
