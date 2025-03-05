@@ -1,12 +1,15 @@
 name: Execute Jupyter Notebooks with Auto-Scaling
 
 on:
-  push:
-    paths:
-      - 'notebooks/**.ipynb'  # Trigger on changes to notebooks in the notebooks directory
   pull_request:
     paths:
       - 'notebooks/**.ipynb'  # Trigger on PRs with notebooks
+  workflow_dispatch:
+    inputs:
+      python-version:
+        description: 'Python version to use'
+        required: true
+        default: '3.x'  # Default version if none provided
 
 jobs:
   run-notebooks:
@@ -19,6 +22,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ github.event.inputs.python-version }}  # Use the python-version input or default
 
       - name: Install notebook dependencies
         run: |
@@ -35,6 +43,7 @@ jobs:
           jupyter nbconvert --to notebook --execute "$notebook_dir/${{ matrix.notebook }}" --ExecutePreprocessor.timeout=600 --allow-errors --stdout
 
       - name: Monitor system resources
+        id: monitor
         run: |
           # Monitor memory and disk space usage
           MEMORY_USAGE=$(free -g | grep Mem | awk '{print $3}')
@@ -43,28 +52,42 @@ jobs:
           echo "Memory usage: $MEMORY_USAGE GB"
           echo "Disk usage: $DISK_USAGE%"
 
-          # Check if either memory or disk usage exceeds 90%
+          # If either memory or disk usage exceeds 90%, trigger scaling
           if [ "$MEMORY_USAGE" -gt 8 ] || [ "$DISK_USAGE" -gt 90 ]; then
             echo "Resource usage exceeded, scaling to 16GB runner."
             echo "::set-output name=scale_to::16"
+          else
+            echo "::set-output name=scale_to::no"
           fi
 
       - name: Scale Runner to 16GB if required
         if: ${{ steps.monitor.outputs.scale_to == '16' }}
         run: |
-          echo "Scaling to 16GB runner due to resource usage"
-          # This would trigger the next workflow job to scale
-          # Logic to trigger the scaling (use different runners for 16GB and 32GB)
-          
-          # Use a different runner setup (e.g., jwst-pipeline-notebooks-16gb) for the next attempt
-          echo "jobs.run-notebooks.runs-on: jwst-pipeline-notebooks-16gb"
+          echo "Scaling to 16GB runner due to resource usage."
+          echo "jobs.run-notebooks.runs-on: jwst-pipeline-notebooks-16gb"  # Switch runner type to 16GB
 
-      - name: Final Scaling Attempt (32GB)
+      - name: Monitor resources on 16GB runner
         if: ${{ steps.monitor.outputs.scale_to == '16' }}
         run: |
-          echo "Attempting to scale to 32GB runner"
-          # Use a 32GB runner if 16GB failed
-          echo "jobs.run-notebooks.runs-on: jwst-pipeline-notebooks-32gb"
+          MEMORY_USAGE=$(free -g | grep Mem | awk '{print $3}')
+          DISK_USAGE=$(df -h / | grep / | awk '{print $5}' | sed 's/%//')
+          
+          echo "Memory usage on 16GB runner: $MEMORY_USAGE GB"
+          echo "Disk usage on 16GB runner: $DISK_USAGE%"
+
+          # If either memory or disk usage exceeds 90% again, scale to 32GB
+          if [ "$MEMORY_USAGE" -gt 16 ] || [ "$DISK_USAGE" -gt 90 ]; then
+            echo "Resource usage exceeded 16GB runner, scaling to 32GB runner."
+            echo "::set-output name=scale_to::32"
+          else
+            echo "::set-output name=scale_to::no"
+          fi
+
+      - name: Final Scaling Attempt to 32GB Runner
+        if: ${{ steps.monitor.outputs.scale_to == '32' }}
+        run: |
+          echo "Attempting to scale to 32GB runner."
+          echo "jobs.run-notebooks.runs-on: jwst-pipeline-notebooks-32gb"  # Switch runner type to 32GB
 
       - name: Handle final failure and report
         if: ${{ failure() }}
@@ -88,4 +111,3 @@ jobs:
           notebooks=$(find notebooks/ -type f -name '*.ipynb')
           echo "Found notebooks: $notebooks"
           echo "::set-output name=notebooks::$(echo $notebooks | jq -R . | jq -s .)"  # Convert list to JSON
-
