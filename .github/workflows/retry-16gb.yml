@@ -1,6 +1,12 @@
 name: Retry 16GB
 
 on:
+  workflow_call:
+    inputs:
+      python-version:
+        description: 'Python version to use'
+        required: true
+        type: string
   workflow_dispatch:
     inputs:
       notebook:
