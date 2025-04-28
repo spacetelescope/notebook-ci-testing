@@ -55,13 +55,13 @@ jobs:
     uses: mgough-970/dev-actions/.github/workflows/ci_pipeline.yml@v1
     with:
       python-version: 3.11
-      execution-mode: ${{ inputs.execution-mode }}
-      single-filename: ${{ inputs.single-filename }}
-      build-html: ${{ inputs.build-html }}
-      security-scan: ${{ inputs.security-scan }}
-      use-conda: ${{ inputs.use-conda }}
-      conda-environment-file: ${{ inputs.conda-environment-file }}
-      conda-packages: ${{ inputs.conda-packages }}
+      execution-mode: ${{ inputs.execution-mode || 'changed' }}
+      single-filename: ${{ inputs.single-filename || '' }}
+      build-html: ${{ inputs.build-html || true }}
+      security-scan: ${{ inputs.security-scan || true }}
+      use-conda: ${{ inputs.use-conda || false }}
+      conda-environment-file: ${{ inputs.conda-environment-file || '' }}
+      conda-packages: ${{ inputs.conda-packages || '' }}
     secrets:
       CASJOBS_USERID: ${{ secrets.CASJOBS_USERID }}
       CASJOBS_PW: ${{ secrets.CASJOBS_PW }}
