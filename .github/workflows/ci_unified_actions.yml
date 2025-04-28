@@ -49,6 +49,16 @@ on:
         type: boolean
         default: false
 
+      deprecation-notebook-path:
+        description: "Notebook to deprecate (e.g., notebooks/MIRI/JWPipeNB-MIRI-MRS.ipynb)"
+        type: string
+        required: false
+
+      deprecation-removal-date:
+        description: "Removal date for deprecated notebook (e.g., 2024-12-31)"
+        type: string
+        required: false
+
   pull_request:
     branches:
       - main
