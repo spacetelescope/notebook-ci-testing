@@ -4,27 +4,50 @@ on:
   workflow_dispatch:
     inputs:
       execution-mode:
+        description: "Choose: all notebooks, changed notebooks (PR only), or a single notebook."
         type: choice
         options: [all, changed, single]
         default: all
+
       single-filename:
+        description: "If running a single notebook, enter its path (e.g., notebooks/MIRI/JWPipeNB-MIRI-MRS.ipynb)"
         type: string
         required: false
+
       build-html:
+        description: "After running, trigger a full HTML site rebuild?"
         type: boolean
         default: true
+
       security-scan:
+        description: "Run a Bandit security scan after execution?"
         type: boolean
         default: true
+
       use-conda:
+        description: "Use a Conda environment instead of system Python?"
         type: boolean
         default: false
+
       conda-environment-file:
+        description: "Optional: path to a Conda environment.yml file (if available)"
         type: string
         required: false
+
       conda-packages:
+        description: "Optional: comma-separated packages to install from conda-forge (e.g., hstcal,astropy)"
         type: string
         required: false
+
+      deprecate-notebooks:
+        description: "Manually deprecate selected notebooks?"
+        type: boolean
+        default: false
+
+      move-deprecated:
+        description: "Move deprecated notebooks into an archive folder?"
+        type: boolean
+        default: false
 
   pull_request:
     branches:
@@ -33,10 +56,11 @@ on:
       - 'notebooks/**/*.ipynb'
       - 'static/**'
       - '*.md'
+      - 'requirements.txt'
+      - 'environment.yml'
 
   schedule:
-    - cron: '0 5 * * *'
-
+    - cron: '0 5 * * *'  # Nightly scheduled run (5 AM UTC)
 
 jobs:
   run-ci:
@@ -45,7 +69,7 @@ jobs:
       python-version: 3.11
       execution-mode: ${{ inputs.execution-mode || 'changed' }}
       single-filename: ${{ inputs.single-filename || '' }}
-      build-html: ${{ inputs.build-html || false }}
+      build-html: ${{ inputs.build-html || true }}
       security-scan: ${{ inputs.security-scan || true }}
       use-conda: ${{ inputs.use-conda || false }}
       conda-environment-file: ${{ inputs.conda-environment-file || '' }}
@@ -53,3 +77,17 @@ jobs:
     secrets:
       CASJOBS_USERID: ${{ secrets.CASJOBS_USERID }}
       CASJOBS_PW: ${{ secrets.CASJOBS_PW }}
+
+  deprecate-notebooks:
+    needs: run-ci
+    if: inputs.deprecate-notebooks == true
+    uses: mgough-970/dev-actions/.github/workflows/ci_deprecate.yml@v1
+    with:
+      python-version: 3.11
+
+  move-deprecated:
+    needs: [run-ci, deprecate-notebooks]
+    if: inputs.move-deprecated == true
+    uses: mgough-970/dev-actions/.github/workflows/ci_move_deprecated_notebooks.yml@v1
+    with:
+      python-version: 3.11
