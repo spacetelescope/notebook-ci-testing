@@ -3,4 +3,5 @@
 format: jb-book
 root: intro
 chapters:
+- file: notebooks/GOUGH_DEV/anothernotebook.ipynb
 - file: notebooks/NIRISS/JWpipeNB-niriss-imaging.ipynb
