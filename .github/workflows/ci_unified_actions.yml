@@ -57,7 +57,7 @@ jobs:
       python-version: 3.11
       execution-mode: ${{ inputs.execution-mode || 'changed' }}
       single-filename: ${{ inputs.single-filename || '' }}
-      build-html: ${{ inputs.build-html || true }}
+      build-html: ${{ inputs.build-html || false }}
       security-scan: ${{ inputs.security-scan || true }}
       use-conda: ${{ inputs.use-conda || false }}
       conda-environment-file: ${{ inputs.conda-environment-file || '' }}
