@@ -64,6 +64,7 @@ on:
 
 jobs:
   run-ci:
+    if: inputs.deprecate-notebooks != true
     uses: mgough-970/dev-actions/.github/workflows/ci_pipeline.yml@v1
     with:
       python-version: 3.11
@@ -79,7 +80,6 @@ jobs:
       CASJOBS_PW: ${{ secrets.CASJOBS_PW }}
 
   deprecate-notebooks:
-    needs: run-ci
     if: inputs.deprecate-notebooks == true
     uses: mgough-970/dev-actions/.github/workflows/ci_deprecate.yml@v1
     with:
@@ -93,3 +93,4 @@ jobs:
     uses: mgough-970/dev-actions/.github/workflows/ci_move_deprecated_notebooks.yml@v1
     with:
       python-version: 3.11
+
