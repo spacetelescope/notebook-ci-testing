@@ -4,38 +4,25 @@ on:
   workflow_dispatch:
     inputs:
       execution-mode:
-        description: "Choose which notebooks to run: all, changed (PR only), or single"
         type: choice
         options: [all, changed, single]
         default: all
-
       single-filename:
-        description: "If running a single notebook, enter the exact filename (e.g. JWPipeNB-MIRI-MRS.ipynb)"
         type: string
         required: false
-
       build-html:
-        description: "Trigger HTML book rebuild after successful notebook execution?"
         type: boolean
         default: true
-
       security-scan:
-        description: "Run Bandit security scan after executing notebooks?"
         type: boolean
         default: true
-
       use-conda:
-        description: "Use conda environment (instead of pip)?"
         type: boolean
         default: false
-
       conda-environment-file:
-        description: "Path to a conda environment.yml file if needed"
         type: string
         required: false
-
       conda-packages:
-        description: "Comma-separated conda-forge packages to install (example: hstcal,astropy)"
         type: string
         required: false
 
@@ -48,7 +35,8 @@ on:
       - '*.md'
 
   schedule:
-    - cron: '0 5 * * *'  # Every day at 5AM UTC
+    - cron: '0 5 * * *'
+
 
 jobs:
   run-ci:
