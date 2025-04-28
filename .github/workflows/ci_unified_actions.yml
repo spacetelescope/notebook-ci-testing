@@ -1,4 +1,4 @@
-name: Full CI Manual and PR Runner
+name: Manual CI and PR Validation
 
 on:
   workflow_dispatch:
@@ -27,7 +27,7 @@ on:
     branches:
       - main
     paths:
-      - 'notebooks/**.ipynb'
+      - 'notebooks/**/*.ipynb'
       - 'static/**'
       - '*.md'
 
