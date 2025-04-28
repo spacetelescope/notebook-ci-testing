@@ -1,0 +1,50 @@
+name: Full CI Manual and PR Runner
+
+on:
+  workflow_dispatch:
+    inputs:
+      execution-mode:
+        type: choice
+        options: [all, changed, single]
+        default: all
+      build-html:
+        type: boolean
+        default: true
+      security-scan:
+        type: boolean
+        default: true
+      use-conda:
+        type: boolean
+        default: false
+      conda-environment-file:
+        type: string
+        required: false
+      conda-packages:
+        type: string
+        required: false
+
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'notebooks/**.ipynb'
+      - 'static/**'
+      - '*.md'
+
+  schedule:
+    - cron: '0 5 * * *'
+
+jobs:
+  run-ci:
+    uses: mgough-970/dev-actions/.github/workflows/ci_pipeline.yml@v1
+    with:
+      python-version: 3.11
+      execution-mode: ${{ inputs.execution-mode || 'all' }}
+      build-html: ${{ inputs.build-html || true }}
+      security-scan: ${{ inputs.security-scan || true }}
+      use-conda: ${{ inputs.use-conda || false }}
+      conda-environment-file: ${{ inputs.conda-environment-file }}
+      conda-packages: ${{ inputs.conda-packages }}
+    secrets:
+      CASJOBS_USERID: ${{ secrets.CASJOBS_USERID }}
+      CASJOBS_PW: ${{ secrets.CASJOBS_PW }}
