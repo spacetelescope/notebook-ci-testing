@@ -92,7 +92,3 @@ jobs:
     uses: mgough-970/dev-actions/.github/workflows/ci_move_deprecated_notebooks.yml@v1
     with:
       python-version: 3.11
-
-    with:
-      python-version: 3.11
-
