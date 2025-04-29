@@ -1,5 +1,4 @@
-name: Manual CI and PR Validation
-
+name: Unified Workflow
 on:
   workflow_dispatch:
     inputs:
