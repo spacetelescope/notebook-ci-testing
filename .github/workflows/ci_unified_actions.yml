@@ -23,20 +23,20 @@ on:
         type: boolean
         default: true
 
-      use-conda:
-        description: "Use a Conda environment instead of system Python?"
-        type: boolean
-        default: false
+ #     use-conda:
+ #       description: "Use a Conda environment instead of system Python?"
+ #       type: boolean
+ #       default: false
 
-      conda-environment-file:
-        description: "Optional: path to a Conda environment.yml file (if available)"
-        type: string
-        required: false
+#      conda-environment-file:
+#        description: "Optional: path to a Conda environment.yml file (if available)"
+#        type: string
+#        required: false
 
-      conda-packages:
-        description: "Optional: comma-separated packages to install from conda-forge (e.g., hstcal,astropy)"
-        type: string
-        required: false
+ #     conda-packages:
+ #       description: "Optional: comma-separated packages to install from conda-forge (e.g., hstcal,astropy)"
+ #       type: string
+ #       required: false
 
       deprecate-notebooks:
         description: "Manually deprecate selected notebooks?"
@@ -71,9 +71,7 @@ jobs:
       single-filename: ${{ inputs.single-filename || '' }}
       build-html: ${{ inputs.build-html || true }}
       security-scan: ${{ inputs.security-scan || true }}
-      use-conda: ${{ inputs.use-conda || false }}
-      conda-environment-file: ${{ inputs.conda-environment-file || '' }}
-      conda-packages: ${{ inputs.conda-packages || '' }}
+      conda-packages: 'hstcal' #Set for use for HST notebooks for this test, otherwise default to ''
     secrets:
       CASJOBS_USERID: ${{ secrets.CASJOBS_USERID }}
       CASJOBS_PW: ${{ secrets.CASJOBS_PW }}
