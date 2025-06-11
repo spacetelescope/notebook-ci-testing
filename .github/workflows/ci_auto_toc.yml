@@ -58,9 +58,23 @@ jobs:
           CAPTION="${{ env.instrument }}"
           TOC_FILE="_toc.yml"
 
-          # Ensure required values exist
-          if [ -z "$NOTEBOOK_PATH" ] || [ -z "$NOTEBOOK_TITLE" ] || [ -z "$CAPTION" ]; then
-            echo "::error::Missing notebook path, title, or caption."
+          missing=0
+          if [ -z "$NOTEBOOK_PATH" ]; then
+            echo "::error::Missing NOTEBOOK_PATH"
+            missing=1
+          fi
+
+          if [ -z "$NOTEBOOK_TITLE" ]; then
+            echo "::error::Missing NOTEBOOK_TITLE"
+            missing=1
+            fi
+
+          if [ -z "$CAPTION" ]; then
+            echo "::error::Missing CAPTION"
+            missing=1
+          fi
+
+          if [ "$missing" -eq 1 ]; then
             exit 1
           fi
 
