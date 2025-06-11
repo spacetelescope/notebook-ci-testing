@@ -108,6 +108,8 @@ jobs:
 
       - name: Commit and push _toc.yml to main
         run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
 
           git add _toc.yml
           git commit -m "Update TOC with notebook: ${{ env.notebook_path }}" || echo "Nothing to commit"
