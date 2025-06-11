@@ -55,7 +55,7 @@ jobs:
       - name: Add notebook to _toc.yml if not already listed
         run: |
           NOTEBOOK_PATH="${{ env.notebook_path }}"
-          NOTEBOOK_TITLE="$${{ env.notebook_title }}"
+          NOTEBOOK_TITLE="${{ env.notebook_title }}"
           CAPTION="${{ env.instrument }}"
           TOC_FILE="_toc.yml"
 
