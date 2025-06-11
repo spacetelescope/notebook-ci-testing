@@ -50,12 +50,12 @@ jobs:
             echo "::warning::No markdown title found in the first two markdown cells"
           fi
 
-          echo "notebook_title=$TITLE" >> $GITHUB_OUTPUT
+          echo "notebook_title=$TITLE" >> $GITHUB_ENV
 
       - name: Add notebook to _toc.yml if not already listed
         run: |
           NOTEBOOK_PATH="${{ env.notebook_path }}"
-          NOTEBOOK_TITLE="${{ steps.get_title.outputs.notebook_title }}"
+          NOTEBOOK_TITLE="$${{ env.notebook_title }}"
           CAPTION="${{ env.instrument }}"
           TOC_FILE="_toc.yml"
 
