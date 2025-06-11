@@ -85,8 +85,10 @@ jobs:
             exit 0
           fi
 
+          CLEAN_PATH="${NOTEBOOK_PATH#./}"
+
           NEW_ENTRY=$(cat <<EOF
-            - file: $NOTEBOOK_PATH
+            - file: $CLEAN_PATH
               title: $NOTEBOOK_TITLE
           EOF
           )
