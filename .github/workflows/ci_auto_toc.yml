@@ -79,14 +79,14 @@ jobs:
             exit 1
           fi
 
+          CLEAN_PATH="${NOTEBOOK_PATH#./}"
+          CLEAN_TITLE=$(echo "$NOTEBOOK_TITLE" | sed 's/[[:space:]]*#*$//')
+
           # Skip if already present
-          if grep -Fq "file: $NOTEBOOK_PATH" "$TOC_FILE"; then
+          if grep -Fq "file: $CLEAN_PATH" "$TOC_FILE"; then
             echo "Notebook already listed in TOC."
             exit 0
           fi
-
-          CLEAN_PATH="${NOTEBOOK_PATH#./}"
-          CLEAN_TITLE=$(echo "$NOTEBOOK_TITLE" | sed 's/[[:space:]]*#*$//')
 
           NEW_ENTRY=$(cat <<EOF
             - file: $CLEAN_PATH
