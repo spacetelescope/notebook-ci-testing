@@ -104,7 +104,7 @@ jobs:
               found = 0
             }
           }
-        ' "$TOC_FILE" > toc_tmp && mv toc_tmp "$TOC_FILE"
+          ' "$TOC_FILE" > toc_tmp && mv toc_tmp "$TOC_FILE"
 
           echo "Notebook added to _toc.yml"
           cat "$TOC_FILE"
