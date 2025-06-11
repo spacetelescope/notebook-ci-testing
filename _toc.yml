@@ -7,7 +7,5 @@ chapters:
 - file: notebooks/NIRISS/JWpipeNB-niriss-imaging.ipynb
 - caption: MIRI
   chapters:
-  - file: notebooks/MIRI/JWPipeNB-MIRI-MRS.ipynb
-    title: MIRI MRS Pipeline Notebook #
   - file: notebooks/MIRI/JWPipeNB.ipynb
     title: MIRI MRS
