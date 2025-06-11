@@ -40,13 +40,14 @@ jobs:
           TITLE=$(jq -r '
             .cells
             | map(select(.cell_type == "markdown"))
-            | .[0].source[]
-            | select(test("^#"))
+            | .[0:2][] 
+            | .source[] 
+            | select(test("^#")) 
             | match("^#+\\s*(.*)").captures[0].string
-            ' "$notebook_path")
+            ' "$notebook_path" | head -n 1)
 
           if [ -z "$TITLE" ]; then
-            echo "::warning::No markdown title found"
+            echo "::warning::No markdown title found in the first two markdown cells"
           fi
 
           echo "notebook_title=$TITLE" >> $GITHUB_OUTPUT
