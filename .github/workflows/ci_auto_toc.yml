@@ -1,6 +1,6 @@
 name: Automated Table of Contents
-on:
 
+on:
     workflow_dispatch:
         inputs:
             notebook_name:
