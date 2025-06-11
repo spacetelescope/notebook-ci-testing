@@ -86,10 +86,11 @@ jobs:
           fi
 
           CLEAN_PATH="${NOTEBOOK_PATH#./}"
+          CLEAN_TITLE=$(echo "$NOTEBOOK_TITLE" | sed 's/[[:space:]]*#*$//')
 
           NEW_ENTRY=$(cat <<EOF
             - file: $CLEAN_PATH
-              title: $NOTEBOOK_TITLE
+              title: $CLEAN_TITLE
           EOF
           )
 
@@ -107,7 +108,6 @@ jobs:
             ' "$TOC_FILE" > toc_tmp && mv toc_tmp "$TOC_FILE"
 
           echo "Notebook added to _toc.yml"
-          cat "$TOC_FILE"
 
       - name: Commit and push _toc.yml to main
         run: |
