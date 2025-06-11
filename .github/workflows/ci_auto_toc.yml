@@ -105,3 +105,30 @@ jobs:
           ' "$TOC_FILE" > toc_tmp && mv toc_tmp "$TOC_FILE"
 
           echo "Notebook added to _toc.yml"
+
+      - name: Commit and push _toc.yml to main
+        run: |
+
+          git add _toc.yml
+          git commit -m "Update TOC with notebook: ${{ env.notebook_path }}" || echo "Nothing to commit"
+
+          MAX_RETRIES=10
+          RETRY_DELAY=10s
+          success=false
+          for i in $(seq 1 $MAX_RETRIES); do
+            git pull origin main --rebase
+            if git push origin main; then
+              success=true
+              break
+            else
+              echo "Push $i failed... waiting $RETRY_DELAY"
+              sleep $RETRY_DELAY
+            fi
+          done
+
+          if [ "$success" = false ]; then
+            echo "Failed to push after $MAX_RETRIES attempts."
+            exit 1
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
