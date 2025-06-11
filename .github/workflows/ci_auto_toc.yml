@@ -95,16 +95,14 @@ jobs:
             BEGIN { found = 0 }
             {
               print $0
-              if ($0 ~ "^[[:space:]]*caption:[[:space:]]*" cap "[[:space:]]*$") {
-                print "DEBUG: Found caption line: " $0 > "/dev/stderr"
+              if ($0 ~ "^[[:space:]]*-?[[:space:]]*caption:[[:space:]]*" cap "[[:space:]]*$") {
                 found = 1
-            } else if (found && $0 ~ "^[[:space:]]*chapters:[[:space:]]*$") {
-              print "DEBUG: Found chapters line, inserting newentry" > "/dev/stderr"
-              print newentry
-              found = 0
+              } else if (found && $0 ~ "^[[:space:]]*chapters:[[:space:]]*$") {
+                print newentry
+                found = 0
+              }
             }
-          }
-          ' "$TOC_FILE" > toc_tmp && mv toc_tmp "$TOC_FILE"
+            ' "$TOC_FILE" > toc_tmp && mv toc_tmp "$TOC_FILE"
 
           echo "Notebook added to _toc.yml"
           cat "$TOC_FILE"
