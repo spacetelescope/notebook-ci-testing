@@ -1,16 +1,16 @@
 name: Automated Table of Contents
 
 on:
-    workflow_dispatch:
-        inputs:
-            notebook_name:
-            description: 'The name of the notebook to add to the table of contents (e.g., example.ipynb)'
-            required: true
-            default: 'example.ipynb'
+  workflow_dispatch:
+    inputs:
+      notebook_name:
+        description: 'The name of the notebook to add to the table of contents (e.g., example.ipynb)'
+        required: true
+        default: 'example.ipynb'
 
 jobs:
-    add_toc:
-        runs-on: ubuntu-latest
+  add_toc:
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
