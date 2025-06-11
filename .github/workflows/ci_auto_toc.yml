@@ -105,6 +105,7 @@ jobs:
           ' "$TOC_FILE" > toc_tmp && mv toc_tmp "$TOC_FILE"
 
           echo "Notebook added to _toc.yml"
+          cat "$TOC_FILE"
 
       - name: Commit and push _toc.yml to main
         run: |
