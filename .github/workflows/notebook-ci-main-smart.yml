@@ -125,7 +125,7 @@ jobs:
   full-notebook-ci:
     needs: detect-changes
     if: needs.detect-changes.outputs.notebooks-changed == 'true'
-    uses: spacetelescope/notebook-ci-actions/.github/workflows/ci_pipeline.yml@main
+    uses: spacetelescope/notebook-ci-actions/.github/workflows/ci_pipeline.yml@dev-actions
     with:
       python-version: "3.11"
       execution-mode: "full"  # Full execution for main branch
@@ -156,7 +156,7 @@ jobs:
       (needs.full-notebook-ci.result == 'success' || 
        needs.full-notebook-ci.result == 'skipped' || 
        needs.docs-only-rebuild.result == 'success')
-    uses: spacetelescope/notebook-ci-actions/.github/workflows/ci_html_builder.yml@main
+    uses: spacetelescope/notebook-ci-actions/.github/workflows/ci_html_builder.yml@dev-actions
     with:
       python-version: "3.11"
       post-run-script: "scripts/jdaviz_image_replacement.sh"  # Optional, adjust per repo

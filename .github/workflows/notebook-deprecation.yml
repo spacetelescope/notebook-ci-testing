@@ -22,7 +22,7 @@ on:
 
 jobs:
   deprecation-management:
-    uses: spacetelescope/notebook-ci-actions/.github/workflows/ci_deprecation_manager.yml@main
+    uses: spacetelescope/notebook-ci-actions/.github/workflows/ci_deprecation_manager.yml@dev-actions
     with:
       notebook-path: ${{ github.event.inputs.notebook-path }}
       removal-date: ${{ github.event.inputs.removal-date }}
