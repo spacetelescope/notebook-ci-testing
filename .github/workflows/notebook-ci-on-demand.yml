@@ -56,7 +56,7 @@ on:
 
 jobs:
   on-demand-ci:
-    uses: spacetelescope/notebook-ci-actions/.github/workflows/ci_pipeline.yml@main
+    uses: spacetelescope/notebook-ci-actions/.github/workflows/ci_pipeline.yml@dev-actions
     with:
       python-version: ${{ inputs.python-version }}
       execution-mode: ${{ inputs.execution-mode }}
@@ -71,7 +71,7 @@ jobs:
   # Enhanced post-processing based on selection
   build-docs-on-demand:
     if: inputs.build-documentation == true
-    uses: spacetelescope/notebook-ci-actions/.github/workflows/ci_html_builder.yml@main
+    uses: spacetelescope/notebook-ci-actions/.github/workflows/ci_html_builder.yml@dev-actions
     with:
       python-version: ${{ inputs.python-version }}
       post-run-script: ${{ 
