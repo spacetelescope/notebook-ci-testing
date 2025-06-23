@@ -8,7 +8,7 @@ set -e
 REPO_NAME="$1"
 ORG_NAME="${2:-spacetelescope}"
 ACTIONS_REPO="notebook-ci-actions"
-BRANCH_NAME="migrate-to-centralized-actions"
+BRANCH_NAME="migrate"
 
 # Color codes for output
 RED='\033[0;31m'
