@@ -2,7 +2,7 @@
 
 ## Migration Details
 - **Repository**: spacetelescope/notebook-ci-testing
-- **Migration Date**: Mon Jun 23 13:36:02 EDT 2025
+- **Migration Date**: Mon Jun 23 14:39:17 EDT 2025
 - **Actions Repository**: spacetelescope/notebook-ci-actions
 - **Branch**: migrate-to-centralized-actions
 
@@ -21,6 +21,10 @@
 - .github/workflows-backup/ci_security_scan.yml
 - .github/workflows-backup/ci_unified_actions.yml
 - .github/workflows-backup/deprecate_notebook.yml
+- .github/workflows-backup/docs-only.yml
+- .github/workflows-backup/notebook-ci-main.yml
+- .github/workflows-backup/notebook-ci-on-demand.yml
+- .github/workflows-backup/notebook-ci-pr.yml
 - .github/workflows-backup/pep8_nb_style_check.yml
 - .github/workflows-backup/pep8_script_style_check.yml
 - .github/workflows-backup/retry-16gb.yml
@@ -60,7 +64,7 @@
 - [ ] Repository-specific features test
 
 ## Migration Notes
-- Created by migration script on Mon Jun 23 13:36:02 EDT 2025
+- Created by migration script on Mon Jun 23 14:39:17 EDT 2025
 - Review and customize workflows as needed
 - Test thoroughly before merging to main
 

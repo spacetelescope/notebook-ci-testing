@@ -64,7 +64,7 @@ on:
 jobs:
   run-ci:
     if: inputs.deprecate-notebooks != true && inputs.move-deprecated != true
-    uses: mgough-970/dev-actions/.github/workflows/ci_pipeline.yml@v1
+    uses: mgough-970/notebook-ci-actions/.github/workflows/ci_pipeline.yml@v1
     with:
       python-version: ${{ vars.PYTHON_VERSION || '3.11' }}
       execution-mode: ${{ inputs.execution-mode || 'changed' }}
@@ -78,7 +78,7 @@ jobs:
 
   deprecate-notebooks:
     if: inputs.deprecate-notebooks == true
-    uses: mgough-970/dev-actions/.github/workflows/ci_deprecate.yml@v1
+    uses: mgough-970/notebook-ci-actions/.github/workflows/ci_deprecate.yml@v1
     with:
       notebook-path: ${{ inputs.single-filename }}
     secrets:
@@ -86,6 +86,6 @@ jobs:
 
   move-deprecated:
     if: inputs.move-deprecated == true
-    uses: mgough-970/dev-actions/.github/workflows/ci_move_deprecated_notebooks.yml@v1
+    uses: mgough-970/notebook-ci-actions/.github/workflows/ci_move_deprecated_notebooks.yml@v1
     with:
       python-version: 3.11
