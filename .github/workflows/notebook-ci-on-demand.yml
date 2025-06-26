@@ -76,10 +76,6 @@ jobs:
     uses: spacetelescope/notebook-ci-actions/.github/workflows/ci_html_builder.yml@dev-actions
     with:
       python-version: ${{ inputs.python-version }}
-      post-run-script: ${{ 
-        inputs.post-processing == 'jdaviz' && 'scripts/jdaviz_image_replacement.sh' ||
-        inputs.post-processing == 'full' && 'scripts/full_post_processing.sh' ||
-        '' 
-      }}
+      post-run-script: ${{ inputs.post-processing == 'jdaviz' && 'scripts/jdaviz_image_replacement.sh' || inputs.post-processing == 'full' && 'scripts/full_post_processing.sh' || '' }}
     secrets:
       github-token: ${{ secrets.GITHUB_TOKEN }}
