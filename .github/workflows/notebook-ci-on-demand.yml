@@ -53,6 +53,10 @@ on:
           - 'full'
 
 jobs:
+  trigger-check:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Manual workflow triggered successfully."
   on-demand-ci:
     uses: spacetelescope/notebook-ci-actions/.github/workflows/ci_pipeline.yml@dev-actions
     with:
