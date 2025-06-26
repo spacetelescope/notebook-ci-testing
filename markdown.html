@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Markdown Files &#8212; JWST Pipeline Notebooks</title>
+    <title>Markdown Files &#8212; Hello Universe!</title>
   
   
   
@@ -149,8 +149,14 @@
   
   
   
+    
+    
+      
+    
+    
+    <img src="_static/HelloUniverseLogo.png" class="logo__image only-light" alt="Hello Universe! - Home"/>
+    <script>document.write(`<img src="_static/HelloUniverseLogo.png" class="logo__image only-dark" alt="Hello Universe! - Home"/>`);</script>
   
-    <p class="title logo__title">JWST Pipeline Notebooks</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -170,13 +176,16 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    STScI Notebook Repository Template
+                    Hello Universe
                 </a>
             </li>
         </ul>
         <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="notebooks/NIRISS/JWpipeNB-niriss-imaging.html">NIRISS Imaging Pipeline Notebook</a></li>
-
+<li class="toctree-l1"><a class="reference internal" href="notebooks/hello-universe/Classifying_TESS_flares_with_CNNs/Classifying_TESS_flares_with_CNNs.html">Classifying flaring stars with stella: a convolutional neural network for TESS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/hello-universe/Classifying_JWST-HST_galaxy_mergers_with_CNNs/Classifying_JWST-HST_galaxy_mergers_with_CNNs.html">Classifying JWST-HST galaxy mergers with CNNs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/hello-universe/Regressing_3D-HST_galaxy_redshift_with_decision_trees/Regressing_3D-HST_galaxy_redshift_with_decision_trees.html">Predicting galaxy redshift via regression on 3D-HST photometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/hello-universe/Classifying_PanSTARRS_sources_with_unsupervised_learning/Classifying_PanSTARRS_sources_with_unsupervised_learning.html">Classifying Pan-STARRS sources with unsupervised and supervised learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/hello-universe/Interpreting_CNNs/Interpreting_CNNs.html">Interpreting Convolutional Neural Networks</a></li>
 </ul>
 
     </div>
@@ -231,7 +240,7 @@
       
       
       
-      <li><a href="https://github.com/spacetelescope/jwst-pipeline-notebooks" target="_blank"
+      <li><a href="https://github.com/spacetelescope/hellouniverse" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -248,7 +257,7 @@
       
       
       
-      <li><a href="https://github.com/spacetelescope/jwst-pipeline-notebooks/issues/new?title=Issue%20on%20page%20%2Fmarkdown.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/spacetelescope/hellouniverse/issues/new?title=Issue%20on%20page%20%2Fmarkdown.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -391,7 +400,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="markdown-files">
+  <section class="tex2jax_ignore mathjax_ignore" id="markdown-files">
 <h1>Markdown Files<a class="headerlink" href="#markdown-files" title="Link to this heading">#</a></h1>
 <p>Whether you write your book’s content in Jupyter Notebooks (<code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>) or
 in regular markdown files (<code class="docutils literal notranslate"><span class="pre">.md</span></code>), you’ll write in the same flavor of markdown
@@ -448,7 +457,7 @@ this pattern:</p>
 <p>Again, roles will only work if <code class="docutils literal notranslate"><span class="pre">rolename</span></code> is a valid role’s name. For example,
 the <code class="docutils literal notranslate"><span class="pre">doc</span></code> role can be used to refer to another page in your book. You can
 refer directly to another page by its relative path. For example, the
-role syntax <code class="docutils literal notranslate"><span class="pre">{doc}`intro`</span></code> will result in: <a class="reference internal" href="intro.html"><span class="doc">STScI Notebook Repository Template</span></a>.</p>
+role syntax <code class="docutils literal notranslate"><span class="pre">{doc}`intro`</span></code> will result in: <a class="reference internal" href="intro.html"><span class="doc">Hello Universe</span></a>.</p>
 <p>For more information on writing roles, see the
 <a class="reference external" href="https://myst-parser.readthedocs.io/">MyST documentation</a>.</p>
 </section>
@@ -456,7 +465,7 @@ role syntax <code class="docutils literal notranslate"><span class="pre">{doc}`i
 <h3>Adding a citation<a class="headerlink" href="#adding-a-citation" title="Link to this heading">#</a></h3>
 <p>You can also cite references that are stored in a <code class="docutils literal notranslate"><span class="pre">bibtex</span></code> file. For example,
 the following syntax: <code class="docutils literal notranslate"><span class="pre">{cite}`holdgraf_evidence_2014`</span></code> will render like
-this: .</p>
+this: <span id="id1">[<a class="reference internal" href="#id3" title="Christopher Ramsay Holdgraf, Wendy de Heer, Brian N. Pasley, and Robert T. Knight. Evidence for Predictive Coding in Human Auditory Cortex. In International Conference on Cognitive Neuroscience. Brisbane, Australia, Australia, 2014. Frontiers in Neuroscience.">HdHPK14</a>]</span>.</p>
 <p>Moreover, you can insert a bibliography into your page with this syntax:
 The <code class="docutils literal notranslate"><span class="pre">{bibliography}</span></code> directive must be used for all the <code class="docutils literal notranslate"><span class="pre">{cite}</span></code> roles to
 render properly.
@@ -467,6 +476,14 @@ then the bibliography is inserted with:</p>
 </pre></div>
 </div>
 <p>Resulting in a rendered bibliography that looks like:</p>
+<div class="docutils container" id="id2">
+<div role="list" class="citation-list">
+<div class="citation" id="id3" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">HdHPK14</a><span class="fn-bracket">]</span></span>
+<p>Christopher Ramsay Holdgraf, Wendy de Heer, Brian N. Pasley, and Robert T. Knight. Evidence for Predictive Coding in Human Auditory Cortex. In <em>International Conference on Cognitive Neuroscience</em>. Brisbane, Australia, Australia, 2014. Frontiers in Neuroscience.</p>
+</div>
+</div>
+</div>
 </section>
 <section id="executing-code-in-your-markdown-files">
 <h3>Executing code in your markdown files<a class="headerlink" href="#executing-code-in-your-markdown-files" title="Link to this heading">#</a></h3>
@@ -498,8 +515,8 @@ see <a class="reference external" href="https://myst-nb.readthedocs.io/">The MyS
     {
         requestKernel: true,
         binderOptions: {
-            repo: "spacetelescope/jwst-pipeline-notebooks",
-            ref: "main",
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
         },
         codeMirrorConfig: {
             theme: "abcdef",
@@ -562,7 +579,7 @@ see <a class="reference external" href="https://myst-nb.readthedocs.io/">The MyS
   <div class="footer-item">
     
 <p class="component-author">
-By STScI
+By STScI Notebook Dev
 </p>
 
   </div>
@@ -572,7 +589,7 @@ By STScI
 
   <p class="copyright">
     
-      © Copyright 2024.
+      © Copyright 2022-2024.
       <br/>
     
   </p>

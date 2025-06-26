@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>STScI Notebook Repository Template &#8212; JWST Pipeline Notebooks</title>
+    <title>Hello Universe &#8212; Hello Universe!</title>
   
   
   
@@ -58,10 +58,12 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="NIRISS Imaging Pipeline Notebook" href="notebooks/NIRISS/JWpipeNB-niriss-imaging.html" />
+    <link rel="next" title="Classifying flaring stars with stella: a convolutional neural network for TESS" href="notebooks/hello-universe/Classifying_TESS_flares_with_CNNs/Classifying_TESS_flares_with_CNNs.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -150,8 +152,14 @@
   
   
   
+    
+    
+      
+    
+    
+    <img src="_static/HelloUniverseLogo.png" class="logo__image only-light" alt="Hello Universe! - Home"/>
+    <script>document.write(`<img src="_static/HelloUniverseLogo.png" class="logo__image only-dark" alt="Hello Universe! - Home"/>`);</script>
   
-    <p class="title logo__title">JWST Pipeline Notebooks</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -171,13 +179,16 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1 current active">
                 <a class="reference internal" href="#">
-                    STScI Notebook Repository Template
+                    Hello Universe
                 </a>
             </li>
         </ul>
         <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="notebooks/NIRISS/JWpipeNB-niriss-imaging.html">NIRISS Imaging Pipeline Notebook</a></li>
-
+<li class="toctree-l1"><a class="reference internal" href="notebooks/hello-universe/Classifying_TESS_flares_with_CNNs/Classifying_TESS_flares_with_CNNs.html">Classifying flaring stars with stella: a convolutional neural network for TESS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/hello-universe/Classifying_JWST-HST_galaxy_mergers_with_CNNs/Classifying_JWST-HST_galaxy_mergers_with_CNNs.html">Classifying JWST-HST galaxy mergers with CNNs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/hello-universe/Regressing_3D-HST_galaxy_redshift_with_decision_trees/Regressing_3D-HST_galaxy_redshift_with_decision_trees.html">Predicting galaxy redshift via regression on 3D-HST photometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/hello-universe/Classifying_PanSTARRS_sources_with_unsupervised_learning/Classifying_PanSTARRS_sources_with_unsupervised_learning.html">Classifying Pan-STARRS sources with unsupervised and supervised learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/hello-universe/Interpreting_CNNs/Interpreting_CNNs.html">Interpreting Convolutional Neural Networks</a></li>
 </ul>
 
     </div>
@@ -232,7 +243,7 @@
       
       
       
-      <li><a href="https://github.com/spacetelescope/jwst-pipeline-notebooks" target="_blank"
+      <li><a href="https://github.com/spacetelescope/hellouniverse" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -249,7 +260,7 @@
       
       
       
-      <li><a href="https://github.com/spacetelescope/jwst-pipeline-notebooks/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/spacetelescope/hellouniverse/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -361,7 +372,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>STScI Notebook Repository Template</h1>
+    <h1>Hello Universe</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -375,9 +386,9 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="stsci-notebook-repository-template">
-<h1>STScI Notebook Repository Template<a class="headerlink" href="#stsci-notebook-repository-template" title="Link to this heading">#</a></h1>
-<p>This is the template that should be used to structure your notebook repository to worth with the STScI notebook CI system.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="hello-universe">
+<h1>Hello Universe<a class="headerlink" href="#hello-universe" title="Link to this heading">#</a></h1>
+<p>The repository contains Jupyter notebooks for the Hello Universe project, an initiative at MAST to provide a space for applying machine learning (ML) algorithms to astronomical data. The first set of notebooks are designed to span a range of ML techniques, and to highlight MAST mission data, including user-contributed high-level science products (HLSPs).</p>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -386,8 +397,8 @@ document.write(`
     {
         requestKernel: true,
         binderOptions: {
-            repo: "spacetelescope/jwst-pipeline-notebooks",
-            ref: "main",
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
         },
         codeMirrorConfig: {
             theme: "abcdef",
@@ -413,11 +424,11 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="right-next"
-       href="notebooks/NIRISS/JWpipeNB-niriss-imaging.html"
+       href="notebooks/hello-universe/Classifying_TESS_flares_with_CNNs/Classifying_TESS_flares_with_CNNs.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">NIRISS Imaging Pipeline Notebook</p>
+        <p class="prev-next-title">Classifying flaring stars with stella: a convolutional neural network for TESS</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -437,7 +448,7 @@ document.write(`
   <div class="footer-item">
     
 <p class="component-author">
-By STScI
+By STScI Notebook Dev
 </p>
 
   </div>
@@ -447,7 +458,7 @@ By STScI
 
   <p class="copyright">
     
-      © Copyright 2024.
+      © Copyright 2022-2024.
       <br/>
     
   </p>

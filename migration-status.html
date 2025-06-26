@@ -2,13 +2,13 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>How to copy files and directories from one Git repository to another preserving revision histroy and source material path structure &#8212; JWST Pipeline Notebooks</title>
+    <title>Migration Status for notebook-ci-testing &#8212; Hello Universe!</title>
   
   
   
@@ -18,49 +18,49 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/table.css?v=cd6c26fb" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/table.css?v=cd6c26fb" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/how_to_move_files_dirs_between_repos_retaining_history';</script>
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'migration-status';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -92,7 +92,7 @@
     <div class="search-button__overlay"></div>
     <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
-      action="../search.html"
+      action="search.html"
       method="get">
   <i class="fa-solid fa-magnifying-glass"></i>
   <input type="search"
@@ -143,14 +143,20 @@
     
   
 
-<a class="navbar-brand logo" href="../intro.html">
+<a class="navbar-brand logo" href="intro.html">
   
   
   
   
   
+    
+    
+      
+    
+    
+    <img src="_static/HelloUniverseLogo.png" class="logo__image only-light" alt="Hello Universe! - Home"/>
+    <script>document.write(`<img src="_static/HelloUniverseLogo.png" class="logo__image only-dark" alt="Hello Universe! - Home"/>`);</script>
   
-    <p class="title logo__title">JWST Pipeline Notebooks</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -169,14 +175,17 @@
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="../intro.html">
-                    STScI Notebook Repository Template
+                <a class="reference internal" href="intro.html">
+                    Hello Universe
                 </a>
             </li>
         </ul>
         <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../notebooks/NIRISS/JWpipeNB-niriss-imaging.html">NIRISS Imaging Pipeline Notebook</a></li>
-
+<li class="toctree-l1"><a class="reference internal" href="notebooks/hello-universe/Classifying_TESS_flares_with_CNNs/Classifying_TESS_flares_with_CNNs.html">Classifying flaring stars with stella: a convolutional neural network for TESS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/hello-universe/Classifying_JWST-HST_galaxy_mergers_with_CNNs/Classifying_JWST-HST_galaxy_mergers_with_CNNs.html">Classifying JWST-HST galaxy mergers with CNNs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/hello-universe/Regressing_3D-HST_galaxy_redshift_with_decision_trees/Regressing_3D-HST_galaxy_redshift_with_decision_trees.html">Predicting galaxy redshift via regression on 3D-HST photometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/hello-universe/Classifying_PanSTARRS_sources_with_unsupervised_learning/Classifying_PanSTARRS_sources_with_unsupervised_learning.html">Classifying Pan-STARRS sources with unsupervised and supervised learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/hello-universe/Interpreting_CNNs/Interpreting_CNNs.html">Interpreting Convolutional Neural Networks</a></li>
 </ul>
 
     </div>
@@ -231,7 +240,7 @@
       
       
       
-      <li><a href="https://github.com/spacetelescope/jwst-pipeline-notebooks" target="_blank"
+      <li><a href="https://github.com/spacetelescope/hellouniverse" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -248,7 +257,7 @@
       
       
       
-      <li><a href="https://github.com/spacetelescope/jwst-pipeline-notebooks/issues/new?title=Issue%20on%20page%20%2Fdocs/how_to_move_files_dirs_between_repos_retaining_history.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/spacetelescope/hellouniverse/issues/new?title=Issue%20on%20page%20%2Fmigration-status.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -278,7 +287,7 @@
       
       
       
-      <li><a href="../_sources/docs/how_to_move_files_dirs_between_repos_retaining_history.md" target="_blank"
+      <li><a href="_sources/migration-status.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -362,7 +371,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>How to copy files and directories from one Git repository to another preserving revision histroy and source material path structure</h1>
+    <h1>Migration Status for notebook-ci-testing</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -372,11 +381,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assumptions-and-other-things-to-bear-in-mind-ahead-of-time">Assumptions and other things to bear in mind ahead of time</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-the-source-repository">In the source repository…</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-the-destination-repository">In the destination repository…</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#migration-details">Migration Details</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-migration-workflows">Pre-Migration Workflows</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#new-workflows">New Workflows</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-applied">Configuration Applied</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-checklist">Testing Checklist</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#migration-notes">Migration Notes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-steps">Next Steps</a></li>
 </ul>
             </nav>
         </div>
@@ -388,67 +399,61 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="how-to-copy-files-and-directories-from-one-git-repository-to-another-preserving-revision-histroy-and-source-material-path-structure">
-<h1>How to copy files and directories from one Git repository to another preserving revision histroy and source material path structure<a class="headerlink" href="#how-to-copy-files-and-directories-from-one-git-repository-to-another-preserving-revision-histroy-and-source-material-path-structure" title="Link to this heading">#</a></h1>
-<section id="assumptions-and-other-things-to-bear-in-mind-ahead-of-time">
-<h2>Assumptions and other things to bear in mind ahead of time<a class="headerlink" href="#assumptions-and-other-things-to-bear-in-mind-ahead-of-time" title="Link to this heading">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="migration-status-for-notebook-ci-testing">
+<h1>Migration Status for notebook-ci-testing<a class="headerlink" href="#migration-status-for-notebook-ci-testing" title="Link to this heading">#</a></h1>
+<section id="migration-details">
+<h2>Migration Details<a class="headerlink" href="#migration-details" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>I make use of <a class="reference external" href="https://github.com/newren/git-filter-repo">git-filter-repo</a></p></li>
-<li><p>I borrowed a bit from <a class="reference external" href="https://blog.billyc.io/how-to-copy-one-or-more-files-from-one-git-repo-to-another-and-keep-the-git-history/">Bill Cawtha’s</a> instructions on this.</p></li>
-<li><p>These instructions assume the source repository is named &lt;SOURCE REPO&gt; and the destination repository is named &lt;DEST REPO&gt;</p></li>
-<li><p>These instructions assume that repositories are on the <em>main</em> branch</p></li>
+<li><p><strong>Repository</strong>: spacetelescope/notebook-ci-testing</p></li>
+<li><p><strong>Migration Date</strong>: Mon Jun 23 14:48:10 EDT 2025</p></li>
+<li><p><strong>Actions Repository</strong>: spacetelescope/notebook-ci-actions</p></li>
+<li><p><strong>Branch</strong>: migrate</p></li>
 </ul>
-<section id="in-the-source-repository">
-<h3>In the source repository…<a class="headerlink" href="#in-the-source-repository" title="Link to this heading">#</a></h3>
+</section>
+<section id="pre-migration-workflows">
+<h2>Pre-Migration Workflows<a class="headerlink" href="#pre-migration-workflows" title="Link to this heading">#</a></h2>
+</section>
+<section id="new-workflows">
+<h2>New Workflows<a class="headerlink" href="#new-workflows" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>.github/workflows/docs-only.yml</p></li>
+<li><p>.github/workflows/notebook-ci-main.yml</p></li>
+<li><p>.github/workflows/notebook-ci-on-demand.yml</p></li>
+<li><p>.github/workflows/notebook-ci-pr.yml</p></li>
+</ul>
+</section>
+<section id="configuration-applied">
+<h2>Configuration Applied<a class="headerlink" href="#configuration-applied" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Default configuration</p></li>
+</ul>
+</section>
+<section id="testing-checklist">
+<h2>Testing Checklist<a class="headerlink" href="#testing-checklist" title="Link to this heading">#</a></h2>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Manual workflow dispatch test</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Pull request workflow test</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Documentation build test</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Repository-specific features test</p></li>
+</ul>
+</section>
+<section id="migration-notes">
+<h2>Migration Notes<a class="headerlink" href="#migration-notes" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Created by migration script on Mon Jun 23 14:48:10 EDT 2025</p></li>
+<li><p>Review and customize workflows as needed</p></li>
+<li><p>Test thoroughly before merging to main</p></li>
+</ul>
+</section>
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p>Create directory that will contain everything what will be moved</p></li>
+<li><p>Review generated workflows</p></li>
+<li><p>Test with workflow_dispatch</p></li>
+<li><p>Create test PR to verify triggers</p></li>
+<li><p>Update repository secrets if needed</p></li>
+<li><p>Merge after successful testing</p></li>
 </ol>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  &lt;SOURCE REPO&gt; $ mkdir stuff_to_move
-</pre></div>
-</div>
-<ol class="arabic simple" start="2">
-<li><p>Use <em>filter-repo</em> to move files and/or directories to the <em>stuff_to_move</em> directory, retaining revision history</p></li>
-</ol>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  &lt;SOURCE REPO&gt; $ git filter-repo --path-rename &lt;file or directory to move&gt;:stuff_to_move/.
-</pre></div>
-</div>
-<ul class="simple">
-<li><p><strong>NOTE:</strong> This step only works for a single file or directory at a time so multiple executions of this command need to be done for each file or directory to be moved.</p></li>
-</ul>
-<ol class="arabic simple" start="3">
-<li><p>Once everything is moved to <em>stuff_to_move</em>, filter out and remove all other files/directories and all unrelated revision history</p></li>
-</ol>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  &lt;SOURCE REPO&gt; $ git filter-repo --path stuff_to_move --refs refs/heads/main --force
-</pre></div>
-</div>
-</section>
-<section id="in-the-destination-repository">
-<h3>In the destination repository…<a class="headerlink" href="#in-the-destination-repository" title="Link to this heading">#</a></h3>
-<p>4: cd to the destination repository</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  &lt;SOURCE REPO&gt; $ cd ../&lt;DEST REPO&gt;
-</pre></div>
-</div>
-<p>5: Check out a new branch</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  &lt;DEST REPO&gt; $ git checkout -b filter-target
-</pre></div>
-</div>
-<p>6: Remote add and fetch the source repository</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  &lt;DEST REPO&gt; $ git remote add repo-source ../&lt;SOURCE REPO&gt;
-  &lt;DEST REPO&gt; $ git fetch repo-source
-</pre></div>
-</div>
-<p>7: Migrate items from &lt;SOURCE REPO&gt; into &lt;DEST REPO&gt;</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    &lt;DEST REPO&gt; $ git branch branch-source remotes/repo-source/main
-    &lt;DEST REPO&gt; $ git merge branch-source --allow-unrelated-histories
-</pre></div>
-</div>
-<p>8: Push the <em>filter-target</em> branch to remote <em>origin</em></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">git</span> <span class="n">push</span> <span class="o">-</span><span class="n">u</span> <span class="n">origin</span> <span class="nb">filter</span><span class="o">-</span><span class="n">target</span>
-</pre></div>
-</div>
-<p>…and that’s it. The result is the the <em>stuff_to_move</em> directory sitting in the top level of &lt;DEST REPO&gt; retaining it’s pre-migration directory structure. The revision history
-of all the migrated items has been inserted into &lt;DEST REPO&gt;’s history. The <em>filter-target</em> branch is stored in remote <em>origin</em> ready for more changes.</p>
-</section>
 </section>
 </section>
 
@@ -456,8 +461,8 @@ of all the migrated items has been inserted into &lt;DEST REPO&gt;’s history. 
     {
         requestKernel: true,
         binderOptions: {
-            repo: "spacetelescope/jwst-pipeline-notebooks",
-            ref: "main",
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
         },
         codeMirrorConfig: {
             theme: "abcdef",
@@ -465,7 +470,7 @@ of all the migrated items has been inserted into &lt;DEST REPO&gt;’s history. 
         },
         kernelOptions: {
             name: "python3",
-            path: "./docs"
+            path: "./."
         },
         predefinedOutput: true
     }
@@ -498,11 +503,13 @@ of all the migrated items has been inserted into &lt;DEST REPO&gt;’s history. 
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assumptions-and-other-things-to-bear-in-mind-ahead-of-time">Assumptions and other things to bear in mind ahead of time</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-the-source-repository">In the source repository…</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-the-destination-repository">In the destination repository…</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#migration-details">Migration Details</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-migration-workflows">Pre-Migration Workflows</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#new-workflows">New Workflows</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-applied">Configuration Applied</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-checklist">Testing Checklist</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#migration-notes">Migration Notes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-steps">Next Steps</a></li>
 </ul>
   </nav></div>
 
@@ -517,7 +524,7 @@ of all the migrated items has been inserted into &lt;DEST REPO&gt;’s history. 
   <div class="footer-item">
     
 <p class="component-author">
-By STScI
+By STScI Notebook Dev
 </p>
 
   </div>
@@ -527,7 +534,7 @@ By STScI
 
   <p class="copyright">
     
-      © Copyright 2024.
+      © Copyright 2022-2024.
       <br/>
     
   </p>
@@ -551,8 +558,8 @@ By STScI
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
