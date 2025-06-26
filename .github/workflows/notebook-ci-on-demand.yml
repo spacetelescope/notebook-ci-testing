@@ -1,8 +1,6 @@
 # Example workflow for on-demand notebook testing
 # Copy this file to your repository's .github/workflows/ directory
-
 name: Notebook CI - On Demand
-
 on:
   workflow_dispatch:
     inputs:
