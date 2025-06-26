@@ -53,10 +53,11 @@ on:
           - 'full'
 
 jobs:
-  trigger-check:
+  checkout:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Manual workflow triggered successfully."
+      - name: Checkout repository
+        uses: actions/checkout@v4
   on-demand-ci:
     uses: spacetelescope/notebook-ci-actions/.github/workflows/ci_pipeline.yml@dev-actions
     with:
