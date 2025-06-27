@@ -150,13 +150,13 @@ jobs:
           if [ ${#AFFECTED_DIRECTORIES[@]} -eq 0 ]; then
             affected_dirs_json="[]"
           else
-            affected_dirs_json=$(printf '%s\n' "${AFFECTED_DIRECTORIES[@]}" | jq -R . | jq -s .)
+            affected_dirs_json=$(printf '%s\n' "${AFFECTED_DIRECTORIES[@]}" | jq -R . | jq -s -c .)
           fi
           
           if [ ${#CHANGED_NOTEBOOKS[@]} -eq 0 ]; then
             changed_notebooks_json="[]"
           else
-            changed_notebooks_json=$(printf '%s\n' "${CHANGED_NOTEBOOKS[@]}" | jq -R . | jq -s .)
+            changed_notebooks_json=$(printf '%s\n' "${CHANGED_NOTEBOOKS[@]}" | jq -R . | jq -s -c .)
           fi
           
           echo "Affected directories: $affected_dirs_json"
@@ -264,7 +264,7 @@ jobs:
     if: |
       needs.detect-changes.outputs.notebooks-changed == 'true' && 
       needs.detect-changes.outputs.execution-strategy == 'full-repository'
-    uses: spacetelescope/notebook-ci-actions/.github/workflows/ci_pipeline.yml@dev-actions
+    uses: spacetelescope/notebook-ci-actions/.github/workflows/ci_pipeline.yml@main
     with:
       python-version: "3.11"
       execution-mode: "full"
@@ -297,10 +297,10 @@ jobs:
        needs.full-repository-ci.result == 'success' || 
        needs.full-repository-ci.result == 'skipped' || 
        needs.docs-only-rebuild.result == 'success')
-    uses: spacetelescope/notebook-ci-actions/.github/workflows/ci_html_builder.yml@dev-actions
+    uses: spacetelescope/notebook-ci-actions/.github/workflows/ci_html_builder.yml@main
     with:
       python-version: "3.11"
-      post-run-script: "scripts/jdaviz_image_replacement.sh"  # Optional, adjust per repo
+      #post-run-script: "scripts/jdaviz_image_replacement.sh"  # Optional, adjust per repo
     secrets:
       github-token: ${{ secrets.GITHUB_TOKEN }}
 
