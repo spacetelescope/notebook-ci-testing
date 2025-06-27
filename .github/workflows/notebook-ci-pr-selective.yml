@@ -293,7 +293,7 @@ jobs:
     uses: spacetelescope/notebook-ci-actions/.github/workflows/ci_html_builder.yml@dev-actions
     with:
       python-version: "3.11"
-      post-run-script: "scripts/jdaviz_image_replacement.sh"  # Optional, adjust per repo
+      # post-run-script: "scripts/jdaviz_image_replacement.sh"  # Optional, adjust per repo
     secrets:
       github-token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -310,7 +310,7 @@ jobs:
     uses: spacetelescope/notebook-ci-actions/.github/workflows/ci_html_builder.yml@dev-actions
     with:
       python-version: "3.11"
-      post-run-script: "scripts/jdaviz_image_replacement.sh"  # Optional, adjust per repo
+      #post-run-script: "scripts/jdaviz_image_replacement.sh"  # Optional, adjust per repo
     secrets:
       github-token: ${{ secrets.GITHUB_TOKEN }}
 
