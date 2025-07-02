@@ -9,36 +9,27 @@ on:
     paths:
       - 'notebooks/**'
       - 'requirements.txt'
-      - '.github/workflows/**'
+      - 'pyproject.toml'
+      - '*.yml'
+      - '*.yaml'
+      - '*.md'
+      - '*.html'
+      - '*.css'
+      - '*.js'
 
 jobs:
   notebook-ci:
     uses: spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@dev-actions-v2
     with:
-      # Repository-specific configuration
-      notebook_path: 'notebooks'
-      python_version: '3.11'
-      
-      # PR-specific execution settings
-      execution_mode: 'cache_only'
-      notebook_pattern: ''
-      
-      # Environment settings
-      environment_file: 'requirements.txt'
-      conda_environment_file: ''
-      
-      # Security and validation
-      security_check: true
-      notebook_validation: true
-      
-      # No documentation generation for PRs
-      generate_docs: false
-      
-      # Artifact settings
-      artifact_retention_days: 7
-      
-      # Performance settings
-      timeout_minutes: 30
-      max_parallel: 3
-      
-    secrets: inherit
+      execution-mode: 'pr'
+      python-version: '3.11'                    # Adjust as needed
+      # conda-environment: 'hstcal'             # Uncomment and adjust for custom conda env
+      # custom-requirements: 'custom-reqs.txt'  # Uncomment for custom requirements
+      enable-validation: true
+      enable-security: true
+      enable-execution: true
+      enable-storage: true                      # Store outputs to gh-storage on PR
+      enable-html-build: false                  # Don't build HTML docs on PR
+    secrets:
+      CASJOBS_USERID: ${{ secrets.CASJOBS_USERID }}
+      CASJOBS_PW: ${{ secrets.CASJOBS_PW }}
