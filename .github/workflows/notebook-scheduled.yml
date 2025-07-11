@@ -29,7 +29,7 @@ jobs:
       notebook_validation: true
       
       # Documentation generation
-      generate_docs: true
+      generate_docs: false
       docs_artifact: 'hellouniverse-scheduled-docs'
       
       # Artifact settings
