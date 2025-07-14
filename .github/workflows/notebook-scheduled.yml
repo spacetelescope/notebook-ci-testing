@@ -4,9 +4,10 @@
 name: Notebook CI - Scheduled
 
 on:
+  workflow_dispatch: # For testing
   # Run weekly on Sundays at 2 AM UTC
   schedule:
-    - cron: '20 19 * * *'
+  - cron: '20 19 * * *'
 
 jobs:
   notebook-ci:
