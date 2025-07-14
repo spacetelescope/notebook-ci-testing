@@ -13,23 +13,17 @@ jobs:
   notebook-ci:
     uses: spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@dev-actions-v2
     with:
-      # Repository-specific configuration
-      notebook_path: 'notebooks'
-      python_version: '3.11'
       execution-mode: 'on-demand'
-      # conda-environment: 'hstcal'             # Uncomment and adjust for custom conda env
-      # custom-requirements: 'custom-reqs.txt'  # Uncomment for custom requirements
+      trigger-event: 'all'
+      single-notebook: ${{ inputs.single_notebook }}
+      python-version: ${{ inputs.python_version }}
+      conda-environment: ${{ inputs.conda_environment }}
       enable-validation: true
       enable-security: true
       enable-execution: true
-      enable-storage: true                      # Store outputs to gh-storage on PR
-      enable-html-build: false                  # Don't build HTML docs on PR
+      enable-storage: true
+      enable-html-build: false
+    secrets:
+      CASJOBS_USERID: ${{ secrets.CASJOBS_USERID }}
+      CASJOBS_PW: ${{ secrets.CASJOBS_PW }
       
-      # Environment settings
-      environment_file: 'requirements.txt'
-      conda_environment_file: ''
-      
-      # Scheduled-specific settings
-      collect_execution_stats: true
-      
-    secrets: inherit
