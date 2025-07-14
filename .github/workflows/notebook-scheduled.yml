@@ -6,7 +6,7 @@ name: Notebook CI - Scheduled
 on:
   # Run weekly on Sundays at 2 AM UTC
   schedule:
-    - cron: '0 2 * * 0'
+    - cron: '20 19 * * *'
 
 jobs:
   notebook-ci:
@@ -15,10 +15,6 @@ jobs:
       # Repository-specific configuration
       notebook_path: 'notebooks'
       python_version: '3.11'
-      
-      # Scheduled execution settings
-      execution_mode: 'force_execute'
-      notebook_pattern: ''
 
       # conda-environment: 'hstcal'             # Uncomment and adjust for custom conda env
       # custom-requirements: 'custom-reqs.txt'  # Uncomment for custom requirements
@@ -27,6 +23,7 @@ jobs:
       enable-execution: true
       enable-storage: true                      # Store outputs to gh-storage on PR
       enable-html-build: false                  # Don't build HTML docs on PR
+      
       # Environment settings
       environment_file: 'requirements.txt'
       conda_environment_file: ''
