@@ -25,5 +25,5 @@ jobs:
       enable-html-build: false
     secrets:
       CASJOBS_USERID: ${{ secrets.CASJOBS_USERID }}
-      CASJOBS_PW: ${{ secrets.CASJOBS_PW }
+      CASJOBS_PW: ${{ secrets.CASJOBS_PW }}
       
