@@ -15,9 +15,9 @@ jobs:
     with:
       execution-mode: 'on-demand'
       trigger-event: 'all'
-      single-notebook: ${{ inputs.single_notebook }}
-      python-version: ${{ inputs.python_version }}
-      conda-environment: ${{ inputs.conda_environment }}
+      #single-notebook: ${{ inputs.single_notebook }}
+      python-version: '3.11'
+      #conda-environment: ${{ inputs.conda_environment }}
       enable-validation: true
       enable-security: true
       enable-execution: true
