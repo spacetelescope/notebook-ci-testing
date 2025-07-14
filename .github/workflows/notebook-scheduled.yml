@@ -16,7 +16,7 @@ jobs:
       # Repository-specific configuration
       notebook_path: 'notebooks'
       python_version: '3.11'
-
+      execution-mode: 'on-demand'
       # conda-environment: 'hstcal'             # Uncomment and adjust for custom conda env
       # custom-requirements: 'custom-reqs.txt'  # Uncomment for custom requirements
       enable-validation: true
