@@ -2,8 +2,7 @@
 # Copy this file to your repository's .github/workflows/ directory
 # This workflow provides on-demand execution options with various configurations
 
-# name: Notebook CI - On-Demand Actions
-name: Notebook CI ${{ inputs.action_type && format(' [{0}]', inputs.action_type) || '' }}
+name: Notebook CI - On-Demand Actions
 
 on:
   workflow_dispatch:
@@ -51,7 +50,7 @@ on:
         required: false
         type: boolean
         default: false
-
+run-name: "Notebook CI - ${{ inputs.action_type }}"
 jobs:
   validate-all:
     if: inputs.action_type == 'validate-all'
