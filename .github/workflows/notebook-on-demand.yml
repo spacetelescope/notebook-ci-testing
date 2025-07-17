@@ -2,7 +2,10 @@
 # Copy this file to your repository's .github/workflows/ directory
 # This workflow provides on-demand execution options with various configurations
 
-name: Notebook CI - On-Demand Actions
+# name: Notebook CI - On-Demand Actions
+name: >
+  Notebook CI 
+  ${{ github.event_name == 'workflow_dispatch' && format('[{0}]', inputs.action_type) || '' }}
 
 on:
   workflow_dispatch:
