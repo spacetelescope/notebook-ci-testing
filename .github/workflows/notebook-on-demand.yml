@@ -13,13 +13,7 @@ on:
         type: choice
         options:
           - 'validate-all'
-          - 'validate-stage1'
-          - 'validate-stage2' 
-          - 'validate-stage3'
           - 'execute-all'
-          - 'execute-stage1'
-          - 'execute-stage2'
-          - 'execute-stage3'
           - 'execute-single'
           - 'security-scan-all'
           - 'performance-benchmark'

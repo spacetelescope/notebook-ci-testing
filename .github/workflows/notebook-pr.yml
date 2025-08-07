@@ -57,10 +57,6 @@ jobs:
       # Custom Runner Configuration
       custom-runner-config: true   # Use ci_config.txt for runner selection
       
-      # Performance Settings - Balanced for PR feedback speed
-      timeout-minutes: 120         # 2 hours max for PR validation
-      max-parallel: 2              # Allow some parallelism for faster feedback
-      
       # Post-processing
       post-processing-script: ''
       
