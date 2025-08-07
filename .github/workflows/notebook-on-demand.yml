@@ -46,11 +46,11 @@ on:
         type: string
         default: '3.11'
         
-      conda_environment:
-        description: 'Conda environment'
-        required: false
-        type: string
-        default: 'stenv'
+      #conda_environment:
+      #  description: 'Conda environment'
+      #  required: false
+      #  type: string
+      #  default: 'stenv'
         
       runner_override:
         description: 'Override runner selection'
@@ -236,3 +236,4 @@ jobs:
     secrets:
       CASJOBS_USERID: ${{ secrets.CASJOBS_USERID }}
       CASJOBS_PW: ${{ secrets.CASJOBS_PW }}
+
