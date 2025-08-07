@@ -50,6 +50,38 @@ Copy the example `ci_config.txt` to your repository root:
 cp examples/jwst-pipeline-ci_config.txt ci_config.txt
 ```
 
+#### Editing the Configuration File
+
+The `ci_config.txt` file maps notebooks to appropriate runners:
+
+```ini
+# Light tutorials
+notebooks/tutorials/jwst_pipeline_overview.ipynb:ubuntu-latest
+
+# Moderate processing
+notebooks/NIRCam/stage1/nircam_stage1_imaging.ipynb:jwst-pipeline-notebooks-16gb
+
+# Heavy processing  
+notebooks/MIRI/stage2/miri_stage2_mrs.ipynb:jwst-pipeline-notebooks-64gb
+```
+
+**Configuration format:**
+
+- One mapping per line: `notebook_path:runner_label`
+- Comments supported with `#`
+- Wildcards supported: `notebooks/tutorials/*.ipynb:ubuntu-latest`
+- Relative paths from repository root
+
+**Runner recommendations:**
+
+- `ubuntu-latest`: Tutorials, light analysis (< 2GB memory)
+- `jwst-pipeline-notebooks-16gb`: Stage 1 processing, moderate analysis
+- `jwst-pipeline-notebooks-32gb`: Stage 2 processing, complex analysis  
+- `jwst-pipeline-notebooks-64gb`: Stage 3 processing, large datasets
+- `jwst-pipeline-notebooks-128gb`: Performance testing, extreme cases
+
+For detailed configuration guidance, see [Custom Runner Configuration Guide](../../docs/custom-runner-configuration.md).
+
 ### 3. Configure Repository Secrets
 
 Add the following secrets to your repository:

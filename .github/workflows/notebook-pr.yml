@@ -1,9 +1,7 @@
 # Notebook PR Validation for JWST Pipeline Notebooks
 # Copy this file to your repository's .github/workflows/ directory
 
-name: >
-  Notebook PR - JWST Pipeline
-  ${{ github.event_name == 'workflow_dispatch' && format('[{0}]', inputs.execution_mode) || '[PR Validation]' }}
+name: Notebook PR - JWST Pipeline
 
 on:
   # Run on pull requests to main branch

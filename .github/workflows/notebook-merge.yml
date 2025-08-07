@@ -1,9 +1,7 @@
 # Notebook Merge and Deploy for JWST Pipeline Notebooks
 # Copy this file to your repository's .github/workflows/ directory
 
-name: >
-  Notebook Merge - JWST Pipeline
-  ${{ github.event_name == 'workflow_dispatch' && format('[{0}]', inputs.rebuild_all) || '[Build & Deploy]' }}
+name: Notebook Merge - JWST Pipeline
 
 on:
   # Run on pushes to main branch

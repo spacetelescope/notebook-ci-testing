@@ -1,9 +1,7 @@
 # Scheduled Maintenance for JWST Pipeline Notebooks
 # Copy this file to your repository's .github/workflows/ directory
 
-name: >
-  Notebook Scheduled - JWST Pipeline
-  ${{ github.event_name == 'workflow_dispatch' && format('[{0}]', inputs.maintenance_type) || '[Scheduled Maintenance]' }}
+name: Notebook Scheduled - JWST Pipeline
 
 on:
   # Run weekly on Sundays at 2 AM UTC
