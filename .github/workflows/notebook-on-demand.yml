@@ -130,6 +130,7 @@ jobs:
       execution-mode: 'on-demand'
       trigger-event: 'execute'
       single-notebook: ${{ inputs.single_notebook }}
+      affected-directories: '[]'  # Let the workflow auto-detect based on single-notebook
       python-version: ${{ inputs.python_version }}
       conda-environment: ${{ inputs.conda_environment }}
       enable-validation: false
