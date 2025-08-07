@@ -55,9 +55,6 @@ jobs:
       # Custom Runner Configuration
       custom-runner-config: true   # Use ci_config.txt for any needed processing
       
-      # Performance Settings - Allow longer processing for complete build
-      timeout-minutes: 240         # 4 hours for full documentation build
-      max-parallel: 1              # Conservative for production builds
       
       # Post-processing
       post-processing-script: 'scripts/post-build-jwst.sh'  # Optional JWST-specific processing
@@ -96,9 +93,6 @@ jobs:
       # Custom Runner Configuration - Force high-performance runners
       custom-runner-config: true
       
-      # Performance Settings - Extended time for benchmarks
-      timeout-minutes: 300         # 5 hours for intensive benchmarks
-      max-parallel: 1              # Sequential execution for accurate benchmarks
       
     secrets:
       CASJOBS_USERID: ${{ secrets.CASJOBS_USERID }}

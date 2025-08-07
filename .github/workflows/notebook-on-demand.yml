@@ -93,68 +93,12 @@ jobs:
       enable-storage: false
       enable-html-build: false
       custom-runner-config: ${{ inputs.runner_override == 'auto' }}
-      timeout-minutes: 120
-      max-parallel: 3
     secrets:
       CASJOBS_USERID: ${{ secrets.CASJOBS_USERID }}
       CASJOBS_PW: ${{ secrets.CASJOBS_PW }}
 
-  validate-stage1:
-    if: inputs.action_type == 'validate-stage1'
-    uses: spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@dev-actions-v2-pipeline
-    with:
-      execution-mode: 'on-demand'
-      trigger-event: 'validate'
-      python-version: ${{ inputs.python_version }}
-      conda-environment: ${{ inputs.conda_environment }}
-      affected-directories: ${{ inputs.instrument_filter != 'all' && format('["notebooks/{0}/stage1"]', inputs.instrument_filter) || '["notebooks/NIRCam/stage1", "notebooks/NIRSpec/stage1", "notebooks/MIRI/stage1", "notebooks/NIRISS/stage1", "notebooks/FGS/stage1"]' }}
-      enable-validation: true
-      enable-security: false
-      enable-execution: false
-      enable-storage: false
-      enable-html-build: false
-      custom-runner-config: ${{ inputs.runner_override == 'auto' }}
-    secrets:
-      CASJOBS_USERID: ${{ secrets.CASJOBS_USERID }}
-      CASJOBS_PW: ${{ secrets.CASJOBS_PW }}
 
-  validate-stage2:
-    if: inputs.action_type == 'validate-stage2'
-    uses: spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@dev-actions-v2-pipeline
-    with:
-      execution-mode: 'on-demand'
-      trigger-event: 'validate'
-      python-version: ${{ inputs.python_version }}
-      conda-environment: ${{ inputs.conda_environment }}
-      affected-directories: ${{ inputs.instrument_filter != 'all' && format('["notebooks/{0}/stage2"]', inputs.instrument_filter) || '["notebooks/NIRCam/stage2", "notebooks/NIRSpec/stage2", "notebooks/MIRI/stage2", "notebooks/NIRISS/stage2"]' }}
-      enable-validation: true
-      enable-security: false
-      enable-execution: false
-      enable-storage: false
-      enable-html-build: false
-      custom-runner-config: ${{ inputs.runner_override == 'auto' }}
-    secrets:
-      CASJOBS_USERID: ${{ secrets.CASJOBS_USERID }}
-      CASJOBS_PW: ${{ secrets.CASJOBS_PW }}
 
-  validate-stage3:
-    if: inputs.action_type == 'validate-stage3'
-    uses: spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@dev-actions-v2-pipeline
-    with:
-      execution-mode: 'on-demand'
-      trigger-event: 'validate'
-      python-version: ${{ inputs.python_version }}
-      conda-environment: ${{ inputs.conda_environment }}
-      affected-directories: ${{ inputs.instrument_filter != 'all' && format('["notebooks/{0}/stage3"]', inputs.instrument_filter) || '["notebooks/NIRCam/stage3", "notebooks/NIRSpec/stage3", "notebooks/MIRI/stage3"]' }}
-      enable-validation: true
-      enable-security: false
-      enable-execution: false
-      enable-storage: false
-      enable-html-build: false
-      custom-runner-config: ${{ inputs.runner_override == 'auto' }}
-    secrets:
-      CASJOBS_USERID: ${{ secrets.CASJOBS_USERID }}
-      CASJOBS_PW: ${{ secrets.CASJOBS_PW }}
 
   # Execution Actions  
   execute-all:
@@ -172,71 +116,12 @@ jobs:
       enable-storage: true
       enable-html-build: false
       custom-runner-config: ${{ inputs.runner_override == 'auto' }}
-      timeout-minutes: 300
-      max-parallel: 1
     secrets:
       CASJOBS_USERID: ${{ secrets.CASJOBS_USERID }}
       CASJOBS_PW: ${{ secrets.CASJOBS_PW }}
 
-  execute-stage1:
-    if: inputs.action_type == 'execute-stage1'
-    uses: spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@dev-actions-v2-pipeline
-    with:
-      execution-mode: 'on-demand'
-      trigger-event: 'execute'
-      python-version: ${{ inputs.python_version }}
-      conda-environment: ${{ inputs.conda_environment }}
-      affected-directories: ${{ inputs.instrument_filter != 'all' && format('["notebooks/{0}/stage1"]', inputs.instrument_filter) || '["notebooks/NIRCam/stage1", "notebooks/NIRSpec/stage1", "notebooks/MIRI/stage1", "notebooks/NIRISS/stage1", "notebooks/FGS/stage1"]' }}
-      enable-validation: false
-      enable-security: false
-      enable-execution: true
-      enable-storage: true
-      enable-html-build: false
-      custom-runner-config: ${{ inputs.runner_override == 'auto' }}
-      timeout-minutes: 180
-    secrets:
-      CASJOBS_USERID: ${{ secrets.CASJOBS_USERID }}
-      CASJOBS_PW: ${{ secrets.CASJOBS_PW }}
 
-  execute-stage2:
-    if: inputs.action_type == 'execute-stage2'
-    uses: spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@dev-actions-v2-pipeline
-    with:
-      execution-mode: 'on-demand'
-      trigger-event: 'execute'
-      python-version: ${{ inputs.python_version }}
-      conda-environment: ${{ inputs.conda_environment }}
-      affected-directories: ${{ inputs.instrument_filter != 'all' && format('["notebooks/{0}/stage2"]', inputs.instrument_filter) || '["notebooks/NIRCam/stage2", "notebooks/NIRSpec/stage2", "notebooks/MIRI/stage2", "notebooks/NIRISS/stage2"]' }}
-      enable-validation: false
-      enable-security: false
-      enable-execution: true
-      enable-storage: true
-      enable-html-build: false
-      custom-runner-config: ${{ inputs.runner_override == 'auto' }}
-      timeout-minutes: 240
-    secrets:
-      CASJOBS_USERID: ${{ secrets.CASJOBS_USERID }}
-      CASJOBS_PW: ${{ secrets.CASJOBS_PW }}
 
-  execute-stage3:
-    if: inputs.action_type == 'execute-stage3'
-    uses: spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@dev-actions-v2-pipeline
-    with:
-      execution-mode: 'on-demand'
-      trigger-event: 'execute'
-      python-version: ${{ inputs.python_version }}
-      conda-environment: ${{ inputs.conda_environment }}
-      affected-directories: ${{ inputs.instrument_filter != 'all' && format('["notebooks/{0}/stage3"]', inputs.instrument_filter) || '["notebooks/NIRCam/stage3", "notebooks/NIRSpec/stage3", "notebooks/MIRI/stage3"]' }}
-      enable-validation: false
-      enable-security: false
-      enable-execution: true
-      enable-storage: true
-      enable-html-build: false
-      custom-runner-config: ${{ inputs.runner_override == 'auto' }}
-      timeout-minutes: 300
-    secrets:
-      CASJOBS_USERID: ${{ secrets.CASJOBS_USERID }}
-      CASJOBS_PW: ${{ secrets.CASJOBS_PW }}
 
   execute-single:
     if: inputs.action_type == 'execute-single'
@@ -253,7 +138,6 @@ jobs:
       enable-storage: true
       enable-html-build: false
       custom-runner-config: ${{ inputs.runner_override == 'auto' }}
-      timeout-minutes: 120
     secrets:
       CASJOBS_USERID: ${{ secrets.CASJOBS_USERID }}
       CASJOBS_PW: ${{ secrets.CASJOBS_PW }}
@@ -274,8 +158,6 @@ jobs:
       enable-storage: false
       enable-html-build: false
       custom-runner-config: false
-      timeout-minutes: 90
-      max-parallel: 4
     secrets:
       CASJOBS_USERID: ${{ secrets.CASJOBS_USERID }}
       CASJOBS_PW: ${{ secrets.CASJOBS_PW }}
@@ -295,8 +177,6 @@ jobs:
       enable-storage: true
       enable-html-build: false
       custom-runner-config: true  # Force use of high-performance runners
-      timeout-minutes: 360
-      max-parallel: 1
     secrets:
       CASJOBS_USERID: ${{ secrets.CASJOBS_USERID }}
       CASJOBS_PW: ${{ secrets.CASJOBS_PW }}
@@ -315,7 +195,6 @@ jobs:
       enable-storage: false
       enable-html-build: true
       custom-runner-config: false
-      timeout-minutes: 120
     secrets:
       CASJOBS_USERID: ${{ secrets.CASJOBS_USERID }}
       CASJOBS_PW: ${{ secrets.CASJOBS_PW }}
@@ -354,7 +233,6 @@ jobs:
       enable-storage: false
       enable-html-build: false
       custom-runner-config: ${{ inputs.runner_override == 'auto' }}
-      timeout-minutes: 90
     secrets:
       CASJOBS_USERID: ${{ secrets.CASJOBS_USERID }}
       CASJOBS_PW: ${{ secrets.CASJOBS_PW }}

@@ -57,9 +57,6 @@ jobs:
       # Custom Runner Configuration
       custom-runner-config: true   # Use appropriate runners for validation
       
-      # Performance Settings - Allow time for full repository scan
-      timeout-minutes: 180         # 3 hours for full validation
-      max-parallel: 3              # Higher parallelism for scheduled runs
       
       # Deprecation Management
       deprecation-days: 60
@@ -84,8 +81,6 @@ jobs:
       enable-storage: false
       enable-html-build: false
       custom-runner-config: false  # Use standard runners for security scans
-      timeout-minutes: 120
-      max-parallel: 4
     secrets:
       CASJOBS_USERID: ${{ secrets.CASJOBS_USERID }}
       CASJOBS_PW: ${{ secrets.CASJOBS_PW }}
@@ -106,8 +101,6 @@ jobs:
       enable-storage: true         # Store benchmark results
       enable-html-build: false
       custom-runner-config: true   # Use high-performance runners
-      timeout-minutes: 360         # 6 hours for comprehensive benchmarks
-      max-parallel: 1              # Sequential for accurate performance measurement
     secrets:
       CASJOBS_USERID: ${{ secrets.CASJOBS_USERID }}
       CASJOBS_PW: ${{ secrets.CASJOBS_PW }}
@@ -128,7 +121,6 @@ jobs:
       enable-html-build: true      # Rebuild docs if deprecations are processed
       custom-runner-config: false  # Standard runners for deprecation management
       deprecation-days: 60        # Check for notebooks deprecated 60+ days ago
-      timeout-minutes: 60
     secrets:
       CASJOBS_USERID: ${{ secrets.CASJOBS_USERID }}
       CASJOBS_PW: ${{ secrets.CASJOBS_PW }}
@@ -149,8 +141,6 @@ jobs:
       enable-storage: false
       enable-html-build: false
       custom-runner-config: true
-      timeout-minutes: 120
-      max-parallel: 2
     secrets:
       CASJOBS_USERID: ${{ secrets.CASJOBS_USERID }}
       CASJOBS_PW: ${{ secrets.CASJOBS_PW }}
