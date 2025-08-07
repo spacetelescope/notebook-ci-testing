@@ -47,17 +47,17 @@ on:
         default: '3.11'
 
         
-      runner_override:
-        description: 'Override runner selection'
-        required: false
-        type: choice
-        options:
-          - 'auto'
-          - 'ubuntu-latest'
-          - 'jwst-pipeline-notebooks-16gb'
-          - 'jwst-pipeline-notebooks-32gb'
-          - 'jwst-pipeline-notebooks-64gb'
-        default: 'auto'
+     # runner_override:
+     #   description: 'Override runner selection'
+     #   required: false
+     #   type: choice
+     #   options:
+     #     - 'auto'
+     #     - 'ubuntu-latest'
+     #     - 'jwst-pipeline-notebooks-16gb'
+     #     - 'jwst-pipeline-notebooks-32gb'
+     #     - 'jwst-pipeline-notebooks-64gb'
+     #   default: 'auto'
         
       deprecation_days:
         description: 'Days until deprecation (for deprecate action)'
@@ -228,9 +228,10 @@ jobs:
       enable-execution: true
       enable-storage: false
       enable-html-build: false
-      custom-runner-config: ${{ inputs.runner_override == 'auto' }}
+      custom-runner-config: true
     secrets:
       CASJOBS_USERID: ${{ secrets.CASJOBS_USERID }}
       CASJOBS_PW: ${{ secrets.CASJOBS_PW }}
+
 
 
