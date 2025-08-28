@@ -75,7 +75,7 @@ jobs:
   # Validation Actions
   validate-all:
     if: inputs.action_type == 'validate-all'
-    uses: spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@dev-actions-v2-pipeline
+    uses: spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@v1.0.0
     with:
       execution-mode: 'on-demand'
       trigger-event: 'validate'
@@ -98,7 +98,7 @@ jobs:
   # Execution Actions  
   execute-all:
     if: inputs.action_type == 'execute-all'
-    uses: spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@dev-actions-v2-pipeline
+    uses: spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@v1.0.0
     with:
       execution-mode: 'on-demand'
       trigger-event: 'execute'
@@ -120,7 +120,7 @@ jobs:
 
   execute-single:
     if: inputs.action_type == 'execute-single'
-    uses: spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@dev-actions-v2-pipeline
+    uses: spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@v1.0.0
     with:
       execution-mode: 'on-demand'
       trigger-event: 'execute'
@@ -141,7 +141,7 @@ jobs:
   # Security and Performance Actions
   security-scan-all:
     if: inputs.action_type == 'security-scan-all'
-    uses: spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@dev-actions-v2-pipeline
+    uses: spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@v1.0.0
     with:
       execution-mode: 'on-demand'
       trigger-event: 'security'
@@ -160,7 +160,7 @@ jobs:
 
   performance-benchmark:
     if: inputs.action_type == 'performance-benchmark'
-    uses: spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@dev-actions-v2-pipeline
+    uses: spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@v1.0.0
     with:
       execution-mode: 'on-demand'
       trigger-event: 'execute'
@@ -180,7 +180,7 @@ jobs:
   # Documentation and Maintenance Actions
   build-docs-only:
     if: inputs.action_type == 'build-docs-only'
-    uses: spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@dev-actions-v2-pipeline
+    uses: spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@v1.0.0
     with:
       execution-mode: 'on-demand'
       trigger-event: 'html'
@@ -197,7 +197,7 @@ jobs:
 
   deprecate-notebook:
     if: inputs.action_type == 'deprecate-notebook'
-    uses: spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@dev-actions-v2-pipeline
+    uses: spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@v1.0.0
     with:
       execution-mode: 'on-demand'
       trigger-event: 'deprecate'
@@ -216,7 +216,7 @@ jobs:
 
   environment-test:
     if: inputs.action_type == 'environment-test'
-    uses: spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@dev-actions-v2-pipeline
+    uses: spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@v1.0.0
     with:
       execution-mode: 'on-demand'
       trigger-event: 'execute'
@@ -232,6 +232,7 @@ jobs:
     secrets:
       CASJOBS_USERID: ${{ secrets.CASJOBS_USERID }}
       CASJOBS_PW: ${{ secrets.CASJOBS_PW }}
+
 
 
 
