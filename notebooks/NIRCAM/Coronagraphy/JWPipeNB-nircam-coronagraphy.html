@@ -1,15 +1,14 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>NIRCam Coronagraphy Pipeline Notebook &#8212; Hello Universe!</title>
+    <title>NIRCam Coronagraphy Pipeline Notebook &#8212; JWST Pipeline Notebooks</title>
   
   
   
@@ -29,44 +28,42 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/table.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/main.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/table.css?v=cd6c26fb" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/main.css?v=b44a18d9" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/clipboard.min.js"></script>
-    <script src="../../../_static/copybutton.js"></script>
-    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/NIRCAM/Coronagraphy/JWPipeNB-nircam-coronagraphy';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="NIRCam Imaging Pipeline Notebook" href="../Imaging/JWPipeNB-nircam-imaging.html" />
+    <link rel="prev" title="MIRI MRS Pipeline Notebook" href="../../MIRI/MRS/JWPipeNB-MIRI-MRS.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -129,8 +126,6 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -149,38 +144,72 @@ const thebe_selector_output = ".output, .cell_output"
     
   
 
-<a class="navbar-brand logo" href="../../../intro.html">
+<a class="navbar-brand logo" href="../../../README.html">
   
   
   
   
   
-    
-    
-      
-    
-    
-    <img src="../../../_static/HelloUniverseLogo.png" class="logo__image only-light" alt="Hello Universe! - Home"/>
-    <script>document.write(`<img src="../../../_static/HelloUniverseLogo.png" class="logo__image only-dark" alt="Hello Universe! - Home"/>`);</script>
   
+    <p class="title logo__title">JWST Pipeline Notebooks</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="../../../intro.html">
-                    Hello Universe
+                <a class="reference internal" href="../../../README.html">
+                    Scripts Directory
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../hello-universe/Classifying_TESS_flares_with_CNNs/Classifying_TESS_flares_with_CNNs.html">Classifying flaring stars with stella: a convolutional neural network for TESS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../hello-universe/Classifying_JWST-HST_galaxy_mergers_with_CNNs/Classifying_JWST-HST_galaxy_mergers_with_CNNs.html">Classifying JWST-HST galaxy mergers with CNNs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../hello-universe/Regressing_3D-HST_galaxy_redshift_with_decision_trees/Regressing_3D-HST_galaxy_redshift_with_decision_trees.html">Predicting galaxy redshift via regression on 3D-HST photometry</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../hello-universe/Classifying_PanSTARRS_sources_with_unsupervised_learning/Classifying_PanSTARRS_sources_with_unsupervised_learning.html">Classifying Pan-STARRS sources with unsupervised and supervised learning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../hello-universe/Interpreting_CNNs/Interpreting_CNNs.html">Interpreting Convolutional Neural Networks</a></li>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">MIRI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../MIRI/Coronagraphy/JWPipeNB-MIRI-Coron.html">MIRI Coronagraphy Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MIRI/Imaging/JWPipeNB-MIRI-imaging.html">MIRI Imaging Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MIRI/Imaging-TSO/JWPipeNB-MIRI-imaging-TSO.html">MIRI Imaging TSO Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MIRI/LRS-slit/JWPipeNB-MIRI-LRS-slit.html">MIRI LRS Slit Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MIRI/LRS-slitless-TSO/JWPipeNB-MIRI-LRS-slitless-TSO.html">MIRI LRS Slitless TSO Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MIRI/MRS/JWPipeNB-MIRI-MRS.html">MIRI MRS Notebook</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">NIRCAM</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">NIRCam Coronagraphy Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Imaging/JWPipeNB-nircam-imaging.html">NIRCam Imaging Notebook</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">NIRISS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../NIRISS/AMI/JWPipeNB-niriss-ami.html">NIRISS AMI Pipeline Notebook</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../NIRISS/Imaging/JWPipeNB-niriss-imaging.html">NIRISS Imaging Pipeline Notebook</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">NIRSpec</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../NIRSPEC/BOTS/JWPipeNB-NIRSpec-BOTS.html">NIRSpec BOTS Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NIRSPEC/FSlit/JWPipeNB-NIRSpec-FS.html">NIRSpec Fixed Slit Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NIRSPEC/IFU/JWPipeNB-NIRSpec-IFU.html">NIRSpec IFU Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NIRSPEC/MOS/JWPipeNB-NIRSpec-MOS.html">NIRSpec MOS Notebook</a></li>
 </ul>
 
     </div>
@@ -210,9 +239,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -227,6 +256,37 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
 <div class="dropdown dropdown-source-buttons">
   <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
     <i class="fab fa-github"></i>
@@ -235,7 +295,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/spacetelescope/hellouniverse" target="_blank"
+      <li><a href="https://github.com/spacetelescope/jwst-pipeline-notebooks" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -252,7 +312,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/spacetelescope/hellouniverse/issues/new?title=Issue%20on%20page%20%2Fnotebooks/NIRCAM/Coronagraphy/JWPipeNB-nircam-coronagraphy.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/spacetelescope/jwst-pipeline-notebooks/issues/new?title=Issue%20on%20page%20%2Fnotebooks/NIRCAM/Coronagraphy/JWPipeNB-nircam-coronagraphy.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -353,9 +413,9 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -412,8 +472,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <img style="float: center;" src='https://github.com/spacetelescope/jwst-pipeline-notebooks/raw/main/_static/stsci_header.png' alt="stsci_logo" width="900px"/> <section class="tex2jax_ignore mathjax_ignore" id="nircam-coronagraphy-pipeline-notebook">
-<h1>NIRCam Coronagraphy Pipeline Notebook<a class="headerlink" href="#nircam-coronagraphy-pipeline-notebook" title="Permalink to this heading">#</a></h1>
+  <a class="reference internal image-reference" href="https://github.com/spacetelescope/jwst-pipeline-notebooks/raw/main/_static/stsci_header.png"><img alt="stsci_logo" src="https://github.com/spacetelescope/jwst-pipeline-notebooks/raw/main/_static/stsci_header.png" style="width: 900px;" />
+</a>
+<section id="nircam-coronagraphy-pipeline-notebook">
+<h1>NIRCam Coronagraphy Pipeline Notebook<a class="headerlink" href="#nircam-coronagraphy-pipeline-notebook" title="Link to this heading">#</a></h1>
 <p><strong>Authors</strong>: B. Sunnquist, based on the NIRISS/NIRCam imaging notebooks by R. Diaz and B. Hilbert<br>
 <strong>Last Updated</strong>: July 16, 2025<br>
 <strong>Pipeline Version</strong>: 1.19.1 (Build 12.0)</p>
@@ -422,7 +484,7 @@ This notebook provides a framework for processing generic Near-Infrared
 Camera (NIRCam) Coronagraphy data through all three James Webb Space Telescope
 (JWST) pipeline stages.  Data is assumed to be located in a folder structure
 following the paths set up below. It should not be necessary to edit
-any cells other than in the <span class="xref myst">Configuration</span> section unless
+any cells other than in the <a class="reference internal" href="#1.-Configuration"><span class="xref myst">Configuration</span></a> section unless
 modifying the standard pipeline processing options.</p>
 <p><strong>Data</strong>:<BR>
 This example is set up to use an example dataset from
@@ -431,36 +493,36 @@ This example is set up to use an example dataset from
 The science PSF is HIP-65426 which is taken using 2 different roll angles in observations 2 and 3. These observations use the DEEP8 readout pattern with 2 integrations per exposure and 15 groups per intergration. The PSF reference star is HIP-68245 taken in observation 1 using a 9-POINT-CIRCLE dither pattern. This observation uses the MEDIUM8 readout pattern with 2 integrations per exposure and 4 groups per integration. All data is observed on the NRCALONG detector with the SUB320A335R subarray and uses the F444W filter and MASK335R round coronagraphic mask.
 Example input data to use will be downloaded automatically unless
 disabled (i.e., to use local files instead).</p>
-<p><strong><span class="xref myst">JWST pipeline version and CRDS context</span></strong>:<br>
+<p><strong><a class="reference internal" href="#Set-CRDS-Context-and-Server"><span class="xref myst">JWST pipeline version and CRDS context</span></a></strong>:<br>
 This notebook was written for the above-specified pipeline version and associated build context for this version of the JWST Calibration Pipeline. Information about this and other contexts can be found in the JWST Calibration Reference Data System (CRDS <a class="reference external" href="https://jwst-crds.stsci.edu/">server</a>). If you use different pipeline versions, please refer to the table <a class="reference external" href="https://jwst-crds.stsci.edu/display_build_contexts/">here</a> to determine what context to use. To learn more about the differences for the pipeline, read the relevant <a class="reference external" href="https://jwst-docs.stsci.edu/jwst-science-calibration-pipeline/jwst-operations-pipeline-build-information#references">documentation</a>.<br></p>
 <p>Please note that pipeline software development is a continuous process, so results in some cases may be slightly different if a subsequent version is used. <strong>For optimal results, users are strongly encouraged to reprocess their data using the most recent pipeline version and <a class="reference external" href="https://jwst-crds.stsci.edu/display_build_contexts/">associated CRDS context</a>, taking advantage of bug fixes and algorithm improvements.</strong>
 Any <a class="reference external" href="https://jwst-docs.stsci.edu/known-issues-with-jwst-data/nircam-known-issues">known issues</a> for this build are provided in the JWST User Documentaion.<BR></p>
 <p><strong>Updates</strong>:<BR>
 This notebook is regularly updated as improvements are made to the
 pipeline. Find the most up to date version of this notebook at:
-<a class="github reference external" href="https://github.com/spacetelescope/jwst-pipeline-notebooks/">spacetelescope/jwst-pipeline-notebooks</a></p>
+https://github.com/spacetelescope/jwst-pipeline-notebooks/</p>
 <p><strong>Recent Changes</strong>:<br>
 Feb 26, 2025: original notebook created<br>
 May 5, 2025: Updated to jwst 1.18.0 (no significant changes)<br>
 July 16, 2025: Updated to jwst 1.19.1 (no significant changes)</p>
 <hr style="border:1px solid gray"> </hr><section id="table-of-contents">
-<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this heading">#</a></h2>
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p><span class="xref myst">Configuration</span></p></li>
-<li><p><span class="xref myst">Package Imports</span></p></li>
-<li><p><span class="xref myst">Demo Mode Setup (ignore if not using demo data)</span></p></li>
-<li><p><span class="xref myst">Directory Setup</span></p></li>
-<li><p><span class="xref myst">Detector1 Pipeline</span></p></li>
-<li><p><span class="xref myst">Image2 Pipeline</span></p></li>
-<li><p><span class="xref myst">Coron3 Pipeline</span></p></li>
-<li><p><span class="xref myst">Visualize the final PSF-subtracted images</span></p></li>
+<li><p><a class="reference internal" href="#1.-Configuration"><span class="xref myst">Configuration</span></a></p></li>
+<li><p><a class="reference internal" href="#2.-Package-Imports"><span class="xref myst">Package Imports</span></a></p></li>
+<li><p><a class="reference internal" href="#3.-Demo-Mode-Setup-(ignore-if-not-using-demo-data)"><span class="xref myst">Demo Mode Setup (ignore if not using demo data)</span></a></p></li>
+<li><p><a class="reference internal" href="#4.-Directory-Setup"><span class="xref myst">Directory Setup</span></a></p></li>
+<li><p><a class="reference internal" href="#5.-Detector1-Pipeline"><span class="xref myst">Detector1 Pipeline</span></a></p></li>
+<li><p><a class="reference internal" href="#6.-Image2-Pipeline"><span class="xref myst">Image2 Pipeline</span></a></p></li>
+<li><p><a class="reference internal" href="#7.-Coron3-Pipeline"><span class="xref myst">Coron3 Pipeline</span></a></p></li>
+<li><p><a class="reference internal" href="#8.-Visualize-the-final-PSF-subtracted-images"><span class="xref myst">Visualize the final PSF-subtracted images</span></a></p></li>
 </ol>
 <hr style="border:1px solid gray"> </hr></section>
 <section id="configuration">
-<h2>1. Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">#</a></h2>
+<h2>1. Configuration<a class="headerlink" href="#configuration" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <section id="install-dependencies-and-parameters">
-<h3>Install dependencies and parameters<a class="headerlink" href="#install-dependencies-and-parameters" title="Permalink to this heading">#</a></h3>
+<h3>Install dependencies and parameters<a class="headerlink" href="#install-dependencies-and-parameters" title="Link to this heading">#</a></h3>
 <p>To make sure that the pipeline version is compatabile with the steps
 discussed below and the required dependencies and packages are installed,
 you can create a fresh conda environment and install the provided
@@ -472,7 +534,7 @@ you can create a fresh conda environment and install the provided
 </div>
 </section>
 <section id="set-the-basic-parameters-to-use-with-this-notebook">
-<h3>Set the basic parameters to use with this notebook.<a class="headerlink" href="#set-the-basic-parameters-to-use-with-this-notebook" title="Permalink to this heading">#</a></h3>
+<h3>Set the basic parameters to use with this notebook.<a class="headerlink" href="#set-the-basic-parameters-to-use-with-this-notebook" title="Link to this heading">#</a></h3>
 <p>These parameters will affect
 what data is used, where data is located (if already in disk), and
 pipeline modules run in this data. The list of parameters are:</p>
@@ -497,7 +559,7 @@ mode this notebook will download example data from the Barbara A.
 Mikulski Archive for Space Telescopes
 (<a class="reference external" href="https://mast.stsci.edu/search/ui/#/jwst">MAST</a>) and process it through
 the pipeline. This will all happen in a local directory unless modified in
-<span class="xref myst">Section 3</span> below.</p>
+<a class="reference internal" href="#3.-Demo-Mode-Setup-(ignore-if-not-using-demo-data)"><span class="xref myst">Section 3</span></a> below.</p>
 <p>Set <code>demo_mode = False</code> if you want to process your own data
 that has already been downloaded and provide the location of the data.<br></p>
 <div class="cell docutils container">
@@ -550,7 +612,7 @@ that has already been downloaded and provide the location of the data.<br></p>
 </div>
 </section>
 <section id="set-crds-context-and-server">
-<h3>Set CRDS context and server<a class="headerlink" href="#set-crds-context-and-server" title="Permalink to this heading">#</a></h3>
+<h3>Set CRDS context and server<a class="headerlink" href="#set-crds-context-and-server" title="Link to this heading">#</a></h3>
 <p>Before importing <code>CRDS</code> and <code>JWST</code> modules, we need
 to configure our environment. This includes defining a CRDS cache
 directory in which to keep the reference files that will be used by the
@@ -597,7 +659,7 @@ CRDS file server: https://jwst-crds.stsci.edu
 <hr style="border:1px solid gray"> </hr></section>
 </section>
 <section id="package-imports">
-<h2>2. Package Imports<a class="headerlink" href="#package-imports" title="Permalink to this heading">#</a></h2>
+<h2>2. Package Imports<a class="headerlink" href="#package-imports" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use the entire available screen width for this notebook</span>
@@ -673,7 +735,7 @@ CRDS file server: https://jwst-crds.stsci.edu
 </div>
 <hr style="border:1px solid gray"> </hr></section>
 <section id="demo-mode-setup-ignore-if-not-using-demo-data">
-<h2>3. Demo Mode Setup (ignore if not using demo data)<a class="headerlink" href="#demo-mode-setup-ignore-if-not-using-demo-data" title="Permalink to this heading">#</a></h2>
+<h2>3. Demo Mode Setup (ignore if not using demo data)<a class="headerlink" href="#demo-mode-setup-ignore-if-not-using-demo-data" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <p>If running in demonstration mode, set up the program information to
 retrieve the uncalibrated data automatically from MAST using
@@ -685,7 +747,7 @@ observation ID instead of just filenames.<br></p>
 1386 (PI: Sasha Hinkley).
 The science target is HIP-65426 which is taken using 2 different roll angles in observations 2 and 3 (2 total uncal files). The reference PSF is HIP-68245 taken in observation 1 using a 9-POINT-CIRCLE dither pattern (9 total uncal files). All data is observed on the NRCALONG detector with the SUB320A335R subarray and uses the F444W filter and MASK335R round coronagraphic mask.</p>
 <p>More information about the JWST file naming conventions can be found at:
-<a class="reference external" href="https://jwst-pipeline.readthedocs.io/en/latest/jwst/data_products/file_naming.html">https://jwst-pipeline.readthedocs.io/en/latest/jwst/data_products/file_naming.html</a></p>
+https://jwst-pipeline.readthedocs.io/en/latest/jwst/data_products/file_naming.html</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up the program information and paths for demo program</span>
@@ -885,7 +947,7 @@ may be incomplete, and cause crashes later on!
 </div>
 <hr style="border:1px solid gray"> </hr></section>
 <section id="directory-setup">
-<h2>4. Directory Setup<a class="headerlink" href="#directory-setup" title="Permalink to this heading">#</a></h2>
+<h2>4. Directory Setup<a class="headerlink" href="#directory-setup" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <p>Set up detailed paths to input/output stages here.</p>
 <div class="cell docutils container">
@@ -958,7 +1020,7 @@ JWST datamodels to show basic exposure information.</p>
 </div>
 <hr style="border:1px solid gray"> </hr></section>
 <section id="detector1-pipeline">
-<h2>5. Detector1 Pipeline<a class="headerlink" href="#detector1-pipeline" title="Permalink to this heading">#</a></h2>
+<h2>5. Detector1 Pipeline<a class="headerlink" href="#detector1-pipeline" title="Link to this heading">#</a></h2>
 <p>Run the datasets through the
 <a class="reference external" href="https://jwst-docs.stsci.edu/jwst-science-calibration-pipeline-overview/stages-of-jwst-data-processing/calwebb_detector1">Detector1</a>
 stage of the pipeline to apply detector level calibrations and create a
@@ -9517,7 +9579,7 @@ Runtime for Detector1: 58 seconds
 </div>
 </div>
 <section id="exploring-the-data">
-<h3>Exploring the data<a class="headerlink" href="#exploring-the-data" title="Permalink to this heading">#</a></h3>
+<h3>Exploring the data<a class="headerlink" href="#exploring-the-data" title="Link to this heading">#</a></h3>
 <p>Identify <code class="docutils literal notranslate"><span class="pre">*_rateints.fits</span></code> files and verify which pipeline steps were run and
 which calibration reference files were applied.</p>
 <p>The header contains information about which calibration steps were
@@ -9578,7 +9640,7 @@ data.</p>
 <hr style="border:1px solid gray"> </hr></section>
 </section>
 <section id="image2-pipeline">
-<h2>6. Image2 Pipeline<a class="headerlink" href="#image2-pipeline" title="Permalink to this heading">#</a></h2>
+<h2>6. Image2 Pipeline<a class="headerlink" href="#image2-pipeline" title="Link to this heading">#</a></h2>
 <p>In the <a class="reference external" href="https://jwst-pipeline.readthedocs.io/en/latest/jwst/pipeline/calwebb_image2.html">Image2 stage </a> of the science calibration pipeline,
 calibrated unrectified data products are created (<code class="docutils literal notranslate"><span class="pre">*_cal.fits</span></code> or
 <code class="docutils literal notranslate"><span class="pre">*_calints.fits</span></code> files, depending on whether the input files are
@@ -13190,7 +13252,7 @@ Runtime for Image2: 18 seconds
 </div>
 </div>
 <section id="verify-which-pipeline-steps-were-run">
-<h3>Verify which pipeline steps were run<a class="headerlink" href="#verify-which-pipeline-steps-were-run" title="Permalink to this heading">#</a></h3>
+<h3>Verify which pipeline steps were run<a class="headerlink" href="#verify-which-pipeline-steps-were-run" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">doimage2</span><span class="p">:</span>
@@ -13270,7 +13332,7 @@ Runtime for Image2: 18 seconds
 <hr style="border:1px solid gray"> </hr></section>
 </section>
 <section id="coron3-pipeline">
-<h2>7. Coron3 Pipeline<a class="headerlink" href="#coron3-pipeline" title="Permalink to this heading">#</a></h2>
+<h2>7. Coron3 Pipeline<a class="headerlink" href="#coron3-pipeline" title="Link to this heading">#</a></h2>
 <p>In the <a class="reference external" href="https://jwst-pipeline.readthedocs.io/en/latest/jwst/pipeline/calwebb_coron3.html">Coron3 stage</a> of the calibration pipeline, the <code class="docutils literal notranslate"><span class="pre">*_calints.fits</span></code> files from the reference PSF images are aligned and subtracted from the science PSF images, and the PSF-subtracted science images are combined into a single undistorted product.</p>
 <p>First, we need to create <a class="reference external" href="https://jwst-pipeline.readthedocs.io/en/latest/jwst/associations/overview.html">Associations</a>, to inform the pipeline which files are the reference and science PSFs.</p>
 <p>By default, the <code class="docutils literal notranslate"><span class="pre">Coron3</span></code> stage of the pipeline performs the following steps on NIRCam data:</p>
@@ -13334,7 +13396,7 @@ Runtime for Image2: 18 seconds
 </div>
 </div>
 <section id="create-association-file">
-<h3>Create Association File<a class="headerlink" href="#create-association-file" title="Permalink to this heading">#</a></h3>
+<h3>Create Association File<a class="headerlink" href="#create-association-file" title="Link to this heading">#</a></h3>
 <p>An association file lists the files to calibrate together in <code class="docutils literal notranslate"><span class="pre">Stage3</span></code> of the pipeline. For the <code class="docutils literal notranslate"><span class="pre">Coron3</span></code> pipeline, the reference and science psfs must be specified in the association file. Note that association files are available for download from MAST, with filenames of <code class="docutils literal notranslate"><span class="pre">*_asn.json</span></code>. Here we show how to create an association file to point to the data products created in the steps above. This is useful in cases where you want to work with a set of data that is different than that in the association files from MAST.</p>
 <p>Using the <code class="docutils literal notranslate"><span class="pre">associations.asn_from_list</span></code> command and <code class="docutils literal notranslate"><span class="pre">Asn_lv3NRCCoron</span></code> helps identify the PSF reference from the science PSF using the header information in the files.</p>
 <div class="cell docutils container">
@@ -13469,7 +13531,7 @@ Runtime for Image2: 18 seconds
 </div>
 </section>
 <section id="run-coron3-stage-of-the-pipeline">
-<h3>Run Coron3 stage of the pipeline<a class="headerlink" href="#run-coron3-stage-of-the-pipeline" title="Permalink to this heading">#</a></h3>
+<h3>Run Coron3 stage of the pipeline<a class="headerlink" href="#run-coron3-stage-of-the-pipeline" title="Link to this heading">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">Coron3</span></code> stage of the pipeline will produce the following outputs:</p>
 <ul class="simple">
 <li><p>a <code class="docutils literal notranslate"><span class="pre">_crf.fits</span></code> file produced by the <code class="docutils literal notranslate"><span class="pre">outlier_detection</span></code> step for each input image, where the <code class="docutils literal notranslate"><span class="pre">DQ</span></code> array marks the pixels flagged as outliers.</p></li>
@@ -14136,7 +14198,7 @@ Runtime for Coron3: 24 seconds
 </div>
 </section>
 <section id="id1">
-<h3>Verify which pipeline steps were run<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<h3>Verify which pipeline steps were run<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Identify *_i2d file and open as datamodel</span>
@@ -14218,7 +14280,7 @@ Runtime for Coron3: 24 seconds
 <hr style="border:1px solid gray"> </hr></section>
 </section>
 <section id="visualize-the-final-psf-subtracted-images">
-<h2>8. Visualize the final PSF subtracted images<a class="headerlink" href="#visualize-the-final-psf-subtracted-images" title="Permalink to this heading">#</a></h2>
+<h2>8. Visualize the final PSF subtracted images<a class="headerlink" href="#visualize-the-final-psf-subtracted-images" title="Link to this heading">#</a></h2>
 <p>Below we show each individual psf-subtracted science roll and integration, as well as the final combined PSF-subtracted image from the <code class="docutils literal notranslate"><span class="pre">Coron3</span></code> pipeline run:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -14280,15 +14342,17 @@ Runtime for Coron3: 24 seconds
 <img alt="../../../_images/ab8d6487a43234b49195788fb7a6c4448b108cff69640faa826443afb3107760.png" src="../../../_images/ab8d6487a43234b49195788fb7a6c4448b108cff69640faa826443afb3107760.png" />
 </div>
 </div>
-<hr style="border:1px solid gray"> </hr><img style="float: center;" src='https://github.com/spacetelescope/jwst-pipeline-notebooks/raw/main/_static/stsci_footer.png' alt="stsci_logo" width="400px"/> </section>
+<hr style="border:1px solid gray"> </hr><a class="reference internal image-reference" href="https://github.com/spacetelescope/jwst-pipeline-notebooks/raw/main/_static/stsci_footer.png"><img alt="stsci_logo" src="https://github.com/spacetelescope/jwst-pipeline-notebooks/raw/main/_static/stsci_footer.png" style="width: 400px;" />
+</a>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
         binderOptions: {
-            repo: "binder-examples/jupyter-stacks-datascience",
-            ref: "master",
+            repo: "spacetelescope/jwst-pipeline-notebooks",
+            ref: "main",
         },
         codeMirrorConfig: {
             theme: "abcdef",
@@ -14313,6 +14377,24 @@ Runtime for Coron3: 24 seconds
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../../MIRI/MRS/JWPipeNB-MIRI-MRS.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">MIRI MRS Pipeline Notebook</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../Imaging/JWPipeNB-nircam-imaging.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">NIRCam Imaging Pipeline Notebook</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -14368,7 +14450,7 @@ Runtime for Coron3: 24 seconds
   <div class="footer-item">
     
 <p class="component-author">
-By STScI Notebook Dev
+By STScI
 </p>
 
   </div>
@@ -14378,7 +14460,7 @@ By STScI Notebook Dev
 
   <p class="copyright">
     
-      © Copyright 2022-2024.
+      © Copyright 2024.
       <br/>
     
   </p>
