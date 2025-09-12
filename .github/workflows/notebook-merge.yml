@@ -19,6 +19,8 @@ jobs:
     outputs:
       notebooks: ${{ steps.set-matrix.outputs.notebooks }}
       assets: ${{ steps.set-matrix.outputs.assets }}
+      nb_count: ${{ steps.set-matrix.outputs.nb_count }}
+      asset_count: ${{ steps.set-matrix.outputs.asset_count }}
     steps:
       - uses: actions/checkout@v3
         with:
@@ -28,32 +30,29 @@ jobs:
       - id: set-matrix
         shell: bash
         run: |
-          # Gather changed files between base and head of the merged PR
-          mapfile -t CHANGED <<< "$(git diff --name-only \
-            ${{ github.event.pull_request.base.sha }}...${{ github.event.pull_request.head.sha }})"
+          # All changed files
+          mapfile -t CHANGED < <(git diff --name-only \
+            ${{ github.event.pull_request.base.sha }}...${{ github.event.pull_request.head.sha }})
 
-          # Split into notebooks and static assets
-          NOTEBOOKS=()
-          ASSETS=()
-          for f in "${CHANGED[@]}"; do
-            case "$f" in
-              *.ipynb)
-                NOTEBOOKS+=("$f")
-                ;;
-              *.md|*.MD|*.html|*.htm)
-                ASSETS+=("$f")
-                ;;
-            esac
-          done
+          # Build arrays via jq to avoid empty/undefined edge cases
+          json_all=$(printf '%s\n' "${CHANGED[@]}" | jq -R -s -c 'split("\n")|map(select(length>0))')
 
-          nb_json=$(printf '%s\n' "${NOTEBOOKS[@]}" | jq -R -s -c 'split("\n")[:-1]')
-          assets_json=$(printf '%s\n' "${ASSETS[@]}"     | jq -R -s -c 'split("\n")[:-1]')
+          notebooks=$(jq -c '[ .[] | select(test("\\.ipynb$")) ]' <<<"$json_all")
+          assets=$(jq -c '[ .[] | select(test("\\.(md|MD|html|htm)$")) ]' <<<"$json_all")
 
-          echo "notebooks=$nb_json" >> "$GITHUB_OUTPUT"
-          echo "assets=$assets_json" >> "$GITHUB_OUTPUT"
+          nb_count=$(jq 'length' <<<"$notebooks")
+          asset_count=$(jq 'length' <<<"$assets")
+
+          echo "notebooks=$notebooks" >> "$GITHUB_OUTPUT"
+          echo "assets=$assets" >> "$GITHUB_OUTPUT"
+          echo "nb_count=$nb_count" >> "$GITHUB_OUTPUT"
+          echo "asset_count=$asset_count" >> "$GITHUB_OUTPUT"
 
   execute-notebooks:
-    if: github.event.pull_request.merged == true && needs.prepare_matrix.outputs.notebooks != '[]'
+    if: >
+      github.event.pull_request.merged == true
+      && needs.prepare_matrix.result == 'success'
+      && fromJson(needs.prepare_matrix.outputs.nb_count) > 0
     needs: prepare_matrix
     runs-on: ubuntu-latest
     strategy:
@@ -99,10 +98,6 @@ jobs:
           micromamba activate hstcal
 
           python -c "import numpy; print(f'NumPy version: {numpy.__version__}')"
-
-          echo "Path to req's: $(dirname "${{ matrix.notebooks }}")/requirements.txt"
-          ls "$(dirname "${{ matrix.notebooks }}")" || true
-          echo ---
 
           if [ -f "$(dirname "${{ matrix.notebooks }}")/pre-install.sh" ]; then
             chmod +x "$(dirname "${{ matrix.notebooks }}")/pre-install.sh"
@@ -164,7 +159,10 @@ jobs:
           done
 
   sync-static:
-    if: github.event.pull_request.merged == true && needs.prepare_matrix.outputs.assets != '[]'
+    if: >
+      github.event.pull_request.merged == true
+      && needs.prepare_matrix.result == 'success'
+      && fromJson(needs.prepare_matrix.outputs.asset_count) > 0
     needs: prepare_matrix
     runs-on: ubuntu-latest
     strategy:
@@ -185,10 +183,7 @@ jobs:
           git config user.name 'CI Bot'
           git config user.email 'action@github.com'
 
-          # Ensure we have gh-storage locally
           git fetch origin gh-storage:gh-storage || true
-
-          # Stage the file from the PR HEAD and check it out into gh-storage
           git checkout gh-storage || git switch -c gh-storage
           git checkout ${{ github.event.pull_request.head.sha }} -- "$FILE"
 
@@ -209,9 +204,8 @@ jobs:
           done
 
   generate_html:
-    # Run even if one of the upstream jobs was skipped, but only on merged PRs.
     if: always() && github.event.pull_request.merged == true
-    needs: [execute-notebooks, sync-static, prepare_matrix]
+    needs: [prepare_matrix, execute-notebooks, sync-static]
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -225,9 +219,7 @@ jobs:
         shell: bash
         run: |
           git fetch origin gh-storage
-          # Pull ALL tracked files from gh-storage (not just notebooks/) so README.md / static HTML are included
           git checkout origin/gh-storage -- .
-          # Optional: show what’s going to be built
           git status --porcelain
 
       - name: Set up Python ${{ vars.PYTHON_VERSION }}
@@ -242,7 +234,6 @@ jobs:
           pip install myst-nb
           pip install astroid
           pip install nbval
-          # Workaround for jsonschema compat
           pip install jsonschema==4.6.0
           echo "PATH=${PATH}:${HOME}/.local/bin" >> $GITHUB_ENV
 
