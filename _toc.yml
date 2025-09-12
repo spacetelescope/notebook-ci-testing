@@ -7,6 +7,8 @@ defaults:  # The defaults key will be applied to all chapters and sub-sections
 parts:
   - caption: MIRI
     chapters:
+    - file: notebooks/MIRI/README
+      title: Readme
     - file: notebooks/MIRI/Coronagraphy/JWPipeNB-MIRI-Coron.ipynb
       title: MIRI Coronagraphy Notebook
     - file: notebooks/MIRI/Imaging/JWPipeNB-MIRI-imaging.ipynb
