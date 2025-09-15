@@ -27,7 +27,7 @@ parts:
       title: NIRCam Coronagraphy Notebook
     - file: notebooks/NIRCAM/Imaging/JWPipeNB-nircam-imaging.ipynb
       title: NIRCam Imaging Notebook
-    - file: notebooks/NIRSPEC/MOS/README.md
+    - file: notebooks/NIRSPEC/MOS/README
       title: Readme
   - caption: NIRISS
     chapters:
