@@ -1,14 +1,15 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../../../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>MIRI LRS Slitless Mode TSO Pipeline Notebook &#8212; JWST Pipeline Notebooks</title>
+    <title>MIRI LRS Slitless Mode TSO Pipeline Notebook &#8212; Hello Universe!</title>
   
   
   
@@ -28,42 +29,44 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/table.css?v=cd6c26fb" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/main.css?v=b44a18d9" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/table.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/main.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../../_static/copybutton.js?v=f281be69"></script>
-    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/MIRI/LRS-slitless-TSO/JWPipeNB-MIRI-LRS-slitless-TSO';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="MIRI MRS Pipeline Notebook" href="../MRS/JWPipeNB-MIRI-MRS.html" />
-    <link rel="prev" title="MIRI LRS Slit Mode Pipeline Notebook" href="../LRS-slit/JWPipeNB-MIRI-LRS-slit.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -126,6 +129,8 @@
       
       
       
+        
+      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -144,72 +149,38 @@
     
   
 
-<a class="navbar-brand logo" href="../../../README.html">
+<a class="navbar-brand logo" href="../../../intro.html">
   
   
   
   
   
+    
+    
+      
+    
+    
+    <img src="../../../_static/HelloUniverseLogo.png" class="logo__image only-light" alt="Hello Universe! - Home"/>
+    <script>document.write(`<img src="../../../_static/HelloUniverseLogo.png" class="logo__image only-dark" alt="Hello Universe! - Home"/>`);</script>
   
-    <p class="title logo__title">JWST Pipeline Notebooks</p>
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="../../../README.html">
-                    Scripts Directory
+                <a class="reference internal" href="../../../intro.html">
+                    Hello Universe
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">MIRI</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../Coronagraphy/JWPipeNB-MIRI-Coron.html">MIRI Coronagraphy Notebook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Imaging/JWPipeNB-MIRI-imaging.html">MIRI Imaging Notebook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Imaging-TSO/JWPipeNB-MIRI-imaging-TSO.html">MIRI Imaging TSO Notebook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../LRS-slit/JWPipeNB-MIRI-LRS-slit.html">MIRI LRS Slit Notebook</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">MIRI LRS Slitless TSO Notebook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../MRS/JWPipeNB-MIRI-MRS.html">MIRI MRS Notebook</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">NIRCAM</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../NIRCAM/Coronagraphy/JWPipeNB-nircam-coronagraphy.html">NIRCam Coronagraphy Notebook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../NIRCAM/Imaging/JWPipeNB-nircam-imaging.html">NIRCam Imaging Notebook</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">NIRISS</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../NIRISS/AMI/JWPipeNB-niriss-ami.html">NIRISS AMI Pipeline Notebook</a></li>
-
-
-
-
-
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../../NIRISS/Imaging/JWPipeNB-niriss-imaging.html">NIRISS Imaging Pipeline Notebook</a></li>
-
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">NIRSpec</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../NIRSPEC/BOTS/JWPipeNB-NIRSpec-BOTS.html">NIRSpec BOTS Notebook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../NIRSPEC/FSlit/JWPipeNB-NIRSpec-FS.html">NIRSpec Fixed Slit Notebook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../NIRSPEC/IFU/JWPipeNB-NIRSpec-IFU.html">NIRSpec IFU Notebook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../NIRSPEC/MOS/JWPipeNB-NIRSpec-MOS.html">NIRSpec MOS Notebook</a></li>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../hello-universe/Classifying_TESS_flares_with_CNNs/Classifying_TESS_flares_with_CNNs.html">Classifying flaring stars with stella: a convolutional neural network for TESS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hello-universe/Classifying_JWST-HST_galaxy_mergers_with_CNNs/Classifying_JWST-HST_galaxy_mergers_with_CNNs.html">Classifying JWST-HST galaxy mergers with CNNs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hello-universe/Regressing_3D-HST_galaxy_redshift_with_decision_trees/Regressing_3D-HST_galaxy_redshift_with_decision_trees.html">Predicting galaxy redshift via regression on 3D-HST photometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hello-universe/Classifying_PanSTARRS_sources_with_unsupervised_learning/Classifying_PanSTARRS_sources_with_unsupervised_learning.html">Classifying Pan-STARRS sources with unsupervised and supervised learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hello-universe/Interpreting_CNNs/Interpreting_CNNs.html">Interpreting Convolutional Neural Networks</a></li>
 </ul>
 
     </div>
@@ -239,9 +210,9 @@
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -256,37 +227,6 @@
 
 
 
-<div class="dropdown dropdown-launch-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
-    <i class="fas fa-rocket"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li>
-<button onclick="initThebeSBT()"
-  class="btn btn-sm btn-launch-thebe dropdown-item"
-  title="Launch Thebe"
-  data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-play"></i>
-  </span>
-<span class="btn__text-container">Live Code</span>
-</button>
-</li>
-      
-  </ul>
-</div>
-
-
-
-
-
-
 <div class="dropdown dropdown-source-buttons">
   <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
     <i class="fab fa-github"></i>
@@ -295,7 +235,7 @@
       
       
       
-      <li><a href="https://github.com/spacetelescope/jwst-pipeline-notebooks" target="_blank"
+      <li><a href="https://github.com/spacetelescope/hellouniverse" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -312,7 +252,7 @@
       
       
       
-      <li><a href="https://github.com/spacetelescope/jwst-pipeline-notebooks/issues/new?title=Issue%20on%20page%20%2Fnotebooks/MIRI/LRS-slitless-TSO/JWPipeNB-MIRI-LRS-slitless-TSO.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/spacetelescope/hellouniverse/issues/new?title=Issue%20on%20page%20%2Fnotebooks/MIRI/LRS-slitless-TSO/JWPipeNB-MIRI-LRS-slitless-TSO.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -413,9 +353,9 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -451,10 +391,10 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#processing-background-files">Processing Background Files</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spec2-pipeline">6.<font color="white">-</font>Spec2 Pipeline<a class="anchor" id="spec2"></a></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tso3-pipeline">7.<font color="white">-</font>Tso3 Pipeline<a class="anchor" id="spec3"></a></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-white-light-curve">8.<font color="white">-</font>Plot white-light curve<a class="anchor" id="plots-wlc"></a></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-spectroscopic-light-curves">9.<font color="white">-</font>Plot spectroscopic light curves<a class="anchor" id="plots-spec"></a></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-white-font-spec2-pipeline-a-class-anchor-id-spec2-a">6.<font color="white">-</font>Spec2 Pipeline<a class="anchor" id="spec2"></a></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-white-font-tso3-pipeline-a-class-anchor-id-spec3-a">7.<font color="white">-</font>Tso3 Pipeline<a class="anchor" id="spec3"></a></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-white-font-plot-white-light-curve-a-class-anchor-id-plots-wlc-a">8.<font color="white">-</font>Plot white-light curve<a class="anchor" id="plots-wlc"></a></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-white-font-plot-spectroscopic-light-curves-a-class-anchor-id-plots-spec-a">9.<font color="white">-</font>Plot spectroscopic light curves<a class="anchor" id="plots-spec"></a></a></li>
 </ul>
             </nav>
         </div>
@@ -466,11 +406,9 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <a class="reference internal image-reference" href="https://github.com/spacetelescope/jwst-pipeline-notebooks/raw/main/_static/stsci_header.png"><img alt="stsci_logo" src="https://github.com/spacetelescope/jwst-pipeline-notebooks/raw/main/_static/stsci_header.png" style="width: 900px;" />
-</a>
-<p><a id="title_ID"></a></p>
-<section id="miri-lrs-slitless-mode-tso-pipeline-notebook">
-<h1>MIRI LRS Slitless Mode TSO Pipeline Notebook<a class="headerlink" href="#miri-lrs-slitless-mode-tso-pipeline-notebook" title="Link to this heading">#</a></h1>
+  <img style="float: center;" src='https://github.com/spacetelescope/jwst-pipeline-notebooks/raw/main/_static/stsci_header.png' alt="stsci_logo" width="900px"/> <p><a id="title_ID"></a></p>
+<section class="tex2jax_ignore mathjax_ignore" id="miri-lrs-slitless-mode-tso-pipeline-notebook">
+<h1>MIRI LRS Slitless Mode TSO Pipeline Notebook<a class="headerlink" href="#miri-lrs-slitless-mode-tso-pipeline-notebook" title="Permalink to this heading">#</a></h1>
 <p><strong>Authors</strong>: Ian Wong; MIRI branch<br>
 <strong>Last Updated</strong>: July 16, 2025<br>
 <strong>Pipeline Version</strong>: 1.19.1 (Build 12.0)</p>
@@ -479,7 +417,7 @@ This notebook provides a framework for processing generic Mid-Infrared
 Instrument (MIRI) Low Resolution Spectroscopy (LRS) slitless mode time series observations (TSO) data through all
 three James Webb Space Telescope (JWST) pipeline stages.  The data are assumed
 to be located in the observation directory located in the path set up below.
-It should not be necessary to edit any cells other than in the <a class="reference internal" href="#1.-Configuration"><span class="xref myst">Configuration</span></a> section unless modifying the standard pipeline processing options.<br></p>
+It should not be necessary to edit any cells other than in the <span class="xref myst">Configuration</span> section unless modifying the standard pipeline processing options.<br></p>
 <p>A significant portion of the data processing workflow for LRS slitless TSOs is identical to the methods used to process (non-TSO) LRS slit mode observations, and much of this notebook mirrors the corresponding steps shown in the MIRI slit mode notebook.</p>
 <p><strong>Data</strong>:<br>
 This example is set up to use observations of the A-type standard star HD 2811, which were obtained as part of the Cycle 2 JWST flux calibration campaign by Proposal ID (PID) 4496 Observations 4 and 5. The first of these observations is of the target, while the second is a linked dedicated background observation that will be used to remove the background flux contribution from the target exposures. No dithering is carried out for standard LRS slitless mode observations. It is common for LRS slitless TSOs to lack dedicated background observations, and this notebook allows for the user to turn off the background subtraction step. The example uncalibrated data will be downloaded automatically unless disabled (i.e., to run with user-supplied local files instead).<br></p>
@@ -490,29 +428,29 @@ This notebook was written for the above-specified pipeline version and associate
 <p><strong>Updates</strong>:<br>
 This notebook is regularly updated as improvements are made to the
 pipeline. Find the most up to date version of this notebook at:
-https://github.com/spacetelescope/jwst-pipeline-notebooks/</p>
+<a class="github reference external" href="https://github.com/spacetelescope/jwst-pipeline-notebooks/">spacetelescope/jwst-pipeline-notebooks</a></p>
 <p><strong>Recent Changes</strong>:<br>
 Feb 1 2025: Notebook created.<br>
 May 5, 2025: Updated to jwst 1.18.0 (no significant changes)<br>
 July 16, 2025: Updated to jwst 1.19.1 (update plotting to work with new spectral data table format)</p>
 <hr style="border:1px solid gray"> </hr><section id="table-of-contents">
-<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Link to this heading">#</a></h2>
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p><a class="reference internal" href="#1.-Configuration"><span class="xref myst">Configuration</span></a></p></li>
-<li><p><a class="reference internal" href="#2.-Package-Imports"><span class="xref myst">Package Imports</span></a></p></li>
-<li><p><a class="reference internal" href="#3.-Demo-Mode-Setup-(ignore-if-not-using-demo-data)"><span class="xref myst">Demo Mode Setup</span></a></p></li>
-<li><p><a class="reference internal" href="#4.-Directory-Setup"><span class="xref myst">Directory Setup</span></a></p></li>
-<li><p><a class="reference internal" href="#5.-Detector1-Pipeline"><span class="xref myst">Detector1 Pipeline</span></a></p></li>
-<li><p><a class="reference internal" href="#6.-Spec2-Pipeline"><span class="xref myst">Spec2 Pipeline</span></a></p></li>
-<li><p><a class="reference internal" href="#7.-Spec3-Pipeline"><span class="xref myst">Spec3 Pipeline</span></a></p></li>
-<li><p><a class="reference internal" href="#8.-Plot-white-light-curve"><span class="xref myst">Plot white-light curve</span></a></p></li>
-<li><p><a class="reference internal" href="#9.-Plot-spectroscopic-light-curves"><span class="xref myst">Plot spectroscopic light curves</span></a></p></li>
+<li><p><span class="xref myst">Configuration</span></p></li>
+<li><p><span class="xref myst">Package Imports</span></p></li>
+<li><p><span class="xref myst">Demo Mode Setup</span></p></li>
+<li><p><span class="xref myst">Directory Setup</span></p></li>
+<li><p><span class="xref myst">Detector1 Pipeline</span></p></li>
+<li><p><span class="xref myst">Spec2 Pipeline</span></p></li>
+<li><p><span class="xref myst">Spec3 Pipeline</span></p></li>
+<li><p><span class="xref myst">Plot white-light curve</span></p></li>
+<li><p><span class="xref myst">Plot spectroscopic light curves</span></p></li>
 </ol>
 <hr style="border:1px solid gray"> </hr></section>
 <section id="configuration">
-<h2>1.-Configuration<a class="headerlink" href="#configuration" title="Link to this heading">#</a></h2>
+<h2>1.-Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">#</a></h2>
 <section id="install-dependencies">
-<h3>Install dependencies<a class="headerlink" href="#install-dependencies" title="Link to this heading">#</a></h3>
+<h3>Install dependencies<a class="headerlink" href="#install-dependencies" title="Permalink to this heading">#</a></h3>
 <p>To make sure that the pipeline version is compatabile with this notebook and the required dependencies and packages are installed,
 it is recommended that users create a new dedicated conda environment and install the provided
 <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> file before starting this notebook: <br></p>
@@ -523,7 +461,7 @@ it is recommended that users create a new dedicated conda environment and instal
 </div>
 </section>
 <section id="set-run-parameters">
-<h3>Set run parameters<a class="headerlink" href="#set-run-parameters" title="Link to this heading">#</a></h3>
+<h3>Set run parameters<a class="headerlink" href="#set-run-parameters" title="Permalink to this heading">#</a></h3>
 <p>Set basic parameters to use with the notebook. These will affect
 what observation is used, where the uncalibrated data are located (if already on disk), which
 pipeline modules to run on the data, and whether background subtraction is carried out. The list of parameters are:</p>
@@ -570,7 +508,7 @@ Note that <code>demo_mode</code> must be set appropriately below.
 notebook will download the example data from the
 Barbara A. Mikulski Archive for Space Telescopes (<a class="reference external" href="https://archive.stsci.edu/">MAST</a>) and process them through the pipeline.
 All input and output data will be stored in the local directory unless modified
-in <a class="reference internal" href="#3.-Demo-Mode-Setup-(ignore-if-not-using-demo-data)"><span class="xref myst">Section 3</span></a> below.</p>
+in <span class="xref myst">Section 3</span> below.</p>
 <p>Set <code>demo_mode = False</code> to process user-specified data that have already
 been downloaded and provide the location of the data.<br></p>
 <div class="cell docutils container">
@@ -622,7 +560,7 @@ been downloaded and provide the location of the data.<br></p>
 </div>
 </section>
 <section id="set-crds-context-and-server">
-<h3>Set CRDS context and server<a class="headerlink" href="#set-crds-context-and-server" title="Link to this heading">#</a></h3>
+<h3>Set CRDS context and server<a class="headerlink" href="#set-crds-context-and-server" title="Permalink to this heading">#</a></h3>
 <p>Before importing <code>CRDS</code> and <code>JWST</code> modules, we need to configure our environment. This includes defining a CRDS cache directory in which to keep the reference files that will be used by the calibration pipeline.</p>
 <p>If the root directory for the local CRDS cache directory has not been set already, it will be automatically created in the home directory.</p>
 <div class="cell docutils container">
@@ -662,7 +600,7 @@ CRDS file server: https://jwst-crds.stsci.edu
 <hr style="border:1px solid gray"> </hr></section>
 </section>
 <section id="package-imports">
-<h2>2.-Package Imports<a class="headerlink" href="#package-imports" title="Link to this heading">#</a></h2>
+<h2>2.-Package Imports<a class="headerlink" href="#package-imports" title="Permalink to this heading">#</a></h2>
 <p>Automatically import necessary Python packages for use in the data processing and visualization.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -745,14 +683,14 @@ CRDS file server: https://jwst-crds.stsci.edu
 </div>
 <hr style="border:1px solid gray"> </hr></section>
 <section id="demo-mode-setup-ignore-if-not-using-demo-data">
-<h2>3.-Demo Mode Setup (ignore if not using demo data)<a class="headerlink" href="#demo-mode-setup-ignore-if-not-using-demo-data" title="Link to this heading">#</a></h2>
+<h2>3.-Demo Mode Setup (ignore if not using demo data)<a class="headerlink" href="#demo-mode-setup-ignore-if-not-using-demo-data" title="Permalink to this heading">#</a></h2>
 <p>If running in demonstration mode, set up the program information to
 retrieve the uncalibrated data automatically from MAST using
 <a class="reference external" href="https://astroquery.readthedocs.io/en/latest/mast/mast.html">astroquery</a>.
 MAST allows for flexibility of searching by the proposal ID and the
 observation ID instead of just filenames.<br></p>
 <p>More information about the JWST file naming conventions can be found at:
-https://jwst-pipeline.readthedocs.io/en/latest/jwst/data_products/file_naming.html</p>
+<a class="reference external" href="https://jwst-pipeline.readthedocs.io/en/latest/jwst/data_products/file_naming.html">https://jwst-pipeline.readthedocs.io/en/latest/jwst/data_products/file_naming.html</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up the program information and paths for demo program</span>
@@ -895,7 +833,7 @@ Warning: If this notebook is halted during this step, the downloaded files may b
 </div>
 <hr style="border:1px solid gray"> </hr></section>
 <section id="directory-setup">
-<h2>4.-Directory Setup<a class="headerlink" href="#directory-setup" title="Link to this heading">#</a></h2>
+<h2>4.-Directory Setup<a class="headerlink" href="#directory-setup" title="Permalink to this heading">#</a></h2>
 <p>Set up detailed paths to input/output stages here. When running this notebook outside of demo mode, the uncalibrated pipeline input files must be placed into the appropriate directories before proceeding to the JWST pipeline processing.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -923,12 +861,12 @@ Warning: If this notebook is halted during this step, the downloaded files may b
 </div>
 <hr style="border:1px solid gray"> </hr></section>
 <section id="detector1-pipeline">
-<h2>5.-Detector1 Pipeline<a class="headerlink" href="#detector1-pipeline" title="Link to this heading">#</a></h2>
+<h2>5.-Detector1 Pipeline<a class="headerlink" href="#detector1-pipeline" title="Permalink to this heading">#</a></h2>
 <p>In this section, the uncalibrated data are processed through the Detector1
 pipeline to create Stage 1 data products, which include 2D countrate
 images that have been averaged over all integrations (<code class="docutils literal notranslate"><span class="pre">*_rate.fits</span></code> files) and 3D cubes containing fitted ramp slopes for each integration (<code class="docutils literal notranslate"><span class="pre">*_rateints.fits</span></code> files).  For TSOs, the integrations must be calibrated separately in the subsequent stages, so the <code class="docutils literal notranslate"><span class="pre">*_rateints.fits</span></code> files are the relevant outputs. The Stage 1 data products have units of DN/s.<br></p>
 <p>Unlike in the case of MIRI LRS slit mode observations, the <code class="docutils literal notranslate"><span class="pre">firstframe</span></code> and <code class="docutils literal notranslate"><span class="pre">rscd</span></code> steps are skipped by default of TSOs.<br></p>
-<p>See https://jwst-docs.stsci.edu/jwst-science-calibration-pipeline/stages-of-jwst-data-processing/calwebb_detector1 for a detailed overview of the various pipeline steps that comprise Detector1.</p>
+<p>See <a class="reference external" href="https://jwst-docs.stsci.edu/jwst-science-calibration-pipeline/stages-of-jwst-data-processing/calwebb_detector1">https://jwst-docs.stsci.edu/jwst-science-calibration-pipeline/stages-of-jwst-data-processing/calwebb_detector1</a> for a detailed overview of the various pipeline steps that comprise Detector1.</p>
 <div class="alert alert-block alert-warning">
 To override certain steps and reference files, use the examples provided below.<br>
 E.g., turn on detection of cosmic ray showers.
@@ -979,7 +917,7 @@ E.g., turn on detection of cosmic ray showers.
 </div>
 </div>
 <section id="processing-science-files">
-<h3>Processing Science Files<a class="headerlink" href="#processing-science-files" title="Link to this heading">#</a></h3>
+<h3>Processing Science Files<a class="headerlink" href="#processing-science-files" title="Permalink to this heading">#</a></h3>
 <p>Select for only the science data from the target observation, excluding target acquisition and/or pointing verification exposures. For the demo example, there should be only one file, corresponding to a contiguous segment of time-resolved integrations, but for longer TSOs, the full series of exposures may be split into several segments due to file size constraints.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2439,7 +2377,7 @@ E.g., turn on detection of cosmic ray showers.
 </div>
 </section>
 <section id="processing-background-files">
-<h3>Processing Background Files<a class="headerlink" href="#processing-background-files" title="Link to this heading">#</a></h3>
+<h3>Processing Background Files<a class="headerlink" href="#processing-background-files" title="Permalink to this heading">#</a></h3>
 <p>Select for only the science data from the dedicated background observation, excluding target acquisition and/or pointing verification exposures.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3258,13 +3196,13 @@ Runtime for Detector1: 189.864212274 seconds
 </div>
 <hr style="border:1px solid gray"> </hr></section>
 </section>
-<section id="spec2-pipeline">
-<h2>6.<font color='white'>-</font>Spec2 Pipeline<a class="anchor" id="spec2"></a><a class="headerlink" href="#spec2-pipeline" title="Link to this heading">#</a></h2>
+<section id="font-color-white-font-spec2-pipeline-a-class-anchor-id-spec2-a">
+<h2>6.<font color='white'>-</font>Spec2 Pipeline<a class="anchor" id="spec2"></a><a class="headerlink" href="#font-color-white-font-spec2-pipeline-a-class-anchor-id-spec2-a" title="Permalink to this heading">#</a></h2>
 <p>This stage of the pipeline passes the per-integration countrate (ramp slope) images (<code class="docutils literal notranslate"><span class="pre">*_rateints.fits</span></code> files) previously generated from
 Detector1 through the Spec2 (calwebb_spec2) pipeline to yield Stage 2
 data products (i.e., flux-calibrated flat-fielded subarray images <code class="docutils literal notranslate"><span class="pre">*_calints.fits</span></code> and quick-look 1D extracted spectra <code class="docutils literal notranslate"><span class="pre">*_x1dints.fits</span></code>) for each exposure.  These data products have units of MJy/sr.</p>
 <p>If <code>bkg_sub = True</code>, an association file will be created that pairs each science file with the dedicated background files, and the <code class="docutils literal notranslate"><span class="pre">bkg_subtract</span></code> step will be activated to carry out pixel-by-pixel background subtraction. Otherwise, the countrate files will be passed directly through the Spec2 pipeline.</p>
-<p>See https://jwst-docs.stsci.edu/jwst-science-calibration-pipeline/stages-of-jwst-data-processing/calwebb_spec2 for a detailed overview of the various pipeline steps that comprise Spec2.</p>
+<p>See <a class="reference external" href="https://jwst-docs.stsci.edu/jwst-science-calibration-pipeline/stages-of-jwst-data-processing/calwebb_spec2">https://jwst-docs.stsci.edu/jwst-science-calibration-pipeline/stages-of-jwst-data-processing/calwebb_spec2</a> for a detailed overview of the various pipeline steps that comprise Spec2.</p>
 <div class="alert alert-block alert-warning">
 To override certain steps and reference files, use the examples below.
 </div><div class="cell docutils container">
@@ -5345,15 +5283,15 @@ Runtime for Spec2: 232.625990902 seconds
 </div>
 </div>
 <hr style="border:1px solid gray"> </hr></section>
-<section id="tso3-pipeline">
-<h2>7.<font color='white'>-</font>Tso3 Pipeline<a class="anchor" id="spec3"></a><a class="headerlink" href="#tso3-pipeline" title="Link to this heading">#</a></h2>
+<section id="font-color-white-font-tso3-pipeline-a-class-anchor-id-spec3-a">
+<h2>7.<font color='white'>-</font>Tso3 Pipeline<a class="anchor" id="spec3"></a><a class="headerlink" href="#font-color-white-font-tso3-pipeline-a-class-anchor-id-spec3-a" title="Permalink to this heading">#</a></h2>
 <p>The JWST calibration pipeline has a specialized final stage for TSOs (calwebb_tso3) that produces outlier-flagged multi-integration calibrated subarray images (<code class="docutils literal notranslate"><span class="pre">*crfints.fits</span></code> files) and corresponding 1D extracted spectra (<code class="docutils literal notranslate"><span class="pre">*x1dints.fits</span></code> files). In addition, the white-light photometric light curve is produced (<code class="docutils literal notranslate"><span class="pre">*whtlt.ecsv</span></code> file), which is computed by integrating the total flux contained within the extraction aperture in each integration.
 An association file containing the Stage 2 calibrated subarray images (<code class="docutils literal notranslate"><span class="pre">*calints.fits</span></code> files) is required for this stage.<br></p>
 <p>Unlike for non-TSO MIRI slit mode observations, no resampling of the subarray is done. The <code class="docutils literal notranslate"><span class="pre">outlier_detection</span></code> step for TSOs has an additional functionality that uses moving median filtering across the stack of individual integrations for detecting outlier pixels, which works to prevent the pipeline from flagging points due to astrophysical variability.</p>
 <p>Note that pixel values in the composite image created by the JWST pipeline are in <em>surface brightness units</em> (MJy/sr), not flux units. If the user desires custom spectral extraction outside the context of the <code class="docutils literal notranslate"><span class="pre">extract1d</span></code> step contained within the Tso3 pipeline, the pixel values must be multiplied by the width of the extraction aperture in pixels and the pixel area in steradians in order to obtain a spectrum in the appropriate flux units. This correction is built into the pipeline’s <code class="docutils literal notranslate"><span class="pre">extract1d</span></code> algorithm.
 The nominal pixel area in steradians is provided in the <code>PIXAR_SR</code> keyword and can be found in the SCI extension header of the image outputs.<br></p>
-<p>The default pipeline extraction uses a fixed box of width 12 pixels centered on the expected spectral trace. No in-scene background subtraction is carried out by default. Users can alter the location and width of the extraction aperture and activate background subtraction strategies by providing a custom <code class="docutils literal notranslate"><span class="pre">extract1d</span></code> reference file. For details concerning the proper format and available parameter settings for such reference files, consult https://jwst-pipeline.readthedocs.io/en/latest/jwst/extract_1d/reference_files.html#extract1d-reference-file.<br></p>
-<p>See https://jwst-docs.stsci.edu/jwst-science-calibration-pipeline/stages-of-jwst-data-processing/calwebb_tso3 for a detailed overview of the various pipeline steps that comprise TSO3.</p>
+<p>The default pipeline extraction uses a fixed box of width 12 pixels centered on the expected spectral trace. No in-scene background subtraction is carried out by default. Users can alter the location and width of the extraction aperture and activate background subtraction strategies by providing a custom <code class="docutils literal notranslate"><span class="pre">extract1d</span></code> reference file. For details concerning the proper format and available parameter settings for such reference files, consult <a class="reference external" href="https://jwst-pipeline.readthedocs.io/en/latest/jwst/extract_1d/reference_files.html#extract1d-reference-file">https://jwst-pipeline.readthedocs.io/en/latest/jwst/extract_1d/reference_files.html#extract1d-reference-file</a>.<br></p>
+<p>See <a class="reference external" href="https://jwst-docs.stsci.edu/jwst-science-calibration-pipeline/stages-of-jwst-data-processing/calwebb_tso3">https://jwst-docs.stsci.edu/jwst-science-calibration-pipeline/stages-of-jwst-data-processing/calwebb_tso3</a> for a detailed overview of the various pipeline steps that comprise TSO3.</p>
 <div class="alert alert-block alert-warning">
 To override certain steps and reference files, use the examples below.
 </div><div class="cell docutils container">
@@ -5749,8 +5687,8 @@ Runtime for Tso3: 123.53834735199996 seconds
 </div>
 </div>
 <hr style="border:1px solid gray"> </hr></section>
-<section id="plot-white-light-curve">
-<h2>8.<font color='white'>-</font>Plot white-light curve<a class="anchor" id="plots-wlc"></a><a class="headerlink" href="#plot-white-light-curve" title="Link to this heading">#</a></h2>
+<section id="font-color-white-font-plot-white-light-curve-a-class-anchor-id-plots-wlc-a">
+<h2>8.<font color='white'>-</font>Plot white-light curve<a class="anchor" id="plots-wlc"></a><a class="headerlink" href="#font-color-white-font-plot-white-light-curve-a-class-anchor-id-plots-wlc-a" title="Permalink to this heading">#</a></h2>
 <p>Plot the extracted white-light photometric light curve. The fluxes are in units of Jy.<br></p>
 <p>As of September 2024, the absolute flux calibration has been reported to be accurate to within a few percent between 5 and 12 microns. Future improvements are planned to expand the wavelength range for which reliable fluxes can be extracted.</p>
 <div class="cell docutils container">
@@ -5784,8 +5722,8 @@ Runtime for Tso3: 123.53834735199996 seconds
 </div>
 </div>
 <hr style="border:1px solid gray"> </hr></section>
-<section id="plot-spectroscopic-light-curves">
-<h2>9.<font color='white'>-</font>Plot spectroscopic light curves<a class="anchor" id="plots-spec"></a><a class="headerlink" href="#plot-spectroscopic-light-curves" title="Link to this heading">#</a></h2>
+<section id="font-color-white-font-plot-spectroscopic-light-curves-a-class-anchor-id-plots-spec-a">
+<h2>9.<font color='white'>-</font>Plot spectroscopic light curves<a class="anchor" id="plots-spec"></a><a class="headerlink" href="#font-color-white-font-plot-spectroscopic-light-curves-a-class-anchor-id-plots-spec-a" title="Permalink to this heading">#</a></h2>
 <p>Plot a subset of the spectroscopic light curves contained in the <code class="docutils literal notranslate"><span class="pre">*x1dints.fits</span></code> file. The fluxes are in units of Jy.<br></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -5823,17 +5761,15 @@ Runtime for Tso3: 123.53834735199996 seconds
 <img alt="../../../_images/cfc9480b81ad5f8a07e93dd0ad87be4d95d568f029fc827d60bceb311ee95944.png" src="../../../_images/cfc9480b81ad5f8a07e93dd0ad87be4d95d568f029fc827d60bceb311ee95944.png" />
 </div>
 </div>
-<hr style="border:1px solid gray"> </hr><a class="reference internal image-reference" href="https://github.com/spacetelescope/jwst-pipeline-notebooks/raw/main/_static/stsci_footer.png"><img alt="stsci_logo" src="https://github.com/spacetelescope/jwst-pipeline-notebooks/raw/main/_static/stsci_footer.png" style="width: 200px;" />
-</a>
-</section>
+<hr style="border:1px solid gray"> </hr><img style="float: center;" src="https://github.com/spacetelescope/jwst-pipeline-notebooks/raw/main/_static/stsci_footer.png" alt="stsci_logo" width="200px"/> </section>
 </section>
 
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
         binderOptions: {
-            repo: "spacetelescope/jwst-pipeline-notebooks",
-            ref: "main",
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
         },
         codeMirrorConfig: {
             theme: "abcdef",
@@ -5858,24 +5794,6 @@ Runtime for Tso3: 123.53834735199996 seconds
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="../LRS-slit/JWPipeNB-MIRI-LRS-slit.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">MIRI LRS Slit Mode Pipeline Notebook</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="../MRS/JWPipeNB-MIRI-MRS.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">MIRI MRS Pipeline Notebook</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -5907,10 +5825,10 @@ Runtime for Tso3: 123.53834735199996 seconds
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#processing-background-files">Processing Background Files</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spec2-pipeline">6.<font color="white">-</font>Spec2 Pipeline<a class="anchor" id="spec2"></a></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tso3-pipeline">7.<font color="white">-</font>Tso3 Pipeline<a class="anchor" id="spec3"></a></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-white-light-curve">8.<font color="white">-</font>Plot white-light curve<a class="anchor" id="plots-wlc"></a></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-spectroscopic-light-curves">9.<font color="white">-</font>Plot spectroscopic light curves<a class="anchor" id="plots-spec"></a></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-white-font-spec2-pipeline-a-class-anchor-id-spec2-a">6.<font color="white">-</font>Spec2 Pipeline<a class="anchor" id="spec2"></a></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-white-font-tso3-pipeline-a-class-anchor-id-spec3-a">7.<font color="white">-</font>Tso3 Pipeline<a class="anchor" id="spec3"></a></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-white-font-plot-white-light-curve-a-class-anchor-id-plots-wlc-a">8.<font color="white">-</font>Plot white-light curve<a class="anchor" id="plots-wlc"></a></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-white-font-plot-spectroscopic-light-curves-a-class-anchor-id-plots-spec-a">9.<font color="white">-</font>Plot spectroscopic light curves<a class="anchor" id="plots-spec"></a></a></li>
 </ul>
   </nav></div>
 
@@ -5925,7 +5843,7 @@ Runtime for Tso3: 123.53834735199996 seconds
   <div class="footer-item">
     
 <p class="component-author">
-By STScI
+By STScI Notebook Dev
 </p>
 
   </div>
@@ -5935,7 +5853,7 @@ By STScI
 
   <p class="copyright">
     
-      © Copyright 2024.
+      © Copyright 2022-2024.
       <br/>
     
   </p>
