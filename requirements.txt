@@ -1,0 +1,2 @@
+DEPRICATED
+use requirements.txt files located in the notebooks directory.

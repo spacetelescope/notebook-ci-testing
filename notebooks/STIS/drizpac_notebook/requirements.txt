@@ -1,0 +1,8 @@
+astropy
+astroquery
+drizzlepac
+fuzzytm
+ipython
+matplotlib
+numpy
+pandas

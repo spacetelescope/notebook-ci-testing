@@ -1,80 +1,133 @@
-![STScI Logo](_static/stsci_header.png)
+[![Notebook Execution and Validation](https://github.com/spacetelescope/hst_notebooks/actions/workflows/ci_runner.yml/badge.svg)](https://github.com/spacetelescope/hst_notebooks/actions/workflows/ci_runner.yml)
+[![Scheduled Notebook Execution](https://github.com/spacetelescope/hst_notebooks/actions/workflows/ci_nightly.yml/badge.svg)](https://github.com/spacetelescope/hst_notebooks/actions/workflows/ci_nightly.yml)
+[![Weekly broken link check](https://github.com/spacetelescope/hst_notebooks/actions/workflows/weekly_broken_link_finder.yml/badge.svg)](https://github.com/spacetelescope/hst_notebooks/actions/workflows/weekly_broken_link_finder.yml)
+[![Weekly HTML Accessibility Check](https://github.com/spacetelescope/hst_notebooks/actions/workflows/weekly_html_accessibility_check.yml/badge.svg)](https://github.com/spacetelescope/hst_notebooks/actions/workflows/weekly_html_accessibility_check.yml)
+[![Weekly PEP8 Style Checks](https://github.com/spacetelescope/hst_notebooks/actions/workflows/weekly_pep8_style_check.yml/badge.svg)](https://github.com/spacetelescope/hst_notebooks/actions/workflows/weekly_pep8_style_check.yml)
 
-# JWST Pipeline Notebooks
+[![DOI](https://zenodo.org/badge/605151805.svg)](https://zenodo.org/badge/latestdoi/605151805)
 
-[![DOI](https://zenodo.org/badge/782173509.svg)](https://doi.org/10.5281/zenodo.15060584)
+Summary and Description
+=======================
+The ``hst_notebooks`` repository contains notebooks illustrating workflows for post-pipeline analysis of Hubble Space Telescope (HST) data. Some of the notebooks also illustrate generic analysis workflows that are applicable to data from other observatories as well. This repository and the notebooks are one component of STScI's larger Data Analysis Tools Ecosystem.
 
-> [!IMPORTANT]
-> JWST requires a C compiler for dependencies and is currently limited to Python 3.11, 3.12, or 3.13.
+The following [page](https://spacetelescope.github.io/hst_notebooks/) summarizes and links to the material currently available.
 
-> [!NOTE]
-> Linux and MacOS platforms are tested and supported.  Windows is not currently supported.
+Instrument Documentation
+------------------------
+Here, you can find detailed documentation for each instrument the Hubble Space Telescope uses.
 
-The ``jwst-pipeline-notebooks`` repository contains python-based Jupyter notebooks that illustrate how to process JWST data through the STScI science calibration pipeline (``jwst``;  [https://github.com/spacetelescope/jwst](https://github.com/spacetelescope/jwst)).  An overview of the pipeline can be found at [https://jwst-docs.stsci.edu/jwst-science-calibration-pipeline](https://jwst-docs.stsci.edu/jwst-science-calibration-pipeline).
+- [Advanced Camera for Surveys (ACS)](https://www.stsci.edu/hst/instrumentation/acs)
 
-Notebooks are organized according to instrument and observing mode.  Each notebook is designed to process data from uncalibrated raw FITS files to end-stage Level 3 data products (calibrated imaging mosaics, 3-D data cubes, 1-D extracted spectra, etc.).  These notebooks by default run in 'demo' mode, for which they will download and process example data drawn from the [MAST archive](https://archive.stsci.edu/).  They are, however, designed to be simple to run on arbitrary local data sets as well by configuring input directories accordingly.
+- [Cosmic Origins Spectrograph (COS)](https://www.stsci.edu/hst/instrumentation/cos)
 
-These notebooks are modular, allowing users to enable or disable different stages of processing.  Likewise, they provide examples of how to customize pipeline processing for specific science cases.
+- [DrizzlePac](https://www.stsci.edu/scientific-community/software/drizzlepac)
 
-The following table summarizes the notebooks currently available and the JWST [pipeline versions](https://jwst-docs.stsci.edu/jwst-science-calibration-pipeline/jwst-operations-pipeline-build-information) that they have been tested with:
+- [Near Infrared Camera and Multi-Object Spectrometer (NICMOS)](https://www.stsci.edu/hst/instrumentation/legacy/nicmos)
 
-| Instrument | Observing Mode | JWST Build | ``jwst`` version | Notebook                                         |
-|------------|----------------|------------|--------------------------|-----------------------------------------------|
-| MIRI       | Coronagraphy   | 12.0       | 1.19.1 | [JWPipeNB-MIRI-Coron.ipynb](https://github.com/spacetelescope/jwst-pipeline-notebooks/blob/main/notebooks/MIRI/Coronagraphy/JWPipeNB-MIRI-Coron.ipynb) |
-| MIRI       | Imaging        | 12.0       | 1.19.1 | [JWPipeNB-MIRI-imaging.ipynb](https://github.com/spacetelescope/jwst-pipeline-notebooks/blob/main/notebooks/MIRI/Imaging/JWPipeNB-MIRI-imaging.ipynb) |
-| MIRI       | Imaging TSO    | 12.0       | 1.19.1 | [JWPipeNB-MIRI-imaging-TSO.ipynb](https://github.com/spacetelescope/jwst-pipeline-notebooks/blob/main/notebooks/MIRI/Imaging-TSO/JWPipeNB-MIRI-imaging-TSO.ipynb)  |
-| MIRI       | LRS Slit       | 12.0       | 1.19.1 | [JWPipeNB-MIRI-LRS-slit.ipynb](https://github.com/spacetelescope/jwst-pipeline-notebooks/blob/main/notebooks/MIRI/LRS-slit/JWPipeNB-MIRI-LRS-slit.ipynb)  |
-| MIRI       | LRS Slitless   | 12.0       | 1.19.1 | [JWPipeNB-MIRI-LRS-slitless-TSO.ipynb](https://github.com/spacetelescope/jwst-pipeline-notebooks/blob/main/notebooks/MIRI/LRS-slitless-TSO/JWPipeNB-MIRI-LRS-slitless-TSO.ipynb)  |
-| MIRI       | MRS            | 12.0       | 1.19.1 | [JWPipeNB-MIRI-MRS.ipynb](https://github.com/spacetelescope/jwst-pipeline-notebooks/blob/main/notebooks/MIRI/MRS/JWPipeNB-MIRI-MRS.ipynb)  |
-| NIRCam     | Coronagraphy   | 12.0       | 1.19.1 | [JWPipeNB-nircam-coronagraphy.ipynb](https://github.com/spacetelescope/jwst-pipeline-notebooks/blob/main/notebooks/NIRCAM/Coronagraphy/JWPipeNB-nircam-coronagraphy.ipynb)  |
-| NIRCam     | Imaging        | 12.0       | 1.19.1 | [JWPipeNB-nircam-imaging.ipynb](https://github.com/spacetelescope/jwst-pipeline-notebooks/blob/main/notebooks/NIRCAM/Imaging/JWPipeNB-nircam-imaging.ipynb)  |
-| NIRISS     | AMI            | 12.0       | 1.19.1 | [JWPipeNB-niriss-ami.ipynb](https://github.com/spacetelescope/jwst-pipeline-notebooks/blob/main/notebooks/NIRISS/AMI/JWPipeNB-niriss-ami.ipynb)  |
-| NIRISS     | Imaging        | 12.0       | 1.19.1 | [JWPipeNB-niriss-imaging.ipynb](https://github.com/spacetelescope/jwst-pipeline-notebooks/blob/main/notebooks/NIRISS/Imaging/JWPipeNB-niriss-imaging.ipynb)  |
-| NIRSpec    | BOTS           | 12.0       | 1.19.1 | [JWPipeNB-NIRSpec-BOTS.ipynb](https://github.com/spacetelescope/jwst-pipeline-notebooks/blob/main/notebooks/NIRSPEC/BOTS/JWPipeNB-NIRSpec-BOTS.ipynb)  |
-| NIRSpec    | Fixed Slit     | 12.0       | 1.19.1 | [JWPipeNB-NIRSpec-FS.ipynb](https://github.com/spacetelescope/jwst-pipeline-notebooks/blob/main/notebooks/NIRSPEC/FSlit/JWPipeNB-NIRSpec-FS.ipynb)  |
-| NIRSpec    | IFU            | 12.0       | 1.19.1 | [JWPipeNB-NIRSpec-IFU.ipynb](https://github.com/spacetelescope/jwst-pipeline-notebooks/blob/main/notebooks/NIRSPEC/IFU/JWPipeNB-NIRSpec-IFU.ipynb)  |
-| NIRSpec    | MOS            | 12.0       | 1.19.1 | [JWPipeNB-NIRSpec-MOS.ipynb](https://github.com/spacetelescope/jwst-pipeline-notebooks/blob/main/notebooks/NIRSPEC/MOS/JWPipeNB-NIRSpec-MOS.ipynb)  |
+- [Space Telescope Imaging Spectrograph (STIS)](https://www.stsci.edu/hst/instrumentation/stis)
 
-## Reference Files
+- [Wide Field Camera 3 (WFC3)](https://www.stsci.edu/hst/instrumentation/wfc3)
+  
 
-As of October 2024, the JWST pipeline will automatically select the best reference file context appropriate to each pipeline version by default.  The notebooks provided here allow users to override this default if desired and choose specific contexts instead.  See [Choosing a Context](https://jwst-docs.stsci.edu/jwst-science-calibration-pipeline#JWSTScienceCalibrationPipeline-crds_contextChoosingacontext) for guidance.
+Installation Instructions
+=========================
 
-## Installation
+You can view rendered versions of the notebooks in this repository,
+it requires no special tools beyond your web browser.
+See [this website](https://spacetelescope.github.io/hst_notebooks/)
 
-### Individual Notebooks
+To download and execute the notebooks, we recommend you clone
+the `hst_notebooks <https://github.com/spacetelescope/hst_notebooks>`_
+repository to your local computer. 
 
-For advanced users, these notebooks can be downloaded individually from the GitHub repository and run in any python environment in which the [``jwst``](https://github.com/spacetelescope/jwst) package meeting the indicated minimum version has been installed.  Note that some notebooks have additional dependencies (e.g., [jdaviz](https://github.com/spacetelescope/jdaviz/)) as given in the associated requirements files.
+You can also click the "Download ZIP" option for the entire repository listed under the green "Code" button at the top of the repository landing page. You are also able to download individual notebooks, but it is not as straight forward or recommended, so we do not provide details here.
 
-### Package Installation
+Most notebooks have additional associated files in their folder,
+including a requirements file that lists packages necessary to run the notebooks.
+The packages in the requirements file can be installed using `pip <https://pip.pypa.io/en/stable/>`_ . 
 
-If desired, you can also clone the entire ``jwst-pipeline-notebooks`` repository to your local computer and set up a new virtual or conda environment
-to avoid version conflicts with other packages you may have installed, for example:
+Any version dependencies are contained in the requirements file in 
+each notebook folder. Please use at least the minimum supported
+version of the Python language in your active environment.
 
-    conda create -n jpnb python=3.13
-    conda activate jpnb
-    git clone https://github.com/spacetelescope/jwst-pipeline-notebooks.git
+Some notebooks use the HSTCAL package. The folders for these notebooks will also contain a shell
+script that contains the command to pull the hstcal package from conda-forge instead of pypi.
 
-Next, move into the directory of the notebook you want to install and set up the requirements:
 
-    cd jwst-pipeline-notebooks/notebooks/<whatever-notebook>
+Clone the Repository
+--------------------
+
+Once you've changed to the directory where you cloned this repository, and go to
+the notebook directory you are interested in using, and go to your selected 
+notebook, as below:
+
+    git clone https://github.com/spacetelescope/hst_notebooks.git
+    cd hst_notebooks/notebooks/ACS/acs_cte_forward_model
+
+You can then proceed to install the requirements for the specific notebook you are interested in using.
+
+
+Run the notebook in an appropriate environment
+----------------------------------------------
+
+Once you are in the directory of the notebook you want to use, make sure you have a populated environment that contains the required pacages::
+
+    cd hst_notebooks/notebooks/<notebook-name>
+
+You may want to consider installing your notebooks in a new conda/mamba environment
+to avoid version conflicts with other packages you may have installed, for example::
+
+    conda create -n hstnb python pip jupyter
+    conda activate hstnb
+
+
+In the case that there is no pre-requirements.sh file:
+
+    conda create --name hstnb python pip jupyter
+    conda activate hstnb
     pip install -r requirements.txt
-    jupyter notebook
+    
 
-We recommend setting up a new environment for each notebook to ensure that there are no conflicting dependencies.
+In the case that there is a pre-requirements.sh file, this file is likely
+only used to install hstcal. You can either install hstcal in the `hstnb`
+environment you created above... 
+    
+    conda install --yes -c conda-forge hstcal
 
-## Previous Versions
 
-Previous versions of these notebooks designed for use with prior builds of the JWST calibration pipeline can be found as tags within this repository.
+or you can create the appropriate environment starting 
+with hstcal using the following:
 
-| Notebook Tag | JWST Build |  ``jwst`` version |
-|--------------|------------|-------------------|
-| [1.0.0](https://github.com/spacetelescope/jwst-pipeline-notebooks/tree/1.0.0)        | [11.2](https://jwst-docs.stsci.edu/jwst-science-calibration-pipeline/jwst-operations-pipeline-build-information/jwst-operations-pipeline-build-11-2-release-notes#gsc.tab=0)       | 1.17.1            |
-| [1.1.0](https://github.com/spacetelescope/jwst-pipeline-notebooks/tree/1.1.0)        | [11.3](https://jwst-docs.stsci.edu/jwst-science-calibration-pipeline/jwst-operations-pipeline-build-information/jwst-operations-pipeline-build-11-3-release-notes#gsc.tab=0)       | 1.18.1            |
+    conda create --yes -n hstcal -c conda-forge hstcal
+    conda activate hstcal
+    pip install -r requirements.txt
+    pip install jupyter
 
-## Citation
 
-If you use these notebooks in your work, please cite this repository using https://doi.org/10.5281/zenodo.15060584
+It's possible that you also have the `stenv` environment available locally.
+In this case, `stenv` should already have hstcal installed. You
+can activate the environment, and then update it to use the notebooks requirements file:
 
-## Help
+    conda activate stenv
+    pip install -r requirments.txt
+ 
+If pip reports conflicts, then you might need to follow the above instructions to create
+a new, isolated environment instead of using `hstcal`
 
-If you uncover any issues or bugs, you can open an issue on GitHub. For faster responses, however, we encourage you to submit a [JWST Help Desk Ticket](jwsthelp.stsci.edu)
+
+Help
+====
+If you uncover any issues or bugs, you can [open an issue on GitHub](https://github.com/spacetelescope/hst_notebooks/issues/new).  
+For faster responses, however, we encourage you to submit an [HST Help Desk Ticket](https://hsthelp.stsci.edu).
+
+
+
+Contributing
+============
+
+New contributions and feedback are very welcomed! Please open a new issue or new 
+pull request for bugs, feedback, or new features you would like to see. If there 
+is an issue you would like to work on, please leave a comment and we will be happy 
+to assist. Questions can also be sent through the [HST Help Desk](https://stsci.service-now.com/hst).
+
+If you wish to contribute new notebooks or major reworks of existing notebooks, see [contributing instructions](https://github.com/spacetelescope/hst_notebooks/blob/main/CONTRIBUTING.md).
