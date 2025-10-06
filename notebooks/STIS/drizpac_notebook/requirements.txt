@@ -7,3 +7,5 @@ matplotlib
 numpy
 pandas
 crds
+stis-cti
+refstis
