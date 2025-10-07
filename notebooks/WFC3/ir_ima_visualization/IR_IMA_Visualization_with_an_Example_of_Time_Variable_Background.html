@@ -729,10 +729,10 @@ a given exposure — the ‘ramp’ — is recorded in the RAW data files.” Th
 <section id="wfc3-ir-file-information">
 <h3>2.2 WFC3/IR File Information <a id="file"></a><a class="headerlink" href="#wfc3-ir-file-information" title="Link to this heading">#</a></h3>
 <p>The figure below shows the WFC3/IR file structure corresponding to <a class="reference external" href="https://hst-docs.stsci.edu/wfc3dhb/chapter-2-wfc3-data-structure/2-2-wfc3-file-structure">Figure 2.4 of the Data Handbook</a>. Note that for WFC3/IR data, each read or image set (IMSET) consists of five data arrays: SCI, ERR, DQ, SAMP, TIME. Consecutive MULTIACCUM readouts are stored in reverse chronological order, with [SCI,1] corresponding to the final, cumulative exposure.</p>
-<img alt="Diagram of WFC3/IR Data Format, consisting of four columns representing each IMA read, made up of a science array, an error array, DQ array, and integration time." src="notebooks/WFC3/ir_ima_visualization/ir_data_format.png" />
+<img alt="Diagram of WFC3/IR Data Format, consisting of four columns representing each IMA read, made up of a science array, an error array, DQ array, and integration time." src="../../../_images/ir_data_format.png" />
 <p>The table below lists the IMSET, SAMPNUM, and SAMPTIME for a WFC3/IR SPARS100 exposure, modified from <a class="reference external" href="https://hst-docs.stsci.edu/wfc3ihb/chapter-7-ir-imaging-with-wfc3/7-7-ir-exposure-and-readout">Section 7.7 of the Instrument Handbook</a>. Note that the image header keyword NSAMP reports a value of 16, but there are actually 15 science reads in the IMA file, following the 0th read (which has an exposure time of 0). While NSAMP keyword is reported in the primary header (extension 0), the SAMPNUM and SAMPTIME keywords may be found in the science header of each read, and these report the read (IMSET) number and the cumulative exposure time of each respective read.</p>
 <p>This table is similar to <a class="reference external" href="https://hst-docs.stsci.edu/wfc3ihb/chapter-7-ir-imaging-with-wfc3/7-7-ir-exposure-and-readout#id-7.7IRExposureandReadout-table7.8">Table 7.7</a>, except that the column labelled NSAMP in the handbook is really the SAMPNUM. Note that we have added a row at the top of the table to highlight that IMSET [SCI,16] corresponds to the 0th read.</p>
-<img alt="Table detailing the relationship between 'IMSET', SAMPNUM, and integration time for successive reads in an WFC3/IR image taken at a SPARS100 sample sequence." src="notebooks/WFC3/ir_ima_visualization/SAMPNUM_Table.png" />
+<img alt="Table detailing the relationship between 'IMSET', SAMPNUM, and integration time for successive reads in an WFC3/IR image taken at a SPARS100 sample sequence." src="../../../_images/SAMPNUM_Table.png" />
 </section>
 </section>
 <section id="visualizing-individual-reads-of-ima-images">
@@ -1000,7 +1000,7 @@ a given exposure — the ‘ramp’ — is recorded in the RAW data files.” Th
 <section id="a-more-accurate-difference-between-reads-the-instantaneous-rate">
 <h2>5. A More Accurate Difference Between Reads: The Instantaneous Rate <a id="instantaneous"></a><a class="headerlink" href="#a-more-accurate-difference-between-reads-the-instantaneous-rate" title="Link to this heading">#</a></h2>
 <p>Here we implement a different technique to examine the count rate difference between consecutive reads. In this case, we first convert from count rate (e-/s) back to counts (e-) before taking the difference, as shown in equation 3 from <a class="reference external" href="https://www.stsci.edu/files/live/sites/www/files/home/hst/instrumentation/wfc3/documentation/instrument-science-reports-isrs/_documents/2018/WFC3-2018-05.pdf">WFC3 ISR 2018-05</a>.</p>
-<p><img alt="Instantaneous Difference Equation" src="notebooks/WFC3/ir_ima_visualization/instantaneous_diff.png" /></p>
+<p><img alt="Instantaneous Difference Equation" src="../../../_images/instantaneous_diff.png" /></p>
 <p>One advantage of this method is that it does not remove information about the signal levels at the beginning of the exposure, as in the prior method. Thus the ramp plot below shows a median rate of ~1.5 e-/s for the first two differences instead of ~zero.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

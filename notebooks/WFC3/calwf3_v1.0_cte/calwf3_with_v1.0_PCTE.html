@@ -1190,7 +1190,7 @@ At this step, you should see: <br></p>
 </div>
 </div>
 <div style="text-align: left"> <strong> <font size ="4">Animated GIF of the v1.0 and v2.0 FLC image subsections: </font> </strong> </div>
-<a class="reference internal image-reference" href="notebooks/WFC3/calwf3_v1.0_cte/example/v1_v2_bkg.gif"><img alt="An animated gif blinking between a subsection of background sky using the v1.0 and V2.0 pixel-based CTE corrections. The v2.0 background appears smoother with less noise and pixel variations." class="align-left" src="notebooks/WFC3/calwf3_v1.0_cte/example/v1_v2_bkg.gif" style="width: 800px; height: 800px;" />
+<a class="reference internal image-reference" href="../../../_images/v1_v2_bkg.gif"><img alt="An animated gif blinking between a subsection of background sky using the v1.0 and V2.0 pixel-based CTE corrections. The v2.0 background appears smoother with less noise and pixel variations." class="align-left" src="../../../_images/v1_v2_bkg.gif" style="width: 800px; height: 800px;" />
 </a>
 <p><a id="bkgdist"></a></p>
 </section>
@@ -1259,14 +1259,14 @@ At this step, you should see: <br></p>
 </div>
 </div>
 <div style="text-align: left"> <strong> <font size ="4">Animated GIF of the v1.0 and v2.0 FLC image subsections: </font> </strong> </div>
-<a class="reference internal image-reference" href="notebooks/WFC3/calwf3_v1.0_cte/example/v1_v2_subsection.gif"><img alt="An animated GIF of the v1.0 and v2.0 FLC image subsections" class="align-left" src="notebooks/WFC3/calwf3_v1.0_cte/example/v1_v2_subsection.gif" style="width: 975px;" />
+<a class="reference internal image-reference" href="../../../_images/v1_v2_subsection.gif"><img alt="An animated GIF of the v1.0 and v2.0 FLC image subsections" class="align-left" src="../../../_images/v1_v2_subsection.gif" style="width: 975px;" />
 </a>
 <p><a id="apphot"></a></p>
 </section>
 <section id="aperture-photometry">
 <h2>11.5 Aperture Photometry<a class="headerlink" href="#aperture-photometry" title="Link to this heading">#</a></h2>
 <p>To show the quantitative difference in the observed flux of sources between the v1.0 and v2.0 pixel-based CTE correction,<br> we perform aperture photometry on six stars of varying brightness within the image subsection above. Here, we display the <br> image subsection again with the apertures, annuli, and star labels overplotted. This subsection includes the first ~150 rows <br> of UVIS 1, which means all of these stars suffer the most CTE flux loss as they transfer 1900+ rows to the readout amplifier.</p>
-<a class="reference internal image-reference" href="notebooks/WFC3/calwf3_v1.0_cte/example/apphot_image.png"><img alt="Aperture photometry illustration" class="align-left" src="notebooks/WFC3/calwf3_v1.0_cte/example/apphot_image.png" style="width: 900px;" />
+<a class="reference internal image-reference" href="../../../_images/apphot_image.png"><img alt="Aperture photometry illustration" class="align-left" src="../../../_images/apphot_image.png" style="width: 900px;" />
 </a>
 <p>First, we approximate the center x and y positions of the stars in the 4Kx4K science arrays, and create the apertures and <br> annuli using <code class="docutils literal notranslate"><span class="pre">photutils</span></code>. <br></p>
 <p>Then, we use <code class="docutils literal notranslate"><span class="pre">photutils</span></code> to measure the signal in each area and subtract the background values in the annuli from the <br>aperture sum values. We define a function named <code class="docutils literal notranslate"><span class="pre">get_flux()</span></code> to do this for us.</p>
