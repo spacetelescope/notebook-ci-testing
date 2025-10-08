@@ -63,6 +63,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/WFC3/ir_ima_visualization/IR_IMA_Visualization_with_an_Example_of_Time_Variable_Background';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Manual Recalibration with calwf3: Turning off the IR Linear Ramp Fit" href="../calwf3_recalibration/calwf3_recal_tvb.html" />
+    <link rel="prev" title="WFC3/IR Time Variable Background (TVB)" href="../ir_tvb.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -125,8 +127,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -151,8 +151,14 @@
   
   
   
+    
+    
+      
+    
+    
+    <img src="../../../_static/stsci_logo2.png" class="logo__image only-light" alt="HST Notebooks - Home"/>
+    <script>document.write(`<img src="../../../_static/stsci_logo2.png" class="logo__image only-dark" alt="HST Notebooks - Home"/>`);</script>
   
-    <p class="title logo__title">HST Notebooks</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -178,6 +184,7 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">ACS</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../ACS/README.html">ACS Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ACS/acs_findsat_mrt/acs_findsat_mrt_example.html">Satellite trail detection in ACS/WFC data using acstools.findsat_mrt</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ACS/acs_saturation_trails/acs_saturation_trails.html">ACS Linearity with Saturated Stars</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ACS/acs_cte_forward_model/acs_cte_forward_model_example.html">Pixel-based ACS/WFC CTE Forward Model</a></li>
@@ -188,6 +195,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../ACS/acs_polarization_tools/acs_polarization_tools.html">Using ACS Polarization Tools</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ACS/acs_focus_diverse_epsfs/acs_focus_diverse_epsfs.html">Focus Diverse ePSFs for ACS/WFC</a></li>
 
+<li class="toctree-l1"><a class="reference internal" href="../../ACS/acs_exception_report/exception_report_checks.html">HST Exception Report - Investigate your ACS Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ACS/hst_orbits_ephem/hst_orbits_ephem.html">Getting HST Ephemeris and Related Data for an Observation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">COS</span></p>
@@ -253,6 +261,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">DrizzlePac</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/README.html">DrizzlePac Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/using_updated_astrometry_solutions/using_updated_astrometry_solutions.html">Improving Astrometry Using Alternate WCS Solutions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/align_to_catalogs/align_to_catalogs.html">Aligning HST images to an Absolute Reference Catalog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/align_sparse_fields/align_sparse_fields.html">Aligning Deep Exposures of Sparse Fields</a></li>
@@ -289,6 +298,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">STIS</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../STIS/README.html">STIS Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../STIS/cross-correlation/cross-correlation.html">Correcting for Missing Wavecals with Cross-Correlation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../STIS/custom_ccd_darks/custom_ccd_darks.html">Custom CCD Darks <a class="tocSkip"></a></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../STIS/drizpac_notebook/STIS_DrizzlePac_Tutorial.html">STIS DrizzlePac Tutorial <a class="tocSkip"></a></a></li>
@@ -299,6 +309,40 @@
 <li class="toctree-l1"><a class="reference internal" href="../../STIS/extraction/1D_Extraction.html">1D Spectra Extraction <a class="tocSkip"></a></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../STIS/low_count_uncertainties/Low_Count_Uncertainties.html">Low Count Uncertainties in STIS <a class="tocSkip"></a></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../STIS/contrast_sensitivity/STIS_Coronagraphic_Observation_Feasibility.html">STIS Coronagraphic Observation Feasibility</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">WFC3</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../README.html">WFC3 Notebooks</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../general_tools.html">General Tools</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../image_displayer_analyzer/wfc3_image_displayer_analyzer.html">WFC3 Image Displayer &amp; Analyzer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exception_report/wfc3_exception_report.html">Exception Report Checklist - WFC3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../calwf3_v1.0_cte/calwf3_with_v1.0_PCTE.html">Processing WFC3/UVIS Data with <code class="docutils literal notranslate"><span class="pre">calwf3</span></code> Using the v1.0 CTE-Correction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../persistence/wfc3_ir_persistence.html">Masking Persistence in WFC3/IR Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../uvis_g280_transit/G280_Exoplanet_Transits.html">Analyzing WFC3/UVIS G280 Exoplanet Transit Observations</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../ir_tvb.html">WFC3/IR Time Variable Background (TVB)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">WFC3/IR IMA Visualization Tools with An Example of Time Variable Background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../calwf3_recalibration/calwf3_recal_tvb.html">Manual Recalibration with calwf3: Turning off the IR Linear Ramp Fit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tvb_flattenramp/TVB_flattenramp_notebook.html">Correcting for Helium Line Emission Background in IR Exposures using the “Flatten-Ramp” Technique</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ir_scattered_light_calwf3_corrections/Correcting_for_Scattered_Light_in_IR_Exposures_Using_calwf3_to_Mask_Bad_Reads.html">Correcting for Scattered Light in WFC3/IR Exposures: Using <code class="docutils literal notranslate"><span class="pre">calwf3</span></code> to Mask Bad Reads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ir_scattered_light_manual_corrections/Correcting_for_Scattered_Light_in_IR_Exposures_by_Manually_Subtracting_Bad_Reads.html">Correcting for Scattered Light in WFC3/IR Exposures: Manually Subtracting Bad Reads</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../photometry.html">Photometry</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../filter_transformations/filter_transformations.html">WFC3/UVIS Filter Transformations with stsynphot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../flux_conversion_tool/flux_conversion_tool.html">Flux Unit Conversions with synphot and stsynphot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../photometry_examples/phot_examples.html">Synthetic Photometry Examples for WFC3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../uvis_time_dependent_photometry/uvis_timedep_phot.html">WFC3/UVIS Time-dependent Photometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../zeropoints/zeropoints.html">Calculating WFC3 Zeropoints with STSynphot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../uvis_pam_corrections/WFC3_UVIS_Pixel_Area_Map_Corrections_for_Subarrays.html">WFC3/UVIS Pixel Area Map Corrections for Subarrays</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../point_spread_function.html">Point Spread Function (PSF)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../point_spread_function/hst_point_spread_function.html">HST WFC3 Point Spread Function Modeling   </a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mast_api_psf/download_psf_cutouts.html">Downloading WFC3 and WFPC2 PSF Cutouts from MAST</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -570,7 +614,13 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <p><a id="top"></a></p>
+  <div style='background-color: #fff3cd; border: 1px solid #ffeaa7; border-radius: 4px; padding: 15px; margin: 10px 0; border-left: 4px solid #f39c12;'>
+<h3 style='color: #856404; margin-top: 0;'>⚠️ EXECUTION WARNING</h3>
+<p style='color: #856404; margin-bottom: 0;'><strong>This notebook may not execute properly in the current environment.</strong></p>
+<p style='color: #856404; margin-bottom: 0;'>Some cells may have failed during automated testing. Please review the notebook content and test manually before use.</p>
+<p style='color: #856404; margin-bottom: 0; font-size: 0.9em;'><em>Generated during CI/CD pipeline - some outputs may be incomplete or missing.</em></p>
+</div>
+<p><a id="top"></a></p>
 <section class="tex2jax_ignore mathjax_ignore" id="wfc3-ir-ima-visualization-tools-with-an-example-of-time-variable-background">
 <h1>WFC3/IR IMA Visualization Tools with An Example of Time Variable Background<a class="headerlink" href="#wfc3-ir-ima-visualization-tools-with-an-example-of-time-variable-background" title="Link to this heading">#</a></h1>
 <section id="learning-goals">
@@ -667,16 +717,6 @@ a given exposure — the ‘ramp’ — is recorded in the RAW data files.” Th
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div><i>Table masked=True length=4</i>
-<table id="table140320333295312" class="table-striped table-bordered table-condensed">
-<thead><tr><th>obsID</th><th>obs_collection</th><th>dataproduct_type</th><th>obs_id</th><th>description</th><th>type</th><th>dataURI</th><th>productType</th><th>productGroupDescription</th><th>productSubGroupDescription</th><th>productDocumentationURL</th><th>project</th><th>prvversion</th><th>proposal_id</th><th>productFilename</th><th>size</th><th>parent_obsid</th><th>dataRights</th><th>calib_level</th><th>filters</th></tr></thead>
-<thead><tr><th>str8</th><th>str3</th><th>str5</th><th>str35</th><th>str62</th><th>str1</th><th>str67</th><th>str9</th><th>str28</th><th>str11</th><th>str1</th><th>str7</th><th>str19</th><th>str5</th><th>str50</th><th>int64</th><th>str8</th><th>str6</th><th>int64</th><th>str9</th></tr></thead>
-<tr><td>25006494</td><td>HST</td><td>image</td><td>icqtbbbxq</td><td>DADS IMA file - Intermediate Mult-Accum WFC3/NICMOS</td><td>S</td><td>mast:HST/product/icqtbbbxq_ima.fits</td><td>AUXILIARY</td><td>--</td><td>IMA</td><td>--</td><td>CALWF3</td><td>3.7.2 (Apr-15-2024)</td><td>14037</td><td>icqtbbbxq_ima.fits</td><td>168261120</td><td>25007139</td><td>PUBLIC</td><td>2</td><td>F140W</td></tr>
-<tr><td>25006494</td><td>HST</td><td>image</td><td>icqtbbbxq</td><td>DADS FLT file - Calibrated exposure ACS/WFC3/STIS/COS</td><td>S</td><td>mast:HST/product/icqtbbbxq_flt.fits</td><td>SCIENCE</td><td>--</td><td>FLT</td><td>--</td><td>CALWF3</td><td>3.7.2 (Apr-15-2024)</td><td>14037</td><td>icqtbbbxq_flt.fits</td><td>16583040</td><td>25007139</td><td>PUBLIC</td><td>2</td><td>F140W</td></tr>
-<tr><td>25006495</td><td>HST</td><td>image</td><td>icqtbbc0q</td><td>DADS IMA file - Intermediate Mult-Accum WFC3/NICMOS</td><td>S</td><td>mast:HST/product/icqtbbc0q_ima.fits</td><td>AUXILIARY</td><td>--</td><td>IMA</td><td>--</td><td>CALWF3</td><td>3.7.2 (Apr-15-2024)</td><td>14037</td><td>icqtbbc0q_ima.fits</td><td>168261120</td><td>25007139</td><td>PUBLIC</td><td>2</td><td>F140W</td></tr>
-<tr><td>25006495</td><td>HST</td><td>image</td><td>icqtbbc0q</td><td>DADS FLT file - Calibrated exposure ACS/WFC3/STIS/COS</td><td>S</td><td>mast:HST/product/icqtbbc0q_flt.fits</td><td>SCIENCE</td><td>--</td><td>FLT</td><td>--</td><td>CALWF3</td><td>3.7.2 (Apr-15-2024)</td><td>14037</td><td>icqtbbc0q_flt.fits</td><td>16583040</td><td>25007139</td><td>PUBLIC</td><td>2</td><td>F140W</td></tr>
-</table></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -684,49 +724,15 @@ a given exposure — the ‘ramp’ — is recorded in the RAW data files.” Th
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/icqtbbbxq_ima.fits to ./mastDownload/HST/icqtbbbxq/icqtbbbxq_ima.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/icqtbbbxq_flt.fits to ./mastDownload/HST/icqtbbbxq/icqtbbbxq_flt.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/icqtbbc0q_ima.fits to ./mastDownload/HST/icqtbbc0q/icqtbbc0q_ima.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/icqtbbc0q_flt.fits to ./mastDownload/HST/icqtbbc0q/icqtbbc0q_flt.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output text_html"><div><i>Table length=4</i>
-<table id="table140320545820944" class="table-striped table-bordered table-condensed">
-<thead><tr><th>Local Path</th><th>Status</th><th>Message</th><th>URL</th></tr></thead>
-<thead><tr><th>str47</th><th>str8</th><th>object</th><th>object</th></tr></thead>
-<tr><td>./mastDownload/HST/icqtbbbxq/icqtbbbxq_ima.fits</td><td>COMPLETE</td><td>None</td><td>None</td></tr>
-<tr><td>./mastDownload/HST/icqtbbbxq/icqtbbbxq_flt.fits</td><td>COMPLETE</td><td>None</td><td>None</td></tr>
-<tr><td>./mastDownload/HST/icqtbbc0q/icqtbbc0q_ima.fits</td><td>COMPLETE</td><td>None</td><td>None</td></tr>
-<tr><td>./mastDownload/HST/icqtbbc0q/icqtbbc0q_flt.fits</td><td>COMPLETE</td><td>None</td><td>None</td></tr>
-</table></div></div></div>
 </div>
 </section>
 <section id="wfc3-ir-file-information">
 <h3>2.2 WFC3/IR File Information <a id="file"></a><a class="headerlink" href="#wfc3-ir-file-information" title="Link to this heading">#</a></h3>
 <p>The figure below shows the WFC3/IR file structure corresponding to <a class="reference external" href="https://hst-docs.stsci.edu/wfc3dhb/chapter-2-wfc3-data-structure/2-2-wfc3-file-structure">Figure 2.4 of the Data Handbook</a>. Note that for WFC3/IR data, each read or image set (IMSET) consists of five data arrays: SCI, ERR, DQ, SAMP, TIME. Consecutive MULTIACCUM readouts are stored in reverse chronological order, with [SCI,1] corresponding to the final, cumulative exposure.</p>
-<img alt="Diagram of WFC3/IR Data Format, consisting of four columns representing each IMA read, made up of a science array, an error array, DQ array, and integration time." src="notebooks/WFC3/ir_ima_visualization/ir_data_format.png" />
+<img alt="Diagram of WFC3/IR Data Format, consisting of four columns representing each IMA read, made up of a science array, an error array, DQ array, and integration time." src="../../../_images/ir_data_format.png" />
 <p>The table below lists the IMSET, SAMPNUM, and SAMPTIME for a WFC3/IR SPARS100 exposure, modified from <a class="reference external" href="https://hst-docs.stsci.edu/wfc3ihb/chapter-7-ir-imaging-with-wfc3/7-7-ir-exposure-and-readout">Section 7.7 of the Instrument Handbook</a>. Note that the image header keyword NSAMP reports a value of 16, but there are actually 15 science reads in the IMA file, following the 0th read (which has an exposure time of 0). While NSAMP keyword is reported in the primary header (extension 0), the SAMPNUM and SAMPTIME keywords may be found in the science header of each read, and these report the read (IMSET) number and the cumulative exposure time of each respective read.</p>
 <p>This table is similar to <a class="reference external" href="https://hst-docs.stsci.edu/wfc3ihb/chapter-7-ir-imaging-with-wfc3/7-7-ir-exposure-and-readout#id-7.7IRExposureandReadout-table7.8">Table 7.7</a>, except that the column labelled NSAMP in the handbook is really the SAMPNUM. Note that we have added a row at the top of the table to highlight that IMSET [SCI,16] corresponds to the 0th read.</p>
-<img alt="Table detailing the relationship between 'IMSET', SAMPNUM, and integration time for successive reads in an WFC3/IR image taken at a SPARS100 sample sequence." src="notebooks/WFC3/ir_ima_visualization/SAMPNUM_Table.png" />
+<img alt="Table detailing the relationship between 'IMSET', SAMPNUM, and integration time for successive reads in an WFC3/IR image taken at a SPARS100 sample sequence." src="../../../_images/SAMPNUM_Table.png" />
 </section>
 </section>
 <section id="visualizing-individual-reads-of-ima-images">
@@ -744,93 +750,6 @@ a given exposure — the ‘ramp’ — is recorded in the RAW data files.” Th
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Filename: mastDownload/HST/icqtbbbxq/icqtbbbxq_ima.fits
-No.    Name      Ver    Type      Cards   Dimensions   Format
-  0  PRIMARY       1 PrimaryHDU     267   ()      
-  1  SCI           1 ImageHDU        81   (1024, 1024)   float32   
-  2  ERR           1 ImageHDU        43   (1024, 1024)   float32   
-  3  DQ            1 ImageHDU        35   (1024, 1024)   int16   
-  4  SAMP          1 ImageHDU        30   ()      
-  5  TIME          1 ImageHDU        30   ()      
-  6  SCI           2 ImageHDU        81   (1024, 1024)   float32   
-  7  ERR           2 ImageHDU        43   (1024, 1024)   float32   
-  8  DQ            2 ImageHDU        35   (1024, 1024)   int16   
-  9  SAMP          2 ImageHDU        30   ()      
- 10  TIME          2 ImageHDU        30   ()      
- 11  SCI           3 ImageHDU        81   (1024, 1024)   float32   
- 12  ERR           3 ImageHDU        43   (1024, 1024)   float32   
- 13  DQ            3 ImageHDU        35   (1024, 1024)   int16   
- 14  SAMP          3 ImageHDU        30   ()      
- 15  TIME          3 ImageHDU        30   ()      
- 16  SCI           4 ImageHDU        81   (1024, 1024)   float32   
- 17  ERR           4 ImageHDU        43   (1024, 1024)   float32   
- 18  DQ            4 ImageHDU        35   (1024, 1024)   int16   
- 19  SAMP          4 ImageHDU        30   ()      
- 20  TIME          4 ImageHDU        30   ()      
- 21  SCI           5 ImageHDU        81   (1024, 1024)   float32   
- 22  ERR           5 ImageHDU        43   (1024, 1024)   float32   
- 23  DQ            5 ImageHDU        35   (1024, 1024)   int16   
- 24  SAMP          5 ImageHDU        30   ()      
- 25  TIME          5 ImageHDU        30   ()      
- 26  SCI           6 ImageHDU        81   (1024, 1024)   float32   
- 27  ERR           6 ImageHDU        43   (1024, 1024)   float32   
- 28  DQ            6 ImageHDU        35   (1024, 1024)   int16   
- 29  SAMP          6 ImageHDU        30   ()      
- 30  TIME          6 ImageHDU        30   ()      
- 31  SCI           7 ImageHDU        81   (1024, 1024)   float32   
- 32  ERR           7 ImageHDU        43   (1024, 1024)   float32   
- 33  DQ            7 ImageHDU        35   (1024, 1024)   int16   
- 34  SAMP          7 ImageHDU        30   ()      
- 35  TIME          7 ImageHDU        30   ()      
- 36  SCI           8 ImageHDU        81   (1024, 1024)   float32   
- 37  ERR           8 ImageHDU        43   (1024, 1024)   float32   
- 38  DQ            8 ImageHDU        35   (1024, 1024)   int16   
- 39  SAMP          8 ImageHDU        30   ()      
- 40  TIME          8 ImageHDU        30   ()      
- 41  SCI           9 ImageHDU        81   (1024, 1024)   float32   
- 42  ERR           9 ImageHDU        43   (1024, 1024)   float32   
- 43  DQ            9 ImageHDU        35   (1024, 1024)   int16   
- 44  SAMP          9 ImageHDU        30   ()      
- 45  TIME          9 ImageHDU        30   ()      
- 46  SCI          10 ImageHDU        81   (1024, 1024)   float32   
- 47  ERR          10 ImageHDU        43   (1024, 1024)   float32   
- 48  DQ           10 ImageHDU        35   (1024, 1024)   int16   
- 49  SAMP         10 ImageHDU        30   ()      
- 50  TIME         10 ImageHDU        30   ()      
- 51  SCI          11 ImageHDU        81   (1024, 1024)   float32   
- 52  ERR          11 ImageHDU        43   (1024, 1024)   float32   
- 53  DQ           11 ImageHDU        35   (1024, 1024)   int16   
- 54  SAMP         11 ImageHDU        30   ()      
- 55  TIME         11 ImageHDU        30   ()      
- 56  SCI          12 ImageHDU        81   (1024, 1024)   float32   
- 57  ERR          12 ImageHDU        43   (1024, 1024)   float32   
- 58  DQ           12 ImageHDU        35   (1024, 1024)   int16   
- 59  SAMP         12 ImageHDU        30   ()      
- 60  TIME         12 ImageHDU        30   ()      
- 61  SCI          13 ImageHDU        81   (1024, 1024)   float32   
- 62  ERR          13 ImageHDU        43   (1024, 1024)   float32   
- 63  DQ           13 ImageHDU        35   (1024, 1024)   int16   
- 64  SAMP         13 ImageHDU        30   ()      
- 65  TIME         13 ImageHDU        30   ()      
- 66  SCI          14 ImageHDU        81   (1024, 1024)   float32   
- 67  ERR          14 ImageHDU        43   (1024, 1024)   float32   
- 68  DQ           14 ImageHDU        35   (1024, 1024)   int16   
- 69  SAMP         14 ImageHDU        30   ()      
- 70  TIME         14 ImageHDU        30   ()      
- 71  SCI          15 ImageHDU        81   (1024, 1024)   float32   
- 72  ERR          15 ImageHDU        43   (1024, 1024)   float32   
- 73  DQ           15 ImageHDU        35   (1024, 1024)   int16   
- 74  SAMP         15 ImageHDU        30   ()      
- 75  TIME         15 ImageHDU        30   ()      
- 76  SCI          16 ImageHDU        81   (1024, 1024)   float32   
- 77  ERR          16 ImageHDU        43   (1024, 1024)   float32   
- 78  DQ           16 ImageHDU        35   (1024, 1024)   int16   
- 79  SAMP         16 ImageHDU        30   ()      
- 80  TIME         16 ImageHDU        30   ()      
-</pre></div>
-</div>
-</div>
 </div>
 <p>As we can see, the IMA contains 16 science (SCI) extensions or IMSETS, recorded in <em>reverse chronological</em> order in the file. For this observation, the “0th” read corresponds to the extension 76 or the 16th science extenstion, e.g. [SCI,16]. In the cells below, we show how to query the NSAMP and SAMPNUM keywords in the image headers.</p>
 <div class="cell docutils container">
@@ -838,11 +757,6 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prihdr</span> <span class="o">=</span> <span class="n">image</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">header</span>
 <span class="n">NSAMP</span> <span class="o">=</span> <span class="n">prihdr</span><span class="p">[</span><span class="s1">&#39;NSAMP&#39;</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The total number of reads (including the 0th) is </span><span class="si">{</span><span class="n">NSAMP</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The total number of reads (including the 0th) is 16.
 </pre></div>
 </div>
 </div>
@@ -857,11 +771,6 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>For sample number 0, the exposure time is 0.0s.
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -872,11 +781,6 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
     <span class="sa">f</span><span class="s1">&#39;For sample number </span><span class="si">{</span><span class="n">SAMPNUM_sci1</span><span class="si">}</span><span class="s1">, the exposure time is </span><span class="si">{</span><span class="n">SAMPTIME_sci1</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">s.&#39;</span><span class="p">)</span>
 
 <span class="n">image</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>For sample number 15, the exposure time is 1402.937s.
 </pre></div>
 </div>
 </div>
@@ -914,9 +818,6 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../../_images/ad0a3a69d6087581a60a362eec472dbba6027631622b4a94b0a97b52a2f5a307.png" src="../../../_images/ad0a3a69d6087581a60a362eec472dbba6027631622b4a94b0a97b52a2f5a307.png" />
-</div>
 </div>
 <p>Here, we see our target field. In the top row, we can see the scattered light in dataset ‘icqtbbbxq’ affecting the left side of both the IMA and FLT product. In the bottom row, we see the nominal IMA and FLT images for dataset ‘icqtbbc0q’.</p>
 <p>Note that FLT images differ from IMA images in that they have had cosmic rays removed by the <a class="reference external" href="https://hst-docs.stsci.edu/wfc3dhb/chapter-3-wfc3-data-calibration/3-3-ir-data-calibration-steps#id-3.3IRDataCalibrationSteps-3.3.10"><code class="docutils literal notranslate"><span class="pre">calwf3</span></code> pipeline</a> via the CRCORR step which performs ‘up-the-ramp’ fitting.</p>
@@ -932,9 +833,6 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../../_images/62c212ab943e1c90587da8c210d2f43ac02e8ff3d69561d7c585c97b58d9fbbc.png" src="../../../_images/62c212ab943e1c90587da8c210d2f43ac02e8ff3d69561d7c585c97b58d9fbbc.png" />
-</div>
 </div>
 <p>Above, we see scattered light in every read in the cumulative exposure. In reality (as we will see later in this notebook), the scattered light is present only during the first few reads of the exposure. Because we are plotting reads with an accumulating signal, we see the scattered light affecting all reads of the IMA, even when the scattered light is no longer present. We will see this more clearly when visualizing the difference between reads.</p>
 <p>Conversely, when we show individual reads from the nominal IMA file, we see no scattered light (as seen below).</p>
@@ -947,9 +845,6 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No file by this name found&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../../_images/956ba12481bb1cede1866487eadc4b30e738d919718aab08b3eaf246b12718e3.png" src="../../../_images/956ba12481bb1cede1866487eadc4b30e738d919718aab08b3eaf246b12718e3.png" />
 </div>
 </div>
 <p>To get a better sense of how the MULTIACCUM method works, we can plot the median signal accumulation in electrons up the ramp for both images. The median value works well for sparse fields where the majority of the pixels are sky.</p>
@@ -983,9 +878,6 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
     <span class="s2">&quot;Comparison of Signal Accumulation Ramp in Nominal vs. Scattered Light Images&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../../_images/385adef9921d5ea40034a4563fc6f50135ad4dad6cbe0cce1f1e6a6e35e4b48e.png" src="../../../_images/385adef9921d5ea40034a4563fc6f50135ad4dad6cbe0cce1f1e6a6e35e4b48e.png" />
 </div>
 </div>
 <p>For dataset ‘icqtbbc0q’ (blue), we see the background signal accumulating linearly with time, whereas for dataset ‘icqtbbbxq’ (black), we see a non-linear background in the first portion of the exposure. ‘icqtbbbxq’ becomes linear in the second portion of the exposure and has the same slope as the nominal exposure.</p>
@@ -1038,9 +930,6 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../../_images/184437e81d33480b022f7a3552f9f118b04e0911340cabf75298a2428a89efb2.png" src="../../../_images/184437e81d33480b022f7a3552f9f118b04e0911340cabf75298a2428a89efb2.png" />
-</div>
 </div>
 <p>The left panel shows the observation affected by scattered light. By comparing the signal from the left side (orange triangles) and right side (green triangles) of our image, we see that the left side is brighter than the right and that the difference in total counts between the two sides is changing over the exposure. In this case, the difference between the two sides of the image is due to scattered light which varies spatially across the detector. We know the time-variable component is only due to Earth limb scattered light because this filter (F140W) is not affected by the He I 10830 Å airglow line emission (see section <a class="reference external" href="https://hst-docs.stsci.edu/wfc3dhb/chapter-7-wfc3-ir-sources-of-error/7-10-time-variable-background">7.10.2 of the WFC3 Data Handbook</a>). In the following sections, we will identify the impacted reads by looking at the difference in count rates between each read.</p>
 <p>The right panel shows the ramp plot for the nominal exposure, and we see that the signal from the left side, right side, and full frame are nearly identical.</p>
@@ -1064,9 +953,6 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../../_images/149e6ab01f08f8edcb6066855e8b6b3d00f045018431fbfa0f52464d10b7c3f9.png" src="../../../_images/149e6ab01f08f8edcb6066855e8b6b3d00f045018431fbfa0f52464d10b7c3f9.png" />
-</div>
 </div>
 <p>The left panel shows a large contribution from scattered light on the left side of the image (orange triangles) during the first portion of the exposure. This difference approaches zero toward the end of the exposure.  The right side of the image also has a slighlty elevated count rate early in the exposure, but not as extreme as the left side.</p>
 <p>The right panel shows that the difference in count rate is effectively zero for the nominal image, as expected.</p>
@@ -1086,9 +972,6 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No file by this name found&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../../_images/41da7c30c1003f50ec35d359d1ad4e2028e56177e3af9920ae6eb1e6a6b42a9a.png" src="../../../_images/41da7c30c1003f50ec35d359d1ad4e2028e56177e3af9920ae6eb1e6a6b42a9a.png" />
 </div>
 </div>
 <p>Above each panel, we print the median difference <span class="math notranslate nohighlight">\(\mu\)</span> in the count rate over the entire image . Below each panel, we list the IMSET difference, along with the time interval between the two IMSETs.</p>
@@ -1111,16 +994,13 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../../_images/43597a959414e524cb0f453bc181b8eff0b317528ef222544bd7d139f63dc4a3.png" src="../../../_images/43597a959414e524cb0f453bc181b8eff0b317528ef222544bd7d139f63dc4a3.png" />
-</div>
 </div>
 <p>As we expect, the differences images are blank (with the exception of a speckled pattern showing cosmic rays and differences in noise between reads). Both ‘delta’(<span class="math notranslate nohighlight">\(\Delta\)</span>) and <span class="math notranslate nohighlight">\(\mu\)</span> are effectively zero in this nominal image. The ratio, in this case, is less useful becuase the signal differences between left and right are close to zero.</p>
 </section>
 <section id="a-more-accurate-difference-between-reads-the-instantaneous-rate">
 <h2>5. A More Accurate Difference Between Reads: The Instantaneous Rate <a id="instantaneous"></a><a class="headerlink" href="#a-more-accurate-difference-between-reads-the-instantaneous-rate" title="Link to this heading">#</a></h2>
 <p>Here we implement a different technique to examine the count rate difference between consecutive reads. In this case, we first convert from count rate (e-/s) back to counts (e-) before taking the difference, as shown in equation 3 from <a class="reference external" href="https://www.stsci.edu/files/live/sites/www/files/home/hst/instrumentation/wfc3/documentation/instrument-science-reports-isrs/_documents/2018/WFC3-2018-05.pdf">WFC3 ISR 2018-05</a>.</p>
-<p><img alt="Instantaneous Difference Equation" src="notebooks/WFC3/ir_ima_visualization/instantaneous_diff.png" /></p>
+<p><img alt="Instantaneous Difference Equation" src="../../../_images/instantaneous_diff.png" /></p>
 <p>One advantage of this method is that it does not remove information about the signal levels at the beginning of the exposure, as in the prior method. Thus the ramp plot below shows a median rate of ~1.5 e-/s for the first two differences instead of ~zero.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1135,9 +1015,6 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
                         <span class="n">rhs_region</span><span class="o">=</span><span class="n">rhs_region</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../../_images/8fceda60be3cefc8c27ab1111e4035331bb1a68c953733911a28f83245ebe550.png" src="../../../_images/8fceda60be3cefc8c27ab1111e4035331bb1a68c953733911a28f83245ebe550.png" />
 </div>
 </div>
 <p>In our nominal exposure (right), we see a constant background due to zodiacal light at a level of ~0.9e-/s throughout. For our scattered light exposure (left), we see the same zodiacal light at a level of ~0.9e-/s in later reads, with the scattered light component affecting the first several reads where the median count rate for the left side (orange triangles) is larger than the right side (green triangles).</p>
@@ -1157,9 +1034,6 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../../_images/e65a99f88e0247c2ef3c10ae7aa7e6fbb8827434ab7875e2f60ec6a90adc4c61.png" src="../../../_images/e65a99f88e0247c2ef3c10ae7aa7e6fbb8827434ab7875e2f60ec6a90adc4c61.png" />
-</div>
 </div>
 <p>In this figure, we see that the ratio of instantaneous rate for the left versus right side of the image is ~1.0 for all but the first few reads.</p>
 <p>In a subsequent notebook, Correcting for Scattered Light in IR Exposures by Reprocessing with Calwf3 (O’Connor, in prep.), we show how to exclude these specific reads from the exposure and reprocess the image with <code class="docutils literal notranslate"><span class="pre">calwf3</span></code>. For this dataset, we exlude the first 6 reads, where the ratio is greater than 1.1 e-/s. While this reduces the total exposure from 1403 to 903 seconds, it removes the spatial component from the sky background and allows for a more accurate ‘up-the-ramp’ fit with <code class="docutils literal notranslate"><span class="pre">calwf3</span></code>.</p>
@@ -1177,9 +1051,6 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No file by this name found&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../../_images/6681acae893c2fde7c4f51d606bc98610c2841262dc525a1b3b257e8459f220e.png" src="../../../_images/6681acae893c2fde7c4f51d606bc98610c2841262dc525a1b3b257e8459f220e.png" />
 </div>
 </div>
 </section>
@@ -1274,6 +1145,24 @@ Please cite the primary author and year, and hyperlink the notebook or WFC3 Libr
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../ir_tvb.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">WFC3/IR Time Variable Background (TVB)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../calwf3_recalibration/calwf3_recal_tvb.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Manual Recalibration with calwf3: Turning off the IR Linear Ramp Fit</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
