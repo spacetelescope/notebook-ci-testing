@@ -908,7 +908,7 @@ MAST queries may be done using <a href="https://astroquery.readthedocs.io/en/lat
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table length=8</i>
-<table id="table139800919731280" class="table-striped table-bordered table-condensed">
+<table id="table140039814868304" class="table-striped table-bordered table-condensed">
 <thead><tr><th>ROOTNAME</th><th>ASN_ID</th><th>TARGNAME</th><th>DETECTOR</th><th>FILTER</th><th>EXPTIME</th><th>RA_TARG</th><th>DEC_TARG</th><th>POSTARG1</th><th>POSTARG2</th><th>DATE-OBS</th><th>ORIENTAT</th></tr></thead>
 <thead><tr><th>str32</th><th>str32</th><th>str32</th><th>str32</th><th>str32</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>str32</th><th>float64</th></tr></thead>
 <tr><td>ick901hzq</td><td>ICK901030</td><td>LBN67-IR</td><td>IR</td><td>F160W</td><td>702.9</td><td>274.7172</td><td>-13.8361</td><td>-62.566</td><td>-62.047</td><td>2014-09-02</td><td>-35.35</td></tr>
@@ -955,7 +955,7 @@ MAST queries may be done using <a href="https://astroquery.readthedocs.io/en/lat
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table length=12</i>
-<table id="table139799613751760" class="table-striped table-bordered table-condensed">
+<table id="table140039885966096" class="table-striped table-bordered table-condensed">
 <thead><tr><th>ROOTNAME</th><th>ASN_ID</th><th>TARGNAME</th><th>DETECTOR</th><th>FILTER</th><th>EXPTIME</th><th>RA_TARG</th><th>DEC_TARG</th><th>POSTARG1</th><th>POSTARG2</th><th>DATE-OBS</th><th>ORIENTAT</th></tr></thead>
 <thead><tr><th>str32</th><th>str32</th><th>str32</th><th>str32</th><th>str32</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>str32</th><th>float64</th></tr></thead>
 <tr><td>ick905k5q</td><td>ICK905040</td><td>LBN67-UVIS</td><td>UVIS</td><td>F657N</td><td>600.0</td><td>274.7104</td><td>-13.8289</td><td>-65.384</td><td>-74.272</td><td>2014-09-02</td><td>-35.25</td></tr>
@@ -1010,7 +1010,7 @@ MAST queries may be done using <a href="https://astroquery.readthedocs.io/en/lat
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table length=8</i>
-<table id="table139800925180752" class="table-striped table-bordered table-condensed">
+<table id="table140039815546192" class="table-striped table-bordered table-condensed">
 <thead><tr><th>filename</th><th>DETECTOR</th><th>WCSNAME</th><th>NMATCHES</th><th>RMS_RA</th><th>RMS_DEC</th><th>RMS_RApix</th><th>RMS_DECpix</th></tr></thead>
 <thead><tr><th>str18</th><th>str2</th><th>str30</th><th>int64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th></tr></thead>
 <tr><td>ick901hzq_flt.fits</td><td>IR</td><td>IDC_w3m18525i-FIT_REL_GAIAeDR3</td><td>93</td><td>7.2</td><td>7.3</td><td>0.06</td><td>0.06</td></tr>
@@ -1055,7 +1055,7 @@ Next, we look at the WCS for the UVIS data.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table length=12</i>
-<table id="table139799595118928" class="table-striped table-bordered table-condensed">
+<table id="table140039820222928" class="table-striped table-bordered table-condensed">
 <thead><tr><th>filename</th><th>DETECTOR</th><th>WCSNAME</th><th>NMATCHES</th><th>RMS_RA</th><th>RMS_DEC</th><th>RMS_RApix</th><th>RMS_DECpix</th></tr></thead>
 <thead><tr><th>str18</th><th>str4</th><th>str30</th><th>int64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th></tr></thead>
 <tr><td>ick905k5q_flc.fits</td><td>UVIS</td><td>IDC_2731450pi-FIT_REL_GAIAeDR3</td><td>161</td><td>5.7</td><td>3.9</td><td>0.14</td><td>0.1</td></tr>
@@ -1088,11 +1088,11 @@ Note that each visit has a different number of matches to Gaia (between 80-160) 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025281173232 INFO src=drizzlepac.haputils.astrometric_utils- Getting catalog using: 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025281183700 INFO src=drizzlepac.haputils.astrometric_utils- Getting catalog using: 
     http://gsss.stsci.edu/webservices/vo/CatalogSearch.aspx?RA=274.72022794466534&amp;DEC=-13.840002743133482&amp;SR=0.06355961441789089&amp;FORMAT=CSV&amp;CAT=GAIAedr3&amp;MINDET=5&amp;EPOCH=2014.668
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025281173233 INFO src=drizzlepac.haputils.astrometric_utils- Created catalog &#39;ref_cat.ecsv&#39; with 1061  sources
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025281183702 INFO src=drizzlepac.haputils.astrometric_utils- Created catalog &#39;ref_cat.ecsv&#39; with 1061  sources
 </pre></div>
 </div>
 </div>
@@ -1172,7 +1172,7 @@ Note that each visit has a different number of matches to Gaia (between 80-160) 
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table length=8</i>
-<table id="table139799584022224" class="table-striped table-bordered table-condensed">
+<table id="table140039808293072" class="table-striped table-bordered table-condensed">
 <thead><tr><th>file</th><th>dx</th><th>dy</th><th>rot</th><th>scale</th><th>xrms</th><th>yrms</th></tr></thead>
 <thead><tr><th>str18</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th></tr></thead>
 <tr><td>ick901hzq_flt.fits</td><td>0.00</td><td>0.01</td><td>360.000</td><td>0.99999</td><td>0.05</td><td>0.05</td></tr>
@@ -1217,7 +1217,7 @@ Number of matches for ick904ogq_flt_catalog_fit.match =  52
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table length=8</i>
-<table id="table139800925180752" class="table-striped table-bordered table-condensed">
+<table id="table140039815546192" class="table-striped table-bordered table-condensed">
 <thead><tr><th>filename</th><th>DETECTOR</th><th>WCSNAME</th><th>NMATCHES</th><th>RMS_RA</th><th>RMS_DEC</th><th>RMS_RApix</th><th>RMS_DECpix</th></tr></thead>
 <thead><tr><th>str18</th><th>str2</th><th>str30</th><th>int64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th></tr></thead>
 <tr><td>ick901hzq_flt.fits</td><td>IR</td><td>IDC_w3m18525i-FIT_REL_GAIAeDR3</td><td>93</td><td>7.2</td><td>7.3</td><td>0.06</td><td>0.06</td></tr>
@@ -1424,7 +1424,7 @@ Number of matches for ick904ogq_flt_catalog_fit.match =  52
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7f25a0dbe110&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7f5d86adc810&gt;
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="../../../_images/2115b13ff529a489474837f8ac671eaba549e2feada0f5b1b7fb462f33d3304d.png"><img alt="../../../_images/2115b13ff529a489474837f8ac671eaba549e2feada0f5b1b7fb462f33d3304d.png" src="../../../_images/2115b13ff529a489474837f8ac671eaba549e2feada0f5b1b7fb462f33d3304d.png" style="width: 1082px; height: 1085px;" />
@@ -1441,7 +1441,7 @@ Number of matches for ick904ogq_flt_catalog_fit.match =  52
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7f25a04865d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7f5d8eca9e10&gt;
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="../../../_images/7ea0d519b5cadae333d40b96bc0f4452f9584db09db879b84b9e48e13f1db634.png"><img alt="../../../_images/7ea0d519b5cadae333d40b96bc0f4452f9584db09db879b84b9e48e13f1db634.png" src="../../../_images/7ea0d519b5cadae333d40b96bc0f4452f9584db09db879b84b9e48e13f1db634.png" style="width: 1119px; height: 1085px;" />
@@ -1517,7 +1517,7 @@ Number of matches for ick904ogq_flt_catalog_fit.match =  52
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table length=12</i>
-<table id="table139799581373200" class="table-striped table-bordered table-condensed">
+<table id="table140039807069776" class="table-striped table-bordered table-condensed">
 <thead><tr><th>file</th><th>dx</th><th>dy</th><th>rot</th><th>scale</th><th>xrms</th><th>yrms</th></tr></thead>
 <thead><tr><th>str18</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th></tr></thead>
 <tr><td>ick905k5q_flc.fits</td><td>0.01</td><td>0.07</td><td>360.000</td><td>0.99998</td><td>0.06</td><td>0.05</td></tr>
@@ -1570,7 +1570,7 @@ Number of matches for ick908ptq_flc_catalog_fit.match =  77
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table length=12</i>
-<table id="table139799595118928" class="table-striped table-bordered table-condensed">
+<table id="table140039820222928" class="table-striped table-bordered table-condensed">
 <thead><tr><th>filename</th><th>DETECTOR</th><th>WCSNAME</th><th>NMATCHES</th><th>RMS_RA</th><th>RMS_DEC</th><th>RMS_RApix</th><th>RMS_DECpix</th></tr></thead>
 <thead><tr><th>str18</th><th>str4</th><th>str30</th><th>int64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th></tr></thead>
 <tr><td>ick905k5q_flc.fits</td><td>UVIS</td><td>IDC_2731450pi-FIT_REL_GAIAeDR3</td><td>161</td><td>5.7</td><td>3.9</td><td>0.14</td><td>0.1</td></tr>
@@ -1708,7 +1708,7 @@ Number of matches for ick908ptq_flc_catalog_fit.match =  77
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f25a0d6ee50&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f5d8eec4dd0&gt;
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="../../../_images/59586b5b679c394c9e0a15cb04299d91ffb0d2148f6686888250fd95023a015e.png"><img alt="../../../_images/59586b5b679c394c9e0a15cb04299d91ffb0d2148f6686888250fd95023a015e.png" src="../../../_images/59586b5b679c394c9e0a15cb04299d91ffb0d2148f6686888250fd95023a015e.png" style="width: 749px; height: 813px;" />
@@ -1724,7 +1724,7 @@ Number of matches for ick908ptq_flc_catalog_fit.match =  77
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f25a09ee050&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f5d8ecb19d0&gt;
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="../../../_images/3cf8906ca9ebe5cc51781335f98167a51511fb0a106fec69d8c091c857d3b51f.png"><img alt="../../../_images/3cf8906ca9ebe5cc51781335f98167a51511fb0a106fec69d8c091c857d3b51f.png" src="../../../_images/3cf8906ca9ebe5cc51781335f98167a51511fb0a106fec69d8c091c857d3b51f.png" style="width: 749px; height: 813px;" />

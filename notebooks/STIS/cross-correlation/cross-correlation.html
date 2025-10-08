@@ -697,7 +697,7 @@ document.write(`
 </pre></div>
 </div>
 <div class="output text_html"><div><i>Table length=8</i>
-<table id="table139689766558416" class="table-striped table-bordered table-condensed">
+<table id="table140327972871312" class="table-striped table-bordered table-condensed">
 <thead><tr><th>Local Path</th><th>Status</th><th>Message</th><th>URL</th></tr></thead>
 <thead><tr><th>str47</th><th>str8</th><th>object</th><th>object</th></tr></thead>
 <tr><td>./mastDownload/HST/odj101050/odj101050_raw.fits</td><td>COMPLETE</td><td>None</td><td>None</td></tr>
@@ -774,13 +774,13 @@ CRDS - INFO -  2 infos
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*** CALSTIS-0 -- Version 3.4.2 (19-Jan-2018) ***
-Begin    08-Oct-2025 17:28:10 UTC
+Begin    08-Oct-2025 18:31:40 UTC
 
 Input    ./mastDownload/HST/odj101050/odj101050_raw.fits
 Outroot  ./Shifted/odj101050_raw.fits
 
 *** CALSTIS-1 -- Version 3.4.2 (19-Jan-2018) ***
-Begin    08-Oct-2025 17:28:10 UTC
+Begin    08-Oct-2025 18:31:40 UTC
 Input    ./mastDownload/HST/odj101050/odj101050_raw.fits
 Output   ./Shifted/odj101050_flt.fits
 OBSMODE  ACCUM
@@ -788,9 +788,10 @@ APERTURE 52X0.2
 OPT_ELEM G140M
 DETECTOR FUV-MAMA
 
-Imset 1  Begin 17:28:10 UTC
-
-DQICORR  PERFORM
+Imset 1  Begin 18:31:40 UTC
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DQICORR  PERFORM
 DQITAB   oref$uce15153o_bpx.fits
 DQITAB   PEDIGREE=GROUND
 DQITAB   DESCRIP =New BPIXTAB with opt_elem column and correct repeller wire flag----
@@ -817,7 +818,9 @@ DARKCORR PERFORM
 DARKFILE oref$q591955ro_drk.fits
 DARKFILE PEDIGREE=INFLIGHT 29/01/2003 03/08/2004
 DARKFILE DESCRIP =Avg of 152 1380s darks from 9615 10034
-DARKCORR COMPLETE
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DARKCORR COMPLETE
 
 FLATCORR PERFORM
 PFLTFILE oref$mbj1658bo_pfl.fits
@@ -836,27 +839,27 @@ DOPPCORR applied to DQICORR, DARKCORR, FLATCORR
 
 STATFLAG PERFORM
 STATFLAG COMPLETE
-Imset 1  End 17:28:10 UTC
+Imset 1  End 18:31:40 UTC
 
-End      08-Oct-2025 17:28:10 UTC
+End      08-Oct-2025 18:31:40 UTC
 
 *** CALSTIS-1 complete ***
 
 *** CALSTIS-7 -- Version 3.4.2 (19-Jan-2018) ***
-Begin    08-Oct-2025 17:28:10 UTC
+Begin    08-Oct-2025 18:31:40 UTC
 Input    ./Shifted/odj101050_flt.fits
 Output   ./Shifted/odj101050_x2d.fits
 OBSMODE  ACCUM
 APERTURE 52X0.2
 OPT_ELEM G140M
 DETECTOR FUV-MAMA
-Imset 1  Begin 17:28:10 UTC
+Imset 1  Begin 18:31:40 UTC
 Warning  Wavecal processing has not been performed.
 
 HELCORR  PERFORM
 HELCORR  COMPLETE
 
-Order 1  Begin 17:28:10 UTC
+Order 1  Begin 18:31:40 UTC
 
 X2DCORR  PERFORM
 DISPCORR PERFORM
@@ -900,15 +903,15 @@ TDSTAB   DESCRIP =Updated time and slope arrays for all optical elements.
 FLUXCORR COMPLETE
 X2DCORR  COMPLETE
 DISPCORR COMPLETE
-Order 1  End 17:28:10 UTC
-Imset 1  End 17:28:10 UTC
+Order 1  End 18:31:40 UTC
+Imset 1  End 18:31:40 UTC
 
-End      08-Oct-2025 17:28:10 UTC
+End      08-Oct-2025 18:31:40 UTC
 
 *** CALSTIS-7 complete ***
 
 *** CALSTIS-6 -- Version 3.4.2 (19-Jan-2018) ***
-Begin    08-Oct-2025 17:28:10 UTC
+Begin    08-Oct-2025 18:31:40 UTC
 
 Warning  Grating-aperture throughput correction table (GACTAB) was not found,
          and no gac corrections will be applied
@@ -928,9 +931,11 @@ SPTRCTAB oref$77o1827do_1dt.fits
 SPTRCTAB PEDIGREE=INFLIGHT 27/02/1997 01/12/2009
 SPTRCTAB DESCRIP =New traces for select echelle secondary modes
 
-Imset 1  Begin 17:28:10 UTC
-         Input read into memory.
-Order 1  Begin 17:28:10 UTC
+Imset 1  Begin 18:31:40 UTC
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         Input read into memory.
+Order 1  Begin 18:31:40 UTC
 X1DCORR  PERFORM
 BACKCORR PERFORM
 ******** Calling Slfit ***********BACKCORR COMPLETE
@@ -971,16 +976,16 @@ FLUXCORR COMPLETE
 SGEOCORR OMIT
 
          Row 1 written to disk.
-Order 1  End 17:28:10 UTC
+Order 1  End 18:31:40 UTC
 
-Imset 1  End 17:28:10 UTC
+Imset 1  End 18:31:40 UTC
 
 Warning  Keyword `XTRACALG&#39; is being added to header.
-End      08-Oct-2025 17:28:10 UTC
+End      08-Oct-2025 18:31:40 UTC
 
 *** CALSTIS-6 complete ***
 
-End      08-Oct-2025 17:28:10 UTC
+End      08-Oct-2025 18:31:40 UTC
 
 *** CALSTIS-0 complete ***
 </pre></div>
@@ -1153,7 +1158,7 @@ As seen in the plot, the spectrum is now shifted compared to the pipeline spectr
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f0c0e3a2350&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fa0be702450&gt;
 </pre></div>
 </div>
 </div>
@@ -1269,13 +1274,13 @@ As seen in the plot, the spectrum is now shifted compared to the pipeline spectr
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*** CALSTIS-0 -- Version 3.4.2 (19-Jan-2018) ***
-Begin    08-Oct-2025 17:28:10 UTC
+Begin    08-Oct-2025 18:31:40 UTC
 
 Input    ./mastDownload/HST/odj101050/odj101050_raw.fits
 Outroot  ./Recalibration/odj101050_raw.fits
 
 *** CALSTIS-1 -- Version 3.4.2 (19-Jan-2018) ***
-Begin    08-Oct-2025 17:28:10 UTC
+Begin    08-Oct-2025 18:31:40 UTC
 Input    ./mastDownload/HST/odj101050/odj101050_raw.fits
 Output   ./Recalibration/odj101050_flt.fits
 OBSMODE  ACCUM
@@ -1283,7 +1288,7 @@ APERTURE 52X0.2
 OPT_ELEM G140M
 DETECTOR FUV-MAMA
 
-Imset 1  Begin 17:28:10 UTC
+Imset 1  Begin 18:31:40 UTC
 
 DQICORR  PERFORM
 DQITAB   oref$uce15153o_bpx.fits
@@ -1327,27 +1332,27 @@ DOPPCORR applied to DQICORR, DARKCORR, FLATCORR
 
 STATFLAG PERFORM
 STATFLAG COMPLETE
-Imset 1  End 17:28:11 UTC
+Imset 1  End 18:31:41 UTC
 
-End      08-Oct-2025 17:28:11 UTC
+End      08-Oct-2025 18:31:41 UTC
 
 *** CALSTIS-1 complete ***
 
 *** CALSTIS-7 -- Version 3.4.2 (19-Jan-2018) ***
-Begin    08-Oct-2025 17:28:11 UTC
+Begin    08-Oct-2025 18:31:41 UTC
 Input    ./Recalibration/odj101050_flt.fits
 Output   ./Recalibration/odj101050_x2d.fits
 OBSMODE  ACCUM
 APERTURE 52X0.2
 OPT_ELEM G140M
 DETECTOR FUV-MAMA
-Imset 1  Begin 17:28:11 UTC
+Imset 1  Begin 18:31:41 UTC
 Warning  Wavecal processing has not been performed.
 
 HELCORR  PERFORM
 HELCORR  COMPLETE
 
-Order 1  Begin 17:28:11 UTC
+Order 1  Begin 18:31:41 UTC
 
 X2DCORR  PERFORM
 DISPCORR PERFORM
@@ -1391,15 +1396,15 @@ TDSTAB   DESCRIP =Updated time and slope arrays for all optical elements.
 FLUXCORR COMPLETE
 X2DCORR  COMPLETE
 DISPCORR COMPLETE
-Order 1  End 17:28:11 UTC
-Imset 1  End 17:28:11 UTC
+Order 1  End 18:31:41 UTC
+Imset 1  End 18:31:41 UTC
 
-End      08-Oct-2025 17:28:11 UTC
+End      08-Oct-2025 18:31:41 UTC
 
 *** CALSTIS-7 complete ***
 
 *** CALSTIS-6 -- Version 3.4.2 (19-Jan-2018) ***
-Begin    08-Oct-2025 17:28:11 UTC
+Begin    08-Oct-2025 18:31:41 UTC
 
 Warning  Grating-aperture throughput correction table (GACTAB) was not found,
          and no gac corrections will be applied
@@ -1419,9 +1424,9 @@ SPTRCTAB oref$77o1827do_1dt.fits
 SPTRCTAB PEDIGREE=INFLIGHT 27/02/1997 01/12/2009
 SPTRCTAB DESCRIP =New traces for select echelle secondary modes
 
-Imset 1  Begin 17:28:11 UTC
+Imset 1  Begin 18:31:41 UTC
          Input read into memory.
-Order 1  Begin 17:28:11 UTC
+Order 1  Begin 18:31:41 UTC
 X1DCORR  PERFORM
 </pre></div>
 </div>
@@ -1464,16 +1469,16 @@ FLUXCORR COMPLETE
 SGEOCORR OMIT
 
          Row 1 written to disk.
-Order 1  End 17:28:11 UTC
+Order 1  End 18:31:41 UTC
 
-Imset 1  End 17:28:11 UTC
+Imset 1  End 18:31:41 UTC
 
 Warning  Keyword `XTRACALG&#39; is being added to header.
-End      08-Oct-2025 17:28:11 UTC
+End      08-Oct-2025 18:31:41 UTC
 
 *** CALSTIS-6 complete ***
 
-End      08-Oct-2025 17:28:11 UTC
+End      08-Oct-2025 18:31:41 UTC
 
 *** CALSTIS-0 complete ***
 </pre></div>
