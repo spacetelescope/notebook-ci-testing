@@ -61,6 +61,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/WFC3/tvb_flattenramp/TVB_flattenramp_notebook';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Correcting for Scattered Light in WFC3/IR Exposures: Using calwf3 to Mask Bad Reads" href="../ir_scattered_light_calwf3_corrections/Correcting_for_Scattered_Light_in_IR_Exposures_Using_calwf3_to_Mask_Bad_Reads.html" />
+    <link rel="prev" title="Manual Recalibration with calwf3: Turning off the IR Linear Ramp Fit" href="../calwf3_recalibration/calwf3_recal_tvb.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -123,8 +125,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -149,8 +149,14 @@
   
   
   
+    
+    
+      
+    
+    
+    <img src="../../../_static/stsci_logo2.png" class="logo__image only-light" alt="HST Notebooks - Home"/>
+    <script>document.write(`<img src="../../../_static/stsci_logo2.png" class="logo__image only-dark" alt="HST Notebooks - Home"/>`);</script>
   
-    <p class="title logo__title">HST Notebooks</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -176,6 +182,7 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">ACS</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../ACS/README.html">ACS Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ACS/acs_findsat_mrt/acs_findsat_mrt_example.html">Satellite trail detection in ACS/WFC data using acstools.findsat_mrt</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ACS/acs_saturation_trails/acs_saturation_trails.html">ACS Linearity with Saturated Stars</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ACS/acs_cte_forward_model/acs_cte_forward_model_example.html">Pixel-based ACS/WFC CTE Forward Model</a></li>
@@ -186,6 +193,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../ACS/acs_polarization_tools/acs_polarization_tools.html">Using ACS Polarization Tools</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ACS/acs_focus_diverse_epsfs/acs_focus_diverse_epsfs.html">Focus Diverse ePSFs for ACS/WFC</a></li>
 
+<li class="toctree-l1"><a class="reference internal" href="../../ACS/acs_exception_report/exception_report_checks.html">HST Exception Report - Investigate your ACS Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ACS/hst_orbits_ephem/hst_orbits_ephem.html">Getting HST Ephemeris and Related Data for an Observation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">COS</span></p>
@@ -251,6 +259,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">DrizzlePac</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/README.html">DrizzlePac Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/using_updated_astrometry_solutions/using_updated_astrometry_solutions.html">Improving Astrometry Using Alternate WCS Solutions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/align_to_catalogs/align_to_catalogs.html">Aligning HST images to an Absolute Reference Catalog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/align_sparse_fields/align_sparse_fields.html">Aligning Deep Exposures of Sparse Fields</a></li>
@@ -287,6 +296,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">STIS</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../STIS/README.html">STIS Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../STIS/cross-correlation/cross-correlation.html">Correcting for Missing Wavecals with Cross-Correlation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../STIS/custom_ccd_darks/custom_ccd_darks.html">Custom CCD Darks <a class="tocSkip"></a></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../STIS/drizpac_notebook/STIS_DrizzlePac_Tutorial.html">STIS DrizzlePac Tutorial <a class="tocSkip"></a></a></li>
@@ -297,6 +307,40 @@
 <li class="toctree-l1"><a class="reference internal" href="../../STIS/extraction/1D_Extraction.html">1D Spectra Extraction <a class="tocSkip"></a></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../STIS/low_count_uncertainties/Low_Count_Uncertainties.html">Low Count Uncertainties in STIS <a class="tocSkip"></a></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../STIS/contrast_sensitivity/STIS_Coronagraphic_Observation_Feasibility.html">STIS Coronagraphic Observation Feasibility</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">WFC3</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../README.html">WFC3 Notebooks</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../general_tools.html">General Tools</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../image_displayer_analyzer/wfc3_image_displayer_analyzer.html">WFC3 Image Displayer &amp; Analyzer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exception_report/wfc3_exception_report.html">Exception Report Checklist - WFC3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../calwf3_v1.0_cte/calwf3_with_v1.0_PCTE.html">Processing WFC3/UVIS Data with <code class="docutils literal notranslate"><span class="pre">calwf3</span></code> Using the v1.0 CTE-Correction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../persistence/wfc3_ir_persistence.html">Masking Persistence in WFC3/IR Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../uvis_g280_transit/G280_Exoplanet_Transits.html">Analyzing WFC3/UVIS G280 Exoplanet Transit Observations</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../ir_tvb.html">WFC3/IR Time Variable Background (TVB)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../ir_ima_visualization/IR_IMA_Visualization_with_an_Example_of_Time_Variable_Background.html">WFC3/IR IMA Visualization Tools with An Example of Time Variable Background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../calwf3_recalibration/calwf3_recal_tvb.html">Manual Recalibration with calwf3: Turning off the IR Linear Ramp Fit</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Correcting for Helium Line Emission Background in IR Exposures using the “Flatten-Ramp” Technique</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ir_scattered_light_calwf3_corrections/Correcting_for_Scattered_Light_in_IR_Exposures_Using_calwf3_to_Mask_Bad_Reads.html">Correcting for Scattered Light in WFC3/IR Exposures: Using <code class="docutils literal notranslate"><span class="pre">calwf3</span></code> to Mask Bad Reads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ir_scattered_light_manual_corrections/Correcting_for_Scattered_Light_in_IR_Exposures_by_Manually_Subtracting_Bad_Reads.html">Correcting for Scattered Light in WFC3/IR Exposures: Manually Subtracting Bad Reads</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../photometry.html">Photometry</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../filter_transformations/filter_transformations.html">WFC3/UVIS Filter Transformations with stsynphot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../flux_conversion_tool/flux_conversion_tool.html">Flux Unit Conversions with synphot and stsynphot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../photometry_examples/phot_examples.html">Synthetic Photometry Examples for WFC3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../uvis_time_dependent_photometry/uvis_timedep_phot.html">WFC3/UVIS Time-dependent Photometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../zeropoints/zeropoints.html">Calculating WFC3 Zeropoints with STSynphot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../uvis_pam_corrections/WFC3_UVIS_Pixel_Area_Map_Corrections_for_Subarrays.html">WFC3/UVIS Pixel Area Map Corrections for Subarrays</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../point_spread_function.html">Point Spread Function (PSF)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../point_spread_function/hst_point_spread_function.html">HST WFC3 Point Spread Function Modeling   </a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mast_api_psf/download_psf_cutouts.html">Downloading WFC3 and WFPC2 PSF Cutouts from MAST</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -588,7 +632,13 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <p><a id="top"></a></p>
+  <div style='background-color: #fff3cd; border: 1px solid #ffeaa7; border-radius: 4px; padding: 15px; margin: 10px 0; border-left: 4px solid #f39c12;'>
+<h3 style='color: #856404; margin-top: 0;'>⚠️ EXECUTION WARNING</h3>
+<p style='color: #856404; margin-bottom: 0;'><strong>This notebook may not execute properly in the current environment.</strong></p>
+<p style='color: #856404; margin-bottom: 0;'>Some cells may have failed during automated testing. Please review the notebook content and test manually before use.</p>
+<p style='color: #856404; margin-bottom: 0; font-size: 0.9em;'><em>Generated during CI/CD pipeline - some outputs may be incomplete or missing.</em></p>
+</div>
+<p><a id="top"></a></p>
 <section class="tex2jax_ignore mathjax_ignore" id="correcting-for-helium-line-emission-background-in-ir-exposures-using-the-flatten-ramp-technique">
 <h1>Correcting for Helium Line Emission Background in IR Exposures using the “Flatten-Ramp” Technique<a class="headerlink" href="#correcting-for-helium-line-emission-background-in-ir-exposures-using-the-flatten-ramp-technique" title="Link to this heading">#</a></h1>
 <hr>
@@ -696,122 +746,6 @@ This notebook shows how to identify IR exposures with time-variable Helium (1.08
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ibohbfb7q_ima.fits to ./data/mastDownload/HST/ibohbfb7q/ibohbfb7q_ima.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ibohbfb7q_flt.fits to ./data/mastDownload/HST/ibohbfb7q/ibohbfb7q_flt.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ibohbfb7q_raw.fits to ./data/mastDownload/HST/ibohbfb7q/ibohbfb7q_raw.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ibohbfb9q_ima.fits to ./data/mastDownload/HST/ibohbfb9q/ibohbfb9q_ima.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ibohbfb9q_flt.fits to ./data/mastDownload/HST/ibohbfb9q/ibohbfb9q_flt.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ibohbfb9q_raw.fits to ./data/mastDownload/HST/ibohbfb9q/ibohbfb9q_raw.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ibohbfbdq_ima.fits to ./data/mastDownload/HST/ibohbfbdq/ibohbfbdq_ima.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ibohbfbdq_flt.fits to ./data/mastDownload/HST/ibohbfbdq/ibohbfbdq_flt.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ibohbfbdq_raw.fits to ./data/mastDownload/HST/ibohbfbdq/ibohbfbdq_raw.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ibohbfbgq_ima.fits to ./data/mastDownload/HST/ibohbfbgq/ibohbfbgq_ima.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ibohbfbgq_flt.fits to ./data/mastDownload/HST/ibohbfbgq/ibohbfbgq_flt.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ibohbfbgq_raw.fits to ./data/mastDownload/HST/ibohbfbgq/ibohbfbgq_raw.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ibohbfbkq_ima.fits to ./data/mastDownload/HST/ibohbfbkq/ibohbfbkq_ima.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ibohbfbkq_flt.fits to ./data/mastDownload/HST/ibohbfbkq/ibohbfbkq_flt.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ibohbfbkq_raw.fits to ./data/mastDownload/HST/ibohbfbkq/ibohbfbkq_raw.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ibohbfbpq_ima.fits to ./data/mastDownload/HST/ibohbfbpq/ibohbfbpq_ima.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ibohbfbpq_flt.fits to ./data/mastDownload/HST/ibohbfbpq/ibohbfbpq_flt.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ibohbfbpq_raw.fits to ./data/mastDownload/HST/ibohbfbpq/ibohbfbpq_raw.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/ibohbf040_asn.fits to ./data/mastDownload/HST/ibohbf040/ibohbf040_asn.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-</div>
 </div>
 <p>Visit BF association file <em>ibohbf040_asn.fits</em> contains a single visit over 3 orbits with 6 consecutive exposures in F105W dithered by a small fraction of the field of view. Each orbit consists of 2 back-to-back 1600 second exposure followed by the Earth occulation.</p>
 <div class="cell docutils container">
@@ -828,18 +762,6 @@ This notebook shows how to identify IR exposures with time-variable Helium (1.08
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div><i>Table masked=True length=6</i>
-<table id="table139887405864656" class="table-striped table-bordered table-condensed">
-<thead><tr><th>file</th><th>asn_id</th><th>targname</th><th>filter</th><th>samp_seq</th><th>nsamp</th><th>exptime</th><th>postarg1</th><th>postarg2</th><th>date-obs</th><th>time-obs</th></tr></thead>
-<thead><tr><th>str18</th><th>str9</th><th>str12</th><th>str5</th><th>str7</th><th>int64</th><th>float64</th><th>float64</th><th>float64</th><th>str10</th><th>str8</th></tr></thead>
-<tr><td>ibohbfb7q_flt.fits</td><td>IBOHBF040</td><td>GOODN-N1-VBF</td><td>F105W</td><td>STEP200</td><td>16</td><td>1599.23291</td><td>-0.237</td><td>-0.212</td><td>2013-01-06</td><td>18:23:01</td></tr>
-<tr><td>ibohbfb9q_flt.fits</td><td>IBOHBF040</td><td>GOODN-N1-VBF</td><td>F105W</td><td>STEP200</td><td>16</td><td>1599.23291</td><td>0.305</td><td>-0.03</td><td>2013-01-06</td><td>18:50:42</td></tr>
-<tr><td>ibohbfbdq_flt.fits</td><td>IBOHBF040</td><td>GOODN-N1-VBF</td><td>F105W</td><td>STEP200</td><td>16</td><td>1599.23291</td><td>0.102</td><td>0.273</td><td>2013-01-06</td><td>19:18:23</td></tr>
-<tr><td>ibohbfbgq_flt.fits</td><td>IBOHBF040</td><td>GOODN-N1-VBF</td><td>F105W</td><td>STEP200</td><td>16</td><td>1599.23291</td><td>-0.44</td><td>0.091</td><td>2013-01-06</td><td>19:48:08</td></tr>
-<tr><td>ibohbfbkq_flt.fits</td><td>IBOHBF040</td><td>GOODN-N1-VBF</td><td>F105W</td><td>STEP200</td><td>16</td><td>1599.23291</td><td>0.237</td><td>0.212</td><td>2013-01-06</td><td>20:15:49</td></tr>
-<tr><td>ibohbfbpq_flt.fits</td><td>IBOHBF040</td><td>GOODN-N1-VBF</td><td>F105W</td><td>STEP200</td><td>16</td><td>1599.23291</td><td>0.779</td><td>0.394</td><td>2013-01-06</td><td>20:43:30</td></tr>
-</table></div></div></div>
 </div>
 </section>
 <section id="identifying-exposures-with-time-variable-background">
@@ -872,12 +794,6 @@ This notebook shows how to identify IR exposures with time-variable Helium (1.08
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7f3a122efb50&gt;
-</pre></div>
-</div>
-<img alt="../../../_images/2a215a800c1a9b758f7e72d657f7d878459b9f704e776e8d74bc571d66ef95b0.png" src="../../../_images/2a215a800c1a9b758f7e72d657f7d878459b9f704e776e8d74bc571d66ef95b0.png" />
-</div>
 </div>
 </section>
 <section id="plotting-a-histogram-of-the-background">
@@ -899,12 +815,6 @@ This notebook shows how to identify IR exposures with time-variable Helium (1.08
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;ibohbfb9q (Time Variable Bkg)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;ibohbfb9q (Time Variable Bkg)&#39;)
-</pre></div>
-</div>
-<img alt="../../../_images/1de1687010899bd3912fa7cf012165654cd7509a94775806840705fdfb1e743a.png" src="../../../_images/1de1687010899bd3912fa7cf012165654cd7509a94775806840705fdfb1e743a.png" />
 </div>
 </div>
 </section>
@@ -929,9 +839,6 @@ This notebook shows how to identify IR exposures with time-variable Helium (1.08
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../../_images/521619599ccd0c18375d2cf88324eb4fb3e5631bc3ed4fe4528e556a61c8aada.png" src="../../../_images/521619599ccd0c18375d2cf88324eb4fb3e5631bc3ed4fe4528e556a61c8aada.png" />
-</div>
 </div>
 </section>
 <section id="plotting-count-rate-versus-time">
@@ -953,9 +860,6 @@ This notebook shows how to identify IR exposures with time-variable Helium (1.08
     <span class="n">axarr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">ylim</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../../_images/79176002f5b3904f99ee9dd36cd861f21fe5500deb6a6c0871a0511256be9992.png" src="../../../_images/79176002f5b3904f99ee9dd36cd861f21fe5500deb6a6c0871a0511256be9992.png" />
 </div>
 </div>
 </section>
@@ -997,74 +901,6 @@ In brief, the steps are as follows:</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRDS - INFO -  No comparison context or source comparison requested.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRDS - INFO -  ===&gt; Processing ibohbfb9q_raw.fits
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRDS - INFO -  0 errors
-CRDS - INFO -  0 warnings
-CRDS - INFO -  2 infos
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRDS - INFO -  No comparison context or source comparison requested.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRDS - INFO -  ===&gt; Processing ibohbfbdq_raw.fits
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRDS - INFO -  0 errors
-CRDS - INFO -  0 warnings
-CRDS - INFO -  2 infos
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRDS - INFO -  No comparison context or source comparison requested.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRDS - INFO -  ===&gt; Processing ibohbfb7q_raw.fits
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRDS - INFO -  0 errors
-CRDS - INFO -  0 warnings
-CRDS - INFO -  2 infos
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRDS - INFO -  No comparison context or source comparison requested.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRDS - INFO -  ===&gt; Processing ibohbfbgq_raw.fits
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRDS - INFO -  0 errors
-CRDS - INFO -  0 warnings
-CRDS - INFO -  2 infos
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRDS - INFO -  No comparison context or source comparison requested.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRDS - INFO -  ===&gt; Processing ibohbfbpq_raw.fits
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRDS - INFO -  0 errors
-CRDS - INFO -  0 warnings
-CRDS - INFO -  2 infos
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRDS - INFO -  No comparison context or source comparison requested.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRDS - INFO -  ===&gt; Processing ibohbfbkq_raw.fits
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRDS - INFO -  0 errors
-CRDS - INFO -  0 warnings
-CRDS - INFO -  2 infos
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="recalibrating-affected-data-with-ramp-fitting-step-turned-off-in-calwf3">
@@ -1086,284 +922,6 @@ CRDS - INFO -  2 infos
 
 <span class="c1"># Renaming the processed flt file</span>
 <span class="n">os</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;ibohbfb9q_flt.fits&#39;</span><span class="p">,</span> <span class="s1">&#39;ibohbfb9q_flt_norampfit.fits&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>git tag: 0090c701-dirty
-
-git branch: HEAD
-
-HEAD @: 0090c701d894003cfc690e9f8d5fde81e6939090
-
-
-
-
-
-CALBEG*** CALWF3 -- Version 3.7.2 (Apr-15-2024) ***
-
-Begin    08-Oct-2025 22:03:37 UTC
-
-
-
-
-
-Input    ibohbfb9q_raw.fits
-
-loading asn
-
-
-
-LoadAsn:  Processing SINGLE exposure
-
-Trying to open ibohbfb9q_raw.fits...
-
-Read in Primary header from ibohbfb9q_raw.fits...
-
-Revising existing trailer file `ibohbfb9q.tra&#39;.
-
-
-
-
-
-CALBEG*** WF3IR -- Version 3.7.2 (Apr-15-2024) ***
-
-Begin    08-Oct-2025 22:03:37 UTC
-
-Input    ibohbfb9q_raw.fits
-
-Output   ibohbfb9q_flt.fits
-
-Trying to open ibohbfb9q_raw.fits...
-
-Read in Primary header from ibohbfb9q_raw.fits...
-
-APERTURE IR-FIX
-
-FILTER   F105W
-
-DETECTOR IR
-
-Reading data from ibohbfb9q_raw.fits ...
-
-CCDTAB   iref$t2c16200i_ccd.fits
-
-CCDTAB   PEDIGREE=Ground
-
-CCDTAB   DESCRIP =Reference data based on Thermal-Vac #3, gain=2.5 results for IR-4
-
-CCDTAB   DESCRIP =Readnoise,gain,saturation from TV3,MEB2 values. ISRs 2008-25,39,50
-
-    readnoise =20.2,19.8,19.9,20.1
-
-    gain =2.34,2.37,2.31,2.38
-
-DQICORR  PERFORM
-
-DQITAB   iref$3562033hi_bpx.fits
-
-DQITAB   PEDIGREE=INFLIGHT 01/11/2012 12/10/2013
-
-DQITAB   DESCRIP =Bad Pixel Table generated using Cycle 20 Flats and Darks-----------
-
-DQICORR  COMPLETE
-
-ZSIGCORR PERFORM
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ZSIGCORR detected 1285 saturated pixels in 0th read
-
-ZSIGCORR detected 1349 saturated pixels in 1st read
-
-ZSIGCORR COMPLETE
-
-BLEVCORR PERFORM
-
-OSCNTAB  iref$q911321mi_osc.fits
-
-OSCNTAB  PEDIGREE=GROUND
-
-OSCNTAB  DESCRIP =Initial values for ground test data processing
-
-BLEVCORR COMPLETE
-
-ZOFFCORR PERFORM
-
-ZOFFCORR COMPLETE
-
-NOISCORR PERFORM
-
-Uncertainty array initialized.
-
-NOISCORR COMPLETE
-
-NLINCORR PERFORM
-
-NLINFILE iref$u1k1727mi_lin.fits
-
-NLINFILE PEDIGREE=INFLIGHT 09/02/2009 12/07/2009
-
-NLINFILE DESCRIP =Non-linearity correction from WFC3 MEB1 TV3 and on-orbit frames----
-
-NLINCORR detected 1285 saturated pixels in imset 16
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NLINCORR detected 1354 saturated pixels in imset 15
-
-NLINCORR detected 1381 saturated pixels in imset 14
-
-NLINCORR detected 1388 saturated pixels in imset 13
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NLINCORR detected 1395 saturated pixels in imset 12
-
-NLINCORR detected 1413 saturated pixels in imset 11
-
-NLINCORR detected 1433 saturated pixels in imset 10
-
-NLINCORR detected 1466 saturated pixels in imset 9
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NLINCORR detected 1502 saturated pixels in imset 8
-
-NLINCORR detected 1561 saturated pixels in imset 7
-
-NLINCORR detected 1671 saturated pixels in imset 6
-
-NLINCORR detected 2295 saturated pixels in imset 5
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NLINCORR detected 2916 saturated pixels in imset 4
-
-NLINCORR detected 3206 saturated pixels in imset 3
-
-NLINCORR detected 3328 saturated pixels in imset 2
-
-NLINCORR detected 3400 saturated pixels in imset 1
-
-NLINCORR COMPLETE
-
-DARKCORR PERFORM
-
-DARKFILE iref$35620245i_drk.fits
-
-DARKFILE PEDIGREE=INFLIGHT 20/09/2009 15/11/2016
-
-DARKFILE DESCRIP =Dark Created from 154 frames spanning cycles 17 to 24--------------
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DARKCORR using dark imset 16 for imset 16 with exptime=       0
-
-DARKCORR using dark imset 15 for imset 15 with exptime= 2.93229
-
-DARKCORR using dark imset 14 for imset 14 with exptime= 5.86458
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DARKCORR using dark imset 13 for imset 13 with exptime= 8.79687
-
-DARKCORR using dark imset 12 for imset 12 with exptime= 11.7292
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DARKCORR using dark imset 11 for imset 11 with exptime= 24.2297
-
-DARKCORR using dark imset 10 for imset 10 with exptime= 49.2302
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DARKCORR using dark imset  9 for imset  9 with exptime= 99.2306
-
-DARKCORR using dark imset  8 for imset  8 with exptime= 199.231
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DARKCORR using dark imset  7 for imset  7 with exptime= 399.231
-
-DARKCORR using dark imset  6 for imset  6 with exptime= 599.232
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DARKCORR using dark imset  5 for imset  5 with exptime= 799.232
-
-DARKCORR using dark imset  4 for imset  4 with exptime= 999.232
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DARKCORR using dark imset  3 for imset  3 with exptime= 1199.23
-
-DARKCORR using dark imset  2 for imset  2 with exptime= 1399.23
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DARKCORR using dark imset  1 for imset  1 with exptime= 1599.23
-
-DARKCORR COMPLETE
-
-PHOTCORR PERFORM
-
-IMPHTTAB iref$8ch15233i_imp.fits
-
-IMPHTTAB PEDIGREE=INFLIGHT 08/05/2009 01/09/2024
-
-IMPHTTAB DESCRIP =Time-dependent image photometry reference table (IMPHTTAB)---------
-
-Found parameterized variable 1.
-
-NUMPAR=1, N=1
-
-Allocated 1 parnames
-
-Adding parameter mjd#56298.7852 as parnames[0]
-
-==&gt; Value of PHOTFLAM = 3.0608668e-20
-
-==&gt; Value of PHOTPLAM = 10551.047
-
-==&gt; Value of PHOTBW = 845.61804
-
-PHOTCORR COMPLETE
-
-UNITCORR PERFORM
-
-UNITCORR COMPLETE
-
-CRCORR   OMIT
-
-FLATCORR PERFORM
-
-PFLTFILE iref$4ac19225i_pfl.fits
-
-PFLTFILE PEDIGREE=INFLIGHT 31/07/2009 05/12/2019
-
-PFLTFILE DESCRIP =Sky Flat from Combined In-flight observations between 2009 and 2019
-
-DFLTFILE iref$4ac18263i_dfl.fits
-
-DFLTFILE PEDIGREE=INFLIGHT 31/07/2009 05/12/2019
-
-DFLTFILE DESCRIP =Delta-Flat for IR Blobs by Date of Appearance from Sky Flat Dataset
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FLATCORR COMPLETE
-
-Writing calibrated readouts to ibohbfb9q_ima.fits
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing final image to ibohbfb9q_flt.fits
-
- with trimx = 5,5, trimy = 5,5
-
-
-
-
-
-End      08-Oct-2025 22:03:41 UTC
-
-*** WF3IR complete ***
-
-
-
-
-
-End      08-Oct-2025 22:03:41 UTC
-
-*** CALWF3 complete ***
-
-CALWF3 completion for ibohbfb9q_raw.fits
 </pre></div>
 </div>
 </div>
@@ -1404,30 +962,6 @@ CALWF3 completion for ibohbfb9q_raw.fits
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ibohbfb9q_raw.fits, [SCI, 1], median_bkg: 1.50
-ibohbfb9q_raw.fits, [SCI, 2], median_bkg: 1.46
-ibohbfb9q_raw.fits, [SCI, 3], median_bkg: 1.44
-ibohbfb9q_raw.fits, [SCI, 4], median_bkg: 1.40
-ibohbfb9q_raw.fits, [SCI, 5], median_bkg: 1.26
-ibohbfb9q_raw.fits, [SCI, 6], median_bkg: 0.97
-ibohbfb9q_raw.fits, [SCI, 7], median_bkg: 0.67
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ibohbfb9q_raw.fits, [SCI, 8], median_bkg: 0.49
-ibohbfb9q_raw.fits, [SCI, 9], median_bkg: 0.47
-ibohbfb9q_raw.fits, [SCI, 10], median_bkg: 0.47
-ibohbfb9q_raw.fits, [SCI, 11], median_bkg: 0.46
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ibohbfb9q_raw.fits, [SCI, 12], median_bkg: 0.49
-ibohbfb9q_raw.fits, [SCI, 13], median_bkg: 0.47
-ibohbfb9q_raw.fits, [SCI, 14], median_bkg: 0.48
-ibohbfb9q_raw.fits, [SCI, 15], median_bkg: 0.42
-</pre></div>
-</div>
-<img alt="../../../_images/2f31e145761205df03d557c6867c3ce76a591628a63bfb7cf80e16973503fedd.png" src="../../../_images/2f31e145761205df03d557c6867c3ce76a591628a63bfb7cf80e16973503fedd.png" />
-</div>
 </div>
 <p><strong>Note</strong>: [SCI,15] is the first read and [SCI,1] is the last read of the IR image.</p>
 <p>From the printed median background values, we can see that the increased background signal occured in the middle and the end of the exposure, just prior to Earth occulation.</p>
@@ -1443,139 +977,6 @@ ibohbfb9q_raw.fits, [SCI, 15], median_bkg: 0.42
 <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;ibohbfb9q_ima.fits&#39;</span><span class="p">)</span>
 <span class="n">os</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;ibohbfb9q_ima_ima.fits&#39;</span><span class="p">,</span> <span class="s1">&#39;ibohbfb9q_ima.fits&#39;</span><span class="p">)</span>
 <span class="n">os</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;ibohbfb9q_ima_flt.fits&#39;</span><span class="p">,</span> <span class="s1">&#39;ibohbfb9q_flt.fits&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>git tag: 0090c701-dirty
-
-git branch: HEAD
-
-HEAD @: 0090c701d894003cfc690e9f8d5fde81e6939090
-
-
-
-
-
-CALBEG*** CALWF3 -- Version 3.7.2 (Apr-15-2024) ***
-
-Begin    08-Oct-2025 22:03:42 UTC
-
-
-
-
-
-Input    ibohbfb9q_ima.fits
-
-loading asn
-
-
-
-LoadAsn:  Processing SINGLE exposure
-
-Trying to open ibohbf040_asn.fits...
-
-Read in Primary header from ibohbf040_asn.fits...
-
-Revising existing trailer file `ibohbfb9q_ima.tra&#39;.
-
-
-
-
-
-CALBEG*** WF3IR -- Version 3.7.2 (Apr-15-2024) ***
-
-Begin    08-Oct-2025 22:03:42 UTC
-
-Input    ibohbfb9q_ima.fits
-
-Output   ibohbfb9q_ima_flt.fits
-
-Trying to open ibohbfb9q_ima.fits...
-
-Read in Primary header from ibohbfb9q_ima.fits...
-
-APERTURE IR-FIX
-
-FILTER   F105W
-
-DETECTOR IR
-
-Reading data from ibohbfb9q_ima.fits ...
-
-CCDTAB   iref$t2c16200i_ccd.fits
-
-CCDTAB   PEDIGREE=Ground
-
-CCDTAB   DESCRIP =Reference data based on Thermal-Vac #3, gain=2.5 results for IR-4
-
-CCDTAB   DESCRIP =Readnoise,gain,saturation from TV3,MEB2 values. ISRs 2008-25,39,50
-
-    readnoise =20.2,19.8,19.9,20.1
-
-    gain =2.34,2.37,2.31,2.38
-
-DQICORR  COMPLETE
-
-ZSIGCORR COMPLETE
-
-BLEVCORR COMPLETE
-
-ZOFFCORR COMPLETE
-
-NOISCORR PERFORM
-
-NOISCORR SKIPPED
-
-NLINCORR COMPLETE
-
-DARKCORR COMPLETE
-
-PHOTCORR COMPLETE
-
-UNITCORR COMPLETE
-
-CRCORR   PERFORM
-
-CRREJTAB iref$u6a1748ri_crr.fits
-
-CRIDCALC using 4 sigma rejection threshold
-
-               256 bad DQ mask
-
-               4 max CRs for UNSTABLE
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>55 pixels detected as unstable
-
-CRCORR   COMPLETE
-
-FLATCORR COMPLETE
-
-Writing calibrated readouts to ibohbfb9q_ima_ima.fits
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing final image to ibohbfb9q_ima_flt.fits
-
- with trimx = 5,5, trimy = 5,5
-
-
-
-
-
-End      08-Oct-2025 22:03:43 UTC
-
-*** WF3IR complete ***
-
-
-
-
-
-End      08-Oct-2025 22:03:43 UTC
-
-*** CALWF3 complete ***
-
-CALWF3 completion for ibohbfb9q_ima.fits
 </pre></div>
 </div>
 </div>
@@ -1614,12 +1015,6 @@ CALWF3 completion for ibohbfb9q_ima.fits
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7f3a35d596d0&gt;
-</pre></div>
-</div>
-<img alt="../../../_images/88cc516564c87102ee54ebb0c442dd9e9eb77676e21e8634649e6fffa87f263a.png" src="../../../_images/88cc516564c87102ee54ebb0c442dd9e9eb77676e21e8634649e6fffa87f263a.png" />
-</div>
 </div>
 </section>
 <section id="plotting-a-histogram-of-the-sky-background">
@@ -1647,12 +1042,6 @@ CALWF3 completion for ibohbfb9q_ima.fits
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;ibohbfb9q (Corrected)&#39;)
-</pre></div>
-</div>
-<img alt="../../../_images/a14a168aeea5649d8aad6e79142dbaff5d2d27ba750167c6e64c76a875fd92dc.png" src="../../../_images/a14a168aeea5649d8aad6e79142dbaff5d2d27ba750167c6e64c76a875fd92dc.png" />
-</div>
 </div>
 </section>
 <section id="id2">
@@ -1674,9 +1063,6 @@ CALWF3 completion for ibohbfb9q_ima.fits
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../../_images/3ba59fcf4c962432fb30d97c7c7be64e5e96437ff8460caa97bc613de04b23e6.png" src="../../../_images/3ba59fcf4c962432fb30d97c7c7be64e5e96437ff8460caa97bc613de04b23e6.png" />
-</div>
 </div>
 <p>Here we plot the  median count rate versus time for the original and corrected ramp. We see the corrected image now has a flat median count rate.</p>
 <div class="cell docutils container">
@@ -1695,9 +1081,6 @@ CALWF3 completion for ibohbfb9q_ima.fits
     <span class="n">axarr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">ylim</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../../_images/17ce5e326a2e752e43b2cb130a899dab79671e6dd343343670004b449401ede1.png" src="../../../_images/17ce5e326a2e752e43b2cb130a899dab79671e6dd343343670004b449401ede1.png" />
 </div>
 </div>
 </section>
@@ -1739,60 +1122,6 @@ CALWF3 completion for ibohbfb9q_ima.fits
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>RAMP</th>
-      <th>Filename</th>
-      <th>Mean</th>
-      <th>Median</th>
-      <th>Stdev</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Linear Bkg</td>
-      <td>ibohbfb7q_flt</td>
-      <td>0.469745</td>
-      <td>0.466199</td>
-      <td>0.037908</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Time Variable Bkg</td>
-      <td>ibohbfb9q_flt_orig.fits</td>
-      <td>1.538454</td>
-      <td>1.623123</td>
-      <td>0.169355</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Corrected Bkg</td>
-      <td>ibohbfb9q_flt.fits</td>
-      <td>1.503880</td>
-      <td>1.501057</td>
-      <td>0.045676</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <p>Here we can see that the corrected background of the affected FLT file has a standard deviation that improved by a factor of ~4. This corrected standard deviation is also more agreeable with the standard deviation of the linear background of the unaffected image <em>ibohbfb7q</em>.</p>
 </section>
@@ -1817,12 +1146,6 @@ Here, we plot 25”x25” cutouts of the original and corrected FLT data product
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;ibohbfb9q (Corrected Bkg)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;ibohbfb9q (Corrected Bkg)&#39;)
-</pre></div>
-</div>
-<img alt="../../../_images/3011ea6716caacbc8eb1f88f4e4d95ba4cc913293d6c3a1f7e254278991ac42d.png" src="../../../_images/3011ea6716caacbc8eb1f88f4e4d95ba4cc913293d6c3a1f7e254278991ac42d.png" />
 </div>
 </div>
 </section>
@@ -1906,6 +1229,24 @@ authors. Follow these links for more information about citing the libraries belo
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../calwf3_recalibration/calwf3_recal_tvb.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Manual Recalibration with calwf3: Turning off the IR Linear Ramp Fit</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../ir_scattered_light_calwf3_corrections/Correcting_for_Scattered_Light_in_IR_Exposures_Using_calwf3_to_Mask_Bad_Reads.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Correcting for Scattered Light in WFC3/IR Exposures: Using <code class="docutils literal notranslate"><span class="pre">calwf3</span></code> to Mask Bad Reads</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
