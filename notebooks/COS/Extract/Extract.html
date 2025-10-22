@@ -634,6 +634,12 @@ document.write(`
 <p style='color: #721c24; margin-bottom: 0;'>Please migrate to newer alternatives or contact maintainers before using this notebook in production.</p>
 <p style='color: #721c24; margin-bottom: 0; font-size: 0.9em;'><em>This warning was automatically generated during documentation build.</em></p>
 </div>
+<div style='background-color: #fff3cd; border: 1px solid #ffeaa7; border-radius: 4px; padding: 15px; margin: 10px 0; border-left: 4px solid #f39c12;'>
+<h3 style='color: #856404; margin-top: 0;'>⚠️ EXECUTION WARNING</h3>
+<p style='color: #856404; margin-bottom: 0;'><strong>This notebook may not execute properly in the current environment.</strong></p>
+<p style='color: #856404; margin-bottom: 0;'>Some cells may have failed during automated testing. Please review the notebook content and test manually before use.</p>
+<p style='color: #856404; margin-bottom: 0; font-size: 0.9em;'><em>Generated during CI/CD pipeline - some outputs may be incomplete or missing.</em></p>
+</div>
 <p><a id="topE"></a></p>
 <section class="tex2jax_ignore mathjax_ignore" id="editing-the-extraction-boxes-in-a-spectral-extraction-file-xtractab">
 <h1>Editing the extraction boxes in a spectral extraction file (<code class="docutils literal notranslate"><span class="pre">XTRACTAB</span></code>)<a class="headerlink" href="#editing-the-extraction-boxes-in-a-spectral-extraction-file-xtractab" title="Link to this heading">#</a></h1>
@@ -800,7 +806,7 @@ For more information on downloading COS data, see our <a class="reference extern
 </pre></div>
 </div>
 <div class="output text_html"><div><i>Table length=6</i>
-<table id="table139792585980624" class="table-striped table-bordered table-condensed">
+<table id="table140696318685968" class="table-striped table-bordered table-condensed">
 <thead><tr><th>Local Path</th><th>Status</th><th>Message</th><th>URL</th></tr></thead>
 <thead><tr><th>str50</th><th>str8</th><th>object</th><th>object</th></tr></thead>
 <tr><td>./mastDownload/HST/le4b04zqq/le4b04zqq_rawtag.fits</td><td>COMPLETE</td><td>None</td><td>None</td></tr>
@@ -1910,7 +1916,7 @@ Stripe NUVC differs by up to:         4.544%
 </pre></div>
 </div>
 <div class="output text_html"><div><i>Table length=10</i>
-<table id="table139792972373456" class="table-striped table-bordered table-condensed">
+<table id="table140696850646544" class="table-striped table-bordered table-condensed">
 <thead><tr><th>Local Path</th><th>Status</th><th>Message</th><th>URL</th></tr></thead>
 <thead><tr><th>str52</th><th>str8</th><th>object</th><th>object</th></tr></thead>
 <tr><td>./mastDownload/HST/le4b01nvq/le4b01nvq_rawtag_a.fits</td><td>COMPLETE</td><td>None</td><td>None</td></tr>
@@ -2044,8 +2050,10 @@ We select and plot the raw counts data from the 0th <code class="docutils litera
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRDS - INFO -  Symbolic context &#39;hst-latest&#39; resolves to &#39;hst_1285.pmap&#39;
-CRDS - INFO -  Syncing explicitly listed files.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRDS - INFO -  Symbolic context &#39;hst-latest&#39; resolves to &#39;hst_1287.pmap&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRDS - INFO -  Syncing explicitly listed files.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRDS - INFO -  0 errors
@@ -2383,12 +2391,12 @@ changing header switches for  le4b01nvq_rawtag_b.fits
 	Originally:  ALGNCORR = PERFORM
 	       Now:  ALGNCORR = OMIT
 	Originally:  XTRACTAB = lref$97h1816hl_1dx.fits
-	       Now:  XTRACTAB = ./edit_fuv_1dx.fits
-changing header switches for  le4b01nzq_rawtag_b.fits
-	Originally:  XTRCTALG = TWOZONE
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>	       Now:  XTRCTALG = BOXCAR
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>	       Now:  XTRACTAB = ./edit_fuv_1dx.fits
+changing header switches for  le4b01nzq_rawtag_b.fits
+	Originally:  XTRCTALG = TWOZONE
+	       Now:  XTRCTALG = BOXCAR
 	Originally:  TRCECORR = PERFORM
 	       Now:  TRCECORR = OMIT
 	Originally:  ALGNCORR = PERFORM

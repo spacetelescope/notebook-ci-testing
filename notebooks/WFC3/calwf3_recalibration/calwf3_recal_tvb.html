@@ -610,7 +610,13 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <p><a id="title"></a></p>
+  <div style='background-color: #fff3cd; border: 1px solid #ffeaa7; border-radius: 4px; padding: 15px; margin: 10px 0; border-left: 4px solid #f39c12;'>
+<h3 style='color: #856404; margin-top: 0;'>⚠️ EXECUTION WARNING</h3>
+<p style='color: #856404; margin-bottom: 0;'><strong>This notebook may not execute properly in the current environment.</strong></p>
+<p style='color: #856404; margin-bottom: 0;'>Some cells may have failed during automated testing. Please review the notebook content and test manually before use.</p>
+<p style='color: #856404; margin-bottom: 0; font-size: 0.9em;'><em>Generated during CI/CD pipeline - some outputs may be incomplete or missing.</em></p>
+</div>
+<p><a id="title"></a></p>
 <section class="tex2jax_ignore mathjax_ignore" id="manual-recalibration-with-calwf3-turning-off-the-ir-linear-ramp-fit">
 <h1>Manual Recalibration with calwf3: Turning off the IR Linear Ramp Fit<a class="headerlink" href="#manual-recalibration-with-calwf3-turning-off-the-ir-linear-ramp-fit" title="Link to this heading">#</a></h1>
 <hr>
@@ -1073,7 +1079,7 @@ HEAD @: 0090c701d894003cfc690e9f8d5fde81e6939090
 
 CALBEG*** CALWF3 -- Version 3.7.2 (Apr-15-2024) ***
 
-Begin    13-Oct-2025 19:07:47 UTC
+Begin    22-Oct-2025 18:30:10 UTC
 
 
 
@@ -1099,7 +1105,7 @@ Revising existing trailer file `ibohbfb9q.tra&#39;.
 
 CALBEG*** WF3IR -- Version 3.7.2 (Apr-15-2024) ***
 
-Begin    13-Oct-2025 19:07:47 UTC
+Begin    22-Oct-2025 18:30:10 UTC
 
 Input    ibohbfb9q_raw.fits
 
@@ -1191,26 +1197,27 @@ NLINCORR detected 1388 saturated pixels in imset 13
 NLINCORR detected 1413 saturated pixels in imset 11
 
 NLINCORR detected 1433 saturated pixels in imset 10
-
-NLINCORR detected 1466 saturated pixels in imset 9
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NLINCORR detected 1502 saturated pixels in imset 8
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NLINCORR detected 1466 saturated pixels in imset 9
+
+NLINCORR detected 1502 saturated pixels in imset 8
 
 NLINCORR detected 1561 saturated pixels in imset 7
 
 NLINCORR detected 1671 saturated pixels in imset 6
-
-NLINCORR detected 2295 saturated pixels in imset 5
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NLINCORR detected 2916 saturated pixels in imset 4
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NLINCORR detected 2295 saturated pixels in imset 5
+
+NLINCORR detected 2916 saturated pixels in imset 4
 
 NLINCORR detected 3206 saturated pixels in imset 3
 
 NLINCORR detected 3328 saturated pixels in imset 2
-
-NLINCORR detected 3400 saturated pixels in imset 1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NLINCORR detected 3400 saturated pixels in imset 1
 
 NLINCORR COMPLETE
 
@@ -1221,9 +1228,8 @@ DARKFILE iref$35620245i_drk.fits
 DARKFILE PEDIGREE=INFLIGHT 20/09/2009 15/11/2016
 
 DARKFILE DESCRIP =Dark Created from 154 frames spanning cycles 17 to 24--------------
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DARKCORR using dark imset 16 for imset 16 with exptime=       0
+
+DARKCORR using dark imset 16 for imset 16 with exptime=       0
 
 DARKCORR using dark imset 15 for imset 15 with exptime= 2.93229
 
@@ -1322,7 +1328,7 @@ Writing calibrated readouts to ibohbfb9q_ima.fits
 
 
 
-End      13-Oct-2025 19:07:51 UTC
+End      22-Oct-2025 18:30:14 UTC
 
 *** WF3IR complete ***
 
@@ -1330,7 +1336,7 @@ End      13-Oct-2025 19:07:51 UTC
 
 
 
-End      13-Oct-2025 19:07:51 UTC
+End      22-Oct-2025 18:30:14 UTC
 
 *** CALWF3 complete ***
 
@@ -1493,7 +1499,7 @@ HEAD @: 0090c701d894003cfc690e9f8d5fde81e6939090
 
 CALBEG*** CALWF3 -- Version 3.7.2 (Apr-15-2024) ***
 
-Begin    13-Oct-2025 19:07:54 UTC
+Begin    22-Oct-2025 18:30:17 UTC
 
 
 
@@ -1519,7 +1525,7 @@ Revising existing trailer file `ibohbfb7q.tra&#39;.
 
 CALBEG*** WF3IR -- Version 3.7.2 (Apr-15-2024) ***
 
-Begin    13-Oct-2025 19:07:54 UTC
+Begin    22-Oct-2025 18:30:17 UTC
 
 Input    ibohbfb7q_raw.fits
 
@@ -1754,7 +1760,7 @@ Writing calibrated readouts to ibohbfb7q_ima.fits
 
 
 
-End      13-Oct-2025 19:07:59 UTC
+End      22-Oct-2025 18:30:22 UTC
 
 *** WF3IR complete ***
 
@@ -1768,7 +1774,7 @@ Revising existing trailer file `ibohbfb9q.tra&#39;.
 
 CALBEG*** WF3IR -- Version 3.7.2 (Apr-15-2024) ***
 
-Begin    13-Oct-2025 19:07:59 UTC
+Begin    22-Oct-2025 18:30:22 UTC
 
 Input    ibohbfb9q_raw.fits
 
@@ -1807,11 +1813,11 @@ DQITAB   PEDIGREE=INFLIGHT 01/11/2012 12/10/2013
 DQITAB   DESCRIP =Bad Pixel Table generated using Cycle 20 Flats and Darks-----------
 
 DQICORR  COMPLETE
+
+ZSIGCORR PERFORM
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ZSIGCORR PERFORM
-
-ZSIGCORR detected 1285 saturated pixels in 0th read
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ZSIGCORR detected 1285 saturated pixels in 0th read
 
 ZSIGCORR detected 1349 saturated pixels in 1st read
 
@@ -1844,43 +1850,279 @@ NLINFILE iref$u1k1727mi_lin.fits
 NLINFILE PEDIGREE=INFLIGHT 09/02/2009 12/07/2009
 
 NLINFILE DESCRIP =Non-linearity correction from WFC3 MEB1 TV3 and on-orbit frames----
+
+NLINCORR detected 1285 saturated pixels in imset 16
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NLINCORR detected 1285 saturated pixels in imset 16
-
-NLINCORR detected 1354 saturated pixels in imset 15
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NLINCORR detected 1354 saturated pixels in imset 15
 
 NLINCORR detected 1381 saturated pixels in imset 14
+
+NLINCORR detected 1388 saturated pixels in imset 13
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NLINCORR detected 1388 saturated pixels in imset 13
-
-NLINCORR detected 1395 saturated pixels in imset 12
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NLINCORR detected 1395 saturated pixels in imset 12
 
 NLINCORR detected 1413 saturated pixels in imset 11
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NLINCORR detected 1433 saturated pixels in imset 10
+
+NLINCORR detected 1433 saturated pixels in imset 10
 
 NLINCORR detected 1466 saturated pixels in imset 9
-
-NLINCORR detected 1502 saturated pixels in imset 8
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NLINCORR detected 1502 saturated pixels in imset 8
 
 NLINCORR detected 1561 saturated pixels in imset 7
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NLINCORR detected 1671 saturated pixels in imset 6
+
+NLINCORR detected 1671 saturated pixels in imset 6
 
 NLINCORR detected 2295 saturated pixels in imset 5
-
-NLINCORR detected 2916 saturated pixels in imset 4
-
-NLINCORR detected 3206 saturated pixels in imset 3
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NLINCORR detected 3328 saturated pixels in imset 2
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NLINCORR detected 2916 saturated pixels in imset 4
+
+NLINCORR detected 3206 saturated pixels in imset 3
+
+NLINCORR detected 3328 saturated pixels in imset 2
 
 NLINCORR detected 3400 saturated pixels in imset 1
+
+NLINCORR COMPLETE
+
+DARKCORR PERFORM
+
+DARKFILE iref$35620245i_drk.fits
+
+DARKFILE PEDIGREE=INFLIGHT 20/09/2009 15/11/2016
+
+DARKFILE DESCRIP =Dark Created from 154 frames spanning cycles 17 to 24--------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DARKCORR using dark imset 16 for imset 16 with exptime=       0
+
+DARKCORR using dark imset 15 for imset 15 with exptime= 2.93229
+
+DARKCORR using dark imset 14 for imset 14 with exptime= 5.86458
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DARKCORR using dark imset 13 for imset 13 with exptime= 8.79687
+
+DARKCORR using dark imset 12 for imset 12 with exptime= 11.7292
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DARKCORR using dark imset 11 for imset 11 with exptime= 24.2297
+
+DARKCORR using dark imset 10 for imset 10 with exptime= 49.2302
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DARKCORR using dark imset  9 for imset  9 with exptime= 99.2306
+
+DARKCORR using dark imset  8 for imset  8 with exptime= 199.231
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DARKCORR using dark imset  7 for imset  7 with exptime= 399.231
+
+DARKCORR using dark imset  6 for imset  6 with exptime= 599.232
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DARKCORR using dark imset  5 for imset  5 with exptime= 799.232
+
+DARKCORR using dark imset  4 for imset  4 with exptime= 999.232
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DARKCORR using dark imset  3 for imset  3 with exptime= 1199.23
+
+DARKCORR using dark imset  2 for imset  2 with exptime= 1399.23
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DARKCORR using dark imset  1 for imset  1 with exptime= 1599.23
+
+DARKCORR COMPLETE
+
+PHOTCORR PERFORM
+
+IMPHTTAB iref$8ch15233i_imp.fits
+
+IMPHTTAB PEDIGREE=INFLIGHT 08/05/2009 01/09/2024
+
+IMPHTTAB DESCRIP =Time-dependent image photometry reference table (IMPHTTAB)---------
+
+Found parameterized variable 1.
+
+NUMPAR=1, N=1
+
+Allocated 1 parnames
+
+Adding parameter mjd#56298.7852 as parnames[0]
+
+==&gt; Value of PHOTFLAM = 3.0608668e-20
+
+==&gt; Value of PHOTPLAM = 10551.047
+
+==&gt; Value of PHOTBW = 845.61804
+
+PHOTCORR COMPLETE
+
+UNITCORR PERFORM
+
+UNITCORR COMPLETE
+
+CRCORR   OMIT
+
+FLATCORR PERFORM
+
+PFLTFILE iref$4ac19225i_pfl.fits
+
+PFLTFILE PEDIGREE=INFLIGHT 31/07/2009 05/12/2019
+
+PFLTFILE DESCRIP =Sky Flat from Combined In-flight observations between 2009 and 2019
+
+DFLTFILE iref$4ac18263i_dfl.fits
+
+DFLTFILE PEDIGREE=INFLIGHT 31/07/2009 05/12/2019
+
+DFLTFILE DESCRIP =Delta-Flat for IR Blobs by Date of Appearance from Sky Flat Dataset
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FLATCORR COMPLETE
+
+Writing calibrated readouts to ibohbfb9q_ima.fits
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing final image to ibohbfb9q_flt.fits
+
+ with trimx = 5,5, trimy = 5,5
+
+
+
+
+
+End      22-Oct-2025 18:30:26 UTC
+
+*** WF3IR complete ***
+
+RPTCORR  OMIT
+
+Revising existing trailer file `ibohbfbdq.tra&#39;.
+
+
+
+
+
+CALBEG*** WF3IR -- Version 3.7.2 (Apr-15-2024) ***
+
+Begin    22-Oct-2025 18:30:26 UTC
+
+Input    ibohbfbdq_raw.fits
+
+Output   ibohbfbdq_flt.fits
+
+Trying to open ibohbfbdq_raw.fits...
+
+Read in Primary header from ibohbfbdq_raw.fits...
+
+APERTURE IR-FIX
+
+FILTER   F105W
+
+DETECTOR IR
+
+Reading data from ibohbfbdq_raw.fits ...
+
+CCDTAB   iref$t2c16200i_ccd.fits
+
+CCDTAB   PEDIGREE=Ground
+
+CCDTAB   DESCRIP =Reference data based on Thermal-Vac #3, gain=2.5 results for IR-4
+
+CCDTAB   DESCRIP =Readnoise,gain,saturation from TV3,MEB2 values. ISRs 2008-25,39,50
+
+    readnoise =20.2,19.8,19.9,20.1
+
+    gain =2.34,2.37,2.31,2.38
+
+DQICORR  PERFORM
+
+DQITAB   iref$3562033hi_bpx.fits
+
+DQITAB   PEDIGREE=INFLIGHT 01/11/2012 12/10/2013
+
+DQITAB   DESCRIP =Bad Pixel Table generated using Cycle 20 Flats and Darks-----------
+
+DQICORR  COMPLETE
+
+ZSIGCORR PERFORM
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ZSIGCORR detected 1285 saturated pixels in 0th read
+
+ZSIGCORR detected 1347 saturated pixels in 1st read
+
+ZSIGCORR COMPLETE
+
+BLEVCORR PERFORM
+
+OSCNTAB  iref$q911321mi_osc.fits
+
+OSCNTAB  PEDIGREE=GROUND
+
+OSCNTAB  DESCRIP =Initial values for ground test data processing
+
+BLEVCORR COMPLETE
+
+ZOFFCORR PERFORM
+
+ZOFFCORR COMPLETE
+
+NOISCORR PERFORM
+
+Uncertainty array initialized.
+
+NOISCORR COMPLETE
+
+NLINCORR PERFORM
+
+NLINFILE iref$u1k1727mi_lin.fits
+
+NLINFILE PEDIGREE=INFLIGHT 09/02/2009 12/07/2009
+
+NLINFILE DESCRIP =Non-linearity correction from WFC3 MEB1 TV3 and on-orbit frames----
+
+NLINCORR detected 1285 saturated pixels in imset 16
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NLINCORR detected 1350 saturated pixels in imset 15
+
+NLINCORR detected 1377 saturated pixels in imset 14
+
+NLINCORR detected 1386 saturated pixels in imset 13
+
+NLINCORR detected 1391 saturated pixels in imset 12
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NLINCORR detected 1419 saturated pixels in imset 11
+
+NLINCORR detected 1436 saturated pixels in imset 10
+
+NLINCORR detected 1474 saturated pixels in imset 9
+
+NLINCORR detected 1554 saturated pixels in imset 8
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NLINCORR detected 2226 saturated pixels in imset 7
+
+NLINCORR detected 3004 saturated pixels in imset 6
+
+NLINCORR detected 3323 saturated pixels in imset 5
+
+NLINCORR detected 3371 saturated pixels in imset 4
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NLINCORR detected 3396 saturated pixels in imset 3
+
+NLINCORR detected 3413 saturated pixels in imset 2
+
+NLINCORR detected 3434 saturated pixels in imset 1
 
 NLINCORR COMPLETE
 
@@ -1933,243 +2175,6 @@ DARKCORR using dark imset  1 for imset  1 with exptime= 1599.23
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DARKCORR COMPLETE
-
-PHOTCORR PERFORM
-
-IMPHTTAB iref$8ch15233i_imp.fits
-
-IMPHTTAB PEDIGREE=INFLIGHT 08/05/2009 01/09/2024
-
-IMPHTTAB DESCRIP =Time-dependent image photometry reference table (IMPHTTAB)---------
-
-Found parameterized variable 1.
-
-NUMPAR=1, N=1
-
-Allocated 1 parnames
-
-Adding parameter mjd#56298.7852 as parnames[0]
-
-==&gt; Value of PHOTFLAM = 3.0608668e-20
-
-==&gt; Value of PHOTPLAM = 10551.047
-
-==&gt; Value of PHOTBW = 845.61804
-
-PHOTCORR COMPLETE
-
-UNITCORR PERFORM
-
-UNITCORR COMPLETE
-
-CRCORR   OMIT
-
-FLATCORR PERFORM
-
-PFLTFILE iref$4ac19225i_pfl.fits
-
-PFLTFILE PEDIGREE=INFLIGHT 31/07/2009 05/12/2019
-
-PFLTFILE DESCRIP =Sky Flat from Combined In-flight observations between 2009 and 2019
-
-DFLTFILE iref$4ac18263i_dfl.fits
-
-DFLTFILE PEDIGREE=INFLIGHT 31/07/2009 05/12/2019
-
-DFLTFILE DESCRIP =Delta-Flat for IR Blobs by Date of Appearance from Sky Flat Dataset
-
-FLATCORR COMPLETE
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing calibrated readouts to ibohbfb9q_ima.fits
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing final image to ibohbfb9q_flt.fits
-
- with trimx = 5,5, trimy = 5,5
-
-
-
-
-
-End      13-Oct-2025 19:08:03 UTC
-
-*** WF3IR complete ***
-
-RPTCORR  OMIT
-
-Revising existing trailer file `ibohbfbdq.tra&#39;.
-
-
-
-
-
-CALBEG*** WF3IR -- Version 3.7.2 (Apr-15-2024) ***
-
-Begin    13-Oct-2025 19:08:03 UTC
-
-Input    ibohbfbdq_raw.fits
-
-Output   ibohbfbdq_flt.fits
-
-Trying to open ibohbfbdq_raw.fits...
-
-Read in Primary header from ibohbfbdq_raw.fits...
-
-APERTURE IR-FIX
-
-FILTER   F105W
-
-DETECTOR IR
-
-Reading data from ibohbfbdq_raw.fits ...
-
-CCDTAB   iref$t2c16200i_ccd.fits
-
-CCDTAB   PEDIGREE=Ground
-
-CCDTAB   DESCRIP =Reference data based on Thermal-Vac #3, gain=2.5 results for IR-4
-
-CCDTAB   DESCRIP =Readnoise,gain,saturation from TV3,MEB2 values. ISRs 2008-25,39,50
-
-    readnoise =20.2,19.8,19.9,20.1
-
-    gain =2.34,2.37,2.31,2.38
-
-DQICORR  PERFORM
-
-DQITAB   iref$3562033hi_bpx.fits
-
-DQITAB   PEDIGREE=INFLIGHT 01/11/2012 12/10/2013
-
-DQITAB   DESCRIP =Bad Pixel Table generated using Cycle 20 Flats and Darks-----------
-
-DQICORR  COMPLETE
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ZSIGCORR PERFORM
-
-ZSIGCORR detected 1285 saturated pixels in 0th read
-
-ZSIGCORR detected 1347 saturated pixels in 1st read
-
-ZSIGCORR COMPLETE
-
-BLEVCORR PERFORM
-
-OSCNTAB  iref$q911321mi_osc.fits
-
-OSCNTAB  PEDIGREE=GROUND
-
-OSCNTAB  DESCRIP =Initial values for ground test data processing
-
-BLEVCORR COMPLETE
-
-ZOFFCORR PERFORM
-
-ZOFFCORR COMPLETE
-
-NOISCORR PERFORM
-
-Uncertainty array initialized.
-
-NOISCORR COMPLETE
-
-NLINCORR PERFORM
-
-NLINFILE iref$u1k1727mi_lin.fits
-
-NLINFILE PEDIGREE=INFLIGHT 09/02/2009 12/07/2009
-
-NLINFILE DESCRIP =Non-linearity correction from WFC3 MEB1 TV3 and on-orbit frames----
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NLINCORR detected 1285 saturated pixels in imset 16
-
-NLINCORR detected 1350 saturated pixels in imset 15
-
-NLINCORR detected 1377 saturated pixels in imset 14
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NLINCORR detected 1386 saturated pixels in imset 13
-
-NLINCORR detected 1391 saturated pixels in imset 12
-
-NLINCORR detected 1419 saturated pixels in imset 11
-
-NLINCORR detected 1436 saturated pixels in imset 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NLINCORR detected 1474 saturated pixels in imset 9
-
-NLINCORR detected 1554 saturated pixels in imset 8
-
-NLINCORR detected 2226 saturated pixels in imset 7
-
-NLINCORR detected 3004 saturated pixels in imset 6
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NLINCORR detected 3323 saturated pixels in imset 5
-
-NLINCORR detected 3371 saturated pixels in imset 4
-
-NLINCORR detected 3396 saturated pixels in imset 3
-
-NLINCORR detected 3413 saturated pixels in imset 2
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NLINCORR detected 3434 saturated pixels in imset 1
-
-NLINCORR COMPLETE
-
-DARKCORR PERFORM
-
-DARKFILE iref$35620245i_drk.fits
-
-DARKFILE PEDIGREE=INFLIGHT 20/09/2009 15/11/2016
-
-DARKFILE DESCRIP =Dark Created from 154 frames spanning cycles 17 to 24--------------
-
-DARKCORR using dark imset 16 for imset 16 with exptime=       0
-
-DARKCORR using dark imset 15 for imset 15 with exptime= 2.93229
-
-DARKCORR using dark imset 14 for imset 14 with exptime= 5.86458
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DARKCORR using dark imset 13 for imset 13 with exptime= 8.79687
-
-DARKCORR using dark imset 12 for imset 12 with exptime= 11.7292
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DARKCORR using dark imset 11 for imset 11 with exptime= 24.2297
-
-DARKCORR using dark imset 10 for imset 10 with exptime= 49.2302
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DARKCORR using dark imset  9 for imset  9 with exptime= 99.2306
-
-DARKCORR using dark imset  8 for imset  8 with exptime= 199.231
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DARKCORR using dark imset  7 for imset  7 with exptime= 399.231
-
-DARKCORR using dark imset  6 for imset  6 with exptime= 599.232
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DARKCORR using dark imset  5 for imset  5 with exptime= 799.232
-
-DARKCORR using dark imset  4 for imset  4 with exptime= 999.232
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DARKCORR using dark imset  3 for imset  3 with exptime= 1199.23
-
-DARKCORR using dark imset  2 for imset  2 with exptime= 1399.23
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DARKCORR using dark imset  1 for imset  1 with exptime= 1599.23
-
-DARKCORR COMPLETE
 
 PHOTCORR PERFORM
 
@@ -2241,7 +2246,7 @@ Writing calibrated readouts to ibohbfbdq_ima.fits
 
 
 
-End      13-Oct-2025 19:08:08 UTC
+End      22-Oct-2025 18:30:31 UTC
 
 *** WF3IR complete ***
 
@@ -2255,7 +2260,7 @@ Revising existing trailer file `ibohbfbgq.tra&#39;.
 
 CALBEG*** WF3IR -- Version 3.7.2 (Apr-15-2024) ***
 
-Begin    13-Oct-2025 19:08:08 UTC
+Begin    22-Oct-2025 18:30:31 UTC
 
 Input    ibohbfbgq_raw.fits
 
@@ -2294,11 +2299,11 @@ DQITAB   PEDIGREE=INFLIGHT 01/11/2012 12/10/2013
 DQITAB   DESCRIP =Bad Pixel Table generated using Cycle 20 Flats and Darks-----------
 
 DQICORR  COMPLETE
+
+ZSIGCORR PERFORM
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ZSIGCORR PERFORM
-
-ZSIGCORR detected 1285 saturated pixels in 0th read
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ZSIGCORR detected 1285 saturated pixels in 0th read
 
 ZSIGCORR detected 1345 saturated pixels in 1st read
 
@@ -2331,43 +2336,42 @@ NLINFILE iref$u1k1727mi_lin.fits
 NLINFILE PEDIGREE=INFLIGHT 09/02/2009 12/07/2009
 
 NLINFILE DESCRIP =Non-linearity correction from WFC3 MEB1 TV3 and on-orbit frames----
+
+NLINCORR detected 1285 saturated pixels in imset 16
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NLINCORR detected 1285 saturated pixels in imset 16
-
-NLINCORR detected 1347 saturated pixels in imset 15
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NLINCORR detected 1347 saturated pixels in imset 15
 
 NLINCORR detected 1375 saturated pixels in imset 14
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NLINCORR detected 1381 saturated pixels in imset 13
+
+NLINCORR detected 1381 saturated pixels in imset 13
 
 NLINCORR detected 1387 saturated pixels in imset 12
-
-NLINCORR detected 1404 saturated pixels in imset 11
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NLINCORR detected 1404 saturated pixels in imset 11
 
 NLINCORR detected 1423 saturated pixels in imset 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NLINCORR detected 1460 saturated pixels in imset 9
+
+NLINCORR detected 1460 saturated pixels in imset 9
 
 NLINCORR detected 1494 saturated pixels in imset 8
-
-NLINCORR detected 1540 saturated pixels in imset 7
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NLINCORR detected 1540 saturated pixels in imset 7
 
 NLINCORR detected 1572 saturated pixels in imset 6
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NLINCORR detected 1615 saturated pixels in imset 5
+
+NLINCORR detected 1615 saturated pixels in imset 5
 
 NLINCORR detected 1632 saturated pixels in imset 4
-
-NLINCORR detected 1647 saturated pixels in imset 3
-
-NLINCORR detected 1662 saturated pixels in imset 2
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NLINCORR detected 1680 saturated pixels in imset 1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NLINCORR detected 1647 saturated pixels in imset 3
+
+NLINCORR detected 1662 saturated pixels in imset 2
+
+NLINCORR detected 1680 saturated pixels in imset 1
 
 NLINCORR COMPLETE
 
@@ -2382,43 +2386,44 @@ DARKFILE DESCRIP =Dark Created from 154 frames spanning cycles 17 to 24---------
 DARKCORR using dark imset 16 for imset 16 with exptime=       0
 
 DARKCORR using dark imset 15 for imset 15 with exptime= 2.93229
-
-DARKCORR using dark imset 14 for imset 14 with exptime= 5.86458
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DARKCORR using dark imset 13 for imset 13 with exptime= 8.79687
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DARKCORR using dark imset 14 for imset 14 with exptime= 5.86458
 
-DARKCORR using dark imset 12 for imset 12 with exptime= 11.7292
+DARKCORR using dark imset 13 for imset 13 with exptime= 8.79687
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DARKCORR using dark imset 11 for imset 11 with exptime= 24.2297
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DARKCORR using dark imset 12 for imset 12 with exptime= 11.7292
 
-DARKCORR using dark imset 10 for imset 10 with exptime= 49.2302
+DARKCORR using dark imset 11 for imset 11 with exptime= 24.2297
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DARKCORR using dark imset  9 for imset  9 with exptime= 99.2306
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DARKCORR using dark imset 10 for imset 10 with exptime= 49.2302
 
-DARKCORR using dark imset  8 for imset  8 with exptime= 199.231
+DARKCORR using dark imset  9 for imset  9 with exptime= 99.2306
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DARKCORR using dark imset  7 for imset  7 with exptime= 399.231
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DARKCORR using dark imset  8 for imset  8 with exptime= 199.231
 
-DARKCORR using dark imset  6 for imset  6 with exptime= 599.232
+DARKCORR using dark imset  7 for imset  7 with exptime= 399.231
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DARKCORR using dark imset  5 for imset  5 with exptime= 799.232
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DARKCORR using dark imset  6 for imset  6 with exptime= 599.232
 
-DARKCORR using dark imset  4 for imset  4 with exptime= 999.232
+DARKCORR using dark imset  5 for imset  5 with exptime= 799.232
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DARKCORR using dark imset  3 for imset  3 with exptime= 1199.23
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DARKCORR using dark imset  4 for imset  4 with exptime= 999.232
 
-DARKCORR using dark imset  2 for imset  2 with exptime= 1399.23
+DARKCORR using dark imset  3 for imset  3 with exptime= 1199.23
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DARKCORR using dark imset  1 for imset  1 with exptime= 1599.23
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DARKCORR using dark imset  2 for imset  2 with exptime= 1399.23
 
-DARKCORR COMPLETE
+DARKCORR using dark imset  1 for imset  1 with exptime= 1599.23
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DARKCORR COMPLETE
 
 PHOTCORR PERFORM
 
@@ -2463,11 +2468,11 @@ DFLTFILE iref$4ac18263i_dfl.fits
 DFLTFILE PEDIGREE=INFLIGHT 31/07/2009 05/12/2019
 
 DFLTFILE DESCRIP =Delta-Flat for IR Blobs by Date of Appearance from Sky Flat Dataset
+
+FLATCORR COMPLETE
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FLATCORR COMPLETE
-
-Writing calibrated readouts to ibohbfbgq_ima.fits
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing calibrated readouts to ibohbfbgq_ima.fits
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing final image to ibohbfbgq_flt.fits
@@ -2478,7 +2483,7 @@ Writing calibrated readouts to ibohbfbgq_ima.fits
 
 
 
-End      13-Oct-2025 19:08:12 UTC
+End      22-Oct-2025 18:30:35 UTC
 
 *** WF3IR complete ***
 
@@ -2492,7 +2497,7 @@ Revising existing trailer file `ibohbfbkq.tra&#39;.
 
 CALBEG*** WF3IR -- Version 3.7.2 (Apr-15-2024) ***
 
-Begin    13-Oct-2025 19:08:12 UTC
+Begin    22-Oct-2025 18:30:35 UTC
 
 Input    ibohbfbkq_raw.fits
 
@@ -2716,7 +2721,7 @@ FLATCORR COMPLETE
 
 
 
-End      13-Oct-2025 19:08:16 UTC
+End      22-Oct-2025 18:30:39 UTC
 
 *** WF3IR complete ***
 
@@ -2730,7 +2735,7 @@ Revising existing trailer file `ibohbfbpq.tra&#39;.
 
 CALBEG*** WF3IR -- Version 3.7.2 (Apr-15-2024) ***
 
-Begin    13-Oct-2025 19:08:16 UTC
+Begin    22-Oct-2025 18:30:39 UTC
 
 Input    ibohbfbpq_raw.fits
 
@@ -2965,7 +2970,7 @@ Writing calibrated readouts to ibohbfbpq_ima.fits
 
 
 
-End      13-Oct-2025 19:08:21 UTC
+End      22-Oct-2025 18:30:44 UTC
 
 *** WF3IR complete ***
 
@@ -2977,7 +2982,7 @@ RPTCORR  OMIT
 
 CALBEG*** WF3DTH -- Version 3.7.2 (Apr-15-2024) ***
 
-Begin    13-Oct-2025 19:08:21 UTC
+Begin    22-Oct-2025 18:30:44 UTC
 
 Astrodrizzle needs to be run in order to generate
 
@@ -2995,7 +3000,7 @@ Warning    Can&#39;t find input file &quot;ibohbfbkq_spt.fits&quot;
 
 Warning    Can&#39;t find input file &quot;ibohbfbpq_spt.fits&quot;
 
-End      13-Oct-2025 19:08:21 UTC
+End      22-Oct-2025 18:30:44 UTC
 
 *** WF3DTH complete ***
 
@@ -3007,7 +3012,7 @@ Updated Global Header for ibohbf040_asn.fits...
 
 
 
-End      13-Oct-2025 19:08:21 UTC
+End      22-Oct-2025 18:30:44 UTC
 
 *** CALWF3 complete ***
 
@@ -3040,13 +3045,12 @@ CALWF3 completion for ibohbf040_asn.fits
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- IDCTAB: Distortion model from row 1 for chip 1 : F105W
 - IDCTAB: Distortion model from row 1 for chip 1 : F105W
 - IDCTAB: Distortion model from row 1 for chip 1 : F105W
-- IDCTAB: Distortion model from row 1 for chip 1 : F105W
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- IDCTAB: Distortion model from row
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- IDCTAB: Distortion model from row 1 for chip 1 : F105W
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 1 for chip 1 : F105W
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- IDCTAB: Distortion model from row 1 for chip 1 : F105W
 - IDCTAB: Distortion model from row 1 for chip 1 : F105W
 - IDCTAB: Distortion model from row 1 for chip 1 : F105W
 </pre></div>
@@ -3073,10 +3077,10 @@ CALWF3 completion for ibohbf040_asn.fits
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AstroDrizzle log file: astrodrizzle.log
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.astrodrizzle:AstroDrizzle Version 3.10.0 started at: 19:08:22.376 (13/10/2025)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.astrodrizzle:AstroDrizzle Version 3.10.0 started at: 18:30:45.563 (22/10/2025)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AstroDrizzle Version 3.10.0 started at: 19:08:22.376 (13/10/2025)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AstroDrizzle Version 3.10.0 started at: 18:30:45.563 (22/10/2025)
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.astrodrizzle:
@@ -3094,7 +3098,7 @@ CALWF3 completion for ibohbf040_asn.fits
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.astrodrizzle:Python Version 3.11.14 | packaged by conda-forge | (main, Oct 13 2025, 14:09:32) [GCC 14.3.0]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.astrodrizzle:numpy Version -&gt; 2.3.3 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.astrodrizzle:numpy Version -&gt; 2.3.4 
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.astrodrizzle:astropy Version -&gt; 7.1.1 
@@ -3106,10 +3110,10 @@ CALWF3 completion for ibohbf040_asn.fits
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.astrodrizzle:photutils Version -&gt; 2.3.0 
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:==== Processing Step  Initialization  started at  19:08:22.381 (13/10/2025)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:==== Processing Step  Initialization  started at  18:30:45.568 (22/10/2025)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==== Processing Step  Initialization  started at  19:08:22.381 (13/10/2025)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==== Processing Step  Initialization  started at  18:30:45.568 (22/10/2025)
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:
@@ -3262,10 +3266,10 @@ CALWF3 completion for ibohbf040_asn.fits
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>********************************************************************************
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:==== Processing Step Initialization finished at 19:08:22.956 (13/10/2025)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:==== Processing Step Initialization finished at 18:30:46.151 (22/10/2025)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==== Processing Step Initialization finished at 19:08:22.956 (13/10/2025)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==== Processing Step Initialization finished at 18:30:46.151 (22/10/2025)
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.astrodrizzle:USER INPUT PARAMETERS common to all Processing Steps:
@@ -3322,10 +3326,10 @@ CALWF3 completion for ibohbf040_asn.fits
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.astrodrizzle:	wcskey :	
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:==== Processing Step  Static Mask  started at  19:08:22.966 (13/10/2025)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:==== Processing Step  Static Mask  started at  18:30:46.162 (22/10/2025)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==== Processing Step  Static Mask  started at  19:08:22.966 (13/10/2025)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==== Processing Step  Static Mask  started at  18:30:46.162 (22/10/2025)
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:
@@ -3382,16 +3386,16 @@ CALWF3 completion for ibohbf040_asn.fits
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.staticMask:Saving static mask to disk: ./_1014x1014_1_staticMask.fits
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:==== Processing Step Static Mask finished at 19:08:23.073 (13/10/2025)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:==== Processing Step Static Mask finished at 18:30:46.27 (22/10/2025)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==== Processing Step Static Mask finished at 19:08:23.073 (13/10/2025)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==== Processing Step Static Mask finished at 18:30:46.27 (22/10/2025)
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:==== Processing Step  Subtract Sky  started at  19:08:23.075 (13/10/2025)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:==== Processing Step  Subtract Sky  started at  18:30:46.27 (22/10/2025)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==== Processing Step  Subtract Sky  started at  19:08:23.075 (13/10/2025)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==== Processing Step  Subtract Sky  started at  18:30:46.27 (22/10/2025)
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:
@@ -3445,10 +3449,10 @@ CALWF3 completion for ibohbf040_asn.fits
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.sky:	use_static :	True
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:stsci.skypac.utils:***** skymatch started on 2025-10-13 19:08:23.140983
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:stsci.skypac.utils:***** skymatch started on 2025-10-22 18:30:46.340718
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>***** skymatch started on 2025-10-13 19:08:23.140983
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>***** skymatch started on 2025-10-22 18:30:46.340718
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:stsci.skypac.utils:      Version 1.0.11
@@ -4051,28 +4055,28 @@ CALWF3 completion for ibohbf040_asn.fits
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:stsci.skypac.utils:***** skymatch ended on 2025-10-13 19:08:25.049802
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:stsci.skypac.utils:***** skymatch ended on 2025-10-22 18:30:48.259072
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>***** skymatch ended on 2025-10-13 19:08:25.049802
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>***** skymatch ended on 2025-10-22 18:30:48.259072
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:stsci.skypac.utils:TOTAL RUN TIME: 0:00:01.908819
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:stsci.skypac.utils:TOTAL RUN TIME: 0:00:01.918354
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TOTAL RUN TIME: 0:00:01.908819
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TOTAL RUN TIME: 0:00:01.918354
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:==== Processing Step Subtract Sky finished at 19:08:25.09 (13/10/2025)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:==== Processing Step Subtract Sky finished at 18:30:48.309 (22/10/2025)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==== Processing Step Subtract Sky finished at 19:08:25.09 (13/10/2025)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==== Processing Step Subtract Sky finished at 18:30:48.309 (22/10/2025)
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:==== Processing Step  Separate Drizzle  started at  19:08:25.099 (13/10/2025)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:==== Processing Step  Separate Drizzle  started at  18:30:48.311 (22/10/2025)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==== Processing Step  Separate Drizzle  started at  19:08:25.099 (13/10/2025)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==== Processing Step  Separate Drizzle  started at  18:30:48.311 (22/10/2025)
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:
@@ -4211,13 +4215,13 @@ CALWF3 completion for ibohbf040_asn.fits
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.adrizzle:-Drizzle input: ibohbfbdq_flt.fits[sci,1]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.adrizzle:-Drizzle input: ibohbfbgq_flt.fits[sci,1]
-</pre></div>
-</div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.adrizzle:Applying sky value of 0.000000 to ibohbfb7q_flt.fits[sci,1]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.adrizzle:Applying sky value of 1.032315 to ibohbfb9q_flt.fits[sci,1]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.adrizzle:-Drizzle input: ibohbfbgq_flt.fits[sci,1]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.adrizzle:Applying sky value of 2.506848 to ibohbfbdq_flt.fits[sci,1]
@@ -4226,27 +4230,27 @@ CALWF3 completion for ibohbf040_asn.fits
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.adrizzle:Using WCSLIB-based coordinate transformation...
 </pre></div>
 </div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.adrizzle:stepsize = 10
+</pre></div>
+</div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.adrizzle:Using WCSLIB-based coordinate transformation...
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.adrizzle:stepsize = 10
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.adrizzle:stepsize = 10
-</pre></div>
-</div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.cdriz:-Drizzling using kernel = turbo
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.cdriz:-Drizzling using kernel = turbo
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.adrizzle:Using WCSLIB-based coordinate transformation...
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.adrizzle:Applying sky value of 0.145033 to ibohbfbgq_flt.fits[sci,1]
 </pre></div>
 </div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.cdriz:-Drizzling using kernel = turbo
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.adrizzle:Using WCSLIB-based coordinate transformation...
+</pre></div>
+</div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.adrizzle:stepsize = 10
 </pre></div>
 </div>
@@ -4260,18 +4264,18 @@ CALWF3 completion for ibohbf040_asn.fits
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.cdriz:-Drizzling using kernel = turbo
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.outputimage:-Generating simple FITS output: ibohbfb9q_single_sci.fits
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-Generating simple FITS output: ibohbfb9q_single_sci.fits
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.outputimage:-Generating simple FITS output: ibohbfb7q_single_sci.fits
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-Generating simple FITS output: ibohbfb7q_single_sci.fits
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.outputimage:-Generating simple FITS output: ibohbfb9q_single_sci.fits
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-Generating simple FITS output: ibohbfb9q_single_sci.fits
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:py.warnings:/home/runner/micromamba/envs/ci-env/lib/python3.11/site-packages/astropy/io/fits/card.py:1036: VerifyWarning: Card is too long, comment will be truncated.
@@ -4281,11 +4285,11 @@ CALWF3 completion for ibohbf040_asn.fits
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.outputimage:-Generating simple FITS output: ibohbfbdq_single_sci.fits
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:py.warnings:/home/runner/micromamba/envs/ci-env/lib/python3.11/site-packages/astropy/io/fits/card.py:1036: VerifyWarning: Card is too long, comment will be truncated.
-  warnings.warn(
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-Generating simple FITS output: ibohbfbdq_single_sci.fits
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-Generating simple FITS output: ibohbfbdq_single_sci.fits
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:py.warnings:/home/runner/micromamba/envs/ci-env/lib/python3.11/site-packages/astropy/io/fits/card.py:1036: VerifyWarning: Card is too long, comment will be truncated.
+  warnings.warn(
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.outputimage:-Generating simple FITS output: ibohbfbgq_single_sci.fits
@@ -4294,20 +4298,20 @@ CALWF3 completion for ibohbf040_asn.fits
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-Generating simple FITS output: ibohbfbgq_single_sci.fits
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.outputimage:Writing out image to disk: ibohbfb9q_single_sci.fits
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.outputimage:Writing out image to disk: ibohbfb7q_single_sci.fits
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing out image to disk: ibohbfb9q_single_sci.fits
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing out image to disk: ibohbfb7q_single_sci.fits
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:py.warnings:/home/runner/micromamba/envs/ci-env/lib/python3.11/site-packages/astropy/io/fits/card.py:1036: VerifyWarning: Card is too long, comment will be truncated.
   warnings.warn(
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.outputimage:Writing out image to disk: ibohbfb7q_single_sci.fits
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.outputimage:Writing out image to disk: ibohbfb9q_single_sci.fits
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing out image to disk: ibohbfb7q_single_sci.fits
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing out image to disk: ibohbfb9q_single_sci.fits
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:py.warnings:/home/runner/micromamba/envs/ci-env/lib/python3.11/site-packages/astropy/io/fits/card.py:1036: VerifyWarning: Card is too long, comment will be truncated.
@@ -4326,16 +4330,16 @@ CALWF3 completion for ibohbf040_asn.fits
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing out image to disk: ibohbfbgq_single_sci.fits
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.outputimage:Writing out image to disk: ibohbfb9q_single_wht.fits
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing out image to disk: ibohbfb9q_single_wht.fits
-</pre></div>
-</div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.outputimage:Writing out image to disk: ibohbfb7q_single_wht.fits
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing out image to disk: ibohbfb7q_single_wht.fits
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.outputimage:Writing out image to disk: ibohbfb9q_single_wht.fits
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing out image to disk: ibohbfb9q_single_wht.fits
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.outputimage:Writing out image to disk: ibohbfbdq_single_wht.fits
@@ -4359,6 +4363,9 @@ CALWF3 completion for ibohbf040_asn.fits
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.adrizzle:Applying sky value of 0.567570 to ibohbfbkq_flt.fits[sci,1]
 </pre></div>
 </div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.adrizzle:Applying sky value of 2.010493 to ibohbfbpq_flt.fits[sci,1]
+</pre></div>
+</div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.adrizzle:Using WCSLIB-based coordinate transformation...
 </pre></div>
 </div>
@@ -4366,9 +4373,6 @@ CALWF3 completion for ibohbf040_asn.fits
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.cdriz:-Drizzling using kernel = turbo
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.adrizzle:Applying sky value of 2.010493 to ibohbfbpq_flt.fits[sci,1]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.adrizzle:Using WCSLIB-based coordinate transformation...
@@ -4386,16 +4390,6 @@ CALWF3 completion for ibohbf040_asn.fits
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-Generating simple FITS output: ibohbfbkq_single_sci.fits
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:py.warnings:/home/runner/micromamba/envs/ci-env/lib/python3.11/site-packages/astropy/io/fits/card.py:1036: VerifyWarning: Card is too long, comment will be truncated.
-  warnings.warn(
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.outputimage:Writing out image to disk: ibohbfbkq_single_sci.fits
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing out image to disk: ibohbfbkq_single_sci.fits
-</pre></div>
-</div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.outputimage:-Generating simple FITS output: ibohbfbpq_single_sci.fits
 </pre></div>
 </div>
@@ -4406,13 +4400,23 @@ CALWF3 completion for ibohbf040_asn.fits
   warnings.warn(
 </pre></div>
 </div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:py.warnings:/home/runner/micromamba/envs/ci-env/lib/python3.11/site-packages/astropy/io/fits/card.py:1036: VerifyWarning: Card is too long, comment will be truncated.
+  warnings.warn(
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.outputimage:Writing out image to disk: ibohbfbkq_single_sci.fits
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing out image to disk: ibohbfbkq_single_sci.fits
+</pre></div>
+</div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.outputimage:Writing out image to disk: ibohbfbpq_single_sci.fits
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.outputimage:Writing out image to disk: ibohbfbkq_single_wht.fits
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing out image to disk: ibohbfbpq_single_sci.fits
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing out image to disk: ibohbfbpq_single_sci.fits
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.outputimage:Writing out image to disk: ibohbfbkq_single_wht.fits
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing out image to disk: ibohbfbkq_single_wht.fits
@@ -4424,16 +4428,16 @@ CALWF3 completion for ibohbf040_asn.fits
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing out image to disk: ibohbfbpq_single_wht.fits
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:==== Processing Step Separate Drizzle finished at 19:08:27.177 (13/10/2025)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:==== Processing Step Separate Drizzle finished at 18:30:50.394 (22/10/2025)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==== Processing Step Separate Drizzle finished at 19:08:27.177 (13/10/2025)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==== Processing Step Separate Drizzle finished at 18:30:50.394 (22/10/2025)
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:==== Processing Step  Create Median  started at  19:08:27.179 (13/10/2025)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:==== Processing Step  Create Median  started at  18:30:50.39 (22/10/2025)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==== Processing Step  Create Median  started at  19:08:27.179 (13/10/2025)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==== Processing Step  Create Median  started at  18:30:50.39 (22/10/2025)
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:
@@ -4526,16 +4530,16 @@ CALWF3 completion for ibohbf040_asn.fits
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Saving output median image to: &#39;ibohbf040_med.fits&#39;
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:==== Processing Step Create Median finished at 19:08:27.565 (13/10/2025)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:==== Processing Step Create Median finished at 18:30:50.638 (22/10/2025)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==== Processing Step Create Median finished at 19:08:27.565 (13/10/2025)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==== Processing Step Create Median finished at 18:30:50.638 (22/10/2025)
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:==== Processing Step  Blot  started at  19:08:27.566 (13/10/2025)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:==== Processing Step  Blot  started at  18:30:50.63 (22/10/2025)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==== Processing Step  Blot  started at  19:08:27.566 (13/10/2025)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==== Processing Step  Blot  started at  18:30:50.63 (22/10/2025)
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:
@@ -4724,16 +4728,16 @@ CALWF3 completion for ibohbf040_asn.fits
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing out image to disk: ibohbfbpq_sci1_blt.fits
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:==== Processing Step Blot finished at 19:08:28.627 (13/10/2025)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:==== Processing Step Blot finished at 18:30:51.866 (22/10/2025)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==== Processing Step Blot finished at 19:08:28.627 (13/10/2025)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==== Processing Step Blot finished at 18:30:51.866 (22/10/2025)
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:==== Processing Step  Driz_CR  started at  19:08:28.628 (13/10/2025)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:==== Processing Step  Driz_CR  started at  18:30:51.867 (22/10/2025)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==== Processing Step  Driz_CR  started at  19:08:28.628 (13/10/2025)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==== Processing Step  Driz_CR  started at  18:30:51.867 (22/10/2025)
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:
@@ -4808,16 +4812,16 @@ CALWF3 completion for ibohbf040_asn.fits
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Creating output: ibohbfbpq_sci1_crmask.fits
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:==== Processing Step Driz_CR finished at 19:08:30.894 (13/10/2025)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:==== Processing Step Driz_CR finished at 18:30:54.136 (22/10/2025)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==== Processing Step Driz_CR finished at 19:08:30.894 (13/10/2025)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==== Processing Step Driz_CR finished at 18:30:54.136 (22/10/2025)
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:==== Processing Step  Final Drizzle  started at  19:08:30.912 (13/10/2025)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:==== Processing Step  Final Drizzle  started at  18:30:54.153 (22/10/2025)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==== Processing Step  Final Drizzle  started at  19:08:30.912 (13/10/2025)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==== Processing Step  Final Drizzle  started at  18:30:54.153 (22/10/2025)
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:
@@ -5068,10 +5072,10 @@ CALWF3 completion for ibohbf040_asn.fits
   warnings.warn(
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:==== Processing Step Final Drizzle finished at 19:08:32.733 (13/10/2025)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:==== Processing Step Final Drizzle finished at 18:30:55.981 (22/10/2025)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==== Processing Step Final Drizzle finished at 19:08:32.733 (13/10/2025)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==== Processing Step Final Drizzle finished at 18:30:55.981 (22/10/2025)
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.astrodrizzle:
@@ -5080,10 +5084,10 @@ CALWF3 completion for ibohbf040_asn.fits
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.astrodrizzle:AstroDrizzle Version 3.10.0 is finished processing at 19:08:32.736 (13/10/2025).
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.astrodrizzle:AstroDrizzle Version 3.10.0 is finished processing at 18:30:55.984 (22/10/2025).
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AstroDrizzle Version 3.10.0 is finished processing at 19:08:32.736 (13/10/2025).
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AstroDrizzle Version 3.10.0 is finished processing at 18:30:55.984 (22/10/2025).
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.astrodrizzle:
@@ -5128,52 +5132,52 @@ CALWF3 completion for ibohbf040_asn.fits
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:         Initialization          0.5750 sec.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:         Initialization          0.5836 sec.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         Initialization          0.5750 sec.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         Initialization          0.5836 sec.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:            Static Mask          0.1076 sec.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:            Static Mask          0.1089 sec.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>            Static Mask          0.1076 sec.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>            Static Mask          0.1089 sec.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:           Subtract Sky          2.0225 sec.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:           Subtract Sky          2.0373 sec.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>           Subtract Sky          2.0225 sec.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>           Subtract Sky          2.0373 sec.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:       Separate Drizzle          2.0784 sec.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:       Separate Drizzle          2.0836 sec.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       Separate Drizzle          2.0784 sec.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       Separate Drizzle          2.0836 sec.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:          Create Median          0.3858 sec.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:          Create Median          0.2414 sec.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          Create Median          0.3858 sec.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          Create Median          0.2414 sec.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:                   Blot          1.0602 sec.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:                   Blot          1.2264 sec.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                   Blot          1.0602 sec.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                   Blot          1.2264 sec.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:                Driz_CR          2.2663 sec.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:                Driz_CR          2.2690 sec.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                Driz_CR          2.2663 sec.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                Driz_CR          2.2690 sec.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:          Final Drizzle          1.8220 sec.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:          Final Drizzle          1.8280 sec.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          Final Drizzle          1.8220 sec.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          Final Drizzle          1.8280 sec.
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:   ====================          ====================
@@ -5182,10 +5186,10 @@ CALWF3 completion for ibohbf040_asn.fits
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ====================          ====================
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:                  Total          10.3179 sec.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:                  Total          10.3782 sec.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                  Total          10.3179 sec.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                  Total          10.3782 sec.
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:drizzlepac.util:

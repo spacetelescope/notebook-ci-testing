@@ -621,6 +621,12 @@ document.write(`
 <p style='color: #721c24; margin-bottom: 0;'>Please migrate to newer alternatives or contact maintainers before using this notebook in production.</p>
 <p style='color: #721c24; margin-bottom: 0; font-size: 0.9em;'><em>This warning was automatically generated during documentation build.</em></p>
 </div>
+<div style='background-color: #fff3cd; border: 1px solid #ffeaa7; border-radius: 4px; padding: 15px; margin: 10px 0; border-left: 4px solid #f39c12;'>
+<h3 style='color: #856404; margin-top: 0;'>⚠️ EXECUTION WARNING</h3>
+<p style='color: #856404; margin-bottom: 0;'><strong>This notebook may not execute properly in the current environment.</strong></p>
+<p style='color: #856404; margin-bottom: 0;'>Some cells may have failed during automated testing. Please review the notebook content and test manually before use.</p>
+<p style='color: #856404; margin-bottom: 0; font-size: 0.9em;'><em>Generated during CI/CD pipeline - some outputs may be incomplete or missing.</em></p>
+</div>
 <p><a id="topSp"></a></p>
 <section class="tex2jax_ignore mathjax_ignore" id="splitting-cos-exposures-into-sub-exposures-with-splittag">
 <h1>Splitting COS Exposures into sub-exposures with <code class="docutils literal notranslate"><span class="pre">splittag</span></code><a class="headerlink" href="#splitting-cos-exposures-into-sub-exposures-with-splittag" title="Link to this heading">#</a></h1>
@@ -738,11 +744,15 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: Found cached file ./mastDownload/HST/lc1va0yeq/lc1va0yeq_corrtag_a.fits with expected size 5567040. [astroquery.query]
-INFO: Found cached file ./mastDownload/HST/lc1va0yjq/lc1va0yjq_corrtag_a.fits with expected size 4132800. [astroquery.query]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: Found cached file ./mastDownload/HST/lc1va0yjq/lc1va0yjq_corrtag_a.fits with expected size 4132800. [astroquery.query]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: Found cached file ./mastDownload/HST/lc1va0zcq/lc1va0zcq_corrtag_a.fits with expected size 14791680. [astroquery.query]
-INFO: Found cached file ./mastDownload/HST/lc1va0zgq/lc1va0zgq_corrtag_a.fits with expected size 8596800. [astroquery.query]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: Found cached file ./mastDownload/HST/lc1va0zgq/lc1va0zgq_corrtag_a.fits with expected size 8596800. [astroquery.query]
 #####
 Found 4 corrtag exposure files from the COS FUV detector (segment A only)
 </pre></div>
@@ -1100,13 +1110,13 @@ Creating and writing split files...
 CALCOS version 3.6.1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>numpy version 2.3.3
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>numpy version 2.3.4
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>astropy version 7.1.1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Begin 13-Oct-2025 19:04:06 UTC
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Begin 22-Oct-2025 18:27:18 UTC
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ERROR:  The following reference files are missing:
@@ -1129,7 +1139,7 @@ Extracting file ./output/spec_intervals/lc1va0zgq_2_corrtag_a.fits using CalCOS
 CALCOS version 3.6.1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>numpy version 2.3.3
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>numpy version 2.3.4
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>astropy version 7.1.1
@@ -1155,7 +1165,7 @@ Extracting file ./output/spec_intervals/lc1va0zgq_3_corrtag_a.fits using CalCOS
 CALCOS version 3.6.1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>numpy version 2.3.3
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>numpy version 2.3.4
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>astropy version 7.1.1
@@ -1245,7 +1255,7 @@ Done running the pipeline.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_3189/1060791704.py:52: UserWarning: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_3003/1060791704.py:52: UserWarning: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
   plt.legend()
 </pre></div>
 </div>
@@ -1336,9 +1346,9 @@ In the first region, we see the 1215 Angstrom Lyman-alpha line, much of which is
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_3189/3563608290.py:67: UserWarning: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_3003/3563608290.py:67: UserWarning: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
   ax0.legend()
-/tmp/ipykernel_3189/3563608290.py:68: UserWarning: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+/tmp/ipykernel_3003/3563608290.py:68: UserWarning: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
   ax1.legend()
 </pre></div>
 </div>
@@ -1431,9 +1441,9 @@ In the first region, we see the 1215 Angstrom Lyman-alpha line, much of which is
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_3189/643280535.py:71: UserWarning: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_3003/643280535.py:71: UserWarning: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
   ax0.legend()
-/tmp/ipykernel_3189/643280535.py:72: UserWarning: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+/tmp/ipykernel_3003/643280535.py:72: UserWarning: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
   ax1.legend()
 </pre></div>
 </div>
@@ -1677,13 +1687,13 @@ authors. Follow these links for more information about citations:</p>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CALCOS version 3.6.1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>numpy version 2.3.3
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>numpy version 2.3.4
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>astropy version 7.1.1
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Begin 13-Oct-2025 19:04:10 UTC
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Begin 22-Oct-2025 18:27:22 UTC
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ERROR:  The following reference files are missing:

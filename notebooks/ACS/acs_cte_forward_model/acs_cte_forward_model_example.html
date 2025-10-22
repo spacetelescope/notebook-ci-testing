@@ -611,7 +611,13 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <p><a id="title_ID"></a></p>
+  <div style='background-color: #fff3cd; border: 1px solid #ffeaa7; border-radius: 4px; padding: 15px; margin: 10px 0; border-left: 4px solid #f39c12;'>
+<h3 style='color: #856404; margin-top: 0;'>⚠️ EXECUTION WARNING</h3>
+<p style='color: #856404; margin-bottom: 0;'><strong>This notebook may not execute properly in the current environment.</strong></p>
+<p style='color: #856404; margin-bottom: 0;'>Some cells may have failed during automated testing. Please review the notebook content and test manually before use.</p>
+<p style='color: #856404; margin-bottom: 0; font-size: 0.9em;'><em>Generated during CI/CD pipeline - some outputs may be incomplete or missing.</em></p>
+</div>
+<p><a id="title_ID"></a></p>
 <section class="tex2jax_ignore mathjax_ignore" id="pixel-based-acs-wfc-cte-forward-model">
 <h1>Pixel-based ACS/WFC CTE Forward Model<a class="headerlink" href="#pixel-based-acs-wfc-cte-forward-model" title="Link to this heading">#</a></h1>
 <p>This notebook demonstrates preparing data for input into the ACS/WFC pixel-based CTE forward model and running the model.</p>
@@ -741,7 +747,9 @@ document.write(`
                    Local Path                    Status  Message URL 
 ----------------------------------------------- -------- ------- ----
 ./mastDownload/HST/jd0q14ctq/jd0q14ctq_flc.fits COMPLETE    None None
-                                             Local Path                                              Status  Message URL 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                             Local Path                                              Status  Message URL 
 --------------------------------------------------------------------------------------------------- -------- ------- ----
 ./mastDownload/HST/hst_14402_14_acs_wfc_f775w_jd0q14ct/hst_14402_14_acs_wfc_f775w_jd0q14ct_flc.fits COMPLETE    None None
 </pre></div>
@@ -868,7 +876,7 @@ CRDS - INFO -  2 infos
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>QTable length=300</i>
-<table id="table139966610535952" class="table-striped table-bordered table-condensed">
+<table id="table140255757794512" class="table-striped table-bordered table-condensed">
 <thead><tr><th>id</th><th>x_mean</th><th>y_mean</th><th>amplitude</th><th>x_stddev</th><th>y_stddev</th><th>theta</th></tr></thead>
 <thead><tr><th>int64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th></tr></thead>
 <tr><td>1</td><td>931.1683480255269</td><td>2034.731927781212</td><td>24273.448018412746</td><td>1.052614567617044</td><td>1.0578600277164938</td><td>2.8992449842520105</td></tr>
@@ -917,10 +925,10 @@ CRDS - INFO -  2 infos
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f4c55e72190&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f8ff9682450&gt;]
 </pre></div>
 </div>
-<img alt="../../../_images/80ea3d4f748614371dc4676c4f71591e257be0793614db3cab32dde9b1c999db.png" src="../../../_images/80ea3d4f748614371dc4676c4f71591e257be0793614db3cab32dde9b1c999db.png" />
+<img alt="../../../_images/047647bdec27398aade6a7c42999faf616e83ee6d46984325a91bf5e2b97d93a.png" src="../../../_images/047647bdec27398aade6a7c42999faf616e83ee6d46984325a91bf5e2b97d93a.png" />
 </div>
 </div>
 <p><a id="option-a"></a></p>
@@ -990,7 +998,7 @@ CRDS - INFO -  2 infos
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(800.0, 1300.0)
 </pre></div>
 </div>
-<img alt="../../../_images/6dca74b4f67e830b0c6d54e37120f198782d7d333415c9431af91b7441cccfcc.png" src="../../../_images/6dca74b4f67e830b0c6d54e37120f198782d7d333415c9431af91b7441cccfcc.png" />
+<img alt="../../../_images/2a4c50028d7cbc9b5dc8fcd0fc7dd50c780ac9873a7e33047ca7ed486c1b60ed.png" src="../../../_images/2a4c50028d7cbc9b5dc8fcd0fc7dd50c780ac9873a7e33047ca7ed486c1b60ed.png" />
 </div>
 </div>
 <p><a class="reference internal" href="#title_ID"><span class="xref myst">Top of Page</span></a></p>
@@ -1062,7 +1070,7 @@ Read in Primary header from jd0q14ctq_stars_pfl_dkc.fits...
 
 
 CALBEG*** ACSCTE -- Version 10.4.0 (07-May-2024) ***
-Begin    13-Oct-2025 18:58:25 UTC
+Begin    22-Oct-2025 18:48:36 UTC
 Input    jd0q14ctq_stars_pfl_dkc.fits
 Output   jd0q14ctq_stars_pfl_dkc_ctefmod.fits
 Trying to open jd0q14ctq_stars_pfl_dkc.fits...
@@ -1164,18 +1172,17 @@ Warning    (pctecorr) IGNORING read noise level PCTERNOI from PCTETAB: 4.300000.
 
 (pctecorr) Invoking rotation for CTE Correction Type: serial
 (pctecorr) Rotation for Amp: C
-
-(pctecorr) ...complete.
-(pctecorr) Creating charge trap image...
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(pctecorr) Time taken to populate pixel trap map image: 0.01(s) with 4 threads
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(pctecorr) ...complete.
+(pctecorr) Creating charge trap image...
+(pctecorr) Time taken to populate pixel trap map image: 0.01(s) with 4 threads
 (pctecorr) ...complete.
 (pctecorr) Running forward model simulation...
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(pctecorr) ...complete.
-(pctecorr) Total count difference (corrected-raw) incurred from correction: -23141.015625 (-0.003273%)
+(pctecorr) Total count difference (corrected-raw) incurred from correction: -23140.320312 (-0.003273%)
 
 (pctecorr) Invoking de-rotation for CTE Correction Type: serial
 (pctecorr) Derotation for Amp: C
@@ -1191,8 +1198,8 @@ Warning    (pctecorr) IGNORING read noise level PCTERNOI from PCTETAB: 4.300000.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(pctecorr) ...complete.
-(pctecorr) Total count difference (corrected-raw) incurred from correction: -360838.125000 (-0.051058%)
-(pctecorr) CTE run time for current chip: 46.92(s) with 4 procs/threads
+(pctecorr) Total count difference (corrected-raw) incurred from correction: -361258.312500 (-0.051119%)
+(pctecorr) CTE run time for current chip: 47.02(s) with 4 procs/threads
 
 (pctecorr) Collecting data for Correction Type: serial 
 
@@ -1234,7 +1241,7 @@ Warning    (pctecorr) IGNORING read noise level PCTERNOI from PCTETAB: 4.050000.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(pctecorr) ...complete.
-(pctecorr) Total count difference (corrected-raw) incurred from correction: -17034.390625 (-0.002019%)
+(pctecorr) Total count difference (corrected-raw) incurred from correction: -17040.623047 (-0.002019%)
 
 (pctecorr) Invoking de-rotation for CTE Correction Type: serial
 (pctecorr) Derotation for Amp: D
@@ -1250,8 +1257,8 @@ Warning    (pctecorr) IGNORING read noise level PCTERNOI from PCTETAB: 4.050000.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(pctecorr) ...complete.
-(pctecorr) Total count difference (corrected-raw) incurred from correction: -415197.062500 (-0.049205%)
-(pctecorr) CTE run time for current chip: 54.29(s) with 4 procs/threads
+(pctecorr) Total count difference (corrected-raw) incurred from correction: -414962.875000 (-0.049177%)
+(pctecorr) CTE run time for current chip: 54.45(s) with 4 procs/threads
 
 (pctecorr) Collecting data for Correction Type: serial 
 
@@ -1293,7 +1300,7 @@ Warning    (pctecorr) IGNORING read noise level PCTERNOI from PCTETAB: 5.050000.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(pctecorr) ...complete.
-(pctecorr) Total count difference (corrected-raw) incurred from correction: -21589.570312 (-0.003726%)
+(pctecorr) Total count difference (corrected-raw) incurred from correction: -21591.542969 (-0.003727%)
 
 (pctecorr) Invoking de-rotation for CTE Correction Type: serial
 (pctecorr) Derotation for Amp: A
@@ -1309,8 +1316,8 @@ Warning    (pctecorr) IGNORING read noise level PCTERNOI from PCTETAB: 5.050000.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(pctecorr) ...complete.
-(pctecorr) Total count difference (corrected-raw) incurred from correction: -291078.781250 (-0.050243%)
-(pctecorr) CTE run time for current chip: 49.40(s) with 4 procs/threads
+(pctecorr) Total count difference (corrected-raw) incurred from correction: -290883.500000 (-0.050210%)
+(pctecorr) CTE run time for current chip: 49.50(s) with 4 procs/threads
 
 (pctecorr) Collecting data for Correction Type: serial 
 
@@ -1352,7 +1359,7 @@ Warning    (pctecorr) IGNORING read noise level PCTERNOI from PCTETAB: 4.350000.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(pctecorr) ...complete.
-(pctecorr) Total count difference (corrected-raw) incurred from correction: -29898.828125 (-0.002640%)
+(pctecorr) Total count difference (corrected-raw) incurred from correction: -29905.279297 (-0.002640%)
 
 (pctecorr) Invoking de-rotation for CTE Correction Type: serial
 (pctecorr) Derotation for Amp: B
@@ -1368,13 +1375,13 @@ Warning    (pctecorr) IGNORING read noise level PCTERNOI from PCTETAB: 4.350000.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(pctecorr) ...complete.
-(pctecorr) Total count difference (corrected-raw) incurred from correction: -474468.531250 (-0.041890%)
-(pctecorr) CTE run time for current chip: 63.86(s) with 4 procs/threads
+(pctecorr) Total count difference (corrected-raw) incurred from correction: -474382.593750 (-0.041882%)
+(pctecorr) CTE run time for current chip: 63.98(s) with 4 procs/threads
 
 PCTECORR COMPLETE
 
 
-End      13-Oct-2025 19:02:02 UTC
+End      22-Oct-2025 18:52:13 UTC
 
 
 *** ACSCTE complete ***
@@ -1471,7 +1478,7 @@ Read in Primary header from jd0q14ctq_stars_ctefmod_blv_tmp.fits...
 
 
 CALBEG*** ACSCTE -- Version 10.4.0 (07-May-2024) ***
-Begin    13-Oct-2025 19:02:02 UTC
+Begin    22-Oct-2025 18:52:13 UTC
 Input    jd0q14ctq_stars_ctefmod_blv_tmp.fits
 Output   jd0q14ctq_stars_ctefmod_blc_tmp.fits
 Warning    Output file `jd0q14ctq_stars_ctefmod_blc_tmp.fits&#39; already exists.
@@ -1506,7 +1513,7 @@ Read in Primary header from jd0q14ctq_stars_ctefmod_blv_tmp.fits...
 
 
 CALBEG*** ACS2D -- Version 10.4.0 (07-May-2024) ***
-Begin    13-Oct-2025 19:02:02 UTC
+Begin    22-Oct-2025 18:52:13 UTC
 Input    jd0q14ctq_stars_ctefmod_blv_tmp.fits
 Output   jd0q14ctq_stars_ctefmod_flt.fits
 Warning    Output file `jd0q14ctq_stars_ctefmod_flt.fits&#39; already exists.
@@ -1537,7 +1544,7 @@ Read in Primary header from jd0q14ctq_stars_ctefmod_blc_tmp.fits...
 
 
 CALBEG*** ACS2D -- Version 10.4.0 (07-May-2024) ***
-Begin    13-Oct-2025 19:02:02 UTC
+Begin    22-Oct-2025 18:52:13 UTC
 Input    jd0q14ctq_stars_ctefmod_blc_tmp.fits
 Output   jd0q14ctq_stars_ctefmod_flc.fits
 Warning    Output file `jd0q14ctq_stars_ctefmod_flc.fits&#39; already exists.
@@ -1569,7 +1576,7 @@ ERROR:             status = 1021
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(800.0, 1300.0)
 </pre></div>
 </div>
-<img alt="../../../_images/1174e92bf059144555e465a6a05e96ab9d443cd2cd9ef56e80d8c5d5b0c6c9dc.png" src="../../../_images/1174e92bf059144555e465a6a05e96ab9d443cd2cd9ef56e80d8c5d5b0c6c9dc.png" />
+<img alt="../../../_images/2bc339307a5187ff2eb43ccca430db816cea05cfd88af7b5e55ac5edbe901830.png" src="../../../_images/2bc339307a5187ff2eb43ccca430db816cea05cfd88af7b5e55ac5edbe901830.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1592,7 +1599,7 @@ ERROR:             status = 1021
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(800.0, 1300.0)
 </pre></div>
 </div>
-<img alt="../../../_images/47e3fcfe4daa41c592155057bdabd4aba89a503dcfb6f9a4a02b2cf6680618bb.png" src="../../../_images/47e3fcfe4daa41c592155057bdabd4aba89a503dcfb6f9a4a02b2cf6680618bb.png" />
+<img alt="../../../_images/6d6d6ac3d647e67ef2f0fce295e20028fc3ccdeb8b8f454d8747f3334f6ab985.png" src="../../../_images/6d6d6ac3d647e67ef2f0fce295e20028fc3ccdeb8b8f454d8747f3334f6ab985.png" />
 </div>
 </div>
 <p><a class="reference internal" href="#title_ID"><span class="xref myst">Top of Page</span></a></p>
@@ -1622,7 +1629,7 @@ Read in Primary header from jd0q14ctq_raw.fits...
 
 
 CALBEG*** ACSCCD -- Version 10.4.0 (07-May-2024) ***
-Begin    13-Oct-2025 19:02:04 UTC
+Begin    22-Oct-2025 18:52:15 UTC
 Input    jd0q14ctq_raw.fits
 Output   jd0q14ctq_blv_tmp.fits
 Warning    Output file `jd0q14ctq_blv_tmp.fits&#39; already exists.
@@ -1681,7 +1688,7 @@ ERROR:             status = 1021
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(800.0, 1300.0)
 </pre></div>
 </div>
-<img alt="../../../_images/718e73f7c86b71a49f7f740714b1736898c8bda499442afa8ebb5d60e521084f.png" src="../../../_images/718e73f7c86b71a49f7f740714b1736898c8bda499442afa8ebb5d60e521084f.png" />
+<img alt="../../../_images/37736a95f182773558b297cddb96638a00df054dd499f13022f551b380a0131c.png" src="../../../_images/37736a95f182773558b297cddb96638a00df054dd499f13022f551b380a0131c.png" />
 </div>
 </div>
 <p>In order to properly remove the dark current after the forward model is run, we update the exposure time and flash duration header keywords, <code class="docutils literal notranslate"><span class="pre">EXPTIME</span></code> and <code class="docutils literal notranslate"><span class="pre">FLASHDUR</span></code>, with the desired simulated exposure time. The total exposure time used for the dark correction is the combination of exposure time, flash duration, and overhead (which depends on whether the data are post-flashed or not). Here we set <code class="docutils literal notranslate"><span class="pre">EXPTIME</span></code> to 300 seconds and <code class="docutils literal notranslate"><span class="pre">FLASHDUR</span></code> to 0 seconds. In principle one should retrieve the overheads from CCDTAB, but we provide a simpler approach here. Please note that the overhead times may change.</p>
@@ -1760,7 +1767,7 @@ Read in Primary header from synth_blc_tmp.fits...
 
 
 CALBEG*** ACSCTE -- Version 10.4.0 (07-May-2024) ***
-Begin    13-Oct-2025 19:02:06 UTC
+Begin    22-Oct-2025 18:52:17 UTC
 Input    synth_blc_tmp.fits
 Output   synth_blc_tmp_ctefmod.fits
 Trying to open synth_blc_tmp.fits...
@@ -1872,7 +1879,7 @@ Warning    (pctecorr) IGNORING read noise level PCTERNOI from PCTETAB: 4.300000.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(pctecorr) ...complete.
-(pctecorr) Total count difference (corrected-raw) incurred from correction: -7918.438477 (-0.003579%)
+(pctecorr) Total count difference (corrected-raw) incurred from correction: -7914.545898 (-0.003577%)
 
 (pctecorr) Invoking de-rotation for CTE Correction Type: serial
 (pctecorr) Derotation for Amp: C
@@ -1888,8 +1895,8 @@ Warning    (pctecorr) IGNORING read noise level PCTERNOI from PCTETAB: 4.300000.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(pctecorr) ...complete.
-(pctecorr) Total count difference (corrected-raw) incurred from correction: -300363.843750 (-0.135759%)
-(pctecorr) CTE run time for current chip: 22.16(s) with 4 procs/threads
+(pctecorr) Total count difference (corrected-raw) incurred from correction: -300472.468750 (-0.135813%)
+(pctecorr) CTE run time for current chip: 22.12(s) with 4 procs/threads
 
 (pctecorr) Collecting data for Correction Type: serial 
 
@@ -1931,7 +1938,7 @@ Warning    (pctecorr) IGNORING read noise level PCTERNOI from PCTETAB: 4.050000.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(pctecorr) ...complete.
-(pctecorr) Total count difference (corrected-raw) incurred from correction: -6640.948730 (-0.002856%)
+(pctecorr) Total count difference (corrected-raw) incurred from correction: -6645.133789 (-0.002858%)
 
 (pctecorr) Invoking de-rotation for CTE Correction Type: serial
 (pctecorr) Derotation for Amp: D
@@ -1947,8 +1954,8 @@ Warning    (pctecorr) IGNORING read noise level PCTERNOI from PCTETAB: 4.050000.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(pctecorr) ...complete.
-(pctecorr) Total count difference (corrected-raw) incurred from correction: -312113.062500 (-0.134226%)
-(pctecorr) CTE run time for current chip: 22.20(s) with 4 procs/threads
+(pctecorr) Total count difference (corrected-raw) incurred from correction: -312226.500000 (-0.134270%)
+(pctecorr) CTE run time for current chip: 22.17(s) with 4 procs/threads
 
 (pctecorr) Collecting data for Correction Type: serial 
 
@@ -1990,7 +1997,7 @@ Warning    (pctecorr) IGNORING read noise level PCTERNOI from PCTETAB: 5.050000.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(pctecorr) ...complete.
-(pctecorr) Total count difference (corrected-raw) incurred from correction: -6751.476562 (-0.003197%)
+(pctecorr) Total count difference (corrected-raw) incurred from correction: -6736.280273 (-0.003189%)
 
 (pctecorr) Invoking de-rotation for CTE Correction Type: serial
 (pctecorr) Derotation for Amp: A
@@ -2006,8 +2013,8 @@ Warning    (pctecorr) IGNORING read noise level PCTERNOI from PCTETAB: 5.050000.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(pctecorr) ...complete.
-(pctecorr) Total count difference (corrected-raw) incurred from correction: -301475.375000 (-0.142747%)
-(pctecorr) CTE run time for current chip: 21.59(s) with 4 procs/threads
+(pctecorr) Total count difference (corrected-raw) incurred from correction: -301400.281250 (-0.142712%)
+(pctecorr) CTE run time for current chip: 21.57(s) with 4 procs/threads
 
 (pctecorr) Collecting data for Correction Type: serial 
 
@@ -2049,7 +2056,7 @@ Warning    (pctecorr) IGNORING read noise level PCTERNOI from PCTETAB: 4.350000.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(pctecorr) ...complete.
-(pctecorr) Total count difference (corrected-raw) incurred from correction: -11493.721680 (-0.005085%)
+(pctecorr) Total count difference (corrected-raw) incurred from correction: -11483.311523 (-0.005081%)
 
 (pctecorr) Invoking de-rotation for CTE Correction Type: serial
 (pctecorr) Derotation for Amp: B
@@ -2065,13 +2072,13 @@ Warning    (pctecorr) IGNORING read noise level PCTERNOI from PCTETAB: 4.350000.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(pctecorr) ...complete.
-(pctecorr) Total count difference (corrected-raw) incurred from correction: -311607.937500 (-0.137878%)
-(pctecorr) CTE run time for current chip: 22.71(s) with 4 procs/threads
+(pctecorr) Total count difference (corrected-raw) incurred from correction: -311386.437500 (-0.137785%)
+(pctecorr) CTE run time for current chip: 22.69(s) with 4 procs/threads
 
 PCTECORR COMPLETE
 
 
-End      13-Oct-2025 19:03:36 UTC
+End      22-Oct-2025 18:53:47 UTC
 
 
 *** ACSCTE complete ***
@@ -2215,7 +2222,7 @@ Read in Primary header from synth_ctefmod_rn_raw.fits...
 
 
 CALBEG*** ACSCCD -- Version 10.4.0 (07-May-2024) ***
-Begin    13-Oct-2025 19:03:37 UTC
+Begin    22-Oct-2025 18:53:48 UTC
 Input    synth_ctefmod_rn_raw.fits
 Output   synth_ctefmod_rn_blv_tmp.fits
 Trying to open synth_ctefmod_rn_raw.fits...
@@ -2224,9 +2231,9 @@ APERTURE WFCENTER
 FILTER1 F775W
 FILTER2 CLEAR2L
 DETECTOR WFC
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CCDTAB   jref$72m1821dj_ccd.fits
+
+
+CCDTAB   jref$72m1821dj_ccd.fits
 CCDTAB   PEDIGREE=inflight
 CCDTAB   DESCRIP =CCD table with updated readnoise values for CCDGAIN=2.-------------
 CCDTAB   DESCRIP =July 2009
@@ -2254,9 +2261,9 @@ No Full-well saturation flagging being performed for imset 1.
 
 Warning    
 No Full-well saturation flagging being performed for imset 2.
-
-
-    Uncertainty array initialized,
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Uncertainty array initialized,
     readnoise =4.35,3.75,4.05,5.05
     gain =2.02,1.886,2.017,2.011
    default bias levels =4242,4060.6,4481.8,4645.4
@@ -2269,7 +2276,7 @@ SNKCFILE DESCRIP =Sink pixel reference file ----------------------------
 SINKCORR COMPLETE
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>End      13-Oct-2025 19:03:37 UTC
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>End      22-Oct-2025 18:53:48 UTC
 
 
 *** ACSCCD complete ***
@@ -2339,7 +2346,7 @@ Read in Primary header from synth_ctefmod_rn_blv_tmp.fits...
 
 
 CALBEG*** ACSCTE -- Version 10.4.0 (07-May-2024) ***
-Begin    13-Oct-2025 19:03:38 UTC
+Begin    22-Oct-2025 18:53:49 UTC
 Input    synth_ctefmod_rn_blv_tmp.fits
 Output   synth_ctefmod_rn_blc_tmp.fits
 Warning    Output file `synth_ctefmod_rn_blc_tmp.fits&#39; already exists.
@@ -2374,7 +2381,7 @@ Read in Primary header from synth_ctefmod_rn_blv_tmp.fits...
 
 
 CALBEG*** ACS2D -- Version 10.4.0 (07-May-2024) ***
-Begin    13-Oct-2025 19:03:38 UTC
+Begin    22-Oct-2025 18:53:49 UTC
 Input    synth_ctefmod_rn_blv_tmp.fits
 Output   synth_ctefmod_rn_flt.fits
 Warning    Output file `synth_ctefmod_rn_flt.fits&#39; already exists.
@@ -2405,7 +2412,7 @@ Read in Primary header from synth_ctefmod_rn_blc_tmp.fits...
 
 
 CALBEG*** ACS2D -- Version 10.4.0 (07-May-2024) ***
-Begin    13-Oct-2025 19:03:38 UTC
+Begin    22-Oct-2025 18:53:49 UTC
 Input    synth_ctefmod_rn_blc_tmp.fits
 Output   synth_ctefmod_rn_flc.fits
 Warning    Output file `synth_ctefmod_rn_flc.fits&#39; already exists.
@@ -2437,7 +2444,7 @@ ERROR:             status = 1021
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(800.0, 1300.0)
 </pre></div>
 </div>
-<img alt="../../../_images/e737e1658b47fe1de20eac1b6ba715d1944664173cbd4f5fb4cc7a4b7954b691.png" src="../../../_images/e737e1658b47fe1de20eac1b6ba715d1944664173cbd4f5fb4cc7a4b7954b691.png" />
+<img alt="../../../_images/81443b1a91571f581c2778914036a5c0bfc42a024eb93694d5aa6023b514fc58.png" src="../../../_images/81443b1a91571f581c2778914036a5c0bfc42a024eb93694d5aa6023b514fc58.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2460,7 +2467,7 @@ ERROR:             status = 1021
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(800.0, 1300.0)
 </pre></div>
 </div>
-<img alt="../../../_images/4f013d99bcf06dacc5f3f3e0ab9a54157017aba364a8f6c8915b691e6efc48b0.png" src="../../../_images/4f013d99bcf06dacc5f3f3e0ab9a54157017aba364a8f6c8915b691e6efc48b0.png" />
+<img alt="../../../_images/60568babf954d414e0907560aa7970459781d080a6ef518c8720bbdceda39ddd.png" src="../../../_images/60568babf954d414e0907560aa7970459781d080a6ef518c8720bbdceda39ddd.png" />
 </div>
 </div>
 </section>
