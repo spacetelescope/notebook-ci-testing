@@ -149,8 +149,14 @@
   
   
   
+    
+    
+      
+    
+    
+    <img src="../../../_static/stsci_logo2.png" class="logo__image only-light" alt="HST Notebooks - Home"/>
+    <script>document.write(`<img src="../../../_static/stsci_logo2.png" class="logo__image only-dark" alt="HST Notebooks - Home"/>`);</script>
   
-    <p class="title logo__title">HST Notebooks</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -253,6 +259,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">DrizzlePac</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/README.html">DrizzlePac Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/using_updated_astrometry_solutions/using_updated_astrometry_solutions.html">Improving Astrometry Using Alternate WCS Solutions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/align_to_catalogs/align_to_catalogs.html">Aligning HST images to an Absolute Reference Catalog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/align_sparse_fields/align_sparse_fields.html">Aligning Deep Exposures of Sparse Fields</a></li>
@@ -681,11 +688,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>conda 25.7.0
-</pre></div>
-</div>
-</div>
 </div>
 <p>If you receive a message that the command is unknown or not found, you must install <code class="docutils literal notranslate"><span class="pre">conda</span></code>. We recommend installing either the Anaconda or Minicoda distributions. See <a class="reference external" href="https://stenv.readthedocs.io/en/latest/getting_started.html#getting-started">this page</a> for instructions, and install either of the following:</p>
 <div class="pst-scrollable-table-container"><table class="table">
@@ -794,18 +796,18 @@ The history of reference files is stored in <strong>context files</strong>, whic
 <p>First, we will check the CRDS website to determine what the current context is, as it changes regularly. In your browser, navigate to <a class="reference external" href="https://hst-crds.stsci.edu">the HST CRDS homepage</a>, and you will see a page as in Fig. 3.1:</p>
 <section id="fig-3-1">
 <h3>Fig 3.1<a class="headerlink" href="#fig-3-1" title="Link to this heading">#</a></h3>
-<a class="reference internal image-reference" href="notebooks/COS/Setup/figures/crds1.png"><img alt="The CRDS homepage. There is a dropdown which lists all Hubble instruments. The table at the bottom of the page lists historical contexts." src="notebooks/COS/Setup/figures/crds1.png" style="width: 900px;" />
+<a class="reference internal image-reference" href="../../../_images/crds1.png"><img alt="The CRDS homepage. There is a dropdown which lists all Hubble instruments. The table at the bottom of the page lists historical contexts." src="../../../_images/crds1.png" style="width: 900px;" />
 </a>
 <p>At the bottom of this page is a list of recent contexts, titled “Context History”. Clicking the context listed with the Status “Operational” (circled in red in Fig 3.1) will take you to that context’s page, as shown in Fig. 3.2:</p>
 </section>
 <section id="fig-3-2">
 <h3>Fig 3.2<a class="headerlink" href="#fig-3-2" title="Link to this heading">#</a></h3>
-<a class="reference internal image-reference" href="notebooks/COS/Setup/figures/crds2.png"><img alt="The CRDS Historical References context page on the CRDS site. Each instrument is listed on the dropdown." src="notebooks/COS/Setup/figures/crds2.png" style="width: 900px;" />
+<a class="reference internal image-reference" href="../../../_images/crds2.png"><img alt="The CRDS Historical References context page on the CRDS site. Each instrument is listed on the dropdown." src="../../../_images/crds2.png" style="width: 900px;" />
 </a>
 </section>
 <section id="fig-3-3">
 <h3>Fig 3.3<a class="headerlink" href="#fig-3-3" title="Link to this heading">#</a></h3>
-<a class="reference internal image-reference" href="notebooks/COS/Setup/figures/crds3.png"><img alt="Showing the current COS context on the CRDS site. There is a large list of reference files, and the imap file labeled at the top of this list as hst_cos_0320.imap" src="notebooks/COS/Setup/figures/crds3.png" style="width: 900px;" />
+<a class="reference internal image-reference" href="../../../_images/crds3.png"><img alt="Showing the current COS context on the CRDS site. There is a large list of reference files, and the imap file labeled at the top of this list as hst_cos_0320.imap" src="../../../_images/crds3.png" style="width: 900px;" />
 </a>
 <p>Note down or copy the filename you just found.</p>
 </section>
@@ -866,11 +868,6 @@ To see the COS reference files you just downloaded:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>ls<span class="w"> </span><span class="nv">$lref</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ls: cannot access &#39;/home/runner/crds_cache/references/hst/cos&#39;: No such file or directory
 </pre></div>
 </div>
 </div>

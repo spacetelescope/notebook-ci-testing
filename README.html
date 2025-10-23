@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Scripts Directory &#8212; HST Notebooks</title>
+    <title>Summary and Description &#8212; HST Notebooks</title>
   
   
   
@@ -149,8 +149,14 @@
   
   
   
+    
+    
+      
+    
+    
+    <img src="_static/stsci_logo2.png" class="logo__image only-light" alt="HST Notebooks - Home"/>
+    <script>document.write(`<img src="_static/stsci_logo2.png" class="logo__image only-dark" alt="HST Notebooks - Home"/>`);</script>
   
-    <p class="title logo__title">HST Notebooks</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -253,6 +259,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">DrizzlePac</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="notebooks/DrizzlePac/README.html">DrizzlePac Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/DrizzlePac/using_updated_astrometry_solutions/using_updated_astrometry_solutions.html">Improving Astrometry Using Alternate WCS Solutions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/DrizzlePac/align_to_catalogs/align_to_catalogs.html">Aligning HST images to an Absolute Reference Catalog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/DrizzlePac/align_sparse_fields/align_sparse_fields.html">Aligning Deep Exposures of Sparse Fields</a></li>
@@ -519,7 +526,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Scripts Directory</h1>
+    <h1>Summary and Description</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -529,57 +536,19 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-contents">📋 Table of Contents</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">🎯 Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts">🔧 Scripts</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validate-repository-sh"><code class="docutils literal notranslate"><span class="pre">validate-repository.sh</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#migrate-repository-sh"><code class="docutils literal notranslate"><span class="pre">migrate-repository.sh</span></code></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Summary and Description</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instrument-documentation">Instrument Documentation</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage-examples">💡 Usage Examples</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-migration-workflow">Basic Migration Workflow</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#batch-migration-all-repositories">Batch Migration (All Repositories)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dry-run-validation">Dry Run Validation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-instructions">Installation Instructions</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clone-the-repository">Clone the Repository</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-notebook-in-an-appropriate-environment">Run the notebook in an appropriate environment</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repository-specific-configurations">🏗️ Repository-Specific Configurations</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jdat-notebooks"><code class="docutils literal notranslate"><span class="pre">jdat_notebooks</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mast-notebooks"><code class="docutils literal notranslate"><span class="pre">mast_notebooks</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hst-notebooks"><code class="docutils literal notranslate"><span class="pre">hst_notebooks</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hello-universe"><code class="docutils literal notranslate"><span class="pre">hello_universe</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jwst-pipeline-notebooks"><code class="docutils literal notranslate"><span class="pre">jwst-pipeline-notebooks</span></code></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#help">Help</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#contributing">Contributing</a></li>
 </ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshooting">🚨 Troubleshooting</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#common-issues-and-solutions">Common Issues and Solutions</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#issue-1-permission-denied">Issue 1: Permission Denied</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#issue-2-repository-not-found">Issue 2: Repository Not Found</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#issue-3-git-branch-already-exists">Issue 3: Git Branch Already Exists</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#issue-4-workflow-validation-fails">Issue 4: Workflow Validation Fails</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#issue-5-low-readiness-score">Issue 5: Low Readiness Score</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#emergency-rollback">Emergency Rollback</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-usage">🚀 Advanced Usage</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-organization">Custom Organization</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-workflow-templates">Custom Workflow Templates</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#debugging-mode">Debugging Mode</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-mode">Testing Mode</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#script-exit-codes">📋 Script Exit Codes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-criteria">📊 Validation Criteria</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logging-and-reports">📝 Logging and Reports</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-report-location">Validation Report Location</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#migration-log-location">Migration Log Location</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#migration-status-file">Migration Status File</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contributing">🤝 Contributing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#support">📞 Support</a></li>
-</ul>
+
             </nav>
         </div>
     </div>
@@ -590,436 +559,112 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="scripts-directory">
-<h1>Scripts Directory<a class="headerlink" href="#scripts-directory" title="Link to this heading">#</a></h1>
-<p>This directory contains automation scripts for migrating STScI notebook repositories to use the centralized GitHub Actions workflows.</p>
-<section id="table-of-contents">
-<h2>📋 Table of Contents<a class="headerlink" href="#table-of-contents" title="Link to this heading">#</a></h2>
+  <p><a class="reference external" href="https://github.com/spacetelescope/hst_notebooks/actions/workflows/ci_runner.yml"><img alt="Notebook Execution and Validation" src="https://github.com/spacetelescope/hst_notebooks/actions/workflows/ci_runner.yml/badge.svg" /></a>
+<a class="reference external" href="https://github.com/spacetelescope/hst_notebooks/actions/workflows/ci_nightly.yml"><img alt="Scheduled Notebook Execution" src="https://github.com/spacetelescope/hst_notebooks/actions/workflows/ci_nightly.yml/badge.svg" /></a>
+<a class="reference external" href="https://github.com/spacetelescope/hst_notebooks/actions/workflows/weekly_broken_link_finder.yml"><img alt="Weekly broken link check" src="https://github.com/spacetelescope/hst_notebooks/actions/workflows/weekly_broken_link_finder.yml/badge.svg" /></a>
+<a class="reference external" href="https://github.com/spacetelescope/hst_notebooks/actions/workflows/weekly_html_accessibility_check.yml"><img alt="Weekly HTML Accessibility Check" src="https://github.com/spacetelescope/hst_notebooks/actions/workflows/weekly_html_accessibility_check.yml/badge.svg" /></a>
+<a class="reference external" href="https://github.com/spacetelescope/hst_notebooks/actions/workflows/weekly_pep8_style_check.yml"><img alt="Weekly PEP8 Style Checks" src="https://github.com/spacetelescope/hst_notebooks/actions/workflows/weekly_pep8_style_check.yml/badge.svg" /></a></p>
+<p><a class="reference external" href="https://zenodo.org/badge/latestdoi/605151805"><img alt="DOI" src="https://zenodo.org/badge/605151805.svg" /></a></p>
+<section class="tex2jax_ignore mathjax_ignore" id="summary-and-description">
+<h1>Summary and Description<a class="headerlink" href="#summary-and-description" title="Link to this heading">#</a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">hst_notebooks</span></code> repository contains notebooks illustrating workflows for post-pipeline analysis of Hubble Space Telescope (HST) data. Some of the notebooks also illustrate generic analysis workflows that are applicable to data from other observatories as well. This repository and the notebooks are one component of STScI’s larger Data Analysis Tools Ecosystem.</p>
+<p>The following <a class="reference external" href="https://spacetelescope.github.io/hst_notebooks/">page</a> summarizes and links to the material currently available.</p>
+<section id="instrument-documentation">
+<h2>Instrument Documentation<a class="headerlink" href="#instrument-documentation" title="Link to this heading">#</a></h2>
+<p>Here, you can find detailed documentation for each instrument the Hubble Space Telescope uses.</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#overview"><span class="xref myst">Overview</span></a></p></li>
-<li><p><a class="reference internal" href="#scripts"><span class="xref myst">Scripts</span></a></p>
-<ul>
-<li><p><a class="reference internal" href="#validate-repositorysh"><span class="xref myst">validate-repository.sh</span></a></p></li>
-<li><p><a class="reference internal" href="#migrate-repositorysh"><span class="xref myst">migrate-repository.sh</span></a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#usage-examples"><span class="xref myst">Usage Examples</span></a></p></li>
-<li><p><a class="reference internal" href="#repository-specific-configurations"><span class="xref myst">Repository-Specific Configurations</span></a></p></li>
-<li><p><a class="reference internal" href="#troubleshooting"><span class="xref myst">Troubleshooting</span></a></p></li>
-<li><p><a class="reference internal" href="#advanced-usage"><span class="xref myst">Advanced Usage</span></a></p></li>
-</ul>
-</section>
-<section id="overview">
-<h2>🎯 Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
-<p>These scripts automate the migration process for the following STScI notebook repositories:</p>
-<ul class="simple">
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">jdat_notebooks</span></code></strong> - JWST Data Analysis Tools</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">mast_notebooks</span></code></strong> - MAST Archive Tools and Examples</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">hst_notebooks</span></code></strong> - Hubble Space Telescope Analysis Tools</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">hello_universe</span></code></strong> - Educational Astronomy Content</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">jwst-pipeline-notebooks</span></code></strong> - JWST Pipeline and Analysis Tools</p></li>
-</ul>
-</section>
-<section id="scripts">
-<h2>🔧 Scripts<a class="headerlink" href="#scripts" title="Link to this heading">#</a></h2>
-<section id="validate-repository-sh">
-<h3><code class="docutils literal notranslate"><span class="pre">validate-repository.sh</span></code><a class="headerlink" href="#validate-repository-sh" title="Link to this heading">#</a></h3>
-<p><strong>Purpose</strong>: Pre-migration validation and readiness assessment</p>
-<p><strong>Usage</strong>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./validate-repository.sh<span class="w"> </span>&lt;repository_name&gt;<span class="w"> </span><span class="o">[</span>org_name<span class="o">]</span>
-</pre></div>
-</div>
-<p><strong>What it checks</strong>:</p>
-<ul class="simple">
-<li><p>✅ Repository structure and required directories</p></li>
-<li><p>✅ Notebook files and formats</p></li>
-<li><p>✅ Existing workflow configurations</p></li>
-<li><p>✅ Dependency files and package requirements</p></li>
-<li><p>✅ Repository-specific requirements (CRDS, MAST APIs, etc.)</p></li>
-<li><p>✅ Git status and branch cleanliness</p></li>
-</ul>
-<p><strong>Output</strong>:</p>
-<ul class="simple">
-<li><p>Detailed validation report</p></li>
-<li><p>Readiness score (0-100%)</p></li>
-<li><p>Specific recommendations for preparation</p></li>
-</ul>
-<p><strong>Example</strong>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Validate jdat_notebooks repository</span>
-./validate-repository.sh<span class="w"> </span>jdat_notebooks<span class="w"> </span>spacetelescope
-
-<span class="c1"># Expected output:</span>
-<span class="c1"># ========================================</span>
-<span class="c1"># Migration Readiness Check: jdat_notebooks  </span>
-<span class="c1"># ========================================</span>
-<span class="c1"># </span>
-<span class="c1"># [✓] Repository structure validated</span>
-<span class="c1"># [✓] Notebooks directory found (45 notebooks)</span>
-<span class="c1"># [⚠] Some notebooks may need output stripping</span>
-<span class="c1"># [✓] CRDS-specific tools detected</span>
-<span class="c1"># </span>
-<span class="c1"># Readiness Score: 85% - Ready for migration</span>
-</pre></div>
-</div>
-</section>
-<section id="migrate-repository-sh">
-<h3><code class="docutils literal notranslate"><span class="pre">migrate-repository.sh</span></code><a class="headerlink" href="#migrate-repository-sh" title="Link to this heading">#</a></h3>
-<p><strong>Purpose</strong>: Automated migration to centralized workflows</p>
-<p><strong>Usage</strong>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./migrate-repository.sh<span class="w"> </span>&lt;repository_name&gt;<span class="w"> </span><span class="o">[</span>org_name<span class="o">]</span>
-</pre></div>
-</div>
-<p><strong>What it does</strong>:</p>
-<ol class="arabic simple">
-<li><p><strong>Creates migration branch</strong> with backup of existing workflows</p></li>
-<li><p><strong>Installs centralized workflows</strong> from example templates</p></li>
-<li><p><strong>Configures repository-specific settings</strong> automatically</p></li>
-<li><p><strong>Updates workflow references</strong> to use the correct organization</p></li>
-<li><p><strong>Creates migration tracking file</strong> for progress monitoring</p></li>
-<li><p><strong>Generates summary report</strong> with next steps</p></li>
-</ol>
-<p><strong>Safety features</strong>:</p>
-<ul class="simple">
-<li><p>✅ Automatic backup of existing workflows</p></li>
-<li><p>✅ Branch-based migration (no direct main branch changes)</p></li>
-<li><p>✅ Repository-specific validation before changes</p></li>
-<li><p>✅ Detailed logging and error handling</p></li>
-<li><p>✅ Rollback instructions in case of issues</p></li>
-</ul>
-<p><strong>Example</strong>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Migrate hello_universe repository</span>
-./migrate-repository.sh<span class="w"> </span>hello_universe<span class="w"> </span>spacetelescope
-
-<span class="c1"># Expected output:</span>
-<span class="c1"># [INFO] Starting migration for hello_universe...</span>
-<span class="c1"># [SUCCESS] Migration branch created: migrate-to-centralized-actions</span>
-<span class="c1"># [SUCCESS] Workflows backed up to: .github/workflows-backup/</span>
-<span class="c1"># [SUCCESS] New workflows installed: notebook-ci-pr.yml, notebook-ci-main.yml</span>
-<span class="c1"># [SUCCESS] Repository-specific configuration applied</span>
-<span class="c1"># [SUCCESS] Migration completed successfully</span>
-</pre></div>
-</div>
-</section>
-</section>
-<section id="usage-examples">
-<h2>💡 Usage Examples<a class="headerlink" href="#usage-examples" title="Link to this heading">#</a></h2>
-<section id="basic-migration-workflow">
-<h3>Basic Migration Workflow<a class="headerlink" href="#basic-migration-workflow" title="Link to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Step 1: Validate repository readiness</span>
-<span class="nb">cd</span><span class="w"> </span>/path/to/target/repository
-../notebook-ci-actions/scripts/validate-repository.sh<span class="w"> </span><span class="k">$(</span>basename<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">))</span><span class="w"> </span>spacetelescope
-
-<span class="c1"># Step 2: Run migration if readiness score &gt; 80%</span>
-../notebook-ci-actions/scripts/migrate-repository.sh<span class="w"> </span><span class="k">$(</span>basename<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">))</span><span class="w"> </span>spacetelescope
-
-<span class="c1"># Step 3: Review changes and test workflows</span>
-git<span class="w"> </span>log<span class="w"> </span>--oneline<span class="w"> </span>-5
-git<span class="w"> </span>diff<span class="w"> </span>main..migrate-to-centralized-actions
-
-<span class="c1"># Step 4: Create pull request when ready</span>
-git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>migrate-to-centralized-actions
-</pre></div>
-</div>
-</section>
-<section id="batch-migration-all-repositories">
-<h3>Batch Migration (All Repositories)<a class="headerlink" href="#batch-migration-all-repositories" title="Link to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-<span class="c1"># Migrate all STScI notebook repositories</span>
-
-<span class="nv">REPOS</span><span class="o">=(</span><span class="s2">&quot;hello_universe&quot;</span><span class="w"> </span><span class="s2">&quot;mast_notebooks&quot;</span><span class="w"> </span><span class="s2">&quot;jdat_notebooks&quot;</span><span class="w"> </span><span class="s2">&quot;hst_notebooks&quot;</span><span class="w"> </span><span class="s2">&quot;jwst-pipeline-notebooks&quot;</span><span class="o">)</span>
-<span class="nv">ORG</span><span class="o">=</span><span class="s2">&quot;spacetelescope&quot;</span>
-
-<span class="k">for</span><span class="w"> </span>repo<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">REPOS</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
-<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;=== Processing </span><span class="nv">$repo</span><span class="s2"> ===&quot;</span>
-<span class="w">    </span>
-<span class="w">    </span><span class="c1"># Clone if not exists</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>!<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$repo</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<span class="w">        </span>git<span class="w"> </span>clone<span class="w"> </span><span class="s2">&quot;https://github.com/</span><span class="nv">$ORG</span><span class="s2">/</span><span class="nv">$repo</span><span class="s2">.git&quot;</span>
-<span class="w">    </span><span class="k">fi</span>
-<span class="w">    </span>
-<span class="w">    </span><span class="nb">cd</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$repo</span><span class="s2">&quot;</span>
-<span class="w">    </span>
-<span class="w">    </span><span class="c1"># Validate first</span>
-<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Validating </span><span class="nv">$repo</span><span class="s2">...&quot;</span>
-<span class="w">    </span>../notebook-ci-actions/scripts/validate-repository.sh<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$repo</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ORG</span><span class="s2">&quot;</span>
-<span class="w">    </span>
-<span class="w">    </span><span class="c1"># Migrate if validation passes</span>
-<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Migrating </span><span class="nv">$repo</span><span class="s2">...&quot;</span>
-<span class="w">    </span>../notebook-ci-actions/scripts/migrate-repository.sh<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$repo</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ORG</span><span class="s2">&quot;</span>
-<span class="w">    </span>
-<span class="w">    </span><span class="nb">cd</span><span class="w"> </span>..
-<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Completed </span><span class="nv">$repo</span><span class="s2">&quot;</span>
-<span class="w">    </span><span class="nb">echo</span>
-<span class="k">done</span>
-</pre></div>
-</div>
-</section>
-<section id="dry-run-validation">
-<h3>Dry Run Validation<a class="headerlink" href="#dry-run-validation" title="Link to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check all repositories without making changes</span>
-<span class="k">for</span><span class="w"> </span>repo<span class="w"> </span><span class="k">in</span><span class="w"> </span>jdat_notebooks<span class="w"> </span>mast_notebooks<span class="w"> </span>hst_notebooks<span class="w"> </span>hello_universe<span class="w"> </span>jwst-pipeline-notebooks<span class="p">;</span><span class="w"> </span><span class="k">do</span>
-<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;=== </span><span class="nv">$repo</span><span class="s2"> ===&quot;</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$repo</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<span class="w">        </span><span class="nb">cd</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$repo</span><span class="s2">&quot;</span>
-<span class="w">        </span>../notebook-ci-actions/scripts/validate-repository.sh<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$repo</span><span class="s2">&quot;</span><span class="w"> </span>spacetelescope<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s2">&quot;(Score|WARNING|ERROR)&quot;</span>
-<span class="w">        </span><span class="nb">cd</span><span class="w"> </span>..
-<span class="w">    </span><span class="k">else</span>
-<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Repository not found: </span><span class="nv">$repo</span><span class="s2">&quot;</span>
-<span class="w">    </span><span class="k">fi</span>
-<span class="w">    </span><span class="nb">echo</span>
-<span class="k">done</span>
-</pre></div>
-</div>
-</section>
-</section>
-<section id="repository-specific-configurations">
-<h2>🏗️ Repository-Specific Configurations<a class="headerlink" href="#repository-specific-configurations" title="Link to this heading">#</a></h2>
-<p>The migration script automatically applies repository-specific configurations:</p>
-<section id="jdat-notebooks">
-<h3><code class="docutils literal notranslate"><span class="pre">jdat_notebooks</span></code><a class="headerlink" href="#jdat-notebooks" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><strong>Package Manager</strong>: uv (primary)</p></li>
-<li><p><strong>Special Features</strong>: CRDS cache support, CasJobs integration</p></li>
-<li><p><strong>Workflows</strong>: Full CI pipeline with security scanning</p></li>
-<li><p><strong>Secrets</strong>: <code class="docutils literal notranslate"><span class="pre">CASJOBS_USERID</span></code>, <code class="docutils literal notranslate"><span class="pre">CASJOBS_PW</span></code></p></li>
-</ul>
-</section>
-<section id="mast-notebooks">
-<h3><code class="docutils literal notranslate"><span class="pre">mast_notebooks</span></code><a class="headerlink" href="#mast-notebooks" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><strong>Package Manager</strong>: uv (primary)</p></li>
-<li><p><strong>Special Features</strong>: MAST API access, archive queries</p></li>
-<li><p><strong>Workflows</strong>: Standard CI pipeline with API testing</p></li>
-<li><p><strong>Secrets</strong>: Repository-specific authentication tokens</p></li>
-</ul>
-</section>
-<section id="hst-notebooks">
-<h3><code class="docutils literal notranslate"><span class="pre">hst_notebooks</span></code><a class="headerlink" href="#hst-notebooks" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><strong>Package Manager</strong>: micromamba (conda environment)</p></li>
-<li><p><strong>Special Features</strong>: Auto-detected hstcal environment setup</p></li>
-<li><p><strong>Workflows</strong>: Conda-based CI with STScI software stack</p></li>
-<li><p><strong>Environment</strong>: Automatic <code class="docutils literal notranslate"><span class="pre">hstcal</span></code> installation via micromamba</p></li>
-</ul>
-</section>
-<section id="hello-universe">
-<h3><code class="docutils literal notranslate"><span class="pre">hello_universe</span></code><a class="headerlink" href="#hello-universe" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><strong>Package Manager</strong>: uv (lightweight)</p></li>
-<li><p><strong>Special Features</strong>: Educational focus, simplified validation</p></li>
-<li><p><strong>Workflows</strong>: Reduced security scanning for educational content</p></li>
-<li><p><strong>Configuration</strong>: Optimized for beginner-friendly experience</p></li>
-</ul>
-</section>
-<section id="jwst-pipeline-notebooks">
-<h3><code class="docutils literal notranslate"><span class="pre">jwst-pipeline-notebooks</span></code><a class="headerlink" href="#jwst-pipeline-notebooks" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><strong>Package Manager</strong>: uv (primary)</p></li>
-<li><p><strong>Special Features</strong>: jdaviz image replacement, JWST pipeline</p></li>
-<li><p><strong>Workflows</strong>: Full CI with post-processing scripts</p></li>
-<li><p><strong>Post-processing</strong>: Automatic jdaviz widget replacement in HTML</p></li>
+<li><p><a class="reference external" href="https://www.stsci.edu/hst/instrumentation/acs">Advanced Camera for Surveys (ACS)</a></p></li>
+<li><p><a class="reference external" href="https://www.stsci.edu/hst/instrumentation/cos">Cosmic Origins Spectrograph (COS)</a></p></li>
+<li><p><a class="reference external" href="https://www.stsci.edu/scientific-community/software/drizzlepac">DrizzlePac</a></p></li>
+<li><p><a class="reference external" href="https://www.stsci.edu/hst/instrumentation/legacy/nicmos">Near Infrared Camera and Multi-Object Spectrometer (NICMOS)</a></p></li>
+<li><p><a class="reference external" href="https://www.stsci.edu/hst/instrumentation/stis">Space Telescope Imaging Spectrograph (STIS)</a></p></li>
+<li><p><a class="reference external" href="https://www.stsci.edu/hst/instrumentation/wfc3">Wide Field Camera 3 (WFC3)</a></p></li>
 </ul>
 </section>
 </section>
-<section id="troubleshooting">
-<h2>🚨 Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading">#</a></h2>
-<section id="common-issues-and-solutions">
-<h3>Common Issues and Solutions<a class="headerlink" href="#common-issues-and-solutions" title="Link to this heading">#</a></h3>
-<section id="issue-1-permission-denied">
-<h4>Issue 1: Permission Denied<a class="headerlink" href="#issue-1-permission-denied" title="Link to this heading">#</a></h4>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Error: Permission denied when running scripts</span>
-<span class="c1"># Solution: Make scripts executable</span>
-chmod<span class="w"> </span>+x<span class="w"> </span>scripts/validate-repository.sh
-chmod<span class="w"> </span>+x<span class="w"> </span>scripts/migrate-repository.sh
+<section class="tex2jax_ignore mathjax_ignore" id="installation-instructions">
+<h1>Installation Instructions<a class="headerlink" href="#installation-instructions" title="Link to this heading">#</a></h1>
+<p>You can view rendered versions of the notebooks in this repository,
+it requires no special tools beyond your web browser.
+See <a class="reference external" href="https://spacetelescope.github.io/hst_notebooks/">this website</a></p>
+<p>To download and execute the notebooks, we recommend you clone
+the <code class="docutils literal notranslate"><span class="pre">hst_notebooks</span> <span class="pre">&lt;https://github.com/spacetelescope/hst_notebooks&gt;</span></code>_
+repository to your local computer.</p>
+<p>You can also click the “Download ZIP” option for the entire repository listed under the green “Code” button at the top of the repository landing page. You are also able to download individual notebooks, but it is not as straight forward or recommended, so we do not provide details here.</p>
+<p>Most notebooks have additional associated files in their folder,
+including a requirements file that lists packages necessary to run the notebooks.
+The packages in the requirements file can be installed using <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">&lt;https://pip.pypa.io/en/stable/&gt;</span></code>_ .</p>
+<p>Any version dependencies are contained in the requirements file in
+each notebook folder. Please use at least the minimum supported
+version of the Python language in your active environment.</p>
+<p>Some notebooks use the HSTCAL package. The folders for these notebooks will also contain a shell
+script that contains the command to pull the hstcal package from conda-forge instead of pypi.</p>
+<section id="clone-the-repository">
+<h2>Clone the Repository<a class="headerlink" href="#clone-the-repository" title="Link to this heading">#</a></h2>
+<p>Once you’ve changed to the directory where you cloned this repository, and go to
+the notebook directory you are interested in using, and go to your selected
+notebook, as below:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/spacetelescope/hst_notebooks.git
+cd hst_notebooks/notebooks/ACS/acs_cte_forward_model
 </pre></div>
 </div>
+<p>You can then proceed to install the requirements for the specific notebook you are interested in using.</p>
 </section>
-<section id="issue-2-repository-not-found">
-<h4>Issue 2: Repository Not Found<a class="headerlink" href="#issue-2-repository-not-found" title="Link to this heading">#</a></h4>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Error: Repository directory not found</span>
-<span class="c1"># Solution: Ensure you&#39;re in the correct directory</span>
-<span class="nb">pwd</span><span class="w">  </span><span class="c1"># Should show path containing target repository</span>
-ls<span class="w">   </span><span class="c1"># Should show repository directory</span>
+<section id="run-the-notebook-in-an-appropriate-environment">
+<h2>Run the notebook in an appropriate environment<a class="headerlink" href="#run-the-notebook-in-an-appropriate-environment" title="Link to this heading">#</a></h2>
+<p>Once you are in the directory of the notebook you want to use, make sure you have a populated environment that contains the required pacages::</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd hst_notebooks/notebooks/&lt;notebook-name&gt;
 </pre></div>
 </div>
-</section>
-<section id="issue-3-git-branch-already-exists">
-<h4>Issue 3: Git Branch Already Exists<a class="headerlink" href="#issue-3-git-branch-already-exists" title="Link to this heading">#</a></h4>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Error: Branch &#39;migrate-to-centralized-actions&#39; already exists</span>
-<span class="c1"># Solution: Delete existing branch or use different name</span>
-git<span class="w"> </span>branch<span class="w"> </span>-D<span class="w"> </span>migrate-to-centralized-actions
-<span class="c1"># Then re-run migration script</span>
+<p>You may want to consider installing your notebooks in a new conda/mamba environment
+to avoid version conflicts with other packages you may have installed, for example::</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>conda create -n hstnb python pip jupyter
+conda activate hstnb
 </pre></div>
 </div>
-</section>
-<section id="issue-4-workflow-validation-fails">
-<h4>Issue 4: Workflow Validation Fails<a class="headerlink" href="#issue-4-workflow-validation-fails" title="Link to this heading">#</a></h4>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Error: YAML syntax errors in generated workflows</span>
-<span class="c1"># Solution: Check generated workflows and fix syntax</span>
-yamllint<span class="w"> </span>.github/workflows/*.yml
+<p>In the case that there is no pre-requirements.sh file:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>conda create --name hstnb python pip jupyter
+conda activate hstnb
+pip install -r requirements.txt
 </pre></div>
 </div>
-</section>
-<section id="issue-5-low-readiness-score">
-<h4>Issue 5: Low Readiness Score<a class="headerlink" href="#issue-5-low-readiness-score" title="Link to this heading">#</a></h4>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Error: Readiness score &lt; 80%</span>
-<span class="c1"># Solution: Address issues mentioned in validation output</span>
-<span class="c1"># Common fixes:</span>
-<span class="c1"># - Strip notebook outputs: nbstripout notebooks/*.ipynb</span>
-<span class="c1"># - Add missing dependency files: requirements.txt or environment.yml</span>
-<span class="c1"># - Clean up git status: git add .; git commit -m &quot;Pre-migration cleanup&quot;</span>
+<p>In the case that there is a pre-requirements.sh file, this file is likely
+only used to install hstcal. You can either install hstcal in the <code class="docutils literal notranslate"><span class="pre">hstnb</span></code>
+environment you created above…</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>conda install --yes -c conda-forge hstcal
 </pre></div>
 </div>
-</section>
-</section>
-<section id="emergency-rollback">
-<h3>Emergency Rollback<a class="headerlink" href="#emergency-rollback" title="Link to this heading">#</a></h3>
-<p>If migration causes issues:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Option 1: Rollback using backup (if migration script was used)</span>
-rm<span class="w"> </span>.github/workflows/*.yml
-cp<span class="w"> </span>.github/workflows-backup/*.yml<span class="w"> </span>.github/workflows/
-git<span class="w"> </span>add<span class="w"> </span>.github/workflows/
-git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Rollback: Restore original workflows&quot;</span>
-
-<span class="c1"># Option 2: Hard reset to previous state</span>
-git<span class="w"> </span>checkout<span class="w"> </span>main
-git<span class="w"> </span>branch<span class="w"> </span>-D<span class="w"> </span>migrate-to-centralized-actions
+<p>or you can create the appropriate environment starting
+with hstcal using the following:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>conda create --yes -n hstcal -c conda-forge hstcal
+conda activate hstcal
+pip install -r requirements.txt
+pip install jupyter
 </pre></div>
 </div>
-</section>
-</section>
-<section id="advanced-usage">
-<h2>🚀 Advanced Usage<a class="headerlink" href="#advanced-usage" title="Link to this heading">#</a></h2>
-<section id="custom-organization">
-<h3>Custom Organization<a class="headerlink" href="#custom-organization" title="Link to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use with different organization</span>
-./migrate-repository.sh<span class="w"> </span>my_notebooks<span class="w"> </span>my-organization
+<p>It’s possible that you also have the <code class="docutils literal notranslate"><span class="pre">stenv</span></code> environment available locally.
+In this case, <code class="docutils literal notranslate"><span class="pre">stenv</span></code> should already have hstcal installed. You
+can activate the environment, and then update it to use the notebooks requirements file:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>conda activate stenv
+pip install -r requirments.txt
 </pre></div>
 </div>
-</section>
-<section id="custom-workflow-templates">
-<h3>Custom Workflow Templates<a class="headerlink" href="#custom-workflow-templates" title="Link to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use custom workflow templates (modify script)</span>
-<span class="c1"># Edit migrate-repository.sh line ~150:</span>
-<span class="c1"># Change: cp ../notebook-ci-actions/examples/workflows/*.yml</span>
-<span class="c1"># To: cp /path/to/custom/workflows/*.yml</span>
-</pre></div>
-</div>
-</section>
-<section id="debugging-mode">
-<h3>Debugging Mode<a class="headerlink" href="#debugging-mode" title="Link to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run with verbose debugging</span>
-bash<span class="w"> </span>-x<span class="w"> </span>./migrate-repository.sh<span class="w"> </span>jdat_notebooks<span class="w"> </span>spacetelescope
-</pre></div>
-</div>
-</section>
-<section id="testing-mode">
-<h3>Testing Mode<a class="headerlink" href="#testing-mode" title="Link to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Test migration without making changes (modify script)</span>
-<span class="c1"># Add DRY_RUN=true at top of migrate-repository.sh</span>
-<span class="c1"># All git commands will be echoed but not executed</span>
-</pre></div>
-</div>
+<p>If pip reports conflicts, then you might need to follow the above instructions to create
+a new, isolated environment instead of using <code class="docutils literal notranslate"><span class="pre">hstcal</span></code></p>
 </section>
 </section>
-<section id="script-exit-codes">
-<h2>📋 Script Exit Codes<a class="headerlink" href="#script-exit-codes" title="Link to this heading">#</a></h2>
-<p>Both scripts use standard exit codes:</p>
-<ul class="simple">
-<li><p><strong>0</strong>: Success - operation completed without errors</p></li>
-<li><p><strong>1</strong>: General error - invalid arguments or runtime error</p></li>
-<li><p><strong>2</strong>: Validation failure - repository not ready for migration</p></li>
-<li><p><strong>3</strong>: Git error - repository state issues</p></li>
-<li><p><strong>4</strong>: File system error - missing files or permission issues</p></li>
-</ul>
+<section class="tex2jax_ignore mathjax_ignore" id="help">
+<h1>Help<a class="headerlink" href="#help" title="Link to this heading">#</a></h1>
+<p>If you uncover any issues or bugs, you can <a class="reference external" href="https://github.com/spacetelescope/hst_notebooks/issues/new">open an issue on GitHub</a>.<br />
+For faster responses, however, we encourage you to submit an <a class="reference external" href="https://hsthelp.stsci.edu">HST Help Desk Ticket</a>.</p>
 </section>
-<section id="validation-criteria">
-<h2>📊 Validation Criteria<a class="headerlink" href="#validation-criteria" title="Link to this heading">#</a></h2>
-<p>The validation script scores repositories based on:</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Criteria</p></th>
-<th class="head"><p>Weight</p></th>
-<th class="head"><p>Points</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>Repository Structure</strong></p></td>
-<td><p>20%</p></td>
-<td><p>20</p></td>
-<td><p>Required directories and files</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Notebook Quality</strong></p></td>
-<td><p>25%</p></td>
-<td><p>25</p></td>
-<td><p>Valid notebooks, stripped outputs</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Dependencies</strong></p></td>
-<td><p>20%</p></td>
-<td><p>20</p></td>
-<td><p>requirements.txt or environment.yml</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Git Status</strong></p></td>
-<td><p>15%</p></td>
-<td><p>15</p></td>
-<td><p>Clean working directory</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Repository-Specific</strong></p></td>
-<td><p>20%</p></td>
-<td><p>20</p></td>
-<td><p>Special requirements (CRDS, APIs)</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><strong>Minimum score for migration</strong>: 80%</p>
-</section>
-<section id="logging-and-reports">
-<h2>📝 Logging and Reports<a class="headerlink" href="#logging-and-reports" title="Link to this heading">#</a></h2>
-<section id="validation-report-location">
-<h3>Validation Report Location<a class="headerlink" href="#validation-report-location" title="Link to this heading">#</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">validation</span><span class="o">-</span><span class="n">report</span><span class="o">-&lt;</span><span class="n">repository</span><span class="o">&gt;-&lt;</span><span class="n">timestamp</span><span class="o">&gt;.</span><span class="n">txt</span>
-</pre></div>
-</div>
-</section>
-<section id="migration-log-location">
-<h3>Migration Log Location<a class="headerlink" href="#migration-log-location" title="Link to this heading">#</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">migration</span><span class="o">-</span><span class="n">log</span><span class="o">-&lt;</span><span class="n">repository</span><span class="o">&gt;-&lt;</span><span class="n">timestamp</span><span class="o">&gt;.</span><span class="n">txt</span>
-</pre></div>
-</div>
-</section>
-<section id="migration-status-file">
-<h3>Migration Status File<a class="headerlink" href="#migration-status-file" title="Link to this heading">#</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">migration</span><span class="o">-</span><span class="n">status</span><span class="o">.</span><span class="n">md</span>  <span class="c1"># Created in repository root</span>
-</pre></div>
-</div>
-</section>
-</section>
-<hr class="docutils" />
-<section id="contributing">
-<h2>🤝 Contributing<a class="headerlink" href="#contributing" title="Link to this heading">#</a></h2>
-<p>To improve these scripts:</p>
-<ol class="arabic simple">
-<li><p><strong>Test thoroughly</strong> with repository forks</p></li>
-<li><p><strong>Add error handling</strong> for new edge cases</p></li>
-<li><p><strong>Update repository-specific configurations</strong> as needed</p></li>
-<li><p><strong>Maintain backwards compatibility</strong> with existing migrations</p></li>
-<li><p><strong>Document new features</strong> in this README</p></li>
-</ol>
-</section>
-<section id="support">
-<h2>📞 Support<a class="headerlink" href="#support" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p><strong>Issues</strong>: Create issues in the <code class="docutils literal notranslate"><span class="pre">notebook-ci-actions</span></code> repository</p></li>
-<li><p><strong>Documentation</strong>: See <code class="docutils literal notranslate"><span class="pre">docs/</span></code> folder for detailed migration guides</p></li>
-<li><p><strong>Emergency</strong>: Contact repository maintainers directly</p></li>
-</ul>
-<hr class="docutils" />
-<p><strong>Last Updated</strong>: June 11, 2025<br />
-<strong>Script Version</strong>: 1.0.0<br />
-<strong>Compatible with</strong>: notebook-ci-actions v1.x</p>
-</section>
+<section class="tex2jax_ignore mathjax_ignore" id="contributing">
+<h1>Contributing<a class="headerlink" href="#contributing" title="Link to this heading">#</a></h1>
+<p>New contributions and feedback are very welcomed! Please open a new issue or new
+pull request for bugs, feedback, or new features you would like to see. If there
+is an issue you would like to work on, please leave a comment and we will be happy
+to assist. Questions can also be sent through the <a class="reference external" href="https://stsci.service-now.com/hst">HST Help Desk</a>.</p>
+<p>If you wish to contribute new notebooks or major reworks of existing notebooks, see <a class="reference external" href="https://github.com/spacetelescope/hst_notebooks/blob/main/CONTRIBUTING.md">contributing instructions</a>.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1068,57 +713,19 @@ bash<span class="w"> </span>-x<span class="w"> </span>./migrate-repository.sh<sp
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-contents">📋 Table of Contents</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">🎯 Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts">🔧 Scripts</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validate-repository-sh"><code class="docutils literal notranslate"><span class="pre">validate-repository.sh</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#migrate-repository-sh"><code class="docutils literal notranslate"><span class="pre">migrate-repository.sh</span></code></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Summary and Description</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instrument-documentation">Instrument Documentation</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage-examples">💡 Usage Examples</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-migration-workflow">Basic Migration Workflow</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#batch-migration-all-repositories">Batch Migration (All Repositories)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dry-run-validation">Dry Run Validation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-instructions">Installation Instructions</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clone-the-repository">Clone the Repository</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-notebook-in-an-appropriate-environment">Run the notebook in an appropriate environment</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repository-specific-configurations">🏗️ Repository-Specific Configurations</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jdat-notebooks"><code class="docutils literal notranslate"><span class="pre">jdat_notebooks</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mast-notebooks"><code class="docutils literal notranslate"><span class="pre">mast_notebooks</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hst-notebooks"><code class="docutils literal notranslate"><span class="pre">hst_notebooks</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hello-universe"><code class="docutils literal notranslate"><span class="pre">hello_universe</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jwst-pipeline-notebooks"><code class="docutils literal notranslate"><span class="pre">jwst-pipeline-notebooks</span></code></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#help">Help</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#contributing">Contributing</a></li>
 </ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshooting">🚨 Troubleshooting</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#common-issues-and-solutions">Common Issues and Solutions</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#issue-1-permission-denied">Issue 1: Permission Denied</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#issue-2-repository-not-found">Issue 2: Repository Not Found</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#issue-3-git-branch-already-exists">Issue 3: Git Branch Already Exists</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#issue-4-workflow-validation-fails">Issue 4: Workflow Validation Fails</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#issue-5-low-readiness-score">Issue 5: Low Readiness Score</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#emergency-rollback">Emergency Rollback</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-usage">🚀 Advanced Usage</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-organization">Custom Organization</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-workflow-templates">Custom Workflow Templates</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#debugging-mode">Debugging Mode</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-mode">Testing Mode</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#script-exit-codes">📋 Script Exit Codes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-criteria">📊 Validation Criteria</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logging-and-reports">📝 Logging and Reports</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-report-location">Validation Report Location</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#migration-log-location">Migration Log Location</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#migration-status-file">Migration Status File</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contributing">🤝 Contributing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#support">📞 Support</a></li>
-</ul>
+
   </nav></div>
 
 </div></div>

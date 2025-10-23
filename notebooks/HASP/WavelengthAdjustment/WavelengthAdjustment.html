@@ -151,8 +151,14 @@
   
   
   
+    
+    
+      
+    
+    
+    <img src="../../../_static/stsci_logo2.png" class="logo__image only-light" alt="HST Notebooks - Home"/>
+    <script>document.write(`<img src="../../../_static/stsci_logo2.png" class="logo__image only-dark" alt="HST Notebooks - Home"/>`);</script>
   
-    <p class="title logo__title">HST Notebooks</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -255,6 +261,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">DrizzlePac</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/README.html">DrizzlePac Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/using_updated_astrometry_solutions/using_updated_astrometry_solutions.html">Improving Astrometry Using Alternate WCS Solutions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/align_to_catalogs/align_to_catalogs.html">Aligning HST images to an Absolute Reference Catalog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/align_sparse_fields/align_sparse_fields.html">Aligning Deep Exposures of Sparse Fields</a></li>
@@ -724,19 +731,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following tasks in the stistools package can be run with TEAL:
-   basic2d      calstis     ocrreject     wavecal        x1d          x2d
-Currently active conda environment: /home/runner/micromamba/envs/ci-env
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/micromamba/envs/ci-env/lib/python3.11/site-packages/stsci/tools/nmpfit.py:8: UserWarning: NMPFIT is deprecated - stsci.tools v 3.5 is the last version to contain it.
-  warnings.warn(&quot;NMPFIT is deprecated - stsci.tools v 3.5 is the last version to contain it.&quot;)
-/home/runner/micromamba/envs/ci-env/lib/python3.11/site-packages/stsci/tools/gfit.py:18: UserWarning: GFIT is deprecated - stsci.tools v 3.4.12 is the last version to contain it.Use astropy.modeling instead.
-  warnings.warn(&quot;GFIT is deprecated - stsci.tools v 3.4.12 is the last version to contain it.&quot;
-</pre></div>
-</div>
-</div>
 </div>
 <p>Since we will be running both <code class="docutils literal notranslate"><span class="pre">CalCOS</span></code> and <code class="docutils literal notranslate"><span class="pre">CalSTIS</span></code>, we will need to set up environment variables for when we use the <a class="reference external" href="https://hst-crds.stsci.edu/">Calibration Reference Data System</a>. Much of this is gone in detail in the COS notebook, <a class="reference external" href="https://github.com/spacetelescope/hst_notebooks/blob/main/notebooks/COS/Setup/Setup.ipynb">Setup.ipynb</a> notebook. We will download the STIS reference files in a later cell since we’ll need the data downloaded.</p>
 <div class="cell docutils container">
@@ -867,86 +861,6 @@ Currently active conda environment: /home/runner/micromamba/envs/ci-env
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/le2701q0q_rawtag_a.fits to cos_ex/cos_data/mastDownload/HST/le2701q0q/le2701q0q_rawtag_a.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/le2701q0q_rawtag_b.fits to cos_ex/cos_data/mastDownload/HST/le2701q0q/le2701q0q_rawtag_b.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/le2701q0q_x1d.fits to cos_ex/cos_data/mastDownload/HST/le2701q0q/le2701q0q_x1d.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/le2701q4q_rawtag_a.fits to cos_ex/cos_data/mastDownload/HST/le2701q4q/le2701q4q_rawtag_a.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/le2701q4q_rawtag_b.fits to cos_ex/cos_data/mastDownload/HST/le2701q4q/le2701q4q_rawtag_b.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/le2701q4q_x1d.fits to cos_ex/cos_data/mastDownload/HST/le2701q4q/le2701q4q_x1d.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/le2701q2q_rawtag_a.fits to cos_ex/cos_data/mastDownload/HST/le2701q2q/le2701q2q_rawtag_a.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/le2701q2q_rawtag_b.fits to cos_ex/cos_data/mastDownload/HST/le2701q2q/le2701q2q_rawtag_b.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/le2701q2q_x1d.fits to cos_ex/cos_data/mastDownload/HST/le2701q2q/le2701q2q_x1d.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/le2701q6q_rawtag_a.fits to cos_ex/cos_data/mastDownload/HST/le2701q6q/le2701q6q_rawtag_a.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/le2701q6q_rawtag_b.fits to cos_ex/cos_data/mastDownload/HST/le2701q6q/le2701q6q_rawtag_b.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/le2701q6q_x1d.fits to cos_ex/cos_data/mastDownload/HST/le2701q6q/le2701q6q_x1d.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/le2701010_asn.fits to cos_ex/cos_data/mastDownload/HST/le2701010/le2701010_asn.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-</div>
 </div>
 <p><a id = scriptrun1_cos></a></p>
 </section>
@@ -957,61 +871,6 @@ Currently active conda environment: /home/runner/micromamba/envs/ci-env
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>swrapper<span class="w"> </span>-i<span class="w"> </span>./cos_ex/cos_unshifted<span class="w"> </span>-o<span class="w"> </span>./cos_ex/cos_unshifted/coadd
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HASP version 1.2.5
-Ullyses version 4.1.0
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Creating list of unique modes from these files:
-./cos_ex/cos_unshifted/le2701q0q_x1d.fits LMC079-1 COS FUV G160M PSA 4 15824 (15824, &#39;01&#39;)
-./cos_ex/cos_unshifted/le2701q2q_x1d.fits LMC079-1 COS FUV G160M PSA 4 15824 (15824, &#39;01&#39;)
-./cos_ex/cos_unshifted/le2701q4q_x1d.fits LMC079-1 COS FUV G160M PSA 4 15824 (15824, &#39;01&#39;)
-./cos_ex/cos_unshifted/le2701q6q_x1d.fits LMC079-1 COS FUV G160M PSA 4 15824 (15824, &#39;01&#39;)
-Looping over visits
-Processing product (15824, &#39;01&#39;)
-Targets in visit (15824, &#39;01&#39;): [&#39;LMC079-1&#39;]
-Processing target LMC079-1 in visit (15824, &#39;01&#39;)
-Processing grating COS/G160M
-Importing files [&#39;./cos_ex/cos_unshifted/le2701q0q_x1d.fits&#39;, &#39;./cos_ex/cos_unshifted/le2701q2q_x1d.fits&#39;, &#39;./cos_ex/cos_unshifted/le2701q4q_x1d.fits&#39;, &#39;./cos_ex/cos_unshifted/le2701q6q_x1d.fits&#39;]
-Processing file ./cos_ex/cos_unshifted/le2701q0q_x1d.fits
-Processing file ./cos_ex/cos_unshifted/le2701q2q_x1d.fits
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing file ./cos_ex/cos_unshifted/le2701q4q_x1d.fits
-Processing file ./cos_ex/cos_unshifted/le2701q6q_x1d.fits
-/home/runner/micromamba/envs/ci-env/lib/python3.11/site-packages/ullyses/coadd.py:563: RuntimeWarning: invalid value encountered in divide
-  thru_nans = segment.data[&#39;net&#39;] / segment.data[&#39;flux&#39;]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using a maximum SNR of 20.0 in flux-based filtering
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>./cos_ex/cos_unshifted/coadd/hst_15824_cos_lmc079-1_g160m_le2701_cspec.fits already exists and overwrite=False, skipping write
-   Wrote ./cos_ex/cos_unshifted/coadd/hst_15824_cos_lmc079-1_g160m_le2701_cspec.fits
-Only 1 grating to abut, skipping abutment
-Looping over proposals
-Processing product 15824
-Targets in proposal 15824: [&#39;LMC079-1&#39;]
-Processing target LMC079-1 in proposal 15824
-Processing grating COS/G160M
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Importing files [&#39;./cos_ex/cos_unshifted/le2701q0q_x1d.fits&#39;, &#39;./cos_ex/cos_unshifted/le2701q2q_x1d.fits&#39;, &#39;./cos_ex/cos_unshifted/le2701q4q_x1d.fits&#39;, &#39;./cos_ex/cos_unshifted/le2701q6q_x1d.fits&#39;]
-Processing file ./cos_ex/cos_unshifted/le2701q0q_x1d.fits
-Processing file ./cos_ex/cos_unshifted/le2701q2q_x1d.fits
-Processing file ./cos_ex/cos_unshifted/le2701q4q_x1d.fits
-Processing file ./cos_ex/cos_unshifted/le2701q6q_x1d.fits
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using a maximum SNR of 20.0 in flux-based filtering
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>./cos_ex/cos_unshifted/coadd/hst_15824_cos_lmc079-1_g160m_le27_cspec.fits already exists and overwrite=False, skipping write
-   Wrote ./cos_ex/cos_unshifted/coadd/hst_15824_cos_lmc079-1_g160m_le27_cspec.fits
-Only 1 grating to abut, skipping abutment
 </pre></div>
 </div>
 </div>
@@ -1067,9 +926,6 @@ Only 1 grating to abut, skipping abutment
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../../_images/62d6fd2beae1dbeec5f9d2f8b03f5445cb98a6959253b5305deb51a4994d7d76.png" src="../../../_images/62d6fd2beae1dbeec5f9d2f8b03f5445cb98a6959253b5305deb51a4994d7d76.png" />
-</div>
 </div>
 <p><a id = id_shift></a></p>
 </section>
@@ -1107,14 +963,6 @@ Only 1 grating to abut, skipping abutment
 <span class="n">shutil</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">source_path</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">hlsp_path</span><span class="p">))</span>
 
 <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">cos_ex</span> <span class="o">/</span> <span class="s2">&quot;mastDownload&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HLSP/ullyses/lmc079-1/dr7/hlsp_ullyses_hst_cos_lmc079-1_g160m_dr7_cspec.fits to cos_ex/mastDownload/HLSP/hlsp_ullyses_hst_cos_lmc079-1_uv/hlsp_ullyses_hst_cos_lmc079-1_g160m_dr7_cspec.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
 </pre></div>
 </div>
 </div>
@@ -1184,10 +1032,6 @@ Only 1 grating to abut, skipping abutment
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../../_images/c7c63217c2b2cb9858723e2a67cd00eb9d464e3b9b2401a16efe52da012e89eb.png" src="../../../_images/c7c63217c2b2cb9858723e2a67cd00eb9d464e3b9b2401a16efe52da012e89eb.png" />
-<img alt="../../../_images/e47c4536d315031f9461cfc8c4b6ed3de3fb60597de1e733b50a45c270a3eb80.png" src="../../../_images/e47c4536d315031f9461cfc8c4b6ed3de3fb60597de1e733b50a45c270a3eb80.png" />
 </div>
 </div>
 <p>We can see visually that there is a slight wavelength shift between the two data products. We will do a very rough estimate of the radial velocity using the <code class="docutils literal notranslate"><span class="pre">SiII</span></code> line at <code class="docutils literal notranslate"><span class="pre">1526.71</span> <span class="pre">Å</span></code>.</p>
@@ -1273,12 +1117,6 @@ Only 1 grating to abut, skipping abutment
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The SiII peak is fitted to be 1526.619 Å
-</pre></div>
-</div>
-<img alt="../../../_images/fccbf1309ba01eb5ce4a4589c2be608315c9f8945651db726442cffc6d750c7b.png" src="../../../_images/fccbf1309ba01eb5ce4a4589c2be608315c9f8945651db726442cffc6d750c7b.png" />
-</div>
 </div>
 <p>Now that we’ve determined the observed wavelength of the <code class="docutils literal notranslate"><span class="pre">SiII</span></code> line, we can calculate the radial velocity. The rest wavelength of this line is <code class="docutils literal notranslate"><span class="pre">1526.71</span> <span class="pre">Å</span></code>. We will use the equation below to calculate the radial velocity:</p>
 <p><span class="math notranslate nohighlight">\( v_r = c \left( \frac{\lambda - \lambda_0}{\lambda_0} \right) \)</span></p>
@@ -1305,11 +1143,6 @@ Only 1 grating to abut, skipping abutment
 <span class="n">v_r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">v_r</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The radial velocity of LMC079-1 using the HLSP is roughly </span><span class="si">{</span><span class="n">v_r</span><span class="si">}</span><span class="s2"> km/s&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The radial velocity of LMC079-1 using the HLSP is roughly -17.78 km/s
 </pre></div>
 </div>
 </div>
@@ -1386,15 +1219,6 @@ Only 1 grating to abut, skipping abutment
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The SiII peak is fitted to be 1526.663 Å
-</pre></div>
-</div>
-<img alt="../../../_images/769c8aec34f1ebd78e189df0746ecf070492439710224ac99ef20487c54cf765.png" src="../../../_images/769c8aec34f1ebd78e189df0746ecf070492439710224ac99ef20487c54cf765.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The radial velocity of LMC079-1 using the coadd is roughly -9.17 km/s
-</pre></div>
-</div>
-</div>
 </div>
 <p>We can see that there is a very significant difference between the target’s calculated radial velocity using the HLSP (roughly <code class="docutils literal notranslate"><span class="pre">-17.78</span> <span class="pre">km/s</span></code>) and the coadd (roughly <code class="docutils literal notranslate"><span class="pre">-3.5</span> <span class="pre">km/s</span></code>). This is an indicator that there is a wavelength offset between the coadd’s constituent <code class="docutils literal notranslate"><span class="pre">X1D</span></code> files. We will need to determine this wavelength offset between the <code class="docutils literal notranslate"><span class="pre">X1D</span></code> files, apply this shift when running <code class="docutils literal notranslate"><span class="pre">CalCOS</span></code>, and redo the coadd.</p>
 <p><a id = cc_cos></a></p>
@@ -1452,9 +1276,6 @@ Only 1 grating to abut, skipping abutment
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../../_images/633a800a01e367c7fd26793f672e4284fcb46610cf9519d22526c14af6eed607.png" src="../../../_images/633a800a01e367c7fd26793f672e4284fcb46610cf9519d22526c14af6eed607.png" />
 </div>
 </div>
 <p>We can see an apparent shift between the <code class="docutils literal notranslate"><span class="pre">X1D</span></code> files, especially between the <code class="docutils literal notranslate"><span class="pre">FPPOS</span> <span class="pre">1+2</span></code> and <code class="docutils literal notranslate"><span class="pre">FPPOS</span> <span class="pre">3+4</span></code> exposures.</p>
@@ -1577,16 +1398,6 @@ Only 1 grating to abut, skipping abutment
 
 <span class="n">fppos</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">getval</span><span class="p">(</span><span class="n">ref_file</span><span class="p">,</span> <span class="s2">&quot;FPPOS&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The file to be used as reference was taken at FPPOS </span><span class="si">{</span><span class="n">fppos</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_3498/1408116224.py:21: OptimizeWarning: Covariance of the parameters could not be estimated
-  popt, _ = optimize.curve_fit(fit_gaussian,
-</pre></div>
-</div>
-<img alt="../../../_images/8957ecf5baec1d9e270fc3cd89e94ae77d1791c7d3e26f03b7db9558a78ea807.png" src="../../../_images/8957ecf5baec1d9e270fc3cd89e94ae77d1791c7d3e26f03b7db9558a78ea807.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The file to be used as reference was taken at FPPOS 3
 </pre></div>
 </div>
 </div>
@@ -1771,16 +1582,6 @@ Only 1 grating to abut, skipping abutment
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Shift for FUVA between ref and FPPOS 1 is 12.703590036864584 px
-</pre></div>
-</div>
-<img alt="../../../_images/4f41630d37551b3adca3c8c0fc90d17a78b6de2d8869b200815a74dfb3857b36.png" src="../../../_images/4f41630d37551b3adca3c8c0fc90d17a78b6de2d8869b200815a74dfb3857b36.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Shift for FUVB between ref and FPPOS 1 is 9.856078839633527 px
-</pre></div>
-</div>
-<img alt="../../../_images/04d17db279cca2ef9590cf8a437a4468cc49fdcfa0c3038fa385065fa33ae4c4.png" src="../../../_images/04d17db279cca2ef9590cf8a437a4468cc49fdcfa0c3038fa385065fa33ae4c4.png" />
-</div>
 </div>
 <p>Now we can do the same for our <code class="docutils literal notranslate"><span class="pre">FPPOS</span> <span class="pre">2</span></code> exposure:</p>
 <div class="cell docutils container">
@@ -1805,16 +1606,6 @@ Only 1 grating to abut, skipping abutment
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Shift for FUVA between ref and FPPOS 2 is 11.2470918848302 px
-</pre></div>
-</div>
-<img alt="../../../_images/b07928e13b98b85c4152a092804bd63f0a3d93e98f52140f11b97297b1efcccd.png" src="../../../_images/b07928e13b98b85c4152a092804bd63f0a3d93e98f52140f11b97297b1efcccd.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Shift for FUVB between ref and FPPOS 2 is 9.713869743192598 px
-</pre></div>
-</div>
-<img alt="../../../_images/2396007a461e9011d6e5e09b67a06f96c770f321b4876fa5f59298726939d4ed.png" src="../../../_images/2396007a461e9011d6e5e09b67a06f96c770f321b4876fa5f59298726939d4ed.png" />
-</div>
 </div>
 <p>And finally, let’s calculate the shift for our <code class="docutils literal notranslate"><span class="pre">FPPOS</span> <span class="pre">3</span></code> exposure:</p>
 <div class="cell docutils container">
@@ -1838,16 +1629,6 @@ Only 1 grating to abut, skipping abutment
                       <span class="n">plot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Shift for FUVA between ref and FPPOS 3 is 0.0 px
-</pre></div>
-</div>
-<img alt="../../../_images/8c8ac6803588d3638048fc815c13a791b93b66b7ffaa72ed0291053767a0e276.png" src="../../../_images/8c8ac6803588d3638048fc815c13a791b93b66b7ffaa72ed0291053767a0e276.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Shift for FUVB between ref and FPPOS 3 is 0.0 px
-</pre></div>
-</div>
-<img alt="../../../_images/73eb8fbc690f3b2c9ae26651bfe0d862b674b05f52dde8a874aa130bdee0dd18.png" src="../../../_images/73eb8fbc690f3b2c9ae26651bfe0d862b674b05f52dde8a874aa130bdee0dd18.png" />
 </div>
 </div>
 <p><a id = apply_shifts_cos></a></p>
@@ -1974,9 +1755,6 @@ Only 1 grating to abut, skipping abutment
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../../_images/3d18bedf62652ff3da32a94a603f390a7a2afd346d3b331298b2288a2c58a10b.png" src="../../../_images/3d18bedf62652ff3da32a94a603f390a7a2afd346d3b331298b2288a2c58a10b.png" />
 </div>
 </div>
 <p>We can visually see a clear improvement in the spectral features when we applied our shifts to <code class="docutils literal notranslate"><span class="pre">CalCOS</span></code> as the two absorption features have lined up for all <code class="docutils literal notranslate"><span class="pre">FPPOS</span></code>.</p>
@@ -2105,13 +1883,6 @@ Only 1 grating to abut, skipping abutment
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_3498/802807213.py:84: UserWarning: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
-  subplot.legend()
-</pre></div>
-</div>
-<img alt="../../../_images/79fbb1e9df0f8db694a13674b9ac59120b6650b9c52b37f63151db2bcf9192d5.png" src="../../../_images/79fbb1e9df0f8db694a13674b9ac59120b6650b9c52b37f63151db2bcf9192d5.png" />
-</div>
 </div>
 <p>While you won’t necessarily see a big improvement in the SNR with a shift, we will see that our coadd has a better wavelength solution by calculating the radial velocity below:</p>
 <div class="cell docutils container">
@@ -2194,19 +1965,6 @@ Only 1 grating to abut, skipping abutment
     
 <span class="k">else</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;File not found: You need to run previous cells to generate the data.&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The SiII peak is fitted to be 1526.63 Å
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_3498/3560258067.py:20: OptimizeWarning: Covariance of the parameters could not be estimated
-  popt, _ = optimize.curve_fit(fit_gaussian,
-</pre></div>
-</div>
-<img alt="../../../_images/b454f37b8e769e468a26e300515fb6576c272312b30c76e52fe8e7e3d7092e5e.png" src="../../../_images/b454f37b8e769e468a26e300515fb6576c272312b30c76e52fe8e7e3d7092e5e.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The radial velocity of LMC079-1 using the coadd is roughly -15.67 km/s
 </pre></div>
 </div>
 </div>
@@ -2307,200 +2065,6 @@ Only 1 grating to abut, skipping abutment
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/od1al1030_asn.fits to stis_ex/stis_data/mastDownload/HST/od1al1030/od1al1030_asn.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/od1al1030_raw.fits to stis_ex/stis_data/mastDownload/HST/od1al1030/od1al1030_raw.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/od1al1030_flt.fits to stis_ex/stis_data/mastDownload/HST/od1al1030/od1al1030_flt.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/od1al1030_sx1.fits to stis_ex/stis_data/mastDownload/HST/od1al1030/od1al1030_sx1.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/od1al1040_asn.fits to stis_ex/stis_data/mastDownload/HST/od1al1040/od1al1040_asn.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/od1al1040_raw.fits to stis_ex/stis_data/mastDownload/HST/od1al1040/od1al1040_raw.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/od1al1040_flt.fits to stis_ex/stis_data/mastDownload/HST/od1al1040/od1al1040_flt.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/od1al1040_sx1.fits to stis_ex/stis_data/mastDownload/HST/od1al1040/od1al1040_sx1.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/od1am10b0_asn.fits to stis_ex/stis_data/mastDownload/HST/od1am10b0/od1am10b0_asn.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/od1am10b0_raw.fits to stis_ex/stis_data/mastDownload/HST/od1am10b0/od1am10b0_raw.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/od1am10b0_flt.fits to stis_ex/stis_data/mastDownload/HST/od1am10b0/od1am10b0_flt.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/od1am10b0_sx1.fits to stis_ex/stis_data/mastDownload/HST/od1am10b0/od1am10b0_sx1.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/od1am10e0_asn.fits to stis_ex/stis_data/mastDownload/HST/od1am10e0/od1am10e0_asn.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/od1am10e0_raw.fits to stis_ex/stis_data/mastDownload/HST/od1am10e0/od1am10e0_raw.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/od1am10e0_flt.fits to stis_ex/stis_data/mastDownload/HST/od1am10e0/od1am10e0_flt.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/od1am10e0_sx1.fits to stis_ex/stis_data/mastDownload/HST/od1am10e0/od1am10e0_sx1.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/od1al2030_asn.fits to stis_ex/stis_data/mastDownload/HST/od1al2030/od1al2030_asn.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/od1al2030_raw.fits to stis_ex/stis_data/mastDownload/HST/od1al2030/od1al2030_raw.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/od1al2030_flt.fits to stis_ex/stis_data/mastDownload/HST/od1al2030/od1al2030_flt.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/od1al2030_sx1.fits to stis_ex/stis_data/mastDownload/HST/od1al2030/od1al2030_sx1.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/od1al2040_asn.fits to stis_ex/stis_data/mastDownload/HST/od1al2040/od1al2040_asn.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/od1al2040_raw.fits to stis_ex/stis_data/mastDownload/HST/od1al2040/od1al2040_raw.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/od1al2040_flt.fits to stis_ex/stis_data/mastDownload/HST/od1al2040/od1al2040_flt.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/od1al2040_sx1.fits to stis_ex/stis_data/mastDownload/HST/od1al2040/od1al2040_sx1.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/od1al4030_asn.fits to stis_ex/stis_data/mastDownload/HST/od1al4030/od1al4030_asn.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/od1al4030_raw.fits to stis_ex/stis_data/mastDownload/HST/od1al4030/od1al4030_raw.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/od1al4030_flt.fits to stis_ex/stis_data/mastDownload/HST/od1al4030/od1al4030_flt.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/od1al4030_sx1.fits to stis_ex/stis_data/mastDownload/HST/od1al4030/od1al4030_sx1.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/od1al4040_asn.fits to stis_ex/stis_data/mastDownload/HST/od1al4040/od1al4040_asn.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/od1al4040_raw.fits to stis_ex/stis_data/mastDownload/HST/od1al4040/od1al4040_raw.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/od1al4040_flt.fits to stis_ex/stis_data/mastDownload/HST/od1al4040/od1al4040_flt.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/od1al4040_sx1.fits to stis_ex/stis_data/mastDownload/HST/od1al4040/od1al4040_sx1.fits ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
-</pre></div>
-</div>
-</div>
 </div>
 <p>Now we will go and download the reference files needed for running <code class="docutils literal notranslate"><span class="pre">CalSTIS</span></code>:</p>
 <div class="cell docutils container">
@@ -2536,96 +2100,6 @@ Only 1 grating to abut, skipping abutment
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>swrapper<span class="w"> </span>-i<span class="w"> </span>./stis_ex/stis_unshifted<span class="w"> </span>-o<span class="w"> </span>./stis_ex/stis_unshifted/coadd
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HASP version 1.2.5
-Ullyses version 4.1.0
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Creating list of unique modes from these files:
-./stis_ex/stis_unshifted/od1al1030_sx1.fits AGK+81D266 STIS CCD G430L 52X2 0 14423 (14423, &#39;l1&#39;)
-./stis_ex/stis_unshifted/od1al1040_sx1.fits AGK+81D266 STIS CCD G430L 52X2E1 0 14423 (14423, &#39;l1&#39;)
-./stis_ex/stis_unshifted/od1al2030_sx1.fits AGK+81D266 STIS CCD G430L 52X2 0 14423 (14423, &#39;l2&#39;)
-./stis_ex/stis_unshifted/od1al2040_sx1.fits AGK+81D266 STIS CCD G430L 52X2E1 0 14423 (14423, &#39;l2&#39;)
-./stis_ex/stis_unshifted/od1al4030_sx1.fits AGK+81D266 STIS CCD G430L 52X2 0 14423 (14423, &#39;l4&#39;)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>./stis_ex/stis_unshifted/od1al4040_sx1.fits AGK+81D266 STIS CCD G430L 52X2E1 0 14423 (14423, &#39;l4&#39;)
-./stis_ex/stis_unshifted/od1am10b0_sx1.fits AGK+81D266 STIS CCD G430L 52X2 0 14423 (14423, &#39;m1&#39;)
-./stis_ex/stis_unshifted/od1am10e0_sx1.fits AGK+81D266 STIS CCD G430L 52X2E1 0 14423 (14423, &#39;m1&#39;)
-Looping over visits
-Processing product (14423, &#39;l1&#39;)
-Targets in visit (14423, &#39;l1&#39;): [&#39;AGK+81D266&#39;]
-Processing target AGK+81D266 in visit (14423, &#39;l1&#39;)
-Processing grating STIS/G430L
-Importing files [&#39;./stis_ex/stis_unshifted/od1al1030_sx1.fits&#39;, &#39;./stis_ex/stis_unshifted/od1al1040_sx1.fits&#39;]
-Processing file ./stis_ex/stis_unshifted/od1al1030_sx1.fits
-Processing file ./stis_ex/stis_unshifted/od1al1040_sx1.fits
-Using a maximum SNR of 20.0 in flux-based filtering
-./stis_ex/stis_unshifted/coadd/hst_14423_stis_agkp81d266_g430l_od1al1_cspec.fits already exists and overwrite=False, skipping write
-   Wrote ./stis_ex/stis_unshifted/coadd/hst_14423_stis_agkp81d266_g430l_od1al1_cspec.fits
-Only 1 grating to abut, skipping abutment
-Processing product (14423, &#39;l2&#39;)
-Targets in visit (14423, &#39;l2&#39;): [&#39;AGK+81D266&#39;]
-Processing target AGK+81D266 in visit (14423, &#39;l2&#39;)
-Processing grating STIS/G430L
-Importing files [&#39;./stis_ex/stis_unshifted/od1al2030_sx1.fits&#39;, &#39;./stis_ex/stis_unshifted/od1al2040_sx1.fits&#39;]
-Processing file ./stis_ex/stis_unshifted/od1al2030_sx1.fits
-Processing file ./stis_ex/stis_unshifted/od1al2040_sx1.fits
-Using a maximum SNR of 20.0 in flux-based filtering
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>./stis_ex/stis_unshifted/coadd/hst_14423_stis_agkp81d266_g430l_od1al2_cspec.fits already exists and overwrite=False, skipping write
-   Wrote ./stis_ex/stis_unshifted/coadd/hst_14423_stis_agkp81d266_g430l_od1al2_cspec.fits
-Only 1 grating to abut, skipping abutment
-Processing product (14423, &#39;l4&#39;)
-Targets in visit (14423, &#39;l4&#39;): [&#39;AGK+81D266&#39;]
-Processing target AGK+81D266 in visit (14423, &#39;l4&#39;)
-Processing grating STIS/G430L
-Importing files [&#39;./stis_ex/stis_unshifted/od1al4030_sx1.fits&#39;, &#39;./stis_ex/stis_unshifted/od1al4040_sx1.fits&#39;]
-Processing file ./stis_ex/stis_unshifted/od1al4030_sx1.fits
-Processing file ./stis_ex/stis_unshifted/od1al4040_sx1.fits
-Using a maximum SNR of 20.0 in flux-based filtering
-./stis_ex/stis_unshifted/coadd/hst_14423_stis_agkp81d266_g430l_od1al4_cspec.fits already exists and overwrite=False, skipping write
-   Wrote ./stis_ex/stis_unshifted/coadd/hst_14423_stis_agkp81d266_g430l_od1al4_cspec.fits
-Only 1 grating to abut, skipping abutment
-Processing product (14423, &#39;m1&#39;)
-Targets in visit (14423, &#39;m1&#39;): [&#39;AGK+81D266&#39;]
-Processing target AGK+81D266 in visit (14423, &#39;m1&#39;)
-Processing grating STIS/G430L
-Importing files [&#39;./stis_ex/stis_unshifted/od1am10b0_sx1.fits&#39;, &#39;./stis_ex/stis_unshifted/od1am10e0_sx1.fits&#39;]
-Processing file ./stis_ex/stis_unshifted/od1am10b0_sx1.fits
-Processing file ./stis_ex/stis_unshifted/od1am10e0_sx1.fits
-Using a maximum SNR of 20.0 in flux-based filtering
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>./stis_ex/stis_unshifted/coadd/hst_14423_stis_agkp81d266_g430l_od1am1_cspec.fits already exists and overwrite=False, skipping write
-   Wrote ./stis_ex/stis_unshifted/coadd/hst_14423_stis_agkp81d266_g430l_od1am1_cspec.fits
-Only 1 grating to abut, skipping abutment
-Looping over proposals
-Processing product 14423
-Targets in proposal 14423: [&#39;AGK+81D266&#39;]
-Processing target AGK+81D266 in proposal 14423
-Processing grating STIS/G430L
-Importing files [&#39;./stis_ex/stis_unshifted/od1al1030_sx1.fits&#39;, &#39;./stis_ex/stis_unshifted/od1al1040_sx1.fits&#39;, &#39;./stis_ex/stis_unshifted/od1al2030_sx1.fits&#39;, &#39;./stis_ex/stis_unshifted/od1al2040_sx1.fits&#39;, &#39;./stis_ex/stis_unshifted/od1al4030_sx1.fits&#39;, &#39;./stis_ex/stis_unshifted/od1al4040_sx1.fits&#39;, &#39;./stis_ex/stis_unshifted/od1am10b0_sx1.fits&#39;, &#39;./stis_ex/stis_unshifted/od1am10e0_sx1.fits&#39;]
-Processing file ./stis_ex/stis_unshifted/od1al1030_sx1.fits
-Processing file ./stis_ex/stis_unshifted/od1al1040_sx1.fits
-Processing file ./stis_ex/stis_unshifted/od1al2030_sx1.fits
-Processing file ./stis_ex/stis_unshifted/od1al2040_sx1.fits
-Processing file ./stis_ex/stis_unshifted/od1al4030_sx1.fits
-Processing file ./stis_ex/stis_unshifted/od1al4040_sx1.fits
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing file ./stis_ex/stis_unshifted/od1am10b0_sx1.fits
-Processing file ./stis_ex/stis_unshifted/od1am10e0_sx1.fits
-Using a maximum SNR of 20.0 in flux-based filtering
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>./stis_ex/stis_unshifted/coadd/hst_14423_stis_agkp81d266_g430l_od1a_cspec.fits already exists and overwrite=False, skipping write
-   Wrote ./stis_ex/stis_unshifted/coadd/hst_14423_stis_agkp81d266_g430l_od1a_cspec.fits
-Only 1 grating to abut, skipping abutment
 </pre></div>
 </div>
 </div>
@@ -2697,9 +2171,6 @@ Only 1 grating to abut, skipping abutment
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../../_images/e318bef52df7ef5ec922d319b8dc07674fc5b3b88c1f986a0b2487b9f1406eaf.png" src="../../../_images/e318bef52df7ef5ec922d319b8dc07674fc5b3b88c1f986a0b2487b9f1406eaf.png" />
-</div>
 </div>
 <p>Since we see a consistent shift in the data between the observations that used the <code class="docutils literal notranslate"><span class="pre">E1</span></code> aperture and the nominal, we need to determine the actual shift in pixels and re-run <code class="docutils literal notranslate"><span class="pre">CalSTIS</span></code> on our data. We will not be calculating the radial velocity and comparing it to the literature value to reduce notebook length, and because the shift is known to be relative to the nominal position.</p>
 <p><a id = cross_correlate_stis></a></p>
@@ -2733,11 +2204,6 @@ Only 1 grating to abut, skipping abutment
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The brightest file is od1al2030_sx1.fits.
-</pre></div>
-</div>
-</div>
 </div>
 <p>We’ve now determined that <code class="docutils literal notranslate"><span class="pre">od1al2030_sx1.fits</span></code> is the brightest spectra of our data. We will go through each <code class="docutils literal notranslate"><span class="pre">SX1</span></code> file taken at the <code class="docutils literal notranslate"><span class="pre">E1</span></code> position in our data and cross-correlate it to our <code class="docutils literal notranslate"><span class="pre">od1al2030_sx1.fits</span></code> file. We will calculate the shifts for a single file first (to better illustrate each step), then define a function to perform these same steps for the rest of the files.</p>
 <p>We will be cross-correlating similarly to how we did our COS example in the previous section, but this section will mainly follow the steps in the official <a class="reference external" href="https://github.com/spacetelescope/hst_notebooks/blob/main/notebooks/STIS/cross-correlation/cross-correlation.ipynb">STIS Cross-Correlation Notebook</a>.</p>
@@ -2765,11 +2231,6 @@ Only 1 grating to abut, skipping abutment
 <span class="c1"># Getting the dispersion per pixel</span>
 <span class="n">mean_plate_scale</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ref_wl</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">-</span> <span class="n">ref_wl</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The dispersion per pixel is </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">mean_plate_scale</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> Å/pixel&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The dispersion per pixel is 2.75 Å/pixel
 </pre></div>
 </div>
 </div>
@@ -2837,13 +2298,6 @@ Only 1 grating to abut, skipping abutment
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The shift, in pixels, is 1.17 pixels
-The shift, in angstroms, is 3.21Å
-</pre></div>
-</div>
-<img alt="../../../_images/48db2f78cc6cdeb97168f287e8d524f3b43c55980eed64791b923725c8120e08.png" src="../../../_images/48db2f78cc6cdeb97168f287e8d524f3b43c55980eed64791b923725c8120e08.png" />
-</div>
 </div>
 <p><a id = run_calstis></a></p>
 </section>
@@ -2884,112 +2338,6 @@ The shift, in angstroms, is 3.21Å
     
 <span class="k">except</span> <span class="ne">RuntimeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;An error occured&#39;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*** CALSTIS-0 -- Version 3.4.2 (19-Jan-2018) ***
-Begin    22-Oct-2025 19:18:30 UTC
-
-Input    stis_ex/stis_data/od1al1040_raw.fits
-Outroot  stis_ex/stis_shifted
-
-*** CALSTIS-1 -- Version 3.4.2 (19-Jan-2018) ***
-Begin    22-Oct-2025 19:18:30 UTC
-Input    stis_ex/stis_data/od1al1040_raw.fits
-Output   stis_ex/stis_shifted_blv_tmp.fits
-OBSMODE  ACCUM
-APERTURE 52X2
-OPT_ELEM G430L
-DETECTOR CCD
-
-Imset 1  Begin 19:18:30 UTC
-Epcfile  od1al1b1j_epc.fits
-Warning  EPCTAB `od1al1b1j_epc.fits&#39; not found.
-
-CCDTAB   oref$16j1600do_ccd.fits
-CCDTAB   PEDIGREE=INFLIGHT 01/05/2009 01/05/2009
-CCDTAB   DESCRIP =Updated amp=D gain=4 atodgain and corresponding readnoise values---
-CCDTAB   DESCRIP =Proposal 8057, by I. Dashevsky &amp; P. Goudfrooij
-
-DQICORR  PERFORM
-DQITAB   oref$h1v11475o_bpx.fits
-DQITAB   PEDIGREE=GROUND
-DQITAB   DESCRIP =Prel. Ground Calib
-DQICORR  COMPLETE
-
-ATODCORR OMIT
-
-BLEVCORR PERFORM
-         Bias level from overscan has been subtracted; \
-         mean of bias levels subtracted was 1450.05.
-BLEVCORR COMPLETE
-         Uncertainty array initialized, readnoise=6.24, gain=1
-
-BIASCORR PERFORM
-BIASFILE oref$02a1919to_bia.fits
-BIASFILE PEDIGREE=INFLIGHT 08/11/2015 16/11/2015
-BIASFILE DESCRIP =Weekly gain=1 bias for STIS CCD data taken after Nov 08 2015-------
-BIASCORR COMPLETE
-
-DARKCORR OMIT
-
-FLATCORR OMIT
-
-SHADCORR OMIT
-
-PHOTCORR OMIT
-Imset 1  End 19:18:30 UTC
-
-Imset 2  Begin 19:18:30 UTC
-Epcfile  od1al1b2j_epc.fits
-Warning  EPCTAB `od1al1b2j_epc.fits&#39; not found.
-
-DQICORR  PERFORM
-DQICORR  COMPLETE
-
-ATODCORR OMIT
-
-BLEVCORR PERFORM
-         Bias level from overscan has been subtracted; \
-         mean of bias levels subtracted was 1451.58.
-BLEVCORR COMPLETE
-         Uncertainty array initialized, readnoise=6.24, gain=1
-
-BIASCORR PERFORM
-BIASCORR COMPLETE
-
-DARKCORR OMIT
-
-FLATCORR OMIT
-
-SHADCORR OMIT
-Imset 2  End 19:18:30 UTC
-
-End      22-Oct-2025 19:18:30 UTC
-
-*** CALSTIS-1 complete ***
-
-*** CALSTIS-2 -- Version 3.4.2 (19-Jan-2018) ***
-Begin    22-Oct-2025 19:18:30 UTC
-Input    stis_ex/stis_shifted_blv_tmp.fits
-Output   stis_ex/stis_shifted_crj_tmp.fits
-
-CRCORR   PERFORM
-Total number of input image sets = 2
-CRREJTAB oref$j3m1403io_crr.fits
-CRCORR   COMPLETE
-
-End      22-Oct-2025 19:18:30 UTC
-
-*** CALSTIS-2 complete ***
-
-*** CALSTIS-1 -- Version 3.4.2 (19-Jan-2018) ***
-Begin    22-Oct-2025 19:18:30 UTC
-Input    stis_ex/stis_shifted_crj_tmp.fits
-Output   stis_ex/stis_shifted_crj.fits
-ERROR    Output file `stis_ex/stis_shifted_crj.fits&#39; already exists.
-calstis0 failed.
 </pre></div>
 </div>
 </div>
@@ -3122,119 +2470,6 @@ calstis0 failed.
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dispersion per pixel is 2.75 Å/pixel
-The shift, in pixels, is 0.73 pixels
-The shift, in Å, is 2.01Å
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*** CALSTIS-0 -- Version 3.4.2 (19-Jan-2018) ***
-Begin    22-Oct-2025 19:18:30 UTC
-
-Input    stis_ex/stis_data/od1al2040_raw.fits
-Outroot  stis_ex/stis_shifted/od1al2040_raw.fits
-
-*** CALSTIS-1 -- Version 3.4.2 (19-Jan-2018) ***
-Begin    22-Oct-2025 19:18:31 UTC
-Input    stis_ex/stis_data/od1al2040_raw.fits
-Output   stis_ex/stis_shifted/od1al2040_blv_tmp.fits
-OBSMODE  ACCUM
-APERTURE 52X2
-OPT_ELEM G430L
-DETECTOR CCD
-
-Imset 1  Begin 19:18:31 UTC
-Epcfile  od1al2yrj_epc.fits
-Warning  EPCTAB `od1al2yrj_epc.fits&#39; not found.
-
-CCDTAB   oref$16j1600do_ccd.fits
-CCDTAB   PEDIGREE=INFLIGHT 01/05/2009 01/05/2009
-CCDTAB   DESCRIP =Updated amp=D gain=4 atodgain and corresponding readnoise values---
-CCDTAB   DESCRIP =Proposal 8057, by I. Dashevsky &amp; P. Goudfrooij
-
-DQICORR  PERFORM
-DQITAB   oref$h1v11475o_bpx.fits
-DQITAB   PEDIGREE=GROUND
-DQITAB   DESCRIP =Prel. Ground Calib
-DQICORR  COMPLETE
-
-ATODCORR OMIT
-
-BLEVCORR PERFORM
-         Bias level from overscan has been subtracted; \
-         mean of bias levels subtracted was 1442.79.
-BLEVCORR COMPLETE
-         Uncertainty array initialized, readnoise=6.24, gain=1
-
-BIASCORR PERFORM
-BIASFILE oref$05314032o_bia.fits
-BIASFILE PEDIGREE=INFLIGHT 27/03/2016 04/04/2016
-BIASFILE DESCRIP =Weekly gain=1 bias for STIS CCD data taken after Mar 27 2016-------
-BIASCORR COMPLETE
-
-DARKCORR OMIT
-
-FLATCORR OMIT
-
-SHADCORR OMIT
-
-PHOTCORR OMIT
-Imset 1  End 19:18:31 UTC
-
-Imset 2  Begin 19:18:31 UTC
-Epcfile  od1al2ysj_epc.fits
-Warning  EPCTAB `od1al2ysj_epc.fits&#39; not found.
-
-DQICORR  PERFORM
-DQICORR  COMPLETE
-
-ATODCORR OMIT
-
-BLEVCORR PERFORM
-         Bias level from overscan has been subtracted; \
-         mean of bias levels subtracted was 1444.06.
-BLEVCORR COMPLETE
-         Uncertainty array initialized, readnoise=6.24, gain=1
-
-BIASCORR PERFORM
-BIASCORR COMPLETE
-
-DARKCORR OMIT
-
-FLATCORR OMIT
-
-SHADCORR OMIT
-Imset 2  End 19:18:31 UTC
-
-End      22-Oct-2025 19:18:31 UTC
-
-*** CALSTIS-1 complete ***
-
-*** CALSTIS-2 -- Version 3.4.2 (19-Jan-2018) ***
-Begin    22-Oct-2025 19:18:31 UTC
-Input    stis_ex/stis_shifted/od1al2040_blv_tmp.fits
-Output   stis_ex/stis_shifted/od1al2040_crj_tmp.fits
-
-CRCORR   PERFORM
-Total number of input image sets = 2
-CRREJTAB oref$j3m1403io_crr.fits
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRCORR   COMPLETE
-
-End      22-Oct-2025 19:18:31 UTC
-
-*** CALSTIS-2 complete ***
-
-*** CALSTIS-1 -- Version 3.4.2 (19-Jan-2018) ***
-Begin    22-Oct-2025 19:18:31 UTC
-Input    stis_ex/stis_shifted/od1al2040_crj_tmp.fits
-Output   stis_ex/stis_shifted/od1al2040_crj.fits
-ERROR    Output file `stis_ex/stis_shifted/od1al2040_crj.fits&#39; already exists.
-calstis0 failed.
-</pre></div>
-</div>
-</div>
 </div>
 <p>Now <code class="docutils literal notranslate"><span class="pre">od1am10e0_sx1.fits</span></code>:</p>
 <div class="cell docutils container">
@@ -3244,119 +2479,6 @@ calstis0 failed.
     <span class="n">shift_stis</span><span class="p">(</span><span class="n">ref_file</span><span class="p">,</span> <span class="n">e1_pos</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">width</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">run_calstis</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">except</span> <span class="ne">RuntimeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;An error occured&#39;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dispersion per pixel is 2.75 Å/pixel
-The shift, in pixels, is 0.57 pixels
-The shift, in Å, is 1.56Å
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*** CALSTIS-0 -- Version 3.4.2 (19-Jan-2018) ***
-Begin    22-Oct-2025 19:18:31 UTC
-
-Input    stis_ex/stis_data/od1am10e0_raw.fits
-Outroot  stis_ex/stis_shifted/od1am10e0_raw.fits
-
-*** CALSTIS-1 -- Version 3.4.2 (19-Jan-2018) ***
-Begin    22-Oct-2025 19:18:31 UTC
-Input    stis_ex/stis_data/od1am10e0_raw.fits
-Output   stis_ex/stis_shifted/od1am10e0_blv_tmp.fits
-OBSMODE  ACCUM
-APERTURE 52X2
-OPT_ELEM G430L
-DETECTOR CCD
-
-Imset 1  Begin 19:18:31 UTC
-Epcfile  od1am1hnj_epc.fits
-Warning  EPCTAB `od1am1hnj_epc.fits&#39; not found.
-
-CCDTAB   oref$16j1600do_ccd.fits
-CCDTAB   PEDIGREE=INFLIGHT 01/05/2009 01/05/2009
-CCDTAB   DESCRIP =Updated amp=D gain=4 atodgain and corresponding readnoise values---
-CCDTAB   DESCRIP =Proposal 8057, by I. Dashevsky &amp; P. Goudfrooij
-
-DQICORR  PERFORM
-DQITAB   oref$h1v11475o_bpx.fits
-DQITAB   PEDIGREE=GROUND
-DQITAB   DESCRIP =Prel. Ground Calib
-DQICORR  COMPLETE
-
-ATODCORR OMIT
-
-BLEVCORR PERFORM
-         Bias level from overscan has been subtracted; \
-         mean of bias levels subtracted was 1434.75.
-BLEVCORR COMPLETE
-         Uncertainty array initialized, readnoise=6.24, gain=1
-
-BIASCORR PERFORM
-BIASFILE oref$0531402qo_bia.fits
-BIASFILE PEDIGREE=INFLIGHT 22/02/2016 01/03/2016
-BIASFILE DESCRIP =Weekly gain=1 bias for STIS CCD data taken after Feb 22 2016-------
-BIASCORR COMPLETE
-
-DARKCORR OMIT
-
-FLATCORR OMIT
-
-SHADCORR OMIT
-
-PHOTCORR OMIT
-Imset 1  End 19:18:31 UTC
-
-Imset 2  Begin 19:18:31 UTC
-Epcfile  od1am1hoj_epc.fits
-Warning  EPCTAB `od1am1hoj_epc.fits&#39; not found.
-
-DQICORR  PERFORM
-DQICORR  COMPLETE
-
-ATODCORR OMIT
-
-BLEVCORR PERFORM
-         Bias level from overscan has been subtracted; \
-         mean of bias levels subtracted was 1434.94.
-BLEVCORR COMPLETE
-         Uncertainty array initialized, readnoise=6.24, gain=1
-
-BIASCORR PERFORM
-BIASCORR COMPLETE
-
-DARKCORR OMIT
-
-FLATCORR OMIT
-
-SHADCORR OMIT
-Imset 2  End 19:18:31 UTC
-
-End      22-Oct-2025 19:18:31 UTC
-
-*** CALSTIS-1 complete ***
-
-*** CALSTIS-2 -- Version 3.4.2 (19-Jan-2018) ***
-Begin    22-Oct-2025 19:18:31 UTC
-Input    stis_ex/stis_shifted/od1am10e0_blv_tmp.fits
-Output   stis_ex/stis_shifted/od1am10e0_crj_tmp.fits
-
-CRCORR   PERFORM
-Total number of input image sets = 2
-CRREJTAB oref$j3m1403io_crr.fits
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRCORR   COMPLETE
-
-End      22-Oct-2025 19:18:31 UTC
-
-*** CALSTIS-2 complete ***
-
-*** CALSTIS-1 -- Version 3.4.2 (19-Jan-2018) ***
-Begin    22-Oct-2025 19:18:31 UTC
-Input    stis_ex/stis_shifted/od1am10e0_crj_tmp.fits
-Output   stis_ex/stis_shifted/od1am10e0_crj.fits
-ERROR    Output file `stis_ex/stis_shifted/od1am10e0_crj.fits&#39; already exists.
-calstis0 failed.
 </pre></div>
 </div>
 </div>
@@ -3372,119 +2494,6 @@ calstis0 failed.
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dispersion per pixel is 2.75 Å/pixel
-The shift, in pixels, is 0.76 pixels
-The shift, in Å, is 2.1Å
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*** CALSTIS-0 -- Version 3.4.2 (19-Jan-2018) ***
-Begin    22-Oct-2025 19:18:31 UTC
-
-Input    stis_ex/stis_data/od1al4040_raw.fits
-Outroot  stis_ex/stis_shifted/od1al4040_raw.fits
-
-*** CALSTIS-1 -- Version 3.4.2 (19-Jan-2018) ***
-Begin    22-Oct-2025 19:18:31 UTC
-Input    stis_ex/stis_data/od1al4040_raw.fits
-Output   stis_ex/stis_shifted/od1al4040_blv_tmp.fits
-OBSMODE  ACCUM
-APERTURE 52X2
-OPT_ELEM G430L
-DETECTOR CCD
-
-Imset 1  Begin 19:18:31 UTC
-Epcfile  od1al4axj_epc.fits
-Warning  EPCTAB `od1al4axj_epc.fits&#39; not found.
-
-CCDTAB   oref$16j1600do_ccd.fits
-CCDTAB   PEDIGREE=INFLIGHT 01/05/2009 01/05/2009
-CCDTAB   DESCRIP =Updated amp=D gain=4 atodgain and corresponding readnoise values---
-CCDTAB   DESCRIP =Proposal 8057, by I. Dashevsky &amp; P. Goudfrooij
-
-DQICORR  PERFORM
-DQITAB   oref$h1v11475o_bpx.fits
-DQITAB   PEDIGREE=GROUND
-DQITAB   DESCRIP =Prel. Ground Calib
-DQICORR  COMPLETE
-
-ATODCORR OMIT
-
-BLEVCORR PERFORM
-         Bias level from overscan has been subtracted; \
-         mean of bias levels subtracted was 1451.76.
-BLEVCORR COMPLETE
-         Uncertainty array initialized, readnoise=6.24, gain=1
-
-BIASCORR PERFORM
-BIASFILE oref$09k14502o_bia.fits
-BIASFILE PEDIGREE=INFLIGHT 18/08/2016 25/08/2016
-BIASFILE DESCRIP =Weekly gain=1 bias for STIS CCD data taken after Aug 18 2016-------
-BIASCORR COMPLETE
-
-DARKCORR OMIT
-
-FLATCORR OMIT
-
-SHADCORR OMIT
-
-PHOTCORR OMIT
-Imset 1  End 19:18:31 UTC
-
-Imset 2  Begin 19:18:31 UTC
-Epcfile  od1al4ayj_epc.fits
-Warning  EPCTAB `od1al4ayj_epc.fits&#39; not found.
-
-DQICORR  PERFORM
-DQICORR  COMPLETE
-
-ATODCORR OMIT
-
-BLEVCORR PERFORM
-         Bias level from overscan has been subtracted; \
-         mean of bias levels subtracted was 1454.25.
-BLEVCORR COMPLETE
-         Uncertainty array initialized, readnoise=6.24, gain=1
-
-BIASCORR PERFORM
-BIASCORR COMPLETE
-
-DARKCORR OMIT
-
-FLATCORR OMIT
-
-SHADCORR OMIT
-Imset 2  End 19:18:31 UTC
-
-End      22-Oct-2025 19:18:31 UTC
-
-*** CALSTIS-1 complete ***
-
-*** CALSTIS-2 -- Version 3.4.2 (19-Jan-2018) ***
-Begin    22-Oct-2025 19:18:31 UTC
-Input    stis_ex/stis_shifted/od1al4040_blv_tmp.fits
-Output   stis_ex/stis_shifted/od1al4040_crj_tmp.fits
-
-CRCORR   PERFORM
-Total number of input image sets = 2
-CRREJTAB oref$j3m1403io_crr.fits
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRCORR   COMPLETE
-
-End      22-Oct-2025 19:18:31 UTC
-
-*** CALSTIS-2 complete ***
-
-*** CALSTIS-1 -- Version 3.4.2 (19-Jan-2018) ***
-Begin    22-Oct-2025 19:18:31 UTC
-Input    stis_ex/stis_shifted/od1al4040_crj_tmp.fits
-Output   stis_ex/stis_shifted/od1al4040_crj.fits
-ERROR    Output file `stis_ex/stis_shifted/od1al4040_crj.fits&#39; already exists.
-calstis0 failed.
-</pre></div>
-</div>
-</div>
 </div>
 <p>A file taken in the nominal position, <code class="docutils literal notranslate"><span class="pre">od1am10b0</span></code> is also shifted, so we will fix that too:</p>
 <div class="cell docutils container">
@@ -3496,119 +2505,6 @@ calstis0 failed.
     <span class="n">shift_stis</span><span class="p">(</span><span class="n">ref_file</span><span class="p">,</span> <span class="n">filepath</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">run_calstis</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">except</span> <span class="ne">RuntimeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;An error occured&#39;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dispersion per pixel is 2.75 Å/pixel
-The shift, in pixels, is -0.49 pixels
-The shift, in Å, is -1.35Å
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*** CALSTIS-0 -- Version 3.4.2 (19-Jan-2018) ***
-Begin    22-Oct-2025 19:18:31 UTC
-
-Input    stis_ex/stis_data/od1am10b0_raw.fits
-Outroot  stis_ex/stis_shifted/od1am10b0_raw.fits
-
-*** CALSTIS-1 -- Version 3.4.2 (19-Jan-2018) ***
-Begin    22-Oct-2025 19:18:31 UTC
-Input    stis_ex/stis_data/od1am10b0_raw.fits
-Output   stis_ex/stis_shifted/od1am10b0_blv_tmp.fits
-OBSMODE  ACCUM
-APERTURE 52X2
-OPT_ELEM G430L
-DETECTOR CCD
-
-Imset 1  Begin 19:18:31 UTC
-Epcfile  od1am1hgj_epc.fits
-Warning  EPCTAB `od1am1hgj_epc.fits&#39; not found.
-
-CCDTAB   oref$16j1600do_ccd.fits
-CCDTAB   PEDIGREE=INFLIGHT 01/05/2009 01/05/2009
-CCDTAB   DESCRIP =Updated amp=D gain=4 atodgain and corresponding readnoise values---
-CCDTAB   DESCRIP =Proposal 8057, by I. Dashevsky &amp; P. Goudfrooij
-
-DQICORR  PERFORM
-DQITAB   oref$h1v11475o_bpx.fits
-DQITAB   PEDIGREE=GROUND
-DQITAB   DESCRIP =Prel. Ground Calib
-DQICORR  COMPLETE
-
-ATODCORR OMIT
-
-BLEVCORR PERFORM
-         Bias level from overscan has been subtracted; \
-         mean of bias levels subtracted was 1434.32.
-BLEVCORR COMPLETE
-         Uncertainty array initialized, readnoise=6.24, gain=1
-
-BIASCORR PERFORM
-BIASFILE oref$0531402qo_bia.fits
-BIASFILE PEDIGREE=INFLIGHT 22/02/2016 01/03/2016
-BIASFILE DESCRIP =Weekly gain=1 bias for STIS CCD data taken after Feb 22 2016-------
-BIASCORR COMPLETE
-
-DARKCORR OMIT
-
-FLATCORR OMIT
-
-SHADCORR OMIT
-
-PHOTCORR OMIT
-Imset 1  End 19:18:31 UTC
-
-Imset 2  Begin 19:18:31 UTC
-Epcfile  od1am1hhj_epc.fits
-Warning  EPCTAB `od1am1hhj_epc.fits&#39; not found.
-
-DQICORR  PERFORM
-DQICORR  COMPLETE
-
-ATODCORR OMIT
-
-BLEVCORR PERFORM
-         Bias level from overscan has been subtracted; \
-         mean of bias levels subtracted was 1435.35.
-BLEVCORR COMPLETE
-         Uncertainty array initialized, readnoise=6.24, gain=1
-
-BIASCORR PERFORM
-BIASCORR COMPLETE
-
-DARKCORR OMIT
-
-FLATCORR OMIT
-
-SHADCORR OMIT
-Imset 2  End 19:18:31 UTC
-
-End      22-Oct-2025 19:18:31 UTC
-
-*** CALSTIS-1 complete ***
-
-*** CALSTIS-2 -- Version 3.4.2 (19-Jan-2018) ***
-Begin    22-Oct-2025 19:18:31 UTC
-Input    stis_ex/stis_shifted/od1am10b0_blv_tmp.fits
-Output   stis_ex/stis_shifted/od1am10b0_crj_tmp.fits
-
-CRCORR   PERFORM
-Total number of input image sets = 2
-CRREJTAB oref$j3m1403io_crr.fits
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRCORR   COMPLETE
-
-End      22-Oct-2025 19:18:31 UTC
-
-*** CALSTIS-2 complete ***
-
-*** CALSTIS-1 -- Version 3.4.2 (19-Jan-2018) ***
-Begin    22-Oct-2025 19:18:31 UTC
-Input    stis_ex/stis_shifted/od1am10b0_crj_tmp.fits
-Output   stis_ex/stis_shifted/od1am10b0_crj.fits
-ERROR    Output file `stis_ex/stis_shifted/od1am10b0_crj.fits&#39; already exists.
-calstis0 failed.
 </pre></div>
 </div>
 </div>
@@ -3636,91 +2532,6 @@ calstis0 failed.
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>swrapper<span class="w"> </span>-i<span class="w"> </span>./stis_ex/stis_shifted<span class="w"> </span>-o<span class="w"> </span>./stis_ex/stis_shifted/coadd
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HASP version 1.2.5
-Ullyses version 4.1.0
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Creating list of unique modes from these files:
-./stis_ex/stis_shifted/od1al1030_sx1.fits AGK+81D266 STIS CCD G430L 52X2 0 14423 (14423, &#39;l1&#39;)
-./stis_ex/stis_shifted/od1al2030_sx1.fits AGK+81D266 STIS CCD G430L 52X2 0 14423 (14423, &#39;l2&#39;)
-./stis_ex/stis_shifted/od1al2040_sx1.fits AGK+81D266 STIS CCD G430L 52X2E1 0 14423 (14423, &#39;l2&#39;)
-./stis_ex/stis_shifted/od1al4030_sx1.fits AGK+81D266 STIS CCD G430L 52X2 0 14423 (14423, &#39;l4&#39;)
-./stis_ex/stis_shifted/od1al4040_sx1.fits AGK+81D266 STIS CCD G430L 52X2E1 0 14423 (14423, &#39;l4&#39;)
-./stis_ex/stis_shifted/od1am10b0_sx1.fits AGK+81D266 STIS CCD G430L 52X2 0 14423 (14423, &#39;m1&#39;)
-./stis_ex/stis_shifted/od1am10e0_sx1.fits AGK+81D266 STIS CCD G430L 52X2E1 0 14423 (14423, &#39;m1&#39;)
-Looping over visits
-Processing product (14423, &#39;l1&#39;)
-Targets in visit (14423, &#39;l1&#39;): [&#39;AGK+81D266&#39;]
-Processing target AGK+81D266 in visit (14423, &#39;l1&#39;)
-Processing grating STIS/G430L
-Importing files [&#39;./stis_ex/stis_shifted/od1al1030_sx1.fits&#39;]
-Processing file ./stis_ex/stis_shifted/od1al1030_sx1.fits
-Using a maximum SNR of 20.0 in flux-based filtering
-./stis_ex/stis_shifted/coadd/hst_14423_stis_agkp81d266_g430l_od1al1_cspec.fits already exists and overwrite=False, skipping write
-   Wrote ./stis_ex/stis_shifted/coadd/hst_14423_stis_agkp81d266_g430l_od1al1_cspec.fits
-Only 1 grating to abut, skipping abutment
-Processing product (14423, &#39;l2&#39;)
-Targets in visit (14423, &#39;l2&#39;): [&#39;AGK+81D266&#39;]
-Processing target AGK+81D266 in visit (14423, &#39;l2&#39;)
-Processing grating STIS/G430L
-Importing files [&#39;./stis_ex/stis_shifted/od1al2030_sx1.fits&#39;, &#39;./stis_ex/stis_shifted/od1al2040_sx1.fits&#39;]
-Processing file ./stis_ex/stis_shifted/od1al2030_sx1.fits
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing file ./stis_ex/stis_shifted/od1al2040_sx1.fits
-Using a maximum SNR of 20.0 in flux-based filtering
-./stis_ex/stis_shifted/coadd/hst_14423_stis_agkp81d266_g430l_od1al2_cspec.fits already exists and overwrite=False, skipping write
-   Wrote ./stis_ex/stis_shifted/coadd/hst_14423_stis_agkp81d266_g430l_od1al2_cspec.fits
-Only 1 grating to abut, skipping abutment
-Processing product (14423, &#39;l4&#39;)
-Targets in visit (14423, &#39;l4&#39;): [&#39;AGK+81D266&#39;]
-Processing target AGK+81D266 in visit (14423, &#39;l4&#39;)
-Processing grating STIS/G430L
-Importing files [&#39;./stis_ex/stis_shifted/od1al4030_sx1.fits&#39;, &#39;./stis_ex/stis_shifted/od1al4040_sx1.fits&#39;]
-Processing file ./stis_ex/stis_shifted/od1al4030_sx1.fits
-Processing file ./stis_ex/stis_shifted/od1al4040_sx1.fits
-Using a maximum SNR of 20.0 in flux-based filtering
-./stis_ex/stis_shifted/coadd/hst_14423_stis_agkp81d266_g430l_od1al4_cspec.fits already exists and overwrite=False, skipping write
-   Wrote ./stis_ex/stis_shifted/coadd/hst_14423_stis_agkp81d266_g430l_od1al4_cspec.fits
-Only 1 grating to abut, skipping abutment
-Processing product (14423, &#39;m1&#39;)
-Targets in visit (14423, &#39;m1&#39;): [&#39;AGK+81D266&#39;]
-Processing target AGK+81D266 in visit (14423, &#39;m1&#39;)
-Processing grating STIS/G430L
-Importing files [&#39;./stis_ex/stis_shifted/od1am10b0_sx1.fits&#39;, &#39;./stis_ex/stis_shifted/od1am10e0_sx1.fits&#39;]
-Processing file ./stis_ex/stis_shifted/od1am10b0_sx1.fits
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing file ./stis_ex/stis_shifted/od1am10e0_sx1.fits
-Using a maximum SNR of 20.0 in flux-based filtering
-./stis_ex/stis_shifted/coadd/hst_14423_stis_agkp81d266_g430l_od1am1_cspec.fits already exists and overwrite=False, skipping write
-   Wrote ./stis_ex/stis_shifted/coadd/hst_14423_stis_agkp81d266_g430l_od1am1_cspec.fits
-Only 1 grating to abut, skipping abutment
-Looping over proposals
-Processing product 14423
-Targets in proposal 14423: [&#39;AGK+81D266&#39;]
-Processing target AGK+81D266 in proposal 14423
-Processing grating STIS/G430L
-Importing files [&#39;./stis_ex/stis_shifted/od1al1030_sx1.fits&#39;, &#39;./stis_ex/stis_shifted/od1al2030_sx1.fits&#39;, &#39;./stis_ex/stis_shifted/od1al2040_sx1.fits&#39;, &#39;./stis_ex/stis_shifted/od1al4030_sx1.fits&#39;, &#39;./stis_ex/stis_shifted/od1al4040_sx1.fits&#39;, &#39;./stis_ex/stis_shifted/od1am10b0_sx1.fits&#39;, &#39;./stis_ex/stis_shifted/od1am10e0_sx1.fits&#39;]
-Processing file ./stis_ex/stis_shifted/od1al1030_sx1.fits
-Processing file ./stis_ex/stis_shifted/od1al2030_sx1.fits
-Processing file ./stis_ex/stis_shifted/od1al2040_sx1.fits
-Processing file ./stis_ex/stis_shifted/od1al4030_sx1.fits
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing file ./stis_ex/stis_shifted/od1al4040_sx1.fits
-Processing file ./stis_ex/stis_shifted/od1am10b0_sx1.fits
-Processing file ./stis_ex/stis_shifted/od1am10e0_sx1.fits
-Using a maximum SNR of 20.0 in flux-based filtering
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>./stis_ex/stis_shifted/coadd/hst_14423_stis_agkp81d266_g430l_od1a_cspec.fits already exists and overwrite=False, skipping write
-   Wrote ./stis_ex/stis_shifted/coadd/hst_14423_stis_agkp81d266_g430l_od1a_cspec.fits
-Only 1 grating to abut, skipping abutment
 </pre></div>
 </div>
 </div>
@@ -3814,9 +2625,6 @@ Only 1 grating to abut, skipping abutment
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;File not found: You need to run previous cells to generate the data.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../../_images/ece3f1b31665c95124f4c249d3ce020ebe56ee36f3cb5d4aecc6b39831f2cc7f.png" src="../../../_images/ece3f1b31665c95124f4c249d3ce020ebe56ee36f3cb5d4aecc6b39831f2cc7f.png" />
 </div>
 </div>
 <p>We can see the offsets between the datasets taken at the nominal position and the <code class="docutils literal notranslate"><span class="pre">E1</span></code> position are reduced after we’ve applied our shifts and run <code class="docutils literal notranslate"><span class="pre">CalSTIS</span></code>. While we did a very rough estimate of the shift, users will want to verify that they have the correct wavelength solution through their own methods (e.g. checking expected wavelengths to observed wavelengths, comparing radial velocities, etc.).</p>
