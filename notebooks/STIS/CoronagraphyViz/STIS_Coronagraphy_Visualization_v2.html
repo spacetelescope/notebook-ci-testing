@@ -149,14 +149,8 @@
   
   
   
-    
-    
-      
-    
-    
-    <img src="../../../_static/stsci_logo2.png" class="logo__image only-light" alt="HST Notebooks - Home"/>
-    <script>document.write(`<img src="../../../_static/stsci_logo2.png" class="logo__image only-dark" alt="HST Notebooks - Home"/>`);</script>
   
+    <p class="title logo__title">HST Notebooks</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -182,7 +176,7 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">ACS</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../ACS/README.html">ACS Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ACS/README.html">ACS Notebooks - TEST 1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ACS/acs_findsat_mrt/acs_findsat_mrt_example.html">Satellite trail detection in ACS/WFC data using acstools.findsat_mrt</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ACS/acs_saturation_trails/acs_saturation_trails.html">ACS Linearity with Saturated Stars</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ACS/acs_cte_forward_model/acs_cte_forward_model_example.html">Pixel-based ACS/WFC CTE Forward Model</a></li>
@@ -259,7 +253,6 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">DrizzlePac</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/README.html">DrizzlePac Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/using_updated_astrometry_solutions/using_updated_astrometry_solutions.html">Improving Astrometry Using Alternate WCS Solutions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/align_to_catalogs/align_to_catalogs.html">Aligning HST images to an Absolute Reference Catalog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/align_sparse_fields/align_sparse_fields.html">Aligning Deep Exposures of Sparse Fields</a></li>
@@ -612,13 +605,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div style='background-color: #fff3cd; border: 1px solid #ffeaa7; border-radius: 4px; padding: 15px; margin: 10px 0; border-left: 4px solid #f39c12;'>
-<h3 style='color: #856404; margin-top: 0;'>⚠️ EXECUTION WARNING</h3>
-<p style='color: #856404; margin-bottom: 0;'><strong>This notebook may not execute properly in the current environment.</strong></p>
-<p style='color: #856404; margin-bottom: 0;'>Some cells may have failed during automated testing. Please review the notebook content and test manually before use.</p>
-<p style='color: #856404; margin-bottom: 0; font-size: 0.9em;'><em>Generated during CI/CD pipeline - some outputs may be incomplete or missing.</em></p>
-</div>
-<p><a id=header></a></p>
+  <p><a id=header></a></p>
 <section class="tex2jax_ignore mathjax_ignore" id="stis-coronagraphy-visualization-tool-v2">
 <h1>STIS Coronagraphy Visualization Tool (v2)<a class="headerlink" href="#stis-coronagraphy-visualization-tool-v2" title="Link to this heading">#</a></h1>
 <p>Developed by K. Ward-Duong (kwduong&#64;stsci.edu), last revision 2023-08-29</p>
@@ -637,7 +624,7 @@ document.write(`
 </ul>
 <p>Considerations for these decisions include avoiding the locations of the central star’s diffraction spikes relative to any scientific feature(s) of interest, and verifying the true north angle of the CCD detector to understand where a given companion or disk feature might be located.</p>
 <p>To this end, the functions and examples in this notebook are meant to be an illustrative guide to visualizing possible aperture+companion+orientation configurations.</p>
-<img alt="Positions of STIS supported coronagraphic apertures, including the two WEDGEs and two BARs." src="../../../_images/c12_special12.1.png" />
+<img alt="Positions of STIS supported coronagraphic apertures, including the two WEDGEs and two BARs." src="notebooks/STIS/CoronagraphyViz/c12_special12.1.png" />
 <p><span style="font-size: larger; font-weight:bold">Positions of STIS supported coronagraphic apertures, including the two WEDGEs and two BARs. Note that the full STIS field of view is 50” x 50”.</span></p>
 </section>
 <section id="imports">
@@ -965,6 +952,9 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/c697470e458c5d53c46b8f307307e6cbff24a1d9655042cdc0855a176dc5f76f.png" src="../../../_images/c697470e458c5d53c46b8f307307e6cbff24a1d9655042cdc0855a176dc5f76f.png" />
+</div>
 </div>
 </section>
 </section>
@@ -979,6 +969,9 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">show_orients</span><span class="p">(</span><span class="n">orients</span><span class="o">=</span><span class="mi">33</span><span class="p">,</span> <span class="n">aperture</span><span class="o">=</span><span class="s1">&#39;BAR10&#39;</span><span class="p">,</span> <span class="n">fov</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">feature</span><span class="o">=</span><span class="s1">&#39;companion&#39;</span><span class="p">,</span> <span class="n">featurepa</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">featuresep</span><span class="o">=</span><span class="mf">1.75</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/cf9b5b8c9227fe168907a038287a01a26acb30652bb7dd94e872609670fc9862.png" src="../../../_images/cf9b5b8c9227fe168907a038287a01a26acb30652bb7dd94e872609670fc9862.png" />
 </div>
 </div>
 </section>
@@ -998,6 +991,9 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">show_orients</span><span class="p">(</span><span class="n">orients</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">aperture</span><span class="o">=</span><span class="s1">&#39;WEDGEA1.0&#39;</span><span class="p">,</span> <span class="n">fov</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">feature</span><span class="o">=</span><span class="s1">&#39;disk&#39;</span><span class="p">,</span> <span class="n">featurepa</span><span class="o">=</span><span class="mi">275</span><span class="p">,</span> <span class="n">disk_width</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">disk_height</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/387b3bb00207422231f2075c94635373369c960cd5b8407b5dcaedd419cb1ba3.png" src="../../../_images/387b3bb00207422231f2075c94635373369c960cd5b8407b5dcaedd419cb1ba3.png" />
 </div>
 </div>
 <hr>

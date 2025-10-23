@@ -149,14 +149,8 @@
   
   
   
-    
-    
-      
-    
-    
-    <img src="../../../_static/stsci_logo2.png" class="logo__image only-light" alt="HST Notebooks - Home"/>
-    <script>document.write(`<img src="../../../_static/stsci_logo2.png" class="logo__image only-dark" alt="HST Notebooks - Home"/>`);</script>
   
+    <p class="title logo__title">HST Notebooks</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -182,7 +176,7 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">ACS</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../README.html">ACS Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README.html">ACS Notebooks - TEST 1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../acs_findsat_mrt/acs_findsat_mrt_example.html">Satellite trail detection in ACS/WFC data using acstools.findsat_mrt</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../acs_saturation_trails/acs_saturation_trails.html">ACS Linearity with Saturated Stars</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../acs_cte_forward_model/acs_cte_forward_model_example.html">Pixel-based ACS/WFC CTE Forward Model</a></li>
@@ -259,7 +253,6 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">DrizzlePac</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/README.html">DrizzlePac Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/using_updated_astrometry_solutions/using_updated_astrometry_solutions.html">Improving Astrometry Using Alternate WCS Solutions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/align_to_catalogs/align_to_catalogs.html">Aligning HST images to an Absolute Reference Catalog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/align_sparse_fields/align_sparse_fields.html">Aligning Deep Exposures of Sparse Fields</a></li>
@@ -613,13 +606,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div style='background-color: #fff3cd; border: 1px solid #ffeaa7; border-radius: 4px; padding: 15px; margin: 10px 0; border-left: 4px solid #f39c12;'>
-<h3 style='color: #856404; margin-top: 0;'>⚠️ EXECUTION WARNING</h3>
-<p style='color: #856404; margin-bottom: 0;'><strong>This notebook may not execute properly in the current environment.</strong></p>
-<p style='color: #856404; margin-bottom: 0;'>Some cells may have failed during automated testing. Please review the notebook content and test manually before use.</p>
-<p style='color: #856404; margin-bottom: 0; font-size: 0.9em;'><em>Generated during CI/CD pipeline - some outputs may be incomplete or missing.</em></p>
-</div>
-<p><a id="titlePolarization"></a></p>
+  <p><a id="titlePolarization"></a></p>
 <section class="tex2jax_ignore mathjax_ignore" id="using-acs-polarization-tools">
 <h1>Using ACS Polarization Tools<a class="headerlink" href="#using-acs-polarization-tools" title="Link to this heading">#</a></h1>
 <section id="introduction">
@@ -674,6 +661,22 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: matplotlib not found, plotting is disabled [acstools.satdet]
+WARNING:astropy:matplotlib not found, plotting is disabled
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/micromamba/envs/ci-env/lib/python3.11/site-packages/acstools/utils_findsat_mrt.py:24: UserWarning: skimage not installed. MRT calculation will not work: ModuleNotFoundError(&quot;No module named &#39;skimage&#39;&quot;)
+  warnings.warn(f&#39;skimage not installed. MRT calculation will not work: {repr(e)}&#39;)  # noqa
+/home/runner/micromamba/envs/ci-env/lib/python3.11/site-packages/acstools/utils_findsat_mrt.py:30: UserWarning: scipy not installed. Kernel generation will not work
+  warnings.warn(&#39;scipy not installed. Kernel generation will not work&#39;)
+/home/runner/micromamba/envs/ci-env/lib/python3.11/site-packages/acstools/utils_findsat_mrt.py:37: UserWarning: matplotlib not found, plotting is disabled
+  warnings.warn(&#39;matplotlib not found, plotting is disabled&#39;)
+/home/runner/micromamba/envs/ci-env/lib/python3.11/site-packages/acstools/findsat_mrt.py:117: UserWarning: matplotlib not found, plotting is disabled
+  warnings.warn(&#39;matplotlib not found, plotting is disabled&#39;)
+</pre></div>
+</div>
+</div>
 </div>
 <section id="id1">
 <h3>Retrieve Polarization Calibration Coefficients<a id="_coeffs"></a><a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
@@ -687,6 +690,15 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><i>Table length=3</i>
+<table id="table140653004175888" class="table-striped table-bordered table-condensed">
+<thead><tr><th>filter</th><th>pol0</th><th>pol60</th><th>pol120</th></tr></thead>
+<thead><tr><th>str5</th><th>float64</th><th>float64</th><th>float64</th></tr></thead>
+<tr><td>F475W</td><td>1.4303</td><td>1.4717</td><td>1.4269</td></tr>
+<tr><td>F606W</td><td>1.3314</td><td>1.3607</td><td>1.3094</td></tr>
+<tr><td>F775W</td><td>0.9965</td><td>1.0255</td><td>1.0071</td></tr>
+</table></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -695,12 +707,26 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><i>Table length=3</i>
+<table id="table140652204559376" class="table-striped table-bordered table-condensed">
+<thead><tr><th>filter</th><th>t_para</th><th>t_perp</th><th>correction</th></tr></thead>
+<thead><tr><th>str5</th><th>float64</th><th>float64</th><th>float64</th></tr></thead>
+<tr><td>F475W</td><td>0.4239276798513098</td><td>0.00015240583841551956</td><td>1.000719276691027</td></tr>
+<tr><td>F606W</td><td>0.5156734594049419</td><td>5.5908749369641956e-05</td><td>1.000216861312415</td></tr>
+<tr><td>F775W</td><td>0.6040891283746557</td><td>0.07367364117759412</td><td>1.2777959654493372</td></tr>
+</table></div></div></div>
 </div>
 <p>In addition, the tables contain metadata that describe their derivation:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># print the ACS/WFC cross-polarization leak correction metadata</span>
 <span class="n">polarizer_tables</span><span class="o">.</span><span class="n">wfc_transmission</span><span class="o">.</span><span class="n">meta</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;description&#39;: &#39;WFC filters use MJD corresponding to 2020-01-01. HRC filters use MJD corresponding to 2007-01-01.&#39;}
 </pre></div>
 </div>
 </div>
@@ -728,12 +754,23 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Stokes I = 169652.47890399996, Stokes Q = -8276.254216000001, Stokes U = -4644.582265627395
+Fractional polarization = 5.60%, Position Angle = 180.8631543698736 deg
+</pre></div>
+</div>
+</div>
 </div>
 <p>Notice that we did not provide any of the calibration coefficients from the Data Handbook or from the <a class="reference internal" href="#_coeffs"><span class="xref myst">Retrieve Polarization Calibration Coefficients</span></a> section. This is because the <code class="docutils literal notranslate"><span class="pre">Polarization</span></code> class retrieves the values using the spectral filter and detector information. These calibration values may be overwritten manually by setting the appropriate attributes:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># print the efficiency coefficients cross-polarization leak term used</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;c0 = </span><span class="si">{</span><span class="n">pol_data</span><span class="o">.</span><span class="n">c0</span><span class="si">}</span><span class="s1">, c60 = </span><span class="si">{</span><span class="n">pol_data</span><span class="o">.</span><span class="n">c60</span><span class="si">}</span><span class="s1">, c120 = </span><span class="si">{</span><span class="n">pol_data</span><span class="o">.</span><span class="n">c120</span><span class="si">}</span><span class="s1">, cross-leak = </span><span class="si">{</span><span class="n">pol_data</span><span class="o">.</span><span class="n">transmission_correction</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c0 = 1.3314, c60 = 1.3607, c120 = 1.3094, cross-leak = 1.000216861312415
 </pre></div>
 </div>
 </div>

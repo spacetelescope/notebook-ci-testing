@@ -151,14 +151,8 @@
   
   
   
-    
-    
-      
-    
-    
-    <img src="../../../_static/stsci_logo2.png" class="logo__image only-light" alt="HST Notebooks - Home"/>
-    <script>document.write(`<img src="../../../_static/stsci_logo2.png" class="logo__image only-dark" alt="HST Notebooks - Home"/>`);</script>
   
+    <p class="title logo__title">HST Notebooks</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -184,7 +178,7 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">ACS</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../ACS/README.html">ACS Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ACS/README.html">ACS Notebooks - TEST 1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ACS/acs_findsat_mrt/acs_findsat_mrt_example.html">Satellite trail detection in ACS/WFC data using acstools.findsat_mrt</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ACS/acs_saturation_trails/acs_saturation_trails.html">ACS Linearity with Saturated Stars</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ACS/acs_cte_forward_model/acs_cte_forward_model_example.html">Pixel-based ACS/WFC CTE Forward Model</a></li>
@@ -261,7 +255,6 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">DrizzlePac</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/README.html">DrizzlePac Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/using_updated_astrometry_solutions/using_updated_astrometry_solutions.html">Improving Astrometry Using Alternate WCS Solutions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/align_to_catalogs/align_to_catalogs.html">Aligning HST images to an Absolute Reference Catalog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/align_sparse_fields/align_sparse_fields.html">Aligning Deep Exposures of Sparse Fields</a></li>
@@ -610,13 +603,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div style='background-color: #fff3cd; border: 1px solid #ffeaa7; border-radius: 4px; padding: 15px; margin: 10px 0; border-left: 4px solid #f39c12;'>
-<h3 style='color: #856404; margin-top: 0;'>⚠️ EXECUTION WARNING</h3>
-<p style='color: #856404; margin-bottom: 0;'><strong>This notebook may not execute properly in the current environment.</strong></p>
-<p style='color: #856404; margin-bottom: 0;'>Some cells may have failed during automated testing. Please review the notebook content and test manually before use.</p>
-<p style='color: #856404; margin-bottom: 0; font-size: 0.9em;'><em>Generated during CI/CD pipeline - some outputs may be incomplete or missing.</em></p>
-</div>
-<section class="tex2jax_ignore mathjax_ignore" id="stis-coronagraphic-observation-feasibility">
+  <section class="tex2jax_ignore mathjax_ignore" id="stis-coronagraphic-observation-feasibility">
 <h1>STIS Coronagraphic Observation Feasibility<a class="headerlink" href="#stis-coronagraphic-observation-feasibility" title="Link to this heading">#</a></h1>
 <p>Developed by E. Rickman (erickman&#64;stsci.edu)</p>
 <section id="learning-goals">
@@ -663,7 +650,7 @@ document.write(`
     extract_box_size    : (float, default=3) length of the box of the extraction region, default is a 3x3 box
 <p>The values for <code class="docutils literal notranslate"><span class="pre">tsubexp</span></code>, <code class="docutils literal notranslate"><span class="pre">texp</span></code>, and <code class="docutils literal notranslate"><span class="pre">peakpixel_countrate</span></code> can be taken directly from the <a class="reference external" href="https://etc.stsci.edu/etc/input/stis/imaging/">STIS Exposure Time Calculator</a>, where a user can input their observational set up to obtain the best estimate for the contrast sensitivity calculation. The image below highlights in green the length of the extraction box (default = 3 pixels, corresponding to a box of 3x3 pixels) and where the <code class="docutils literal notranslate"><span class="pre">peakpixel_countrate</span></code> is taken from for a given observational set up, which is a required input parameter.</p>
 <p>The example shown below, for ETC request <a class="reference external" href="https://etc.stsci.edu/etc/results/STIS.im.1939997/">1939997</a>, corresponds to the coronagraphic observing set-up adopted for PID 16991, for the BAR5 occulter, for a V=10.5 mag star. The exposure time for a single frame is <code class="docutils literal notranslate"><span class="pre">tsubexp</span></code> = 440 secs, for a total four frames, giving <code class="docutils literal notranslate"><span class="pre">texp</span></code> = 1760 secs. And the <code class="docutils literal notranslate"><span class="pre">peakpixel_countrate</span></code> in this case is 452,804.530 as highlighted, with the default box extraction size of 3x3 pixels.</p>
-<p><img alt="alt text" src="../../../_images/ETC_example.jpg" /></p>
+<p><img alt="alt text" src="notebooks/STIS/contrast_sensitivity/ETC_example.jpg" /></p>
 <section id="loading-data">
 <h3>Loading Data:<a class="headerlink" href="#loading-data" title="Link to this heading">#</a></h3>
 <p>In order to read in a custom surface brightness profile for a disk, a .txt file must be provided. In column 1 the user provides the projected separation in arcseconds (”) and column 2 is the contrast ratio between the host star and the disk.</p>
@@ -850,6 +837,9 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/a7f54c980612244f5315c25e44e710ffe3b4218dff1021d7aa1587b02dc97801.png" src="../../../_images/a7f54c980612244f5315c25e44e710ffe3b4218dff1021d7aa1587b02dc97801.png" />
+</div>
 </div>
 </section>
 <section id="example-2-a-flat-disk">
@@ -869,6 +859,9 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/8413bda7feac11d3b9bdb9a2126b771008c8fb241e98f4db52d6954458045d46.png" src="../../../_images/8413bda7feac11d3b9bdb9a2126b771008c8fb241e98f4db52d6954458045d46.png" />
+</div>
 </div>
 </section>
 <section id="example-3-a-disk-with-a-surface-brightness-profile">
@@ -887,6 +880,9 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_contrast</span><span class="p">(</span><span class="n">tsubexp</span><span class="o">=</span><span class="mf">440.0</span><span class="p">,</span> <span class="n">texp</span><span class="o">=</span><span class="mf">1760.0</span><span class="p">,</span> <span class="n">peakpixel_countrate</span><span class="o">=</span><span class="mf">452804.530</span><span class="p">,</span> <span class="n">feature</span><span class="o">=</span><span class="s1">&#39;disk&#39;</span><span class="p">,</span> <span class="n">disk_profile</span><span class="o">=</span><span class="s1">&#39;sb_profile&#39;</span><span class="p">,</span> <span class="n">disk_filename</span><span class="o">=</span><span class="s1">&#39;TWHya.txt&#39;</span><span class="p">,</span> <span class="n">target_name</span><span class="o">=</span><span class="s1">&#39;TWHya&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/d141ff01c1e9bfa7c395c432b8b39159ce0066f1230f2bbc8712a8144ec3bb03.png" src="../../../_images/d141ff01c1e9bfa7c395c432b8b39159ce0066f1230f2bbc8712a8144ec3bb03.png" />
 </div>
 </div>
 </section>

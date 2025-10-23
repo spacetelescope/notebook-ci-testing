@@ -149,14 +149,8 @@
   
   
   
-    
-    
-      
-    
-    
-    <img src="../../../_static/stsci_logo2.png" class="logo__image only-light" alt="HST Notebooks - Home"/>
-    <script>document.write(`<img src="../../../_static/stsci_logo2.png" class="logo__image only-dark" alt="HST Notebooks - Home"/>`);</script>
   
+    <p class="title logo__title">HST Notebooks</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -182,7 +176,7 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">ACS</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../ACS/README.html">ACS Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ACS/README.html">ACS Notebooks - TEST 1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ACS/acs_findsat_mrt/acs_findsat_mrt_example.html">Satellite trail detection in ACS/WFC data using acstools.findsat_mrt</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ACS/acs_saturation_trails/acs_saturation_trails.html">ACS Linearity with Saturated Stars</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ACS/acs_cte_forward_model/acs_cte_forward_model_example.html">Pixel-based ACS/WFC CTE Forward Model</a></li>
@@ -259,7 +253,6 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">DrizzlePac</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../README.html">DrizzlePac Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_updated_astrometry_solutions/using_updated_astrometry_solutions.html">Improving Astrometry Using Alternate WCS Solutions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../align_to_catalogs/align_to_catalogs.html">Aligning HST images to an Absolute Reference Catalog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../align_sparse_fields/align_sparse_fields.html">Aligning Deep Exposures of Sparse Fields</a></li>
@@ -620,13 +613,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div style='background-color: #fff3cd; border: 1px solid #ffeaa7; border-radius: 4px; padding: 15px; margin: 10px 0; border-left: 4px solid #f39c12;'>
-<h3 style='color: #856404; margin-top: 0;'>⚠️ EXECUTION WARNING</h3>
-<p style='color: #856404; margin-bottom: 0;'><strong>This notebook may not execute properly in the current environment.</strong></p>
-<p style='color: #856404; margin-bottom: 0;'>Some cells may have failed during automated testing. Please review the notebook content and test manually before use.</p>
-<p style='color: #856404; margin-bottom: 0; font-size: 0.9em;'><em>Generated during CI/CD pipeline - some outputs may be incomplete or missing.</em></p>
-</div>
-<section class="tex2jax_ignore mathjax_ignore" id="satellite-trail-masking-techniques">
+  <section class="tex2jax_ignore mathjax_ignore" id="satellite-trail-masking-techniques">
 <h1>Satellite Trail Masking Techniques<a class="headerlink" href="#satellite-trail-masking-techniques" title="Link to this heading">#</a></h1>
 <div class="alert alert-block alert-warning" style="color:black" > <b> This notebook assumes you have created and activated a virtual environment using the requirements file in this notebook's repository. Please make sure you have read the contents of the README file before continuing the notebook.</b> </div><p><a id="toc"></a></p>
 <section id="table-of-contents">
@@ -776,6 +763,15 @@ MAST queries may be done using <a href="https://astroquery.readthedocs.io/en/lat
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;jc8mb7020_drc.jpg&#39;,
+ &#39;jc8mb7sqq_flc.fits&#39;,
+ &#39;jc8mb7sxq_flc.fits&#39;,
+ &#39;jc8mb7t5q_flc.fits&#39;,
+ &#39;jc8mb7tcq_flc.fits&#39;]
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="download-the-wfc3-data">
@@ -830,6 +826,14 @@ MAST queries may be done using <a href="https://astroquery.readthedocs.io/en/lat
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;id8m11010_drc.jpg&#39;,
+ &#39;id8m11g1q_flc.fits&#39;,
+ &#39;id8m11g2q_flc.fits&#39;,
+ &#39;id8m11g4q_flc.fits&#39;]
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 </section>
@@ -842,6 +846,10 @@ MAST queries may be done using <a href="https://astroquery.readthedocs.io/en/lat
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">obs_id_acs</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;_drc.jpg&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">800</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="../../../_images/1cbdd6302dcc62dccff90f7697419870751fc30875cfb98be33169be80156d14.jpg"><img alt="../../../_images/1cbdd6302dcc62dccff90f7697419870751fc30875cfb98be33169be80156d14.jpg" src="../../../_images/1cbdd6302dcc62dccff90f7697419870751fc30875cfb98be33169be80156d14.jpg" style="width: 800px; height: 800px;" />
+</a>
 </div>
 </div>
 <p>The bright satellite trail that caused this came from the image <em>jc8mb7cq_flc.fits</em>. The figure below shows the top chip which is referred to as SCI,2 (or extension 4).</p>
@@ -866,6 +874,10 @@ MAST queries may be done using <a href="https://astroquery.readthedocs.io/en/lat
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="../../../_images/0d0f59a3ed6219661e37e58e5dab8a0cc02d91e5e6706fa04466fd9ffd094a29.png"><img alt="../../../_images/0d0f59a3ed6219661e37e58e5dab8a0cc02d91e5e6706fa04466fd9ffd094a29.png" src="../../../_images/0d0f59a3ed6219661e37e58e5dab8a0cc02d91e5e6706fa04466fd9ffd094a29.png" style="width: 1336px; height: 717px;" />
+</a>
 </div>
 </div>
 <section id="option-a-using-findsat-mrt">
@@ -894,6 +906,12 @@ MAST queries may be done using <a href="https://astroquery.readthedocs.io/en/lat
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="../../../_images/7543fcfed3c0a3fbb5a7c966bc368906e5f5bb3d83148086b9d5e3c77ddb4d92.png"><img alt="../../../_images/7543fcfed3c0a3fbb5a7c966bc368906e5f5bb3d83148086b9d5e3c77ddb4d92.png" src="../../../_images/7543fcfed3c0a3fbb5a7c966bc368906e5f5bb3d83148086b9d5e3c77ddb4d92.png" style="width: 697px; height: 533px;" />
+</a>
+<a class="reference internal image-reference" href="../../../_images/b416b699536d1a9ad12e26ff2d80fd202d697cd7c3987d700029a995a3ecd7d6.png"><img alt="../../../_images/b416b699536d1a9ad12e26ff2d80fd202d697cd7c3987d700029a995a3ecd7d6.png" src="../../../_images/b416b699536d1a9ad12e26ff2d80fd202d697cd7c3987d700029a995a3ecd7d6.png" style="width: 723px; height: 559px;" />
+</a>
+</div>
 </div>
 <p>We clearly see the mask covering the satellite trail. The call to <code class="docutils literal notranslate"><span class="pre">WfcWrapper</span></code> above works well for most ACS/WFC data, but if you want to adjust the parameters, please see the documentation for <code class="docutils literal notranslate"><span class="pre">acstools.findsat_mrt</span></code>.</p>
 <p>The mask created by <code class="docutils literal notranslate"><span class="pre">WfcWrapper</span></code> casts a pretty wide net around the trail it finds, but there may be situations where you need to broaden it further, especially for very bright satellite trails. The <code class="docutils literal notranslate"><span class="pre">skimage.morphology.dilation</span></code> routine is one way to do this.</p>
@@ -901,6 +919,12 @@ MAST queries may be done using <a href="https://astroquery.readthedocs.io/en/lat
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask_mrt</span> <span class="o">=</span> <span class="n">dilation</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">mask</span><span class="p">,</span> <span class="n">square</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>  <span class="c1"># adjust the box size to whatever you need</span>
 <span class="n">w</span><span class="o">.</span><span class="n">mask</span> <span class="o">=</span> <span class="n">mask_mrt</span>  <span class="c1"># update the mask attribute in the WfcWrapper instance</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:py.warnings:/tmp/ipykernel_3721/2861942194.py:1: FutureWarning: `square` is deprecated since version 0.25 and will be removed in version 0.27. Use `skimage.morphology.footprint_rectangle` instead.
+  mask_mrt = dilation(w.mask, square(10))  # adjust the box size to whatever you need
 </pre></div>
 </div>
 </div>
@@ -921,6 +945,14 @@ MAST queries may be done using <a href="https://astroquery.readthedocs.io/en/lat
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="../../../_images/998ec348300a67827d1bbc5799934ad563f11400992b84aa4b2b152a3a67cfa1.png"><img alt="../../../_images/998ec348300a67827d1bbc5799934ad563f11400992b84aa4b2b152a3a67cfa1.png" src="../../../_images/998ec348300a67827d1bbc5799934ad563f11400992b84aa4b2b152a3a67cfa1.png" style="width: 697px; height: 381px;" />
+</a>
+<a class="reference internal image-reference" href="../../../_images/1575a828292656b066ce57b0ddc0b44228d8f99907987bd742ba8c37d425a69f.png"><img alt="../../../_images/1575a828292656b066ce57b0ddc0b44228d8f99907987bd742ba8c37d425a69f.png" src="../../../_images/1575a828292656b066ce57b0ddc0b44228d8f99907987bd742ba8c37d425a69f.png" style="width: 553px; height: 559px;" />
+</a>
+<a class="reference internal image-reference" href="../../../_images/4b384dc184dcd3c80feb8719707670affd3a5b5efb8daa96d9f7650d11adf87d.png"><img alt="../../../_images/4b384dc184dcd3c80feb8719707670affd3a5b5efb8daa96d9f7650d11adf87d.png" src="../../../_images/4b384dc184dcd3c80feb8719707670affd3a5b5efb8daa96d9f7650d11adf87d.png" style="width: 697px; height: 381px;" />
+</a>
+</div>
 </div>
 <p>The diagnostic plots can be used to verify that the satellite was properly detected. Changing parameters to adjust this task is beyond the scope of this notebook, but please consult the package documentation indicated above for instructions on how to do this.</p>
 <p>Assuming that the satellite trail was properly detected, masks can be made to flag the satellite in the data quality array (DQ) of the image. Below, we generate the satellite trail mask. The DQ array is updated in a later step.</p>
@@ -932,6 +964,28 @@ MAST queries may be done using <a href="https://astroquery.readthedocs.io/en/lat
 <span class="n">mask_satdet</span> <span class="o">=</span> <span class="n">make_mask</span><span class="p">(</span><span class="n">flc_file</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">trail_segment</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rotation: -17.470284108710217
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>No good profile found for counter=25. Start moving left from starting point.
+z=[] is less than 1, subr shape=(150, 200), we are done
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Run time: 2.267639398574829 s
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../../_images/1d350ccfeba99c469d07431f36b2deefba2af7e822479e3904904576bab2e34a.png"><img alt="../../../_images/1d350ccfeba99c469d07431f36b2deefba2af7e822479e3904904576bab2e34a.png" src="../../../_images/1d350ccfeba99c469d07431f36b2deefba2af7e822479e3904904576bab2e34a.png" style="width: 697px; height: 381px;" />
+</a>
+<a class="reference internal image-reference" href="../../../_images/808d29fa188960b5e223233d8c87b4f03ef630cddbd48343cb707b24343f0213.png"><img alt="../../../_images/808d29fa188960b5e223233d8c87b4f03ef630cddbd48343cb707b24343f0213.png" src="../../../_images/808d29fa188960b5e223233d8c87b4f03ef630cddbd48343cb707b24343f0213.png" style="width: 738px; height: 508px;" />
+</a>
+<a class="reference internal image-reference" href="../../../_images/36e0b723adb6296a1aebac960460c2bccfb27c914edefd0489fc3bef42f5fa13.png"><img alt="../../../_images/36e0b723adb6296a1aebac960460c2bccfb27c914edefd0489fc3bef42f5fa13.png" src="../../../_images/36e0b723adb6296a1aebac960460c2bccfb27c914edefd0489fc3bef42f5fa13.png" style="width: 721px; height: 559px;" />
+</a>
+<a class="reference internal image-reference" href="../../../_images/034d248bb3209dcdf013b1e0fadf9f61ea5c81ae8569c57ee66ef1dd917415a7.png"><img alt="../../../_images/034d248bb3209dcdf013b1e0fadf9f61ea5c81ae8569c57ee66ef1dd917415a7.png" src="../../../_images/034d248bb3209dcdf013b1e0fadf9f61ea5c81ae8569c57ee66ef1dd917415a7.png" style="width: 697px; height: 381px;" />
+</a>
+<a class="reference internal image-reference" href="../../../_images/e43be3406f211ecd9bbf452c4d939847e042e605a68cf6c97d35efacaf7056f5.png"><img alt="../../../_images/e43be3406f211ecd9bbf452c4d939847e042e605a68cf6c97d35efacaf7056f5.png" src="../../../_images/e43be3406f211ecd9bbf452c4d939847e042e605a68cf6c97d35efacaf7056f5.png" style="width: 697px; height: 381px;" />
+</a>
 </div>
 </div>
 </section>
@@ -948,6 +1002,23 @@ MAST queries may be done using <a href="https://astroquery.readthedocs.io/en/lat
 
 <span class="c1"># note: if running findsat_mrt, you could also update the DQ array with:</span>
 <span class="c1"># w.updatedq()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:utils_findsat_mrt:Inconsistent mask sizes: 
+Input mask: (1024, 2048) 
+DQ array: (2048, 4096)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:utils_findsat_mrt:Enlarging mask to original size.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DQ flag value is 16384
+Input... flagged NPIX=116576
+Existing flagged NPIX=0
+Newly... flagged NPIX=116576
+jc8mb7tcq_flc.fits[6] updated
 </pre></div>
 </div>
 </div>
@@ -974,6 +1045,22 @@ MAST queries may be done using <a href="https://astroquery.readthedocs.io/en/lat
 <span class="n">mdz</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">getval</span><span class="p">(</span><span class="n">input_images</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;MDRIZTAB&#39;</span><span class="p">,</span> <span class="n">ext</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;$&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Searching for the MDRIZTAB file:&#39;</span><span class="p">,</span> <span class="n">mdz</span><span class="p">)</span>
 <span class="o">!</span>crds<span class="w"> </span>sync<span class="w"> </span>--hst<span class="w"> </span>--files<span class="w"> </span><span class="o">{</span>mdz<span class="o">}</span><span class="w"> </span>--output-dir<span class="w"> </span><span class="o">{</span>os.environ<span class="o">[</span><span class="s1">&#39;jref&#39;</span><span class="o">]}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Searching for the MDRIZTAB file: 37g1550cj_mdz.fits
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRDS - INFO -  Symbolic context &#39;hst-latest&#39; resolves to &#39;hst_1285.pmap&#39;
+CRDS - INFO -  Reorganizing 0 references from &#39;instrument&#39; to &#39;flat&#39;
+CRDS - INFO -  Reorganizing from &#39;instrument&#39; to &#39;flat&#39; cache,  removing instrument directories.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRDS - INFO -  Syncing explicitly listed files.
+CRDS - INFO -  0 errors
+CRDS - INFO -  0 warnings
+CRDS - INFO -  4 infos
 </pre></div>
 </div>
 </div>
@@ -1007,6 +1094,19 @@ MAST queries may be done using <a href="https://astroquery.readthedocs.io/en/lat
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">selected_params</span> <span class="o">=</span> <span class="n">get_vals_from_mdriztab</span><span class="p">(</span><span class="n">input_images</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- MDRIZTAB: AstroDrizzle parameters read from row 3.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Outputting the following parameters:
+driz_sep_bits 336
+combine_type median
+driz_cr_snr 3.5 3.0
+driz_cr_scale 1.5 1.2
+final_bits 336
 </pre></div>
 </div>
 </div>
@@ -1056,6 +1156,13 @@ We can now the drizzling step and show the output.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Drizzled weight image&#39;)
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../../_images/aa4d24c0871bab6f924ba7276f6880531e92eef0d81599bd3a1050d2566e2764.png"><img alt="../../../_images/aa4d24c0871bab6f924ba7276f6880531e92eef0d81599bd3a1050d2566e2764.png" src="../../../_images/aa4d24c0871bab6f924ba7276f6880531e92eef0d81599bd3a1050d2566e2764.png" style="width: 940px; height: 1252px;" />
+</a>
+</div>
 </div>
 <p>The final drizzled product shows that the bright satellite trail and its wings have been removed. If you don’t see the full trail removed, you may need to broaden the dilate the trail further, and make sure only the four original <code class="docutils literal notranslate"><span class="pre">j*_flc.fits</span></code> images are getting incorporated into the drizzled image (if you are rerunning AstroDrizzle and are not careful with the inputs, files from previous runs could be used by accident).</p>
 <p>A second, fainter satellite can be seen from a different image in the stack, and this will be masked in the steps below.</p>
@@ -1077,6 +1184,9 @@ We can now the drizzling step and show the output.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;sat.jpeg&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/56730d8313a66767a58c01f1a8f79385e021a34bae14336209e60e92ff4e57f4.jpg" src="../../../_images/56730d8313a66767a58c01f1a8f79385e021a34bae14336209e60e92ff4e57f4.jpg" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1102,6 +1212,13 @@ We can now the drizzling step and show the output.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;DQ array of jc8mb7t5q_flc.fits[6] showing masked pixels&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;DQ array of jc8mb7t5q_flc.fits[6] showing masked pixels&#39;)
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../../_images/ee4033549b93f4ec3b7461c8131d547d8fd345da64aa0d099a88fdc73ab2f772.png"><img alt="../../../_images/ee4033549b93f4ec3b7461c8131d547d8fd345da64aa0d099a88fdc73ab2f772.png" src="../../../_images/ee4033549b93f4ec3b7461c8131d547d8fd345da64aa0d099a88fdc73ab2f772.png" style="width: 1310px; height: 694px;" />
+</a>
 </div>
 </div>
 <p>With the satellite masked, the full set of images can be drizzled once more.</p>
@@ -1145,6 +1262,13 @@ We can now the drizzling step and show the output.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Drizzled weight image&#39;)
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../../_images/7db25cbc56984646c831dc289460d47bc5fe645d41b4ef549cf851b1a6dd74dc.png"><img alt="../../../_images/7db25cbc56984646c831dc289460d47bc5fe645d41b4ef549cf851b1a6dd74dc.png" src="../../../_images/7db25cbc56984646c831dc289460d47bc5fe645d41b4ef549cf851b1a6dd74dc.png" style="width: 940px; height: 1252px;" />
+</a>
+</div>
 </div>
 </section>
 </section>
@@ -1159,6 +1283,10 @@ We can now the drizzling step and show the output.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">obs_id_wfc3</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;_drc.jpg&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">800</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="../../../_images/0b0d67b08434d07de1e9fee583584b89c1df6356e886c4c825e820c24762628f.jpg"><img alt="../../../_images/0b0d67b08434d07de1e9fee583584b89c1df6356e886c4c825e820c24762628f.jpg" src="../../../_images/0b0d67b08434d07de1e9fee583584b89c1df6356e886c4c825e820c24762628f.jpg" style="width: 800px; height: 800px;" />
+</a>
 </div>
 </div>
 <p>The bright satellite trail that caused this came from the image <em>id8m11g4q_flc.fits</em>. The figure below shows the top chip which is referred to as SCI,2 (or extension 4).</p>
@@ -1183,6 +1311,10 @@ We can now the drizzling step and show the output.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="../../../_images/0938746b509470aaf521139d32a83f9da9432dfa49d6539082e1aa1b74e237dd.png"><img alt="../../../_images/0938746b509470aaf521139d32a83f9da9432dfa49d6539082e1aa1b74e237dd.png" src="../../../_images/0938746b509470aaf521139d32a83f9da9432dfa49d6539082e1aa1b74e237dd.png" style="width: 1336px; height: 718px;" />
+</a>
 </div>
 </div>
 <section id="id1">
@@ -1211,12 +1343,24 @@ We can now the drizzling step and show the output.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="../../../_images/5b2d07a81d444c8f2425672f73b12fa3a563279a707cf946e41d8e3a803e9734.png"><img alt="../../../_images/5b2d07a81d444c8f2425672f73b12fa3a563279a707cf946e41d8e3a803e9734.png" src="../../../_images/5b2d07a81d444c8f2425672f73b12fa3a563279a707cf946e41d8e3a803e9734.png" style="width: 697px; height: 533px;" />
+</a>
+<a class="reference internal image-reference" href="../../../_images/313acb64fc0c6d413b257abf32885e11761465440f99f3772a7db6a65da1a6ab.png"><img alt="../../../_images/313acb64fc0c6d413b257abf32885e11761465440f99f3772a7db6a65da1a6ab.png" src="../../../_images/313acb64fc0c6d413b257abf32885e11761465440f99f3772a7db6a65da1a6ab.png" style="width: 723px; height: 559px;" />
+</a>
+</div>
 </div>
 <p>The mask created by <code class="docutils literal notranslate"><span class="pre">WfcWrapper</span></code> casts a pretty wide net around the trail it finds, but there may be situations where you need to broaden it further, especially for very bright satellite trails. The <code class="docutils literal notranslate"><span class="pre">skimage.morphology.dilation</span></code> is one way to do this.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask_mrt</span> <span class="o">=</span> <span class="n">dilation</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">mask</span><span class="p">,</span> <span class="n">square</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>  <span class="c1"># adjust the box size to whatever you need</span>
 <span class="n">w</span><span class="o">.</span><span class="n">mask</span> <span class="o">=</span> <span class="n">mask_mrt</span>                       <span class="c1"># update the mask attribute in the WfcWrapper instance</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_3721/1969779303.py:1: FutureWarning: `square` is deprecated since version 0.25 and will be removed in version 0.27. Use `skimage.morphology.footprint_rectangle` instead.
+  mask_mrt = dilation(w.mask, square(20))  # adjust the box size to whatever you need
 </pre></div>
 </div>
 </div>
@@ -1238,6 +1382,14 @@ We can now the drizzling step and show the output.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="../../../_images/c52f2fde4681dbb3f4f57eb57f9338a3d843597892c82baa9da1febebdf4c1e2.png"><img alt="../../../_images/c52f2fde4681dbb3f4f57eb57f9338a3d843597892c82baa9da1febebdf4c1e2.png" src="../../../_images/c52f2fde4681dbb3f4f57eb57f9338a3d843597892c82baa9da1febebdf4c1e2.png" style="width: 697px; height: 382px;" />
+</a>
+<a class="reference internal image-reference" href="../../../_images/7324009f7cad7f4cce28003437a8fa93e2e34792d9220de40580b64af56398cf.png"><img alt="../../../_images/7324009f7cad7f4cce28003437a8fa93e2e34792d9220de40580b64af56398cf.png" src="../../../_images/7324009f7cad7f4cce28003437a8fa93e2e34792d9220de40580b64af56398cf.png" style="width: 552px; height: 559px;" />
+</a>
+<a class="reference internal image-reference" href="../../../_images/e2f37c3e40bbe71e0ab0e61de921c7fe34ea8e2fcec61824e0500175218e06cb.png"><img alt="../../../_images/e2f37c3e40bbe71e0ab0e61de921c7fe34ea8e2fcec61824e0500175218e06cb.png" src="../../../_images/e2f37c3e40bbe71e0ab0e61de921c7fe34ea8e2fcec61824e0500175218e06cb.png" style="width: 697px; height: 382px;" />
+</a>
+</div>
 </div>
 <p>The diagnostic plots can be used to verify that the satellite was properly detected. Further changing the parameters to adjust this task is beyond the scope of this notebook, but please consult the package documentation indicated above for instructions on how to do this.</p>
 <p>Assuming that the satellite trail was properly detected, masks can be made to flag the satellite in the data quality array (DQ) of the image. Below, we generate the satellite trail mask. The DQ array is updated in a later step.</p>
@@ -1249,6 +1401,28 @@ We can now the drizzling step and show the output.</p>
 <span class="n">mask_satdet</span> <span class="o">=</span> <span class="n">make_mask</span><span class="p">(</span><span class="n">flc_file</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">trail_segment</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rotation: -36.54215625187656
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>No good profile found for counter=12. Start moving left from starting point.
+Hit rotate edge at counter=27
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Run time: 2.7522683143615723 s
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../../_images/abe9606ca158593f1253e60bb0d1c48cbd17bdecf21571479a96fe6631897f93.png"><img alt="../../../_images/abe9606ca158593f1253e60bb0d1c48cbd17bdecf21571479a96fe6631897f93.png" src="../../../_images/abe9606ca158593f1253e60bb0d1c48cbd17bdecf21571479a96fe6631897f93.png" style="width: 697px; height: 382px;" />
+</a>
+<a class="reference internal image-reference" href="../../../_images/9b66090a1975ec80ca0aae628b72882e7bf4b3b0e8eef871ec06f8d722d66b16.png"><img alt="../../../_images/9b66090a1975ec80ca0aae628b72882e7bf4b3b0e8eef871ec06f8d722d66b16.png" src="../../../_images/9b66090a1975ec80ca0aae628b72882e7bf4b3b0e8eef871ec06f8d722d66b16.png" style="width: 729px; height: 533px;" />
+</a>
+<a class="reference internal image-reference" href="../../../_images/b437d8678ec452073e2d7089a82cf217a524cab888ee954a9925a0bbfc2a4460.png"><img alt="../../../_images/b437d8678ec452073e2d7089a82cf217a524cab888ee954a9925a0bbfc2a4460.png" src="../../../_images/b437d8678ec452073e2d7089a82cf217a524cab888ee954a9925a0bbfc2a4460.png" style="width: 711px; height: 559px;" />
+</a>
+<a class="reference internal image-reference" href="../../../_images/c718bf55e3a2d98d3263061f0eecefd41432a6be39829ff4de3e1744ecf51dfe.png"><img alt="../../../_images/c718bf55e3a2d98d3263061f0eecefd41432a6be39829ff4de3e1744ecf51dfe.png" src="../../../_images/c718bf55e3a2d98d3263061f0eecefd41432a6be39829ff4de3e1744ecf51dfe.png" style="width: 697px; height: 382px;" />
+</a>
+<a class="reference internal image-reference" href="../../../_images/1dc14b4cd74d05b4a36e21f84c733be52e9dc25840cf839187e0f45735f0be15.png"><img alt="../../../_images/1dc14b4cd74d05b4a36e21f84c733be52e9dc25840cf839187e0f45735f0be15.png" src="../../../_images/1dc14b4cd74d05b4a36e21f84c733be52e9dc25840cf839187e0f45735f0be15.png" style="width: 697px; height: 382px;" />
+</a>
 </div>
 </div>
 </section>
@@ -1265,6 +1439,26 @@ We can now the drizzling step and show the output.</p>
 
 <span class="c1"># note: if running findsat_mrt, you could also update the DQ array with:</span>
 <span class="c1"># w.updatedq()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:utils_findsat_mrt:Inconsistent mask sizes: 
+Input mask: (1025, 2048) 
+DQ array: (2051, 4096)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:utils_findsat_mrt:Enlarging mask to original size.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:utils_findsat_mrt:Duplicating end rows to match orig size
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DQ flag value is 16384
+Input... flagged NPIX=186248
+Existing flagged NPIX=0
+Newly... flagged NPIX=186248
+id8m11g4q_flc.fits[6] updated
 </pre></div>
 </div>
 </div>
@@ -1290,6 +1484,20 @@ We can now the drizzling step and show the output.</p>
 <span class="n">mdz</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">getval</span><span class="p">(</span><span class="n">input_images</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;MDRIZTAB&#39;</span><span class="p">,</span> <span class="n">ext</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;$&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Searching for the MDRIZTAB file:&#39;</span><span class="p">,</span> <span class="n">mdz</span><span class="p">)</span>
 <span class="o">!</span>crds<span class="w"> </span>sync<span class="w"> </span>--hst<span class="w"> </span>--files<span class="w"> </span><span class="o">{</span>mdz<span class="o">}</span><span class="w"> </span>--output-dir<span class="w"> </span><span class="o">{</span>os.environ<span class="o">[</span><span class="s1">&#39;iref&#39;</span><span class="o">]}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Searching for the MDRIZTAB file: 2ck18260i_mdz.fits
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRDS - INFO -  Symbolic context &#39;hst-latest&#39; resolves to &#39;hst_1285.pmap&#39;
+CRDS - INFO -  Reorganizing 0 references from &#39;instrument&#39; to &#39;flat&#39;
+CRDS - INFO -  Reorganizing from &#39;instrument&#39; to &#39;flat&#39; cache,  removing instrument directories.
+CRDS - INFO -  Syncing explicitly listed files.
+CRDS - INFO -  0 errors
+CRDS - INFO -  0 warnings
+CRDS - INFO -  4 infos
 </pre></div>
 </div>
 </div>
@@ -1323,6 +1531,17 @@ We can now the drizzling step and show the output.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">selected_params</span> <span class="o">=</span> <span class="n">get_vals_from_mdriztab</span><span class="p">(</span><span class="n">input_uvis_images</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- MDRIZTAB: AstroDrizzle parameters read from row 2.
+Outputting the following parameters:
+driz_sep_bits 336
+combine_type minmed
+driz_cr_snr 3.5 3.0
+driz_cr_scale 1.5 1.2
+final_bits 336
 </pre></div>
 </div>
 </div>
@@ -1370,6 +1589,13 @@ We can now the drizzling step and show the output.</p>
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Drizzled weight image&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Drizzled weight image&#39;)
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../../_images/2ad4fb66ab8a6369cd93dc74fcc7e648a4d56641afa78c6dc15800bf63346a0d.png"><img alt="../../../_images/2ad4fb66ab8a6369cd93dc74fcc7e648a4d56641afa78c6dc15800bf63346a0d.png" src="../../../_images/2ad4fb66ab8a6369cd93dc74fcc7e648a4d56641afa78c6dc15800bf63346a0d.png" style="width: 917px; height: 1252px;" />
+</a>
 </div>
 </div>
 <p>The final drizzled product shows that the bright satellite trail and its wings have been removed. If you don’t see the full trail removed, you may need to dilate the trail further, and make sure only the original <code class="docutils literal notranslate"><span class="pre">i*_flc.fits</span></code> images are getting incorporated into the drizzled image (if you are rerunning AstroDrizzle and are not careful with the inputs, files from previous runs could be used by accident).</p>

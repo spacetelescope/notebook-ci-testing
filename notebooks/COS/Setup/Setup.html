@@ -149,14 +149,8 @@
   
   
   
-    
-    
-      
-    
-    
-    <img src="../../../_static/stsci_logo2.png" class="logo__image only-light" alt="HST Notebooks - Home"/>
-    <script>document.write(`<img src="../../../_static/stsci_logo2.png" class="logo__image only-dark" alt="HST Notebooks - Home"/>`);</script>
   
+    <p class="title logo__title">HST Notebooks</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -182,7 +176,7 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">ACS</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../ACS/README.html">ACS Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ACS/README.html">ACS Notebooks - TEST 1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ACS/acs_findsat_mrt/acs_findsat_mrt_example.html">Satellite trail detection in ACS/WFC data using acstools.findsat_mrt</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ACS/acs_saturation_trails/acs_saturation_trails.html">ACS Linearity with Saturated Stars</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ACS/acs_cte_forward_model/acs_cte_forward_model_example.html">Pixel-based ACS/WFC CTE Forward Model</a></li>
@@ -259,7 +253,6 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">DrizzlePac</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/README.html">DrizzlePac Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/using_updated_astrometry_solutions/using_updated_astrometry_solutions.html">Improving Astrometry Using Alternate WCS Solutions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/align_to_catalogs/align_to_catalogs.html">Aligning HST images to an Absolute Reference Catalog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/align_sparse_fields/align_sparse_fields.html">Aligning Deep Exposures of Sparse Fields</a></li>
@@ -631,13 +624,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div style='background-color: #fff3cd; border: 1px solid #ffeaa7; border-radius: 4px; padding: 15px; margin: 10px 0; border-left: 4px solid #f39c12;'>
-<h3 style='color: #856404; margin-top: 0;'>⚠️ EXECUTION WARNING</h3>
-<p style='color: #856404; margin-bottom: 0;'><strong>This notebook may not execute properly in the current environment.</strong></p>
-<p style='color: #856404; margin-bottom: 0;'>Some cells may have failed during automated testing. Please review the notebook content and test manually before use.</p>
-<p style='color: #856404; margin-bottom: 0; font-size: 0.9em;'><em>Generated during CI/CD pipeline - some outputs may be incomplete or missing.</em></p>
-</div>
-<p><a id="topS"></a></p>
+  <p><a id="topS"></a></p>
 <section class="tex2jax_ignore mathjax_ignore" id="setting-up-your-computer-environment-for-working-with-cos-data">
 <h1>Setting up your computer environment for working with COS data<a class="headerlink" href="#setting-up-your-computer-environment-for-working-with-cos-data" title="Link to this heading">#</a></h1>
 </section>
@@ -685,6 +672,11 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>conda<span class="w"> </span>-V
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>conda 25.7.0
 </pre></div>
 </div>
 </div>
@@ -796,18 +788,18 @@ The history of reference files is stored in <strong>context files</strong>, whic
 <p>First, we will check the CRDS website to determine what the current context is, as it changes regularly. In your browser, navigate to <a class="reference external" href="https://hst-crds.stsci.edu">the HST CRDS homepage</a>, and you will see a page as in Fig. 3.1:</p>
 <section id="fig-3-1">
 <h3>Fig 3.1<a class="headerlink" href="#fig-3-1" title="Link to this heading">#</a></h3>
-<a class="reference internal image-reference" href="../../../_images/crds1.png"><img alt="The CRDS homepage. There is a dropdown which lists all Hubble instruments. The table at the bottom of the page lists historical contexts." src="../../../_images/crds1.png" style="width: 900px;" />
+<a class="reference internal image-reference" href="notebooks/COS/Setup/figures/crds1.png"><img alt="The CRDS homepage. There is a dropdown which lists all Hubble instruments. The table at the bottom of the page lists historical contexts." src="notebooks/COS/Setup/figures/crds1.png" style="width: 900px;" />
 </a>
 <p>At the bottom of this page is a list of recent contexts, titled “Context History”. Clicking the context listed with the Status “Operational” (circled in red in Fig 3.1) will take you to that context’s page, as shown in Fig. 3.2:</p>
 </section>
 <section id="fig-3-2">
 <h3>Fig 3.2<a class="headerlink" href="#fig-3-2" title="Link to this heading">#</a></h3>
-<a class="reference internal image-reference" href="../../../_images/crds2.png"><img alt="The CRDS Historical References context page on the CRDS site. Each instrument is listed on the dropdown." src="../../../_images/crds2.png" style="width: 900px;" />
+<a class="reference internal image-reference" href="notebooks/COS/Setup/figures/crds2.png"><img alt="The CRDS Historical References context page on the CRDS site. Each instrument is listed on the dropdown." src="notebooks/COS/Setup/figures/crds2.png" style="width: 900px;" />
 </a>
 </section>
 <section id="fig-3-3">
 <h3>Fig 3.3<a class="headerlink" href="#fig-3-3" title="Link to this heading">#</a></h3>
-<a class="reference internal image-reference" href="../../../_images/crds3.png"><img alt="Showing the current COS context on the CRDS site. There is a large list of reference files, and the imap file labeled at the top of this list as hst_cos_0320.imap" src="../../../_images/crds3.png" style="width: 900px;" />
+<a class="reference internal image-reference" href="notebooks/COS/Setup/figures/crds3.png"><img alt="Showing the current COS context on the CRDS site. There is a large list of reference files, and the imap file labeled at the top of this list as hst_cos_0320.imap" src="notebooks/COS/Setup/figures/crds3.png" style="width: 900px;" />
 </a>
 <p>Note down or copy the filename you just found.</p>
 </section>
@@ -868,6 +860,11 @@ To see the COS reference files you just downloaded:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>ls<span class="w"> </span><span class="nv">$lref</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ls: cannot access &#39;/home/runner/crds_cache/references/hst/cos&#39;: No such file or directory
 </pre></div>
 </div>
 </div>

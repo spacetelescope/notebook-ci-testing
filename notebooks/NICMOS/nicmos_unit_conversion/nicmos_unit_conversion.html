@@ -149,14 +149,8 @@
   
   
   
-    
-    
-      
-    
-    
-    <img src="../../../_static/stsci_logo2.png" class="logo__image only-light" alt="HST Notebooks - Home"/>
-    <script>document.write(`<img src="../../../_static/stsci_logo2.png" class="logo__image only-dark" alt="HST Notebooks - Home"/>`);</script>
   
+    <p class="title logo__title">HST Notebooks</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -182,7 +176,7 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">ACS</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../ACS/README.html">ACS Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ACS/README.html">ACS Notebooks - TEST 1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ACS/acs_findsat_mrt/acs_findsat_mrt_example.html">Satellite trail detection in ACS/WFC data using acstools.findsat_mrt</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ACS/acs_saturation_trails/acs_saturation_trails.html">ACS Linearity with Saturated Stars</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ACS/acs_cte_forward_model/acs_cte_forward_model_example.html">Pixel-based ACS/WFC CTE Forward Model</a></li>
@@ -259,7 +253,6 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">DrizzlePac</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/README.html">DrizzlePac Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/using_updated_astrometry_solutions/using_updated_astrometry_solutions.html">Improving Astrometry Using Alternate WCS Solutions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/align_to_catalogs/align_to_catalogs.html">Aligning HST images to an Absolute Reference Catalog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/align_sparse_fields/align_sparse_fields.html">Aligning Deep Exposures of Sparse Fields</a></li>
@@ -606,13 +599,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div style='background-color: #fff3cd; border: 1px solid #ffeaa7; border-radius: 4px; padding: 15px; margin: 10px 0; border-left: 4px solid #f39c12;'>
-<h3 style='color: #856404; margin-top: 0;'>⚠️ EXECUTION WARNING</h3>
-<p style='color: #856404; margin-bottom: 0;'><strong>This notebook may not execute properly in the current environment.</strong></p>
-<p style='color: #856404; margin-bottom: 0;'>Some cells may have failed during automated testing. Please review the notebook content and test manually before use.</p>
-<p style='color: #856404; margin-bottom: 0; font-size: 0.9em;'><em>Generated during CI/CD pipeline - some outputs may be incomplete or missing.</em></p>
-</div>
-<section class="tex2jax_ignore mathjax_ignore" id="programmatic-replacements-for-nicmos-units-conversion-form">
+  <section class="tex2jax_ignore mathjax_ignore" id="programmatic-replacements-for-nicmos-units-conversion-form">
 <h1>Programmatic Replacements for NICMOS Units Conversion Form<a class="headerlink" href="#programmatic-replacements-for-nicmos-units-conversion-form" title="Link to this heading">#</a></h1>
 <p>This notebook illustrates programmatic ways to perform unit conversions as provided by <a class="reference external" href="http://www.stsci.edu/hst/nicmos/tools/conversion_form.html">NICMOS Units Conversion Form</a>. The examples here are not exhaustive and will never be. They are meant to give users enough basic knowledge to then calculate what they really want.</p>
 </section>
@@ -659,6 +646,11 @@ document.write(`
 <span class="n">input_wave_ex1</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">micron</span>
 <span class="n">abmag_ex1</span> <span class="o">=</span> <span class="n">input_flux_ex1</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">ABmag</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">spectral_density</span><span class="p">(</span><span class="n">input_wave_ex1</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">abmag_ex1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>41.40 mag(AB)
 </pre></div>
 </div>
 </div>
@@ -709,6 +701,11 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_wave_ex2</span> <span class="o">=</span> <span class="mf">0.6</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">micron</span>
 <span class="n">flux_ex2</span> <span class="o">=</span> <span class="n">input_ex2</span><span class="p">(</span><span class="n">output_wave_ex2</span><span class="p">,</span> <span class="n">flux_unit</span><span class="o">=</span><span class="n">syn_u</span><span class="o">.</span><span class="n">FNU</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:.2e}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">flux_ex2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.62e-23 FNU
 </pre></div>
 </div>
 </div>
@@ -767,6 +764,11 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">imag_zpt</span> <span class="o">=</span> <span class="mi">2250</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">Jy</span>
 <span class="n">i</span> <span class="o">=</span> <span class="o">-</span><span class="mf">2.5</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">flux_ex3</span> <span class="o">/</span> <span class="n">imag_zpt</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.85
 </pre></div>
 </div>
 </div>

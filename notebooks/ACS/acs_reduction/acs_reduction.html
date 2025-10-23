@@ -149,14 +149,8 @@
   
   
   
-    
-    
-      
-    
-    
-    <img src="../../../_static/stsci_logo2.png" class="logo__image only-light" alt="HST Notebooks - Home"/>
-    <script>document.write(`<img src="../../../_static/stsci_logo2.png" class="logo__image only-dark" alt="HST Notebooks - Home"/>`);</script>
   
+    <p class="title logo__title">HST Notebooks</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -182,7 +176,7 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">ACS</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../README.html">ACS Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README.html">ACS Notebooks - TEST 1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../acs_findsat_mrt/acs_findsat_mrt_example.html">Satellite trail detection in ACS/WFC data using acstools.findsat_mrt</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../acs_saturation_trails/acs_saturation_trails.html">ACS Linearity with Saturated Stars</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../acs_cte_forward_model/acs_cte_forward_model_example.html">Pixel-based ACS/WFC CTE Forward Model</a></li>
@@ -259,7 +253,6 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">DrizzlePac</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/README.html">DrizzlePac Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/using_updated_astrometry_solutions/using_updated_astrometry_solutions.html">Improving Astrometry Using Alternate WCS Solutions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/align_to_catalogs/align_to_catalogs.html">Aligning HST images to an Absolute Reference Catalog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/align_sparse_fields/align_sparse_fields.html">Aligning Deep Exposures of Sparse Fields</a></li>
@@ -628,13 +621,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div style='background-color: #fff3cd; border: 1px solid #ffeaa7; border-radius: 4px; padding: 15px; margin: 10px 0; border-left: 4px solid #f39c12;'>
-<h3 style='color: #856404; margin-top: 0;'>⚠️ EXECUTION WARNING</h3>
-<p style='color: #856404; margin-bottom: 0;'><strong>This notebook may not execute properly in the current environment.</strong></p>
-<p style='color: #856404; margin-bottom: 0;'>Some cells may have failed during automated testing. Please review the notebook content and test manually before use.</p>
-<p style='color: #856404; margin-bottom: 0; font-size: 0.9em;'><em>Generated during CI/CD pipeline - some outputs may be incomplete or missing.</em></p>
-</div>
-<p><a id="titleReduction"></a></p>
+  <p><a id="titleReduction"></a></p>
 <section class="tex2jax_ignore mathjax_ignore" id="acs-wfc-image-reduction">
 <h1>ACS/WFC Image Reduction<a class="headerlink" href="#acs-wfc-image-reduction" title="Link to this heading">#</a></h1>
 <section id="introduction">
@@ -737,6 +724,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="download-the-data">
@@ -756,6 +748,80 @@ document.write(`
 <span class="n">dl_table</span> <span class="o">=</span> <span class="n">Observations</span><span class="o">.</span><span class="n">download_products</span><span class="p">(</span><span class="n">obs_table</span><span class="p">[</span><span class="s1">&#39;obsid&#39;</span><span class="p">],</span>
                                           <span class="n">productSubGroupDescription</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;RAW&#39;</span><span class="p">,</span> <span class="s1">&#39;ASN&#39;</span><span class="p">,</span> <span class="s1">&#39;SPT&#39;</span><span class="p">],</span>
                                           <span class="n">mrp_only</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/j9l960a7q_spt.fits to ./mastDownload/HST/j9l960a7q/j9l960a7q_spt.fits ...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/j9l960a7q_raw.fits to ./mastDownload/HST/j9l960a7q/j9l960a7q_raw.fits ...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/j9l960a9q_spt.fits to ./mastDownload/HST/j9l960a9q/j9l960a9q_spt.fits ...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/j9l960a9q_raw.fits to ./mastDownload/HST/j9l960a9q/j9l960a9q_raw.fits ...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/j9l960abq_spt.fits to ./mastDownload/HST/j9l960abq/j9l960abq_spt.fits ...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/j9l960abq_raw.fits to ./mastDownload/HST/j9l960abq/j9l960abq_raw.fits ...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/j9l960adq_spt.fits to ./mastDownload/HST/j9l960adq/j9l960adq_spt.fits ...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/j9l960adq_raw.fits to ./mastDownload/HST/j9l960adq/j9l960adq_raw.fits ...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/j9l960afq_spt.fits to ./mastDownload/HST/j9l960afq/j9l960afq_spt.fits ...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/j9l960afq_raw.fits to ./mastDownload/HST/j9l960afq/j9l960afq_raw.fits ...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/j9l960010_spt.fits to ./mastDownload/HST/j9l960010/j9l960010_spt.fits ...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/j9l960010_asn.fits to ./mastDownload/HST/j9l960010/j9l960010_asn.fits ...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
 </pre></div>
 </div>
 </div>
@@ -873,10 +939,37 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Filename: j9l960010_asn.fits
+No.    Name      Ver    Type      Cards   Dimensions   Format
+  0  PRIMARY       1 PrimaryHDU      44   ()      
+  1  ASN           1 BinTableHDU     25   6R x 3C   [14A, 14A, L]   
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Filename: j9l960a9q_raw.fits
+No.    Name      Ver    Type      Cards   Dimensions   Format
+  0  PRIMARY       1 PrimaryHDU     223   ()      
+  1  SCI           1 ImageHDU        97   (4144, 2068)   int16 (rescales to uint16)   
+  2  ERR           1 ImageHDU        49   ()      
+  3  DQ            1 ImageHDU        41   ()      
+  4  SCI           2 ImageHDU        97   (4144, 2068)   int16 (rescales to uint16)   
+  5  ERR           2 ImageHDU        49   ()      
+  6  DQ            2 ImageHDU        43   ()      
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>conda<span class="w"> </span>list<span class="w"> </span>hstcal
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># packages in environment at /home/runner/micromamba/envs/ci-env:
+#
+# Name                     Version          Build            Channel
+hstcal                     3.1.0            h032429d_3       conda-forge
 </pre></div>
 </div>
 </div>
@@ -947,6 +1040,63 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRDS - INFO -  No comparison context or source comparison requested.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRDS - INFO -  ===&gt; Processing j9l960a9q_raw.fits
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRDS - INFO -  0 errors
+CRDS - INFO -  0 warnings
+CRDS - INFO -  2 infos
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRDS - INFO -  No comparison context or source comparison requested.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRDS - INFO -  ===&gt; Processing j9l960afq_raw.fits
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRDS - INFO -  0 errors
+CRDS - INFO -  0 warnings
+CRDS - INFO -  2 infos
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRDS - INFO -  No comparison context or source comparison requested.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRDS - INFO -  ===&gt; Processing j9l960abq_raw.fits
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRDS - INFO -  0 errors
+CRDS - INFO -  0 warnings
+CRDS - INFO -  2 infos
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRDS - INFO -  No comparison context or source comparison requested.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRDS - INFO -  ===&gt; Processing j9l960adq_raw.fits
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRDS - INFO -  0 errors
+CRDS - INFO -  0 warnings
+CRDS - INFO -  2 infos
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRDS - INFO -  No comparison context or source comparison requested.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRDS - INFO -  ===&gt; Processing j9l960a7q_raw.fits
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRDS - INFO -  0 errors
+CRDS - INFO -  0 warnings
+CRDS - INFO -  2 infos
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="running-calacs">
@@ -960,6 +1110,137 @@ document.write(`
 </div><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>calacs.e<span class="w"> </span>j9l960010_asn.fits
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>git tag: 0090c701-dirty
+git branch: HEAD
+HEAD @: 0090c701d894003cfc690e9f8d5fde81e6939090
+Setting max threads to 4 out of 4 available
+
+
+CALBEG*** CALACS -- Version 10.4.0 (07-May-2024) ***
+Begin    23-Oct-2025 18:34:46 UTC
+
+
+Input    j9l960010_asn.fits
+LoadAsn:  Processing FULL Association
+Trying to open j9l960010_asn.fits...
+Read in Primary header from j9l960010_asn.fits...
+
+
+CALBEG*** ACSCCD -- Version 10.4.0 (07-May-2024) ***
+Begin    23-Oct-2025 18:34:46 UTC
+Input    j9l960a7q_raw.fits
+Output   j9l960a7q_blv_tmp.fits
+Trying to open j9l960a7q_raw.fits...
+Read in Primary header from j9l960a7q_raw.fits...
+APERTURE WFCENTER
+FILTER1 F606W
+FILTER2 CLEAR2L
+DETECTOR WFC
+
+
+CCDTAB   jref$72m1821ij_ccd.fits
+CCDTAB   PEDIGREE=inflight
+CCDTAB   DESCRIP =CCD table
+CCDTAB   DESCRIP =June 2002
+
+
+DQICORR  PERFORM
+DQITAB   jref$25g1256nj_bpx.fits
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DQITAB   PEDIGREE=INFLIGHT 30/03/2002 30/05/2002
+DQITAB   DESCRIP =FITS reference table for bad pixel locations on ACS WFC
+DQICORR  COMPLETE
+
+
+BIASCORR PERFORM
+BIASFILE jref$66318264j_bia.fits
+BIASFILE PEDIGREE=INFLIGHT 05/03/2006 24/03/2006
+BIASFILE DESCRIP =Standard full-frame bias for data taken after Mar 04 2006 08:00:00-
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>BIASCORR COMPLETE
+
+
+BLEVCORR PERFORM
+OSCNTAB  jref$17717071j_osc.fits
+OSCNTAB  PEDIGREE=GROUND
+OSCNTAB  DESCRIP =New OSCNTAB which includes entries for all subarrays.--------------
+(blevcorr) No virtual overscan region specified.
+(blevcorr) Bias drift correction will not be applied.
+(FitToOverscan) biassecta=(18,23) biassectb=(0,0) npix=6
+(blevcorr) Rejected 0 bias values from fit.
+Computed a fit with slope of -0.000106303 and intercept of 4590.19
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(FitToOverscan) biassecta=(4120,4125) biassectb=(0,0) npix=6
+(blevcorr) Rejected 6 bias values from fit.
+Computed a fit with slope of 0.000173842 and intercept of 4499.48
+Bias level from overscan has been subtracted;
+     mean of bias levels subtracted was 4544.83 electrons.
+     bias level of 4590.19 electrons was subtracted for AMP C.
+     bias level of 4499.48 electrons was subtracted for AMP D.
+(blevcorr) No virtual overscan region specified.
+(blevcorr) Bias drift correction will not be applied.
+(FitToOverscan) biassecta=(18,23) biassectb=(0,0) npix=6
+(blevcorr) Rejected 6 bias values from fit.
+Computed a fit with slope of -0.00016778 and intercept of 4534.42
+(FitToOverscan) biassecta=(4120,4125) biassectb=(0,0) npix=6
+(blevcorr) Rejected 6 bias values from fit.
+Computed a fit with slope of -7.68968e-05 and intercept of 4529.01
+Bias level from overscan has been subtracted;
+     mean of bias levels subtracted was 4531.71 electrons.
+     bias level of 4534.41 electrons was subtracted for AMP A.
+     bias level of 4529.01 electrons was subtracted for AMP B.
+BLEVCORR COMPLETE
+Full Frame adjusted Darktime: 6.207202
+
+DARKTIME from SCI header: 6.207202  Offset from CCDTAB: 0.000000  Final DARKTIME: 6.207202
+
+Full-well saturation flagging being performed for imset 1.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full-frame full-well saturation image flagging step being performed.
+
+Full-frame full-well saturation image flagging step done.
+
+
+Full-well saturation flagging being performed for imset 2.
+
+Full-frame full-well saturation image flagging step being performed.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Full-frame full-well saturation image flagging step done.
+
+
+    Uncertainty array initialized,
+    readnoise =5.33,4.99,5.51,5.16
+    gain =2.002,1.945,2.028,1.994
+   default bias levels =4535.7,4535.7,4590.2,4498.9
+
+
+SINKCORR OMIT
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>End      23-Oct-2025 18:34:47 UTC
+
+
+*** ACSCCD complete ***
+
+
+CALBEG*** ACS2D -- Version 10.4.0 (07-May-2024) ***
+Begin    23-Oct-2025 18:34:47 UTC
+Input    j9l960a7q_blv_tmp.fits
+Output   j9l960a7q_flt.fits
+Warning    Output file `j9l960a7q_flt.fits&#39; already exists.
+ERROR:    Couldn&#39;t process CCD data
+ERROR:    CALACS processing NOT completed for j9l960010_asn.fits
+ERROR:    CALACS processing NOT completed for j9l960010_asn.fits
+ERROR:             status = 1021
 </pre></div>
 </div>
 </div>
@@ -988,6 +1269,9 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/f6c57ddbf0a8f200bcb1b52e6a6f71646aaef1a04dab6d39040be06b0de0f51f.png" src="../../../_images/f6c57ddbf0a8f200bcb1b52e6a6f71646aaef1a04dab6d39040be06b0de0f51f.png" />
+</div>
 </div>
 <p>Comparing the FLT calibrated image to the RAW uncalibrated one, we can see that image artifacts have been removed. Most noticeably, hot columns in the bias have been subtracted.</p>
 <div class="cell docutils container">
@@ -998,6 +1282,238 @@ document.write(`
     <span class="n">img_files</span> <span class="o">=</span> <span class="s1">&#39;j9l9*a[9-f]q_flt.fits&#39;</span>
 
 <span class="n">updatewcs</span><span class="o">.</span><span class="n">updatewcs</span><span class="p">(</span><span class="n">img_files</span><span class="p">,</span> <span class="n">use_db</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: 
+                Inconsistent SIP distortion information is present in the FITS header and the WCS object:
+                SIP coefficients were detected, but CTYPE is missing a &quot;-SIP&quot; suffix.
+                astropy.wcs is using the SIP distortion coefficients,
+                therefore the coordinates calculated here might be incorrect.
+
+                If you do not want to apply the SIP distortion coefficients,
+                please remove the SIP coefficients from the FITS header or the
+                WCS object.  As an example, if the image is already distortion-corrected
+                (e.g., drizzled) then distortion components should not apply and the SIP
+                coefficients should be removed.
+
+                While the SIP distortion coefficients are being applied here, if that was indeed the intent,
+                for consistency please append &quot;-SIP&quot; to the CTYPE in the FITS header or the WCS object.
+
+                 [astropy.wcs.wcs]
+Using 2015-calibrated VAFACTOR-corrected TDD correction...
+- IDCTAB: Distortion model from row 444 for chip 2 : F606W
+INFO: 
+                Inconsistent SIP distortion information is present in the FITS header and the WCS object:
+                SIP coefficients were detected, but CTYPE is missing a &quot;-SIP&quot; suffix.
+                astropy.wcs is using the SIP distortion coefficients,
+                therefore the coordinates calculated here might be incorrect.
+
+                If you do not want to apply the SIP distortion coefficients,
+                please remove the SIP coefficients from the FITS header or the
+                WCS object.  As an example, if the image is already distortion-corrected
+                (e.g., drizzled) then distortion components should not apply and the SIP
+                coefficients should be removed.
+
+                While the SIP distortion coefficients are being applied here, if that was indeed the intent,
+                for consistency please append &quot;-SIP&quot; to the CTYPE in the FITS header or the WCS object.
+
+                 [astropy.wcs.wcs]
+Using 2015-calibrated VAFACTOR-corrected TDD correction...
+- IDCTAB: Distortion model from row 444 for chip 2 : F606W
+INFO: 
+                Inconsistent SIP distortion information is present in the FITS header and the WCS object:
+                SIP coefficients were detected, but CTYPE is missing a &quot;-SIP&quot; suffix.
+                astropy.wcs is using the SIP distortion coefficients,
+                therefore the coordinates calculated here might be incorrect.
+
+                If you do not want to apply the SIP distortion coefficients,
+                please remove the SIP coefficients from the FITS header or the
+                WCS object.  As an example, if the image is already distortion-corrected
+                (e.g., drizzled) then distortion components should not apply and the SIP
+                coefficients should be removed.
+
+                While the SIP distortion coefficients are being applied here, if that was indeed the intent,
+                for consistency please append &quot;-SIP&quot; to the CTYPE in the FITS header or the WCS object.
+
+                 [astropy.wcs.wcs]
+Using 2015-calibrated VAFACTOR-corrected TDD correction...
+- IDCTAB: Distortion model from row 443 for chip 1 : F606W
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: 
+                Inconsistent SIP distortion information is present in the FITS header and the WCS object:
+                SIP coefficients were detected, but CTYPE is missing a &quot;-SIP&quot; suffix.
+                astropy.wcs is using the SIP distortion coefficients,
+                therefore the coordinates calculated here might be incorrect.
+
+                If you do not want to apply the SIP distortion coefficients,
+                please remove the SIP coefficients from the FITS header or the
+                WCS object.  As an example, if the image is already distortion-corrected
+                (e.g., drizzled) then distortion components should not apply and the SIP
+                coefficients should be removed.
+
+                While the SIP distortion coefficients are being applied here, if that was indeed the intent,
+                for consistency please append &quot;-SIP&quot; to the CTYPE in the FITS header or the WCS object.
+
+                 [astropy.wcs.wcs]
+Using 2015-calibrated VAFACTOR-corrected TDD correction...
+- IDCTAB: Distortion model from row 444 for chip 2 : F606W
+INFO: 
+                Inconsistent SIP distortion information is present in the FITS header and the WCS object:
+                SIP coefficients were detected, but CTYPE is missing a &quot;-SIP&quot; suffix.
+                astropy.wcs is using the SIP distortion coefficients,
+                therefore the coordinates calculated here might be incorrect.
+
+                If you do not want to apply the SIP distortion coefficients,
+                please remove the SIP coefficients from the FITS header or the
+                WCS object.  As an example, if the image is already distortion-corrected
+                (e.g., drizzled) then distortion components should not apply and the SIP
+                coefficients should be removed.
+
+                While the SIP distortion coefficients are being applied here, if that was indeed the intent,
+                for consistency please append &quot;-SIP&quot; to the CTYPE in the FITS header or the WCS object.
+
+                 [astropy.wcs.wcs]
+Using 2015-calibrated VAFACTOR-corrected TDD correction...
+- IDCTAB: Distortion model from row 444 for chip 2 : F606W
+INFO: 
+                Inconsistent SIP distortion information is present in the FITS header and the WCS object:
+                SIP coefficients were detected, but CTYPE is missing a &quot;-SIP&quot; suffix.
+                astropy.wcs is using the SIP distortion coefficients,
+                therefore the coordinates calculated here might be incorrect.
+
+                If you do not want to apply the SIP distortion coefficients,
+                please remove the SIP coefficients from the FITS header or the
+                WCS object.  As an example, if the image is already distortion-corrected
+                (e.g., drizzled) then distortion components should not apply and the SIP
+                coefficients should be removed.
+
+                While the SIP distortion coefficients are being applied here, if that was indeed the intent,
+                for consistency please append &quot;-SIP&quot; to the CTYPE in the FITS header or the WCS object.
+
+                 [astropy.wcs.wcs]
+Using 2015-calibrated VAFACTOR-corrected TDD correction...
+- IDCTAB: Distortion model from row 443 for chip 1 : F606W
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: 
+                Inconsistent SIP distortion information is present in the FITS header and the WCS object:
+                SIP coefficients were detected, but CTYPE is missing a &quot;-SIP&quot; suffix.
+                astropy.wcs is using the SIP distortion coefficients,
+                therefore the coordinates calculated here might be incorrect.
+
+                If you do not want to apply the SIP distortion coefficients,
+                please remove the SIP coefficients from the FITS header or the
+                WCS object.  As an example, if the image is already distortion-corrected
+                (e.g., drizzled) then distortion components should not apply and the SIP
+                coefficients should be removed.
+
+                While the SIP distortion coefficients are being applied here, if that was indeed the intent,
+                for consistency please append &quot;-SIP&quot; to the CTYPE in the FITS header or the WCS object.
+
+                 [astropy.wcs.wcs]
+Using 2015-calibrated VAFACTOR-corrected TDD correction...
+- IDCTAB: Distortion model from row 444 for chip 2 : F606W
+INFO: 
+                Inconsistent SIP distortion information is present in the FITS header and the WCS object:
+                SIP coefficients were detected, but CTYPE is missing a &quot;-SIP&quot; suffix.
+                astropy.wcs is using the SIP distortion coefficients,
+                therefore the coordinates calculated here might be incorrect.
+
+                If you do not want to apply the SIP distortion coefficients,
+                please remove the SIP coefficients from the FITS header or the
+                WCS object.  As an example, if the image is already distortion-corrected
+                (e.g., drizzled) then distortion components should not apply and the SIP
+                coefficients should be removed.
+
+                While the SIP distortion coefficients are being applied here, if that was indeed the intent,
+                for consistency please append &quot;-SIP&quot; to the CTYPE in the FITS header or the WCS object.
+
+                 [astropy.wcs.wcs]
+Using 2015-calibrated VAFACTOR-corrected TDD correction...
+- IDCTAB: Distortion model from row 444 for chip 2 : F606W
+INFO: 
+                Inconsistent SIP distortion information is present in the FITS header and the WCS object:
+                SIP coefficients were detected, but CTYPE is missing a &quot;-SIP&quot; suffix.
+                astropy.wcs is using the SIP distortion coefficients,
+                therefore the coordinates calculated here might be incorrect.
+
+                If you do not want to apply the SIP distortion coefficients,
+                please remove the SIP coefficients from the FITS header or the
+                WCS object.  As an example, if the image is already distortion-corrected
+                (e.g., drizzled) then distortion components should not apply and the SIP
+                coefficients should be removed.
+
+                While the SIP distortion coefficients are being applied here, if that was indeed the intent,
+                for consistency please append &quot;-SIP&quot; to the CTYPE in the FITS header or the WCS object.
+
+                 [astropy.wcs.wcs]
+Using 2015-calibrated VAFACTOR-corrected TDD correction...
+- IDCTAB: Distortion model from row 443 for chip 1 : F606W
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: 
+                Inconsistent SIP distortion information is present in the FITS header and the WCS object:
+                SIP coefficients were detected, but CTYPE is missing a &quot;-SIP&quot; suffix.
+                astropy.wcs is using the SIP distortion coefficients,
+                therefore the coordinates calculated here might be incorrect.
+
+                If you do not want to apply the SIP distortion coefficients,
+                please remove the SIP coefficients from the FITS header or the
+                WCS object.  As an example, if the image is already distortion-corrected
+                (e.g., drizzled) then distortion components should not apply and the SIP
+                coefficients should be removed.
+
+                While the SIP distortion coefficients are being applied here, if that was indeed the intent,
+                for consistency please append &quot;-SIP&quot; to the CTYPE in the FITS header or the WCS object.
+
+                 [astropy.wcs.wcs]
+Using 2015-calibrated VAFACTOR-corrected TDD correction...
+- IDCTAB: Distortion model from row 444 for chip 2 : F606W
+INFO: 
+                Inconsistent SIP distortion information is present in the FITS header and the WCS object:
+                SIP coefficients were detected, but CTYPE is missing a &quot;-SIP&quot; suffix.
+                astropy.wcs is using the SIP distortion coefficients,
+                therefore the coordinates calculated here might be incorrect.
+
+                If you do not want to apply the SIP distortion coefficients,
+                please remove the SIP coefficients from the FITS header or the
+                WCS object.  As an example, if the image is already distortion-corrected
+                (e.g., drizzled) then distortion components should not apply and the SIP
+                coefficients should be removed.
+
+                While the SIP distortion coefficients are being applied here, if that was indeed the intent,
+                for consistency please append &quot;-SIP&quot; to the CTYPE in the FITS header or the WCS object.
+
+                 [astropy.wcs.wcs]
+Using 2015-calibrated VAFACTOR-corrected TDD correction...
+- IDCTAB: Distortion model from row 444 for chip 2 : F606W
+INFO: 
+                Inconsistent SIP distortion information is present in the FITS header and the WCS object:
+                SIP coefficients were detected, but CTYPE is missing a &quot;-SIP&quot; suffix.
+                astropy.wcs is using the SIP distortion coefficients,
+                therefore the coordinates calculated here might be incorrect.
+
+                If you do not want to apply the SIP distortion coefficients,
+                please remove the SIP coefficients from the FITS header or the
+                WCS object.  As an example, if the image is already distortion-corrected
+                (e.g., drizzled) then distortion components should not apply and the SIP
+                coefficients should be removed.
+
+                While the SIP distortion coefficients are being applied here, if that was indeed the intent,
+                for consistency please append &quot;-SIP&quot; to the CTYPE in the FITS header or the WCS object.
+
+                 [astropy.wcs.wcs]
+Using 2015-calibrated VAFACTOR-corrected TDD correction...
+- IDCTAB: Distortion model from row 443 for chip 1 : F606W
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;j9l960afq_flt.fits&#39;,
+ &#39;j9l960adq_flt.fits&#39;,
+ &#39;j9l960abq_flt.fits&#39;,
+ &#39;j9l960a9q_flt.fits&#39;]
 </pre></div>
 </div>
 </div>

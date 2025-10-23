@@ -149,14 +149,8 @@
   
   
   
-    
-    
-      
-    
-    
-    <img src="../../../_static/stsci_logo2.png" class="logo__image only-light" alt="HST Notebooks - Home"/>
-    <script>document.write(`<img src="../../../_static/stsci_logo2.png" class="logo__image only-dark" alt="HST Notebooks - Home"/>`);</script>
   
+    <p class="title logo__title">HST Notebooks</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -182,7 +176,7 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">ACS</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../ACS/README.html">ACS Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ACS/README.html">ACS Notebooks - TEST 1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ACS/acs_findsat_mrt/acs_findsat_mrt_example.html">Satellite trail detection in ACS/WFC data using acstools.findsat_mrt</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ACS/acs_saturation_trails/acs_saturation_trails.html">ACS Linearity with Saturated Stars</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ACS/acs_cte_forward_model/acs_cte_forward_model_example.html">Pixel-based ACS/WFC CTE Forward Model</a></li>
@@ -259,7 +253,6 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">DrizzlePac</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/README.html">DrizzlePac Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/using_updated_astrometry_solutions/using_updated_astrometry_solutions.html">Improving Astrometry Using Alternate WCS Solutions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/align_to_catalogs/align_to_catalogs.html">Aligning HST images to an Absolute Reference Catalog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/align_sparse_fields/align_sparse_fields.html">Aligning Deep Exposures of Sparse Fields</a></li>
@@ -652,13 +645,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div style='background-color: #fff3cd; border: 1px solid #ffeaa7; border-radius: 4px; padding: 15px; margin: 10px 0; border-left: 4px solid #f39c12;'>
-<h3 style='color: #856404; margin-top: 0;'>⚠️ EXECUTION WARNING</h3>
-<p style='color: #856404; margin-bottom: 0;'><strong>This notebook may not execute properly in the current environment.</strong></p>
-<p style='color: #856404; margin-bottom: 0;'>Some cells may have failed during automated testing. Please review the notebook content and test manually before use.</p>
-<p style='color: #856404; margin-bottom: 0; font-size: 0.9em;'><em>Generated during CI/CD pipeline - some outputs may be incomplete or missing.</em></p>
-</div>
-<p><a id="topD"></a></p>
+  <p><a id="topD"></a></p>
 <section class="tex2jax_ignore mathjax_ignore" id="downloading-cos-data">
 <h1>Downloading COS Data<a class="headerlink" href="#downloading-cos-data" title="Link to this heading">#</a></h1>
 </section>
@@ -790,6 +777,24 @@ You may read through all three, or you may wish to focus on a particular method 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Found 611 data products
+INFO: 6 of 12 products were duplicates. Only returning 6 unique product(s). [astroquery.mast.utils]
+INFO: Found cached file ./mastDownload/HST/ldm701010/ldm701010_asn.fits with expected size 11520. [astroquery.query]
+INFO: Found cached file ./mastDownload/HST/ldm701010/ldm701010_x1dsum.fits with expected size 1814400. [astroquery.query]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: Found cached file ./mastDownload/HST/ldm701020/ldm701020_asn.fits with expected size 11520. [astroquery.query]
+INFO: Found cached file ./mastDownload/HST/ldm701020/ldm701020_x1dsum.fits with expected size 1814400. [astroquery.query]
+INFO: Found cached file ./mastDownload/HST/ldm701030/ldm701030_asn.fits with expected size 11520. [astroquery.query]
+INFO: Found cached file ./mastDownload/HST/ldm701030/ldm701030_x1dsum.fits with expected size 1814400. [astroquery.query]
+Downloaded X1DSUM Files: 
+ [PosixPath(&#39;mastDownload/HST/ldm701010/ldm701010_x1dsum.fits&#39;), PosixPath(&#39;mastDownload/HST/ldm701020/ldm701020_x1dsum.fits&#39;), PosixPath(&#39;mastDownload/HST/ldm701030/ldm701030_x1dsum.fits&#39;)] 
+Downloaded ASN Files: 
+ [PosixPath(&#39;mastDownload/HST/ldm701010/ldm701010_asn.fits&#39;), PosixPath(&#39;mastDownload/HST/ldm701020/ldm701020_asn.fits&#39;), PosixPath(&#39;mastDownload/HST/ldm701030/ldm701030_asn.fits&#39;)]
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="now-returning-to-our-more-detailed-walkthrough">
@@ -824,7 +829,7 @@ Full documentation of the HST-specific search can be found <a class="reference e
 <p>The search page  of the HST-specific interface is laid out as in Figure 1.1:</p>
 <section id="fig-1-1">
 <h3>Fig 1.1<a class="headerlink" href="#fig-1-1" title="Link to this heading">#</a></h3>
-<a class="reference internal image-reference" href="../../../_images/new_hst_search_login.png"><img alt="An image of the MAST search site. On the page there are boxes for each different criteria that you want in your search, such as Object Name in the top left, active instruments below that, and at the bottom of the page there is a box that you can fill with a certain column name and your desired criteria (if the criteria is not already on the page). At the top right is the 'My ST' button." src="../../../_images/new_hst_search_login.png" style="width: 900px;" />
+<a class="reference internal image-reference" href="notebooks/COS/DataDl/figures/new_hst_search_login.png"><img alt="An image of the MAST search site. On the page there are boxes for each different criteria that you want in your search, such as Object Name in the top left, active instruments below that, and at the bottom of the page there is a box that you can fill with a certain column name and your desired criteria (if the criteria is not already on the page). At the top right is the 'My ST' button." src="notebooks/COS/DataDl/figures/new_hst_search_login.png" style="width: 900px;" />
 </a>
 <p>If you are accessing proprietary data, you will need to make an account or log in at the top right under “MY ST” (Fig 1.1, boxed in red). If you are accessing non-proprietary data, you may continue without logging in.</p>
 <p>Figure 1.2 shows a filled-in search form, which will query the MAST archive for observations which:</p>
@@ -837,13 +842,13 @@ Full documentation of the HST-specific search can be found <a class="reference e
 </section>
 <section id="fig-1-2">
 <h3>Fig 1.2<a class="headerlink" href="#fig-1-2" title="Link to this heading">#</a></h3>
-<a class="reference internal image-reference" href="../../../_images/hst_search_query_updated.png"><img alt="New HST-specific website search filled out with a COS data query, boxes with each criteria from above are highlighted with a red box. The central wavelength condition was added to the bottom box where you choose columns for criteria, since the central wavelength is not a pre-given criteria." src="../../../_images/hst_search_query_updated.png" style="width: 900px;" />
+<a class="reference internal image-reference" href="notebooks/COS/DataDl/figures/hst_search_query_updated.png"><img alt="New HST-specific website search filled out with a COS data query, boxes with each criteria from above are highlighted with a red box. The central wavelength condition was added to the bottom box where you choose columns for criteria, since the central wavelength is not a pre-given criteria." src="notebooks/COS/DataDl/figures/hst_search_query_updated.png" style="width: 900px;" />
 </a>
 <p>The above search results in the table shown in Figure 1.3.</p>
 </section>
 <section id="fig-1-3">
 <h3>Fig 1.3<a class="headerlink" href="#fig-1-3" title="Link to this heading">#</a></h3>
-<a class="reference internal image-reference" href="../../../_images/new_hst_search_results.png"><img alt="The page is now the search results page. At the top left are the 'Edit Search' box highlighted in dashed red. Below that is the 'Download Dataset' button highlighted with a green circle. Under that is the list of datasets, with each row beginning with a empty checkbox, followed by information about the dataset, such as search position, dataset name, target name, etc." src="../../../_images/new_hst_search_results.png" style="width: 900px;" />
+<a class="reference internal image-reference" href="notebooks/COS/DataDl/figures/new_hst_search_results.png"><img alt="The page is now the search results page. At the top left are the 'Edit Search' box highlighted in dashed red. Below that is the 'Download Dataset' button highlighted with a green circle. Under that is the list of datasets, with each row beginning with a empty checkbox, followed by information about the dataset, such as search position, dataset name, target name, etc." src="notebooks/COS/DataDl/figures/new_hst_search_results.png" style="width: 900px;" />
 </a>
 <p>If you need to change some parameters in your search - for instance, to also find data from the G130M grating - click on “Edit Search” (Fig 1.3, red dashed box).</p>
 <p>If you are happy with your search, you may now select all the observations whose data you would like to download. Do this by clicking on the checkbox for those observations (Fig 1.3, blue box), and then clicking “Download Data” (Fig 1.3, green oval).</p>
@@ -851,18 +856,18 @@ Full documentation of the HST-specific search can be found <a class="reference e
 </section>
 <section id="fig-1-4">
 <h3>Fig 1.4<a class="headerlink" href="#fig-1-4" title="Link to this heading">#</a></h3>
-<a class="reference internal image-reference" href="../../../_images/preview_spectrum_small.png"><img alt="The page is now an image of a spectrum preview for dataset LPXK51020. It shows two plots of wavelength vs flux. Below is a list of exposure information, such as observation data, exposure time, release date, mode. At the very bottom of the page is the proposal ID along with the PI and CoIs." src="../../../_images/preview_spectrum_small.png" style="width: 900px;" />
+<a class="reference internal image-reference" href="notebooks/COS/DataDl/figures/preview_spectrum_small.png"><img alt="The page is now an image of a spectrum preview for dataset LPXK51020. It shows two plots of wavelength vs flux. Below is a list of exposure information, such as observation data, exposure time, release date, mode. At the very bottom of the page is the proposal ID along with the PI and CoIs." src="notebooks/COS/DataDl/figures/preview_spectrum_small.png" style="width: 900px;" />
 </a>
 <p>Returning to the results page shown in Fig 1.3 and clicking “Download Data” opens a window as shown in Figure 1.5. In this window you can search for filetypes using the search bar, and unselect/select all the data products shown in the filtered list (Fig 1.5, green circle). Clicking the “Showing all filetypes” box (Figure 1.5, red box) shows a drop-down (Figure 1.6) where you can choose to show/hide certain types of data such as the uncalibrated data.</p>
 </section>
 <section id="fig-1-5">
 <h3>Fig 1.5<a class="headerlink" href="#fig-1-5" title="Link to this heading">#</a></h3>
-<a class="reference internal image-reference" href="../../../_images/new_hst_search_downloading_all_files.png"><img alt="The image shows the a table of files in dataset LDJ1010. Each row shows different CalCOS products, such as the ASN file, X1DSUM, JIT, etc. The title of the table is the dataset name, and to the left of the name is the button to check all or none exposures, highlighted with a green circle. There are columns on the table that give information about the insturment used (COS) and the filter/grating (G140L). Above the table is a dropdown that allows you to choose the filetypes you wish to download." src="../../../_images/new_hst_search_downloading_all_files.png" style="width: 900px;" />
+<a class="reference internal image-reference" href="notebooks/COS/DataDl/figures/new_hst_search_downloading_all_files.png"><img alt="The image shows the a table of files in dataset LDJ1010. Each row shows different CalCOS products, such as the ASN file, X1DSUM, JIT, etc. The title of the table is the dataset name, and to the left of the name is the button to check all or none exposures, highlighted with a green circle. There are columns on the table that give information about the insturment used (COS) and the filter/grating (G140L). Above the table is a dropdown that allows you to choose the filetypes you wish to download." src="notebooks/COS/DataDl/figures/new_hst_search_downloading_all_files.png" style="width: 900px;" />
 </a>
 </section>
 <section id="fig-1-6">
 <h3>Fig 1.6<a class="headerlink" href="#fig-1-6" title="Link to this heading">#</a></h3>
-<a class="reference internal image-reference" href="../../../_images/new_hst_search_downloading_filetypes.png"><img alt="The image shows the same page as Figure 1.5, but the 'Showing all file types' dropdown button has been clicked. There are rows that have checkboxes on the left, each row from top to bottom is labled 'Calibrated', 'Uncalibrated', 'Aux/Other', 'Reference', 'Log/Jitter" src="../../../_images/new_hst_search_downloading_filetypes.png" style="width: 900px;" />
+<a class="reference internal image-reference" href="notebooks/COS/DataDl/figures/new_hst_search_downloading_filetypes.png"><img alt="The image shows the same page as Figure 1.5, but the 'Showing all file types' dropdown button has been clicked. There are rows that have checkboxes on the left, each row from top to bottom is labled 'Calibrated', 'Uncalibrated', 'Aux/Other', 'Reference', 'Log/Jitter" src="notebooks/COS/DataDl/figures/new_hst_search_downloading_filetypes.png" style="width: 900px;" />
 </a>
 <p>When all of your desired data products are checked, click “Start Download” (Fig 1.5, yellow dashed box). This will download a compressed “zipped” folder of all of your data, divided into subdirectories by the observation. Most operating systems can decompress these folders by default. For help decompressing the zipped files, you can follow these links for: <a class="reference external" href="https://support.microsoft.com/en-us/windows/zip-and-unzip-files-8d28fa72-f2f9-712f-67df-f80cf89fd4e5">Windows</a> and <a class="reference external" href="https://support.apple.com/guide/mac-help/zip-and-unzip-files-and-folders-on-mac-mchlp2528/mac">Mac</a>. There are numerous ways to do this on Linux, however we have not vetted them.</p>
 <p>Let’s briefly return to the initial HST-specific search form to discuss another way to find data.
@@ -874,7 +879,7 @@ Rather than specifying parameters about the data we’re searching for, we can i
 </section>
 <section id="fig-1-7">
 <h3>Fig 1.7<a class="headerlink" href="#fig-1-7" title="Link to this heading">#</a></h3>
-<a class="reference internal image-reference" href="../../../_images/new_hst_search_query2_small.png"><img alt="The image is showing the search page for MAST again. Halfway down the page is a box to input dataset name criteria. Above that is the obervation type box, which is composed of three check boxes. These boxes from left to right are 'All', 'Science', and 'Calibration'. The science box is the only one that is checked." src="../../../_images/new_hst_search_query2_small.png" style="width: 900px;" />
+<a class="reference internal image-reference" href="notebooks/COS/DataDl/figures/new_hst_search_query2_small.png"><img alt="The image is showing the search page for MAST again. Halfway down the page is a box to input dataset name criteria. Above that is the obervation type box, which is composed of three check boxes. These boxes from left to right are 'All', 'Science', and 'Calibration'. The science box is the only one that is checked." src="notebooks/COS/DataDl/figures/new_hst_search_query2_small.png" style="width: 900px;" />
 </a>
 <p><font size="5"> <b>Well done making it this far!</b></font></p>
 <p>You can attempt the exercise below for some extra practice.</p>
@@ -933,13 +938,13 @@ You can also search by right ascension and declination, instead of by dataset ID
 Because we are searching by Dataset ID, we don’t need to specify any additional parameters to narrow down the data.</p>
 <section id="fig-1-8">
 <h3>Fig 1.8<a class="headerlink" href="#fig-1-8" title="Link to this heading">#</a></h3>
-<a class="reference internal image-reference" href="../../../_images/new_search_file_list_small.png"><img alt="The image shows the MAST search page, with the top box filled in. The title of this box is 'Object name(s) and/or RA and Dec pair(s). The filled in box is the text file obsId_list.txt. The observations box below it has only the science box checked off." src="../../../_images/new_search_file_list_small.png" style="width: 900px;" />
+<a class="reference internal image-reference" href="notebooks/COS/DataDl/figures/new_search_file_list_small.png"><img alt="The image shows the MAST search page, with the top box filled in. The title of this box is 'Object name(s) and/or RA and Dec pair(s). The filled in box is the text file obsId_list.txt. The observations box below it has only the science box checked off." src="notebooks/COS/DataDl/figures/new_search_file_list_small.png" style="width: 900px;" />
 </a>
 <p>We now can access all the datasets specified in <code class="docutils literal notranslate"><span class="pre">obsId_list.txt</span></code>, as shown in Figure 1.9:</p>
 </section>
 <section id="fig-1-9">
 <h3>Fig 1.9<a class="headerlink" href="#fig-1-9" title="Link to this heading">#</a></h3>
-<a class="reference internal image-reference" href="../../../_images/new_search_file_list_res_small.png"><img alt="The image shows the MAST search results page, with the three datasets from our text file shows in each row." src="../../../_images/new_search_file_list_res_small.png" style="width: 900px;" />
+<a class="reference internal image-reference" href="notebooks/COS/DataDl/figures/new_search_file_list_res_small.png"><img alt="The image shows the MAST search results page, with the three datasets from our text file shows in each row." src="notebooks/COS/DataDl/figures/new_search_file_list_res_small.png" style="width: 900px;" />
 </a>
 <p>We can select and download their data products as before.</p>
 <p><a id = mastportD></a></p>
@@ -952,13 +957,13 @@ Because we are searching by Dataset ID, we don’t need to specify any additiona
 <p>Navigate to the MAST Portal at <a class="reference external" href="https://mast.stsci.edu/portal/Mashup/Clients/Mast/Portal.html">https://mast.stsci.edu/portal/Mashup/Clients/Mast/Portal.html</a>, and you will be greeted by a screen where the top looks like Figure 1.10.</p>
 <section id="fig-1-10">
 <h3>Fig 1.10<a class="headerlink" href="#fig-1-10" title="Link to this heading">#</a></h3>
-<a class="reference internal image-reference" href="../../../_images/mastp_top.png"><img alt="The image shows the MAST portal, specifically the search box at the top." src="../../../_images/mastp_top.png" style="width: 900px;" />
+<a class="reference internal image-reference" href="notebooks/COS/DataDl/figures/mastp_top.png"><img alt="The image shows the MAST portal, specifically the search box at the top." src="notebooks/COS/DataDl/figures/mastp_top.png" style="width: 900px;" />
 </a>
 <p>Click on “Advanced Search” (boxed in red in Figure 1.10). This will open up a new search tab, as shown in Figure 1.11:</p>
 </section>
 <section id="fig-1-11">
 <h3>Fig 1.11<a class="headerlink" href="#fig-1-11" title="Link to this heading">#</a></h3>
-<a class="reference internal image-reference" href="../../../_images/mastp_adv.png"><img alt="The image shows the advanced search pop-up. On the left of the pop-up is a list of check boxes for different search criteria, such as Target name, instrument, mission, etc. To the left of that are larger boxes for different critera, and inside these mobes are rows with checkboxes. For example, there is a larger box labeled 'Observation type' with two checkbox rows labeled 'science' and 'calibration'." src="../../../_images/mastp_adv.png" style="width: 900px;" />
+<a class="reference internal image-reference" href="notebooks/COS/DataDl/figures/mastp_adv.png"><img alt="The image shows the advanced search pop-up. On the left of the pop-up is a list of check boxes for different search criteria, such as Target name, instrument, mission, etc. To the left of that are larger boxes for different critera, and inside these mobes are rows with checkboxes. For example, there is a larger box labeled 'Observation type' with two checkbox rows labeled 'science' and 'calibration'." src="notebooks/COS/DataDl/figures/mastp_adv.png" style="width: 900px;" />
 </a>
 <p>Fig 1.11 (above) shows the default search fields which appear. Depending on what you are looking for, these may or may not be the most helpful search fields. By unchecking some of the fields which we are not interested in searching by right now (Figure 1.12, boxed in green), and then entering the parameter values by which to narrow the search into each parameter’s box, we generate Fig 1.12. One of the six fields (Mission) by which we are narrowing is boxed in a dashed blue line. The list of applied filters is boxed in red. A dashed pink box at the top left indicates that 2 records were found matching all of these parameters. To its left is an orange box around the “Search” button to press to bring up the list of results.</p>
 <p>Here we are searching by:</p>
@@ -993,13 +998,13 @@ Because we are searching by Dataset ID, we don’t need to specify any additiona
 </section>
 <section id="fig-1-12">
 <h3>Fig 1.12<a class="headerlink" href="#fig-1-12" title="Link to this heading">#</a></h3>
-<a class="reference internal image-reference" href="../../../_images/mastp_adv_2.png"><img alt="The image shows the same advanced search pop-up, filled out with our desired criteria. The criteria is highlighted, and above it is a list of the applied filters highlighted in red. The top of the pop-up has a 'Search' button, and also lists the records found. There are two records for our search." src="../../../_images/mastp_adv_2.png" style="width: 900px;" />
+<a class="reference internal image-reference" href="notebooks/COS/DataDl/figures/mastp_adv_2.png"><img alt="The image shows the same advanced search pop-up, filled out with our desired criteria. The criteria is highlighted, and above it is a list of the applied filters highlighted in red. The top of the pop-up has a 'Search' button, and also lists the records found. There are two records for our search." src="notebooks/COS/DataDl/figures/mastp_adv_2.png" style="width: 900px;" />
 </a>
 <p>Click the “Search” button (boxed in orange), and you will be brought to a page resembling Figure 1.13.</p>
 </section>
 <section id="fig-1-13">
 <h3>Fig 1.13<a class="headerlink" href="#fig-1-13" title="Link to this heading">#</a></h3>
-<a class="reference internal image-reference" href="../../../_images/mastp_res1.png"><img alt="The image shows the search results list, with consists of two rows for our search. To the left of the rows are checkboxes, then there is are images of a disk, spectra, and three dots. The rest of the columns of the rows show some criteria, such as the mission, observation type, etc. To the far right is the image of our object." src="../../../_images/mastp_res1.png" style="width: 900px;" />
+<a class="reference internal image-reference" href="notebooks/COS/DataDl/figures/mastp_res1.png"><img alt="The image shows the search results list, with consists of two rows for our search. To the left of the rows are checkboxes, then there is are images of a disk, spectra, and three dots. The rest of the columns of the rows show some criteria, such as the mission, observation type, etc. To the far right is the image of our object." src="notebooks/COS/DataDl/figures/mastp_res1.png" style="width: 900px;" />
 </a>
 <p><font size="4"> <b>Above, in Fig 1.13</b>:</font></p>
 <ul class="simple">
@@ -1029,7 +1034,7 @@ The MAST portal acts a bit like an online shopping website, where you add your <
 <p>Using the checkboxes, mark all the datasets you wish to download (in this case, we’ll download both LCXV13040 and LCXV13050). Then, click the “Add data products to Download Basket” button (Fig 1.13, dashed-purple line), which will take you to a “Download Basket” screen resembling Figure 1.14:</p>
 <section id="fig-1-14">
 <h3>Fig 1.14<a class="headerlink" href="#fig-1-14" title="Link to this heading">#</a></h3>
-<a class="reference internal image-reference" href="../../../_images/mastp_cart2.png"><img alt="The image shows the Download Manager. The left is a list of filters, where you can choose recommended products, product categories, extensions, and groups. To the left is a file list of all files for the observations. There are columns that label the file size, name, product type, etc." src="../../../_images/mastp_cart2.png" style="width: 900px;" />
+<a class="reference internal image-reference" href="notebooks/COS/DataDl/figures/mastp_cart2.png"><img alt="The image shows the Download Manager. The left is a list of filters, where you can choose recommended products, product categories, extensions, and groups. To the left is a file list of all files for the observations. There are columns that label the file size, name, product type, etc." src="notebooks/COS/DataDl/figures/mastp_cart2.png" style="width: 900px;" />
 </a>
 <p>Each dataset contains <em>many</em> files, most of which are calibration files or intermediate processing files. You may or may not want some of these intermediate files in addition to the final product file.
 In the leftmost “Filters” section of the Download Basket page, you can narrow which files will be downloaded (Fig 1.14, boxed in red).
@@ -1090,6 +1095,46 @@ Check the box labelled “HST” to select all files included by the filters, an
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>We have table information on 1128 observations in the following categories/columns:
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;intentType&#39;,
+ &#39;obs_collection&#39;,
+ &#39;provenance_name&#39;,
+ &#39;instrument_name&#39;,
+ &#39;project&#39;,
+ &#39;filters&#39;,
+ &#39;wavelength_region&#39;,
+ &#39;target_name&#39;,
+ &#39;target_classification&#39;,
+ &#39;obs_id&#39;,
+ &#39;s_ra&#39;,
+ &#39;s_dec&#39;,
+ &#39;dataproduct_type&#39;,
+ &#39;proposal_pi&#39;,
+ &#39;calib_level&#39;,
+ &#39;t_min&#39;,
+ &#39;t_max&#39;,
+ &#39;t_exptime&#39;,
+ &#39;em_min&#39;,
+ &#39;em_max&#39;,
+ &#39;obs_title&#39;,
+ &#39;t_obs_release&#39;,
+ &#39;proposal_id&#39;,
+ &#39;proposal_type&#39;,
+ &#39;sequence_number&#39;,
+ &#39;s_region&#39;,
+ &#39;jpegURL&#39;,
+ &#39;dataURL&#39;,
+ &#39;dataRights&#39;,
+ &#39;mtFlag&#39;,
+ &#39;srcDen&#39;,
+ &#39;obsid&#39;,
+ &#39;distance&#39;]
+</pre></div>
+</div>
+</div>
 </div>
 <p><a id=NarrowSearchD></a></p>
 </section>
@@ -1137,9 +1182,44 @@ The parameter limits we add to the search are:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  obsid     obs_id  target_name ... filters wavelength_region     t_exptime     
+--------- --------- ----------- ... ------- ----------------- ------------------
+ 24843807 lbn133010  WD1057+719 ...   G160M                UV                0.0
+ 26242800 ldyr52030  WD1057+719 ...   G160M                UV                0.0
+ 24134176 la9r02dfq WD-1057+719 ...   G160M                UV                1.0
+ 24140064 lbe702iqs  WD1057+719 ...   G160M                UV                1.0
+ 24139542 lbb918scq  WD1057+719 ...   G160M                UV                1.0
+ 24139587 lbb9x3ckq  WD1057+719 ...   G160M                UV                1.0
+216643126 lf4g07b8q  WD1057+719 ...   G160M                UV                1.0
+216643132 lf4g07b9q  WD1057+719 ...   G160M                UV                1.0
+ 24139534 lbb917k7q  WD1057+719 ...   G160M                UV                1.0
+ 24139526 lbb916lbq  WD1057+719 ...   G160M                UV                1.0
+      ...       ...         ... ...     ...               ...                ...
+ 24843884 lbnm01020 WD-1057+719 ...   G160M                UV 2850.2079999999996
+ 24843894 lbnm03020  WD1057+719 ...   G160M                UV           2900.608
+ 24843896 lbnm03040  WD1057+719 ...   G160M                UV            3000.64
+ 24140062 lbe702ios  WD1057+719 ...   G160M                UV             3179.0
+ 24843893 lbnm03010  WD1057+719 ...   G160M                UV           3200.768
+ 24839998 la9r02010 WD-1057+719 ...   G160M                UV           3280.128
+ 24843887 lbnm01050 WD-1057+719 ...   G160M                UV           3350.368
+ 24843897 lbnm03050  WD1057+719 ...   G160M                UV             3700.8
+ 24842491 lbek02010  WD1057+719 ...   G160M                UV             4252.0
+ 24842492 lbek02020  WD1057+719 ...   G160M                UV  5401.599999999999
+Length = 199 rows
+
+
+The longest COS/FUV exposure with the G160M filter is:
+
+ obsid     obs_id  target_name dataproduct_type instrument_name project filters wavelength_region     t_exptime    
+-------- --------- ----------- ---------------- --------------- ------- ------- ----------------- -----------------
+24842492 lbek02020  WD1057+719         spectrum         COS/FUV     HST   G160M                UV 5401.599999999999
+</pre></div>
+</div>
+</div>
 </div>
 <p><font size="5">Caution! </font></p>
-<a class="reference internal image-reference" href="../../../_images/warning1.png"><img alt="This image is a warning symbol." src="../../../_images/warning1.png" style="width: 60px;" />
+<a class="reference internal image-reference" href="notebooks/COS/DataDl/figures/warning.png"><img alt="This image is a warning symbol." src="notebooks/COS/DataDl/figures/warning.png" style="width: 60px;" />
 </a>
 <p>Please note that these queries are <code class="docutils literal notranslate"><span class="pre">Astropy</span></code> tables and do not always respond as expected for other data structures like <code class="docutils literal notranslate"><span class="pre">Pandas</span> <span class="pre">DataFrames</span></code>. For instance, the first way of filtering a table shown below is correct, but the second will consistently produce the <em>wrong result</em>. You <em>must</em> search and filter these tables by masking them, as in the first example below.</p>
 <div class="cell docutils container">
@@ -1153,6 +1233,19 @@ The parameter limits we add to the search are:</p>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Incorrect way yields: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
       <span class="n">WD_query</span><span class="p">[</span><span class="s1">&#39;obs_id&#39;</span> <span class="o">==</span> <span class="s1">&#39;LBBD01020&#39;</span><span class="p">][</span><span class="s1">&#39;obs_id&#39;</span><span class="p">],</span>
       <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">which is NOT what we&#39;re looking for!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Correct way yields: 
+   obs_id 
+---------
+lbbd01020 
+
+
+Incorrect way yields: 
+ tess-s0014-4-3 
+which is NOT what we&#39;re looking for!
 </pre></div>
 </div>
 </div>
@@ -1171,6 +1264,22 @@ The parameter limits we add to the search are:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><i>Table masked=True length=10</i>
+<table id="table140308678589648" class="table-striped table-bordered table-condensed">
+<thead><tr><th>obsID</th><th>obs_collection</th><th>dataproduct_type</th><th>obs_id</th><th>description</th><th>type</th><th>dataURI</th><th>productType</th><th>productGroupDescription</th><th>productSubGroupDescription</th><th>productDocumentationURL</th><th>project</th><th>prvversion</th><th>proposal_id</th><th>productFilename</th><th>size</th><th>parent_obsid</th><th>dataRights</th><th>calib_level</th><th>filters</th></tr></thead>
+<thead><tr><th>str9</th><th>str3</th><th>str8</th><th>str34</th><th>str62</th><th>str1</th><th>str70</th><th>str9</th><th>str28</th><th>str12</th><th>str1</th><th>str6</th><th>str5</th><th>str5</th><th>str48</th><th>int64</th><th>str8</th><th>str6</th><th>int64</th><th>str5</th></tr></thead>
+<tr><td>24140170</td><td>HST</td><td>spectrum</td><td>lbek02o4q</td><td>DADS CTA file - Corrected events COS segment A</td><td>S</td><td>mast:HST/product/lbek02o4q_corrtag_a.fits</td><td>AUXILIARY</td><td>--</td><td>CORRTAG_A</td><td>--</td><td>CALCOS</td><td>3.6.1</td><td>12086</td><td>lbek02o4q_corrtag_a.fits</td><td>49066560</td><td>24842492</td><td>PUBLIC</td><td>1</td><td>G160M</td></tr>
+<tr><td>24140170</td><td>HST</td><td>spectrum</td><td>lbek02o4q</td><td>DADS CTB file - Corrected events COS segment B</td><td>S</td><td>mast:HST/product/lbek02o4q_corrtag_b.fits</td><td>AUXILIARY</td><td>--</td><td>CORRTAG_B</td><td>--</td><td>CALCOS</td><td>3.6.1</td><td>12086</td><td>lbek02o4q_corrtag_b.fits</td><td>160911360</td><td>24842492</td><td>PUBLIC</td><td>1</td><td>G160M</td></tr>
+<tr><td>24140170</td><td>HST</td><td>spectrum</td><td>lbek02o4q</td><td>DADS CNA file - Counts COS segment A</td><td>S</td><td>mast:HST/product/lbek02o4q_counts_a.fits</td><td>AUXILIARY</td><td>--</td><td>COUNTS_A</td><td>--</td><td>CALCOS</td><td>3.6.1</td><td>12086</td><td>lbek02o4q_counts_a.fits</td><td>167823360</td><td>24842492</td><td>PUBLIC</td><td>1</td><td>G160M</td></tr>
+<tr><td>24140170</td><td>HST</td><td>spectrum</td><td>lbek02o4q</td><td>DADS CNB file - Counts COS segment B</td><td>S</td><td>mast:HST/product/lbek02o4q_counts_b.fits</td><td>AUXILIARY</td><td>--</td><td>COUNTS_B</td><td>--</td><td>CALCOS</td><td>3.6.1</td><td>12086</td><td>lbek02o4q_counts_b.fits</td><td>167823360</td><td>24842492</td><td>PUBLIC</td><td>1</td><td>G160M</td></tr>
+<tr><td>24140170</td><td>HST</td><td>spectrum</td><td>lbek02o4q</td><td>DADS FLA file - Calibrated exposure COS segment A</td><td>S</td><td>mast:HST/product/lbek02o4q_flt_a.fits</td><td>AUXILIARY</td><td>--</td><td>FLT_A</td><td>--</td><td>CALCOS</td><td>3.6.1</td><td>12086</td><td>lbek02o4q_flt_a.fits</td><td>167823360</td><td>24842492</td><td>PUBLIC</td><td>2</td><td>G160M</td></tr>
+<tr><td>24140170</td><td>HST</td><td>spectrum</td><td>lbek02o4q</td><td>DADS FLB file - Calibrated exposure COS segment B</td><td>S</td><td>mast:HST/product/lbek02o4q_flt_b.fits</td><td>AUXILIARY</td><td>--</td><td>FLT_B</td><td>--</td><td>CALCOS</td><td>3.6.1</td><td>12086</td><td>lbek02o4q_flt_b.fits</td><td>167823360</td><td>24842492</td><td>PUBLIC</td><td>2</td><td>G160M</td></tr>
+<tr><td>24140170</td><td>HST</td><td>spectrum</td><td>lbek02o4q</td><td>DADS LPF file - LampFlash exposure COS</td><td>S</td><td>mast:HST/product/lbek02o4q_lampflash.fits</td><td>AUXILIARY</td><td>--</td><td>LAMPFLASH</td><td>--</td><td>CALCOS</td><td>3.6.1</td><td>12086</td><td>lbek02o4q_lampflash.fits</td><td>699840</td><td>24842492</td><td>PUBLIC</td><td>1</td><td>G160M</td></tr>
+<tr><td>24140170</td><td>HST</td><td>spectrum</td><td>lbek02o4q</td><td>DADS RTA file - Raw events COS segment A</td><td>S</td><td>mast:HST/product/lbek02o4q_rawtag_a.fits</td><td>AUXILIARY</td><td>--</td><td>RAWTAG_A</td><td>--</td><td>CALCOS</td><td>3.6.1</td><td>12086</td><td>lbek02o4q_rawtag_a.fits</td><td>11347200</td><td>24842492</td><td>PUBLIC</td><td>1</td><td>G160M</td></tr>
+<tr><td>24140170</td><td>HST</td><td>spectrum</td><td>lbek02o4q</td><td>DADS RTB file - Raw events COS segment B</td><td>S</td><td>mast:HST/product/lbek02o4q_rawtag_b.fits</td><td>AUXILIARY</td><td>--</td><td>RAWTAG_B</td><td>--</td><td>CALCOS</td><td>3.6.1</td><td>12086</td><td>lbek02o4q_rawtag_b.fits</td><td>37157760</td><td>24842492</td><td>PUBLIC</td><td>1</td><td>G160M</td></tr>
+<tr><td>24140170</td><td>HST</td><td>spectrum</td><td>lbek02o4q</td><td>DADS SPT file - Engineering telemetry ACS/WFC3/NICMOS/COS/STIS</td><td>S</td><td>mast:HST/product/lbek02o4q_spt.fits</td><td>AUXILIARY</td><td>--</td><td>SPT</td><td>--</td><td>CALCOS</td><td>3.6.1</td><td>12086</td><td>lbek02o4q_spt.fits</td><td>414720</td><td>24842492</td><td>PUBLIC</td><td>1</td><td>G160M</td></tr>
+</table></div></div></div>
 </div>
 <p>Now, we will download <em>just the</em> <strong>minimum recommended products</strong> (<em>mrp</em>) which are the fully calibrated spectrum (denoted by the suffix <code class="docutils literal notranslate"><span class="pre">_x1d</span></code> or here <code class="docutils literal notranslate"><span class="pre">x1dsum</span></code>) and the association file (denoted by the suffix <code class="docutils literal notranslate"><span class="pre">_asn</span></code>). We do this by setting the parameter <code class="docutils literal notranslate"><span class="pre">mrp_only</span></code> to <code class="docutils literal notranslate"><span class="pre">True</span></code>. The association file contains no data, but rather the metadata explaining which exposures produced the <code class="docutils literal notranslate"><span class="pre">x1dsum</span></code> dataset. The <code class="docutils literal notranslate"><span class="pre">x1dsum</span></code> file is the final product summed across all of the <a class="reference external" href="https://hst-docs.stsci.edu/cosdhb/chapter-1-cos-overview/1-1-instrument-capabilities-and-design#id-1.1InstrumentCapabilitiesandDesign-GratingOffset(FP-POS)GratingOffsetPositions(FP-POS)">fixed pattern noise positions</a> (<code class="docutils literal notranslate"><span class="pre">FP-POS</span></code>). The <code class="docutils literal notranslate"><span class="pre">x1d</span></code> and <code class="docutils literal notranslate"><span class="pre">x1dsum&lt;n&gt;</span></code> files are intermediate spectra. Much more information can be found in the <a class="reference external" href="https://hst-docs.stsci.edu/display/COSIHB/">COS Instrument Handbook</a>.</p>
 <p>We would set <code class="docutils literal notranslate"><span class="pre">mrp_only</span></code> to <code class="docutils literal notranslate"><span class="pre">False</span></code>, if we wanted to download <em><strong>all</strong></em> the data from the observation, including:</p>
@@ -1178,7 +1287,7 @@ The parameter limits we add to the search are:</p>
 <li><p>Support files such as the spacecraft’s pointing data over time (<code class="docutils literal notranslate"><span class="pre">jit</span></code> files).</p></li>
 <li><p>Intermediate data products such as calibrated TIME-TAG data (<code class="docutils literal notranslate"><span class="pre">corrtag</span></code> or <code class="docutils literal notranslate"><span class="pre">corrtag_a</span></code>/<code class="docutils literal notranslate"><span class="pre">corrtag_b</span></code> files) and extracted 1-dimensional spectra averaged over exposures with a specific <code class="docutils literal notranslate"><span class="pre">FP-POS</span></code> value (<code class="docutils literal notranslate"><span class="pre">x1dsum</span></code> files).</p></li>
 </ul>
-<a class="reference internal image-reference" href="../../../_images/warning1.png"><img alt="This image is a warning symbol." src="../../../_images/warning1.png" style="width: 60px;" />
+<a class="reference internal image-reference" href="notebooks/COS/DataDl/figures/warning.png"><img alt="This image is a warning symbol." src="notebooks/COS/DataDl/figures/warning.png" style="width: 60px;" />
 </a>
 <p>However, use caution with downloading all files, as in this case, setting <code class="docutils literal notranslate"><span class="pre">mrp_only</span></code> to <code class="docutils literal notranslate"><span class="pre">False</span></code> results in the transfer of <strong>7 Gigabytes</strong> of data, which can take a long time to transfer and eat away at your computer’s storage! In general, only download the files you need. On the other hand, often researchers will download only the raw data, so that they can process it for themselves. Since here we only need the final <code class="docutils literal notranslate"><span class="pre">x1dsum</span></code> and <code class="docutils literal notranslate"><span class="pre">asn</span></code> files, we only need to download 2 Megabytes.</p>
 <div class="cell docutils container">
@@ -1189,6 +1298,20 @@ The parameter limits we add to the search are:</p>
                             <span class="n">extension</span><span class="o">=</span><span class="s1">&#39;fits&#39;</span><span class="p">,</span>
                             <span class="n">mrp_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                             <span class="n">cache</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/lbek02020_asn.fits to data/mastDownload/HST/lbek02020/lbek02020_asn.fits ...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:HST/product/lbek02020_x1dsum.fits to data/mastDownload/HST/lbek02020/lbek02020_x1dsum.fits ...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
 </pre></div>
 </div>
 </div>
@@ -1263,6 +1386,88 @@ The parameter limits we add to the search are:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The input csv file contained the following sources:
+ [&#39;omega Centauri&#39;, &#39;M5&#39;, &#39;M13&#39;, &#39;M15&#39;, &#39;M53&#39;]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;omega Centauri&#39;: &lt;Table masked=True length=75&gt;
+  intentType obs_collection provenance_name ...   objID1       distance     
+    str11         str3            str6      ...   str10        float64      
+ ----------- -------------- --------------- ... --------- ------------------
+ calibration            HST          CALCOS ... 891461379 62.703140648394324
+     science            HST          CALCOS ... 891476452 100.50819877743416
+ calibration            HST          CALCOS ... 891586541  7.842837263991621
+ calibration            HST          CALCOS ... 891744195  57.64542383087578
+ calibration            HST          CALCOS ... 891745154  57.64542383087578
+ calibration            HST          CALCOS ... 891746259  58.86426768198804
+ calibration            HST          CALCOS ... 891859989 15.453456111727432
+ calibration            HST          CALCOS ... 892059659  193.9128347260281
+ calibration            HST          CALCOS ... 892070998  80.27227595394012
+         ...            ...             ... ...       ...                ...
+ calibration            HST          CALCOS ... 891590966  7.842837263991621
+ calibration            HST          CALCOS ... 891681348  8.632114644737037
+ calibration            HST          CALCOS ... 891739211  68.59953324689656
+ calibration            HST          CALCOS ... 891841634  16.78272738798347
+ calibration            HST          CALCOS ... 892059639  193.9128347260281
+ calibration            HST          CALCOS ... 892115846 217.83509935035568
+ calibration            HST          CALCOS ... 892115910  200.4526386749592
+ calibration            HST          CALCOS ... 892135585  3.238503126191328
+ calibration            HST          CALCOS ... 907301111 13.523837082774602
+ calibration            HST          CALCOS ... 907320833  7.044245996886498,
+ &#39;M5&#39;: &lt;Table masked=True length=11&gt;
+  intentType obs_collection provenance_name ...   objID1        distance    
+    str11         str3            str6      ...   str10         float64     
+ ----------- -------------- --------------- ... ---------- -----------------
+     science            HST          CALCOS ...  891430056 61.83368183652463
+     science            HST          CALCOS ...  891430064 61.83368183652463
+     science            HST          CALCOS ...  891430093 61.83368183652463
+ calibration            HST          CALCOS ...  891467608 43.78072828578765
+ calibration            HST          CALCOS ...  891467618 43.78072828578765
+ calibration            HST          CALCOS ...  891467619 43.78072828578765
+ calibration            HST          CALCOS ...  891472009 43.78072828578765
+ calibration            HST          CALCOS ...  892064959 21.45221727319495
+ calibration            HST          CALCOS ...  892071582  13.5181312584415
+     science            HST          CALCOS ... 1007530512 61.83368183652463
+     science            HST          CALCOS ... 1007530527 61.83368183652463,
+ &#39;M13&#39;: &lt;Table masked=True length=5&gt;
+ intentType obs_collection provenance_name ...   objID1        distance     
+    str7         str3            str6      ...   str10         float64      
+ ---------- -------------- --------------- ... ---------- ------------------
+    science            HST          CALCOS ... 1006448439 132.11394638529515
+    science            HST          CALCOS ...  891410117  132.1139463852337
+    science            HST          CALCOS ...  891410120  132.1139463852337
+    science            HST          CALCOS ...  891410125  132.1139463852337
+    science            HST          CALCOS ... 1006445232 132.11394638529515,
+ &#39;M15&#39;: &lt;Table masked=True length=15&gt;
+  intentType obs_collection provenance_name ...   objID1        distance     
+    str11         str3            str6      ...   str10         float64      
+ ----------- -------------- --------------- ... ---------- ------------------
+     science            HST          CALCOS ...  891413270  28.10036224887859
+     science            HST          CALCOS ...  891413273  28.10036224887859
+     science            HST          CALCOS ...  891413275 100.13025803330383
+ calibration            HST          CALCOS ...  892170320 2.1508743970846966
+ calibration            HST          CALCOS ...  892170324 2.2226553719874356
+ calibration            HST          CALCOS ...  807454205   2.36886205818078
+     science            HST          CALCOS ...  891413267  28.10036224887859
+     science            HST          CALCOS ...  891413277 100.13025803330383
+ calibration            HST          CALCOS ...  892165217  2.531386666718452
+ calibration            HST          CALCOS ...  892170353 2.4852321072857024
+     science            HST          CALCOS ... 1006544519 100.13025803285203
+     science            HST          CALCOS ... 1006545160  28.10036224918268
+     science            HST          CALCOS ...  891410118 100.13025803330383
+     science            HST          CALCOS ... 1006544963  28.10036224918268
+     science            HST          CALCOS ... 1006550848 100.13025803285203,
+ &#39;M53&#39;: &lt;Table masked=True length=3&gt;
+ intentType obs_collection provenance_name ...   objID1        distance     
+    str7         str3            str6      ...   str10         float64      
+ ---------- -------------- --------------- ... ---------- ------------------
+    science            HST          CALCOS ...  144560171  261.4442173334648
+    science            HST          CALCOS ... 1006754685 262.69384754127606
+    science            HST          CALCOS ... 1006772137 262.69384754127606}
+</pre></div>
+</div>
+</div>
 </div>
 <p><strong>Excellent! You’ve now done the hardest part - finding and downloading the right data.</strong> From here, it’s generally straightforward to read in and plot the spectrum. We recommend you look into our tutorial on <a class="reference external" href="https://github.com/spacetelescope/hst_notebooks/blob/main/notebooks/COS/ViewData/ViewData.ipynb">Viewing a COS Spectrum</a>.</p>
 </section>
@@ -1321,6 +1526,11 @@ authors. Follow these links for more information about citations:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The TRAPPIST-1 COS data is in dataset LDLM40010, taken with an exosure time of 12403.904
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1353,6 +1563,43 @@ authors. Follow these links for more information about citations:</p>
     <span class="s1">&#39;./data/Ex2/mastDownload/HST/ldlm40010/ldlm40010_asn.fits&#39;</span><span class="p">,</span> <span class="n">hdu</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">asn_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mkdir: cannot create directory ‘./data/Ex2/’: File exists
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: Found cached file data/Ex2/mastDownload/HST/ldlm40blq/ldlm40blq_rawtag_a.fits with expected size 953280. [astroquery.query]
+INFO: Found cached file data/Ex2/mastDownload/HST/ldlm40axq/ldlm40axq_rawtag_a.fits with expected size 950400. [astroquery.query]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: Found cached file data/Ex2/mastDownload/HST/ldlm40d2q/ldlm40d2q_rawtag_a.fits with expected size 970560. [astroquery.query]
+INFO: Found cached file data/Ex2/mastDownload/HST/ldlm40c2q/ldlm40c2q_rawtag_a.fits with expected size 961920. [astroquery.query]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: Found cached file data/Ex2/mastDownload/HST/ldlm40alq/ldlm40alq_rawtag_a.fits with expected size 558720. [astroquery.query]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: Found cached file data/Ex2/mastDownload/HST/ldlm40blq/ldlm40blq_rawtag_b.fits with expected size 6304320. [astroquery.query]
+INFO: Found cached file data/Ex2/mastDownload/HST/ldlm40axq/ldlm40axq_rawtag_b.fits with expected size 6278400. [astroquery.query]
+INFO: Found cached file data/Ex2/mastDownload/HST/ldlm40d2q/ldlm40d2q_rawtag_b.fits with expected size 6356160. [astroquery.query]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: Found cached file data/Ex2/mastDownload/HST/ldlm40c2q/ldlm40c2q_rawtag_b.fits with expected size 6382080. [astroquery.query]
+INFO: Found cached file data/Ex2/mastDownload/HST/ldlm40alq/ldlm40alq_rawtag_b.fits with expected size 1509120. [astroquery.query]
+INFO: Found cached file data/Ex2/mastDownload/HST/ldlm40010/ldlm40010_asn.fits with expected size 11520. [astroquery.query]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: Found cached file data/Ex2/mastDownload/HST/ldlm40010/ldlm40010_x1dsum.fits with expected size 1817280. [astroquery.query]
+   MEMNAME        MEMTYPE     MEMPRSNT
+-------------- -------------- --------
+     LDLM40ALQ         EXP-FP        1
+     LDLM40AXQ         EXP-FP        1
+     LDLM40BLQ         EXP-FP        1
+     LDLM40C2Q         EXP-FP        1
+     LDLM40D2Q         EXP-FP        1
+     LDLM40010        PROD-FP        1
 </pre></div>
 </div>
 </div>
