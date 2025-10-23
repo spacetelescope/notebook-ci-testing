@@ -971,10 +971,10 @@ Processing target LMC079-1 in visit (15824, &#39;01&#39;)
 Processing grating COS/G160M
 Importing files [&#39;./cos_ex/cos_unshifted/le2701q0q_x1d.fits&#39;, &#39;./cos_ex/cos_unshifted/le2701q2q_x1d.fits&#39;, &#39;./cos_ex/cos_unshifted/le2701q4q_x1d.fits&#39;, &#39;./cos_ex/cos_unshifted/le2701q6q_x1d.fits&#39;]
 Processing file ./cos_ex/cos_unshifted/le2701q0q_x1d.fits
-Processing file ./cos_ex/cos_unshifted/le2701q2q_x1d.fits
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing file ./cos_ex/cos_unshifted/le2701q4q_x1d.fits
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing file ./cos_ex/cos_unshifted/le2701q2q_x1d.fits
+Processing file ./cos_ex/cos_unshifted/le2701q4q_x1d.fits
 Processing file ./cos_ex/cos_unshifted/le2701q6q_x1d.fits
 /home/runner/micromamba/envs/ci-env/lib/python3.11/site-packages/ullyses/coadd.py:563: RuntimeWarning: invalid value encountered in divide
   thru_nans = segment.data[&#39;net&#39;] / segment.data[&#39;flux&#39;]
@@ -991,13 +991,13 @@ Processing product 15824
 Targets in proposal 15824: [&#39;LMC079-1&#39;]
 Processing target LMC079-1 in proposal 15824
 Processing grating COS/G160M
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Importing files [&#39;./cos_ex/cos_unshifted/le2701q0q_x1d.fits&#39;, &#39;./cos_ex/cos_unshifted/le2701q2q_x1d.fits&#39;, &#39;./cos_ex/cos_unshifted/le2701q4q_x1d.fits&#39;, &#39;./cos_ex/cos_unshifted/le2701q6q_x1d.fits&#39;]
+Importing files [&#39;./cos_ex/cos_unshifted/le2701q0q_x1d.fits&#39;, &#39;./cos_ex/cos_unshifted/le2701q2q_x1d.fits&#39;, &#39;./cos_ex/cos_unshifted/le2701q4q_x1d.fits&#39;, &#39;./cos_ex/cos_unshifted/le2701q6q_x1d.fits&#39;]
 Processing file ./cos_ex/cos_unshifted/le2701q0q_x1d.fits
 Processing file ./cos_ex/cos_unshifted/le2701q2q_x1d.fits
 Processing file ./cos_ex/cos_unshifted/le2701q4q_x1d.fits
-Processing file ./cos_ex/cos_unshifted/le2701q6q_x1d.fits
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing file ./cos_ex/cos_unshifted/le2701q6q_x1d.fits
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using a maximum SNR of 20.0 in flux-based filtering
@@ -1575,7 +1575,7 @@ Only 1 grating to abut, skipping abutment
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_3498/1408116224.py:21: OptimizeWarning: Covariance of the parameters could not be estimated
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_3112/1408116224.py:21: OptimizeWarning: Covariance of the parameters could not be estimated
   popt, _ = optimize.curve_fit(fit_gaussian,
 </pre></div>
 </div>
@@ -2100,7 +2100,7 @@ Only 1 grating to abut, skipping abutment
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_3498/802807213.py:84: UserWarning: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_3112/802807213.py:84: UserWarning: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
   subplot.legend()
 </pre></div>
 </div>
@@ -2195,7 +2195,7 @@ Only 1 grating to abut, skipping abutment
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The SiII peak is fitted to be 1526.63 Å
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_3498/3560258067.py:20: OptimizeWarning: Covariance of the parameters could not be estimated
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_3112/3560258067.py:20: OptimizeWarning: Covariance of the parameters could not be estimated
   popt, _ = optimize.curve_fit(fit_gaussian,
 </pre></div>
 </div>
@@ -2544,9 +2544,7 @@ Ullyses version 4.1.0
 ./stis_ex/stis_unshifted/od1al2030_sx1.fits AGK+81D266 STIS CCD G430L 52X2 0 14423 (14423, &#39;l2&#39;)
 ./stis_ex/stis_unshifted/od1al2040_sx1.fits AGK+81D266 STIS CCD G430L 52X2E1 0 14423 (14423, &#39;l2&#39;)
 ./stis_ex/stis_unshifted/od1al4030_sx1.fits AGK+81D266 STIS CCD G430L 52X2 0 14423 (14423, &#39;l4&#39;)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>./stis_ex/stis_unshifted/od1al4040_sx1.fits AGK+81D266 STIS CCD G430L 52X2E1 0 14423 (14423, &#39;l4&#39;)
+./stis_ex/stis_unshifted/od1al4040_sx1.fits AGK+81D266 STIS CCD G430L 52X2E1 0 14423 (14423, &#39;l4&#39;)
 ./stis_ex/stis_unshifted/od1am10b0_sx1.fits AGK+81D266 STIS CCD G430L 52X2 0 14423 (14423, &#39;m1&#39;)
 ./stis_ex/stis_unshifted/od1am10e0_sx1.fits AGK+81D266 STIS CCD G430L 52X2E1 0 14423 (14423, &#39;m1&#39;)
 Looping over visits
@@ -2568,10 +2566,10 @@ Processing grating STIS/G430L
 Importing files [&#39;./stis_ex/stis_unshifted/od1al2030_sx1.fits&#39;, &#39;./stis_ex/stis_unshifted/od1al2040_sx1.fits&#39;]
 Processing file ./stis_ex/stis_unshifted/od1al2030_sx1.fits
 Processing file ./stis_ex/stis_unshifted/od1al2040_sx1.fits
-Using a maximum SNR of 20.0 in flux-based filtering
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>./stis_ex/stis_unshifted/coadd/hst_14423_stis_agkp81d266_g430l_od1al2_cspec.fits already exists and overwrite=False, skipping write
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using a maximum SNR of 20.0 in flux-based filtering
+./stis_ex/stis_unshifted/coadd/hst_14423_stis_agkp81d266_g430l_od1al2_cspec.fits already exists and overwrite=False, skipping write
    Wrote ./stis_ex/stis_unshifted/coadd/hst_14423_stis_agkp81d266_g430l_od1al2_cspec.fits
 Only 1 grating to abut, skipping abutment
 Processing product (14423, &#39;l4&#39;)
@@ -2592,10 +2590,10 @@ Processing grating STIS/G430L
 Importing files [&#39;./stis_ex/stis_unshifted/od1am10b0_sx1.fits&#39;, &#39;./stis_ex/stis_unshifted/od1am10e0_sx1.fits&#39;]
 Processing file ./stis_ex/stis_unshifted/od1am10b0_sx1.fits
 Processing file ./stis_ex/stis_unshifted/od1am10e0_sx1.fits
-Using a maximum SNR of 20.0 in flux-based filtering
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>./stis_ex/stis_unshifted/coadd/hst_14423_stis_agkp81d266_g430l_od1am1_cspec.fits already exists and overwrite=False, skipping write
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using a maximum SNR of 20.0 in flux-based filtering
+./stis_ex/stis_unshifted/coadd/hst_14423_stis_agkp81d266_g430l_od1am1_cspec.fits already exists and overwrite=False, skipping write
    Wrote ./stis_ex/stis_unshifted/coadd/hst_14423_stis_agkp81d266_g430l_od1am1_cspec.fits
 Only 1 grating to abut, skipping abutment
 Looping over proposals
@@ -2608,16 +2606,16 @@ Processing file ./stis_ex/stis_unshifted/od1al1030_sx1.fits
 Processing file ./stis_ex/stis_unshifted/od1al1040_sx1.fits
 Processing file ./stis_ex/stis_unshifted/od1al2030_sx1.fits
 Processing file ./stis_ex/stis_unshifted/od1al2040_sx1.fits
-Processing file ./stis_ex/stis_unshifted/od1al4030_sx1.fits
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing file ./stis_ex/stis_unshifted/od1al4030_sx1.fits
 Processing file ./stis_ex/stis_unshifted/od1al4040_sx1.fits
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing file ./stis_ex/stis_unshifted/od1am10b0_sx1.fits
+Processing file ./stis_ex/stis_unshifted/od1am10b0_sx1.fits
 Processing file ./stis_ex/stis_unshifted/od1am10e0_sx1.fits
-Using a maximum SNR of 20.0 in flux-based filtering
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>./stis_ex/stis_unshifted/coadd/hst_14423_stis_agkp81d266_g430l_od1a_cspec.fits already exists and overwrite=False, skipping write
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using a maximum SNR of 20.0 in flux-based filtering
+./stis_ex/stis_unshifted/coadd/hst_14423_stis_agkp81d266_g430l_od1a_cspec.fits already exists and overwrite=False, skipping write
    Wrote ./stis_ex/stis_unshifted/coadd/hst_14423_stis_agkp81d266_g430l_od1a_cspec.fits
 Only 1 grating to abut, skipping abutment
 </pre></div>
@@ -2883,13 +2881,13 @@ The shift, in angstroms, is 3.21Å
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*** CALSTIS-0 -- Version 3.4.2 (19-Jan-2018) ***
-Begin    22-Oct-2025 19:18:30 UTC
+Begin    23-Oct-2025 18:47:46 UTC
 
 Input    stis_ex/stis_data/od1al1040_raw.fits
 Outroot  stis_ex/stis_shifted
 
 *** CALSTIS-1 -- Version 3.4.2 (19-Jan-2018) ***
-Begin    22-Oct-2025 19:18:30 UTC
+Begin    23-Oct-2025 18:47:46 UTC
 Input    stis_ex/stis_data/od1al1040_raw.fits
 Output   stis_ex/stis_shifted_blv_tmp.fits
 OBSMODE  ACCUM
@@ -2897,7 +2895,7 @@ APERTURE 52X2
 OPT_ELEM G430L
 DETECTOR CCD
 
-Imset 1  Begin 19:18:30 UTC
+Imset 1  Begin 18:47:46 UTC
 Epcfile  od1al1b1j_epc.fits
 Warning  EPCTAB `od1al1b1j_epc.fits&#39; not found.
 
@@ -2933,9 +2931,9 @@ FLATCORR OMIT
 SHADCORR OMIT
 
 PHOTCORR OMIT
-Imset 1  End 19:18:30 UTC
+Imset 1  End 18:47:46 UTC
 
-Imset 2  Begin 19:18:30 UTC
+Imset 2  Begin 18:47:46 UTC
 Epcfile  od1al1b2j_epc.fits
 Warning  EPCTAB `od1al1b2j_epc.fits&#39; not found.
 
@@ -2958,14 +2956,14 @@ DARKCORR OMIT
 FLATCORR OMIT
 
 SHADCORR OMIT
-Imset 2  End 19:18:30 UTC
+Imset 2  End 18:47:46 UTC
 
-End      22-Oct-2025 19:18:30 UTC
+End      23-Oct-2025 18:47:46 UTC
 
 *** CALSTIS-1 complete ***
 
 *** CALSTIS-2 -- Version 3.4.2 (19-Jan-2018) ***
-Begin    22-Oct-2025 19:18:30 UTC
+Begin    23-Oct-2025 18:47:46 UTC
 Input    stis_ex/stis_shifted_blv_tmp.fits
 Output   stis_ex/stis_shifted_crj_tmp.fits
 
@@ -2974,12 +2972,12 @@ Total number of input image sets = 2
 CRREJTAB oref$j3m1403io_crr.fits
 CRCORR   COMPLETE
 
-End      22-Oct-2025 19:18:30 UTC
+End      23-Oct-2025 18:47:46 UTC
 
 *** CALSTIS-2 complete ***
 
 *** CALSTIS-1 -- Version 3.4.2 (19-Jan-2018) ***
-Begin    22-Oct-2025 19:18:30 UTC
+Begin    23-Oct-2025 18:47:46 UTC
 Input    stis_ex/stis_shifted_crj_tmp.fits
 Output   stis_ex/stis_shifted_crj.fits
 ERROR    Output file `stis_ex/stis_shifted_crj.fits&#39; already exists.
@@ -3120,16 +3118,15 @@ calstis0 failed.
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dispersion per pixel is 2.75 Å/pixel
 The shift, in pixels, is 0.73 pixels
 The shift, in Å, is 2.01Å
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*** CALSTIS-0 -- Version 3.4.2 (19-Jan-2018) ***
-Begin    22-Oct-2025 19:18:30 UTC
+
+*** CALSTIS-0 -- Version 3.4.2 (19-Jan-2018) ***
+Begin    23-Oct-2025 18:47:46 UTC
 
 Input    stis_ex/stis_data/od1al2040_raw.fits
 Outroot  stis_ex/stis_shifted/od1al2040_raw.fits
 
 *** CALSTIS-1 -- Version 3.4.2 (19-Jan-2018) ***
-Begin    22-Oct-2025 19:18:31 UTC
+Begin    23-Oct-2025 18:47:46 UTC
 Input    stis_ex/stis_data/od1al2040_raw.fits
 Output   stis_ex/stis_shifted/od1al2040_blv_tmp.fits
 OBSMODE  ACCUM
@@ -3137,7 +3134,7 @@ APERTURE 52X2
 OPT_ELEM G430L
 DETECTOR CCD
 
-Imset 1  Begin 19:18:31 UTC
+Imset 1  Begin 18:47:46 UTC
 Epcfile  od1al2yrj_epc.fits
 Warning  EPCTAB `od1al2yrj_epc.fits&#39; not found.
 
@@ -3173,9 +3170,9 @@ FLATCORR OMIT
 SHADCORR OMIT
 
 PHOTCORR OMIT
-Imset 1  End 19:18:31 UTC
+Imset 1  End 18:47:46 UTC
 
-Imset 2  Begin 19:18:31 UTC
+Imset 2  Begin 18:47:46 UTC
 Epcfile  od1al2ysj_epc.fits
 Warning  EPCTAB `od1al2ysj_epc.fits&#39; not found.
 
@@ -3198,14 +3195,14 @@ DARKCORR OMIT
 FLATCORR OMIT
 
 SHADCORR OMIT
-Imset 2  End 19:18:31 UTC
+Imset 2  End 18:47:46 UTC
 
-End      22-Oct-2025 19:18:31 UTC
+End      23-Oct-2025 18:47:46 UTC
 
 *** CALSTIS-1 complete ***
 
 *** CALSTIS-2 -- Version 3.4.2 (19-Jan-2018) ***
-Begin    22-Oct-2025 19:18:31 UTC
+Begin    23-Oct-2025 18:47:46 UTC
 Input    stis_ex/stis_shifted/od1al2040_blv_tmp.fits
 Output   stis_ex/stis_shifted/od1al2040_crj_tmp.fits
 
@@ -3216,12 +3213,12 @@ CRREJTAB oref$j3m1403io_crr.fits
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRCORR   COMPLETE
 
-End      22-Oct-2025 19:18:31 UTC
+End      23-Oct-2025 18:47:46 UTC
 
 *** CALSTIS-2 complete ***
 
 *** CALSTIS-1 -- Version 3.4.2 (19-Jan-2018) ***
-Begin    22-Oct-2025 19:18:31 UTC
+Begin    23-Oct-2025 18:47:46 UTC
 Input    stis_ex/stis_shifted/od1al2040_crj_tmp.fits
 Output   stis_ex/stis_shifted/od1al2040_crj.fits
 ERROR    Output file `stis_ex/stis_shifted/od1al2040_crj.fits&#39; already exists.
@@ -3245,16 +3242,15 @@ calstis0 failed.
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dispersion per pixel is 2.75 Å/pixel
 The shift, in pixels, is 0.57 pixels
 The shift, in Å, is 1.56Å
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*** CALSTIS-0 -- Version 3.4.2 (19-Jan-2018) ***
-Begin    22-Oct-2025 19:18:31 UTC
+
+*** CALSTIS-0 -- Version 3.4.2 (19-Jan-2018) ***
+Begin    23-Oct-2025 18:47:46 UTC
 
 Input    stis_ex/stis_data/od1am10e0_raw.fits
 Outroot  stis_ex/stis_shifted/od1am10e0_raw.fits
 
 *** CALSTIS-1 -- Version 3.4.2 (19-Jan-2018) ***
-Begin    22-Oct-2025 19:18:31 UTC
+Begin    23-Oct-2025 18:47:46 UTC
 Input    stis_ex/stis_data/od1am10e0_raw.fits
 Output   stis_ex/stis_shifted/od1am10e0_blv_tmp.fits
 OBSMODE  ACCUM
@@ -3262,7 +3258,7 @@ APERTURE 52X2
 OPT_ELEM G430L
 DETECTOR CCD
 
-Imset 1  Begin 19:18:31 UTC
+Imset 1  Begin 18:47:46 UTC
 Epcfile  od1am1hnj_epc.fits
 Warning  EPCTAB `od1am1hnj_epc.fits&#39; not found.
 
@@ -3298,9 +3294,9 @@ FLATCORR OMIT
 SHADCORR OMIT
 
 PHOTCORR OMIT
-Imset 1  End 19:18:31 UTC
+Imset 1  End 18:47:46 UTC
 
-Imset 2  Begin 19:18:31 UTC
+Imset 2  Begin 18:47:46 UTC
 Epcfile  od1am1hoj_epc.fits
 Warning  EPCTAB `od1am1hoj_epc.fits&#39; not found.
 
@@ -3323,14 +3319,14 @@ DARKCORR OMIT
 FLATCORR OMIT
 
 SHADCORR OMIT
-Imset 2  End 19:18:31 UTC
+Imset 2  End 18:47:46 UTC
 
-End      22-Oct-2025 19:18:31 UTC
+End      23-Oct-2025 18:47:46 UTC
 
 *** CALSTIS-1 complete ***
 
 *** CALSTIS-2 -- Version 3.4.2 (19-Jan-2018) ***
-Begin    22-Oct-2025 19:18:31 UTC
+Begin    23-Oct-2025 18:47:46 UTC
 Input    stis_ex/stis_shifted/od1am10e0_blv_tmp.fits
 Output   stis_ex/stis_shifted/od1am10e0_crj_tmp.fits
 
@@ -3341,12 +3337,12 @@ CRREJTAB oref$j3m1403io_crr.fits
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRCORR   COMPLETE
 
-End      22-Oct-2025 19:18:31 UTC
+End      23-Oct-2025 18:47:46 UTC
 
 *** CALSTIS-2 complete ***
 
 *** CALSTIS-1 -- Version 3.4.2 (19-Jan-2018) ***
-Begin    22-Oct-2025 19:18:31 UTC
+Begin    23-Oct-2025 18:47:46 UTC
 Input    stis_ex/stis_shifted/od1am10e0_crj_tmp.fits
 Output   stis_ex/stis_shifted/od1am10e0_crj.fits
 ERROR    Output file `stis_ex/stis_shifted/od1am10e0_crj.fits&#39; already exists.
@@ -3370,16 +3366,15 @@ calstis0 failed.
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dispersion per pixel is 2.75 Å/pixel
 The shift, in pixels, is 0.76 pixels
 The shift, in Å, is 2.1Å
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*** CALSTIS-0 -- Version 3.4.2 (19-Jan-2018) ***
-Begin    22-Oct-2025 19:18:31 UTC
+
+*** CALSTIS-0 -- Version 3.4.2 (19-Jan-2018) ***
+Begin    23-Oct-2025 18:47:46 UTC
 
 Input    stis_ex/stis_data/od1al4040_raw.fits
 Outroot  stis_ex/stis_shifted/od1al4040_raw.fits
 
 *** CALSTIS-1 -- Version 3.4.2 (19-Jan-2018) ***
-Begin    22-Oct-2025 19:18:31 UTC
+Begin    23-Oct-2025 18:47:46 UTC
 Input    stis_ex/stis_data/od1al4040_raw.fits
 Output   stis_ex/stis_shifted/od1al4040_blv_tmp.fits
 OBSMODE  ACCUM
@@ -3387,7 +3382,7 @@ APERTURE 52X2
 OPT_ELEM G430L
 DETECTOR CCD
 
-Imset 1  Begin 19:18:31 UTC
+Imset 1  Begin 18:47:46 UTC
 Epcfile  od1al4axj_epc.fits
 Warning  EPCTAB `od1al4axj_epc.fits&#39; not found.
 
@@ -3423,9 +3418,9 @@ FLATCORR OMIT
 SHADCORR OMIT
 
 PHOTCORR OMIT
-Imset 1  End 19:18:31 UTC
+Imset 1  End 18:47:46 UTC
 
-Imset 2  Begin 19:18:31 UTC
+Imset 2  Begin 18:47:46 UTC
 Epcfile  od1al4ayj_epc.fits
 Warning  EPCTAB `od1al4ayj_epc.fits&#39; not found.
 
@@ -3448,14 +3443,14 @@ DARKCORR OMIT
 FLATCORR OMIT
 
 SHADCORR OMIT
-Imset 2  End 19:18:31 UTC
+Imset 2  End 18:47:46 UTC
 
-End      22-Oct-2025 19:18:31 UTC
+End      23-Oct-2025 18:47:46 UTC
 
 *** CALSTIS-1 complete ***
 
 *** CALSTIS-2 -- Version 3.4.2 (19-Jan-2018) ***
-Begin    22-Oct-2025 19:18:31 UTC
+Begin    23-Oct-2025 18:47:46 UTC
 Input    stis_ex/stis_shifted/od1al4040_blv_tmp.fits
 Output   stis_ex/stis_shifted/od1al4040_crj_tmp.fits
 
@@ -3466,12 +3461,12 @@ CRREJTAB oref$j3m1403io_crr.fits
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRCORR   COMPLETE
 
-End      22-Oct-2025 19:18:31 UTC
+End      23-Oct-2025 18:47:46 UTC
 
 *** CALSTIS-2 complete ***
 
 *** CALSTIS-1 -- Version 3.4.2 (19-Jan-2018) ***
-Begin    22-Oct-2025 19:18:31 UTC
+Begin    23-Oct-2025 18:47:46 UTC
 Input    stis_ex/stis_shifted/od1al4040_crj_tmp.fits
 Output   stis_ex/stis_shifted/od1al4040_crj.fits
 ERROR    Output file `stis_ex/stis_shifted/od1al4040_crj.fits&#39; already exists.
@@ -3497,24 +3492,24 @@ calstis0 failed.
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dispersion per pixel is 2.75 Å/pixel
 The shift, in pixels, is -0.49 pixels
 The shift, in Å, is -1.35Å
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*** CALSTIS-0 -- Version 3.4.2 (19-Jan-2018) ***
-Begin    22-Oct-2025 19:18:31 UTC
+
+*** CALSTIS-0 -- Version 3.4.2 (19-Jan-2018) ***
+Begin    23-Oct-2025 18:47:47 UTC
 
 Input    stis_ex/stis_data/od1am10b0_raw.fits
 Outroot  stis_ex/stis_shifted/od1am10b0_raw.fits
 
 *** CALSTIS-1 -- Version 3.4.2 (19-Jan-2018) ***
-Begin    22-Oct-2025 19:18:31 UTC
+Begin    23-Oct-2025 18:47:47 UTC
 Input    stis_ex/stis_data/od1am10b0_raw.fits
 Output   stis_ex/stis_shifted/od1am10b0_blv_tmp.fits
 OBSMODE  ACCUM
 APERTURE 52X2
 OPT_ELEM G430L
 DETECTOR CCD
-
-Imset 1  Begin 19:18:31 UTC
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Imset 1  Begin 18:47:47 UTC
 Epcfile  od1am1hgj_epc.fits
 Warning  EPCTAB `od1am1hgj_epc.fits&#39; not found.
 
@@ -3535,7 +3530,9 @@ BLEVCORR PERFORM
          Bias level from overscan has been subtracted; \
          mean of bias levels subtracted was 1434.32.
 BLEVCORR COMPLETE
-         Uncertainty array initialized, readnoise=6.24, gain=1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         Uncertainty array initialized, readnoise=6.24, gain=1
 
 BIASCORR PERFORM
 BIASFILE oref$0531402qo_bia.fits
@@ -3550,9 +3547,9 @@ FLATCORR OMIT
 SHADCORR OMIT
 
 PHOTCORR OMIT
-Imset 1  End 19:18:31 UTC
+Imset 1  End 18:47:47 UTC
 
-Imset 2  Begin 19:18:31 UTC
+Imset 2  Begin 18:47:47 UTC
 Epcfile  od1am1hhj_epc.fits
 Warning  EPCTAB `od1am1hhj_epc.fits&#39; not found.
 
@@ -3575,30 +3572,28 @@ DARKCORR OMIT
 FLATCORR OMIT
 
 SHADCORR OMIT
-Imset 2  End 19:18:31 UTC
+Imset 2  End 18:47:47 UTC
 
-End      22-Oct-2025 19:18:31 UTC
+End      23-Oct-2025 18:47:47 UTC
 
 *** CALSTIS-1 complete ***
 
 *** CALSTIS-2 -- Version 3.4.2 (19-Jan-2018) ***
-Begin    22-Oct-2025 19:18:31 UTC
+Begin    23-Oct-2025 18:47:47 UTC
 Input    stis_ex/stis_shifted/od1am10b0_blv_tmp.fits
 Output   stis_ex/stis_shifted/od1am10b0_crj_tmp.fits
 
 CRCORR   PERFORM
 Total number of input image sets = 2
 CRREJTAB oref$j3m1403io_crr.fits
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRCORR   COMPLETE
+CRCORR   COMPLETE
 
-End      22-Oct-2025 19:18:31 UTC
+End      23-Oct-2025 18:47:47 UTC
 
 *** CALSTIS-2 complete ***
 
 *** CALSTIS-1 -- Version 3.4.2 (19-Jan-2018) ***
-Begin    22-Oct-2025 19:18:31 UTC
+Begin    23-Oct-2025 18:47:47 UTC
 Input    stis_ex/stis_shifted/od1am10b0_crj_tmp.fits
 Output   stis_ex/stis_shifted/od1am10b0_crj.fits
 ERROR    Output file `stis_ex/stis_shifted/od1am10b0_crj.fits&#39; already exists.
@@ -3703,10 +3698,10 @@ Importing files [&#39;./stis_ex/stis_shifted/od1al1030_sx1.fits&#39;, &#39;./sti
 Processing file ./stis_ex/stis_shifted/od1al1030_sx1.fits
 Processing file ./stis_ex/stis_shifted/od1al2030_sx1.fits
 Processing file ./stis_ex/stis_shifted/od1al2040_sx1.fits
-Processing file ./stis_ex/stis_shifted/od1al4030_sx1.fits
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing file ./stis_ex/stis_shifted/od1al4040_sx1.fits
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing file ./stis_ex/stis_shifted/od1al4030_sx1.fits
+Processing file ./stis_ex/stis_shifted/od1al4040_sx1.fits
 Processing file ./stis_ex/stis_shifted/od1am10b0_sx1.fits
 Processing file ./stis_ex/stis_shifted/od1am10e0_sx1.fits
 Using a maximum SNR of 20.0 in flux-based filtering
