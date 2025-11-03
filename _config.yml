@@ -5,6 +5,7 @@ title: HST Notebooks
 author: STScI
 copyright: "2022-2024"  # Copyright year to be placed in the footer
 logo: _static/stsci_logo2.png  # A path to the book logo
+only_build_toc_files: true
 
 html:
   google_analytics_id:
