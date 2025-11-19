@@ -1,8 +1,0 @@
-astropy
-astroquery
-crds
-drizzlepac
-ipython
-matplotlib
-numpy
-jupyter
