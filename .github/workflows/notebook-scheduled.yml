@@ -10,19 +10,18 @@ on:
           
 jobs:
   execute-all:  
-    uses: spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@v1
+    uses: spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@v1.0.0
     with:
       execution-mode: 'on-demand'
       trigger-event: 'execute'
       python-version: '3.11'
-      conda-environment: 'hstcal'
       enable-validation: false
       enable-security: false
       enable-execution: true
       enable-storage: false
       enable-html-build: false
+      custom-runner-config: true  # Enable ci_config.txt lookup
     secrets: inherit
-
 
 
 

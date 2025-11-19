@@ -54,7 +54,7 @@ on:
 jobs:
   validate-all:
     if: inputs.action_type == 'validate-all'
-    uses:  spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@hst-debug
+    uses:  spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@v1.0.0
     with:
       execution-mode: 'on-demand'
       trigger-event: 'validate'
@@ -65,13 +65,14 @@ jobs:
       enable-execution: false
       enable-storage: false
       enable-html-build: false
+      custom-runner-config: true  # Enable ci_config.txt lookup
     secrets:
       CASJOBS_USERID: ${{ secrets.CASJOBS_USERID }}
       CASJOBS_PW: ${{ secrets.CASJOBS_PW }}
 
   execute-all:
     if: inputs.action_type == 'execute-all'  
-    uses: spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@hst-debug
+    uses: spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@v1.0.0
     with:
       execution-mode: 'on-demand'
       trigger-event: 'execute'
@@ -82,13 +83,14 @@ jobs:
       enable-execution: true
       enable-storage: false
       enable-html-build: false
+      custom-runner-config: true  # Enable ci_config.txt lookup
     secrets:
       CASJOBS_USERID: ${{ secrets.CASJOBS_USERID }}
       CASJOBS_PW: ${{ secrets.CASJOBS_PW }}
 
   security-scan-all:
     if: inputs.action_type == 'security-scan-all'
-    uses:  spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@hst-debug
+    uses:  spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@v1.0.0
     with:
       execution-mode: 'on-demand'
       trigger-event: 'security'
@@ -105,7 +107,7 @@ jobs:
 
   validate-single:
     if: inputs.action_type == 'validate-single'
-    uses:  spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@hst-debug
+    uses:  spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@v1.0.0
     with:
       execution-mode: 'on-demand'
       trigger-event: 'validate'
@@ -117,13 +119,14 @@ jobs:
       enable-execution: false
       enable-storage: false
       enable-html-build: false
+      custom-runner-config: true  # Enable ci_config.txt lookup
     secrets:
       CASJOBS_USERID: ${{ secrets.CASJOBS_USERID }}
       CASJOBS_PW: ${{ secrets.CASJOBS_PW }}
 
   execute-single:
     if: inputs.action_type == 'execute-single'
-    uses:  spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@hst-debug
+    uses:  spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@v1.0.0
     with:
       execution-mode: 'on-demand'
       trigger-event: 'execute'
@@ -135,13 +138,14 @@ jobs:
       enable-execution: true
       enable-storage: false
       enable-html-build: false
+      custom-runner-config: true  # Enable ci_config.txt lookup
     secrets:
       CASJOBS_USERID: ${{ secrets.CASJOBS_USERID }}
       CASJOBS_PW: ${{ secrets.CASJOBS_PW }}
 
   full-pipeline-all:
     if: inputs.action_type == 'full-pipeline-all'
-    uses:  spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@hst-debug
+    uses:  spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@v1.0.0
     with:
       execution-mode: 'on-demand'
       trigger-event: 'all'
@@ -152,13 +156,14 @@ jobs:
       enable-execution: true
       enable-storage: true
       enable-html-build: true
+      custom-runner-config: true  # Enable ci_config.txt lookup
     secrets:
       CASJOBS_USERID: ${{ secrets.CASJOBS_USERID }}
       CASJOBS_PW: ${{ secrets.CASJOBS_PW }}
 
   full-pipeline-single:
     if: inputs.action_type == 'full-pipeline-single'
-    uses:  spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@hst-debug
+    uses:  spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@v1.0.0
     with:
       execution-mode: 'on-demand'
       trigger-event: 'all'
@@ -170,13 +175,14 @@ jobs:
       enable-execution: true
       enable-storage: true
       enable-html-build: true
+      custom-runner-config: true  # Enable ci_config.txt lookup
     secrets:
       CASJOBS_USERID: ${{ secrets.CASJOBS_USERID }}
       CASJOBS_PW: ${{ secrets.CASJOBS_PW }}
 
   build-html-only:
     if: inputs.action_type == 'build-html-only'
-    uses:  spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@hst-debug
+    uses:  spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@v1.0.0
     with:
       execution-mode: 'on-demand'
       trigger-event: 'html'
@@ -192,7 +198,7 @@ jobs:
 
   deprecate-notebook:
     if: inputs.action_type == 'deprecate-notebook'
-    uses: spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@hst-debug
+    uses: spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@v1.0.0
     with:
       execution-mode: 'on-demand'
       trigger-event: 'deprecate'
@@ -210,7 +216,7 @@ jobs:
 
   performance-test:
     if: inputs.action_type == 'performance-test'
-    uses:  spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@hst-debug
+    uses:  spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@v1.0.0
     with:
       execution-mode: 'on-demand'
       trigger-event: 'all'
@@ -221,19 +227,7 @@ jobs:
       enable-execution: true
       enable-storage: false  # Skip storage for performance testing
       enable-html-build: false
+      custom-runner-config: true  # Enable ci_config.txt lookup
     secrets:
       CASJOBS_USERID: ${{ secrets.CASJOBS_USERID }}
       CASJOBS_PW: ${{ secrets.CASJOBS_PW }}
-
-
-
-
-
-
-
-
-
-
-
-
-
