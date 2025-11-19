@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>HST WFC3 Point Spread Function Modeling &#8212; HST Notebooks</title>
+    <title>HST WFC3 Point Spread Function Modeling &#8212; JWST Pipeline Notebooks</title>
   
   
   
@@ -36,6 +36,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/table.css?v=cd6c26fb" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/main.css?v=b44a18d9" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -58,13 +59,9 @@
     <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/WFC3/point_spread_function/hst_point_spread_function';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Downloading WFC3 and WFPC2 PSF Cutouts from MAST" href="../mast_api_psf/download_psf_cutouts.html" />
-    <link rel="prev" title="&lt;no title&gt;" href="../point_spread_function_.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -127,6 +124,8 @@
       
       
       
+        
+      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -145,14 +144,14 @@
     
   
 
-<a class="navbar-brand logo" href="../../../index.html">
+<a class="navbar-brand logo" href="../../../README.html">
   
   
   
   
   
   
-    <p class="title logo__title">HST Notebooks</p>
+    <p class="title logo__title">JWST Pipeline Notebooks</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -171,169 +170,46 @@
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="../../../index.html">
-                    STScI HST Notebook Repository HQ
+                <a class="reference internal" href="../../../README.html">
+                    JWST Pipeline Notebooks
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">ACS</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">MIRI</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../ACS/README.html">ACS Notebooks - TEST 1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../ACS/acs_findsat_mrt/acs_findsat_mrt_example.html">Satellite trail detection in ACS/WFC data using acstools.findsat_mrt</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../ACS/acs_saturation_trails/acs_saturation_trails.html">ACS Linearity with Saturated Stars</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../ACS/acs_cte_forward_model/acs_cte_forward_model_example.html">Pixel-based ACS/WFC CTE Forward Model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../ACS/acs_subarrays/acs_subarrays.html">ACS Image Reduction for Subarray Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../ACS/acs_sbc_dark_analysis/acs_sbc_dark_analysis.html">SBC Dark Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../ACS/acs_reduction/acs_reduction.html">ACS/WFC Image Reduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../ACS/acs_pixel_area_maps/acs_pixel_area_maps.html">ACS Pixel Area Maps</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../ACS/acs_polarization_tools/acs_polarization_tools.html">Using ACS Polarization Tools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../ACS/acs_focus_diverse_epsfs/acs_focus_diverse_epsfs.html">Focus Diverse ePSFs for ACS/WFC</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="../../ACS/acs_exception_report/exception_report_checks.html">HST Exception Report - Investigate your ACS Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../ACS/hst_orbits_ephem/hst_orbits_ephem.html">Getting HST Ephemeris and Related Data for an Observation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MIRI/Coronagraphy/JWPipeNB-MIRI-Coron.html">MIRI Coronagraphy Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MIRI/Imaging/JWPipeNB-MIRI-imaging.html">MIRI Imaging Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MIRI/Imaging-TSO/JWPipeNB-MIRI-imaging-TSO.html">MIRI Imaging TSO Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MIRI/LRS-slit/JWPipeNB-MIRI-LRS-slit.html">MIRI LRS Slit Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MIRI/LRS-slitless-TSO/JWPipeNB-MIRI-LRS-slitless-TSO.html">MIRI LRS Slitless TSO Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../MIRI/MRS/JWPipeNB-MIRI-MRS.html">MIRI MRS Notebook</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">COS</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">NIRCAM</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../COS/README.html">COS Notebooks - testing update 3!</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../COS/Setup/Setup.html">Setting up your computer environment for working with COS data</a></li>
-
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../../COS/DataDl/DataDl.html">Downloading COS Data</a></li>
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../../COS/ViewData/ViewData.html">Viewing COS Data</a></li>
-
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../../COS/AsnFile/AsnFile.html">Modifying or Creating an Association File</a></li>
-
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../../COS/CalCOS/CalCOS.html">Running the COS Data Pipeline (<code class="docutils literal notranslate"><span class="pre">CalCOS</span></code>)</a></li>
-
-
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../../COS/SplitTag/SplitTag.html">Splitting COS Exposures into sub-exposures with <code class="docutils literal notranslate"><span class="pre">splittag</span></code></a></li>
-
-
-
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../../COS/DayNight/DayNight.html">Filtering out COS Data taken during the Day or Night</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../COS/LSF/LSF.html">Working with the COS Line Spread Function (LSF)</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="../../COS/Extract/Extract.html">Editing the extraction boxes in a spectral extraction file (<code class="docutils literal notranslate"><span class="pre">XTRACTAB</span></code>)</a></li>
-
-
-
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../../COS/ExceptionReport/ExceptionReport.html">What to do when you get an Exception Report for COS</a></li>
-
-
-
-
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="../../NIRCAM/Coronagraphy/JWPipeNB-nircam-coronagraphy.html">NIRCam Coronagraphy Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NIRCAM/Imaging/JWPipeNB-nircam-imaging.html">NIRCam Imaging Notebook</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">DrizzlePac</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">NIRISS</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/README.html">DrizzlePac Notebooks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/using_updated_astrometry_solutions/using_updated_astrometry_solutions.html">Improving Astrometry Using Alternate WCS Solutions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/align_to_catalogs/align_to_catalogs.html">Aligning HST images to an Absolute Reference Catalog</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/align_sparse_fields/align_sparse_fields.html">Aligning Deep Exposures of Sparse Fields</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/align_multiple_visits/align_multiple_visits.html">Optimizing Image Alignment for Multiple HST Visits</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/use_ds9_regions_in_tweakreg/use_ds9_regions_in_tweakreg.html">TWEAKREG Tips - Using DS9 Regions for Source Inclusion/Exclusion</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/optimize_image_sampling/optimize_image_sampling.html">Optimizing the Image Sampling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/align_mosaics/align_mosaics.html">Aligning HST Mosaics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/sky_matching/sky_matching.html">Sky Matching for HST Mosaics <a id="top"></a></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/mask_satellite/mask_satellite.html">Satellite Trail Masking Techniques</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../DrizzlePac/drizzle_wfpc2/drizzle_wfpc2.html">Drizzling new WFPC2 FLT data products with chip-normalization   </a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NIRISS/AMI/JWPipeNB-niriss-ami.html">NIRISS AMI Pipeline Notebook</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../NIRISS/Imaging/JWPipeNB-niriss-imaging.html">NIRISS Imaging Pipeline Notebook</a></li>
+
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">HASP</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">NIRSpec</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../HASP/Setup/Setup.html">Installing the Hubble Advanced Spectral Products Script</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../HASP/CoaddTutorial/CoaddTutorial.html">Inputting User Data using the Hubble Advanced Spectral Products Script</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="../../HASP/FluxScaleTutorial/FluxScaleTutorial.html">Scaling Flux while using the Hubble Advanced Spectral Products Script</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="../../HASP/DataDiagnostic/DataDiagnostics.html">HASP Data Diagnostic Notebook</a></li>
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../../HASP/WavelengthAdjustment/WavelengthAdjustment.html">Wavelength Adjustments for Running the Hubble Advanced Spectral Products (HASP) Script</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="../../HASP/COSLifetimePositions/COSLifetimePositions.html">Combining COS Data from Multiple Lifetime Positions and Central Wavelengths</a></li>
-
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">NICMOS</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../NICMOS/nicmos_unit_conversion/nicmos_unit_conversion.html">Programmatic Replacements for NICMOS Units Conversion Form</a></li>
-
-
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">STIS</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../STIS/README.html">STIS Notebooks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../STIS/cross-correlation/cross-correlation.html">Correcting for Missing Wavecals with Cross-Correlation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../STIS/custom_ccd_darks/custom_ccd_darks.html">Custom CCD Darks <a class="tocSkip"></a></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../STIS/drizpac_notebook/STIS_DrizzlePac_Tutorial.html">STIS DrizzlePac Tutorial <a class="tocSkip"></a></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../STIS/CoronagraphyViz/STIS_Coronagraphy_Visualization_v2.html">STIS Coronagraphy Visualization Tool (v2)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../STIS/calstis/calstis_2d_ccd.html">Calstis 2-D CCD Data Reduction <a class="tocSkip"></a></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../STIS/target_acquisition/target_acquisition.html">Evaluating STIS Target Acquisitions <a class="tocSkip"></a></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../STIS/view_data/view_data.html">Viewing STIS Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../STIS/extraction/1D_Extraction.html">1D Spectra Extraction <a class="tocSkip"></a></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../STIS/low_count_uncertainties/Low_Count_Uncertainties.html">Low Count Uncertainties in STIS <a class="tocSkip"></a></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../STIS/contrast_sensitivity/STIS_Coronagraphic_Observation_Feasibility.html">STIS Coronagraphic Observation Feasibility</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">WFC3</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../README.html">WFC3 Notebooks</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../general_tools.html">General Tools</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../image_displayer_analyzer/wfc3_image_displayer_analyzer.html">WFC3 Image Displayer &amp; Analyzer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../exception_report/wfc3_exception_report.html">Exception Report Checklist - WFC3</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../calwf3_v1.0_cte/calwf3_with_v1.0_PCTE.html">Processing WFC3/UVIS Data with <code class="docutils literal notranslate"><span class="pre">calwf3</span></code> Using the v1.0 CTE-Correction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../persistence/wfc3_ir_persistence.html">Masking Persistence in WFC3/IR Images</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../uvis_g280_transit/G280_Exoplanet_Transits.html">Analyzing WFC3/UVIS G280 Exoplanet Transit Observations</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ir_tvb.html">WFC3/IR Time Variable Background (TVB)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ir_ima_visualization/IR_IMA_Visualization_with_an_Example_of_Time_Variable_Background.html">WFC3/IR IMA Visualization Tools with An Example of Time Variable Background</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../calwf3_recalibration/calwf3_recal_tvb.html">Manual Recalibration with calwf3: Turning off the IR Linear Ramp Fit</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../tvb_flattenramp/TVB_flattenramp_notebook.html">Correcting for Helium Line Emission Background in IR Exposures using the “Flatten-Ramp” Technique</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ir_scattered_light_calwf3_corrections/Correcting_for_Scattered_Light_in_IR_Exposures_Using_calwf3_to_Mask_Bad_Reads.html">Correcting for Scattered Light in WFC3/IR Exposures: Using <code class="docutils literal notranslate"><span class="pre">calwf3</span></code> to Mask Bad Reads</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ir_scattered_light_manual_corrections/Correcting_for_Scattered_Light_in_IR_Exposures_by_Manually_Subtracting_Bad_Reads.html">Correcting for Scattered Light in WFC3/IR Exposures: Manually Subtracting Bad Reads</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../photometry.html">Photometry</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../filter_transformations/filter_transformations.html">WFC3/UVIS Filter Transformations with stsynphot</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../flux_conversion_tool/flux_conversion_tool.html">Flux Unit Conversions with synphot and stsynphot</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../photometry_examples/phot_examples.html">Synthetic Photometry Examples for WFC3</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../uvis_time_dependent_photometry/uvis_timedep_phot.html">WFC3/UVIS Time-dependent Photometry</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../zeropoints/zeropoints.html">Calculating WFC3 Zeropoints with STSynphot</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../uvis_pam_corrections/WFC3_UVIS_Pixel_Area_Map_Corrections_for_Subarrays.html">WFC3/UVIS Pixel Area Map Corrections for Subarrays</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">HST WFC3 Point Spread Function Modeling   </a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mast_api_psf/download_psf_cutouts.html">Downloading WFC3 and WFPC2 PSF Cutouts from MAST</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NIRSPEC/BOTS/JWPipeNB-NIRSpec-BOTS.html">NIRSpec BOTS Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NIRSPEC/FSlit/JWPipeNB-NIRSpec-FS.html">NIRSpec Fixed Slit Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NIRSPEC/IFU/JWPipeNB-NIRSpec-IFU.html">NIRSpec IFU Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NIRSPEC/MOS/JWPipeNB-NIRSpec-MOS.html">NIRSpec MOS Notebook</a></li>
 </ul>
 
     </div>
@@ -388,24 +264,6 @@
       
       
       
-      <li><a href="https://colab.research.google.com/github/spacetelescope/hst_notebooks/blob/main/notebooks/WFC3/point_spread_function/hst_point_spread_function.ipynb" target="_blank"
-   class="btn btn-sm dropdown-item"
-   title="Launch on Colab"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  
-    <img alt="Colab logo" src="../../../_static/images/logo_colab.png">
-  </span>
-<span class="btn__text-container">Colab</span>
-</a>
-</li>
-      
-      
-      
-      
       <li>
 <button onclick="initThebeSBT()"
   class="btn btn-sm btn-launch-thebe dropdown-item"
@@ -437,7 +295,7 @@
       
       
       
-      <li><a href="https://github.com/spacetelescope/hst_notebooks" target="_blank"
+      <li><a href="https://github.com/spacetelescope/jwst-pipeline-notebooks" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -454,7 +312,7 @@
       
       
       
-      <li><a href="https://github.com/spacetelescope/hst_notebooks/issues/new?title=Issue%20on%20page%20%2Fnotebooks/WFC3/point_spread_function/hst_point_spread_function.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/spacetelescope/jwst-pipeline-notebooks/issues/new?title=Issue%20on%20page%20%2Fnotebooks/WFC3/point_spread_function/hst_point_spread_function.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -625,7 +483,7 @@ document.write(`
                 <article class="bd-article">
                   
   <p><a id="top"></a></p>
-<section class="tex2jax_ignore mathjax_ignore" id="hst-wfc3-point-spread-function-modeling">
+<section id="hst-wfc3-point-spread-function-modeling">
 <h1>HST WFC3 Point Spread Function Modeling   <a class="reference internal" href="https://raw.githubusercontent.com/spacetelescope/notebooks/master/assets/stsci_pri_combo_mark_horizonal_white_bkgd.png"><img alt="Space Telescope Logo" src="https://raw.githubusercontent.com/spacetelescope/notebooks/master/assets/stsci_pri_combo_mark_horizonal_white_bkgd.png" style="width: 200px;" /></a><a class="headerlink" href="#hst-wfc3-point-spread-function-modeling" title="Link to this heading">#</a></h1>
 <hr>
 <a id="learning"></a>
@@ -1132,7 +990,7 @@ tweak directory exists.
 </div>
 </div>
 </div>
-<p>In this first analytical example, we fit Gaussian profiles to the four stars in our subimage and display the data, model, and residuals. We provide an initial guess for the width (sigma) using an approximate full width at half maximum (FWHM) of 2 pixels, where <span class="math notranslate nohighlight">\(\sigma\)</span> = FWHM/2.355. Users are encouraged to experiment with this value to see how the resulting fit and residuals change. First, the <code class="docutils literal notranslate"><span class="pre">calculate_photometry</span></code> function uses the provided PSF model with the photutils <code class="docutils literal notranslate"><span class="pre">PSFPhotometry</span></code> function to fit the model to the stars. In essence, the flux of the normalized PSF model is scaled up to match the flux of each star. In this case, neighboring stars are fit simultaneously. The <code class="docutils literal notranslate"><span class="pre">make_residual_image</span></code> function then subtracts the best fit model so the flux residuals can be examined. Finally, we call the <code class="docutils literal notranslate"><span class="pre">calculate_residuals</span></code> function with the exact same stellar and background photometry apertures used in <a class="reference internal" href="#aperture"><span class="xref myst">Section 1.4</span></a> in order to measure the residual fluxes. A smaller residual flux generally implies a better fit, but the residuals should be inspected as over and undersubtractions from different portions of the star can also yield a small net residual flux.</p>
+<p>In this first analytical example, we fit Gaussian profiles to the four stars in our subimage and display the data, model, and residuals. We provide an initial guess for the width (sigma) using an approximate full width at half maximum (FWHM) of 2 pixels, where $\sigma$ = FWHM/2.355. Users are encouraged to experiment with this value to see how the resulting fit and residuals change. First, the <code class="docutils literal notranslate"><span class="pre">calculate_photometry</span></code> function uses the provided PSF model with the photutils <code class="docutils literal notranslate"><span class="pre">PSFPhotometry</span></code> function to fit the model to the stars. In essence, the flux of the normalized PSF model is scaled up to match the flux of each star. In this case, neighboring stars are fit simultaneously. The <code class="docutils literal notranslate"><span class="pre">make_residual_image</span></code> function then subtracts the best fit model so the flux residuals can be examined. Finally, we call the <code class="docutils literal notranslate"><span class="pre">calculate_residuals</span></code> function with the exact same stellar and background photometry apertures used in <a class="reference internal" href="#aperture"><span class="xref myst">Section 1.4</span></a> in order to measure the residual fluxes. A smaller residual flux generally implies a better fit, but the residuals should be inspected as over and undersubtractions from different portions of the star can also yield a small net residual flux.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">psf_model</span> <span class="o">=</span> <span class="n">IntegratedGaussianPRF</span><span class="p">(</span><span class="n">flux</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">2.0</span><span class="o">/</span><span class="mf">2.355</span><span class="p">)</span>
@@ -1422,7 +1280,7 @@ tweak directory exists.
 <p><a class="reference internal" href="#toc"><span class="xref myst">Table of Contents</span></a></p>
 <hr>
 <p>In this example, we use the hst1pass catalog to extract and stack stars from the FLC exposure of Omega Centauri. The hst1pass catalog columns are described in Section 2.3 of <a class="reference external" href="https://www.stsci.edu/~jayander/JWST1PASS/DOCs/ISR_HST1PASS.pdf">WFC3 ISR 2022-05</a> and include <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> detector coordinates, <code class="docutils literal notranslate"><span class="pre">m</span></code>:magnitude, <code class="docutils literal notranslate"><span class="pre">p</span></code>:peak flux, <code class="docutils literal notranslate"><span class="pre">q</span></code>:quality of fit, <code class="docutils literal notranslate"><span class="pre">k</span></code>:chip number, and <code class="docutils literal notranslate"><span class="pre">s</span></code>:sky value. We note that running hst1pass is not required, and users can use an external catalog generated with photutils or other packages provided the catalog contains accurate <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> coordinates. An example of this is shown in the section on <a class="reference internal" href="#drizzles"><span class="xref myst">Drizzle PSF Models</span></a>.</p>
-<p>We first read the hst1pass catalog and select bright stars with excellent qfit values on chip two. We also require a low sky value to remove some cutouts with many neighboring stars, and create a buffer around the edges of the detector so all cutouts contain a full array of data. The <code class="docutils literal notranslate"><span class="pre">rpix</span></code> parameter sets the radius of the cutout in pixels. For example, <code class="docutils literal notranslate"><span class="pre">rpix</span> <span class="pre">=</span> <span class="pre">19</span></code> produces a 39x39 pixel PSF model, corresponding to a size of 1.54<span class="math notranslate nohighlight">\(\times\)</span>1.54 arcseconds.</p>
+<p>We first read the hst1pass catalog and select bright stars with excellent qfit values on chip two. We also require a low sky value to remove some cutouts with many neighboring stars, and create a buffer around the edges of the detector so all cutouts contain a full array of data. The <code class="docutils literal notranslate"><span class="pre">rpix</span></code> parameter sets the radius of the cutout in pixels. For example, <code class="docutils literal notranslate"><span class="pre">rpix</span> <span class="pre">=</span> <span class="pre">19</span></code> produces a 39x39 pixel PSF model, corresponding to a size of 1.54$\times$1.54 arcseconds.</p>
 <div class="alert alert-block alert-warning"><b>NOTE:</b> Users who are unable to run hst1pass can continue the tutorial using the included catalog file id8048dyq_flc.xympqks that is automatically copied to the data_dir. </div><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read the hst1pass catalog and select stars.</span>
@@ -1672,7 +1530,7 @@ The total image flux is = 1.0
 </div>
 </div>
 </div>
-<p>Next we visually inspect all of the downloaded cutouts, where each panel shows the cutout, and any additional sources identified at &gt; 10<span class="math notranslate nohighlight">\(\sigma\)</span> above the background in green circles. Users may wish to manually or automatically filter the results to create a sample with fewer contaminants.</p>
+<p>Next we visually inspect all of the downloaded cutouts, where each panel shows the cutout, and any additional sources identified at &gt; 10$\sigma$ above the background in green circles. Users may wish to manually or automatically filter the results to create a sample with fewer contaminants.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">data_dir</span><span class="p">)</span>
@@ -1814,7 +1672,7 @@ The total image flux is = 1.0
 </a>
 </div>
 </div>
-<p>Now, we examine the <code class="docutils literal notranslate"><span class="pre">TweakReg</span></code> residuals to confirm they are small. The columns are filename, shift in x, shift in y, rotation in degrees, plate scale, and the x and y RMS errors on the shift. In general, RMS values below <span class="math notranslate nohighlight">\(\approx\)</span> 0.1 pixels are desired for a quality alignment solution. A value of NaN indicates a failure and the search parameters must be adjusted.</p>
+<p>Now, we examine the <code class="docutils literal notranslate"><span class="pre">TweakReg</span></code> residuals to confirm they are small. The columns are filename, shift in x, shift in y, rotation in degrees, plate scale, and the x and y RMS errors on the shift. In general, RMS values below $\approx$ 0.1 pixels are desired for a quality alignment solution. A value of NaN indicates a failure and the search parameters must be adjusted.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">tweak_dir</span><span class="p">)</span>
@@ -1839,7 +1697,7 @@ id8048e3q_flc.fits 0.09  0.01   0.000 1.00001 0.05 0.05
 </div>
 </div>
 </div>
-<p>In this case, the exposures are already well aligned as the shifts are less than <span class="math notranslate nohighlight">\(\approx\)</span> 0.1 pixels. Because the errors on the shifts are generally smaller than the measured shifts, we adopt the shifted values. Next, we use <code class="docutils literal notranslate"><span class="pre">AstroDrizzle</span></code> to combine the aligned exposures into a single mosaic. See the <code class="docutils literal notranslate"><span class="pre">AstroDrizzle</span></code> <a class="reference external" href="https://drizzlepac.readthedocs.io/en/deployment/astrodrizzle.html">readthedocs</a> for more information on each parameter.</p>
+<p>In this case, the exposures are already well aligned as the shifts are less than $\approx$ 0.1 pixels. Because the errors on the shifts are generally smaller than the measured shifts, we adopt the shifted values. Next, we use <code class="docutils literal notranslate"><span class="pre">AstroDrizzle</span></code> to combine the aligned exposures into a single mosaic. See the <code class="docutils literal notranslate"><span class="pre">AstroDrizzle</span></code> <a class="reference external" href="https://drizzlepac.readthedocs.io/en/deployment/astrodrizzle.html">readthedocs</a> for more information on each parameter.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">tweak_dir</span><span class="p">)</span>
@@ -1907,7 +1765,7 @@ id8048e3q_flc.fits 0.09  0.01   0.000 1.00001 0.05 0.05
 <h3>3.2 Stack Stars<a class="headerlink" href="#stack-stars" title="Link to this heading">#</a></h3>
 <p><a class="reference internal" href="#toc"><span class="xref myst">Table of Contents</span></a></p>
 <hr>
-<p>Next, we want to detect stars that surround the location of interest, and stack them to construct a PSF model. In this case we have a sufficient number of stars (&gt; 10) that are near the location on the detector for which we want to construct a PSF model. In this case we select a 525<span class="math notranslate nohighlight">\(\times\)</span>525 pixel region near the four stars shown above. The functionality of the code below is described in more detail in <a class="reference internal" href="#aperture"><span class="xref myst">Section 1.4</span></a>, and the resulting stellar flux measurements can be shown by adding <code class="docutils literal notranslate"><span class="pre">print(phot_table)</span></code>. <strong>In this case the drizzles have been background-subtracted, but images with a high background would require users to background subtract their data and/or PSF model for proper fitting and photometric accuracy.</strong></p>
+<p>Next, we want to detect stars that surround the location of interest, and stack them to construct a PSF model. In this case we have a sufficient number of stars (&gt; 10) that are near the location on the detector for which we want to construct a PSF model. In this case we select a 525$\times$525 pixel region near the four stars shown above. The functionality of the code below is described in more detail in <a class="reference internal" href="#aperture"><span class="xref myst">Section 1.4</span></a>, and the resulting stellar flux measurements can be shown by adding <code class="docutils literal notranslate"><span class="pre">print(phot_table)</span></code>. <strong>In this case the drizzles have been background-subtracted, but images with a high background would require users to background subtract their data and/or PSF model for proper fitting and photometric accuracy.</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate statistics for the background, initialize the star finder, locate the stars, and assign flux apertures.</span>
@@ -1948,7 +1806,7 @@ id8048e3q_flc.fits 0.09  0.01   0.000 1.00001 0.05 0.05
 </div>
 </div>
 </div>
-<p>Now we use the photometric catalog to select stars from the drizzled image for stacking. In this case we shift the catalog coordinates by one pixel so that the image and catalog both have the same origin of one, rather than being zero based. Here we use the centroids obtained directly from the photometric catalog, which yields coordinates that agree with the center of mass within <span class="math notranslate nohighlight">\(\lesssim\)</span> 0.05 pixels. This is sufficient for many science cases, but it may be possible to improve the alignment by using the stacked model to fit the stars with the <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.psf.PSFPhotometry.html#photutils.psf.PSFPhotometry">PSFPhotometry</a> package and iterating the fits until the centroids converge to stable values.</p>
+<p>Now we use the photometric catalog to select stars from the drizzled image for stacking. In this case we shift the catalog coordinates by one pixel so that the image and catalog both have the same origin of one, rather than being zero based. Here we use the centroids obtained directly from the photometric catalog, which yields coordinates that agree with the center of mass within $\lesssim$ 0.05 pixels. This is sufficient for many science cases, but it may be possible to improve the alignment by using the stacked model to fit the stars with the <a class="reference external" href="https://photutils.readthedocs.io/en/stable/api/photutils.psf.PSFPhotometry.html#photutils.psf.PSFPhotometry">PSFPhotometry</a> package and iterating the fits until the centroids converge to stable values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">star_ids</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">phot_table</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
@@ -2157,7 +2015,7 @@ The total image flux is = 1.0
     {
         requestKernel: true,
         binderOptions: {
-            repo: "spacetelescope/hst_notebooks",
+            repo: "spacetelescope/jwst-pipeline-notebooks",
             ref: "main",
         },
         codeMirrorConfig: {
@@ -2183,24 +2041,6 @@ The total image flux is = 1.0
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="../point_spread_function_.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">&lt;no title&gt;</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="../mast_api_psf/download_psf_cutouts.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Downloading WFC3 and WFPC2 PSF Cutouts from MAST</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -2276,7 +2116,7 @@ By STScI
 
   <p class="copyright">
     
-      © Copyright 2022-2024.
+      © Copyright 2024.
       <br/>
     
   </p>
