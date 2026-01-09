@@ -72,7 +72,7 @@ jobs:
 
   execute-all:
     if: inputs.action_type == 'execute-all'  
-    uses: spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@v1
+    uses: spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@pipeline-dev
     with:
       execution-mode: 'on-demand'
       trigger-event: 'execute'
@@ -231,4 +231,5 @@ jobs:
     secrets:
       CASJOBS_USERID: ${{ secrets.CASJOBS_USERID }}
       CASJOBS_PW: ${{ secrets.CASJOBS_PW }}
+
 
