@@ -10,7 +10,7 @@ on:
           
 jobs:
   execute-all:  
-    uses: spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@v1.0.0
+    uses: spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@pipeline-dev
     with:
       execution-mode: 'on-demand'
       trigger-event: 'execute'
@@ -22,6 +22,7 @@ jobs:
       enable-html-build: false
       custom-runner-config: true  # Enable ci_config.txt lookup
     secrets: inherit
+
 
 
 
