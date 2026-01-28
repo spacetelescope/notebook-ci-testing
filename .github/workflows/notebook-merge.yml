@@ -20,7 +20,7 @@ on:
 
 jobs:
   notebook-ci-and-deploy:
-    uses: spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@pipeline-dev
+    uses: spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@jbv2Testing
     with:
       execution-mode: 'merge'
       python-version: '3.11'                        # Adjust as needed

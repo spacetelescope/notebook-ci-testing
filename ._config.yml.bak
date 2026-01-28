@@ -1,0 +1,51 @@
+#######################################################################################
+# JupyterBook v2 Configuration
+# See the documentation: https://jupyterbook.org/
+
+#######################################################################################
+# Book settings
+title: JWST Pipeline Notebooks
+author: STScI
+copyright: "2024"
+logo: _static/stsci_logo2.png
+
+# Execution settings
+execute:
+  execute_notebooks: 'off'
+  timeout: -1
+  only_build_toc_files: true
+  exclude_patterns: []
+
+# LaTeX/PDF settings
+latex:
+  latex_documents:
+    targetname: book.tex
+
+# MyST parser settings
+parse:
+  myst_enable_extensions:
+    - html_image
+  myst_url_schemes: [http, https, mailto, ftp]
+
+# Interactive features
+launch_buttons:
+  thebe: true
+  binderhub_url: ""
+
+# Repository information
+repository:
+  url: https://github.com/spacetelescope/jwst-pipeline-notebooks/
+  path_to_book: notebooks
+  branch: main
+
+# HTML theme settings
+html:
+  use_issues_button: true
+  use_repository_button: true
+
+# Sphinx configuration (v2)
+sphinx:
+  config:
+    html_theme_options:
+      show_toc_level: 2
+    nb_execution_show_tb: true

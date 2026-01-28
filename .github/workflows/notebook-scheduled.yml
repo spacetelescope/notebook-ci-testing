@@ -10,7 +10,7 @@ on:
           
 jobs:
   execute-all:  
-    uses: spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@pipeline-dev
+    uses: spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@jbv2Testing
     with:
       execution-mode: 'on-demand'
       trigger-event: 'execute'
