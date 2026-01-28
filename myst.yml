@@ -58,6 +58,7 @@ project:
         - file: notebooks/NIRSPEC/MOS/JWPipeNB-NIRSpec-MOS.ipynb
           title: NIRSpec MOS Notebook
 site:
+  baseurl: /notebook-ci-testing
   options:
     logo: _static/stsci_logo2.png
     folders: true
