@@ -4,10 +4,10 @@ project:
   authors:
     - name: STScI
   copyright: '2024'
-  github: https://github.com/spacetelescope/jwst-pipeline-notebooks
+  github: https://github.com/spacetelescope/notebook-ci-testing
   thebe:
     binder:
-      repo: https://github.com/spacetelescope/jwst-pipeline-notebooks
+      repo: https://github.com/spacetelescope/notebook-ci-testing
       provider: github
       url: https://mybinder.org
       ref: main
