@@ -1,0 +1,2 @@
+# Requirements for generating notebook execution error reports
+requests>=2.31.0
