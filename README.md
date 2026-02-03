@@ -82,7 +82,19 @@ If you use these notebooks in your work, please cite this repository using https
 
 This repository includes tools to generate comprehensive reports of notebook execution errors from GitHub Actions workflows. This can help identify patterns in failures, track notebook stability over time, and quickly diagnose issues.
 
-To generate an error report:
+### Using the On-Demand GitHub Action (Easiest)
+
+The simplest way to generate an error report is through the GitHub Actions interface:
+
+1. Go to [Actions](https://github.com/spacetelescope/notebook-ci-testing/actions/workflows/notebook-on-demand.yml) → "Notebook CI - On-Demand Actions"
+2. Click "Run workflow"
+3. Select **"generate-error-report"** from the dropdown
+4. Configure your options (workflow type, number of runs, include logs)
+5. Download the report from the workflow artifacts
+
+### Using the Command Line
+
+To generate an error report locally:
 
 ```bash
 # Install dependencies

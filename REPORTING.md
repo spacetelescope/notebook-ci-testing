@@ -10,7 +10,24 @@ The `generate_error_report.py` script fetches data from the GitHub Actions API a
 - Specific notebook failures
 - Error excerpts (optional)
 
-## Prerequisites
+## Quick Start: On-Demand GitHub Action
+
+The **easiest way** to generate an error report is using the on-demand GitHub Action:
+
+1. Go to the [Actions tab](https://github.com/spacetelescope/notebook-ci-testing/actions/workflows/notebook-on-demand.yml) in this repository
+2. Click "Run workflow"
+3. Select **"generate-error-report"** from the "Action to perform" dropdown
+4. Configure options:
+   - **Workflow to analyze**: Choose which workflow to analyze (scheduled, main-branch, on-demand, pull-request, or all)
+   - **Number of runs**: How many recent runs to analyze (default: 10)
+   - **Include logs**: Whether to include detailed error excerpts (slower but more detailed)
+5. Click "Run workflow"
+6. Wait for the workflow to complete
+7. Download the generated report from the workflow artifacts
+
+This method requires no local setup and uses the repository's GitHub token automatically.
+
+## Prerequisites (for local usage)
 
 1. **Python 3.7+** is required
 2. **Install dependencies**:
