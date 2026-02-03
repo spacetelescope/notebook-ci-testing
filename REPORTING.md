@@ -106,6 +106,10 @@ For each failed run:
 
 ## Example Report Output
 
+See [SAMPLE_REPORT.md](SAMPLE_REPORT.md) for a complete example of what the generated report looks like.
+
+Quick preview:
+
 ```markdown
 # Notebook Actions Execution Error Report
 
