@@ -18,7 +18,7 @@ import json
 import os
 import sys
 from datetime import datetime
-from typing import Dict, List, Optional
+from typing import Any, Dict, List, Optional
 
 try:
     import requests
@@ -94,7 +94,7 @@ class NotebookErrorReporter:
             print(f"Error fetching logs for job {job_id}: {e}")
             return None
 
-    def extract_error_info(self, log_content: str) -> Dict[str, any]:
+    def extract_error_info(self, log_content: str) -> Dict[str, Any]:
         """Extract relevant error information from job logs."""
         if not log_content:
             return {}
