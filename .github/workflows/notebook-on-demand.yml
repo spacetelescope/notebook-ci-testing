@@ -21,6 +21,7 @@ on:
           - 'full-pipeline-single'
           - 'build-html-only'
           - 'deprecate-notebook'
+          - 'generate-error-report'
         default: 'validate-all'
       
       single_notebook:
@@ -47,6 +48,24 @@ on:
         
       enable_debug:
         description: 'Enable debug logging'
+        required: false
+        type: boolean
+        default: false
+      
+      report_workflow:
+        description: 'Workflow to analyze for error report (scheduled, main-branch, on-demand, pull-request, or all)'
+        required: false
+        type: string
+        default: 'all'
+      
+      report_runs:
+        description: 'Number of recent runs to analyze'
+        required: false
+        type: string
+        default: '10'
+      
+      report_include_logs:
+        description: 'Include detailed error logs in report'
         required: false
         type: boolean
         default: false
@@ -232,5 +251,63 @@ jobs:
       CASJOBS_USERID: ${{ secrets.CASJOBS_USERID }}
       CASJOBS_PW: ${{ secrets.CASJOBS_PW }}
 
-
+  generate-error-report:
+    if: inputs.action_type == 'generate-error-report'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ inputs.python_version }}
+      
+      - name: Install dependencies
+        run: |
+          pip install -r requirements-reporting.txt
+      
+      - name: Generate error report
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Build command with options
+          CMD="python generate_error_report.py --output error_report.md --runs ${{ inputs.report_runs }}"
+          
+          # Add workflow filter if not 'all'
+          if [ "${{ inputs.report_workflow }}" != "all" ]; then
+            CMD="$CMD --workflow ${{ inputs.report_workflow }}"
+          fi
+          
+          # Add log inclusion if requested
+          if [ "${{ inputs.report_include_logs }}" == "true" ]; then
+            CMD="$CMD --include-logs"
+          fi
+          
+          echo "Running: $CMD"
+          $CMD
+      
+      - name: Upload error report
+        uses: actions/upload-artifact@v4
+        with:
+          name: notebook-error-report
+          path: error_report.md
+          retention-days: 30
+      
+      - name: Display report summary
+        run: |
+          echo "## Error Report Generated" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "The error report has been generated and uploaded as an artifact." >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Configuration" >> $GITHUB_STEP_SUMMARY
+          echo "- Workflow(s): ${{ inputs.report_workflow }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Runs analyzed: ${{ inputs.report_runs }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Include logs: ${{ inputs.report_include_logs }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Quick Preview" >> $GITHUB_STEP_SUMMARY
+          head -50 error_report.md >> $GITHUB_STEP_SUMMARY
 

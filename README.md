@@ -78,6 +78,37 @@ Previous versions of these notebooks designed for use with prior builds of the J
 
 If you use these notebooks in your work, please cite this repository using https://doi.org/10.5281/zenodo.15060584
 
+## Notebook Execution Error Reporting
+
+This repository includes tools to generate comprehensive reports of notebook execution errors from GitHub Actions workflows. This can help identify patterns in failures, track notebook stability over time, and quickly diagnose issues.
+
+### Using the On-Demand GitHub Action (Easiest)
+
+The simplest way to generate an error report is through the GitHub Actions interface:
+
+1. Go to [Actions](https://github.com/spacetelescope/notebook-ci-testing/actions/workflows/notebook-on-demand.yml) → "Notebook CI - On-Demand Actions"
+2. Click "Run workflow"
+3. Select **"generate-error-report"** from the dropdown
+4. Configure your options (workflow type, number of runs, include logs)
+5. Download the report from the workflow artifacts
+
+### Using the Command Line
+
+To generate an error report locally:
+
+```bash
+# Install dependencies
+pip install -r requirements-reporting.txt
+
+# Generate report for all workflows
+python generate_error_report.py --output error_report.md
+
+# Generate report for scheduled workflow only
+python generate_error_report.py --workflow scheduled
+```
+
+For detailed usage instructions, see [REPORTING.md](REPORTING.md).
+
 ## Help
 
 If you uncover any issues or bugs, you can open an issue on GitHub. For faster responses, however, we encourage you to submit a [JWST Help Desk Ticket](jwsthelp.stsci.edu)
