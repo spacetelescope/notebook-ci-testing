@@ -254,6 +254,9 @@ jobs:
   generate-error-report:
     if: inputs.action_type == 'generate-error-report'
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
