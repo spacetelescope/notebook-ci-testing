@@ -27,6 +27,8 @@ The **easiest way** to generate an error report is using the on-demand GitHub Ac
 
 This method requires no local setup and uses the repository's GitHub token automatically.
 
+📖 **For detailed step-by-step instructions with configuration examples, see [USAGE_GUIDE.md](USAGE_GUIDE.md)**
+
 ## Prerequisites (for local usage)
 
 1. **Python 3.7+** is required
