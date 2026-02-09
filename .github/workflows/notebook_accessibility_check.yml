@@ -1,0 +1,8 @@
+name: Jupyter Notebook Accessibility Check
+
+on:
+  workflow_dispatch:
+
+jobs:
+    nb_a11y_check:
+      uses: spacetelescope/notebook-ci-actions/.github/workflows/notebook_accessibility_check.yml@new_a11y_nb_checker
