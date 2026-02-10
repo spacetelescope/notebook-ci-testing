@@ -7,7 +7,7 @@ on:
         description: 'Glob pattern for notebooks to scan'
         required: false
         type: string
-        default: 'notebooks/**/*.ipynb'
+        default: 'notebooks/*/*/*.ipynb'
 
 jobs:
   discover-notebooks:
