@@ -1,0 +1,27 @@
+name: Run Notebook Accessibility Matrix Scan
+
+on:
+  pull_request:
+    branches: [main, develop]
+    paths:
+      - 'notebooks/**/*.ipynb'
+      - '.github/workflows/notebook_accessibility_check_matrix.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'notebooks/**/*.ipynb'
+  workflow_dispatch:
+    inputs:
+      notebooks-pattern:
+        description: 'Glob pattern for notebooks to scan (default: all notebooks)'
+        required: false
+        type: string
+        default: 'notebooks/**/*.ipynb'
+
+jobs:
+  call-a11y-matrix:
+    name: Accessibility Matrix Scan
+    uses: ./.github/workflows/notebook_accessibility_check_matrix.yml
+    with:
+      notebooks-pattern: ${{ github.event.inputs.notebooks-pattern || 'notebooks/**/*.ipynb' }}
+
