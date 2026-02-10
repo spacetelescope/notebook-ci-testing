@@ -1,0 +1,38 @@
+name: "Notebook Accessibility Matrix Check"
+
+on:
+  workflow_call: {}
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: notebook-a11y-check-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  a11y-scan:
+    name: Accessibility scan: ${{ matrix.notebook }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        notebook:
+          - notebooks/examples/basic-validation-test.ipynb
+          - notebooks/examples/github-actions-summary-generation.ipynb
+          - notebooks/testing/stash-test.ipynb
+          - notebooks/testing/performance-test.ipynb
+          - notebooks/testing/security-test.ipynb
+          - notebooks/testing/pr-storage-test.ipynb
+          - notebooks/testing/deprecated-test.ipynb
+          - examples/matrix-notebook-execution.ipynb
+          - examples/selective-notebook-execution.ipynb
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run jupyterlab accessibility checker for notebook
+        uses: berkeley-dsep-infra/jupyterlab-a11y-checker@main
+        with:
+          files: ${{ matrix.notebook }}
