@@ -1,10 +1,11 @@
 name: "Notebook Accessibility Matrix Check"
 
 on:
-  workflow_call: {}
-  push:
-    branches:
-      - main
+  workflow_dispatch: 
+  # workflow_call: {}
+  # push:
+  #   branches:
+  #     - main
 
 concurrency:
   group: notebook-a11y-check-${{ github.ref }}
