@@ -12,7 +12,7 @@ concurrency:
 
 jobs:
   a11y-scan:
-    name: Accessibility scan: ${{ matrix.notebook }}
+    name: Accessibility scan
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
