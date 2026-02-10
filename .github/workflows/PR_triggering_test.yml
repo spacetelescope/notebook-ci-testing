@@ -11,4 +11,4 @@ on:
 
 jobs:
   Notebook_PEP8_Check:
-   uses: spacetelescope/notebook-ci-actions/.github/workflows/notebook_accessibility_check_pr.yml@new_nb_508_checker
+   uses: spacetelescope/notebook-ci-actions/.github/workflows/notebook_accessibility_check_pr.yml@new_a11y_nb_checker
