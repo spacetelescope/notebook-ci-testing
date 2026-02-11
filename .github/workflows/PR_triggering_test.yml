@@ -1,4 +1,4 @@
-## This workflow performs PEP8 style checks on the python code in notebook code cells.
+## This workflow performs accessibility checks on Jupyter notebooks created or updated in a pull request
 name: PR-Triggered Jupyter notebook accessibility check
 
 on:
@@ -7,8 +7,7 @@ on:
       - main
     paths:
       - 'notebooks/**.ipynb'
-      - '*.yml'
 
 jobs:
-  Notebook_PEP8_Check:
+  Notebook_Accessibility_Check:
    uses: spacetelescope/notebook-ci-actions/.github/workflows/notebook_accessibility_check_pr.yml@new_nb_508_checker
