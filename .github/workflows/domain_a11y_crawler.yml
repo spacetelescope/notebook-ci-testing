@@ -118,8 +118,39 @@ jobs:
           url: ${{ matrix.page }}
           report: accessibility-report-${{ strategy.job-index }}.json
 
-      - name: Comment on issues
-        if: steps.a11ychecker.outcome != 'success'
-        run: |
-          echo "Accessibility issues found on: ${{ matrix.page }}"
+      # Upload the individual report so it's preserved even if we fail the job
+      - name: Upload individual report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: accessibility-reports-${{ github.run_id }}
+          path: accessibility-report-${{ strategy.job-index }}.json
 
+      # Fail the job if the report indicates accessibility issues
+      - name: Fail if accessibility issues found
+        if: always()
+        env:
+          REPORT_PATH: accessibility-report-${{ strategy.job-index }}.json
+        run: |
+          python3 - <<'PY'
+          import os, json, sys
+          report_path = os.environ.get('REPORT_PATH')
+          try:
+              with open(report_path, 'r') as fh:
+                  report = json.load(fh)
+          except Exception as e:
+              print(f"ERROR: unable to read report {report_path}: {e}", file=sys.stderr)
+              # If there's no report, treat as failure
+              sys.exit(1)
+          issue_count = report.get('summary', {}).get('issueCount', 0)
+          if issue_count > 0:
+              print(f"Accessibility issues found: {issue_count} in {report_path}", file=sys.stderr)
+              sys.exit(1)
+          print('No accessibility issues found.')
+          PY
+
+      # Optional human readable notice kept for runs where the action itself returns non-success
+      - name: Comment on issues
+        if: failure()
+        run: |
+          echo "Accessibility issues or errors occurred while checking: ${{ matrix.page }}"
