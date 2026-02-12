@@ -126,7 +126,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: accessibility-reports
+          name: accessibility-reports-${{ github.run_id }}
           path: accessibility-report-${{ strategy.job-index }}.json
 
 
@@ -149,7 +149,7 @@ jobs:
       - name: Download all reports
         uses: actions/download-artifact@v4
         with:
-          name: accessibility-reports
+          name: accessibility-reports-${{ github.run_id }}
           path: reports
 
       - name: Create consolidation script
@@ -203,7 +203,7 @@ jobs:
       - name: Upload consolidated report
         uses: actions/upload-artifact@v4
         with:
-          name: consolidated-accessibility-report
+          name: consolidated-accessibility-report-${{ github.run_id }}
           path: ${{ github.event.inputs.output_report }}
 
 
