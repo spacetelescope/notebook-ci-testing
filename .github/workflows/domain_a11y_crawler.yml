@@ -6,10 +6,11 @@ on:
       domain:
         description: 'Domain to scan (e.g., https://spacetelescope.github.io)'
         required: true
+        default: 'https://spacetelescope.github.io'
       path_pattern:
         description: 'URL path pattern to scan (e.g., /hst_notebooks/notebooks)'
         required: false
-        default: '/'
+        default: '/hst_notebooks/notebooks/*/*/*.html'
       output_report:
         description: 'Path to save combined report'
         required: false
