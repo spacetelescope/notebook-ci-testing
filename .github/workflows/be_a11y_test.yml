@@ -4,7 +4,7 @@ on:
       url:
         description: 'URL or path'
         required: true
-        default: 'https://spacetelescope.github.io/hst_notebooks'
+        default: 'https://spacetelescope.github.io/hst_notebooks/notebooks/*/*.html'
       report:
         description: 'Path to report.json'
         required: false
