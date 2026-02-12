@@ -153,6 +153,7 @@ jobs:
           try:
               with open(report_path, 'r') as fh:
                   report = json.load(fh)
+                  print(report)
           except Exception as e:
               print(f"ERROR: unable to read report {report_path}: {e}", file=sys.stderr)
               # If there's no report, treat as failure
