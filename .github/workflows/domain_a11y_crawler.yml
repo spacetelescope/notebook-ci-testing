@@ -23,21 +23,18 @@ jobs:
       pages: ${{ steps.discover.outputs.pages }}
       page-count: ${{ steps.discover.outputs.page-count }}
     steps:
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
       - name: Install dependencies
         run: |
-          apt-get update
-          apt-get install -y curl grep sed
-          npm install -g node-html-parser
           pip install requests beautifulsoup4
 
-      - name: Discover all HTML pages
-        id: discover
+      - name: Create page discovery script
         run: |
-          DOMAIN="${{ github.event.inputs.domain }}"
-          PATH_PATTERN="${{ github.event.inputs.path_pattern }}"
-          
-          # Create a Python script to crawl the domain
-          cat > crawl.py << 'EOF'
+          cat > crawl.py << 'PYSCRIPT'
           import sys
           import requests
           from bs4 import BeautifulSoup
@@ -56,7 +53,7 @@ jobs:
               base_parsed = urlparse(base_domain)
               return parsed.netloc == base_parsed.netloc
           
-          max_pages = 100  # Limit to prevent infinite crawls
+          max_pages = 100
           
           while to_visit and len(pages) < max_pages:
               try:
@@ -78,7 +75,6 @@ jobs:
                       
                       for link in soup.find_all('a', href=True):
                           href = urljoin(url, link['href'])
-                          # Remove fragments
                           href = href.split('#')[0]
                           
                           if is_valid_url(href, domain) and href not in visited:
@@ -87,9 +83,14 @@ jobs:
               except Exception as e:
                   print(f"Error processing {url}: {e}", file=sys.stderr)
           
-          # Output as JSON
           print(json.dumps(pages))
-          EOF
+          PYSCRIPT
+
+      - name: Discover all HTML pages
+        id: discover
+        run: |
+          DOMAIN="${{ github.event.inputs.domain }}"
+          PATH_PATTERN="${{ github.event.inputs.path_pattern }}"
           
           python3 crawl.py "$DOMAIN" "$PATH_PATTERN" > pages.json
           PAGES=$(cat pages.json)
@@ -126,7 +127,7 @@ jobs:
         with:
           name: accessibility-reports
           path: accessibility-report-${{ strategy.job-index }}.json
-          if-no-files-found: ignore
+
 
       - name: Comment on issues
         if: steps.a11ychecker.outcome != 'success'
@@ -139,15 +140,20 @@ jobs:
     runs-on: ubuntu-latest
     if: always()
     steps:
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
       - name: Download all reports
         uses: actions/download-artifact@v4
         with:
           name: accessibility-reports
           path: reports
 
-      - name: Consolidate reports
+      - name: Create consolidation script
         run: |
-          cat > consolidate.py << 'EOF'
+          cat > consolidate.py << 'PYSCRIPT'
           import json
           import os
           import sys
@@ -173,7 +179,6 @@ jobs:
               except Exception as e:
                   print(f"Error processing {report_file}: {e}", file=sys.stderr)
           
-          # Calculate summary
           consolidated["summary"]["total_pages"] = len(consolidated["pages"])
           consolidated["summary"]["pages_with_issues"] = sum(
               1 for p in consolidated["pages"] 
@@ -189,9 +194,10 @@ jobs:
           
           print(f"Consolidated {len(consolidated['pages'])} reports")
           print(f"Total issues: {consolidated['summary']['total_issues']}")
-          EOF
-          
-          python3 consolidate.py
+          PYSCRIPT
+
+      - name: Consolidate reports
+        run: python3 consolidate.py
 
       - name: Upload consolidated report
         uses: actions/upload-artifact@v4
@@ -199,17 +205,14 @@ jobs:
           name: consolidated-accessibility-report
           path: ${{ github.event.inputs.output_report }}
 
+
       - name: Summary
         if: always()
         run: |
-          cat > summary.txt << 'EOF'
-          Accessibility Check Summary
-          ==========================
-          Report: ${{ github.event.inputs.output_report }}
-          
-          Total pages scanned: ${{ needs.discover-pages.outputs.page-count }}
-          
-          Download the consolidated report from artifacts.
-          EOF
-          cat summary.txt
+          echo "Accessibility Check Summary"
+          echo "==========================="
+          echo "Report: ${{ github.event.inputs.output_report }}"
+          echo "Total pages scanned: ${{ needs.discover-pages.outputs.page-count }}"
+          echo ""
+          echo "Download the consolidated report from artifacts."
 
