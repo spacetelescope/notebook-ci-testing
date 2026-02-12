@@ -10,7 +10,7 @@ on:
       path_pattern:
         description: 'URL path pattern to scan (e.g., /hst_notebooks/notebooks)'
         required: false
-        default: '/hst_notebooks/notebooks/*/*/*.html'
+        default: '/hst_notebooks'
       output_report:
         description: 'Path to save combined report'
         required: false
