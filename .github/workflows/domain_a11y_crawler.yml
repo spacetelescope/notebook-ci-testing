@@ -123,7 +123,8 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: accessibility-reports-${{ github.run_id }}
+          # Make the artifact name unique per matrix job to avoid collisions
+          name: accessibility-report-${{ github.run_id }}-${{ strategy.job-index }}
           path: accessibility-report-${{ strategy.job-index }}.json
 
       # Fail the job if the report indicates accessibility issues
@@ -134,6 +135,20 @@ jobs:
         run: |
           python3 - <<'PY'
           import os, json, sys
+
+          def count_lists(obj):
+              cnt = 0
+              if isinstance(obj, dict):
+                  for v in obj.values():
+                      if isinstance(v, list):
+                          cnt += len(v)
+                      elif isinstance(v, dict):
+                          cnt += count_lists(v)
+              elif isinstance(obj, list):
+                  for item in obj:
+                      cnt += count_lists(item)
+              return cnt
+
           report_path = os.environ.get('REPORT_PATH')
           try:
               with open(report_path, 'r') as fh:
@@ -142,10 +157,40 @@ jobs:
               print(f"ERROR: unable to read report {report_path}: {e}", file=sys.stderr)
               # If there's no report, treat as failure
               sys.exit(1)
-          issue_count = report.get('summary', {}).get('issueCount', 0)
+
+          # Try several common locations/formats for issue counts
+          issue_count = None
+          summary = report.get('summary') if isinstance(report.get('summary'), dict) else {}
+
+          # 1) summary.issueCount
+          if isinstance(summary.get('issueCount'), int):
+              issue_count = summary.get('issueCount')
+
+          # 2) top-level issueCount
+          if issue_count is None and isinstance(report.get('issueCount'), int):
+              issue_count = report.get('issueCount')
+
+          # 3) lists under common keys
+          if issue_count is None:
+              for key in ('violations', 'issues', 'results', 'items'):
+                  val = summary.get(key) or report.get(key)
+                  if isinstance(val, list):
+                      issue_count = len(val)
+                      break
+
+          # 4) fallback: count any list-of-dicts occurrences in the report
+          if issue_count is None:
+              issue_count = count_lists(report)
+
+          try:
+              issue_count = int(issue_count or 0)
+          except Exception:
+              issue_count = 0
+
           if issue_count > 0:
               print(f"Accessibility issues found: {issue_count} in {report_path}", file=sys.stderr)
               sys.exit(1)
+
           print('No accessibility issues found.')
           PY
 
@@ -154,3 +199,68 @@ jobs:
         if: failure()
         run: |
           echo "Accessibility issues or errors occurred while checking: ${{ matrix.page }}"
+
+  consolidate-reports:
+    name: Consolidate Reports
+    needs: accessibility-check
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: Prepare tools
+        run: |
+          apt-get update && apt-get install -y jq unzip curl
+
+      - name: Create reports directory
+        run: mkdir -p reports
+
+      - name: Download per-job artifacts for this run
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          RUN_ID: ${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          echo "Listing artifacts for repo $REPO"
+          # Fetch artifacts list and filter by artifact name prefix containing the run id
+          artifacts_json=$(curl -s -H "Authorization: token $GITHUB_TOKEN" "https://api.github.com/repos/$REPO/actions/artifacts")
+          # Use jq with --arg so we can embed RUN_ID safely; output: <archive_download_url>\t<id>
+          echo "$artifacts_json" | jq -r --arg RUN_ID "$RUN_ID" '.artifacts[] | select(.name | startswith("accessibility-report-\($RUN_ID)-")) | (.archive_download_url + "\t" + (.id|tostring))' > artifact_list.txt
+           if [ ! -s artifact_list.txt ]; then
+             echo "No per-job artifacts found for run $RUN_ID"
+           else
+             while IFS=$'\t' read -r url id; do
+               echo "Downloading artifact id=$id from $url"
+               curl -L -H "Authorization: token $GITHUB_TOKEN" -o artifact_${id}.zip "$url"
+               unzip -o artifact_${id}.zip -d reports_${id}
+               # move any json files into reports/
+               find reports_${id} -type f -name '*.json' -exec mv {} reports/ \;
+             done < artifact_list.txt
+           fi
+
+      - name: Consolidate reports into single JSON
+        run: |
+          python3 - <<'PY'
+          import json, sys, pathlib
+          reports_dir = pathlib.Path('reports')
+          output_file = 'accessibility-consolidated-${{ github.run_id }}.json'
+          consolidated = {"summary": {"total_pages": 0, "pages_with_issues": 0, "total_issues": 0}, "pages": []}
+          for p in sorted(reports_dir.glob('*.json')):
+              try:
+                  with open(p, 'r') as fh:
+                      r = json.load(fh)
+                      consolidated['pages'].append(r)
+              except Exception as e:
+                  print(f'Error reading {p}: {e}', file=sys.stderr)
+          consolidated['summary']['total_pages'] = len(consolidated['pages'])
+          consolidated['summary']['pages_with_issues'] = sum(1 for p in consolidated['pages'] if p.get('summary', {}).get('issueCount', 0) > 0)
+          consolidated['summary']['total_issues'] = sum(p.get('summary', {}).get('issueCount', 0) for p in consolidated['pages'])
+          with open(output_file, 'w') as fh:
+              json.dump(consolidated, fh, indent=2)
+          print('Wrote', output_file)
+          PY
+
+      - name: Upload consolidated report
+        uses: actions/upload-artifact@v4
+        with:
+          name: consolidated-accessibility-report-${{ github.run_id }}
+          path: accessibility-consolidated-${{ github.run_id }}.json
