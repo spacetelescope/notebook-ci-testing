@@ -11,10 +11,6 @@ on:
         description: 'URL path pattern to scan (e.g., /hst_notebooks/notebooks)'
         required: false
         default: '/hst_notebooks'
-      output_report:
-        description: 'Path to save combined report'
-        required: false
-        default: 'accessibility-report.json'
 
 jobs:
   discover-pages:
@@ -122,98 +118,8 @@ jobs:
           url: ${{ matrix.page }}
           report: accessibility-report-${{ strategy.job-index }}.json
 
-      - name: Upload individual report
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: accessibility-reports-${{ github.run_id }}
-          path: accessibility-report-${{ strategy.job-index }}.json
-
-
       - name: Comment on issues
         if: steps.a11ychecker.outcome != 'success'
         run: |
           echo "Accessibility issues found on: ${{ matrix.page }}"
-
-  consolidate-reports:
-    name: Consolidate Reports
-    needs: accessibility-check
-    runs-on: ubuntu-latest
-    if: always()
-    steps:
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
-
-      - name: Download all reports
-        uses: actions/download-artifact@v4
-        with:
-          name: accessibility-reports-${{ github.run_id }}
-          path: reports
-
-      - name: Create consolidation script
-        run: |
-          cat > consolidate.py << 'PYSCRIPT'
-          import json
-          import os
-          import sys
-          from pathlib import Path
-          
-          reports_dir = 'reports'
-          output_file = '${{ github.event.inputs.output_report }}'
-          
-          consolidated = {
-              "summary": {
-                  "total_pages": 0,
-                  "pages_with_issues": 0,
-                  "total_issues": 0
-              },
-              "pages": []
-          }
-          
-          for report_file in sorted(Path(reports_dir).glob('*.json')):
-              try:
-                  with open(report_file, 'r') as f:
-                      report = json.load(f)
-                      consolidated["pages"].append(report)
-              except Exception as e:
-                  print(f"Error processing {report_file}: {e}", file=sys.stderr)
-          
-          consolidated["summary"]["total_pages"] = len(consolidated["pages"])
-          consolidated["summary"]["pages_with_issues"] = sum(
-              1 for p in consolidated["pages"] 
-              if p.get("summary", {}).get("issueCount", 0) > 0
-          )
-          consolidated["summary"]["total_issues"] = sum(
-              p.get("summary", {}).get("issueCount", 0) 
-              for p in consolidated["pages"]
-          )
-          
-          with open(output_file, 'w') as f:
-              json.dump(consolidated, f, indent=2)
-          
-          print(f"Consolidated {len(consolidated['pages'])} reports")
-          print(f"Total issues: {consolidated['summary']['total_issues']}")
-          PYSCRIPT
-
-      - name: Consolidate reports
-        run: python3 consolidate.py
-
-      - name: Upload consolidated report
-        uses: actions/upload-artifact@v4
-        with:
-          name: consolidated-accessibility-report-${{ github.run_id }}
-          path: ${{ github.event.inputs.output_report }}
-
-
-      - name: Summary
-        if: always()
-        run: |
-          echo "Accessibility Check Summary"
-          echo "==========================="
-          echo "Report: ${{ github.event.inputs.output_report }}"
-          echo "Total pages scanned: ${{ needs.discover-pages.outputs.page-count }}"
-          echo ""
-          echo "Download the consolidated report from artifacts."
 
