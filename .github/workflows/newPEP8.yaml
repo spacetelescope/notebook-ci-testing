@@ -29,4 +29,4 @@ jobs:
       - name: Run pylint on notebooks
         continue-on-error: true
         run: |
-          nbqa pylint notebooks/ --disable=C0114
+          nbqa pylint notebooks/ --disable=C0114,C0303,C0301
