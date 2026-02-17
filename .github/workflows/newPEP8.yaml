@@ -1,0 +1,26 @@
+name: "On-Demand PEP8 Notebook Lint"
+
+on:
+  workflow_dispatch: # This enables the "Run workflow" button in GitHub
+
+jobs:
+  pep8-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install nbQA and Flake8
+        run: |
+          python -m pip install --upgrade pip
+          pip install nbqa flake8
+
+      - name: Run PEP8 Linting on Notebooks
+        # Runs against all .ipynb files inside the notebooks/ folder recursively
+        run: |
+          nbqa flake8 notebooks/ --ignore=E402,E203 --max-line-length=88
