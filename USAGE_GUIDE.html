@@ -1,0 +1,897 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Using the On-Demand Error Report Generator &#8212; JWST Pipeline Notebooks</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/table.css?v=cd6c26fb" />
+    <link rel="stylesheet" type="text/css" href="_static/main.css?v=b44a18d9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'USAGE_GUIDE';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">JWST Pipeline Notebooks</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="README.html">
+                    JWST Pipeline Notebooks
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">MIRI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="notebooks/MIRI/Coronagraphy/JWPipeNB-MIRI-Coron.html">MIRI Coronagraphy Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/MIRI/Imaging/JWPipeNB-MIRI-imaging.html">MIRI Imaging Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/MIRI/Imaging-TSO/JWPipeNB-MIRI-imaging-TSO.html">MIRI Imaging TSO Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/MIRI/LRS-slit/JWPipeNB-MIRI-LRS-slit.html">MIRI LRS Slit Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/MIRI/LRS-slitless-TSO/JWPipeNB-MIRI-LRS-slitless-TSO.html">MIRI LRS Slitless TSO Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/MIRI/MRS/JWPipeNB-MIRI-MRS.html">MIRI MRS Notebook</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">NIRCAM</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="notebooks/NIRCAM/Coronagraphy/JWPipeNB-nircam-coronagraphy.html">NIRCam Coronagraphy Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/NIRCAM/Imaging/JWPipeNB-nircam-imaging.html">NIRCam Imaging Notebook</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">NIRISS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="notebooks/NIRISS/AMI/JWPipeNB-niriss-ami.html">NIRISS AMI Pipeline Notebook</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="notebooks/NIRISS/Imaging/JWPipeNB-niriss-imaging.html">NIRISS Imaging Pipeline Notebook</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">NIRSpec</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="notebooks/NIRSPEC/BOTS/JWPipeNB-NIRSpec-BOTS.html">NIRSpec BOTS Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/NIRSPEC/FSlit/JWPipeNB-NIRSpec-FS.html">NIRSpec Fixed Slit Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/NIRSPEC/IFU/JWPipeNB-NIRSpec-IFU.html">NIRSpec IFU Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/NIRSPEC/MOS/JWPipeNB-NIRSpec-MOS.html">NIRSpec MOS Notebook</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/spacetelescope/jwst-pipeline-notebooks" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/spacetelescope/jwst-pipeline-notebooks/issues/new?title=Issue%20on%20page%20%2FUSAGE_GUIDE.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/USAGE_GUIDE.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Using the On-Demand Error Report Generator</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-start">Quick Start</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-navigate-to-actions">Step 1: Navigate to Actions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-run-the-workflow">Step 2: Run the Workflow</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-configure-the-report">Step 3: Configure the Report</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-submit-and-wait">Step 4: Submit and Wait</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-download-the-report">Step 5: Download the Report</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-view-summary-in-github">Step 6: View Summary in GitHub</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-examples">Configuration Examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-quick-weekly-check">Example 1: Quick Weekly Check</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-deep-dive-investigation">Example 2: Deep Dive Investigation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-pr-stability-check">Example 3: PR Stability Check</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-main-branch-health">Example 4: Main Branch Health</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-the-report">Understanding the Report</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#header-section">1. Header Section</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#per-workflow-analysis">2. Per-Workflow Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-section">3. Summary Section</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tips-and-best-practices">Tips and Best Practices</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#when-to-generate-reports">When to Generate Reports</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-parameters">Choosing Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automating-report-generation">Automating Report Generation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshooting">Troubleshooting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-fails-immediately">Workflow fails immediately</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#report-shows-no-data">Report shows “No data”</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-times-out">Workflow times out</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#can-t-find-the-artifact">Can’t find the artifact</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-steps">Next Steps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#command-line-alternative">Command Line Alternative</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#support">Support</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="using-the-on-demand-error-report-generator">
+<h1>Using the On-Demand Error Report Generator<a class="headerlink" href="#using-the-on-demand-error-report-generator" title="Link to this heading">#</a></h1>
+<p>This guide shows you how to use the GitHub Actions workflow to generate error reports for notebook execution failures.</p>
+<section id="quick-start">
+<h2>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading">#</a></h2>
+<section id="step-1-navigate-to-actions">
+<h3>Step 1: Navigate to Actions<a class="headerlink" href="#step-1-navigate-to-actions" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Go to the <a class="reference external" href="https://github.com/spacetelescope/notebook-ci-testing">notebook-ci-testing repository</a></p></li>
+<li><p>Click on the <strong>Actions</strong> tab at the top</p></li>
+<li><p>In the left sidebar, click on <strong>“Notebook CI - On-Demand Actions”</strong></p></li>
+</ol>
+</section>
+<section id="step-2-run-the-workflow">
+<h3>Step 2: Run the Workflow<a class="headerlink" href="#step-2-run-the-workflow" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Click the <strong>“Run workflow”</strong> dropdown button (top right)</p></li>
+<li><p>You’ll see a form with several options:</p></li>
+</ol>
+</section>
+<section id="step-3-configure-the-report">
+<h3>Step 3: Configure the Report<a class="headerlink" href="#step-3-configure-the-report" title="Link to this heading">#</a></h3>
+<p><strong>Action to perform:</strong> Select <strong>“generate-error-report”</strong> from the dropdown</p>
+<p><strong>Optional Configuration:</strong></p>
+<ul class="simple">
+<li><p><strong>Python version</strong>: Leave as default (3.11) or choose your preferred version</p></li>
+<li><p><strong>Workflow to analyze</strong>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">all</span></code> (default) - Analyzes all workflow types</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scheduled</span></code> - Only the weekly scheduled runs</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">main-branch</span></code> - Only main branch pushes</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">on-demand</span></code> - Only manually triggered runs</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pull-request</span></code> - Only PR workflows</p></li>
+</ul>
+</li>
+<li><p><strong>Number of recent runs</strong>: How many runs to analyze per workflow (default: 10)</p>
+<ul>
+<li><p>Use 5 for a quick check</p></li>
+<li><p>Use 20-30 for deeper analysis</p></li>
+<li><p>Higher numbers take longer but provide more historical context</p></li>
+</ul>
+</li>
+<li><p><strong>Include detailed error logs</strong>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">false</span></code> (default) - Quick summary only</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">true</span></code> - Includes error excerpts from logs (slower but more informative)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="step-4-submit-and-wait">
+<h3>Step 4: Submit and Wait<a class="headerlink" href="#step-4-submit-and-wait" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Click the green <strong>“Run workflow”</strong> button at the bottom</p></li>
+<li><p>The page will refresh and show your workflow run at the top</p></li>
+<li><p>Click on the run to see progress</p></li>
+<li><p>Wait for the workflow to complete (usually 1-2 minutes)</p></li>
+</ol>
+</section>
+<section id="step-5-download-the-report">
+<h3>Step 5: Download the Report<a class="headerlink" href="#step-5-download-the-report" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Scroll down to the <strong>Artifacts</strong> section at the bottom of the workflow run page</p></li>
+<li><p>Click on <strong>“notebook-error-report”</strong> to download</p></li>
+<li><p>Extract the ZIP file to get <code class="docutils literal notranslate"><span class="pre">error_report.md</span></code></p></li>
+<li><p>Open <code class="docutils literal notranslate"><span class="pre">error_report.md</span></code> in any markdown viewer or text editor</p></li>
+</ol>
+</section>
+<section id="step-6-view-summary-in-github">
+<h3>Step 6: View Summary in GitHub<a class="headerlink" href="#step-6-view-summary-in-github" title="Link to this heading">#</a></h3>
+<p>The workflow also displays a quick preview in the GitHub Actions summary:</p>
+<ol class="arabic simple">
+<li><p>On the workflow run page, look for the <strong>“Display report summary”</strong> step</p></li>
+<li><p>Click on it to expand</p></li>
+<li><p>You’ll see the first 50 lines of the report directly in GitHub</p></li>
+</ol>
+</section>
+</section>
+<section id="configuration-examples">
+<h2>Configuration Examples<a class="headerlink" href="#configuration-examples" title="Link to this heading">#</a></h2>
+<section id="example-1-quick-weekly-check">
+<h3>Example 1: Quick Weekly Check<a class="headerlink" href="#example-1-quick-weekly-check" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Action</span><span class="p">:</span> <span class="n">generate</span><span class="o">-</span><span class="n">error</span><span class="o">-</span><span class="n">report</span>
+<span class="n">Workflow</span><span class="p">:</span> <span class="n">scheduled</span>
+<span class="n">Number</span> <span class="n">of</span> <span class="n">runs</span><span class="p">:</span> <span class="mi">5</span>
+<span class="n">Include</span> <span class="n">logs</span><span class="p">:</span> <span class="n">false</span>
+</pre></div>
+</div>
+<p><strong>Use case</strong>: Weekly maintenance check to see if scheduled runs are working</p>
+</section>
+<section id="example-2-deep-dive-investigation">
+<h3>Example 2: Deep Dive Investigation<a class="headerlink" href="#example-2-deep-dive-investigation" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Action</span><span class="p">:</span> <span class="n">generate</span><span class="o">-</span><span class="n">error</span><span class="o">-</span><span class="n">report</span>
+<span class="n">Workflow</span><span class="p">:</span> <span class="nb">all</span>
+<span class="n">Number</span> <span class="n">of</span> <span class="n">runs</span><span class="p">:</span> <span class="mi">20</span>
+<span class="n">Include</span> <span class="n">logs</span><span class="p">:</span> <span class="n">true</span>
+</pre></div>
+</div>
+<p><strong>Use case</strong>: Investigating patterns across all workflows with detailed error information</p>
+</section>
+<section id="example-3-pr-stability-check">
+<h3>Example 3: PR Stability Check<a class="headerlink" href="#example-3-pr-stability-check" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Action</span><span class="p">:</span> <span class="n">generate</span><span class="o">-</span><span class="n">error</span><span class="o">-</span><span class="n">report</span>
+<span class="n">Workflow</span><span class="p">:</span> <span class="n">pull</span><span class="o">-</span><span class="n">request</span>
+<span class="n">Number</span> <span class="n">of</span> <span class="n">runs</span><span class="p">:</span> <span class="mi">10</span>
+<span class="n">Include</span> <span class="n">logs</span><span class="p">:</span> <span class="n">false</span>
+</pre></div>
+</div>
+<p><strong>Use case</strong>: Verify that PR workflows are stable before merging changes</p>
+</section>
+<section id="example-4-main-branch-health">
+<h3>Example 4: Main Branch Health<a class="headerlink" href="#example-4-main-branch-health" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Action</span><span class="p">:</span> <span class="n">generate</span><span class="o">-</span><span class="n">error</span><span class="o">-</span><span class="n">report</span>
+<span class="n">Workflow</span><span class="p">:</span> <span class="n">main</span><span class="o">-</span><span class="n">branch</span>
+<span class="n">Number</span> <span class="n">of</span> <span class="n">runs</span><span class="p">:</span> <span class="mi">15</span>
+<span class="n">Include</span> <span class="n">logs</span><span class="p">:</span> <span class="n">true</span>
+</pre></div>
+</div>
+<p><strong>Use case</strong>: Check if recent main branch deployments have introduced failures</p>
+</section>
+</section>
+<section id="understanding-the-report">
+<h2>Understanding the Report<a class="headerlink" href="#understanding-the-report" title="Link to this heading">#</a></h2>
+<p>The generated report includes:</p>
+<section id="header-section">
+<h3>1. Header Section<a class="headerlink" href="#header-section" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Generation timestamp</p></li>
+<li><p>Repository information</p></li>
+<li><p>Configuration used</p></li>
+</ul>
+</section>
+<section id="per-workflow-analysis">
+<h3>2. Per-Workflow Analysis<a class="headerlink" href="#per-workflow-analysis" title="Link to this heading">#</a></h3>
+<p>For each workflow analyzed:</p>
+<ul class="simple">
+<li><p><strong>Workflow ID</strong> and name</p></li>
+<li><p><strong>Total runs</strong> analyzed</p></li>
+<li><p><strong>Failure rate</strong> (percentage)</p></li>
+<li><p>List of failed runs with:</p>
+<ul>
+<li><p>Run number and title</p></li>
+<li><p>Direct link to GitHub Actions page</p></li>
+<li><p>Timestamp</p></li>
+<li><p>Failed job details</p></li>
+<li><p>Notebook paths that failed</p></li>
+<li><p>Error excerpts (if enabled)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="summary-section">
+<h3>3. Summary Section<a class="headerlink" href="#summary-section" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Overall findings</p></li>
+<li><p>Recommendations (if patterns detected)</p></li>
+</ul>
+</section>
+</section>
+<section id="tips-and-best-practices">
+<h2>Tips and Best Practices<a class="headerlink" href="#tips-and-best-practices" title="Link to this heading">#</a></h2>
+<section id="when-to-generate-reports">
+<h3>When to Generate Reports<a class="headerlink" href="#when-to-generate-reports" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Weekly</strong>: Use scheduled workflow reports to track stability over time</p></li>
+<li><p><strong>Before releases</strong>: Check all workflows before major releases</p></li>
+<li><p><strong>After infrastructure changes</strong>: Verify no regressions after CI/CD updates</p></li>
+<li><p><strong>When investigating issues</strong>: Deep dive with logs enabled</p></li>
+</ul>
+</section>
+<section id="choosing-parameters">
+<h3>Choosing Parameters<a class="headerlink" href="#choosing-parameters" title="Link to this heading">#</a></h3>
+<p><strong>Number of runs:</strong></p>
+<ul class="simple">
+<li><p><strong>5 runs</strong>: Quick health check</p></li>
+<li><p><strong>10 runs</strong> (default): Good balance for weekly monitoring</p></li>
+<li><p><strong>20-30 runs</strong>: Comprehensive analysis for troubleshooting</p></li>
+<li><p><strong>50+ runs</strong>: Historical trend analysis (slow with logs enabled)</p></li>
+</ul>
+<p><strong>Include logs:</strong></p>
+<ul class="simple">
+<li><p><strong>false</strong>: Fast, good for high-level overview</p></li>
+<li><p><strong>true</strong>: Slower, use when you need to diagnose specific errors</p></li>
+</ul>
+<p><strong>Workflow selection:</strong></p>
+<ul class="simple">
+<li><p><strong>all</strong>: General health check</p></li>
+<li><p><strong>scheduled</strong>: Most important for production stability</p></li>
+<li><p><strong>pull-request</strong>: Check CI quality</p></li>
+<li><p><strong>main-branch</strong>: Monitor deployment health</p></li>
+</ul>
+</section>
+<section id="automating-report-generation">
+<h3>Automating Report Generation<a class="headerlink" href="#automating-report-generation" title="Link to this heading">#</a></h3>
+<p>You can set up automated report generation:</p>
+<ol class="arabic simple">
+<li><p>Create a scheduled workflow that runs the error report generator</p></li>
+<li><p>Email or post the report to a monitoring channel</p></li>
+<li><p>Create GitHub issues for high failure rates</p></li>
+</ol>
+<p>Example workflow snippet:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Weekly Error Report</span>
+
+<span class="nt">on</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">cron</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;0</span><span class="nv"> </span><span class="s">9</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">1&#39;</span><span class="w">  </span><span class="c1"># Every Monday at 9 AM</span>
+
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">generate-report</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-python@v5</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">python-version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3.11&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install -r requirements-reporting.txt</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python generate_error_report.py --workflow scheduled --output report.md</span>
+<span class="w">        </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">GITHUB_TOKEN</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.GITHUB_TOKEN }}</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/upload-artifact@v4</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">weekly-report</span>
+<span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">report.md</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading">#</a></h2>
+<section id="workflow-fails-immediately">
+<h3>Workflow fails immediately<a class="headerlink" href="#workflow-fails-immediately" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Check that all required files are present in the repository</p></li>
+<li><p>Verify <code class="docutils literal notranslate"><span class="pre">requirements-reporting.txt</span></code> exists</p></li>
+<li><p>Check <code class="docutils literal notranslate"><span class="pre">generate_error_report.py</span></code> exists and is executable</p></li>
+</ul>
+</section>
+<section id="report-shows-no-data">
+<h3>Report shows “No data”<a class="headerlink" href="#report-shows-no-data" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Ensure workflows have actually run in the selected timeframe</p></li>
+<li><p>Try increasing the number of runs to analyze</p></li>
+<li><p>Verify your GitHub token has proper permissions</p></li>
+</ul>
+</section>
+<section id="workflow-times-out">
+<h3>Workflow times out<a class="headerlink" href="#workflow-times-out" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Reduce the number of runs to analyze</p></li>
+<li><p>Disable log inclusion (set to false)</p></li>
+<li><p>Focus on a single workflow instead of all</p></li>
+</ul>
+</section>
+<section id="can-t-find-the-artifact">
+<h3>Can’t find the artifact<a class="headerlink" href="#can-t-find-the-artifact" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Make sure the workflow completed successfully (green checkmark)</p></li>
+<li><p>Scroll to the bottom of the workflow run page</p></li>
+<li><p>Look for the “Artifacts” section</p></li>
+<li><p>The artifact is automatically deleted after 30 days</p></li>
+</ul>
+</section>
+</section>
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading">#</a></h2>
+<p>After reviewing your report:</p>
+<ol class="arabic simple">
+<li><p><strong>Identify patterns</strong>: Look for notebooks that fail frequently</p></li>
+<li><p><strong>Check recent changes</strong>: Use git blame on failing notebooks</p></li>
+<li><p><strong>Review logs</strong>: Click the GitHub Actions links in the report</p></li>
+<li><p><strong>Fix issues</strong>: Address the most critical failures first</p></li>
+<li><p><strong>Re-run</strong>: Generate another report after fixes to verify</p></li>
+</ol>
+</section>
+<section id="command-line-alternative">
+<h2>Command Line Alternative<a class="headerlink" href="#command-line-alternative" title="Link to this heading">#</a></h2>
+<p>If you prefer to run locally instead of using GitHub Actions:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install dependencies</span>
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements-reporting.txt
+
+<span class="c1"># Set your GitHub token</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">GITHUB_TOKEN</span><span class="o">=</span>your_token_here
+
+<span class="c1"># Generate report</span>
+python<span class="w"> </span>generate_error_report.py<span class="w"> </span>--workflow<span class="w"> </span>scheduled<span class="w"> </span>--output<span class="w"> </span>report.md
+
+<span class="c1"># Open report</span>
+cat<span class="w"> </span>report.md
+</pre></div>
+</div>
+</section>
+<section id="support">
+<h2>Support<a class="headerlink" href="#support" title="Link to this heading">#</a></h2>
+<p>For issues with the error reporting tool:</p>
+<ul class="simple">
+<li><p>Open an issue on GitHub</p></li>
+<li><p>Submit a <a class="reference external" href="https://jwsthelp.stsci.edu">JWST Help Desk Ticket</a></p></li>
+<li><p>Check the <a class="reference internal" href="REPORTING.html"><span class="std std-doc">REPORTING.md</span></a> documentation</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "spacetelescope/jwst-pipeline-notebooks",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-start">Quick Start</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-navigate-to-actions">Step 1: Navigate to Actions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-run-the-workflow">Step 2: Run the Workflow</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-configure-the-report">Step 3: Configure the Report</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-submit-and-wait">Step 4: Submit and Wait</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-download-the-report">Step 5: Download the Report</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-view-summary-in-github">Step 6: View Summary in GitHub</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-examples">Configuration Examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-quick-weekly-check">Example 1: Quick Weekly Check</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-deep-dive-investigation">Example 2: Deep Dive Investigation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-pr-stability-check">Example 3: PR Stability Check</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-main-branch-health">Example 4: Main Branch Health</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-the-report">Understanding the Report</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#header-section">1. Header Section</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#per-workflow-analysis">2. Per-Workflow Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-section">3. Summary Section</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tips-and-best-practices">Tips and Best Practices</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#when-to-generate-reports">When to Generate Reports</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-parameters">Choosing Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automating-report-generation">Automating Report Generation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshooting">Troubleshooting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-fails-immediately">Workflow fails immediately</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#report-shows-no-data">Report shows “No data”</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-times-out">Workflow times out</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#can-t-find-the-artifact">Can’t find the artifact</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-steps">Next Steps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#command-line-alternative">Command Line Alternative</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#support">Support</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By STScI
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

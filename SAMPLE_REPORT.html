@@ -1,0 +1,856 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Notebook Actions Execution Error Report &#8212; JWST Pipeline Notebooks</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/table.css?v=cd6c26fb" />
+    <link rel="stylesheet" type="text/css" href="_static/main.css?v=b44a18d9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'SAMPLE_REPORT';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">JWST Pipeline Notebooks</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="README.html">
+                    JWST Pipeline Notebooks
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">MIRI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="notebooks/MIRI/Coronagraphy/JWPipeNB-MIRI-Coron.html">MIRI Coronagraphy Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/MIRI/Imaging/JWPipeNB-MIRI-imaging.html">MIRI Imaging Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/MIRI/Imaging-TSO/JWPipeNB-MIRI-imaging-TSO.html">MIRI Imaging TSO Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/MIRI/LRS-slit/JWPipeNB-MIRI-LRS-slit.html">MIRI LRS Slit Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/MIRI/LRS-slitless-TSO/JWPipeNB-MIRI-LRS-slitless-TSO.html">MIRI LRS Slitless TSO Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/MIRI/MRS/JWPipeNB-MIRI-MRS.html">MIRI MRS Notebook</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">NIRCAM</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="notebooks/NIRCAM/Coronagraphy/JWPipeNB-nircam-coronagraphy.html">NIRCam Coronagraphy Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/NIRCAM/Imaging/JWPipeNB-nircam-imaging.html">NIRCam Imaging Notebook</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">NIRISS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="notebooks/NIRISS/AMI/JWPipeNB-niriss-ami.html">NIRISS AMI Pipeline Notebook</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="notebooks/NIRISS/Imaging/JWPipeNB-niriss-imaging.html">NIRISS Imaging Pipeline Notebook</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">NIRSpec</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="notebooks/NIRSPEC/BOTS/JWPipeNB-NIRSpec-BOTS.html">NIRSpec BOTS Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/NIRSPEC/FSlit/JWPipeNB-NIRSpec-FS.html">NIRSpec Fixed Slit Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/NIRSPEC/IFU/JWPipeNB-NIRSpec-IFU.html">NIRSpec IFU Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/NIRSPEC/MOS/JWPipeNB-NIRSpec-MOS.html">NIRSpec MOS Notebook</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/spacetelescope/jwst-pipeline-notebooks" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/spacetelescope/jwst-pipeline-notebooks/issues/new?title=Issue%20on%20page%20%2FSAMPLE_REPORT.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/SAMPLE_REPORT.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Notebook Actions Execution Error Report</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-scheduled">Workflow: SCHEDULED</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#failed-runs">Failed Runs:</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#run-58-notebook-ci-scheduled">Run #58 - Notebook CI - Scheduled</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#run-57-notebook-ci-scheduled">Run #57 - Notebook CI - Scheduled</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#run-56-notebook-ci-scheduled">Run #56 - Notebook CI - Scheduled</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#run-55-notebook-ci-scheduled">Run #55 - Notebook CI - Scheduled</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#run-54-notebook-ci-scheduled">Run #54 - Notebook CI - Scheduled</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-main-branch">Workflow: MAIN-BRANCH</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Failed Runs:</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#run-42-add-baseurl-for-github-pages">Run #42 - Add baseurl for GitHub Pages</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#run-41-update-workflows-to-test-new-jupyterbook-v2-for-testing">Run #41 - Update workflows to test new jupyterbook v2 for testing</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-on-demand">Workflow: ON-DEMAND</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Failed Runs:</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#run-140-notebook-ci-on-demand-actions">Run #140 - Notebook CI - On-Demand Actions</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#run-139-notebook-ci-on-demand-actions">Run #139 - Notebook CI - On-Demand Actions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-pull-request">Workflow: PULL-REQUEST</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-findings">Key Findings:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recommendations">Recommendations:</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="notebook-actions-execution-error-report">
+<h1>Notebook Actions Execution Error Report<a class="headerlink" href="#notebook-actions-execution-error-report" title="Link to this heading">#</a></h1>
+<p>Generated: 2026-02-03 18:15:00 UTC</p>
+<p>Repository: spacetelescope/notebook-ci-testing</p>
+<p>================================================================================</p>
+<section id="workflow-scheduled">
+<h2>Workflow: SCHEDULED<a class="headerlink" href="#workflow-scheduled" title="Link to this heading">#</a></h2>
+<p>Workflow ID: 172161028</p>
+<p>Recent runs analyzed: 10
+Failed/Cancelled runs: 7 (70.0%)</p>
+<section id="failed-runs">
+<h3>Failed Runs:<a class="headerlink" href="#failed-runs" title="Link to this heading">#</a></h3>
+<section id="run-58-notebook-ci-scheduled">
+<h4>Run #58 - Notebook CI - Scheduled<a class="headerlink" href="#run-58-notebook-ci-scheduled" title="Link to this heading">#</a></h4>
+<ul>
+<li><p><strong>ID</strong>: 21555602895</p></li>
+<li><p><strong>Status</strong>: FAILURE</p></li>
+<li><p><strong>Date</strong>: 2026-02-01T03:10:14Z</p></li>
+<li><p><strong>URL</strong>: https://github.com/spacetelescope/notebook-ci-testing/actions/runs/21555602895</p></li>
+<li><p><strong>Failed Jobs</strong>: 4</p>
+<p><strong>Job</strong>: execute-all / process-notebooks (notebooks/NIRISS/WFSS/JWPipeNB-niriss-wfss.ipynb)</p>
+<ul class="simple">
+<li><p>Conclusion: failure</p></li>
+<li><p>Notebook: notebooks/NIRISS/WFSS/JWPipeNB-niriss-wfss.ipynb</p></li>
+</ul>
+<p><strong>Job</strong>: execute-all / process-notebooks (notebooks/NIRISS/Imaging/JWPipeNB-niriss-imaging.ipynb)</p>
+<ul class="simple">
+<li><p>Conclusion: failure</p></li>
+<li><p>Notebook: notebooks/NIRISS/Imaging/JWPipeNB-niriss-imaging.ipynb</p></li>
+</ul>
+<p><strong>Job</strong>: execute-all / process-notebooks (notebooks/NIRISS/SOSS/JWPipeNB-niriss-soss.ipynb)</p>
+<ul class="simple">
+<li><p>Conclusion: failure</p></li>
+<li><p>Notebook: notebooks/NIRISS/SOSS/JWPipeNB-niriss-soss.ipynb</p></li>
+<li><p>Error: Memory usage exceeded 85% during pipeline execution (Cell 32/52)</p></li>
+<li><p>Details: Runner received shutdown signal during heavy memory operations</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="run-57-notebook-ci-scheduled">
+<h4>Run #57 - Notebook CI - Scheduled<a class="headerlink" href="#run-57-notebook-ci-scheduled" title="Link to this heading">#</a></h4>
+<ul>
+<li><p><strong>ID</strong>: 21325813016</p></li>
+<li><p><strong>Status</strong>: FAILURE</p></li>
+<li><p><strong>Date</strong>: 2026-01-25T02:55:45Z</p></li>
+<li><p><strong>URL</strong>: https://github.com/spacetelescope/notebook-ci-testing/actions/runs/21325813016</p></li>
+<li><p><strong>Failed Jobs</strong>: 3</p>
+<p><strong>Job</strong>: execute-all / process-notebooks (notebooks/MIRI/MRS/JWPipeNB-MIRI-MRS.ipynb)</p>
+<ul class="simple">
+<li><p>Conclusion: failure</p></li>
+<li><p>Notebook: notebooks/MIRI/MRS/JWPipeNB-MIRI-MRS.ipynb</p></li>
+</ul>
+<p><strong>Job</strong>: execute-all / process-notebooks (notebooks/NIRCAM/Imaging/JWPipeNB-nircam-imaging.ipynb)</p>
+<ul class="simple">
+<li><p>Conclusion: failure</p></li>
+<li><p>Notebook: notebooks/NIRCAM/Imaging/JWPipeNB-nircam-imaging.ipynb</p></li>
+</ul>
+<p><strong>Job</strong>: execute-all / process-notebooks (notebooks/NIRSPEC/IFU/JWPipeNB-NIRSpec-IFU.ipynb)</p>
+<ul class="simple">
+<li><p>Conclusion: failure</p></li>
+<li><p>Notebook: notebooks/NIRSPEC/IFU/JWPipeNB-NIRSpec-IFU.ipynb</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="run-56-notebook-ci-scheduled">
+<h4>Run #56 - Notebook CI - Scheduled<a class="headerlink" href="#run-56-notebook-ci-scheduled" title="Link to this heading">#</a></h4>
+<ul>
+<li><p><strong>ID</strong>: 21104875982</p></li>
+<li><p><strong>Status</strong>: FAILURE</p></li>
+<li><p><strong>Date</strong>: 2026-01-18T02:52:42Z</p></li>
+<li><p><strong>URL</strong>: https://github.com/spacetelescope/notebook-ci-testing/actions/runs/21104875982</p></li>
+<li><p><strong>Failed Jobs</strong>: 2</p>
+<p><strong>Job</strong>: execute-all / process-notebooks (notebooks/NIRISS/AMI/JWPipeNB-niriss-ami.ipynb)</p>
+<ul class="simple">
+<li><p>Conclusion: failure</p></li>
+<li><p>Notebook: notebooks/NIRISS/AMI/JWPipeNB-niriss-ami.ipynb</p></li>
+</ul>
+<p><strong>Job</strong>: execute-all / process-notebooks (notebooks/MIRI/Coronagraphy/JWPipeNB-MIRI-Coron.ipynb)</p>
+<ul class="simple">
+<li><p>Conclusion: failure</p></li>
+<li><p>Notebook: notebooks/MIRI/Coronagraphy/JWPipeNB-MIRI-Coron.ipynb</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="run-55-notebook-ci-scheduled">
+<h4>Run #55 - Notebook CI - Scheduled<a class="headerlink" href="#run-55-notebook-ci-scheduled" title="Link to this heading">#</a></h4>
+<ul>
+<li><p><strong>ID</strong>: 20888383827</p></li>
+<li><p><strong>Status</strong>: FAILURE</p></li>
+<li><p><strong>Date</strong>: 2026-01-11T02:53:42Z</p></li>
+<li><p><strong>URL</strong>: https://github.com/spacetelescope/notebook-ci-testing/actions/runs/20888383827</p></li>
+<li><p><strong>Failed Jobs</strong>: 5</p>
+<p><strong>Job</strong>: execute-all / process-notebooks (notebooks/NIRISS/WFSS/JWPipeNB-niriss-wfss.ipynb)</p>
+<ul class="simple">
+<li><p>Conclusion: failure</p></li>
+<li><p>Notebook: notebooks/NIRISS/WFSS/JWPipeNB-niriss-wfss.ipynb</p></li>
+</ul>
+<p><strong>Job</strong>: execute-all / process-notebooks (notebooks/NIRCAM/Coronagraphy/JWPipeNB-nircam-coronagraphy.ipynb)</p>
+<ul class="simple">
+<li><p>Conclusion: failure</p></li>
+<li><p>Notebook: notebooks/NIRCAM/Coronagraphy/JWPipeNB-nircam-coronagraphy.ipynb</p></li>
+</ul>
+<p><strong>Job</strong>: execute-all / process-notebooks (notebooks/MIRI/Imaging/JWPipeNB-MIRI-imaging.ipynb)</p>
+<ul class="simple">
+<li><p>Conclusion: failure</p></li>
+<li><p>Notebook: notebooks/MIRI/Imaging/JWPipeNB-MIRI-imaging.ipynb</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="run-54-notebook-ci-scheduled">
+<h4>Run #54 - Notebook CI - Scheduled<a class="headerlink" href="#run-54-notebook-ci-scheduled" title="Link to this heading">#</a></h4>
+<ul>
+<li><p><strong>ID</strong>: 20686597182</p></li>
+<li><p><strong>Status</strong>: FAILURE</p></li>
+<li><p><strong>Date</strong>: 2026-01-04T02:54:10Z</p></li>
+<li><p><strong>URL</strong>: https://github.com/spacetelescope/notebook-ci-testing/actions/runs/20686597182</p></li>
+<li><p><strong>Failed Jobs</strong>: 3</p>
+<p><strong>Job</strong>: execute-all / process-notebooks (notebooks/NIRSPEC/BOTS/JWPipeNB-NIRSpec-BOTS.ipynb)</p>
+<ul class="simple">
+<li><p>Conclusion: failure</p></li>
+<li><p>Notebook: notebooks/NIRSPEC/BOTS/JWPipeNB-NIRSpec-BOTS.ipynb</p></li>
+</ul>
+<p><strong>Job</strong>: execute-all / process-notebooks (notebooks/MIRI/LRS-slit/JWPipeNB-MIRI-LRS-slit.ipynb)</p>
+<ul class="simple">
+<li><p>Conclusion: failure</p></li>
+<li><p>Notebook: notebooks/MIRI/LRS-slit/JWPipeNB-MIRI-LRS-slit.ipynb</p></li>
+</ul>
+<p><strong>Job</strong>: execute-all / process-notebooks (notebooks/MIRI/Imaging-TSO/JWPipeNB-MIRI-imaging-TSO.ipynb)</p>
+<ul class="simple">
+<li><p>Conclusion: failure</p></li>
+<li><p>Notebook: notebooks/MIRI/Imaging-TSO/JWPipeNB-MIRI-imaging-TSO.ipynb</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="workflow-main-branch">
+<h2>Workflow: MAIN-BRANCH<a class="headerlink" href="#workflow-main-branch" title="Link to this heading">#</a></h2>
+<p>Workflow ID: 172161025</p>
+<p>Recent runs analyzed: 10
+Failed/Cancelled runs: 3 (30.0%)</p>
+<section id="id1">
+<h3>Failed Runs:<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<section id="run-42-add-baseurl-for-github-pages">
+<h4>Run #42 - Add baseurl for GitHub Pages<a class="headerlink" href="#run-42-add-baseurl-for-github-pages" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>ID</strong>: 21447933553</p></li>
+<li><p><strong>Status</strong>: CANCELLED</p></li>
+<li><p><strong>Date</strong>: 2026-01-28T17:07:37Z</p></li>
+<li><p><strong>URL</strong>: https://github.com/spacetelescope/notebook-ci-testing/actions/runs/21447933553</p></li>
+<li><p><strong>Failed Jobs</strong>: 0</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="run-41-update-workflows-to-test-new-jupyterbook-v2-for-testing">
+<h4>Run #41 - Update workflows to test new jupyterbook v2 for testing<a class="headerlink" href="#run-41-update-workflows-to-test-new-jupyterbook-v2-for-testing" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>ID</strong>: 21442716158</p></li>
+<li><p><strong>Status</strong>: CANCELLED</p></li>
+<li><p><strong>Date</strong>: 2026-01-28T14:43:43Z</p></li>
+<li><p><strong>URL</strong>: https://github.com/spacetelescope/notebook-ci-testing/actions/runs/21442716158</p></li>
+<li><p><strong>Failed Jobs</strong>: 0</p></li>
+</ul>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="workflow-on-demand">
+<h2>Workflow: ON-DEMAND<a class="headerlink" href="#workflow-on-demand" title="Link to this heading">#</a></h2>
+<p>Workflow ID: 172161026</p>
+<p>Recent runs analyzed: 10
+Failed/Cancelled runs: 2 (20.0%)</p>
+<section id="id2">
+<h3>Failed Runs:<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<section id="run-140-notebook-ci-on-demand-actions">
+<h4>Run #140 - Notebook CI - On-Demand Actions<a class="headerlink" href="#run-140-notebook-ci-on-demand-actions" title="Link to this heading">#</a></h4>
+<ul>
+<li><p><strong>ID</strong>: 20970401135</p></li>
+<li><p><strong>Status</strong>: FAILURE</p></li>
+<li><p><strong>Date</strong>: 2026-01-13T19:50:07Z</p></li>
+<li><p><strong>URL</strong>: https://github.com/spacetelescope/notebook-ci-testing/actions/runs/20970401135</p></li>
+<li><p><strong>Failed Jobs</strong>: 2</p>
+<p><strong>Job</strong>: execute-all / process-notebooks (notebooks/NIRSPEC/MOS/JWPipeNB-NIRSpec-MOS.ipynb)</p>
+<ul class="simple">
+<li><p>Conclusion: failure</p></li>
+<li><p>Notebook: notebooks/NIRSPEC/MOS/JWPipeNB-NIRSpec-MOS.ipynb</p></li>
+</ul>
+<p><strong>Job</strong>: execute-all / process-notebooks (notebooks/MIRI/LRS-slitless-TSO/JWPipeNB-MIRI-LRS-slitless-TSO.ipynb)</p>
+<ul class="simple">
+<li><p>Conclusion: failure</p></li>
+<li><p>Notebook: notebooks/MIRI/LRS-slitless-TSO/JWPipeNB-MIRI-LRS-slitless-TSO.ipynb</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="run-139-notebook-ci-on-demand-actions">
+<h4>Run #139 - Notebook CI - On-Demand Actions<a class="headerlink" href="#run-139-notebook-ci-on-demand-actions" title="Link to this heading">#</a></h4>
+<ul>
+<li><p><strong>ID</strong>: 20858702743</p></li>
+<li><p><strong>Status</strong>: FAILURE</p></li>
+<li><p><strong>Date</strong>: 2026-01-09T16:37:59Z</p></li>
+<li><p><strong>URL</strong>: https://github.com/spacetelescope/notebook-ci-testing/actions/runs/20858702743</p></li>
+<li><p><strong>Failed Jobs</strong>: 1</p>
+<p><strong>Job</strong>: execute-all / process-notebooks (notebooks/NIRSPEC/FSlit/JWPipeNB-NIRSpec-FS.ipynb)</p>
+<ul class="simple">
+<li><p>Conclusion: failure</p></li>
+<li><p>Notebook: notebooks/NIRSPEC/FSlit/JWPipeNB-NIRSpec-FS.ipynb</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="workflow-pull-request">
+<h2>Workflow: PULL-REQUEST<a class="headerlink" href="#workflow-pull-request" title="Link to this heading">#</a></h2>
+<p>Workflow ID: 172161027</p>
+<p>Recent runs analyzed: 10
+Failed/Cancelled runs: 0 (0.0%)</p>
+<p>✅ No failures in recent runs!</p>
+</section>
+<hr class="docutils" />
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<p>This report shows recent notebook execution failures from GitHub Actions workflows.
+For detailed logs, visit the GitHub Actions page for each run.</p>
+<section id="key-findings">
+<h3>Key Findings:<a class="headerlink" href="#key-findings" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Scheduled Workflow</strong> has the highest failure rate (70% of last 10 runs)</p>
+<ul class="simple">
+<li><p>Most common failures: NIRISS/SOSS, NIRISS/WFSS, NIRISS/Imaging notebooks</p></li>
+<li><p>Primary issue: Memory constraints during pipeline execution</p></li>
+</ul>
+</li>
+<li><p><strong>Main Branch Workflow</strong> shows 30% cancellation rate</p>
+<ul class="simple">
+<li><p>Runs were manually cancelled, not failed</p></li>
+</ul>
+</li>
+<li><p><strong>On-Demand Workflow</strong> has a 20% failure rate</p>
+<ul class="simple">
+<li><p>Sporadic failures across various notebooks</p></li>
+</ul>
+</li>
+<li><p><strong>Pull Request Workflow</strong> is stable with no recent failures</p></li>
+</ol>
+</section>
+<section id="recommendations">
+<h3>Recommendations:<a class="headerlink" href="#recommendations" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Investigate memory usage in NIRISS/SOSS notebook (Cell 32/52)</p></li>
+<li><p>Review resource allocation for scheduled workflow runners</p></li>
+<li><p>Consider splitting long-running notebooks into smaller chunks</p></li>
+<li><p>Add memory monitoring and early warnings to prevent runner shutdowns</p></li>
+</ol>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "spacetelescope/jwst-pipeline-notebooks",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-scheduled">Workflow: SCHEDULED</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#failed-runs">Failed Runs:</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#run-58-notebook-ci-scheduled">Run #58 - Notebook CI - Scheduled</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#run-57-notebook-ci-scheduled">Run #57 - Notebook CI - Scheduled</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#run-56-notebook-ci-scheduled">Run #56 - Notebook CI - Scheduled</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#run-55-notebook-ci-scheduled">Run #55 - Notebook CI - Scheduled</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#run-54-notebook-ci-scheduled">Run #54 - Notebook CI - Scheduled</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-main-branch">Workflow: MAIN-BRANCH</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Failed Runs:</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#run-42-add-baseurl-for-github-pages">Run #42 - Add baseurl for GitHub Pages</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#run-41-update-workflows-to-test-new-jupyterbook-v2-for-testing">Run #41 - Update workflows to test new jupyterbook v2 for testing</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-on-demand">Workflow: ON-DEMAND</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Failed Runs:</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#run-140-notebook-ci-on-demand-actions">Run #140 - Notebook CI - On-Demand Actions</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#run-139-notebook-ci-on-demand-actions">Run #139 - Notebook CI - On-Demand Actions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-pull-request">Workflow: PULL-REQUEST</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-findings">Key Findings:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recommendations">Recommendations:</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By STScI
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
