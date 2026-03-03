@@ -1,0 +1,23 @@
+name: GitHub Accessibility Scanner
+on: workflow_dispatch # This configures the workflow to run manually, instead of (e.g.) automatically in every PR. Check out https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#on for more options.
+
+jobs:
+  accessibility_scanner:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate cache key
+        id: generate_cache_key
+        run: |
+          CACHE_KEY= $(printf 'cached_results-%s.json' "{{ github.ref_name }}" | tr -cs 'A-Za-z0-9._-' '-')
+          echo "cache_key=$CACHE_KEY" >> $GITHUB_OUTPUT
+
+      - uses: github/accessibility-scanner@v2
+        with:
+          urls: |
+            https://spacetelescope.github.io/notebook-ci-testing/README.html
+            https://spacetelescope.github.io/notebook-ci-testing/notebooks/MIRI/Coronagraphy/JWPipeNB-MIRI-Coron.html
+            https://spacetelescope.github.io/notebook-ci-testing/notebooks/MIRI/Imaging/JWPipeNB-MIRI-imaging.html
+            https://spacetelescope.github.io/notebook-ci-testing/notebooks/MIRI/Imaging-TSO/JWPipeNB-MIRI-imaging-TSO.html
+          repository: spacetelescope/notebook-ci-testing
+          token: ${{ secrets.GH_TOKEN }} # This token must have write access to the repo above (contents, issues, and PRs); more information below. Note: GitHub Actions' GITHUB_TOKEN cannot be used here.
+          cache_key: ${{ steps.generate_cache_key.outputs.cache_key }}
