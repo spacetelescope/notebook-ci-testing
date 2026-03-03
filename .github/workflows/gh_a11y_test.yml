@@ -1,5 +1,5 @@
-name: GitHub Accessibility Scanner
-on: workflow_dispatch # This configures the workflow to run manually, instead of (e.g.) automatically in every PR. Check out https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#on for more options.
+name: GitHub Accessibility Scanner testing
+on: workflow_dispatch
 
 jobs:
   accessibility_scanner:
@@ -8,9 +8,8 @@ jobs:
       - name: Generate cache key
         id: generate_cache_key
         run: |
-          CACHE_KEY= $(printf 'cached_results-%s.json' "{{ github.ref_name }}" | tr -cs 'A-Za-z0-9._-' '-')
+          CACHE_KEY=$(printf 'cached_results-%s.json' "{{ github.ref_name }}" | tr -cs 'A-Za-z0-9._-' '-')
           echo "cache_key=$CACHE_KEY" >> $GITHUB_OUTPUT
-
       - uses: github/accessibility-scanner@v2
         with:
           urls: |
