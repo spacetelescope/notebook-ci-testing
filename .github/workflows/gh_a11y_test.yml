@@ -18,5 +18,7 @@ jobs:
             https://spacetelescope.github.io/notebook-ci-testing/notebooks/MIRI/Imaging/JWPipeNB-MIRI-imaging.html
             https://spacetelescope.github.io/notebook-ci-testing/notebooks/MIRI/Imaging-TSO/JWPipeNB-MIRI-imaging-TSO.html
           repository: spacetelescope/notebook-ci-testing
+          skip_copilot_assignment: true
+          include_screenshots: true
           token: ${{ secrets.GH_TOKEN }} # This token must have write access to the repo above (contents, issues, and PRs); more information below. Note: GitHub Actions' GITHUB_TOKEN cannot be used here.
           cache_key: ${{ steps.generate_cache_key.outputs.cache_key }}
