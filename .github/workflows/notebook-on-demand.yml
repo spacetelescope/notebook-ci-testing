@@ -91,7 +91,7 @@ jobs:
 
   execute-all:
     if: inputs.action_type == 'execute-all'  
-    uses: spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@node20-deprecation-upgrades
+    uses: spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@node-deprecation-upgrades
     with:
       execution-mode: 'on-demand'
       trigger-event: 'execute'
