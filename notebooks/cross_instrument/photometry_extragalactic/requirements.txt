@@ -1,0 +1,4 @@
+jdaviz>=5.0.0
+pysiaf
+photutils[all]
+ipympl
