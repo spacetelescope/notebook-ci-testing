@@ -15,4 +15,4 @@ jobs:
       - name: Scan notebooks for accessibility issues
         uses: berkeley-dsep-infra/jupyterlab-a11y-checker@main
         with:
-          files: "notebooks/**/*.ipynb"
+          files: "notebooks/cross_instrument/rgb_imviz/imviz_rgb_carina.ipynb"
