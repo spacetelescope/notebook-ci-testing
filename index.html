@@ -1,35 +1,638 @@
-<!DOCTYPE html><html lang="en" class="" style="scroll-padding:60px"><head><script>(function(){var p=window.location.pathname;if(p.endsWith('/index.html'))window.location.replace((p.slice(0,-10)||'/')+window.location.search+window.location.hash);})();</script><meta charSet="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Hello Universe - STScI JDAT Notebooks</title><meta property="og:title" content="Hello Universe - STScI JDAT Notebooks"/><meta name="generator" content="mystmd"/><meta name="keywords" content=""/><link rel="stylesheet" href="/notebook-ci-testing/build/_assets/app-TIOB6ZNY.css"/><link rel="stylesheet" href="/notebook-ci-testing/build/_assets/thebe-core-VKVHG5VY.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jupyter-matplotlib@0.11.3/css/mpl_widget.css"/><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css" integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ" crossorigin="anonymous"/><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-D46G4HKJY3"></script><script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-D46G4HKJY3');</script><link rel="icon" href="/notebook-ci-testing/favicon.ico"/><link rel="stylesheet" href="/notebook-ci-testing/myst-theme.css"/><script>
-  const savedTheme = localStorage.getItem("myst:theme");
-  const theme = window.matchMedia("(prefers-color-scheme: light)").matches ? 'light' : 'dark';
-  const classes = document.documentElement.classList;
-  const hasAnyTheme = classes.contains('light') || classes.contains('dark');
-  if (!hasAnyTheme) classes.add(savedTheme ?? theme);
-</script></head><body class="m-0 bg-white dark:bg-stone-900"><div class="myst-skip-to-article fixed top-1 left-1 h-[0px] w-[0px] focus-within:z-40 focus-within:h-auto focus-within:w-auto bg-white overflow-hidden focus-within:p-2 focus-within:ring-1" aria-label="skip to content options"><a href="#skip-to-frontmatter" class="myst-skip-to-link block px-2 py-1 text-black underline">Skip to article frontmatter</a><a href="#skip-to-article" class="myst-skip-to-link block px-2 py-1 text-black underline">Skip to article content</a></div><dialog id="myst-no-css" style="position:fixed;left:0px;top:0px;width:100%;height:100vh;font-size:4rem;padding:1rem;color:black;background:white"><strong>Site not loading correctly?</strong><p>This may be due to an incorrect <code>BASE_URL</code> configuration. See<!-- --> <a href="https://mystmd.org/guide/deployment#deploy-base-url">the MyST Documentation</a> <!-- -->for reference.</p><script>
-    (() => {
-            // Test for has-styling variable set by the MyST stylesheet
-            const node = document.currentScript.parentNode;
-            const hasCSS = window.getComputedStyle(node).getPropertyValue("--has-styling");
-            if (hasCSS === ""){
-                    node.showModal();
-            }
 
-    })()
-</script></dialog><div class="myst-top-nav bg-white/80 backdrop-blur dark:bg-stone-900/80 shadow dark:shadow-stone-700 p-3 md:px-8 sticky w-full top-0 z-30 min-h-[60px]"><nav class="myst-top-nav-bar flex items-center justify-between flex-nowrap max-w-[1440px] mx-auto"><div class="flex flex-row xl:min-w-[19.5rem] mr-2 sm:mr-7 justify-start items-center shrink-0"><div class="block xl:hidden"><button class="myst-top-nav-menu-button flex items-center justify-center border-stone-400 text-stone-800 hover:text-stone-900 dark:text-stone-200 hover:dark:text-stone-100 w-10 h-10"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" data-slot="icon" width="1.5rem" height="1.5rem"><path fill-rule="evenodd" d="M3 6.75A.75.75 0 0 1 3.75 6h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 6.75ZM3 12a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 12Zm0 5.25a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd"></path></svg><span class="sr-only">Open Menu</span></button></div><a class="myst-home-link flex items-center ml-3 dark:text-white w-fit md:ml-5 xl:ml-7" href="/notebook-ci-testing/"><span class="text-md sm:text-xl tracking-tight sm:mr-5">Made with MyST</span></a></div><div class="flex items-center flex-grow w-auto"><div class="flex-grow hidden text-md lg:block"></div><div class="flex-grow block"></div><button type="button" aria-haspopup="dialog" aria-expanded="false" data-state="closed" class="myst-search-bar flex items-center h-10 aspect-square sm:w-64 text-left text-gray-600 dark:text-gray-300 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 myst-search-bar-disabled hover:ring-blue-500 dark:hover:ring-blue-500 hover:border-blue-500 dark:hover:border-blue-500"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" data-slot="icon" class="p-2.5 h-10 w-10 aspect-square"><path fill-rule="evenodd" d="M10.5 3.75a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5ZM2.25 10.5a8.25 8.25 0 1 1 14.59 5.28l4.69 4.69a.75.75 0 1 1-1.06 1.06l-4.69-4.69A8.25 8.25 0 0 1 2.25 10.5Z" clip-rule="evenodd"></path></svg><span class="myst-search-text-placeholder hidden sm:block grow">Search</span><div aria-hidden="true" class="myst-search-shortcut items-center hidden mx-1 font-mono text-sm text-gray-600 dark:text-gray-300 sm:flex gap-x-1"><kbd class="px-2 py-1 border border-gray-300 dark:border-gray-600 rounded-md shadow-[0px_2px_0px_0px_rgba(0,0,0,0.08)] dark:shadow-none hide-mac">CTRL</kbd><kbd class="px-2 py-1 border border-gray-300 dark:border-gray-600 rounded-md shadow-[0px_2px_0px_0px_rgba(0,0,0,0.08)] dark:shadow-none show-mac">⌘</kbd><kbd class="px-2 py-1 border border-gray-300 dark:border-gray-600 rounded-md shadow-[0px_2px_0px_0px_rgba(0,0,0,0.08)] dark:shadow-none ">K</kbd><script>
-;(() => {
-const script = document.currentScript;
-const root = script.parentElement;
+<!DOCTYPE html>
 
-const isMac = /mac/i.test(
-      window.navigator.userAgentData?.platform ?? window.navigator.userAgent,
-    );
-root.querySelectorAll(".hide-mac").forEach(node => {node.classList.add(isMac ? "hidden" : "block")});
-root.querySelectorAll(".show-mac").forEach(node => {node.classList.add(!isMac ? "hidden" : "block")});
-})()</script></div></button><button class="myst-theme-button theme shrink-0 rounded-full border border-stone-700 dark:border-white hover:bg-neutral-100 border-solid overflow-hidden text-stone-700 dark:text-white hover:text-stone-500 dark:hover:text-neutral-800 w-8 h-8 ml-3" title="Toggle theme between light and dark mode" aria-label="Toggle theme between light and dark mode"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" data-slot="icon" class="myst-theme-moon-icon h-full w-full p-[18%] hidden dark:block"><path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 0 1 .162.819A8.97 8.97 0 0 0 9 6a9 9 0 0 0 9 9 8.97 8.97 0 0 0 3.463-.69.75.75 0 0 1 .981.98 10.503 10.503 0 0 1-9.694 6.46c-5.799 0-10.5-4.7-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 0 1 .818.162Z" clip-rule="evenodd"></path></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" data-slot="icon" class="myst-theme-sun-icon h-full w-full p-[18%] dark:hidden"><path d="M12 2.25a.75.75 0 0 1 .75.75v2.25a.75.75 0 0 1-1.5 0V3a.75.75 0 0 1 .75-.75ZM7.5 12a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM18.894 6.166a.75.75 0 0 0-1.06-1.06l-1.591 1.59a.75.75 0 1 0 1.06 1.061l1.591-1.59ZM21.75 12a.75.75 0 0 1-.75.75h-2.25a.75.75 0 0 1 0-1.5H21a.75.75 0 0 1 .75.75ZM17.834 18.894a.75.75 0 0 0 1.06-1.06l-1.59-1.591a.75.75 0 1 0-1.061 1.06l1.59 1.591ZM12 18a.75.75 0 0 1 .75.75V21a.75.75 0 0 1-1.5 0v-2.25A.75.75 0 0 1 12 18ZM7.758 17.303a.75.75 0 0 0-1.061-1.06l-1.591 1.59a.75.75 0 0 0 1.06 1.061l1.591-1.59ZM6 12a.75.75 0 0 1-.75.75H3a.75.75 0 0 1 0-1.5h2.25A.75.75 0 0 1 6 12ZM6.697 7.757a.75.75 0 0 0 1.06-1.06l-1.59-1.591a.75.75 0 0 0-1.061 1.06l1.59 1.591Z"></path></svg></button><div class="block sm:hidden"></div><div class="hidden sm:block"></div></div></nav></div><div class="myst-primary-sidebar fixed xl:article-grid grid-gap xl:w-full xl:pointer-events-none overflow-auto max-xl:w-[75vw] max-xl:max-w-[350px] max-xl:!top-0 max-xl:h-screen hidden z-10" style="top:60px"><div class="myst-primary-sidebar-pointer pointer-events-auto xl:col-margin-left flex-col overflow-hidden max-xl:h-full hidden xl:flex"><div class="myst-primary-sidebar-nav flex-grow py-6 overflow-y-auto primary-scrollbar"><nav aria-label="Navigation" class="myst-primary-sidebar-topnav overflow-y-hidden transition-opacity lg:hidden ml-3 xl:ml-0 mr-3 max-w-[350px]"><div class="w-full px-1 dark:text-white font-medium"></div></nav><div class="my-3 border-b-2 lg:hidden"></div><nav aria-label="Table of Contents" class="myst-primary-sidebar-toc flex-grow overflow-y-hidden transition-opacity ml-3 xl:ml-0 mr-3 max-w-[350px]"><div class="myst-toc w-full px-1 dark:text-white"><a title="STScI JDAT Notebooks" class="block break-words focus:outline outline-blue-200 outline-2 rounded myst-toc-item p-2 my-1 rounded-lg hover:bg-slate-300/30 font-bold" href="/notebook-ci-testing/">STScI JDAT Notebooks</a><div title="General" class="block break-words rounded myst-toc-item p-2 my-1 rounded-lg hover:bg-slate-300/30">General</div><div title="Development" class="block break-words rounded myst-toc-item p-2 my-1 rounded-lg hover:bg-slate-300/30">Development</div><div title="GitHub Guidelines" class="block break-words rounded myst-toc-item p-2 my-1 rounded-lg hover:bg-slate-300/30">GitHub Guidelines</div><div title="JDAViz Demo Notebooks" class="block break-words rounded myst-toc-item p-2 my-1 rounded-lg hover:bg-slate-300/30">JDAViz Demo Notebooks</div><div title="Cross-Instrument" class="block break-words rounded myst-toc-item p-2 my-1 rounded-lg hover:bg-slate-300/30">Cross-Instrument</div><div title="MIRI" class="block break-words rounded myst-toc-item p-2 my-1 rounded-lg hover:bg-slate-300/30">MIRI</div><div title="NIRCam" class="block break-words rounded myst-toc-item p-2 my-1 rounded-lg hover:bg-slate-300/30">NIRCam</div><div title="NIRISS" class="block break-words rounded myst-toc-item p-2 my-1 rounded-lg hover:bg-slate-300/30">NIRISS</div><div title="NIRSpec" class="block break-words rounded myst-toc-item p-2 my-1 rounded-lg hover:bg-slate-300/30">NIRSpec</div></div></nav></div><div class="myst-primary-sidebar-footer flex-none py-6 transition-all duration-700 translate-y-6 opacity-0 ml-3 xl:ml-0 mr-3 max-w-[350px]"><a class="myst-made-with-myst flex mx-auto text-gray-700 w-fit hover:text-blue-700 dark:text-gray-200 dark:hover:text-blue-400" href="https://mystmd.org/made-with-myst" target="_blank" rel="noreferrer"><svg style="width:24px;height:24px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" stroke="none"><g id="icon"><path fill="currentColor" d="M23.8,54.8v-3.6l4.7-0.8V17.5l-4.7-0.8V13H36l13.4,31.7h0.2l13-31.7h12.6v3.6l-4.7,0.8v32.9l4.7,0.8v3.6h-15
-          v-3.6l4.9-0.8V20.8H65L51.4,53.3h-3.8l-14-32.5h-0.1l0.2,17.4v12.1l5,0.8v3.6H23.8z"></path><path fill="#F37726" d="M47,86.9c0-5.9-3.4-8.8-10.1-8.8h-8.4c-5.2,0-9.4-1.3-12.5-3.8c-3.1-2.5-5.4-6.2-6.8-11l4.8-1.6
-          c1.8,5.6,6.4,8.6,13.8,8.8h9.2c6.4,0,10.8,2.5,13.1,7.5c2.3-5,6.7-7.5,13.1-7.5h8.4c7.8,0,12.7-2.9,14.6-8.7l4.8,1.6
-          c-1.4,4.9-3.6,8.6-6.8,11.1c-3.1,2.5-7.3,3.7-12.4,3.8H63c-6.7,0-10,2.9-10,8.8"></path></g></svg><span class="self-center ml-2 text-sm">Made with MyST</span></a></div></div></div><main class="article-grid grid-gap"><article class="article-grid subgrid-gap col-screen article content"><div class="hidden"></div><div id="skip-to-frontmatter" aria-label="article frontmatter" class="myst-fm-block mb-8 pt-9"><div class="myst-fm-block-header flex items-center mb-5 h-6 text-sm font-light"><div class="flex-grow"></div><div class="myst-fm-block-badges"><a href="https://github.com/spacetelescope/notebook-ci-testing" title="GitHub Repository: spacetelescope/notebook-ci-testing" target="_blank" rel="noopener noreferrer" class="myst-fm-github-link text-inherit hover:text-inherit"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="1.25rem" height="1.25rem" class="myst-fm-github-icon inline-block mr-1 opacity-60 hover:opacity-100"><path d="M12 2.5c-5.4 0-9.8 4.4-9.8 9.7 0 4.3 2.8 8 6.7 9.2.5.1.7-.2.7-.5v-1.8c-2.4.5-3.1-.6-3.3-1.1-.1-.3-.6-1.1-1-1.4-.3-.2-.8-.6 0-.6s1.3.7 1.5 1c.9 1.5 2.3 1.1 2.8.8.1-.6.3-1.1.6-1.3-2.2-.2-4.4-1.1-4.4-4.8 0-1.1.4-1.9 1-2.6-.1-.2-.4-1.2.1-2.6 0 0 .8-.3 2.7 1 .8-.2 1.6-.3 2.4-.3.8 0 1.7.1 2.4.3 1.9-1.3 2.7-1 2.7-1 .5 1.3.2 2.3.1 2.6.6.7 1 1.5 1 2.6 0 3.7-2.3 4.6-4.4 4.8.4.3.7.9.7 1.8V21c0 .3.2.6.7.5 3.9-1.3 6.6-4.9 6.6-9.2 0-5.4-4.4-9.8-9.8-9.8z"></path></svg></a></div><a href="https://github.com/spacetelescope/notebook-ci-testing/edit/main/intro.md" title="Edit This Page" target="_blank" rel="noopener noreferrer" class="myst-fm-edit-link text-inherit hover:text-inherit"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" width="1.25rem" height="1.25rem" class="myst-fm-edit-icon inline-block mr-1 opacity-60 hover:opacity-100"><path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"></path></svg></a><div class="myst-fm-downloads-dropdown relative flex inline-block mx-1 grow-0" data-headlessui-state=""><button class="myst-fm-downloads-button relative ml-2 -mr-1" id="headlessui-menu-button-:Rs8ucp:" type="button" aria-haspopup="menu" aria-expanded="false" data-headlessui-state=""><span class="sr-only">Downloads</span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" width="1.25rem" height="1.25rem" class="myst-fm-downloads-icon"><title>Download</title><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"></path></svg></button></div></div><h1 class="myst-fm-block-title mb-0">Hello Universe</h1><header class="myst-fm-authors-affiliations mt-4 not-prose"><div class="myst-fm-authors-list"><span class="myst-fm-author font-semibold text-sm myst-fm-author-item inline-block"><button class="myst-fm-author-popover focus:shadow-[0_0_0_2px] focus:shadow-black outline-none hover:underline" aria-label="Author Details" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:R78ucp:" data-state="closed"><span class="myst-fm-author-name">STScI</span></button></span></div></header></div><div class="block my-10 lg:sticky lg:z-10 lg:h-0 lg:pt-0 lg:my-0 lg:ml-10 lg:col-margin-right" style="top:60px"><nav></nav></div><div id="skip-to-article"></div><p>The repository contains Jupyter notebooks for the Hello Universe project, an initiative at MAST to provide a space for applying machine learning (ML) algorithms to astronomical data. The first set of notebooks are designed to span a range of ML techniques, and to highlight MAST mission data, including user-contributed high-level science products (HLSPs).</p><div class="myst-backmatter-parts"></div></article></main><script>((a,l)=>{if(!window.history.state||!window.history.state.key){let u=Math.random().toString(32).slice(2);window.history.replaceState({key:u},"")}try{let d=JSON.parse(sessionStorage.getItem(a)||"{}")[l||window.history.state.key];typeof d=="number"&&window.scrollTo(0,d)}catch(u){console.error(u),sessionStorage.removeItem(a)}})("positions", null)</script><link rel="modulepreload" href="/notebook-ci-testing/build/entry.client-PCJPW7TK.js"/><link rel="modulepreload" href="/notebook-ci-testing/build/_shared/chunk-AQ2CODAG.js"/><link rel="modulepreload" href="/notebook-ci-testing/build/_shared/chunk-JJXTQVMA.js"/><link rel="modulepreload" href="/notebook-ci-testing/build/_shared/chunk-OZE3FFNP.js"/><link rel="modulepreload" href="/notebook-ci-testing/build/_shared/chunk-RUUCG5OS.js"/><link rel="modulepreload" href="/notebook-ci-testing/build/_shared/chunk-C4DFGG5C.js"/><link rel="modulepreload" href="/notebook-ci-testing/build/_shared/chunk-J7TUH54J.js"/><link rel="modulepreload" href="/notebook-ci-testing/build/_shared/chunk-FZ2S7OYD.js"/><link rel="modulepreload" href="/notebook-ci-testing/build/_shared/chunk-JEM6JXYA.js"/><link rel="modulepreload" href="/notebook-ci-testing/build/_shared/chunk-34XIY2DH.js"/><link rel="modulepreload" href="/notebook-ci-testing/build/_shared/chunk-KQM5FBHR.js"/><link rel="modulepreload" href="/notebook-ci-testing/build/_shared/chunk-OCWQY3HK.js"/><link rel="modulepreload" href="/notebook-ci-testing/build/_shared/chunk-7HNKBP4B.js"/><link rel="modulepreload" href="/notebook-ci-testing/build/_shared/chunk-CUKUDK3R.js"/><link rel="modulepreload" href="/notebook-ci-testing/build/_shared/chunk-3EBOCCHJ.js"/><link rel="modulepreload" href="/notebook-ci-testing/build/_shared/chunk-O4VQNZ62.js"/><link rel="modulepreload" href="/notebook-ci-testing/build/_shared/chunk-4OEDG4JQ.js"/><link rel="modulepreload" href="/notebook-ci-testing/build/_shared/chunk-GUCIBHGO.js"/><link rel="modulepreload" href="/notebook-ci-testing/build/root-3VHQT63W.js"/><link rel="modulepreload" href="/notebook-ci-testing/build/_shared/chunk-SHVDI3JB.js"/><link rel="modulepreload" href="/notebook-ci-testing/build/routes/$-O2KOSX5W.js"/><script>window.__remixContext = {"url":"/index","state":{"loaderData":{"root":{"config":{"version":3,"myst":"1.9.0","options":{"analytics_google":"G-D46G4HKJY3","folders":true},"nav":[],"actions":[],"projects":[{"exports":[],"title":"STScI JDAT Notebooks","authors":[{"nameParsed":{"literal":"STScI","family":"STScI"},"name":"STScI","id":"contributors-myst-generated-uid-0"}],"github":"https://github.com/spacetelescope/notebook-ci-testing","copyright":"2022-2024","toc":[{"file":"intro.md"},{"children":[{"file":"index.rst","title":"Home"},{"file":"install.rst","title":"Installation"},{"file":"docs/notebook_development_workflow.rst","title":"Notebook Development Workflow"}],"title":"General"},{"children":[{"file":"docs/submitting_notebooks.rst","title":"Submitting Notebooks"},{"file":"docs/requirements.rst","title":"Requirements file"},{"file":"docs/notebooks.rst","title":"Jupyter Notebooks"},{"file":"docs/data_files.rst","title":"Data Files"}],"title":"Development"},{"children":[{"file":"docs/github_setup.rst","title":"GitHub Setup"},{"file":"docs/github_workflow.rst","title":"GitHub Workflow"},{"file":"docs/github_pr.rst","title":"GitHub PR"}],"title":"GitHub Guidelines"},{"children":[{"file":"notebooks/jdaviz_demo/notebooks/Cubeviz.ipynb","title":"Cubeviz with NIRSpec data"},{"file":"notebooks/jdaviz_demo/notebooks/Imviz.ipynb","title":"Jdaviz Imviz Demo"},{"file":"notebooks/jdaviz_demo/notebooks/Specviz_Specviz2d.ipynb","title":"Specviz and Specviz2D Demo"},{"file":"notebooks/jdaviz_demo/notebooks/specreduce_extraction.ipynb","title":"Specreduce Demo"}],"title":"JDAViz Demo Notebooks"},{"children":[{"file":"notebooks/cross_instrument/asdf_example/asdf_example.ipynb","title":"ASDF Example"},{"file":"notebooks/cross_instrument/background_estimation_imaging/Imaging_Sky_Background_Estimation.ipynb","title":"Complex 2D Background"},{"file":"notebooks/cross_instrument/composite_model_fitting/specfit_demo_3.ipynb","title":"Composite Model Spectral Fitting"},{"file":"notebooks/cross_instrument/rgb_imviz/imviz_rgb_carina.ipynb","title":"RGB images with Imviz"},{"file":"notebooks/cross_instrument/specviz_notebookGUI_interaction/specviz_notebook_gui_interaction_redshift.ipynb","title":"Specviz Simple Demo"},{"file":"notebooks/cross_instrument/update_pure_parallel_wcs/NIRISS_correct_pure_parallel_WCS.ipynb","title":"Improving Accuracy of WCS of Pure Parallel Dataset"},{"file":"notebooks/cross_instrument/photometry_extragalactic/imviz.ipynb","title":"Photometry with JWST - Imviz"},{"file":"notebooks/cross_instrument/photometry_extragalactic/photutils_example.ipynb","title":"Photometry of a JWST/NIRCam extragalactic field with Photutils"},{"file":"notebooks/cross_instrument/stpsf_examples/stpsf_examples.ipynb","title":"JWST PSFs Using Wavefronts Measured On Orbit"}],"title":"Cross-Instrument"},{"children":[{"file":"notebooks/MIRI/MRS_Mstar_analysis/JWST_Mstar_dataAnalysis_analysis.ipynb","title":"MRS Mstar - Data Analysis"},{"file":"notebooks/MIRI/MIRI_IFU_YSOs_in_the_LMC/isha_nayak_ysos_in_the_lmc.ipynb","title":"IFU of YSOs in LMC"},{"file":"notebooks/MIRI/MIRI_LRS_spectral_extraction/miri_lrs_slit_advanced_extraction.ipynb","title":"LRS Optimal Spectral Extraction"},{"file":"notebooks/MIRI/psf_photometry/miri_1028.ipynb","title":"MIRI PSF Photometry With Space_Phot"},{"file":"notebooks/MIRI/psf_photometry/miri_1028_photutils.ipynb","title":"MIRI PSF Photometry with Photutils"},{"file":"notebooks/MIRI/psf_photometry/miri_photutils.ipynb","title":"MIRI PSF Photometry with Photutils"},{"file":"notebooks/MIRI/psf_photometry/miri_spacephot.ipynb","title":"MIRI PSF Photometry With Space_Phot"}],"title":"MIRI"},{"children":[{"file":"notebooks/NIRCam/aperture_photometry/NIRCam_Aperture_Photometry_Example.ipynb","title":"Point Source Aperture Photometry"},{"file":"notebooks/NIRCam/NIRCam_photometry/NIRCam_multiband_photometry.ipynb","title":"Extended Aperture Photometry"},{"file":"notebooks/NIRCam/NIRCam_PSF-matched_photometry/NIRCam_PSF_matched_multiband_photometry.ipynb","title":"Cross-Filter PSF Matching"},{"file":"notebooks/NIRCam/psf_photometry/NIRCam_PSF_Photometry_Example.ipynb","title":"PSF Photometry"},{"file":"notebooks/NIRCam/NIRCam_wisp_subtraction/nircam_wisp_subtraction.ipynb","title":"NIRCam Wisp Removal"},{"file":"notebooks/NIRCam/NIRCam_claw_detection/nircam_claw_detection.ipynb","title":"NIRCam Claw Detection"},{"file":"notebooks/NIRCam/NIRCam_WFSS_Box_extraction/BoxExtraction_using_Grismconf_CRDS.ipynb","title":"WFSS Box Extraction Example"},{"file":"notebooks/NIRCam/NIRCam_WFSS_simulating_spectra/Simulating_WFSS_spectra_CRDS.ipynb","title":"WFSS Spectra Simulation for Contamination Correction"},{"file":"notebooks/NIRCam/psf_photometry_basics/psf_photometry_basics.ipynb","title":"PSF Photometry Basics with Photutils"},{"file":"notebooks/NIRCam/psf_photometry_with_space_phot/nircam_spacephot.ipynb","title":"NIRCam PSF Photometry With Space_Phot"}],"title":"NIRCam"},{"children":[{"file":"notebooks/NIRISS/NIRISS_WFSS_postpipeline/00_Optimal_extraction.ipynb","title":"WFSS Spectra - Optimal Extraction"},{"file":"notebooks/NIRISS/NIRISS_WFSS_postpipeline/01_Combine_and_normalize_1D_spectra.ipynb","title":"WFSS Spectra - Combine and Normalize 1D Spectra"},{"file":"notebooks/NIRISS/NIRISS_WFSS_postpipeline/02_Cross_correlation_template.ipynb","title":"WFSS Spectra - Cross-Correlation Template"},{"file":"notebooks/NIRISS/NIRISS_WFSS_postpipeline/03_Spatially_resolved_emission_line_map.ipynb","title":"WFSS Spectra - Emission Line Map"},{"file":"notebooks/NIRISS/NIRISS_WFSS_advanced/00_niriss_mast_query_data_setup.ipynb","title":"NIRISS MAST"},{"file":"notebooks/NIRISS/NIRISS_WFSS_advanced/01_niriss_wfss_image2_image3.ipynb","title":"Direct imaging for WFSS"},{"file":"notebooks/NIRISS/NIRISS_WFSS_advanced/02_niriss_wfss_spec2.ipynb","title":"Spec2 pipeline for WFSS"},{"file":"notebooks/NIRISS/NIRISS_WFSS_advanced/extra_niriss_individual_steps.ipynb","title":"Running Individual Pipline Steps"}],"title":"NIRISS"},{"children":[{"file":"notebooks/NIRSpec/IFU_cube_continuum_fit/NGC4151_FeII_ContinuumFit.ipynb","title":"IFU Background Subtraction"},{"file":"notebooks/NIRSpec/cube_fitting/cube_fitting.ipynb","title":"IFU Cube Modeling"},{"file":"notebooks/NIRSpec/ifu_optimal/ifu_optimal.ipynb","title":"IFU Optimal Spectral Extraction"},{"file":"notebooks/NIRSpec/optimal_extraction/Spectral_Extraction-static.ipynb","title":"MOS Optimal Extraction"},{"file":"notebooks/NIRSpec/mos_spectroscopy_advanced/MOSspec_advanced.ipynb","title":"MOS Spectroscopy of Extragalactic Field"},{"file":"notebooks/NIRSpec/mos_master_background/Master_Background_MOS_Demo.ipynb","title":"Master Background Subtraction for Multi-Object Spectroscopy (MOS)"},{"file":"notebooks/NIRSpec/msa_metafile/NIRSpec_MOS_MSA_metafile.ipynb","title":"NIRSpec MOS MSA Metafile"},{"file":"notebooks/NIRSpec/mos_slits_to_sky/NIRSpec_MOS_slits_to_sky.ipynb","title":"NIRSpec MOS Slits to Sky"},{"file":"notebooks/NIRSpec/transit_spectroscopy_notebook/Exoplanet_Transmission_Spectra_JWST.ipynb","title":"BOTS Time Series Observations"},{"file":"notebooks/NIRSpec/galaxy_redshift/redshift_fitting.ipynb","title":"Redshift and Template Fitting"},{"file":"notebooks/NIRSpec/NIRSpec_NSClean/FS_NSClean_example.ipynb","title":"FS Products with NSClean"},{"file":"notebooks/NIRSpec/NIRSpec_NSClean/IFU_NSClean_example.ipynb","title":"IFU Products with NSClean"},{"file":"notebooks/NIRSpec/NIRSpec_NSClean/MOS_NSClean_example.ipynb","title":"MOS Products with NSClean"},{"file":"notebooks/NIRSpec/NIRSpec_NSClean/BOTS_NSClean_example.ipynb","title":"BOTS Products with NSClean"},{"file":"notebooks/NIRSpec/extract_fixedslit_from_mos_ifu/extract_fixedslit_from_mos_ifu.ipynb","title":"Extract Fixed Slit from MOS IFU Full Frame Data"}],"title":"NIRSpec"}],"bibliography":[],"index":"index","pages":[{"level":1,"title":"General"},{"level":1,"title":"Development"},{"level":1,"title":"GitHub Guidelines"},{"level":1,"title":"JDAViz Demo Notebooks"},{"level":1,"title":"Cross-Instrument"},{"level":1,"title":"MIRI"},{"level":1,"title":"NIRCam"},{"level":1,"title":"NIRISS"},{"level":1,"title":"NIRSpec"}]}]},"CONTENT_CDN_PORT":"3100","MODE":"static","BASE_URL":"/notebook-ci-testing"},"routes/$":{"config":{"version":3,"myst":"1.9.0","options":{"analytics_google":"G-D46G4HKJY3","folders":true},"nav":[],"actions":[],"projects":[{"exports":[],"title":"STScI JDAT Notebooks","authors":[{"nameParsed":{"literal":"STScI","family":"STScI"},"name":"STScI","id":"contributors-myst-generated-uid-0"}],"github":"https://github.com/spacetelescope/notebook-ci-testing","copyright":"2022-2024","toc":[{"file":"intro.md"},{"children":[{"file":"index.rst","title":"Home"},{"file":"install.rst","title":"Installation"},{"file":"docs/notebook_development_workflow.rst","title":"Notebook Development Workflow"}],"title":"General"},{"children":[{"file":"docs/submitting_notebooks.rst","title":"Submitting Notebooks"},{"file":"docs/requirements.rst","title":"Requirements file"},{"file":"docs/notebooks.rst","title":"Jupyter Notebooks"},{"file":"docs/data_files.rst","title":"Data Files"}],"title":"Development"},{"children":[{"file":"docs/github_setup.rst","title":"GitHub Setup"},{"file":"docs/github_workflow.rst","title":"GitHub Workflow"},{"file":"docs/github_pr.rst","title":"GitHub PR"}],"title":"GitHub Guidelines"},{"children":[{"file":"notebooks/jdaviz_demo/notebooks/Cubeviz.ipynb","title":"Cubeviz with NIRSpec data"},{"file":"notebooks/jdaviz_demo/notebooks/Imviz.ipynb","title":"Jdaviz Imviz Demo"},{"file":"notebooks/jdaviz_demo/notebooks/Specviz_Specviz2d.ipynb","title":"Specviz and Specviz2D Demo"},{"file":"notebooks/jdaviz_demo/notebooks/specreduce_extraction.ipynb","title":"Specreduce Demo"}],"title":"JDAViz Demo Notebooks"},{"children":[{"file":"notebooks/cross_instrument/asdf_example/asdf_example.ipynb","title":"ASDF Example"},{"file":"notebooks/cross_instrument/background_estimation_imaging/Imaging_Sky_Background_Estimation.ipynb","title":"Complex 2D Background"},{"file":"notebooks/cross_instrument/composite_model_fitting/specfit_demo_3.ipynb","title":"Composite Model Spectral Fitting"},{"file":"notebooks/cross_instrument/rgb_imviz/imviz_rgb_carina.ipynb","title":"RGB images with Imviz"},{"file":"notebooks/cross_instrument/specviz_notebookGUI_interaction/specviz_notebook_gui_interaction_redshift.ipynb","title":"Specviz Simple Demo"},{"file":"notebooks/cross_instrument/update_pure_parallel_wcs/NIRISS_correct_pure_parallel_WCS.ipynb","title":"Improving Accuracy of WCS of Pure Parallel Dataset"},{"file":"notebooks/cross_instrument/photometry_extragalactic/imviz.ipynb","title":"Photometry with JWST - Imviz"},{"file":"notebooks/cross_instrument/photometry_extragalactic/photutils_example.ipynb","title":"Photometry of a JWST/NIRCam extragalactic field with Photutils"},{"file":"notebooks/cross_instrument/stpsf_examples/stpsf_examples.ipynb","title":"JWST PSFs Using Wavefronts Measured On Orbit"}],"title":"Cross-Instrument"},{"children":[{"file":"notebooks/MIRI/MRS_Mstar_analysis/JWST_Mstar_dataAnalysis_analysis.ipynb","title":"MRS Mstar - Data Analysis"},{"file":"notebooks/MIRI/MIRI_IFU_YSOs_in_the_LMC/isha_nayak_ysos_in_the_lmc.ipynb","title":"IFU of YSOs in LMC"},{"file":"notebooks/MIRI/MIRI_LRS_spectral_extraction/miri_lrs_slit_advanced_extraction.ipynb","title":"LRS Optimal Spectral Extraction"},{"file":"notebooks/MIRI/psf_photometry/miri_1028.ipynb","title":"MIRI PSF Photometry With Space_Phot"},{"file":"notebooks/MIRI/psf_photometry/miri_1028_photutils.ipynb","title":"MIRI PSF Photometry with Photutils"},{"file":"notebooks/MIRI/psf_photometry/miri_photutils.ipynb","title":"MIRI PSF Photometry with Photutils"},{"file":"notebooks/MIRI/psf_photometry/miri_spacephot.ipynb","title":"MIRI PSF Photometry With Space_Phot"}],"title":"MIRI"},{"children":[{"file":"notebooks/NIRCam/aperture_photometry/NIRCam_Aperture_Photometry_Example.ipynb","title":"Point Source Aperture Photometry"},{"file":"notebooks/NIRCam/NIRCam_photometry/NIRCam_multiband_photometry.ipynb","title":"Extended Aperture Photometry"},{"file":"notebooks/NIRCam/NIRCam_PSF-matched_photometry/NIRCam_PSF_matched_multiband_photometry.ipynb","title":"Cross-Filter PSF Matching"},{"file":"notebooks/NIRCam/psf_photometry/NIRCam_PSF_Photometry_Example.ipynb","title":"PSF Photometry"},{"file":"notebooks/NIRCam/NIRCam_wisp_subtraction/nircam_wisp_subtraction.ipynb","title":"NIRCam Wisp Removal"},{"file":"notebooks/NIRCam/NIRCam_claw_detection/nircam_claw_detection.ipynb","title":"NIRCam Claw Detection"},{"file":"notebooks/NIRCam/NIRCam_WFSS_Box_extraction/BoxExtraction_using_Grismconf_CRDS.ipynb","title":"WFSS Box Extraction Example"},{"file":"notebooks/NIRCam/NIRCam_WFSS_simulating_spectra/Simulating_WFSS_spectra_CRDS.ipynb","title":"WFSS Spectra Simulation for Contamination Correction"},{"file":"notebooks/NIRCam/psf_photometry_basics/psf_photometry_basics.ipynb","title":"PSF Photometry Basics with Photutils"},{"file":"notebooks/NIRCam/psf_photometry_with_space_phot/nircam_spacephot.ipynb","title":"NIRCam PSF Photometry With Space_Phot"}],"title":"NIRCam"},{"children":[{"file":"notebooks/NIRISS/NIRISS_WFSS_postpipeline/00_Optimal_extraction.ipynb","title":"WFSS Spectra - Optimal Extraction"},{"file":"notebooks/NIRISS/NIRISS_WFSS_postpipeline/01_Combine_and_normalize_1D_spectra.ipynb","title":"WFSS Spectra - Combine and Normalize 1D Spectra"},{"file":"notebooks/NIRISS/NIRISS_WFSS_postpipeline/02_Cross_correlation_template.ipynb","title":"WFSS Spectra - Cross-Correlation Template"},{"file":"notebooks/NIRISS/NIRISS_WFSS_postpipeline/03_Spatially_resolved_emission_line_map.ipynb","title":"WFSS Spectra - Emission Line Map"},{"file":"notebooks/NIRISS/NIRISS_WFSS_advanced/00_niriss_mast_query_data_setup.ipynb","title":"NIRISS MAST"},{"file":"notebooks/NIRISS/NIRISS_WFSS_advanced/01_niriss_wfss_image2_image3.ipynb","title":"Direct imaging for WFSS"},{"file":"notebooks/NIRISS/NIRISS_WFSS_advanced/02_niriss_wfss_spec2.ipynb","title":"Spec2 pipeline for WFSS"},{"file":"notebooks/NIRISS/NIRISS_WFSS_advanced/extra_niriss_individual_steps.ipynb","title":"Running Individual Pipline Steps"}],"title":"NIRISS"},{"children":[{"file":"notebooks/NIRSpec/IFU_cube_continuum_fit/NGC4151_FeII_ContinuumFit.ipynb","title":"IFU Background Subtraction"},{"file":"notebooks/NIRSpec/cube_fitting/cube_fitting.ipynb","title":"IFU Cube Modeling"},{"file":"notebooks/NIRSpec/ifu_optimal/ifu_optimal.ipynb","title":"IFU Optimal Spectral Extraction"},{"file":"notebooks/NIRSpec/optimal_extraction/Spectral_Extraction-static.ipynb","title":"MOS Optimal Extraction"},{"file":"notebooks/NIRSpec/mos_spectroscopy_advanced/MOSspec_advanced.ipynb","title":"MOS Spectroscopy of Extragalactic Field"},{"file":"notebooks/NIRSpec/mos_master_background/Master_Background_MOS_Demo.ipynb","title":"Master Background Subtraction for Multi-Object Spectroscopy (MOS)"},{"file":"notebooks/NIRSpec/msa_metafile/NIRSpec_MOS_MSA_metafile.ipynb","title":"NIRSpec MOS MSA Metafile"},{"file":"notebooks/NIRSpec/mos_slits_to_sky/NIRSpec_MOS_slits_to_sky.ipynb","title":"NIRSpec MOS Slits to Sky"},{"file":"notebooks/NIRSpec/transit_spectroscopy_notebook/Exoplanet_Transmission_Spectra_JWST.ipynb","title":"BOTS Time Series Observations"},{"file":"notebooks/NIRSpec/galaxy_redshift/redshift_fitting.ipynb","title":"Redshift and Template Fitting"},{"file":"notebooks/NIRSpec/NIRSpec_NSClean/FS_NSClean_example.ipynb","title":"FS Products with NSClean"},{"file":"notebooks/NIRSpec/NIRSpec_NSClean/IFU_NSClean_example.ipynb","title":"IFU Products with NSClean"},{"file":"notebooks/NIRSpec/NIRSpec_NSClean/MOS_NSClean_example.ipynb","title":"MOS Products with NSClean"},{"file":"notebooks/NIRSpec/NIRSpec_NSClean/BOTS_NSClean_example.ipynb","title":"BOTS Products with NSClean"},{"file":"notebooks/NIRSpec/extract_fixedslit_from_mos_ifu/extract_fixedslit_from_mos_ifu.ipynb","title":"Extract Fixed Slit from MOS IFU Full Frame Data"}],"title":"NIRSpec"}],"bibliography":[],"index":"index","pages":[{"level":1,"title":"General"},{"level":1,"title":"Development"},{"level":1,"title":"GitHub Guidelines"},{"level":1,"title":"JDAViz Demo Notebooks"},{"level":1,"title":"Cross-Instrument"},{"level":1,"title":"MIRI"},{"level":1,"title":"NIRCam"},{"level":1,"title":"NIRISS"},{"level":1,"title":"NIRSpec"}]}]},"page":{"version":3,"kind":"Article","sha256":"1b906770b8140859d4759e41242d666c7d7067d4790f48a96f3ee3035b09619d","slug":"index","location":"/intro.md","dependencies":[],"frontmatter":{"title":"Hello Universe","content_includes_title":false,"authors":[{"nameParsed":{"literal":"STScI","family":"STScI"},"name":"STScI","id":"contributors-myst-generated-uid-0"}],"github":"https://github.com/spacetelescope/notebook-ci-testing","copyright":"2022-2024","source_url":"https://github.com/spacetelescope/notebook-ci-testing/blob/main/intro.md","edit_url":"https://github.com/spacetelescope/notebook-ci-testing/edit/main/intro.md","exports":[{"format":"md","filename":"intro.md","url":"/notebook-ci-testing/build/intro-492afdb8a695a7780111dbb315e75bcd.md"}]},"mdast":{"type":"root","children":[{"type":"block","children":[{"type":"paragraph","position":{"start":{"line":3,"column":1},"end":{"line":3,"column":1}},"children":[{"type":"text","value":"The repository contains Jupyter notebooks for the Hello Universe project, an initiative at MAST to provide a space for applying machine learning (ML) algorithms to astronomical data. The first set of notebooks are designed to span a range of ML techniques, and to highlight MAST mission data, including user-contributed high-level science products (HLSPs).","position":{"start":{"line":3,"column":1},"end":{"line":3,"column":1}},"key":"Q9BqcBgpjz"}],"key":"SeHCRUA1Fu"}],"key":"NfCX6Xta5g"}],"key":"V5JQczkEnE"},"references":{"cite":{"order":[],"data":{}}},"footer":{"navigation":{}},"domain":"http://localhost:3000"},"project":{"exports":[],"title":"STScI JDAT Notebooks","authors":[{"nameParsed":{"literal":"STScI","family":"STScI"},"name":"STScI","id":"contributors-myst-generated-uid-0"}],"github":"https://github.com/spacetelescope/notebook-ci-testing","copyright":"2022-2024","toc":[{"file":"intro.md"},{"children":[{"file":"index.rst","title":"Home"},{"file":"install.rst","title":"Installation"},{"file":"docs/notebook_development_workflow.rst","title":"Notebook Development Workflow"}],"title":"General"},{"children":[{"file":"docs/submitting_notebooks.rst","title":"Submitting Notebooks"},{"file":"docs/requirements.rst","title":"Requirements file"},{"file":"docs/notebooks.rst","title":"Jupyter Notebooks"},{"file":"docs/data_files.rst","title":"Data Files"}],"title":"Development"},{"children":[{"file":"docs/github_setup.rst","title":"GitHub Setup"},{"file":"docs/github_workflow.rst","title":"GitHub Workflow"},{"file":"docs/github_pr.rst","title":"GitHub PR"}],"title":"GitHub Guidelines"},{"children":[{"file":"notebooks/jdaviz_demo/notebooks/Cubeviz.ipynb","title":"Cubeviz with NIRSpec data"},{"file":"notebooks/jdaviz_demo/notebooks/Imviz.ipynb","title":"Jdaviz Imviz Demo"},{"file":"notebooks/jdaviz_demo/notebooks/Specviz_Specviz2d.ipynb","title":"Specviz and Specviz2D Demo"},{"file":"notebooks/jdaviz_demo/notebooks/specreduce_extraction.ipynb","title":"Specreduce Demo"}],"title":"JDAViz Demo Notebooks"},{"children":[{"file":"notebooks/cross_instrument/asdf_example/asdf_example.ipynb","title":"ASDF Example"},{"file":"notebooks/cross_instrument/background_estimation_imaging/Imaging_Sky_Background_Estimation.ipynb","title":"Complex 2D Background"},{"file":"notebooks/cross_instrument/composite_model_fitting/specfit_demo_3.ipynb","title":"Composite Model Spectral Fitting"},{"file":"notebooks/cross_instrument/rgb_imviz/imviz_rgb_carina.ipynb","title":"RGB images with Imviz"},{"file":"notebooks/cross_instrument/specviz_notebookGUI_interaction/specviz_notebook_gui_interaction_redshift.ipynb","title":"Specviz Simple Demo"},{"file":"notebooks/cross_instrument/update_pure_parallel_wcs/NIRISS_correct_pure_parallel_WCS.ipynb","title":"Improving Accuracy of WCS of Pure Parallel Dataset"},{"file":"notebooks/cross_instrument/photometry_extragalactic/imviz.ipynb","title":"Photometry with JWST - Imviz"},{"file":"notebooks/cross_instrument/photometry_extragalactic/photutils_example.ipynb","title":"Photometry of a JWST/NIRCam extragalactic field with Photutils"},{"file":"notebooks/cross_instrument/stpsf_examples/stpsf_examples.ipynb","title":"JWST PSFs Using Wavefronts Measured On Orbit"}],"title":"Cross-Instrument"},{"children":[{"file":"notebooks/MIRI/MRS_Mstar_analysis/JWST_Mstar_dataAnalysis_analysis.ipynb","title":"MRS Mstar - Data Analysis"},{"file":"notebooks/MIRI/MIRI_IFU_YSOs_in_the_LMC/isha_nayak_ysos_in_the_lmc.ipynb","title":"IFU of YSOs in LMC"},{"file":"notebooks/MIRI/MIRI_LRS_spectral_extraction/miri_lrs_slit_advanced_extraction.ipynb","title":"LRS Optimal Spectral Extraction"},{"file":"notebooks/MIRI/psf_photometry/miri_1028.ipynb","title":"MIRI PSF Photometry With Space_Phot"},{"file":"notebooks/MIRI/psf_photometry/miri_1028_photutils.ipynb","title":"MIRI PSF Photometry with Photutils"},{"file":"notebooks/MIRI/psf_photometry/miri_photutils.ipynb","title":"MIRI PSF Photometry with Photutils"},{"file":"notebooks/MIRI/psf_photometry/miri_spacephot.ipynb","title":"MIRI PSF Photometry With Space_Phot"}],"title":"MIRI"},{"children":[{"file":"notebooks/NIRCam/aperture_photometry/NIRCam_Aperture_Photometry_Example.ipynb","title":"Point Source Aperture Photometry"},{"file":"notebooks/NIRCam/NIRCam_photometry/NIRCam_multiband_photometry.ipynb","title":"Extended Aperture Photometry"},{"file":"notebooks/NIRCam/NIRCam_PSF-matched_photometry/NIRCam_PSF_matched_multiband_photometry.ipynb","title":"Cross-Filter PSF Matching"},{"file":"notebooks/NIRCam/psf_photometry/NIRCam_PSF_Photometry_Example.ipynb","title":"PSF Photometry"},{"file":"notebooks/NIRCam/NIRCam_wisp_subtraction/nircam_wisp_subtraction.ipynb","title":"NIRCam Wisp Removal"},{"file":"notebooks/NIRCam/NIRCam_claw_detection/nircam_claw_detection.ipynb","title":"NIRCam Claw Detection"},{"file":"notebooks/NIRCam/NIRCam_WFSS_Box_extraction/BoxExtraction_using_Grismconf_CRDS.ipynb","title":"WFSS Box Extraction Example"},{"file":"notebooks/NIRCam/NIRCam_WFSS_simulating_spectra/Simulating_WFSS_spectra_CRDS.ipynb","title":"WFSS Spectra Simulation for Contamination Correction"},{"file":"notebooks/NIRCam/psf_photometry_basics/psf_photometry_basics.ipynb","title":"PSF Photometry Basics with Photutils"},{"file":"notebooks/NIRCam/psf_photometry_with_space_phot/nircam_spacephot.ipynb","title":"NIRCam PSF Photometry With Space_Phot"}],"title":"NIRCam"},{"children":[{"file":"notebooks/NIRISS/NIRISS_WFSS_postpipeline/00_Optimal_extraction.ipynb","title":"WFSS Spectra - Optimal Extraction"},{"file":"notebooks/NIRISS/NIRISS_WFSS_postpipeline/01_Combine_and_normalize_1D_spectra.ipynb","title":"WFSS Spectra - Combine and Normalize 1D Spectra"},{"file":"notebooks/NIRISS/NIRISS_WFSS_postpipeline/02_Cross_correlation_template.ipynb","title":"WFSS Spectra - Cross-Correlation Template"},{"file":"notebooks/NIRISS/NIRISS_WFSS_postpipeline/03_Spatially_resolved_emission_line_map.ipynb","title":"WFSS Spectra - Emission Line Map"},{"file":"notebooks/NIRISS/NIRISS_WFSS_advanced/00_niriss_mast_query_data_setup.ipynb","title":"NIRISS MAST"},{"file":"notebooks/NIRISS/NIRISS_WFSS_advanced/01_niriss_wfss_image2_image3.ipynb","title":"Direct imaging for WFSS"},{"file":"notebooks/NIRISS/NIRISS_WFSS_advanced/02_niriss_wfss_spec2.ipynb","title":"Spec2 pipeline for WFSS"},{"file":"notebooks/NIRISS/NIRISS_WFSS_advanced/extra_niriss_individual_steps.ipynb","title":"Running Individual Pipline Steps"}],"title":"NIRISS"},{"children":[{"file":"notebooks/NIRSpec/IFU_cube_continuum_fit/NGC4151_FeII_ContinuumFit.ipynb","title":"IFU Background Subtraction"},{"file":"notebooks/NIRSpec/cube_fitting/cube_fitting.ipynb","title":"IFU Cube Modeling"},{"file":"notebooks/NIRSpec/ifu_optimal/ifu_optimal.ipynb","title":"IFU Optimal Spectral Extraction"},{"file":"notebooks/NIRSpec/optimal_extraction/Spectral_Extraction-static.ipynb","title":"MOS Optimal Extraction"},{"file":"notebooks/NIRSpec/mos_spectroscopy_advanced/MOSspec_advanced.ipynb","title":"MOS Spectroscopy of Extragalactic Field"},{"file":"notebooks/NIRSpec/mos_master_background/Master_Background_MOS_Demo.ipynb","title":"Master Background Subtraction for Multi-Object Spectroscopy (MOS)"},{"file":"notebooks/NIRSpec/msa_metafile/NIRSpec_MOS_MSA_metafile.ipynb","title":"NIRSpec MOS MSA Metafile"},{"file":"notebooks/NIRSpec/mos_slits_to_sky/NIRSpec_MOS_slits_to_sky.ipynb","title":"NIRSpec MOS Slits to Sky"},{"file":"notebooks/NIRSpec/transit_spectroscopy_notebook/Exoplanet_Transmission_Spectra_JWST.ipynb","title":"BOTS Time Series Observations"},{"file":"notebooks/NIRSpec/galaxy_redshift/redshift_fitting.ipynb","title":"Redshift and Template Fitting"},{"file":"notebooks/NIRSpec/NIRSpec_NSClean/FS_NSClean_example.ipynb","title":"FS Products with NSClean"},{"file":"notebooks/NIRSpec/NIRSpec_NSClean/IFU_NSClean_example.ipynb","title":"IFU Products with NSClean"},{"file":"notebooks/NIRSpec/NIRSpec_NSClean/MOS_NSClean_example.ipynb","title":"MOS Products with NSClean"},{"file":"notebooks/NIRSpec/NIRSpec_NSClean/BOTS_NSClean_example.ipynb","title":"BOTS Products with NSClean"},{"file":"notebooks/NIRSpec/extract_fixedslit_from_mos_ifu/extract_fixedslit_from_mos_ifu.ipynb","title":"Extract Fixed Slit from MOS IFU Full Frame Data"}],"title":"NIRSpec"}],"bibliography":[],"index":"index","pages":[{"level":1,"title":"General"},{"level":1,"title":"Development"},{"level":1,"title":"GitHub Guidelines"},{"level":1,"title":"JDAViz Demo Notebooks"},{"level":1,"title":"Cross-Instrument"},{"level":1,"title":"MIRI"},{"level":1,"title":"NIRCam"},{"level":1,"title":"NIRISS"},{"level":1,"title":"NIRSpec"}]}}},"actionData":null,"errors":null},"future":{"unstable_dev":false,"unstable_postcss":false,"unstable_tailwind":false,"v2_errorBoundary":true,"v2_headers":true,"v2_meta":true,"v2_normalizeFormMethod":true,"v2_routeConvention":true}};</script><script type="module" async="">import "/notebook-ci-testing/build/manifest-C732C875.js";
-import * as route0 from "/notebook-ci-testing/build/root-3VHQT63W.js";
-import * as route1 from "/notebook-ci-testing/build/routes/$-O2KOSX5W.js";
-window.__remixRouteModules = {"root":route0,"routes/$":route1};
 
-import("/notebook-ci-testing/build/entry.client-PCJPW7TK.js");</script></body></html>
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>STScI HST Notebook Repository HQ &#8212; STScI JDAT Notebooks</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/table.css?v=cd6c26fb" />
+    <link rel="stylesheet" type="text/css" href="_static/main.css?v=b44a18d9" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-D46G4HKJY3"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-D46G4HKJY3');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-D46G4HKJY3');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'index';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Hello Universe" href="intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">STScI JDAT Notebooks</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Hello Universe
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">General</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Home</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/spacetelescope/jdat_notebooks" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/spacetelescope/jdat_notebooks/issues/new?title=Issue%20on%20page%20%2Findex.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/index.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>STScI HST Notebook Repository HQ</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-notebooks">Interactive Notebooks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instrument-documentation">Instrument Documentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-instructions">Installation Instructions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clone-the-repository">Clone the Repository</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-notebook-in-an-appropriate-environment">Run the notebook in an appropriate environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-stenv">Using stenv</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#help">Help</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contributing">Contributing</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <p><img alt="STScI Logo" src="_static/stsci_header.png" /></p>
+<section class="tex2jax_ignore mathjax_ignore" id="stsci-hst-notebook-repository-hq">
+<h1>STScI HST Notebook Repository HQ<a class="headerlink" href="#stsci-hst-notebook-repository-hq" title="Link to this heading">#</a></h1>
+<p><a class="reference external" href="https://zenodo.org/badge/latestdoi/605151805"><img alt="DOI" src="https://zenodo.org/badge/605151805.svg" /></a></p>
+<p>Welcome to the STScI HST Notebook Repository</p>
+<p>This resource provides comprehensive documentation and interactive notebooks created by the Hubble Space Telescope instruments’ teams.</p>
+<section id="interactive-notebooks">
+<h2>Interactive Notebooks<a class="headerlink" href="#interactive-notebooks" title="Link to this heading">#</a></h2>
+<p>Explore our interactive notebooks for hands-on experience with HST data.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="notebooks/ACS/README.html"><span class="std std-doc">ACS notebooks</span></a></p></li>
+<li><p><a class="reference internal" href="notebooks/COS/README.html"><span class="std std-doc">COS notebooks</span></a></p></li>
+<li><p><a class="reference internal" href="#./notebooks/DrizzlePac/README.md"><span class="xref myst">DrizzlePac notebooks</span></a></p></li>
+<li><p><a class="reference internal" href="notebooks/NICMOS/nicmos_unit_conversion/nicmos_unit_conversion.html"><span class="std std-doc">NICMOS notebooks</span></a></p></li>
+<li><p><a class="reference internal" href="#./notebooks/STIS/README.md"><span class="xref myst">STIS notebooks</span></a></p></li>
+<li><p><a class="reference internal" href="#./notebooks/WFC3/README.md"><span class="xref myst">WFC3 notebooks</span></a></p></li>
+</ul>
+</section>
+<section id="instrument-documentation">
+<h2>Instrument Documentation<a class="headerlink" href="#instrument-documentation" title="Link to this heading">#</a></h2>
+<p>Here, you can find detailed documentation for each instrument the Hubble Space Telescope uses.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.stsci.edu/hst/instrumentation/acs">Advanced Camera for Surveys (ACS)</a></p></li>
+<li><p><a class="reference external" href="https://www.stsci.edu/hst/instrumentation/cos">Cosmic Origins Spectrograph (COS)</a></p></li>
+<li><p><a class="reference external" href="https://www.stsci.edu/scientific-community/software/drizzlepac">DrizzlePac</a></p></li>
+<li><p><a class="reference external" href="https://www.stsci.edu/hst/instrumentation/legacy/nicmos">Near Infrared Camera and Multi-Object Spectrometer (NICMOS)</a></p></li>
+<li><p><a class="reference external" href="https://www.stsci.edu/hst/instrumentation/stis">Space Telescope Imaging Spectrograph (STIS)</a></p></li>
+<li><p><a class="reference external" href="https://www.stsci.edu/hst/instrumentation/wfc3">Wide Field Camera 3 (WFC3)</a></p></li>
+</ul>
+</section>
+<section id="installation-instructions">
+<h2>Installation Instructions<a class="headerlink" href="#installation-instructions" title="Link to this heading">#</a></h2>
+<p>You can view rendered versions of the notebooks in this repository,
+it requires no special tools beyond your web browser.
+See <a class="reference external" href="https://spacetelescope.github.io/hst_notebooks/">this website</a></p>
+<p>To download and execute the notebooks, we recommend you clone
+the <code class="docutils literal notranslate"><span class="pre">hst_notebooks</span> <span class="pre">&lt;https://github.com/spacetelescope/hst_notebooks&gt;</span></code>
+repository to your local computer.</p>
+<p>You can also click the “Download ZIP” option for the entire repository listed under the green “Code” button at the top of the repository landing page. You are also able to download individual notebooks, but it is not as straight forward or recommended, so we do not provide details here.</p>
+<p>Most notebooks have additional associated files in their folder,
+including a requirements file that lists packages necessary to run the notebooks.
+The packages in the requirements file can be installed using <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">&lt;https://pip.pypa.io/en/stable/&gt;</span></code> .</p>
+<p>Any version dependencies are contained in the requirements file in
+each notebook folder. Please use at least the minimum supported
+version of the Python language in your active environment.</p>
+<p>Some notebooks use the HSTCAL package. The folders for these notebooks will also contain a shell script (pre-requirements.sh) that contains the command to pull the hstcal package from conda-forge instead of pypi.</p>
+<section id="clone-the-repository">
+<h3>Clone the Repository<a class="headerlink" href="#clone-the-repository" title="Link to this heading">#</a></h3>
+<p>Once you’ve changed to the directory where you cloned this repository, go to
+the notebook directory you are interested in using, and go to your selected
+notebook, as below:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/spacetelescope/hst_notebooks.git
+cd hst_notebooks/notebooks/ACS/acs_cte_forward_model
+</pre></div>
+</div>
+<p>You can then proceed to install the requirements for the specific notebook you are interested in using.</p>
+</section>
+<section id="run-the-notebook-in-an-appropriate-environment">
+<h3>Run the notebook in an appropriate environment<a class="headerlink" href="#run-the-notebook-in-an-appropriate-environment" title="Link to this heading">#</a></h3>
+<p>Once you are in the directory of the notebook you want to use, make sure you have a populated environment that contains the required packages:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd hst_notebooks/notebooks/&lt;notebook-name&gt;
+</pre></div>
+</div>
+<p>You may want to consider installing your notebooks in a new conda/mamba environment
+to avoid version conflicts with other packages you may have installed, for example:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>conda create -n hstnb python pip jupyter
+conda activate hstnb
+</pre></div>
+</div>
+<p>In the case that there is no pre-requirements.sh file:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>conda create --name hstnb python pip jupyter
+conda activate hstnb
+pip install -r requirements.txt
+</pre></div>
+</div>
+<p>In the case that there is a pre-requirements.sh file, you can either install hstcal in the <code class="docutils literal notranslate"><span class="pre">hstnb</span></code>
+environment you created above by:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;shell&gt; pre-requirements.sh
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>conda install --yes -c conda-forge hstcal
+</pre></div>
+</div>
+<p>or you can create the appropriate environment starting
+with hstcal using the following:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>conda create --yes -n hstcal -c conda-forge hstcal
+conda activate hstcal
+pip install -r requirements.txt
+pip install jupyter
+</pre></div>
+</div>
+</section>
+<section id="using-stenv">
+<h3>Using stenv<a class="headerlink" href="#using-stenv" title="Link to this heading">#</a></h3>
+<p>To use <code class="docutils literal notranslate"><span class="pre">stenv</span></code> on these notebooks you must install or update to the latest version of <a class="reference external" href="https://stenv.readthedocs.io/en/latest/">stenv</a>.
+It’s possible that you already have the latest version of the <code class="docutils literal notranslate"><span class="pre">stenv</span></code> environment available locally.
+In this case, <code class="docutils literal notranslate"><span class="pre">stenv</span></code> should already have hstcal installed. You
+can activate the environment, and then update it to use the notebooks requirements file:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>conda activate stenv
+pip install -r requirments.txt
+</pre></div>
+</div>
+<p>If pip reports conflicts, then you might need to follow the above instructions to create
+a new, isolated environment instead of using <code class="docutils literal notranslate"><span class="pre">hstcal</span></code></p>
+</section>
+</section>
+<section id="help">
+<h2>Help<a class="headerlink" href="#help" title="Link to this heading">#</a></h2>
+<p>If you uncover any issues or bugs, you can <a class="reference external" href="https://github.com/spacetelescope/hst_notebooks/issues/new">open an issue on GitHub</a>.<br />
+For faster responses, however, we encourage you to submit an <a class="reference external" href="https://hsthelp.stsci.edu">HST Help Desk Ticket</a>.</p>
+</section>
+<section id="contributing">
+<h2>Contributing<a class="headerlink" href="#contributing" title="Link to this heading">#</a></h2>
+<p>New contributions and feedback are very welcomed! Please open a new issue or new
+pull request for bugs, feedback, or new features you would like to see. If there
+is an issue you would like to work on, please leave a comment and we will be happy
+to assist. Questions can also be sent through the <a class="reference external" href="https://stsci.service-now.com/hst">HST Help Desk</a>.</p>
+<p>If you wish to contribute new notebooks or major reworks of existing notebooks, see <a class="reference external" href="https://github.com/spacetelescope/hst_notebooks/blob/main/CONTRIBUTING.md">contributing instructions</a>.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Hello Universe</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-notebooks">Interactive Notebooks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instrument-documentation">Instrument Documentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-instructions">Installation Instructions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clone-the-repository">Clone the Repository</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-notebook-in-an-appropriate-environment">Run the notebook in an appropriate environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-stenv">Using stenv</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#help">Help</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contributing">Contributing</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By STScI
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022-2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
