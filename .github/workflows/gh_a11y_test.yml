@@ -10,9 +10,10 @@ jobs:
         run: |
           CACHE_KEY=$(printf 'cached_results-%s.json' "${{ github.ref_name }}" | tr -cs 'A-Za-z0-9._-' '-')
           echo "cache_key=$CACHE_KEY" >> $GITHUB_OUTPUT
-      - uses: github/accessibility-scanner@v3.2.0
+      - uses: github/accessibility-scanner@v2
         with:
           urls: |
+            https://spacetelescope.github.io/notebook-ci-testing/notebooks/MIRI/Coronagraphy/JWPipeNB-MIRI-Coron.html
             https://spacetelescope.github.io/notebook-ci-testing/notebooks/MIRI/Imaging/JWPipeNB-MIRI-imaging.html
             https://spacetelescope.github.io/notebook-ci-testing/notebooks/NICMOS/nicmos_unit_conversion/nicmos_unit_conversion.html
           repository: spacetelescope/notebook-ci-testing
