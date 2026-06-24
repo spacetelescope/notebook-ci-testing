@@ -14,9 +14,6 @@ jobs:
         with:
           urls: |
             https://spacetelescope.github.io/notebook-ci-testing/notebooks/**/*.html
-            # https://spacetelescope.github.io/notebook-ci-testing/notebooks/MIRI/Coronagraphy/JWPipeNB-MIRI-Coron.html
-            # https://spacetelescope.github.io/notebook-ci-testing/notebooks/MIRI/Imaging/JWPipeNB-MIRI-imaging.html
-            # https://spacetelescope.github.io/notebook-ci-testing/notebooks/NICMOS/nicmos_unit_conversion/nicmos_unit_conversion.html
           repository: spacetelescope/notebook-ci-testing
           token: ${{ secrets.A11Y_TOKEN }} # This token must have write access to the repo above (contents, issues, and PRs); more information below. Note: GitHub Actions' GITHUB_TOKEN cannot be used here.
           cache_key: ${{ steps.generate_cache_key.outputs.cache_key }}
