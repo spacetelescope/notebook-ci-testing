@@ -1,5 +1,11 @@
 name: GitHub Accessibility Scanner testing
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: 'URL(s) to scan'
+        required: false
+        default: 'https://spacetelescope.github.io/notebook-ci-testing/notebooks/**/*.html'
 
 jobs:
   accessibility_scanner:
@@ -13,7 +19,7 @@ jobs:
       - uses: github/accessibility-scanner@v3.2.0
         with:
           urls: |
-            https://spacetelescope.github.io/notebook-ci-testing/notebooks/**/*.html
+            ${{ github.event.inputs.url }}
           repository: spacetelescope/notebook-ci-testing
           token: ${{ secrets.A11Y_TOKEN }} # This token must have write access to the repo above (contents, issues, and PRs); more information below. Note: GitHub Actions' GITHUB_TOKEN cannot be used here.
           cache_key: ${{ steps.generate_cache_key.outputs.cache_key }}
