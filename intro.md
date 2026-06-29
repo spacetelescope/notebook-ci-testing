@@ -44,7 +44,7 @@ dependencies are listed in the environment.yaml and in the requirements file in 
 
 
 <thead valign="bottom">
-<tr><th colspan="2">JWST Science Analysis Notebooks</th>
+<tr><th colspan="2">JWST Science Analysis Notebooks </th>
 </tr>
 <tr><th>Notebook</th>
 <th>Description</th>
