@@ -37,7 +37,7 @@
 <p>The <code>jdat_notebooks</code> repository contains notebooks illustrating workflows for post-pipeline analysis of JWST data. Some of the notebooks also illustrate generic analysis workflows that are applicable to data from other observatories as well. This repository and the notebooks are one component of STScI's larger <a href="https://jwst-docs.stsci.edu/jwst-post-pipeline-data-analysis" rel="nofollow">Data Analysis Tools Ecosystem</a>.</p>
 <p>The following table summarizes the notebooks currently available.  Most links will take you to rendered versions of the notebooks, which require no special tools beyond your web browser.  To download and execute the notebooks, <a href="https://github.com/git-guides/git-clone">clone</a> this <a href="https://github.com/spacetelescope/jdat_notebooks">repository</a> to your local computer. Most of the notebooks
 rely on packages that can be installed using <a href="https://pip.pypa.io/en/stable/" rel="nofollow">pip</a>. The version
-dependencies are listed in the environment.yaml and in the requirements file in each notebook folder.</p>
+dependencies are listed in the environment.yaml and in the requirements file in each notebook folder .</p>
 <table>
 
 
