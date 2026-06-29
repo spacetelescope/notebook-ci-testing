@@ -93,11 +93,14 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          # Release is attached to the SemVer tag (so --generate-notes diffs
-          # cleanly along the SemVer sequence), but titled with the CalVer.
+          # One release, attached to the SemVer tag so --generate-notes diffs
+          # cleanly along the monotonic SemVer sequence. The title carries both
+          # the product-facing CalVer and the internal SemVer. The CalVer git
+          # tag pushed above stays pinnable as a plain ref (git checkout, refs).
           gh release create "${{ steps.ver.outputs.semver }}" \
-            --title "${{ steps.ver.outputs.calver }}" \
+            --title "${{ steps.ver.outputs.calver }} — ${{ steps.ver.outputs.semver }}" \
             --generate-notes \
+            --verify-tag \
             --latest
 
       - name: Summary
