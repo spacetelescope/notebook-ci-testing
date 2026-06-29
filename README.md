@@ -14,7 +14,7 @@ The following [page](https://spacetelescope.github.io/jdat_notebooks/) summarize
 
 ## Installation
 
-To download and execute the notebooks, please read the [detailed instructions](https://spacetelescope.github.io/jdat_notebooks/install.html). 
+To download and execute the notebooks, please read the [detailed instructions](https://spacetelescope.github.io/jdat_notebooks/install.html) . 
 
 ## Help
 
