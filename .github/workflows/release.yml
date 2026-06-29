@@ -25,6 +25,11 @@ on:
 permissions:
   contents: write
 
+env:
+  # Release NAME prefix (not the tag). Edit per repo to preserve acronyms,
+  # e.g. "Notebook CI Testing". Leave blank to auto-humanize the repo name.
+  RELEASE_DISPLAY_NAME: "Notebook CI Testing"
+
 # Shares the lock with the auto patch-bump workflow.
 concurrency:
   group: version-tagging
@@ -83,22 +88,36 @@ jobs:
           set -euo pipefail
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git tag "${{ steps.ver.outputs.semver }}"   # canonical SemVer (CI)
-          git tag "${{ steps.ver.outputs.calver }}"    # product-facing CalVer
+          git tag "${{ steps.ver.outputs.semver }}"   # SemVer — plain git ref for CI
+          git tag "${{ steps.ver.outputs.calver }}"    # CalVer — the release tag
           git push origin "${{ steps.ver.outputs.semver }}" "${{ steps.ver.outputs.calver }}"
 
       - name: Create GitHub release
         env:
           GH_TOKEN: ${{ github.token }}
+          CALVER: ${{ steps.ver.outputs.calver }}
         shell: bash
         run: |
           set -euo pipefail
-          # One release, attached to the SemVer tag so --generate-notes diffs
-          # cleanly along the monotonic SemVer sequence. The title carries both
-          # the product-facing CalVer and the internal SemVer. The CalVer git
-          # tag pushed above stays pinnable as a plain ref (git checkout, refs).
-          gh release create "${{ steps.ver.outputs.semver }}" \
-            --title "${{ steps.ver.outputs.calver }} — ${{ steps.ver.outputs.semver }}" \
+          # Release is attached to the CalVer tag — that's the identifier the
+          # customer uses, so `gh release view 2026.1.2` and the /releases/tag
+          # URL resolve to it. CalVer sorts monotonically as a version (year,
+          # then major.minor), so --generate-notes still picks the correct
+          # previous release. The SemVer tag sits on the same commit as a plain
+          # git ref for CI and package tooling.
+
+          # Release NAME (not the tag) is "<display name> - <CalVer>",
+          # e.g. "Notebook CI Testing - 2026.1.2". RELEASE_DISPLAY_NAME is set
+          # at the top of this workflow; if blank, the repo name is humanized.
+          display_name="${RELEASE_DISPLAY_NAME:-}"
+          if [ -z "$display_name" ]; then
+            raw="${GITHUB_REPOSITORY##*/}"
+            display_name="$(printf '%s' "$raw" | tr '-_' '  ' \
+              | awk '{for (i=1; i<=NF; i++) $i=toupper(substr($i,1,1)) substr($i,2)} 1')"
+          fi
+
+          gh release create "$CALVER" \
+            --title "${display_name} - ${CALVER}" \
             --generate-notes \
             --verify-tag \
             --latest
