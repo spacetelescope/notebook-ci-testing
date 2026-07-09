@@ -218,7 +218,7 @@ jobs:
 
   nb-a11y-check-single:
     if: inputs.action_type == 'nb-a11y-check-single'
-    uses:  spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@notebook-a11y-checks
+    uses:  spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@feat/notebook-a11y-checks
     with:
       execution-mode: 'on-demand'
       trigger-event: 'a11y-nb-check'
