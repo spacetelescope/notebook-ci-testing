@@ -20,6 +20,7 @@ on:
           - 'full-pipeline-all'
           - 'full-pipeline-single'
           - 'build-html-only'
+          - 'nb-a11y-check-single'
           - 'deprecate-notebook'
           - 'generate-error-report'
         default: 'validate-all'
@@ -211,6 +212,24 @@ jobs:
       enable-execution: false
       enable-storage: false
       enable-html-build: true
+    secrets:
+      CASJOBS_USERID: ${{ secrets.CASJOBS_USERID }}
+      CASJOBS_PW: ${{ secrets.CASJOBS_PW }}
+
+   nb-a11y-check-single:
+    if: inputs.action_type == 'nb-a11y-check-single'
+    uses:  spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@notebook-a11y-checks
+    with:
+      execution-mode: 'on-demand'
+      trigger-event: 'a11y-nb-check'
+      single-notebook: ${{ inputs.single_notebook }}
+      python-version: ${{ inputs.python_version }}
+      enable-validation: false
+      enable-security: false
+      enable-execution: false
+      enable-storage: false
+      enable-html-build: false
+      enable-a11y-nb-check: true
     secrets:
       CASJOBS_USERID: ${{ secrets.CASJOBS_USERID }}
       CASJOBS_PW: ${{ secrets.CASJOBS_PW }}
