@@ -3,4 +3,4 @@ pandas>=3.0.2
 bokeh>=3.9.0
 xarray>=2026.4.0
 scipy>=1.17.1
-roman_dependencies==2026.4.3
+roman_dependencies==2026.4.4

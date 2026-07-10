@@ -3,4 +3,4 @@ stpsf>=2.1.0
 matplotlib>=3.10.0
 numpy>=2.4.4
 stsynphot>=1.5.1
-roman_dependencies==2026.4.3
+roman_dependencies==2026.4.4
