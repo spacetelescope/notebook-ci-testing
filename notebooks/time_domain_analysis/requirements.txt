@@ -11,4 +11,4 @@ photutils>=2.2.0
 stpsf>=2.1.0
 scikit-learn>=1.8.0
 scipy>=1.17.0
-roman_dependencies==2026.4.1
+roman_dependencies==2026.4.2
