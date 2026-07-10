@@ -1,6 +1,0 @@
-astropy >= 7.0.1
-scipy >= 1.15.2
-ipywidgets >= 8.1.5
-jwst >= 1.17.1
-stpsf >= 2.0.0
-specutils >= 1.19.0
