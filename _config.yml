@@ -5,10 +5,16 @@
 
 #######################################################################################
 # Book settings
-title                       : JWST Pipeline Notebooks  # The title of the book. Will be placed in the left navbar.
+<<<<<<< HEAD
+title                       : STScI JDAT Notebooks  # The title of the book. Will be placed in the left navbar.
 author                      : STScI  # The author of the book
-copyright                   : "2024"  # Copyright year to be placed in the footer
-logo                        : _static/stsci_logo2.png  # A path to the book logo
+copyright                   : "2022-2024"  # Copyright year to be placed in the footer
+=======
+title                       : STScI Roman Notebooks  # The title of the book. Will be placed in the left navbar.
+author                      : STScI  # The author of the book
+copyright                   : "2026"  # Copyright year to be placed in the footer
+>>>>>>> 2c25822a (feat: package notebook_data_dependencies as roman_dependencies on PyPI)
+logo                        : stsci_logo2.png  # A path to the book logo
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
@@ -16,6 +22,14 @@ execute:
   execute_notebooks         : off   # Whether to execute notebooks at build time. Must be one of ("auto", "force", "cache", "off")
   timeout                   : -1    # timeout in seconds, -1 removes timeout restrictions
   only_build_toc_files: true
+  exclude_patterns:
+    - 'notebooks/composite_model_fitting/*'
+    - 'notebooks/niriss_ami_binary/*'
+    - 'notebooks/example_notebook/*'
+    - 'notebooks/optimal_extraction_dynamic/*'
+    - 'notebooks/preimaging/*'
+    - 'notebooks/transit_spectroscopy_notebook/*'
+    - 'preimaging_01_mirage.ipynb'
 
 # Define the name of the latex output file for PDF builds
 latex:
@@ -28,24 +42,29 @@ parse:
     # don't forget to list any other extensions you want enabled,
     # including those that are enabled by default!
     - html_image
+    - dollarmath
     
 # Add a bibtex file so that we can create citations
 #bibtex_bibfiles:
 #  - references.bib
   
 launch_buttons:
-  thebe                  : true
-  binderhub_url: ""
+  thebe                  : false
+#  binderhub_url: ""
 
 # Information about where the book exists on the web
 repository:
-  url: https://github.com/spacetelescope/jwst-pipeline-notebooks/  # Online location of your book
+<<<<<<< HEAD
+  url: https://github.com/spacetelescope/jdat_notebooks/  # Online location of your book
+=======
+  url: https://github.com/spacetelescope/roman_notebooks/  # Online location of your book
+>>>>>>> 2c25822a (feat: package notebook_data_dependencies as roman_dependencies on PyPI)
   path_to_book: notebooks  # Optional path to your book, relative to the repository root
   branch: main  # Which branch of the repository should be used when creating links (optional)
 
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
 html:
-  google_analytics_id:
+  google_analytics_id: G-D46G4HKJY3
   use_issues_button: true
   use_repository_button: true
