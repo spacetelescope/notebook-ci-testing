@@ -4,4 +4,4 @@ bokeh>=3.9.0
 scipy>=1.17.1
 xarray>=2026.4.0
 healpy>=1.18.1
-roman_dependencies==2026.1.1
+roman_dependencies
