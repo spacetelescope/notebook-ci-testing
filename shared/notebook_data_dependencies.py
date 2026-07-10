@@ -15,7 +15,7 @@ except PackageNotFoundError:
     _ref = "refs/heads/main"
 
 _REFDATA_URL = (
-    f"https://raw.githubusercontent.com/spacetelescope/roman_notebooks"
+    f"https://raw.githubusercontent.com/spacetelescope/notebook-ci-testing"
     f"/{_ref}/refdata_dependencies.yaml"
 )
 
@@ -63,7 +63,7 @@ def install_files(dependencies=None, verbose=True, packages=None):
     dependencies (str): A URL or local path to the YAML definition file for the data 
     dependencies. The code will first check for the existence of the file locally, and 
     if it does not exist then it will assume the input is a URL. The default is the URL 
-    of the file on the roman_notebooks GitHub repository. The YAML file should have the 
+    of the file on the notebook-ci-testing GitHub repository. The YAML file should have the 
     following format:
             
         package_name:  # Name of the package
