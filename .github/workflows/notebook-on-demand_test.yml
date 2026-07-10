@@ -112,9 +112,9 @@ jobs:
           import notebook_data_dependencies as ndd
           ndd.setup_env({}, verbose=False)
           with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
-            f.write(f"crds_server_url={os.environ.get('CRDS_SERVER_URL','')}\\n")
-            f.write(f"crds_context={os.environ.get('CRDS_CONTEXT','')}\\n")
-            f.write(f"crds_path={os.environ.get('CRDS_PATH','')}\\n")
+            f.write(f"crds_server_url={os.environ.get('CRDS_SERVER_URL','')}\n")
+            f.write(f"crds_context={os.environ.get('CRDS_CONTEXT','')}\n")
+            f.write(f"crds_path={os.environ.get('CRDS_PATH','')}\n")
           PY
 
   validate-all:
