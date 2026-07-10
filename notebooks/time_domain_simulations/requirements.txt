@@ -14,4 +14,4 @@ pysiaf>=0.24.1
 sncosmo>=2.12.1
 astrocut>=1.2.0
 stpsf>=2.1.0
-roman_dependencies==2026.2.0
+roman_dependencies==2026.4.0
