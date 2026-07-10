@@ -9,4 +9,4 @@ matplotlib>=3.10.0
 numpy>=2.4.4
 scipy>=1.17.1
 photutils>=2.2.0
-roman_dependencies==2026.4.0
+roman_dependencies==2026.4.1
