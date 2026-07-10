@@ -2,4 +2,4 @@ astropy >= 7.2.0
 astroquery >= 0.4.11
 pyvo >= 1.8
 matplotlib>=3.10.0
-roman_dependencies
+roman_dependencies==2026.1.1

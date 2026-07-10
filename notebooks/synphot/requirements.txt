@@ -4,4 +4,4 @@ requests>=2.32.5
 synphot>=1.5.0
 stsynphot>=1.5.1
 stpsf>=2.1.0
-roman_dependencies
+roman_dependencies==2026.1.1

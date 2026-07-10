@@ -11,4 +11,4 @@ crds==13.1.15
 photutils>=2.2.0
 matplotlib>=3.10.0
 numpy>=2.4.4
-roman_dependencies
+roman_dependencies==2026.1.1
