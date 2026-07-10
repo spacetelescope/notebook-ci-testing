@@ -176,7 +176,16 @@ def setup_env(result, dependencies=None, verbose=True):
     for key, value in other.items():
         value = str(value).replace('${HOME}', home)
         current = (os.environ.get(key) or '').strip()
-        if not current or current == '***unset***' or current == f'${{{key}}}':
+
+        # Replace clearly invalid placeholders and malformed CRDS URL values.
+        invalid_current = (
+            not current
+            or current == '***unset***'
+            or current == f'${{{key}}}'
+            or (key == 'CRDS_SERVER_URL' and not current.startswith('https://'))
+        )
+
+        if invalid_current:
             os.environ[key] = value
             if verbose:
                 print(f"\t{key} = {value}")
