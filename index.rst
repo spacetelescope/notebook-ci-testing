@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 =======================================================
 JWST Data Analysis Tool Notebooks
 =======================================================
@@ -77,3 +78,9 @@ used with spectra, IFU cubes, and multi-object spectroscopy (MOS).
 .. |image3| image:: data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ib2N0aWNvbiBvY3RpY29uLWxpbmsiIHZpZXdib3g9IjAgMCAxNiAxNiIgdmVyc2lvbj0iMS4xIiB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGFyaWEtaGlkZGVuPSJ0cnVlIj48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik03Ljc3NSAzLjI3NWEuNzUuNzUgMCAwMDEuMDYgMS4wNmwxLjI1LTEuMjVhMiAyIDAgMTEyLjgzIDIuODNsLTIuNSAyLjVhMiAyIDAgMDEtMi44MyAwIC43NS43NSAwIDAwLTEuMDYgMS4wNiAzLjUgMy41IDAgMDA0Ljk1IDBsMi41LTIuNWEzLjUgMy41IDAgMDAtNC45NS00Ljk1bC0xLjI1IDEuMjV6bS00LjY5IDkuNjRhMiAyIDAgMDEwLTIuODNsMi41LTIuNWEyIDIgMCAwMTIuODMgMCAuNzUuNzUgMCAwMDEuMDYtMS4wNiAzLjUgMy41IDAgMDAtNC45NSAwbC0yLjUgMi41YTMuNSAzLjUgMCAwMDQuOTUgNC45NWwxLjI1LTEuMjVhLjc1Ljc1IDAgMDAtMS4wNi0xLjA2bC0xLjI1IDEuMjVhMiAyIDAgMDEtMi44MyAweiI+PC9wYXRoPjwvc3ZnPg==
    :class: octicon octicon-link
    :target: #contributing
+=======
+Nancy Grace Roman Space Telescope Notebooks
+The roman_notebooks repository contains several workflows and tutorials that demonstrate how to plan observations for, simulate images from, and access and analyze data from the Nancy Grace Roman Space Telescope (Roman). Python Jupyter notebooks provide Tutorials on specific topics (e.g., how to run the science data pipeline to calibrate an exposure), while Science Workflows combine multiple tutorials, along with documentation, to provide a guided end-to-end experience for a specific science use case.
+
+The notebooks in this repository are designed for the Roman Research Nexus, a cloud-based science platform specifically designed for Roman users. With a MyST account, users will be able to access the Nexus and learn how to work with Roman data in the cloud. The Nexus is currently under development and has limited user access, with public access planned for late 2025.
+>>>>>>> 2c25822a (feat: package notebook_data_dependencies as roman_dependencies on PyPI)

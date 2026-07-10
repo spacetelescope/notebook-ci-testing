@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #
 <html>
     <head>
@@ -277,3 +278,8 @@ Star</td>
 <p>The notebooks attempt to utilize a number of software packages supported by STScI, including <a href="https://www.astropy.org" rel="nofollow">Astropy</a>, <a href="http://docs.glueviz.org/en/stable/index.html" rel="nofollow">glue</a>, <a href="https://ginga.readthedocs.io/en/latest/" rel="nofollow">ginga</a>, <a href="https://photutils.readthedocs.io" rel="nofollow">photutils</a>, <a href="https://specutils.readthedocs.io/en/stable/" rel="nofollow">specutils</a>, <a href="http://astroimtools.readthedocs.io" rel="nofollow">astroimtools</a>, <a href="http://imexam.readthedocs.io" rel="nofollow">imexam</a>, <a href="https://jdaviz.readthedocs.io/en/latest/" rel="nofollow">jdaviz</a>, <a href="http://asdf.readthedocs.io/en/latest/" rel="nofollow">asdf</a>, <a href="https://gwcs.readthedocs.io/en/latest/" rel="nofollow">gwcs</a>, and <a href="http://synphot.readthedocs.io/en/latest/index.html" rel="nofollow">synphot</a>.  Note jdaviz is STScI's JWST Data Analysis Visualization Tool, designed to be used with spectra, IFU cubes, and multi-object spectroscopy (MOS).</p>
   </body>
 <html>
+=======
+### Intro to repository
+
+## Fill out repo information here
+>>>>>>> 2c25822a (feat: package notebook_data_dependencies as roman_dependencies on PyPI)

@@ -1,0 +1,9 @@
+LICENSE
+README.md
+pyproject.toml
+shared/notebook_data_dependencies.py
+shared/roman_dependencies.egg-info/PKG-INFO
+shared/roman_dependencies.egg-info/SOURCES.txt
+shared/roman_dependencies.egg-info/dependency_links.txt
+shared/roman_dependencies.egg-info/requires.txt
+shared/roman_dependencies.egg-info/top_level.txt

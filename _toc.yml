@@ -1,6 +1,5 @@
-# Table of contents
-# Learn more at https://jupyterbook.org/customize/toc.html
 format: jb-book
+<<<<<<< HEAD
 root: intro
 defaults:  # The defaults key will be applied to all chapters and sub-sections
   titlesonly: True
@@ -154,3 +153,26 @@ parts:
       title: BOTS Products with NSClean
     - file: notebooks/NIRSpec/extract_fixedslit_from_mos_ifu/extract_fixedslit_from_mos_ifu.ipynb
       title: Extract Fixed Slit from MOS IFU Full Frame Data
+=======
+root: README
+chapters:
+- file: notebooks/data_discovery_and_access/data_discovery_and_access
+- file: notebooks/working_with_asdf/working_with_asdf
+- file: notebooks/data_visualization/data_visualization
+- file: notebooks/romanisim/romanisim
+- file: notebooks/exposure_pipeline/exposure_pipeline
+- file: notebooks/mosaic_pipeline/mosaic_pipeline
+- file: notebooks/ground_test_analysis/wfi_tvac_brightstar
+- file: notebooks/aperture_photometry/aperture_photometry
+- file: notebooks/measuring_galaxy_shapes/measuring_galaxy_shapes
+- file: notebooks/roman_cutouts/roman_cutouts
+- file: notebooks/grism_spectral_extraction/grism_spectral_extraction
+- file: notebooks/rist/rist
+- file: notebooks/stips/stips
+- file: notebooks/stpsf/stpsf
+- file: notebooks/synphot/synphot
+- file: notebooks/pandeia/pandeia
+- file: notebooks/footprint_visualization/footprint_visualization
+- file: notebooks/background_visualization_tool/RBVT
+- file: notebooks/time_domain_simulations/time_domain_simulations
+>>>>>>> 2c25822a (feat: package notebook_data_dependencies as roman_dependencies on PyPI)

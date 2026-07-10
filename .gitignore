@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -89,3 +90,18 @@ cython_debug/
 
 # MyST build outputs
 _build
+=======
+# Python build artifacts
+dist/
+build/
+*.egg-info/
+__pycache__/
+*.pyc
+*.pyo
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# macOS
+.DS_Store
+>>>>>>> 2c25822a (feat: package notebook_data_dependencies as roman_dependencies on PyPI)
