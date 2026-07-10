@@ -5,4 +5,4 @@ scipy>=1.17.1
 healpy>=1.18.1
 matplotlib>=3.10.0
 numpy>=2.4.4
-roman_dependencies
+roman_dependencies==2026.2.0
