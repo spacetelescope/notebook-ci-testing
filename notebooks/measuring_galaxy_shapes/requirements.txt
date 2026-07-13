@@ -13,4 +13,4 @@ scipy>=1.17.1
 stpsf>=2.1.0
 matplotlib>=3.10.0
 numpy>=2.4.4
-roman_dependencies==2026.4.4
+roman_dependencies==2026.4.5
