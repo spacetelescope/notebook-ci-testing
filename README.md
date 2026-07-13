@@ -16,6 +16,6 @@ The notebooks are optimized for execution on the Roman Research Nexus. For local
 
 ## Get Support
 
-Please refer to the [Roman Documentation (RDox)](https://roman-docs.stsci.edu) website for technical documentation about the Roman Space Telescope.
+Please refer to the [Roman Documentation (RDox)](https://roman-docs.stsci.edu) website for technical documentation about the Roman Space Telescope .
 
 If you need assistance, submit a ticket through the [Roman Help Desk](https://romanhelp.stsci.edu) portal. Once logged in, select "Get Help with the Roman Space Telescope" and then the "Roman Research Nexus" category.
