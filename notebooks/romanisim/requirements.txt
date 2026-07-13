@@ -14,4 +14,4 @@ numpy>=2.4.4
 s3fs>=2025.5.1
 dask[complete]
 stpsf>=2.1.0
-roman_dependencies==2026.6.0
+roman_dependencies==2026.6.1
