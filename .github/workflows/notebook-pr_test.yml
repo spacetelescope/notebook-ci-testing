@@ -32,7 +32,7 @@ jobs:
       enable-html-build: false                  # Don't build HTML docs on PR
       enable-a11y-nb-check: true                # Enable Jupyter notebook accessibility scan
       custom-runner-config: true  # Enable ci_config.txt lookup
-      enable-pep8: false        # PEP8 style check on changed notebooks/scripts
+#      enable-pep8: false        # PEP8 style check on changed notebooks/scripts
     secrets:
       CASJOBS_USERID: ${{ secrets.CASJOBS_USERID }}
       CASJOBS_PW: ${{ secrets.CASJOBS_PW }}
