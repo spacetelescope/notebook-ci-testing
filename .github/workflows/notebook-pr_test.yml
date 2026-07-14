@@ -1,0 +1,40 @@
+# Pull Request workflow for hellouniverse repository
+# Copy this file to your repository's .github/workflows/ directory
+
+name: Notebook CI - Pull Request (Testing A11y Checks)
+
+on:
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'notebooks/**'
+      - 'requirements.txt'
+      - 'pyproject.toml'
+      - '*.yml'
+      - '*.yaml'
+      - '*.md'
+      - '*.html'
+      - '*.css'
+      - '*.js'
+
+jobs:
+  notebook-ci:
+    uses: spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@feat/notebook-a11y-pr-checks
+    with:
+      execution-mode: 'pr'
+      python-version: '3.11'                    # Adjust as needed
+      # conda-environment: 'hstcal'             # Uncomment and adjust for custom conda env
+      # custom-requirements: 'custom-reqs.txt'  # Uncomment for custom requirements
+      enable-validation: false
+      enable-security: false
+      enable-execution: false
+      enable-storage: true                      # Store outputs to gh-storage on PR
+      enable-html-build: false                  # Don't build HTML docs on PR
+      enable-a11y-nb-check: true                # Enable Jupyter notebook accessibility scan
+      custom-runner-config: true  # Enable ci_config.txt lookup
+      enable-pep8: false        # PEP8 style check on changed notebooks/scripts
+    secrets:
+      CASJOBS_USERID: ${{ secrets.CASJOBS_USERID }}
+      CASJOBS_PW: ${{ secrets.CASJOBS_PW }}
+
+
