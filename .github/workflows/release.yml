@@ -81,97 +81,97 @@ jobs:
 
           echo ""
           echo "Existing SemVer tags:"
-          git tag --list 'v*' | sort -V || true
-
-          echo ""
-          echo "Existing CalVer tags:"
-          git tag --list '[0-9]*' | sort -V || true
-
-          # ------------------------------------------------------------
-          # SemVer: canonical, monotonic, never resets
-          #
-          # minor: v1.2.0 -> v1.3.0
-          # major: v1.2.0 -> v2.0.0
-          # ------------------------------------------------------------
-
-          latest_semver="$(
-            git tag --list 'v*.*.*' \
-              | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' \
-              | sort -V \
-              | tail -n1 \
-              || true
-          )"
-
-          if [ -z "$latest_semver" ]; then
-            latest_semver="v0.0.0"
-          fi
-
-          semver_core="${latest_semver#v}"
-          IFS='.' read -r s_major s_minor s_patch <<< "$semver_core"
-
-          case "$RELEASE_TYPE" in
-            major)
-              s_major=$((s_major + 1))
-              s_minor=0
-              s_patch=0
-              ;;
-            minor)
-              s_minor=$((s_minor + 1))
-              s_patch=0
-              ;;
-          esac
-
-          semver="v${s_major}.${s_minor}.${s_patch}"
-
-          # ------------------------------------------------------------
-          # CalVer: YEAR.MAJOR.MINOR
-          #
-          # minor: 2026.1.0 -> 2026.1.1
-          # major: 2026.1.7 -> 2026.2.0
-          #
-          # The first release of a new year is always YEAR.1.0.
-          # ------------------------------------------------------------
-
-          year="$(date -u +%Y)"
-
-          latest_calver="$(
-            git tag --list "${year}.*.*" \
-              | grep -E "^${year}\.[0-9]+\.[0-9]+$" \
-              | sort -V \
-              | tail -n1 \
-              || true
-          )"
-
-          if [ -z "$latest_calver" ]; then
-            echo ""
-            echo "No existing CalVer tag found for ${year}."
-            echo "Initializing the new year at ${year}.1.0."
-
-            c_major=1
-            c_minor=0
-          else
-            IFS='.' read -r tag_year old_c_major old_c_minor \
-              <<< "$latest_calver"
-
-            c_major="$old_c_major"
-            c_minor="$old_c_minor"
-
-            case "$RELEASE_TYPE" in
-              major)
-                c_major=$((c_major + 1))
-                c_minor=0
-                ;;
-              minor)
-                c_minor=$((c_minor + 1))
-                ;;
-            esac
-
-            # Guard against a minor release accidentally changing
-            # the CalVer major component.
-            if [ "$RELEASE_TYPE" = "minor" ]; then
-              expected_major="$old_c_major"
-              expected_minor=$((old_c_minor + 1))
-
+    #      - name: Set up Python
+    #        uses: actions/setup-python@v6
+    #        with:
+    #          python-version: ${{ vars.PYTHON_VERSION || '3.11' }}
+    #
+    #      - name: Bump roman-dataref-test version and pin requirements
+    #        shell: bash
+    #        env:
+    #          CALVER: ${{ steps.ver.outputs.calver }}
+    #        run: |
+    #          set -euo pipefail
+    #
+    #          sed -i \
+    #            "s/^version = .*/version = \"$CALVER\"/" \
+    #            pyproject.toml
+    #
+    #          while IFS= read -r -d '' requirements_file; do
+    #            sed -i \
+    #              "s|roman-dataref-test[^[:space:]]*|roman-dataref-test==$CALVER|g" \
+    #              "$requirements_file"
+    #          done < <(
+    #            find notebooks \
+    #              -type f \
+    #              -name requirements.txt \
+    #              -print0
+    #          )
+    #
+    #          echo "Updated pyproject.toml to version $CALVER"
+    #          echo ""
+    #          echo "Updated requirements references:"
+    #
+    #          grep -R \
+    #            --include='requirements.txt' \
+    #            -n \
+    #            "roman-dataref-test" \
+    #            notebooks \
+    #            || true
+    #
+    #      - name: Commit version bump
+    #        shell: bash
+    #        env:
+    #          CALVER: ${{ steps.ver.outputs.calver }}
+    #        run: |
+    #          set -euo pipefail
+    #
+    #          git config user.name "github-actions[bot]"
+    #          git config user.email \
+    #            "41898282+github-actions[bot]@users.noreply.github.com"
+    #
+    #          git add pyproject.toml notebooks
+    #
+    #          if git diff --cached --quiet; then
+    #            current_version="$(sed -n 's/^version = \"\(.*\)\"/\1/p' pyproject.toml | head -n1)"
+    #            echo "::error::The version bump did not produce any file changes."
+    #            echo "::error::Computed CALVER: ${CALVER}"
+    #            echo "::error::Current pyproject.toml version: ${current_version:-unknown}"
+    #            echo "::error::If this is the first CalVer release for a new package name, create and push a bootstrap tag matching the current version (for example: git tag ${CALVER} && git push origin ${CALVER}), then rerun with release_type=minor."
+    #            exit 1
+    #          fi
+    #
+    #          git commit \
+    #            -m "Bump roman-dataref-test to ${CALVER}"
+    #
+    #      - name: Push version commit
+    #        shell: bash
+    #        run: |
+    #          set -euo pipefail
+    #          git push origin HEAD:main
+    #
+    #      - name: Build package
+    #        shell: bash
+    #        run: |
+    #          set -euo pipefail
+    #
+    #          python -m pip install --upgrade pip build
+    #          python -m build
+    #
+    #          echo ""
+    #          echo "Built distribution files:"
+    #          ls -lah dist/
+    #
+    #      # - name: Publish to PyPI
+    #      #   uses: pypa/gh-action-pypi-publish@release/v1
+    #      #   with:
+    #      #     password: ${{ secrets.PYPI_API_TOKEN }}
+    #
+    #      - name: Publish package step disabled
+    #        shell: bash
+    #        run: |
+    #          set -euo pipefail
+    #          echo "PyPI publish is temporarily disabled in this workflow."
               if [ "$c_major" -ne "$expected_major" ]; then
                 echo "::error::A minor release unexpectedly changed the CalVer major component."
                 echo "::error::Previous: $latest_calver"
@@ -307,10 +307,16 @@ jobs:
           echo "Built distribution files:"
           ls -lah dist/
 
-      - name: Publish to PyPI
-        uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          password: ${{ secrets.PYPI_API_TOKEN }}
+      # - name: Publish to PyPI
+      #   uses: pypa/gh-action-pypi-publish@release/v1
+      #   with:
+      #     password: ${{ secrets.PYPI_API_TOKEN }}
+
+      - name: Publish package step disabled
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "PyPI publish is temporarily disabled in this workflow."
 
       - name: Create and push tags
         shell: bash
@@ -361,20 +367,20 @@ jobs:
             --verify-tag \
             --latest
 
-      - name: Summary
-        shell: bash
-        env:
-          RELEASE_TYPE: ${{ inputs.release_type }}
-          CALVER: ${{ steps.ver.outputs.calver }}
-          SEMVER: ${{ steps.ver.outputs.semver }}
-        run: |
-          {
-            echo "### Release cut :rocket:"
-            echo ""
-            echo "| | |"
-            echo "|---|---|"
-            echo "| Type | \`$RELEASE_TYPE\` |"
-            echo "| CalVer product version | \`$CALVER\` |"
-            echo "| SemVer internal version | \`$SEMVER\` |"
-            echo "| Commit | \`$GITHUB_SHA\` |"
-          } >> "$GITHUB_STEP_SUMMARY"
+#      - name: Summary
+#        shell: bash
+#        env:
+#          RELEASE_TYPE: ${{ inputs.release_type }}
+#          CALVER: ${{ steps.ver.outputs.calver }}
+#          SEMVER: ${{ steps.ver.outputs.semver }}
+#        run: |
+#          {
+#            echo "### Release cut :rocket:"
+#            echo ""
+#            echo "| | |"
+#            echo "|---|---|"
+#            echo "| Type | \`$RELEASE_TYPE\` |"
+#            echo "| CalVer product version | \`$CALVER\` |"
+#            echo "| SemVer internal version | \`$SEMVER\` |"
+#            echo "| Commit | \`$GITHUB_SHA\` |"
+#          } >> "$GITHUB_STEP_SUMMARY"
