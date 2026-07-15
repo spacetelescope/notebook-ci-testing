@@ -278,7 +278,11 @@ jobs:
           git add pyproject.toml notebooks
 
           if git diff --cached --quiet; then
+            current_version="$(sed -n 's/^version = "\(.*\)"/\1/p' pyproject.toml | head -n1)"
             echo "::error::The version bump did not produce any file changes."
+            echo "::error::Computed CALVER: ${CALVER}"
+            echo "::error::Current pyproject.toml version: ${current_version:-unknown}"
+            echo "::error::If this is the first CalVer release for a new package name, create and push a bootstrap tag matching the current version (for example: git tag ${CALVER} && git push origin ${CALVER}), then rerun with release_type=minor."
             exit 1
           fi
 
