@@ -3,7 +3,7 @@ requires = ["setuptools>=61"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "roman_dependencies"
+name = "roman-dataref-test"
 version = "2026.1.0"
 description = "Reference data installer helper for Roman notebooks"
 readme = "README.md"

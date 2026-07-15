@@ -10,7 +10,7 @@ from importlib.metadata import version as _pkg_version, PackageNotFoundError
 _DEPENDENCIES_PATH = Path(__file__).parent.parent / "refdata_dependencies.yaml"
 
 try:
-    _ref = "refs/tags/" + _pkg_version("roman_dependencies")
+    _ref = "refs/tags/" + _pkg_version("roman-dataref-test")
 except PackageNotFoundError:
     _ref = "refs/heads/main"
 

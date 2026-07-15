@@ -231,7 +231,7 @@ jobs:
         with:
           python-version: ${{ vars.PYTHON_VERSION || '3.11' }}
 
-      - name: Bump roman_dependencies version and pin requirements
+      - name: Bump roman-dataref-test version and pin requirements
         shell: bash
         env:
           CALVER: ${{ steps.ver.outputs.calver }}
@@ -244,7 +244,7 @@ jobs:
 
           while IFS= read -r -d '' requirements_file; do
             sed -i \
-              "s|roman_dependencies[^[:space:]]*|roman_dependencies==$CALVER|g" \
+              "s|roman-dataref-test[^[:space:]]*|roman-dataref-test==$CALVER|g" \
               "$requirements_file"
           done < <(
             find notebooks \
@@ -260,7 +260,7 @@ jobs:
           grep -R \
             --include='requirements.txt' \
             -n \
-            "roman_dependencies" \
+            "roman-dataref-test" \
             notebooks \
             || true
 
@@ -283,7 +283,7 @@ jobs:
           fi
 
           git commit \
-            -m "Bump roman_dependencies to ${CALVER}"
+            -m "Bump roman-dataref-test to ${CALVER}"
 
       - name: Push version commit
         shell: bash

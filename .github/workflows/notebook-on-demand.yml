@@ -87,25 +87,12 @@ jobs:
         with:
           python-version: ${{ inputs.python_version }}
 
-      - name: Resolve roman_dependencies version
-        id: depver
-        shell: bash
-        run: |
-          ver=$(python - <<'PY'
-          import tomllib
-          with open('pyproject.toml', 'rb') as f:
-            data = tomllib.load(f)
-          print(data['project']['version'])
-          PY
-          )
-          echo "version=$ver" >> "$GITHUB_OUTPUT"
-
-      - name: Install roman_dependencies and export CRDS vars
+      - name: Install local roman-dataref-test and export CRDS vars
         id: export
         shell: bash
         run: |
           python -m pip install --upgrade pip
-          python -m pip install "roman_dependencies==${{ steps.depver.outputs.version }}"
+          python -m pip install -e .
           python - <<'PY'
           import os
           import notebook_data_dependencies as ndd
