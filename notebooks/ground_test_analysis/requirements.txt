@@ -10,4 +10,3 @@ s3fs>=2025.5.1
 crds==13.1.15
 scipy>=1.17.1
 matplotlib>=3.10.0
-roman_dependencies==2026.6.2
