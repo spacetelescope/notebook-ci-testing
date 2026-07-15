@@ -7,7 +7,7 @@ from pathlib import Path
 
 def install_files(dependencies=None, verbose=True, packages=None):
     """
-    PURPOSE
+    PURPOSE 
     -------
     Retrieve ancillary reference data files needed for specific Python packages:
         - pandeia
