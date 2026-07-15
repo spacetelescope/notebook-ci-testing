@@ -81,6 +81,97 @@ jobs:
 
           echo ""
           echo "Existing SemVer tags:"
+          git tag --list 'v*' | sort -V || true
+
+          echo ""
+          echo "Existing CalVer tags:"
+          git tag --list '[0-9]*' | sort -V || true
+
+          # ------------------------------------------------------------
+          # SemVer: canonical, monotonic, never resets
+          #
+          # minor: v1.2.0 -> v1.3.0
+          # major: v1.2.0 -> v2.0.0
+          # ------------------------------------------------------------
+
+          latest_semver="$(
+            git tag --list 'v*.*.*' \
+              | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' \
+              | sort -V \
+              | tail -n1 \
+              || true
+          )"
+
+          if [ -z "$latest_semver" ]; then
+            latest_semver="v0.0.0"
+          fi
+
+          semver_core="${latest_semver#v}"
+          IFS='.' read -r s_major s_minor s_patch <<< "$semver_core"
+
+          case "$RELEASE_TYPE" in
+            major)
+              s_major=$((s_major + 1))
+              s_minor=0
+              s_patch=0
+              ;;
+            minor)
+              s_minor=$((s_minor + 1))
+              s_patch=0
+              ;;
+          esac
+
+          semver="v${s_major}.${s_minor}.${s_patch}"
+
+          # ------------------------------------------------------------
+          # CalVer: YEAR.MAJOR.MINOR
+          #
+          # minor: 2026.1.0 -> 2026.1.1
+          # major: 2026.1.7 -> 2026.2.0
+          #
+          # The first release of a new year is always YEAR.1.0.
+          # ------------------------------------------------------------
+
+          year="$(date -u +%Y)"
+
+          latest_calver="$(
+            git tag --list "${year}.*.*" \
+              | grep -E "^${year}\.[0-9]+\.[0-9]+$" \
+              | sort -V \
+              | tail -n1 \
+              || true
+          )"
+
+          if [ -z "$latest_calver" ]; then
+            echo ""
+            echo "No existing CalVer tag found for ${year}."
+            echo "Initializing the new year at ${year}.1.0."
+
+            c_major=1
+            c_minor=0
+          else
+            IFS='.' read -r tag_year old_c_major old_c_minor \
+              <<< "$latest_calver"
+
+            c_major="$old_c_major"
+            c_minor="$old_c_minor"
+
+            case "$RELEASE_TYPE" in
+              major)
+                c_major=$((c_major + 1))
+                c_minor=0
+                ;;
+              minor)
+                c_minor=$((c_minor + 1))
+                ;;
+            esac
+
+            # Guard against a minor release accidentally changing
+            # the CalVer major component.
+            if [ "$RELEASE_TYPE" = "minor" ]; then
+              expected_major="$old_c_major"
+              expected_minor=$((old_c_minor + 1))
+
               if [ "$c_major" -ne "$expected_major" ]; then
                 echo "::error::A minor release unexpectedly changed the CalVer major component."
                 echo "::error::Previous: $latest_calver"
