@@ -18,11 +18,12 @@ on:
       - '*.js'
 
 jobs:
-  notebook-ci:
-    uses: spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@feat/pep8-link-checks
+  notebook-ci:    
+    uses: spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@v1
+    #uses: spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@feat/pep8-link-checks
     with:
       execution-mode: 'pr'
-      python-version: '3.11'                    # Adjust as needed
+      python-version: '3.13'                    # Adjust as needed
       # conda-environment: 'hstcal'             # Uncomment and adjust for custom conda env
       # custom-requirements: 'custom-reqs.txt'  # Uncomment for custom requirements
       enable-validation: true
