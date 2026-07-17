@@ -83,15 +83,16 @@ def install_files(dependencies='https://raw.githubusercontent.com/spacetelescope
     for package in yf.keys():
         envvar = yf[package]['environment_variable']
         try:
-            test = os.environ[envvar]
-            if test == '***unset***':
-                raise KeyError('UNSET PATH')
+            test = os.environ[envvar].strip()
+            # Trust pre-set env vars only when they point to a real path.
+            if (not test) or (test == '***unset***') or (not os.path.exists(test)):
+                raise KeyError('UNSET OR INVALID PATH')
             if verbose:
-                print(f"Found {package} path {os.environ[envvar]}")
-            result[envvar] = {'path': os.environ[envvar], 'pre_installed': True}
+                print(f"Found {package} path {test}")
+            result[envvar] = {'path': test, 'pre_installed': True}
         except KeyError:
             if verbose:
-                print(f"Did not find {package} data in environment, setting it up...")
+                print(f"Did not find valid {package} data in environment, setting it up...")
 
             # Get the path where the data should be installed. Resolve any environment variables.
             env_path = yf[package]['install_path']
