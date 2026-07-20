@@ -166,6 +166,6 @@ def setup_env(result,
             print(f"\t{key} = {os.environ[key]} (pre-set, not overwritten)")
 
 
-if __name__ == 'main':
+if __name__ == '__main__':
 
     install_files()
