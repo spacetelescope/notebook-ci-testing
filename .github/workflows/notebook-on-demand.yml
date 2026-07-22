@@ -171,7 +171,7 @@ jobs:
   validate-single:
     if: inputs.action_type == 'validate-single'
     needs: resolve-crds
-    uses:  spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@v1
+    uses:  spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@fix-nbval-iopub
     with:
       execution-mode: 'on-demand'
       trigger-event: 'validate'
