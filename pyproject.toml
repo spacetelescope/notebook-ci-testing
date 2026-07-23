@@ -19,3 +19,6 @@ py-modules = ["notebook_data_dependencies"]
 
 [tool.setuptools.package-dir]
 "" = "shared"
+
+[tool.setuptools.data-files]
+"share/roman-dataref-test" = ["refdata_dependencies.yaml"]
