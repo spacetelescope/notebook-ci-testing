@@ -263,7 +263,7 @@ jobs:
   build-html-only:
     if: inputs.action_type == 'build-html-only'
     needs: resolve-crds
-    uses:  spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@node-deprecation-upgrades
+    uses:  spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@add_html_a11y_checks
     with:
       execution-mode: 'on-demand'
       trigger-event: 'html'
