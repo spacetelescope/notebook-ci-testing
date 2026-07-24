@@ -29,7 +29,7 @@ jobs:
       enable-security: true
       enable-execution: true
       enable-storage: true                      # Store outputs to gh-storage on PR
-      enable-html-build: true                  # Don't build HTML docs on PR
+      enable-html-build: false                  # Don't build HTML docs on PR
       enable-a11y-nb-check: false                # Enable Jupyter notebook accessibility scan
       custom-runner-config: true  # Enable ci_config.txt lookup
 #      enable-pep8: false        # PEP8 style check on changed notebooks/scripts
