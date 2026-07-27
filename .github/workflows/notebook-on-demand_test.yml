@@ -260,7 +260,7 @@ jobs:
       CASJOBS_USERID: ${{ secrets.CASJOBS_USERID }}
       CASJOBS_PW: ${{ secrets.CASJOBS_PW }}
 
-  build-html-only:
+  build-html-onl:
     if: inputs.action_type == 'build-html-only'
     needs: resolve-crds
     uses:  spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@add_html_a11y_checks
