@@ -217,7 +217,7 @@ jobs:
   full-pipeline-all:
     if: inputs.action_type == 'full-pipeline-all'
     needs: resolve-crds
-    uses:  spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@v1
+    uses:  spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@a11y_updates
     with:
       execution-mode: 'on-demand'
       trigger-event: 'all'
