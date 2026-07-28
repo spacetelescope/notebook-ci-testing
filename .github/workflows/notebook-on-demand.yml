@@ -228,6 +228,7 @@ jobs:
       enable-execution: true
       enable-storage: true
       enable-html-build: true
+      enable-a11y-nb-check: true
       custom-runner-config: true  # Enable ci_config.txt lookup
       crds-server-url: ${{ needs.resolve-crds.outputs.crds_server_url }}
       crds-context: ${{ needs.resolve-crds.outputs.crds_context }}
