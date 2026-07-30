@@ -119,7 +119,6 @@ parts:
       title: Spec2 pipeline for WFSS
     - file: notebooks/NIRISS/NIRISS_WFSS_advanced/extra_niriss_individual_steps.ipynb
       title: Running Individual Pipline Steps
-
   - caption: NIRSpec
     chapters:
     - file: notebooks/NIRSpec/IFU_cube_continuum_fit/NGC4151_FeII_ContinuumFit.ipynb
