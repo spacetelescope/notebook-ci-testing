@@ -152,7 +152,6 @@ parts:
       title: BOTS Products with NSClean
     - file: notebooks/NIRSpec/extract_fixedslit_from_mos_ifu/extract_fixedslit_from_mos_ifu.ipynb
       title: Extract Fixed Slit from MOS IFU Full Frame Data
-=======
 root: README
 chapters:
 - file: notebooks/data_discovery_and_access/data_discovery_and_access
@@ -174,4 +173,3 @@ chapters:
 - file: notebooks/footprint_visualization/footprint_visualization
 - file: notebooks/background_visualization_tool/RBVT
 - file: notebooks/time_domain_simulations/time_domain_simulations
->>>>>>> 2c25822a (feat: package notebook_data_dependencies as roman_dependencies on PyPI)
