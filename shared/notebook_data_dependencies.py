@@ -1,20 +1,59 @@
 import os
+from pathlib import Path
 import requests
+import sysconfig
 import tarfile
 import tempfile
 import yaml
-def _load_yaml(dependencies):
+
+
+_MANIFEST_NAME = 'refdata_dependencies.yaml'
+_MANIFEST_ENV_VAR = 'ROMAN_REFDATA_MANIFEST'
+
+
+def _resolve_dependencies(dependencies=None):
+    """Resolve the manifest shipped with this checkout or installed wheel."""
+    if dependencies:
+        return str(dependencies)
+
+    override = os.environ.get(_MANIFEST_ENV_VAR)
+    if override:
+        return override
+
+    module_path = Path(__file__).resolve()
+    candidates = [
+        module_path.parent.parent / _MANIFEST_NAME,
+        Path.cwd() / _MANIFEST_NAME,
+        Path(sysconfig.get_path('data'))
+        / 'share'
+        / 'roman-dataref-test'
+        / _MANIFEST_NAME,
+    ]
+    for candidate in candidates:
+        if candidate.is_file():
+            return str(candidate)
+
+    checked = '\n'.join(f'  - {candidate}' for candidate in candidates)
+    raise FileNotFoundError(
+        f'Could not locate {_MANIFEST_NAME}.\nChecked:\n{checked}\n'
+        f'Set {_MANIFEST_ENV_VAR} to an explicit local path or URL.'
+    )
+
+
+def _load_yaml(dependencies=None):
     """Load a YAML file from a local path or URL."""
+    dependencies = _resolve_dependencies(dependencies)
     if os.path.exists(dependencies):
-        with open(dependencies, 'r') as f:
+        with open(dependencies, 'r', encoding='utf-8') as f:
             return yaml.safe_load(f)
-    else:
+    if dependencies.startswith(('http://', 'https://')):
         req = requests.get(dependencies, allow_redirects=True, timeout=(10, 60))
         req.raise_for_status()
         return yaml.safe_load(req.content)
+    raise FileNotFoundError(f'Dependency manifest does not exist: {dependencies}')
 
 
-def install_files(dependencies='https://raw.githubusercontent.com/spacetelescope/roman_notebooks/main/refdata_dependencies.yaml',
+def install_files(dependencies=None,
                      verbose=True, packages=None):
     """
     PURPOSE
@@ -31,11 +70,9 @@ def install_files(dependencies='https://raw.githubusercontent.com/spacetelescope
     
     INPUTS
     ------
-    dependencies (str): A URL or local path to the YAML definition file for the data 
-    dependencies. The code will first check for the existence of the file locally, and 
-    if it does not exist then it will assume the input is a URL. The default is the URL 
-    of the file on the roman_notebooks GitHub repository. The YAML file should have the 
-    following format:
+    dependencies (str): A URL or local path to the YAML definition file for the data
+    dependencies. By default, the helper uses the manifest from the repository checkout
+    or the installed, versioned package. The YAML file should have the following format:
             
         package_name:  # Name of the package
             version:  # Package version number for documentation
@@ -134,7 +171,7 @@ def install_files(dependencies='https://raw.githubusercontent.com/spacetelescope
     return result
 
 def setup_env(result,
-              dependencies='https://raw.githubusercontent.com/spacetelescope/roman_notebooks/main/refdata_dependencies.yaml',
+              dependencies=None,
               verbose=True):
     # Apply install_files results (existing behaviour)
     print('Reference data paths set to:')
@@ -157,6 +194,6 @@ def setup_env(result,
             print(f"\t{key} = {os.environ[key]} (pre-set, not overwritten)")
 
 
-if __name__ == 'main':
+if __name__ == '__main__':
 
     install_files()

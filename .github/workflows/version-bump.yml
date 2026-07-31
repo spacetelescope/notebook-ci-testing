@@ -1,8 +1,5 @@
 name: Auto patch bump
-
-# Tags every merge/push to main with the next SemVer patch (vX.Y.PATCH+1).
-# These are plain git tags only — no GitHub Release is attached, so the
-# "Cut release" workflow can later generate notes spanning all of them.
+run-name: SemVer test release for ${{ github.sha }}
 
 on:
   push:
@@ -11,7 +8,9 @@ on:
 permissions:
   contents: write
 
-# Serialize with the release workflow so two runs never race on tags.
+env:
+  RELEASE_DISPLAY_NAME: Notebook CI Testing
+
 concurrency:
   group: version-tagging
   cancel-in-progress: false
@@ -19,35 +18,122 @@ concurrency:
 jobs:
   patch:
     runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version.outputs.next }}
+      previous: ${{ steps.version.outputs.previous }}
+      delivery_mode: ${{ steps.classify.outputs.delivery_mode }}
+      delivery_reason: ${{ steps.classify.outputs.reason }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
-          fetch-depth: 0      # full history + all tags must be visible
+          fetch-depth: 0
           fetch-tags: true
 
-      - name: Compute next patch version
-        id: ver
+      - name: Compute or recover patch version
+        id: version
         shell: bash
         run: |
           set -euo pipefail
-          # Highest existing SemVer tag (v-prefixed only; CalVer tags are ignored).
-          latest="$(git tag -l 'v*.*.*' | sort -V | tail -n1)"
-          [ -z "$latest" ] && latest="v0.0.0"
+          git fetch origin --force --tags
+          exact=$(git tag --points-at HEAD \
+            | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -n1 || true)
+          if [[ -n "$exact" ]]; then
+            next=$exact
+            tag_needed=false
+            previous=$(git tag -l 'v*.*.*' | grep -v -x "$next" \
+              | sort -V | tail -n1 || true)
+          else
+            previous=$(git tag -l 'v*.*.*' \
+              | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -n1 || true)
+            previous=${previous:-v0.0.0}
+            IFS=. read -r major minor patch <<< "${previous#v}"
+            next="v${major}.${minor}.$((patch + 1))"
+            tag_needed=true
+          fi
+          {
+            echo "next=$next"
+            echo "previous=$previous"
+            echo "tag_needed=$tag_needed"
+          } >> "$GITHUB_OUTPUT"
 
-          core="${latest#v}"
-          IFS='.' read -r major minor patch <<< "$core"
-          patch=$((patch + 1))
-          next="v${major}.${minor}.${patch}"
-
-          echo "next=$next" >> "$GITHUB_OUTPUT"
-          echo "Bumping ${latest} -> ${next}"
-
-      - name: Tag the merge
+      - name: Publish SemVer tag
+        if: steps.version.outputs.tag_needed == 'true'
+        env:
+          VERSION: ${{ steps.version.outputs.next }}
         shell: bash
         run: |
           set -euo pipefail
-          git config user.name  "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git tag "${{ steps.ver.outputs.next }}"
-          git push origin "${{ steps.ver.outputs.next }}"
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git tag "$VERSION"
+          git push origin "refs/tags/$VERSION"
+
+      - name: Create or recover SemVer test release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.version.outputs.next }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if ! gh release view "$VERSION" >/dev/null 2>&1; then
+            gh release create "$VERSION" \
+              --title "${RELEASE_DISPLAY_NAME} - ${VERSION} test" \
+              --generate-notes --verify-tag --prerelease --latest=false
+          fi
+
+      - name: Classify RRN delivery mode
+        id: classify
+        env:
+          PREVIOUS: ${{ steps.version.outputs.previous }}
+          CURRENT: ${{ steps.version.outputs.next }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ -z "$PREVIOUS" || "$PREVIOUS" == "v0.0.0" ]]; then
+            {
+              echo "delivery_mode=image"
+              echo "reason=No previous SemVer release exists"
+            } >> "$GITHUB_OUTPUT"
+          else
+            bash .github/scripts/classify_rrn_delivery.sh "$PREVIOUS" "$CURRENT" \
+              >> "$GITHUB_OUTPUT"
+          fi
+
+  rrn:
+    needs: patch
+    if: vars.TRIGGER_RRN_TEST_IMAGE_BUILD == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v7
+      - name: Build and deploy RRN test image
+        id: dispatch
+        env:
+          GH_TOKEN: ${{ secrets.RRN_ACTIONS_TOKEN }}
+          RRN_SOURCE_REPOSITORY: ${{ github.repository }}
+          RRN_SOURCE_REF: ${{ needs.patch.outputs.version }}
+          RRN_SOURCE_VERSION: ${{ needs.patch.outputs.version }}
+          RRN_VERSION_KIND: semver
+          RRN_TARGET_ENVIRONMENT: test
+          RRN_DELIVERY_MODE: ${{ needs.patch.outputs.delivery_mode }}
+          RRN_SOURCE_SHA: ${{ github.sha }}
+          RRN_RELEASE_URL: https://github.com/${{ github.repository }}/releases/tag/${{ needs.patch.outputs.version }}
+          RRN_CORRELATION_ID: ${{ github.run_id }}-${{ github.run_attempt }}-semver
+        shell: bash
+        run: bash .github/scripts/dispatch_rrn_build.sh
+
+      - name: Summary
+        env:
+          RRN_RUN_URL: ${{ steps.dispatch.outputs.rrn_run_url }}
+        shell: bash
+        run: |
+          {
+            echo "### SemVer test release"
+            echo ""
+            echo "| Field | Value |"
+            echo "|---|---|"
+            echo "| SemVer | \`${{ needs.patch.outputs.version }}\` |"
+            echo "| Delivery recommendation | \`${{ needs.patch.outputs.delivery_mode }}\` |"
+            echo "| Reason | ${{ needs.patch.outputs.delivery_reason }} |"
+            echo "| RRN run | ${RRN_RUN_URL} |"
+          } >> "$GITHUB_STEP_SUMMARY"

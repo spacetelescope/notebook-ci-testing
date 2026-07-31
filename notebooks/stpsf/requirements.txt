@@ -3,3 +3,4 @@ stpsf>=2.1.0
 matplotlib>=3.10.0
 numpy>=2.4.4
 stsynphot>=1.5.1
+roman-dataref-test==2026.1.1

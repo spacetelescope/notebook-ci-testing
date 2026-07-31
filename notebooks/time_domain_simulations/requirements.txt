@@ -14,3 +14,4 @@ pysiaf>=0.24.1
 sncosmo>=2.12.1
 astrocut>=1.2.0
 stpsf>=2.1.0
+roman-dataref-test==2026.1.1
