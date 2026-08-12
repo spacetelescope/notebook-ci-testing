@@ -128,7 +128,7 @@ jobs:
   execute-all:
     if: inputs.action_type == 'execute-all'  
     needs: resolve-crds
-    uses: spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@v1
+    uses: spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@feat/pep8-link-checks
     with:
       execution-mode: 'on-demand'
       trigger-event: 'execute'
@@ -139,6 +139,8 @@ jobs:
       enable-execution: true
       enable-storage: false
       enable-html-build: false
+      enable-pep8: true
+      enable-link-check: true
       custom-runner-config: true  # Enable ci_config.txt lookup
       crds-server-url: ${{ needs.resolve-crds.outputs.crds_server_url }}
       crds-context: ${{ needs.resolve-crds.outputs.crds_context }}
