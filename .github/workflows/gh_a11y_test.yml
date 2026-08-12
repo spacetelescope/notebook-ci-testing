@@ -16,7 +16,7 @@ jobs:
         run: |
           CACHE_KEY=$(printf 'cached_results-%s.json' "${{ github.ref_name }}" | tr -cs 'A-Za-z0-9._-' '-')
           echo "cache_key=$CACHE_KEY" >> $GITHUB_OUTPUT
-      - uses: github/accessibility-scanner@v3.2.0
+      - uses: github/accessibility-scanner@v3.4.1
         with:
           urls: |
             ${{ github.event.inputs.url }}
