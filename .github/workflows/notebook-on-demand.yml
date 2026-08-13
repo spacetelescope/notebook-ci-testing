@@ -80,10 +80,10 @@ jobs:
       crds_path: ${{ steps.export.outputs.crds_path }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: ${{ inputs.python_version }}
 
@@ -335,10 +335,10 @@ jobs:
       actions: read
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
       
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: ${{ inputs.python_version }}
       
@@ -367,7 +367,7 @@ jobs:
           $CMD
       
       - name: Upload error report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: notebook-error-report
           path: error_report.md

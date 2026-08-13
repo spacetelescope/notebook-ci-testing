@@ -21,7 +21,7 @@ jobs:
       page-count: ${{ steps.discover.outputs.page-count }}
     steps:
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v7
         with:
           python-version: '3.10'
 
@@ -108,11 +108,11 @@ jobs:
         page: ${{ fromJson(needs.discover-pages.outputs.pages) }}
       max-parallel: 5
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Run be-a11y Accessibility Checker
         id: a11ychecker
-        uses: be-lenka/be-a11y@v2.2.8
+        uses: be-lenka/be-a11y@v2.2.9
         continue-on-error: true
         with:
           url: ${{ matrix.page }}
@@ -121,7 +121,7 @@ jobs:
       # Upload the individual report so it's preserved even if we fail the job
       - name: Upload individual report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           # Make the artifact name unique per matrix job to avoid collisions
           name: accessibility-report-${{ github.run_id }}-${{ strategy.job-index }}
@@ -261,7 +261,7 @@ jobs:
           PY
 
       - name: Upload consolidated report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: consolidated-accessibility-report-${{ github.run_id }}
           path: accessibility-consolidated-${{ github.run_id }}.json
