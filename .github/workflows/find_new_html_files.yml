@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: 'spacetelescope/${{ github.event.inputs.repository }}'
-          branch: 'gh-pages'
+          ref: 'gh-pages'
           fetch-depth: 0 # Fetches all history (safest for tracking across multiple push commits)
 
       - name: Get changed files
