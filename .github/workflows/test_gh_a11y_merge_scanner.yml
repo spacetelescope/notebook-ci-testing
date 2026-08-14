@@ -28,10 +28,10 @@ jobs:
         run: |
           # combine added and modified files into a single list
           CHANGED_FILES="${{ steps.changed-files.outputs.added_files }} ${{ steps.changed-files.outputs.modified_files }}"
-          echo "All new or changed files: $CHANGED_FILES"
+          # echo "All new or changed files: $CHANGED_FILES"
           # filter for .html files
           HTML_FILES=$(echo "$CHANGED_FILES" | tr ' ' '\n' | grep '\.html$' || true)
-          echo "New or changed HTML files: $HTML_FILES"
+          # echo "New or changed HTML files: $HTML_FILES"
 
   html_accessibility_scanner:
     runs-on: ubuntu-latest
@@ -42,6 +42,12 @@ jobs:
         run: |
           CACHE_KEY=$(printf 'cached_results-%s.json' "${{ github.ref_name }}" | tr -cs 'A-Za-z0-9._-' '-')
           echo "cache_key=$CACHE_KEY" >> $GITHUB_OUTPUT
+
+      - name: List new or updated HTML files
+        id: sanity-check
+        run: |
+          echo "New or changed HTML files: ${{ steps.list-files.outputs.new_updated_html_files }}"
+
       - uses: github/accessibility-scanner@v3.4.1
         with:
           urls: |
