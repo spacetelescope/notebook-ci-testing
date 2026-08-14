@@ -32,8 +32,7 @@ jobs:
           # echo "All new or changed files: $CHANGED_FILES"
           # filter for .html files
           # HTML_FILES=$(echo "$CHANGED_FILES" | tr ' ' '\n' | grep '\.html$' || true)
-          HTML_FILES="OSTRICH"
-          echo "New or changed HTML files: $HTML_FILES"          
+          HTML_FILES="OSTRICH"     
           echo "html_files=$HTML_FILES" >> $GITHUB_OUTPUT
 
   html_accessibility_scanner:
@@ -47,7 +46,6 @@ jobs:
           echo "cache_key=$CACHE_KEY" >> $GITHUB_OUTPUT
 
       - name: List new or updated HTML files
-        id: sanity-check
         run: |
           echo "New or changed HTML files: ${{ needs.list-files.outputs.new_updated_html_files }}"
 
