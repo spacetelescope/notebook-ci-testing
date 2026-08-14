@@ -33,7 +33,7 @@ jobs:
           # filter for .html files
 #          HTML_FILES=$(echo "$CHANGED_FILES" | tr ' ' '\n' | grep '\.html$' || true)
           HTML_FILES="OSTRICH"
-          echo "New or changed HTML files: $HTML_FILES"          
+#          echo "New or changed HTML files: $HTML_FILES"          
           echo "changed_html_files=$HTML_FILES" >> $GITHUB_OUTPUT
 
   html_accessibility_scanner:
