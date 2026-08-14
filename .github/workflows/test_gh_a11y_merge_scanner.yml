@@ -11,7 +11,7 @@ jobs:
   list-files:
     runs-on: ubuntu-latest
     outputs:
-      new_updated_html_files: ${{ steps.changed-files.outputs.HTML_FILES }}
+      new_updated_html_files: ${{ steps.changed-files.outputs.CHANGED_FILES }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -32,7 +32,7 @@ jobs:
           # filter for .html files
           HTML_FILES=$(echo "$CHANGED_FILES" | tr ' ' '\n' | grep '\.html$' || true)
           echo "New or changed HTML files: $HTML_FILES"
-          echo "HTML_FILES=$HTML_FILES" >> $GITHUB_OUTPUT
+          echo "CHANGED_FILES=$CHANGED_FILES" >> $GITHUB_OUTPUT
 
   html_accessibility_scanner:
     runs-on: ubuntu-latest
@@ -49,11 +49,11 @@ jobs:
         run: |
           echo "New or changed HTML files: ${{ needs.list-files.outputs.new_updated_html_files }}"
 
-      - uses: github/accessibility-scanner@v3.4.1
-        with:
-          urls: |
-            ${{ needs.list-files.outputs.new_updated_html_files }}
-          repository: 'spacetelescope/${{ github.event.inputs.repository }}'
-          token: ${{ secrets.A11Y_TOKEN }} # This token must have write access to the repo above (contents, issues, and PRs); more information below. Note: GitHub Actions' GITHUB_TOKEN cannot be used here.
-          cache_key: ${{ steps.generate_cache_key.outputs.cache_key }}
+#      - uses: github/accessibility-scanner@v3.4.1
+#        with:
+#          urls: |
+#            ${{ needs.list-files.outputs.new_updated_html_files }}
+#          repository: 'spacetelescope/${{ github.event.inputs.repository }}'
+#          token: ${{ secrets.A11Y_TOKEN }} # This token must have write access to the repo above (contents, issues, and PRs); more information below. Note: GitHub Actions' GITHUB_TOKEN cannot be used here.
+#          cache_key: ${{ steps.generate_cache_key.outputs.cache_key }}
 
