@@ -11,7 +11,7 @@ jobs:
   list-files:
     runs-on: ubuntu-latest
     outputs:
-      new_updated_html_files: ${{ steps.changed-files.outputs.html_files }}
+      new_updated_html_files: ${{ steps.make-html-list.outputs.changed_html_files }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -25,15 +25,15 @@ jobs:
         uses: tj-actions/changed-files@v47.0.6
 
       - name: List added or modified files
+        id: make-html-list
         run: |
           # combine added and modified files into a single list
           CHANGED_FILES="${{ steps.changed-files.outputs.added_files }} ${{ steps.changed-files.outputs.modified_files }}"
           # echo "All new or changed files: $CHANGED_FILES"
           # filter for .html files
           HTML_FILES=$(echo "$CHANGED_FILES" | tr ' ' '\n' | grep '\.html$' || true)
-          HTML_FILES="OSTRICH"
           echo "New or changed HTML files: $HTML_FILES"          
-          echo "html_files=$HTML_FILES" >> "$GITHUB_OUTPUT"
+          echo "changed_html_files=$HTML_FILES" >> $GITHUB_OUTPUT
 
   html_accessibility_scanner:
     runs-on: ubuntu-latest
