@@ -33,8 +33,7 @@ jobs:
           HTML_FILES=$(echo "$CHANGED_FILES" | tr ' ' '\n' | grep '\.html$' || true)
           HTML_FILES="OSTRICH"
           echo "New or changed HTML files: $HTML_FILES"          
-          echo "html_files=$HTML_FILES" >> $GITHUB_OUTPUT
-          echo "github output: $GITHUB_OUTPUT"
+          echo "html_files=$HTML_FILES" >> "$GITHUB_OUTPUT"
 
   html_accessibility_scanner:
     runs-on: ubuntu-latest
