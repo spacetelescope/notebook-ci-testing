@@ -27,4 +27,4 @@ jobs:
       - name: Consume the value
         run: |
           echo "The value passed from job1 is: ${{ needs.job1.outputs.my_generated_value }}"# generate a workflow that passes a value from one job to another in a GitHub Actions workflow. The first job will generate a value and the second job will use that value.
-          echo "The value passed from job1 is: ${{ needs.job1.outputs.my_generated_value }}
+          echo "The value passed from job1 is: ${{ needs.job1.outputs.my_generated_value }}"
