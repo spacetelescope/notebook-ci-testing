@@ -32,6 +32,7 @@ jobs:
           # filter for .html files
           HTML_FILES=$(echo "$CHANGED_FILES" | tr ' ' '\n' | grep '\.html$' || true)
           echo "New or changed HTML files: $HTML_FILES"
+          echo "HTML_FILES=$HTML_FILES" >> $GITHUB_OUTPUT
 
   html_accessibility_scanner:
     runs-on: ubuntu-latest
