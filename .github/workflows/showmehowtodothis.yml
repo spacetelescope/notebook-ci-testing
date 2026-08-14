@@ -1,0 +1,29 @@
+name: Pass Value Between Jobs
+
+on:
+  workflow_dispatch: # Allows manual trigger from the Actions tab
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    # Declare job outputs
+    outputs:
+      my_generated_value: ${{ steps.step1.outputs.my_output }}
+    steps:
+      - name: Generate a value
+        id: step1
+        run: |
+          # Create a dynamic value (e.g., timestamp, string, or computed result)
+          DYNAMIC_VAL="Hello from Job 1!"
+          
+          # Write the key=value pair to $GITHUB_OUTPUT
+          echo "my_output=$DYNAMIC_VAL" >> $GITHUB_OUTPUT
+
+  job2:
+    runs-on: ubuntu-latest
+    # Declare dependency on job1
+    needs: job1
+    steps:
+      - name: Consume the value
+        run: |
+          echo "The value passed from job1 is: ${{ needs.job1.outputs.my_generated_value }}"# generate a workflow that passes a value from one job to another in a GitHub Actions workflow. The first job will generate a value and the second job will use that value.
