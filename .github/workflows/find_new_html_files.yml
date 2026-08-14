@@ -24,8 +24,6 @@ jobs:
 
       - name: List added or modified files
         run: |
-          echo "Added files: ${{ steps.changed-files.outputs.added_files }}"
-          echo "Modified files: ${{ steps.changed-files.outputs.modified_files }}"
           # combine added and modified files into a single list
           CHANGED_FILES="${{ steps.changed-files.outputs.added_files }} ${{ steps.changed-files.outputs.modified_files }}"
           echo "All new or changed files: $CHANGED_FILES"
