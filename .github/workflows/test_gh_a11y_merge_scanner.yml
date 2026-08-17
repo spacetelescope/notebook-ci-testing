@@ -32,7 +32,6 @@ jobs:
           # echo "All new or changed files: $CHANGED_FILES"
           # filter for .html files
           HTML_FILES=$(echo "$CHANGED_FILES" | tr ' ' '\n' | grep '\.html$' || true) 
-          echo "html_files=$HTML_FILES" >> $GITHUB_OUTPUT
 
   html_accessibility_scanner:
     runs-on: ubuntu-latest
@@ -44,16 +43,16 @@ jobs:
           CACHE_KEY=$(printf 'cached_results-%s.json' "${{ github.ref_name }}" | tr -cs 'A-Za-z0-9._-' '-')
           echo "cache_key=$CACHE_KEY" >> $GITHUB_OUTPUT
 
-      - name: List new or updated HTML files
-        id: sanity-check
-        run: |
-          echo "New or changed HTML files: ${{ needs.list-files.outputs.new_updated_html_files }}"
+#      - name: List new or updated HTML files
+#        id: sanity-check
+#        run: |
+#          echo "New or changed HTML files: ${{ needs.list-files.outputs.new_updated_html_files }}"
 
-#      - uses: github/accessibility-scanner@v3.4.1
-#        with:
-#          urls: |
-#            ${{ needs.list-files.outputs.new_updated_html_files }}
-#          repository: 'spacetelescope/${{ github.event.inputs.repository }}'
-#          token: ${{ secrets.A11Y_TOKEN }} # This token must have write access to the repo above (contents, issues, and PRs); more information below. Note: GitHub Actions' GITHUB_TOKEN cannot be used here.
-#          cache_key: ${{ steps.generate_cache_key.outputs.cache_key }}
+      - uses: github/accessibility-scanner@v3.4.1
+        with:
+          urls: |
+            ${{ needs.list-files.outputs.new_updated_html_files }}
+          repository: 'spacetelescope/${{ github.event.inputs.repository }}'
+          token: ${{ secrets.A11Y_TOKEN }} # This token must have write access to the repo above (contents, issues, and PRs); more information below. Note: GitHub Actions' GITHUB_TOKEN cannot be used here.
+          cache_key: ${{ steps.generate_cache_key.outputs.cache_key }}
 
