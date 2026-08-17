@@ -39,7 +39,7 @@ jobs:
 
       - name: List new or updated HTML files
         run: |
-          echo "New or changed HTML files: ${{ steps.make-html-list.outputs.html_files }}"
+          echo "New or changed HTML files: ${{ steps.make-html-list.outputs.html_files }}" 
 
 #      - uses: github/accessibility-scanner@v3.4.1
 #        with:
