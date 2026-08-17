@@ -30,7 +30,8 @@ jobs:
           echo "All new or changed files: $CHANGED_FILES"
           # filter for .html files
           html_files=$(echo "$CHANGED_FILES" | tr ' ' '\n' | grep '\.html$' || true)
-
+          html_files='OSTRICH'
+          echo "html_files: $html_files"
       - name: Generate cache key
         id: generate_cache_key
         run: |
