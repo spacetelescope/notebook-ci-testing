@@ -31,7 +31,8 @@ jobs:
           CHANGED_FILES="${{ steps.changed-files.outputs.added_files }} ${{ steps.changed-files.outputs.modified_files }}"
           # echo "All new or changed files: $CHANGED_FILES"
           # filter for .html files
-          HTML_FILES=$(echo "$CHANGED_FILES" | tr ' ' '\n' | grep '\.html$' || true) 
+          HTML_FILES=$(echo "$CHANGED_FILES" | tr ' ' '\n' | grep '\.html$' || true)
+          echo "html_files=$HTML_FILES" >> $GITHUB_OUTPUT
 
   html_accessibility_scanner:
     runs-on: ubuntu-latest
