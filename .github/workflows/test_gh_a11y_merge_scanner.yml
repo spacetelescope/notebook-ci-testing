@@ -29,9 +29,11 @@ jobs:
           CHANGED_FILES="${{ steps.changed-files.outputs.added_files }} ${{ steps.changed-files.outputs.modified_files }}"
           echo "All new or changed files: $CHANGED_FILES"
           # filter for .html files
-          html_files=$(echo "$CHANGED_FILES" | tr ' ' '\n' | grep '\.html$' || true)
-          html_files='OSTRICH'
-          echo "html_files: $html_files"
+          HTML_FILES=$(echo "$CHANGED_FILES" | tr ' ' '\n' | grep '\.html$' || true)
+          HTML_FILES='OSTRICH'
+          echo "html_files: $HTML_FILES"
+          echo "html_files=$HTML_files" >> $GITHUB_OUTPUT
+
       - name: Generate cache key
         id: generate_cache_key
         run: |
