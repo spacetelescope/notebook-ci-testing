@@ -47,10 +47,10 @@ jobs:
           CACHE_KEY=$(printf 'cached_results-%s.json' "${{ github.ref_name }}" | tr -cs 'A-Za-z0-9._-' '-')
           echo "cache_key=$CACHE_KEY" >> $GITHUB_OUTPUT
 
-#      - name: List new or updated HTML files
-#        id: sanity-check
-#        run: |
-#          echo "New or changed HTML files: ${{ needs.list-files.outputs.new_updated_html_files }}"
+      - name: List new or updated HTML files
+        id: sanity-check
+        run: |
+          echo "New or changed HTML files: ${{ needs.list-files.outputs.new_updated_html_files }}"
 
       - uses: github/accessibility-scanner@v3.4.1
         with:
