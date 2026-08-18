@@ -57,4 +57,5 @@ jobs:
           token: ${{ secrets.A11Y_TOKEN }} # This token must have write access to the repo above (contents, issues, and PRs); more information below. Note: GitHub Actions' GITHUB_TOKEN cannot be used here.
           cache_key: ${{ steps.generate_cache_key.outputs.cache_key }}
           dry_run: false
+          skip_copilot_assignment: true
 
