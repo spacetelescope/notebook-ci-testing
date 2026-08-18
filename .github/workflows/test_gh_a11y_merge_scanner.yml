@@ -19,11 +19,9 @@ jobs:
           repository: 'spacetelescope/${{ github.event.inputs.repository }}'
           ref: 'gh-pages'
           fetch-depth: 0 # Fetches all history (safest for tracking across multiple push commits)
-
       - name: Get changed files
         id: changed-files
         uses: tj-actions/changed-files@v47.0.6
-
       - name: List added or modified files
         id: make-html-list
         run: |
@@ -32,7 +30,7 @@ jobs:
           echo "All new or changed files: $CHANGED_FILES"
           # filter for .html files
           HTML_FILES=$(echo "$CHANGED_FILES" | tr ' ' '\n' | grep '\.html$' || true)          
-          echo "New or changed HTML files: $HTML_FILES"
+          # build a JSON array of the new or changed HTML files
           JSON_ARRAY=$(echo "$HTML_FILES" | jq -R '[inputs | select(length > 0)]' -c)
           echo "JSON array of new or changed HTML files: $JSON_ARRAY"
           echo "html_files<<EOF" >> $GITHUB_OUTPUT
@@ -52,15 +50,9 @@ jobs:
         run: |
           CACHE_KEY=$(printf 'cached_results-%s.json' "${{ github.ref_name }}" | tr -cs 'A-Za-z0-9._-' '-')
           echo "cache_key=$CACHE_KEY" >> $GITHUB_OUTPUT
-
-      - name: List new or updated HTML files
-        id: sanity-check
-        run: |
-          echo "New or changed HTML files: ${{ needs.list-files.outputs.new_updated_html_files }}"
-
       - uses: github/accessibility-scanner@v3.4.1
         with:
-          urls: ${{ matrix.url }}
+          urls: 'https://spacetelescope.github.io/${{ steps.make-html-list.outputs.html_files }}/${{ matrix.url }}'
           repository: 'spacetelescope/${{ github.event.inputs.repository }}'
           token: ${{ secrets.A11Y_TOKEN }} # This token must have write access to the repo above (contents, issues, and PRs); more information below. Note: GitHub Actions' GITHUB_TOKEN cannot be used here.
           cache_key: ${{ steps.generate_cache_key.outputs.cache_key }}
