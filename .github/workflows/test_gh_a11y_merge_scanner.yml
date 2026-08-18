@@ -52,7 +52,7 @@ jobs:
           echo "cache_key=$CACHE_KEY" >> $GITHUB_OUTPUT
       - uses: github/accessibility-scanner@v3.4.1
         with:
-          urls: 'https://spacetelescope.github.io/${{ steps.make-html-list.outputs.html_files }}/${{ matrix.url }}'
+          urls: 'https://spacetelescope.github.io/${{ github.event.inputs.repository }}/${{ matrix.url }}'
           repository: 'spacetelescope/${{ github.event.inputs.repository }}'
           token: ${{ secrets.A11Y_TOKEN }} # This token must have write access to the repo above (contents, issues, and PRs); more information below. Note: GitHub Actions' GITHUB_TOKEN cannot be used here.
           cache_key: ${{ steps.generate_cache_key.outputs.cache_key }}
