@@ -41,7 +41,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: list-files
     strategy:
-      # Defines the array of values to loop through
+      fail-fast: false
       matrix:
         url: ${{ fromJSON(needs.list-files.outputs.new_updated_html_files) }}
     steps:
