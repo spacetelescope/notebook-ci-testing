@@ -49,7 +49,7 @@ jobs:
         id: generate_cache_key
         run: |
 #          CACHE_KEY=$(printf 'cached_results-%s-%s.json' "${{ github.ref_name }}" | tr -cs 'A-Za-z0-9/._-' '-')
-          CACHE_KEY=$(printf 'cached_results-%s.json' "${{ matrix.url }}" | tr -cs '/._-' '-')
+          CACHE_KEY=$(printf 'cached_results-%s-%s.json' "${{ github.ref_name }}" | tr -cs '._-' '-')
           echo "Generated cache key: $CACHE_KEY"
           echo "cache_key=$CACHE_KEY" >> $GITHUB_OUTPUT
       - uses: github/accessibility-scanner@v3.4.1
