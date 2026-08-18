@@ -36,7 +36,7 @@ jobs:
           JSON_ARRAY=$(echo "$HTML_FILES" | jq -R '[inputs | select(length > 0)]' -c)
           echo "JSON array of new or changed HTML files: $JSON_ARRAY"
           echo "html_files<<EOF" >> $GITHUB_OUTPUT
-          echo "JSON_ARRAY" >> $GITHUB_OUTPUT
+          echo "$JSON_ARRAY" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
 
   html_accessibility_scanner:
