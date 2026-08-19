@@ -53,10 +53,11 @@ jobs:
                   NEW_LIST="${NEW_LIST}"$'\n'"$processed_line"
               fi
           done <<< "$TARGET_VAR"
-          
+          echo "NEW LIST: $NEW_LIST"
+          NEW_LIST=$(echo "$NEW_LIST" | tail -n 5) # TODO: REMOVE PRIOR TO DEPLOYMENT
           # Export the result to a new environment variable
           export HTML_FILES="$NEW_LIST"
-          
+          echo "HTML_FILES: $HTML_FILES"
           echo "html_files<<EOF" >> $GITHUB_OUTPUT
           echo "$HTML_FILES" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
