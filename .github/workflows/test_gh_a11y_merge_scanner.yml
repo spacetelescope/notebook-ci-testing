@@ -32,30 +32,28 @@ jobs:
           HTML_FILES=$(echo "$CHANGED_FILES" | tr ' ' '\n' | grep '\.html$' || true)
           
           # Define your text string and source environment variable
-          PREFIX="https://spacetelescope.github.io/${{ github.event.inputs.repository }}/"
+          ADD_TEXT="https://spacetelescope.github.io/${{ github.event.inputs.repository }}/"
+          TARGET_VAR="$HTML_FILES"
 
-       
-          # Process the list line by line, prepend the text, and keep only the last 5 lines
-#          NEW_LIST=$(echo "$HTML_FILES" | awk -v p="$PREFIX" '{print p $0}' | tail -n 5)
-          NEW_LIST=$(echo "$HTML_FILES" | awk -v p="$PREFIX" '{print p $0}')
-#          # Initialize an empty variable to hold the new list
-#          NEW_LIST=""
-#          # Read the environment variable line by line
-#          while IFS= read -r line; do
-#              # Skip empty lines
-#              [[ -z "$line" ]] && continue
-#
-#              # Process the line
-#              processed_line="${PREFIX}${line}"
-#
-#              # Append the processed line with a newline character
-#              if [[ -z "$NEW_LIST" ]]; then
-#                  NEW_LIST="$processed_line"
-#              else
-#                  NEW_LIST="${NEW_LIST}"$'\n'"$processed_line"
-#              fi
-#          done <<< "$TARGET_VAR"
+          # Initialize an empty variable to hold the new list
+          NEW_LIST=""
 
+          # Read the environment variable line by line
+          while IFS= read -r line; do
+              # Skip empty lines
+              [[ -z "$line" ]] && continue
+
+              # Process the line
+              processed_line="${ADD_TEXT}${line}"
+
+              # Append the processed line with a newline character
+              if [[ -z "$NEW_LIST" ]]; then
+                  NEW_LIST="$processed_line"
+              else
+                  NEW_LIST="${NEW_LIST}"$'\n'"$processed_line"
+              fi
+          done <<< "$TARGET_VAR"
+          
           # Export the result to a new environment variable
           export HTML_FILES="$NEW_LIST"
           
