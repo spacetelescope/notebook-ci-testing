@@ -29,33 +29,72 @@ jobs:
           CHANGED_FILES="${{ steps.changed-files.outputs.added_files }} ${{ steps.changed-files.outputs.modified_files }}"
           echo "All new or changed files: $CHANGED_FILES"
           # filter for .html files
-          HTML_FILES=$(echo "$CHANGED_FILES" | tr ' ' '\n' | grep '\.html$' || true)          
-          # build a JSON array of the new or changed HTML files
-          JSON_ARRAY=$(echo "$HTML_FILES" | jq -R '[inputs | select(length > 0)]' -c)
-          echo "JSON array of new or changed HTML files: $JSON_ARRAY"
+          HTML_FILES=$(echo "$CHANGED_FILES" | tr ' ' '\n' | grep '\.html$' || true)
+          
+          # Define your text string and source environment variable
+          ADD_TEXT="https://spacetelescope.github.io/${{ github.event.inputs.repository }}/"
+          TARGET_VAR="$HTML_FILES"
+
+          # Initialize an empty variable to hold the new list
+          NEW_LIST=""
+
+          # Read the environment variable line by line
+          while IFS= read -r line; do
+              # Skip empty lines
+              [[ -z "$line" ]] && continue
+
+              # Process the line
+              processed_line="${ADD_TEXT}${line}"
+
+              # Append the processed line with a newline character
+              if [[ -z "$NEW_LIST" ]]; then
+                  NEW_LIST="$processed_line"
+              else
+                  NEW_LIST="${NEW_LIST}"$'\n'"$processed_line"
+              fi
+          done <<< "$TARGET_VAR"
+
+          # Export the result to a new environment variable
+          export $HTML_FILES="$NEW_LIST"
+          
           echo "html_files<<EOF" >> $GITHUB_OUTPUT
-          echo "$JSON_ARRAY" >> $GITHUB_OUTPUT
+          echo "$HTML_FILES" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
 
-  html_accessibility_scanner:
+#          # build a JSON array of the new or changed HTML files
+#          JSON_ARRAY=$(echo "$HTML_FILES" | jq -R '[inputs | select(length > 0)]' -c)
+#          echo "JSON array of new or changed HTML files: $JSON_ARRAY"
+#          echo "html_files<<EOF" >> $GITHUB_OUTPUT
+#          echo "$JSON_ARRAY" >> $GITHUB_OUTPUT
+#          echo "EOF" >> $GITHUB_OUTPUT
+
+  sanity-check:
     runs-on: ubuntu-latest
     needs: list-files
-    strategy:
-      fail-fast: false
-      matrix:
-        url: ${{ fromJSON(needs.list-files.outputs.new_updated_html_files) }}
     steps:
-      - name: Generate cache key
-        id: generate_cache_key
+      - name: Sanity check for new or changed HTML files
         run: |
-          CACHE_KEY=$(printf 'cached_results-%s-%s.json' "${{ github.ref_name }}" | tr -cs 'A-Za-z0-9/._-' '-')
-          echo "Generated cache key: $CACHE_KEY"
-          echo "cache_key=$CACHE_KEY" >> $GITHUB_OUTPUT
-      - uses: github/accessibility-scanner@v3.4.1
-        with:
-          urls: 'https://spacetelescope.github.io/${{ github.event.inputs.repository }}/${{ matrix.url }}'
-          repository: 'spacetelescope/${{ github.event.inputs.repository }}'
-          token: ${{ secrets.A11Y_TOKEN }} # This token must have write access to the repo above (contents, issues, and PRs); more information below. Note: GitHub Actions' GITHUB_TOKEN cannot be used here.
-          cache_key: ${{ steps.generate_cache_key.outputs.cache_key }}
-          dry_run: true # Set to true for testing without creating issues or comments
+          echo "New or changed HTML files:"
+          echo "${{ needs.list-files.outputs.new_updated_html_files }}"
+#  html_accessibility_scanner:
+#    runs-on: ubuntu-latest
+#    needs: list-files
+#    strategy:
+#      fail-fast: false
+#      matrix:
+#        url: ${{ fromJSON(needs.list-files.outputs.new_updated_html_files) }}
+#    steps:
+#      - name: Generate cache key
+#        id: generate_cache_key
+#        run: |
+#          CACHE_KEY=$(printf 'cached_results-%s-%s.json' "${{ github.ref_name }}" | tr -cs 'A-Za-z0-9/._-' '-')
+#          echo "Generated cache key: $CACHE_KEY"
+#          echo "cache_key=$CACHE_KEY" >> $GITHUB_OUTPUT
+#      - uses: github/accessibility-scanner@v3.4.1
+#        with:
+#          urls: 'https://spacetelescope.github.io/${{ github.event.inputs.repository }}/${{ matrix.url }}'
+#          repository: 'spacetelescope/${{ github.event.inputs.repository }}'
+#          token: ${{ secrets.A11Y_TOKEN }} # This token must have write access to the repo above (contents, issues, and PRs); more information below. Note: GitHub Actions' GITHUB_TOKEN cannot be used here.
+#          cache_key: ${{ steps.generate_cache_key.outputs.cache_key }}
+#          dry_run: true # Set to true for testing without creating issues or comments
 
