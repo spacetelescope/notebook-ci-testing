@@ -55,7 +55,7 @@ jobs:
           done <<< "$TARGET_VAR"
 
           # Export the result to a new environment variable
-          export $HTML_FILES="$NEW_LIST"
+          export HTML_FILES="$NEW_LIST"
           
           echo "html_files<<EOF" >> $GITHUB_OUTPUT
           echo "$HTML_FILES" >> $GITHUB_OUTPUT
