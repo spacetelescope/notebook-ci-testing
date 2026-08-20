@@ -1,0 +1,8 @@
+name: Call Test GitHub Accessibility Scanner on Changed HTML Files
+
+on:
+  workflow_dispatch:
+
+jobs:
+  call-test-gh-a11y:
+    uses: spacetelescope/notebook-ci-actions/.github/workflows/test_gh_a11y_merge_scanner.yml@add_html_a11y_checks
