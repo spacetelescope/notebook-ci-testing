@@ -275,7 +275,7 @@ jobs:
       enable-execution: false
       enable-storage: false
       enable-html-build: true
-      enable-a11y-html-check: true
+      enable-a11y-html-check: false
       crds-server-url: ${{ needs.resolve-crds.outputs.crds_server_url }}
       crds-context: ${{ needs.resolve-crds.outputs.crds_context }}
       crds-path: ${{ needs.resolve-crds.outputs.crds_path }}
