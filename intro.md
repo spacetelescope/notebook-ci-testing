@@ -1,7 +1,7 @@
 #
 <html>
     <head>
-        <title> Spacetelescope jdat_notebooks Index </title> 
+        <title> Spacetelescope jdat_notebooks Index  </title> 
 <meta http-equiv="content-type" content="text.html"; charset=utf-8">
 
 <!-- Custom Style -->
