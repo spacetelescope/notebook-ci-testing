@@ -47,10 +47,10 @@ jobs:
           echo "Difference: ${{ needs.count-issues.outputs.diff}}"
           echo "scan outcome: ${{ needs.count-issues.outputs.scan_outcome}}"
           
-          if [ " $DIFF -eq 0 ]; then
+          if [ "$DIFF" -eq 0 ]; then
             echo "- **Status**: ✅ SUCCESS - No accessibility issues found."
           else:
-            if [ "$DIFF -eq 1 ]; then
+            if [ "$DIFF" -eq 1 ]; then
               $PLURAL="s"
             else:
               $plural=""
