@@ -7,7 +7,7 @@ jobs:
   count-issues:
     runs-on: ubuntu-latest
     outputs:
-      diff: ${{ steps.compute_diff.outputs.diff }}
+      diff: ${{ steps.issue-count-postscan.outputs.diff }}
       scan_outcome : ${{ steps.run_html_a11y_scanner.outcome }}
     env:
       GH_TOKEN: ${{ secrets.A11Y_TOKEN }} # Required to authenticate the GitHub CLI
@@ -40,17 +40,18 @@ jobs:
           
           echo "Found $COUNT open issues with the label '$TARGET_LABEL'."
           
+          DIFF=$(( ${{ steps.issue-count-postscan.outputs.count }}-$COUNT ))
           # Save the count to output so other steps can use it
-          echo "count=$COUNT" >> $GITHUB_OUTPUT
+          echo "diff=DIFF" >> $GITHUB_OUTPUT
 
-      - name: Use the count in a later step
-        id: compute_diff
-        run: |
-          echo "Prescan count: ${{ steps.issue-count-prescan.outputs.count }}"
-          echo "Postscan count: ${{ steps.issue-count-postscan.outputs.count }}"
-          DIFF=$(( ${{ steps.issue-count-postscan.outputs.count }}-${{ steps.issue-count-postscan.outputs.count }} ))
-          echo "Difference: $DIFF"
-          echo  "diff=$DIFF" >> $GITHUB_OUTPUT
+#      - name: Use the count in a later step
+#        id: compute_diff
+#        run: |
+#          echo "Prescan count: ${{ steps.issue-count-prescan.outputs.count }}"
+#          echo "Postscan count: ${{ steps.issue-count-postscan.outputs.count }}"
+#          DIFF=$(( ${{ steps.issue-count-postscan.outputs.count }}-${{ steps.issue-count-postscan.outputs.count }} ))
+#          echo "Difference: $DIFF"
+#          echo  "diff=$DIFF" >> $GITHUB_OUTPUT
 
   summary:
     runs-on: ubuntu-latest
