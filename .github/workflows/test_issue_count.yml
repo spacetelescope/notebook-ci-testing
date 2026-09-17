@@ -42,7 +42,7 @@ jobs:
           
           DIFF=$(( ${{ steps.issue-count-postscan.outputs.count }}-$COUNT ))
           # Save the count to output so other steps can use it
-          echo "diff=DIFF" >> $GITHUB_OUTPUT
+          echo "diff=$DIFF" >> $GITHUB_OUTPUT
 
 #      - name: Use the count in a later step
 #        id: compute_diff
