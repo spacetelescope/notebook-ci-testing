@@ -10,19 +10,16 @@ jobs:
       diff: ${{ steps.issue-count-postscan.outputs.diff }}
       scan_outcome : ${{ steps.run_html_a11y_scanner.outcome }}
     env:
-      GH_TOKEN: ${{ secrets.A11Y_TOKEN }} # Required to authenticate the GitHub CLI
-      TARGET_LABEL: "axe-scanning-issue" # Change this to your specific tag
+      TARGET_LABEL: "axe-scanning-issue"
+      TOKEN: ${{ secrets.A11Y_TOKEN }}
 
     steps:
       - name: Count open issues (pre-scan)
         id: issue-count-prescan
         run: |
           # Fetch open issues with the label and get the count using jq length
-          # COUNT=$(gh issue list --label "$TARGET_LABEL" --state open --json number | jq '. | length')
           COUNT=$(gh issue list --repo "${{ github.repository }}" --label "$TARGET_LABEL" --state open --json number | jq '. | length')
-          
           echo "Found $COUNT open issues with the label '$TARGET_LABEL'."
-          
           # Save the count to output so other steps can use it
           echo "count=$COUNT" >> $GITHUB_OUTPUT
 
@@ -35,23 +32,11 @@ jobs:
         id: issue-count-postscan
         run: |
           # Fetch open issues with the label and get the count using jq length
-          # COUNT=$(gh issue list --label "$TARGET_LABEL" --state open --json number | jq '. | length')
           COUNT=$(gh issue list --repo "${{ github.repository }}" --label "$TARGET_LABEL" --state open --json number | jq '. | length')
-          
           echo "Found $COUNT open issues with the label '$TARGET_LABEL'."
-          
-          DIFF=$(( $COUNT-${{ steps.issue-count-postscan.outputs.count }} ))
-          # Save the count to output so other steps can use it
+          # Compute postscan - prescan difference
+          DIFF=$(( $COUNT-${{ steps.issue-count-prescan.outputs.count }} ))
           echo "diff=$DIFF" >> $GITHUB_OUTPUT
-
-#      - name: Use the count in a later step
-#        id: compute_diff
-#        run: |
-#          echo "Prescan count: ${{ steps.issue-count-prescan.outputs.count }}"
-#          echo "Postscan count: ${{ steps.issue-count-postscan.outputs.count }}"
-#          DIFF=$(( ${{ steps.issue-count-postscan.outputs.count }}-${{ steps.issue-count-postscan.outputs.count }} ))
-#          echo "Difference: $DIFF"
-#          echo  "diff=$DIFF" >> $GITHUB_OUTPUT
 
   summary:
     runs-on: ubuntu-latest
