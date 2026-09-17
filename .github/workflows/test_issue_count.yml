@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ secrets.A11Y_TOKEN }} # Required to authenticate the GitHub CLI
-      TARGET_LABEL: "bug" # Change this to your specific tag
+      TARGET_LABEL: "axe-scanning-issue" # Change this to your specific tag
 
     steps:
       - name: Fetch and count open issues
