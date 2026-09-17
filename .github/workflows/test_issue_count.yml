@@ -51,9 +51,9 @@ jobs:
             echo "- **Status**: ✅ SUCCESS - No accessibility issues found."
           else
             if [ "$DIFF" -eq 1 ]; then
-              PLURAL="s"
+              PLURAL='s'
             else
-              PLURAL=""
+              PLURAL=''
             fi
             echo "- **Status**: ⚠️ FAILURE - "Accessibility problem$PLURAL found. [$DIFF new issue$PLURAL tagged with 'axe-scanning-issue'](https://github.com/spacetelescope/${{ github.event.repository.name }}/issues?q=is%3Aissue%20state%3Aopen%20label%3Aaxe-scanning-issue) have been automatically created."
           fi
