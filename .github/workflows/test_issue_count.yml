@@ -31,7 +31,7 @@ jobs:
         run: |
           echo "HTML a11y scanner runs here!"
 
-      - name: Count open issues (post-scan)
+      - name: Count open issues (post-scan) and compute difference from pre-scan value
         id: issue-count-postscan
         run: |
           # Fetch open issues with the label and get the count using jq length
@@ -40,7 +40,7 @@ jobs:
           
           echo "Found $COUNT open issues with the label '$TARGET_LABEL'."
           
-          DIFF=$(( ${{ steps.issue-count-postscan.outputs.count }}-$COUNT ))
+          DIFF=$(( $COUNT-${{ steps.issue-count-postscan.outputs.count }} ))
           # Save the count to output so other steps can use it
           echo "diff=$DIFF" >> $GITHUB_OUTPUT
 
