@@ -15,7 +15,8 @@ jobs:
         id: issue-count
         run: |
           # Fetch open issues with the label and get the count using jq length
-          COUNT=$(gh issue list --label "$TARGET_LABEL" --state open --json number | jq '. | length')
+          # COUNT=$(gh issue list --label "$TARGET_LABEL" --state open --json number | jq '. | length')
+          COUNT=$(gh issue list --repo "${{ github.repository }}" --label "$TARGET_LABEL" --state open --json number | jq '. | length')
           
           echo "Found $COUNT open issues with the label '$TARGET_LABEL'."
           
