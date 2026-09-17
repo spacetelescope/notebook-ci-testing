@@ -11,8 +11,25 @@ jobs:
       TARGET_LABEL: "axe-scanning-issue" # Change this to your specific tag
 
     steps:
-      - name: Fetch and count open issues
-        id: issue-count
+      - name: Count open issues (pre-scan)
+        id: issue-count-prescan
+        run: |
+          # Fetch open issues with the label and get the count using jq length
+          # COUNT=$(gh issue list --label "$TARGET_LABEL" --state open --json number | jq '. | length')
+          COUNT=$(gh issue list --repo "${{ github.repository }}" --label "$TARGET_LABEL" --state open --json number | jq '. | length')
+          
+          echo "Found $COUNT open issues with the label '$TARGET_LABEL'."
+          
+          # Save the count to output so other steps can use it
+          echo "count=$COUNT" >> $GITHUB_OUTPUT
+
+      - name: Run HTML accessibility scanner
+        id: run_html_a11y_scanner
+        run: |
+          echo "HTML a11y scanner runs here!"
+
+      - name: Count open issues (post-scan)
+        id: issue-count-postscan
         run: |
           # Fetch open issues with the label and get the count using jq length
           # COUNT=$(gh issue list --label "$TARGET_LABEL" --state open --json number | jq '. | length')
@@ -25,5 +42,8 @@ jobs:
 
       - name: Use the count in a later step
         run: |
-          echo "The count from the previous step is ${{ steps.issue-count.outputs.count }}"
+          echo "Prescan count: ${{ steps.issue-count-prescan.outputs.count }}"
+          echo "Postscan count: ${{ steps.issue-count-postscan.outputs.count }}"
+          DIFF = ${{ steps.issue-count-postscan.outputs.count }} - ${{ steps.issue-count-postscan.outputs.count }}
+          echo "Difference: $DIFF"
 
