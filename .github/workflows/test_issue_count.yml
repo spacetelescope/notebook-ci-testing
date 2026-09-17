@@ -49,7 +49,7 @@ jobs:
           
           if [ "$DIFF" -eq 0 ]; then
             echo "- **Status**: ✅ SUCCESS - No accessibility issues found."
-          else:
+          else
             if [ "$DIFF" -eq 1 ]; then
               PLURAL="s"
             else
