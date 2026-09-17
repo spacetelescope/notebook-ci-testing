@@ -44,6 +44,6 @@ jobs:
         run: |
           echo "Prescan count: ${{ steps.issue-count-prescan.outputs.count }}"
           echo "Postscan count: ${{ steps.issue-count-postscan.outputs.count }}"
-          DIFF = ${{ steps.issue-count-postscan.outputs.count }} - ${{ steps.issue-count-postscan.outputs.count }}
+          DIFF=${{ steps.issue-count-postscan.outputs.count }}-${{ steps.issue-count-postscan.outputs.count }}
           echo "Difference: $DIFF"
 
