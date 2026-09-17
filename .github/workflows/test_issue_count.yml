@@ -10,9 +10,8 @@ jobs:
       diff: ${{ steps.issue-count-postscan.outputs.diff }}
       scan_outcome : ${{ steps.run_html_a11y_scanner.outcome }}
     env:
+      GH_TOKEN: ${{ secrets.A11Y_TOKEN }}
       TARGET_LABEL: "axe-scanning-issue"
-      TOKEN: ${{ secrets.A11Y_TOKEN }}
-
     steps:
       - name: Count open issues (pre-scan)
         id: issue-count-prescan
