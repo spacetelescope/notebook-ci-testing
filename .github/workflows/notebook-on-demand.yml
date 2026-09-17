@@ -266,7 +266,7 @@ jobs:
   build-html-only:
     if: inputs.action_type == 'build-html-only'
     needs: resolve-crds
-    uses:  spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@v1
+    uses:  spacetelescope/notebook-ci-actions/.github/workflows/notebook-ci-unified.yml@fix/analytics
     with:
       execution-mode: 'on-demand'
       trigger-event: 'html'
