@@ -44,6 +44,7 @@ jobs:
       - name: Summary
         run: |
           DIFF=${{ needs.count-issues.outputs.diff}}
+          DIFF=1
           echo "Difference: $DIFF"
           echo "scan outcome: ${{ needs.count-issues.outputs.scan_outcome}}"
           
