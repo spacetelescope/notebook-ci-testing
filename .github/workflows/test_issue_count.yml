@@ -8,6 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       diff: ${{ steps.compute_diff.outputs.diff }}
+      scan_outcome : ${steps.run_html_a11y_scanner.outcome }}
     env:
       GH_TOKEN: ${{ secrets.A11Y_TOKEN }} # Required to authenticate the GitHub CLI
       TARGET_LABEL: "axe-scanning-issue" # Change this to your specific tag
@@ -58,3 +59,4 @@ jobs:
       - name: Summary
         run: |
           echo "Difference: ${{ needs.count-issues.outputs.diff}}"
+          echo "scan outcome: ${{ needs.count-issues.outputs.scan_outcome}}"
