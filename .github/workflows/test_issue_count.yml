@@ -6,6 +6,8 @@ on:
 jobs:
   count-issues:
     runs-on: ubuntu-latest
+    outputs:
+      diff: ${{ steps.compute_diff.outputs.diff }}
     env:
       GH_TOKEN: ${{ secrets.A11Y_TOKEN }} # Required to authenticate the GitHub CLI
       TARGET_LABEL: "axe-scanning-issue" # Change this to your specific tag
@@ -41,9 +43,18 @@ jobs:
           echo "count=$COUNT" >> $GITHUB_OUTPUT
 
       - name: Use the count in a later step
+        id: compute_diff
         run: |
           echo "Prescan count: ${{ steps.issue-count-prescan.outputs.count }}"
           echo "Postscan count: ${{ steps.issue-count-postscan.outputs.count }}"
           DIFF=$(( ${{ steps.issue-count-postscan.outputs.count }}-${{ steps.issue-count-postscan.outputs.count }} ))
           echo "Difference: $DIFF"
+          echo  "diff=$DIFF" >> $GITHUB_OUTPUT
 
+  summary:
+    runs-on: ubuntu-latest
+    needs: count-issues
+    steps:
+      - name: Summary
+        run: |
+          echo "Difference: ${{ needs.count-issues.outputs.diff}}"
