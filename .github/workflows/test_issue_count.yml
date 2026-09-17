@@ -1,11 +1,11 @@
 name: test issue counter
 
 on:
-  workflow_call:
+  workflow_dispatch:
     secrets:
         A11Y_TOKEN:
             required: true
-            description: 'Test workflow to count number of issues'
+            description: 'Test workflow to count the number of issues'
 
 jobs:
   count-issues:
