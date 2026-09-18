@@ -43,18 +43,18 @@ jobs:
     steps:
       - name: Summary
         run: |
-          DIFF=${{ needs.count-issues.outputs.diff}}
-          DIFF=54
-          echo "Difference: $DIFF"
-          echo "scan outcome: ${{ needs.count-issues.outputs.scan_outcome}}"
+          enable-a11y-html-check = "true"
+          if [ "$enable-a11y-check" = "true" ]; then
           
-          if [ "$DIFF" -eq 0 ]; then
-            echo "- **Status**: ✅ SUCCESS - No accessibility issues found."
-          else
-            if [ "$DIFF" -eq 1 ]; then
-              PLURAL=""
+            DIFF=${{ needs.count-issues.outputs.diff}}
+            if [ "$DIFF" -eq 0 ]; then
+              echo "- **Status**: ✅ SUCCESS - No accessibility problems found."
             else
-              PLURAL="s"
+              if [ "$DIFF" -eq 1 ]; then
+                PLURAL=""
+              else
+                PLURAL="s"
+              fi
+              echo "- **Status**: ⚠️ FAILURE - Accessibility problem$PLURAL found. $DIFF new issue$PLURAL tagged with ['axe-scanning-issue'](https://github.com/spacetelescope/${{ github.event.repository.name }}/issues?q=is%3Aissue%20state%3Aopen%20label%3Aaxe-scanning-issue) have been automatically created."
             fi
-            echo "- **Status**: ⚠️ FAILURE - Accessibility problem$PLURAL found. $DIFF new issue$PLURAL tagged with ['axe-scanning-issue'](https://github.com/spacetelescope/${{ github.event.repository.name }}/issues?q=is%3Aissue%20state%3Aopen%20label%3Aaxe-scanning-issue) have been automatically created."
           fi
