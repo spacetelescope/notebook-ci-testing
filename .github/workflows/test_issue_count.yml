@@ -46,7 +46,7 @@ jobs:
           enable_a11y_html_check="true"
           if [ "$enable_a11y_html_check" = "true" ]; then
             echo "**🔦 HTML Accessibility Check**"
-            if [ ${{ needs.count-issues.outputs.scan_outcome }} = "success"]; then
+            if [ ${{ needs.count-issues.outputs.scan_outcome }} = "success" ]; then
               DIFF=${{ needs.count-issues.outputs.diff}}
               if [ "$DIFF" -eq 0 ]; then
                 echo "- **Status**: ✅ SUCCESS - No accessibility problems found."
