@@ -58,7 +58,7 @@ jobs:
                 fi
                 echo "- **Status**: ⚠️ FAILURE - Accessibility problem$PLURAL found. $DIFF new issue$PLURAL tagged with ['axe-scanning-issue'](https://github.com/spacetelescope/${{ github.event.repository.name }}/issues?q=is%3Aissue%20state%3Aopen%20label%3Aaxe-scanning-issue) have been automatically created."
               fi
-            elif [ ${{ count-issues.outputs.scan_outcome }} = "skipped"]; then
+            elif [ ${{ needs.count-issues.outputs.scan_outcome }} = "skipped"]; then
               echo "- **Status**: ℹ️  SCAN SKIPPED - There were no new HTML files to scan."
             else
               echo "- **Status**: 🚨 SCAN FAILURE"
