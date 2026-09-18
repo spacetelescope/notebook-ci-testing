@@ -64,7 +64,7 @@ jobs:
               DIFF=${{ needs.count-issues.outputs.diff}}
               if [ $DIFF -eq 0 ]; then
                 trend="None"
-              else:
+              else
                 trend="+$DIFF"
               fi
               echo "Change: $trend"
