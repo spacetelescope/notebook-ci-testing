@@ -45,7 +45,7 @@ jobs:
       - name: Summary
         run: |
           enable_a11y_html_check="true"
-          scan_outcome=needs.count-issues.outputs.scan_outcome
+          scan_outcome=${{ needs.count-issues.outputs.scan_outcome }}
           echo "SCAN_OUTCOME: $scan_outcome"
           if [ "$enable_a11y_html_check" = "true" ]; then
             echo "**🔦 HTML Accessibility Check**"
