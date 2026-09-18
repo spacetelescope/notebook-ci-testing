@@ -62,7 +62,6 @@ jobs:
             fi
             if [ "$scan_outcome" = "success" ]; then
               DIFF=${{ needs.count-issues.outputs.diff}}
-              DIFF=32
               if [ $DIFF -eq 0 ]; then
                 trend="None"
               else
