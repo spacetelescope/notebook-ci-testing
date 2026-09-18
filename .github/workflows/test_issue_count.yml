@@ -53,7 +53,7 @@ jobs:
                 PLURAL2="is"
               else
                 PLURAL="s"
-                PLURAL="are
+                PLURAL="are"
               fi
               echo "- **Info**: ℹ️ There $PLURAL2 ${{ needs.count-issues.output.pre_count }} existing open html accessibility issue$PLURAL. [Click here](https://github.com/spacetelescope/${{ github.event.repository.name }}/issues?q=is%3Aissue%20state%3Aopen%20label%3Aaxe-scanning-issue) for details."
             fi
