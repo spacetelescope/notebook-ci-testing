@@ -61,5 +61,6 @@ jobs:
             elif [ ${{ count-issues.outputs.scan_outcome }} = "skipped"]; then
               echo "- **Status**: ℹ️  SCAN SKIPPED - There were no new HTML files to scan."
             else
+              echo "- **Status**: 🚨 SCAN FAILURE"
             fi
           fi
