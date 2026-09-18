@@ -65,7 +65,7 @@ jobs:
               if [ $DIFF -eq 0 ]; then
                 trend="None"
               else
-                trend="+$DIFF"
+                trend="+$DIFF "
               fi
               echo "Change: $trend"
               if [ "$DIFF" -eq 0 ]; then
