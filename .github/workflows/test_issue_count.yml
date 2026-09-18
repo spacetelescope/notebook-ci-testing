@@ -43,8 +43,8 @@ jobs:
     steps:
       - name: Summary
         run: |
-          EAHC="true"
-          if [ "$EAHC" = "true" ]; then
+          enable_a11y_html_check="true"
+          if [ "$enable_a11y_html_check" = "true" ]; then
           
             DIFF=${{ needs.count-issues.outputs.diff}}
             if [ "$DIFF" -eq 0 ]; then
