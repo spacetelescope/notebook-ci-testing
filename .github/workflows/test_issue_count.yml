@@ -55,7 +55,7 @@ jobs:
                 PLURAL="s"
                 PLURAL="are"
               fi
-              echo "- **Info**: ℹ️ There $PLURAL2 ${{ needs.count-issues.outputs.pre_count }} existing open html accessibility issue$PLURAL. [Click here](https://github.com/spacetelescope/${{ github.event.repository.name }}/issues?q=is%3Aissue%20state%3Aopen%20label%3Aaxe-scanning-issue) for details."
+              echo "- **Info**: ℹ️ There $PLURAL2 ${{ needs.count-issues.outputs.pre_count }} existing open html accessibility-related issue$PLURAL. [Click here](https://github.com/spacetelescope/${{ github.event.repository.name }}/issues?q=is%3Aissue%20state%3Aopen%20label%3Aaxe-scanning-issue) for details."
             fi
             if [ ${{ needs.count-issues.outputs.scan_outcome }} = "success" ]; then
               DIFF=${{ needs.count-issues.outputs.diff}}
