@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       diff: ${{ steps.issue-count-postscan.outputs.diff }}
-      pre_count: ${{ steps.issue-count-prescan.outputs.count
+      pre_count: ${{ steps.issue-count-prescan.outputs.count }}
       scan_outcome: ${{ steps.run_html_a11y_scanner.outcome }}
     env:
       GH_TOKEN: ${{ secrets.A11Y_TOKEN }}
