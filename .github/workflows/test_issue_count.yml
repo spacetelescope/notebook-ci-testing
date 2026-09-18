@@ -61,6 +61,12 @@ jobs:
             fi
             if [ "$scan_outcome" = "success" ]; then
               DIFF=${{ needs.count-issues.outputs.diff}}
+              if [ $DIFF -eq 0 ]; then
+                trend="None"
+              else:
+                trend="+$DIFF"
+              fi
+              echo "Change: $trend"
               if [ "$DIFF" -eq 0 ]; then
                 echo "- **Status**: ✅ SUCCESS - No new accessibility problems found."
               else
