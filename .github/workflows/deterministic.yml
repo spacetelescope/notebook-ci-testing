@@ -17,7 +17,7 @@ on:
         type: string
 
       requirements:
-        description: "Requirements file (leave blank to auto-detect)"
+        description: "Optional requirements file override"
         required: false
         default: ""
         type: string
@@ -29,7 +29,7 @@ on:
         type: string
 
       compare-stored-outputs:
-        description: "Also compare fresh execution against committed outputs with nbval"
+        description: "Compare fresh execution against committed outputs with nbval"
         required: false
         default: false
         type: boolean
@@ -83,6 +83,8 @@ jobs:
           echo "Notebook found:"
           echo "  $NOTEBOOK"
 
+          echo "notebook-dir=$(dirname "$NOTEBOOK")" >> "$GITHUB_OUTPUT"
+
 
       # ============================================================
       # Python
@@ -95,7 +97,7 @@ jobs:
 
 
       # ============================================================
-      # Install CI/test tooling
+      # Install test tooling
       # ============================================================
 
       - name: Install notebook test tools
@@ -109,63 +111,114 @@ jobs:
             nbformat \
             nbclient \
             jupyter \
+            nbconvert \
             ipykernel \
             pytest \
             nbval \
             bandit \
             detect-secrets \
-            pip-audit
+            pip-audit \
+            flake8 \
+            numpy \
+            pytz
 
 
       # ============================================================
-      # Install repository dependencies
+      # Resolve notebook-specific requirements
       # ============================================================
 
-      - name: Install repository dependencies
+      - name: Resolve notebook requirements
+        id: requirements
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          NOTEBOOK_DIR="$(dirname "$NOTEBOOK")"
+          OVERRIDE="${{ inputs.requirements }}"
+
+          if [[ -n "$OVERRIDE" ]]; then
+
+            if [[ ! -f "$OVERRIDE" ]]; then
+              echo "::error::Requirements override not found: $OVERRIDE"
+              exit 1
+            fi
+
+            REQUIREMENTS_FILE="$OVERRIDE"
+
+          elif [[ -f "$NOTEBOOK_DIR/requirements.txt" ]]; then
+
+            REQUIREMENTS_FILE="$NOTEBOOK_DIR/requirements.txt"
+
+          else
+
+            REQUIREMENTS_FILE=""
+
+          fi
+
+          if [[ -n "$REQUIREMENTS_FILE" ]]; then
+            echo "Using requirements:"
+            echo "  $REQUIREMENTS_FILE"
+          else
+            echo "::warning::No requirements.txt found next to notebook:"
+            echo "  $NOTEBOOK_DIR"
+          fi
+
+          echo "requirements-file=$REQUIREMENTS_FILE" >> "$GITHUB_OUTPUT"
+
+
+      # ============================================================
+      # Install notebook-specific dependencies
+      # ============================================================
+
+      - name: Install notebook dependencies
         id: install-dependencies
         shell: bash
         run: |
           set -euo pipefail
 
-          REQUIREMENTS="${{ inputs.requirements }}"
+          REQUIREMENTS_FILE="${{ steps.requirements.outputs.requirements-file }}"
 
-          if [[ -n "$REQUIREMENTS" ]]; then
+          if [[ -n "$REQUIREMENTS_FILE" ]]; then
 
-            if [[ ! -f "$REQUIREMENTS" ]]; then
-              echo "::error::Requirements file not found: $REQUIREMENTS"
-              exit 1
-            fi
+            echo "Installing notebook dependencies:"
+            echo "  $REQUIREMENTS_FILE"
 
-            echo "Installing explicitly requested requirements:"
-            echo "  $REQUIREMENTS"
-
-            python -m pip install -r "$REQUIREMENTS"
-
-          elif [[ -f requirements.txt ]]; then
-
-            echo "Installing requirements.txt"
-            python -m pip install -r requirements.txt
-
-          elif [[ -f pyproject.toml ]]; then
-
-            echo "Installing project from pyproject.toml"
-            python -m pip install .
-
-          elif [[ -f setup.py ]]; then
-
-            echo "Installing project from setup.py"
-            python -m pip install .
+            python -m pip install \
+              -r "$REQUIREMENTS_FILE"
 
           else
 
-            echo "::notice::No dependency manifest detected."
-            echo "Notebook will run using the base CI environment."
+            echo "No notebook-local requirements file found."
+            echo "Continuing with test environment only."
 
           fi
 
 
       # ============================================================
-      # Create artifact/results directory
+      # Report environment
+      # ============================================================
+
+      - name: Report notebook environment
+        shell: bash
+        run: |
+          python --version
+          python -m pip --version
+
+          echo
+          echo "Notebook:"
+          echo "  $NOTEBOOK"
+
+          echo
+          echo "Requirements:"
+          echo "  ${{ steps.requirements.outputs.requirements-file }}"
+
+          echo
+          echo "Installed packages:"
+          python -m pip freeze | sort
+
+
+      # ============================================================
+      # Workspace
       # ============================================================
 
       - name: Create notebook test workspace
@@ -175,7 +228,7 @@ jobs:
 
 
       # ============================================================
-      # 1. Notebook structural validation
+      # 1. Notebook schema validation
       # ============================================================
 
       - name: Validate notebook structure
@@ -189,8 +242,6 @@ jobs:
           import nbformat
 
           path = os.environ["NOTEBOOK"]
-
-          print(f"Reading {path}")
 
           with open(path, "r", encoding="utf-8") as f:
               nb = nbformat.read(f, as_version=4)
@@ -210,7 +261,7 @@ jobs:
 
 
       # ============================================================
-      # Extract Python code from notebook
+      # Extract code for static analysis
       # ============================================================
 
       - name: Extract notebook code
@@ -244,7 +295,6 @@ jobs:
                   )
 
                   lines = cell.source.splitlines()
-
                   in_cell_magic = False
 
                   for index, line in enumerate(lines):
@@ -253,49 +303,28 @@ jobs:
 
                       if index == 0 and stripped.startswith("%%"):
                           in_cell_magic = True
-                          f.write(
-                              "# JUPYTER CELL MAGIC: "
-                              + line
-                              + "\n"
-                          )
+                          f.write("# JUPYTER CELL MAGIC: " + line + "\n")
                           continue
 
                       if in_cell_magic:
-                          f.write(
-                              "# MAGIC CONTENT: "
-                              + line
-                              + "\n"
-                          )
+                          f.write("# MAGIC CONTENT: " + line + "\n")
                           continue
 
                       if stripped.startswith("%"):
-                          f.write(
-                              "# JUPYTER MAGIC: "
-                              + line
-                              + "\n"
-                          )
+                          f.write("# JUPYTER MAGIC: " + line + "\n")
 
                       elif stripped.startswith("!"):
-                          f.write(
-                              "# SHELL COMMAND: "
-                              + line
-                              + "\n"
-                          )
+                          f.write("# SHELL COMMAND: " + line + "\n")
 
                       else:
                           f.write(line + "\n")
 
-          print(
-              f"Extracted notebook Python to "
-              f"{destination}"
-          )
+          print(f"Extracted notebook code to {destination}")
           PY
 
 
       # ============================================================
-      # 2. Secret detection
-      #
-      # Diagnostic check: continue so notebook execution still occurs.
+      # 2. Secret scanning
       # ============================================================
 
       - name: Scan notebook for secrets
@@ -315,7 +344,7 @@ jobs:
 
           path = os.path.join(
               os.environ["EXECUTED_DIR"],
-              "secrets.json"
+              "secrets.json",
           )
 
           with open(path) as f:
@@ -328,11 +357,9 @@ jobs:
               print("Potential secrets detected:")
 
               for filename, matches in findings.items():
-
                   for match in matches:
-
                       print(
-                          f"  {filename}:"
+                          f"{filename}:"
                           f"{match.get('line_number')} "
                           f"{match.get('type')}"
                       )
@@ -346,7 +373,7 @@ jobs:
 
 
       # ============================================================
-      # 3. Static Python security analysis
+      # 3. Bandit
       # ============================================================
 
       - name: Run Bandit security scan
@@ -364,72 +391,158 @@ jobs:
 
 
       # ============================================================
-      # 4. Dependency vulnerability audit
-      #
-      # Important:
-      # Audit the repository's declared dependencies,
-      # NOT the entire CI environment.
+      # 4. Dependency audit
       # ============================================================
 
-      - name: Audit Python dependencies
+      - name: Audit notebook dependencies
         id: pip-audit
         continue-on-error: true
         shell: bash
         run: |
           set -o pipefail
 
-          REQUIREMENTS="${{ inputs.requirements }}"
+          REQUIREMENTS_FILE="${{ steps.requirements.outputs.requirements-file }}"
 
-          if [[ -n "$REQUIREMENTS" ]]; then
+          if [[ -n "$REQUIREMENTS_FILE" ]]; then
 
-            if [[ ! -f "$REQUIREMENTS" ]]; then
-              echo "::error::Requirements file not found: $REQUIREMENTS"
-              exit 1
-            fi
-
-            echo "Auditing dependency manifest:"
-            echo "  $REQUIREMENTS"
+            echo "Auditing:"
+            echo "  $REQUIREMENTS_FILE"
 
             pip-audit \
-              -r "$REQUIREMENTS" \
-              | tee "$EXECUTED_DIR/pip-audit.txt"
-
-          elif [[ -f requirements.txt ]]; then
-
-            echo "Auditing requirements.txt"
-
-            pip-audit \
-              -r requirements.txt \
-              | tee "$EXECUTED_DIR/pip-audit.txt"
-
-          elif [[ -f pyproject.toml ]]; then
-
-            echo "Auditing project dependencies from pyproject.toml"
-
-            pip-audit \
-              . \
+              -r "$REQUIREMENTS_FILE" \
               | tee "$EXECUTED_DIR/pip-audit.txt"
 
           else
 
-            echo \
-              "No requirements.txt or pyproject.toml found." \
+            echo "No notebook requirements file found." \
               | tee "$EXECUTED_DIR/pip-audit.txt"
 
-            echo \
-              "Dependency vulnerability audit skipped." \
+            echo "Dependency audit skipped." \
               | tee -a "$EXECUTED_DIR/pip-audit.txt"
 
           fi
 
 
       # ============================================================
-      # 5. Fresh notebook execution
-      #
-      # Execution is deterministic pass/fail.
-      #
-      # The notebook is copied first and always written afterward,
-      # including partial execution and traceback outputs.
+      # 5. PEP8
+      # ============================================================
+
+      - name: Checkout notebook CI helpers
+        uses: actions/checkout@v7
+        with:
+          repository: spacetelescope/notebook-ci-actions
+          ref: main
+          path: .notebook-ci-actions
+          sparse-checkout: .github/helpers
+
+
+      - name: Run notebook PEP8 check
+        id: pep8
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -o pipefail
+
+          python \
+            .notebook-ci-actions/.github/helpers/pep8_nb_style_checker.py \
+            "$NOTEBOOK" \
+            | tee "$EXECUTED_DIR/pep8.txt"
+
+
+      # ============================================================
+      # 6. Broken-link checking
+      # ============================================================
+
+      - name: Convert notebook to markdown for link checking
+        id: markdown-export
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          mkdir -p "$EXECUTED_DIR/link-check"
+
+          jupyter nbconvert \
+            --to markdown \
+            --output-dir "$EXECUTED_DIR/link-check" \
+            "$NOTEBOOK"
+
+
+      - name: Check notebook links
+        id: links
+        continue-on-error: true
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --no-progress
+            --scheme http
+            --scheme https
+            --method get
+            --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/151 Safari/537.36"
+            --header "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+            --max-concurrency 16
+            --host-concurrency 2
+            --host-request-interval 500ms
+            --max-retries 3
+            --accept "100..=103,200..=299,403,405"
+            .notebook-ci/link-check/**/*.md
+          fail: true
+          jobSummary: false
+
+
+      # ============================================================
+      # 7. Accessibility
+      # ============================================================
+
+      - name: Run notebook accessibility check
+        id: a11y
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+
+          npx --yes \
+            @jupyterlab-a11y-checker/cli \
+            --json \
+            "$NOTEBOOK" \
+            > "$EXECUTED_DIR/a11y-raw.log" \
+            2>&1
+
+          EXIT_CODE=$?
+
+          set -e
+
+          sed -n '/^{/,$p' \
+            "$EXECUTED_DIR/a11y-raw.log" \
+            > "$EXECUTED_DIR/a11y.json"
+
+          if jq -e \
+            '.summary.totalIssues | numbers' \
+            "$EXECUTED_DIR/a11y.json" \
+            >/dev/null 2>&1
+          then
+
+            ISSUE_COUNT=$(
+              jq -r \
+                '.summary.totalIssues' \
+                "$EXECUTED_DIR/a11y.json"
+            )
+
+            echo "Accessibility findings: $ISSUE_COUNT"
+
+          else
+
+            echo "::warning::Accessibility checker did not return expected JSON."
+            cat "$EXECUTED_DIR/a11y-raw.log"
+
+          fi
+
+          # Accessibility remains advisory.
+          exit 0
+
+
+      # ============================================================
+      # 8. Execute notebook
       # ============================================================
 
       - name: Execute notebook
@@ -480,7 +593,15 @@ jobs:
               .get("name", "python3")
           )
 
+          notebook_directory = (
+              os.path.dirname(
+                  os.path.abspath(source)
+              )
+              or "."
+          )
+
           print(f"Notebook: {source}")
+          print(f"Working directory: {notebook_directory}")
           print(f"Kernel: {kernel}")
           print(f"Cell timeout: {timeout}s")
 
@@ -496,13 +617,6 @@ jobs:
 
           try:
 
-              notebook_directory = (
-                  os.path.dirname(
-                      os.path.abspath(source)
-                  )
-                  or "."
-              )
-
               client.execute(
                   cwd=notebook_directory
               )
@@ -511,10 +625,7 @@ jobs:
 
               failure = exc
 
-              print(
-                  "\nNOTEBOOK EXECUTION FAILED"
-              )
-
+              print("\nNOTEBOOK EXECUTION FAILED")
               traceback.print_exc()
 
           finally:
@@ -533,26 +644,19 @@ jobs:
               print(
                   "\nExecuted notebook saved to:"
               )
-
               print(
                   f"  {destination}"
               )
 
           if failure:
-
               sys.exit(1)
 
-          print(
-              "\nNotebook execution: PASS"
-          )
+          print("\nNotebook execution: PASS")
           PY
 
 
       # ============================================================
-      # 6. Validate executed notebook
-      #
-      # Does not create a secondary failure if execution never
-      # produced a notebook.
+      # 9. Validate executed notebook
       # ============================================================
 
       - name: Validate executed notebook
@@ -565,12 +669,7 @@ jobs:
 
           if [[ ! -f "$EXECUTED_NOTEBOOK" ]]; then
 
-            echo \
-              "::notice::No executed notebook was produced."
-
-            echo \
-              "Execution may have been skipped or failed before output creation."
-
+            echo "::notice::No executed notebook was produced."
             exit 0
 
           fi
@@ -594,7 +693,6 @@ jobs:
           nbformat.validate(nb)
 
           errors = []
-
           executable = 0
           executed = 0
 
@@ -630,52 +728,34 @@ jobs:
                       )
 
           print(
-              f"Executable code cells: "
-              f"{executable}"
+              f"Executable code cells: {executable}"
           )
 
           print(
-              f"Executed code cells:   "
-              f"{executed}"
+              f"Executed code cells:   {executed}"
           )
 
           if errors:
 
-              print(
-                  "\nERROR OUTPUTS FOUND:"
-              )
+              print("\nERROR OUTPUTS FOUND:")
 
-              for (
-                  cell,
-                  name,
-                  value,
-              ) in errors:
-
+              for cell, name, value in errors:
                   print(
                       f"Cell {cell}: "
                       f"{name}: {value}"
                   )
 
               raise SystemExit(
-                  "Executed notebook contains "
-                  "error outputs."
+                  "Executed notebook contains error outputs."
               )
 
-          print(
-              "Executed notebook schema: PASS"
-          )
-
-          print(
-              "Error output check: PASS"
-          )
+          print("Executed notebook schema: PASS")
+          print("Error output check: PASS")
           PY
 
 
       # ============================================================
-      # 7. Optional stored-output regression comparison
-      #
-      # This re-executes the notebook.
-      # Keep optional because many notebook outputs are not stable.
+      # 10. Optional nbval comparison
       # ============================================================
 
       - name: Compare against committed outputs
@@ -693,7 +773,7 @@ jobs:
 
 
       # ============================================================
-      # Upload all diagnostics
+      # Upload artifacts
       # ============================================================
 
       - name: Upload notebook test artifacts
@@ -708,7 +788,7 @@ jobs:
 
 
       # ============================================================
-      # Human-readable summary
+      # Summary
       # ============================================================
 
       - name: Generate notebook test summary
@@ -720,97 +800,51 @@ jobs:
             echo
             echo "**Notebook:** \`$NOTEBOOK\`"
             echo
+            echo "**Requirements:** \`${{ steps.requirements.outputs.requirements-file }}\`"
+            echo
             echo "**Python:** \`${{ inputs.python-version }}\`"
             echo
-            echo "## Results"
+
+            echo "## Core"
             echo
             echo "| Check | Result |"
             echo "|---|---|"
-
-            echo \
-              "| Notebook structure | ${{ steps.schema.outcome }} |"
-
-            echo \
-              "| Secret scan | ${{ steps.secrets.outcome }} |"
-
-            echo \
-              "| Bandit security scan | ${{ steps.bandit.outcome }} |"
-
-            echo \
-              "| Dependency audit | ${{ steps.pip-audit.outcome }} |"
-
-            echo \
-              "| Notebook execution | ${{ steps.execute.outcome }} |"
-
-            echo \
-              "| Executed notebook validation | ${{ steps.executed-validation.outcome }} |"
+            echo "| Notebook structure | ${{ steps.schema.outcome }} |"
+            echo "| Notebook execution | ${{ steps.execute.outcome }} |"
+            echo "| Executed notebook validation | ${{ steps.executed-validation.outcome }} |"
 
             if [[ "${{ inputs.compare-stored-outputs }}" == "true" ]]; then
-
-              echo \
-                "| Stored-output comparison | ${{ steps.nbval.outcome }} |"
-
+              echo "| Stored-output comparison | ${{ steps.nbval.outcome }} |"
             else
-
-              echo \
-                "| Stored-output comparison | skipped |"
-
+              echo "| Stored-output comparison | skipped |"
             fi
 
             echo
-            echo "## Notes"
+            echo "## Quality"
             echo
-
-            if [[ "${{ steps.execute.outcome }}" == "success" ]]; then
-
-              echo \
-                "- ✅ Notebook executed successfully from a fresh run."
-
-            else
-
-              echo \
-                "- ❌ Notebook execution failed."
-
-            fi
-
-            if [[ "${{ steps.pip-audit.outcome }}" == "failure" ]]; then
-
-              echo \
-                "- ⚠️ Dependency vulnerabilities were reported by pip-audit."
-
-            fi
-
-            if [[ "${{ steps.bandit.outcome }}" == "failure" ]]; then
-
-              echo \
-                "- ⚠️ Bandit reported one or more security findings."
-
-            fi
-
-            if [[ "${{ steps.secrets.outcome }}" == "failure" ]]; then
-
-              echo \
-                "- ⚠️ Potential secrets were detected in notebook code."
-
-            fi
+            echo "| Check | Result |"
+            echo "|---|---|"
+            echo "| PEP8 | ${{ steps.pep8.outcome }} |"
+            echo "| Broken links | ${{ steps.links.outcome }} |"
+            echo "| Accessibility | ${{ steps.a11y.outcome }} |"
 
             echo
-            echo \
-              "The executed notebook and diagnostic outputs are stored in the workflow artifact."
+            echo "## Security"
+            echo
+            echo "| Check | Result |"
+            echo "|---|---|"
+            echo "| Secret scan | ${{ steps.secrets.outcome }} |"
+            echo "| Bandit | ${{ steps.bandit.outcome }} |"
+            echo "| Dependency audit | ${{ steps.pip-audit.outcome }} |"
+
+            echo
+            echo "Executed notebook and diagnostic reports are available in the workflow artifact."
 
           } >> "$GITHUB_STEP_SUMMARY"
 
 
       # ============================================================
       # Final required pass/fail
-      #
-      # Security checks remain visible but advisory.
-      #
-      # The deterministic notebook requirements are:
-      #   - schema is valid
-      #   - notebook executes successfully
-      #   - resulting notebook is valid
-      #   - optional nbval succeeds when requested
       # ============================================================
 
       - name: Determine final test result
@@ -855,17 +889,16 @@ jobs:
           fi
 
           echo
-          echo "Advisory checks:"
+          echo "Quality checks:"
+          echo "PEP8:          ${{ steps.pep8.outcome }}"
+          echo "Links:         ${{ steps.links.outcome }}"
+          echo "Accessibility: ${{ steps.a11y.outcome }}"
+
           echo
-
-          echo \
-            "Secrets: ${{ steps.secrets.outcome }}"
-
-          echo \
-            "Bandit: ${{ steps.bandit.outcome }}"
-
-          echo \
-            "Dependency audit: ${{ steps.pip-audit.outcome }}"
+          echo "Security checks:"
+          echo "Secrets:       ${{ steps.secrets.outcome }}"
+          echo "Bandit:        ${{ steps.bandit.outcome }}"
+          echo "Dependencies:  ${{ steps.pip-audit.outcome }}"
 
           echo
 
