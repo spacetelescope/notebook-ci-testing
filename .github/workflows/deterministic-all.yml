@@ -26,19 +26,6 @@ jobs:
 
   # ==============================================================
   # Discover every notebook under notebooks/
-  #
-  # Produces:
-  #
-  # {
-  #   "include": [
-  #     {
-  #       "notebook": "notebooks/foo/example.ipynb",
-  #       "slug": "notebooks-foo-example-ipynb-a1b2c3d4"
-  #     }
-  #   ]
-  # }
-  #
-  # .ipynb_checkpoints are intentionally ignored.
   # ==============================================================
 
   discover:
@@ -67,7 +54,6 @@ jobs:
           import re
           from pathlib import Path
 
-
           root = Path("notebooks")
 
           if not root.exists():
@@ -75,27 +61,22 @@ jobs:
                   "::error::notebooks/ directory does not exist."
               )
 
-
           notebooks = sorted(
               path
               for path in root.rglob("*.ipynb")
               if ".ipynb_checkpoints" not in path.parts
           )
 
-
           if not notebooks:
               raise SystemExit(
                   "::error::No notebooks found under notebooks/."
               )
 
-
           include = []
 
           for path in notebooks:
-
               notebook = path.as_posix()
 
-              # Artifact names should be short and filesystem-safe.
               base = re.sub(
                   r"[^A-Za-z0-9._-]+",
                   "-",
@@ -106,7 +87,6 @@ jobs:
                   notebook.encode()
               ).hexdigest()[:8]
 
-              # Leave plenty of room for run ID etc.
               slug = f"{base[:120]}-{digest}"
 
               include.append(
@@ -116,32 +96,22 @@ jobs:
                   }
               )
 
-
           matrix = {
               "include": include
           }
 
-
           print()
-          print(
-              f"Found {len(notebooks)} notebook(s):"
-          )
+          print(f"Found {len(notebooks)} notebook(s):")
           print()
 
           for notebook in notebooks:
-              print(
-                  f"  - {notebook.as_posix()}"
-              )
-
-
-          output = os.environ["GITHUB_OUTPUT"]
+              print(f"  - {notebook.as_posix()}")
 
           with open(
-              output,
+              os.environ["GITHUB_OUTPUT"],
               "a",
               encoding="utf-8",
           ) as f:
-
               print(
                   "matrix="
                   + json.dumps(
@@ -155,9 +125,7 @@ jobs:
                   f"count={len(notebooks)}",
                   file=f,
               )
-
           PY
-
 
       - name: Discovery summary
         shell: bash
@@ -171,9 +139,8 @@ jobs:
           } >> "$GITHUB_STEP_SUMMARY"
 
 
-
   # ==============================================================
-  # One independent runner PER NOTEBOOK
+  # One runner per notebook
   # ==============================================================
 
   notebook-test:
@@ -183,25 +150,17 @@ jobs:
       - discover
 
     strategy:
-      # One failing notebook must NOT cancel the others.
       fail-fast: false
-
       matrix: ${{ fromJSON(needs.discover.outputs.matrix) }}
-
-      # No max-parallel is set.
-      #
-      # GitHub will therefore run as many matrix jobs concurrently
-      # as the repository/account concurrency allowance permits.
 
     runs-on: ubuntu-24.04
 
     env:
       NOTEBOOK: ${{ matrix.notebook }}
-
       EXECUTED_DIR: .notebook-ci
       EXECUTED_NOTEBOOK: .notebook-ci/executed.ipynb
       CODE_FILE: .notebook-ci/notebook_code.py
-
+      CI_KERNEL: notebook-ci
 
     steps:
 
@@ -214,7 +173,7 @@ jobs:
 
 
       # ============================================================
-      # Validate notebook
+      # Validate notebook path
       # ============================================================
 
       - name: Validate notebook path
@@ -224,39 +183,24 @@ jobs:
           set -euo pipefail
 
           if [[ "$NOTEBOOK" != *.ipynb ]]; then
-
-            echo \
-              "::error::Requested file is not a notebook: $NOTEBOOK"
-
+            echo "::error::Requested file is not a notebook: $NOTEBOOK"
             exit 1
-
           fi
-
 
           if [[ ! -f "$NOTEBOOK" ]]; then
-
-            echo \
-              "::error::Notebook does not exist: $NOTEBOOK"
-
+            echo "::error::Notebook does not exist: $NOTEBOOK"
             exit 1
-
           fi
 
-
-          NOTEBOOK_DIR="$(
-            dirname "$NOTEBOOK"
-          )"
+          NOTEBOOK_DIR="$(dirname "$NOTEBOOK")"
 
           echo "Notebook:"
           echo "  $NOTEBOOK"
-
           echo
           echo "Notebook directory:"
           echo "  $NOTEBOOK_DIR"
 
-          echo \
-            "notebook-dir=$NOTEBOOK_DIR" \
-            >> "$GITHUB_OUTPUT"
+          echo "notebook-dir=$NOTEBOOK_DIR" >> "$GITHUB_OUTPUT"
 
 
       # ============================================================
@@ -280,18 +224,15 @@ jobs:
 
 
       # ============================================================
-      # Test tooling
-      #
-      # No nbval.
-      # ==============================================================
+      # Install CI tooling
+      # ============================================================
 
       - name: Install notebook test tools
         shell: bash
         run: |
           set -euo pipefail
 
-          python -m pip install \
-            --upgrade pip
+          python -m pip install --upgrade pip
 
           python -m pip install \
             nbformat \
@@ -308,14 +249,7 @@ jobs:
 
 
       # ============================================================
-      # Notebook-local requirements
-      #
-      # Every notebook uses requirements.txt from ITS directory.
-      #
-      # Example:
-      #
-      # notebooks/foo/example.ipynb
-      # notebooks/foo/requirements.txt
+      # Resolve notebook-local requirements
       # ============================================================
 
       - name: Resolve notebook requirements
@@ -324,31 +258,22 @@ jobs:
         run: |
           set -euo pipefail
 
-          NOTEBOOK_DIR="$(
-            dirname "$NOTEBOOK"
-          )"
-
+          NOTEBOOK_DIR="$(dirname "$NOTEBOOK")"
           REQUIREMENTS_FILE="$NOTEBOOK_DIR/requirements.txt"
 
-
           if [[ -f "$REQUIREMENTS_FILE" ]]; then
-
             echo "Using notebook requirements:"
             echo "  $REQUIREMENTS_FILE"
 
             echo \
               "requirements-file=$REQUIREMENTS_FILE" \
               >> "$GITHUB_OUTPUT"
-
           else
-
-            echo \
-              "::warning::No requirements.txt found beside $NOTEBOOK"
+            echo "::warning::No requirements.txt found beside $NOTEBOOK"
 
             echo \
               "requirements-file=" \
               >> "$GITHUB_OUTPUT"
-
           fi
 
 
@@ -362,25 +287,106 @@ jobs:
         run: |
           set -euo pipefail
 
-          REQUIREMENTS_FILE="${{
-            steps.requirements.outputs.requirements-file
-          }}"
-
+          REQUIREMENTS_FILE="${{ steps.requirements.outputs.requirements-file }}"
 
           if [[ -n "$REQUIREMENTS_FILE" ]]; then
-
             echo "Installing:"
             echo "  $REQUIREMENTS_FILE"
 
             python -m pip install \
               -r "$REQUIREMENTS_FILE"
-
           else
-
-            echo \
-              "::notice::No notebook-local requirements file found."
-
+            echo "::notice::No notebook-local requirements file found."
           fi
+
+
+      # ============================================================
+      # Register CI kernel
+      #
+      # We deliberately do NOT use the kernelspec name stored in
+      # notebook metadata. Names like roman-cal, stenv, etc. refer
+      # to environments on the author's machine and may not exist
+      # on a fresh GitHub runner.
+      # ============================================================
+
+      - name: Register CI Jupyter kernel
+        id: kernel
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          python -m ipykernel install \
+            --user \
+            --name "$CI_KERNEL" \
+            --display-name "Notebook CI"
+
+          echo
+          echo "Available kernels:"
+          jupyter kernelspec list
+
+          python <<'PY'
+          import json
+          import os
+          import nbformat
+
+          notebook = os.environ["NOTEBOOK"]
+
+          with open(
+              notebook,
+              "r",
+              encoding="utf-8",
+          ) as f:
+              nb = nbformat.read(
+                  f,
+                  as_version=4,
+              )
+
+          kernelspec = nb.metadata.get(
+              "kernelspec",
+              {},
+          )
+
+          original_name = kernelspec.get(
+              "name",
+              "unknown",
+          )
+
+          original_language = kernelspec.get(
+              "language",
+              "python",
+          )
+
+          print()
+          print(
+              f"Notebook metadata kernel: "
+              f"{original_name}"
+          )
+
+          print(
+              f"Notebook metadata language: "
+              f"{original_language}"
+          )
+
+          print(
+              f"CI execution kernel: "
+              f"{os.environ['CI_KERNEL']}"
+          )
+
+          with open(
+              os.environ["GITHUB_OUTPUT"],
+              "a",
+              encoding="utf-8",
+          ) as f:
+              print(
+                  f"original-kernel={original_name}",
+                  file=f,
+              )
+
+              print(
+                  f"language={original_language}",
+                  file=f,
+              )
+          PY
 
 
       # ============================================================
@@ -397,6 +403,14 @@ jobs:
             echo
             echo "Requirements:"
             echo "  ${{ steps.requirements.outputs.requirements-file }}"
+
+            echo
+            echo "Notebook metadata kernel:"
+            echo "  ${{ steps.kernel.outputs.original-kernel }}"
+
+            echo
+            echo "CI kernel:"
+            echo "  $CI_KERNEL"
 
             echo
             echo "Python:"
@@ -417,11 +431,6 @@ jobs:
       # CORE VALIDATION
       # ============================================================
 
-
-      # ============================================================
-      # Notebook schema
-      # ============================================================
-
       - name: Validate notebook structure
         id: schema
         shell: bash
@@ -430,27 +439,39 @@ jobs:
 
           python <<'PY'
           import os
-
           import nbformat
 
-
           path = os.environ["NOTEBOOK"]
-
 
           with open(
               path,
               "r",
               encoding="utf-8",
           ) as f:
-
               nb = nbformat.read(
                   f,
                   as_version=4,
               )
 
-
           nbformat.validate(nb)
 
+          kernelspec = nb.metadata.get(
+              "kernelspec",
+              {},
+          )
+
+          language = kernelspec.get(
+              "language",
+              "python",
+          )
+
+          if language.lower() != "python":
+              raise RuntimeError(
+                  "Unsupported notebook kernel language: "
+                  f"{language}. "
+                  "This CI workflow currently supports "
+                  "Python notebooks only."
+              )
 
           code_cells = [
               cell
@@ -458,36 +479,25 @@ jobs:
               if cell.cell_type == "code"
           ]
 
-
           executable_cells = [
               cell
               for cell in code_cells
               if cell.source.strip()
           ]
 
-
           print("Notebook schema: PASS")
-
-          print(
-              f"Total cells: "
-              f"{len(nb.cells)}"
-          )
-
-          print(
-              f"Code cells: "
-              f"{len(code_cells)}"
-          )
-
+          print(f"Kernel language: {language}")
+          print(f"Total cells: {len(nb.cells)}")
+          print(f"Code cells: {len(code_cells)}")
           print(
               f"Executable code cells: "
               f"{len(executable_cells)}"
           )
-
           PY
 
 
       # ============================================================
-      # Extract Python
+      # Extract notebook code
       # ============================================================
 
       - name: Extract notebook code
@@ -498,24 +508,19 @@ jobs:
 
           python <<'PY'
           import os
-
           import nbformat
-
 
           notebook = os.environ["NOTEBOOK"]
           destination = os.environ["CODE_FILE"]
-
 
           with open(
               notebook,
               encoding="utf-8",
           ) as f:
-
               nb = nbformat.read(
                   f,
                   as_version=4,
               )
-
 
           with open(
               destination,
@@ -526,10 +531,8 @@ jobs:
               for number, cell in enumerate(
                   nb.cells
               ):
-
                   if cell.cell_type != "code":
                       continue
-
 
                   f.write(
                       "\n\n"
@@ -538,24 +541,18 @@ jobs:
                       "# ========================================\n\n"
                   )
 
-
                   lines = cell.source.splitlines()
-
                   in_cell_magic = False
-
 
                   for index, line in enumerate(
                       lines
                   ):
-
                       stripped = line.lstrip()
-
 
                       if (
                           index == 0
                           and stripped.startswith("%%")
                       ):
-
                           in_cell_magic = True
 
                           f.write(
@@ -563,61 +560,44 @@ jobs:
                               + line
                               + "\n"
                           )
-
                           continue
 
-
                       if in_cell_magic:
-
                           f.write(
                               "# MAGIC CONTENT: "
                               + line
                               + "\n"
                           )
-
                           continue
 
-
                       if stripped.startswith("%"):
-
                           f.write(
                               "# JUPYTER MAGIC: "
                               + line
                               + "\n"
                           )
 
-
                       elif stripped.startswith("!"):
-
                           f.write(
                               "# SHELL COMMAND: "
                               + line
                               + "\n"
                           )
 
-
                       else:
-
                           f.write(
                               line + "\n"
                           )
-
 
           print(
               f"Extracted notebook code to "
               f"{destination}"
           )
-
           PY
 
 
       # ============================================================
       # SECURITY
-      # ============================================================
-
-
-      # ============================================================
-      # Secrets
       # ============================================================
 
       - name: Scan notebook for secrets
@@ -631,60 +611,43 @@ jobs:
             "$CODE_FILE" \
             > "$EXECUTED_DIR/secrets.json"
 
-
           python <<'PY'
           import json
           import os
-
 
           path = os.path.join(
               os.environ["EXECUTED_DIR"],
               "secrets.json",
           )
 
-
           with open(path) as f:
               result = json.load(f)
-
 
           findings = result.get(
               "results",
               {},
           )
 
-
           if findings:
-
               print(
                   "Potential secrets detected:"
               )
 
               for filename, matches in findings.items():
-
                   for match in matches:
-
                       print(
                           f"{filename}:"
                           f"{match.get('line_number')} "
                           f"{match.get('type')}"
                       )
 
-
               raise SystemExit(
                   "Potential secrets detected."
               )
 
-
-          print(
-              "Secret scan: PASS"
-          )
-
+          print("Secret scan: PASS")
           PY
 
-
-      # ============================================================
-      # Bandit
-      # ============================================================
 
       - name: Run Bandit security scan
         id: bandit
@@ -700,10 +663,6 @@ jobs:
             | tee "$EXECUTED_DIR/bandit.txt"
 
 
-      # ============================================================
-      # Dependency audit
-      # ============================================================
-
       - name: Audit notebook dependencies
         id: pip-audit
         continue-on-error: true
@@ -711,42 +670,25 @@ jobs:
         run: |
           set -o pipefail
 
-          REQUIREMENTS_FILE="${{
-            steps.requirements.outputs.requirements-file
-          }}"
-
+          REQUIREMENTS_FILE="${{ steps.requirements.outputs.requirements-file }}"
 
           if [[ -n "$REQUIREMENTS_FILE" ]]; then
-
             echo "Auditing:"
             echo "  $REQUIREMENTS_FILE"
 
             pip-audit \
               -r "$REQUIREMENTS_FILE" \
               | tee "$EXECUTED_DIR/pip-audit.txt"
-
           else
-
             {
-              echo \
-                "No notebook requirements file found."
-
-              echo \
-                "Dependency audit skipped."
-
-            } | tee \
-              "$EXECUTED_DIR/pip-audit.txt"
-
+              echo "No notebook requirements file found."
+              echo "Dependency audit skipped."
+            } | tee "$EXECUTED_DIR/pip-audit.txt"
           fi
 
 
       # ============================================================
       # QUALITY
-      # ============================================================
-
-
-      # ============================================================
-      # STScI PEP8 helper
       # ============================================================
 
       - name: Checkout notebook CI helpers
@@ -787,8 +729,7 @@ jobs:
 
           jupyter nbconvert \
             --to markdown \
-            --output-dir \
-            "$EXECUTED_DIR/link-check" \
+            --output-dir "$EXECUTED_DIR/link-check" \
             "$NOTEBOOK"
 
 
@@ -837,18 +778,15 @@ jobs:
 
           set -e
 
-
           sed -n '/^{/,$p' \
             "$EXECUTED_DIR/a11y-raw.log" \
             > "$EXECUTED_DIR/a11y.json"
-
 
           if jq -e \
             '.summary.totalIssues | numbers' \
             "$EXECUTED_DIR/a11y.json" \
             >/dev/null 2>&1
           then
-
             ISSUE_COUNT="$(
               jq -r \
                 '.summary.totalIssues' \
@@ -861,9 +799,7 @@ jobs:
             echo \
               "issue-count=$ISSUE_COUNT" \
               >> "$GITHUB_OUTPUT"
-
           else
-
             echo \
               "::warning::Accessibility checker did not return expected JSON."
 
@@ -873,23 +809,22 @@ jobs:
 
             cat \
               "$EXECUTED_DIR/a11y-raw.log"
-
           fi
-
 
           echo \
             "checker-exit-code=$CHECKER_EXIT" \
             >> "$GITHUB_OUTPUT"
-
 
           # Advisory only.
           exit 0
 
 
       # ============================================================
-      # EXECUTE
+      # EXECUTION
       #
-      # Exactly one notebook execution.
+      # Exactly one execution.
+      #
+      # Always use CI_KERNEL rather than notebook metadata kernel.
       # ============================================================
 
       - name: Execute notebook
@@ -907,12 +842,9 @@ jobs:
           import traceback
 
           import nbformat
-
           from nbclient import NotebookClient
 
-
           source = os.environ["NOTEBOOK"]
-
           destination = os.environ[
               "EXECUTED_NOTEBOOK"
           ]
@@ -921,6 +853,9 @@ jobs:
               os.environ["CELL_TIMEOUT"]
           )
 
+          ci_kernel = os.environ[
+              "CI_KERNEL"
+          ]
 
           os.makedirs(
               os.path.dirname(
@@ -929,38 +864,48 @@ jobs:
               exist_ok=True,
           )
 
-
-          # Never alter the checked-out source notebook.
+          # Never modify source notebook.
           shutil.copy2(
               source,
               destination,
           )
-
 
           with open(
               destination,
               "r",
               encoding="utf-8",
           ) as f:
-
               nb = nbformat.read(
                   f,
                   as_version=4,
               )
 
-
-          kernel = (
-              nb.metadata
-              .get(
+          original_kernelspec = (
+              nb.metadata.get(
                   "kernelspec",
                   {},
               )
-              .get(
+          )
+
+          original_kernel = (
+              original_kernelspec.get(
                   "name",
-                  "python3",
+                  "unknown",
               )
           )
 
+          language = (
+              original_kernelspec.get(
+                  "language",
+                  "python",
+              )
+          )
+
+          if language.lower() != "python":
+              raise RuntimeError(
+                  "Unsupported notebook kernel "
+                  f"language: {language}"
+              )
 
           notebook_directory = (
               os.path.dirname(
@@ -970,7 +915,6 @@ jobs:
               )
               or "."
           )
-
 
           print(
               f"Notebook: {source}"
@@ -982,35 +926,36 @@ jobs:
           )
 
           print(
-              f"Kernel: {kernel}"
+              f"Notebook metadata kernel: "
+              f"{original_kernel}"
           )
 
           print(
-              f"Cell timeout: {timeout}s"
+              f"CI execution kernel: "
+              f"{ci_kernel}"
           )
 
+          print(
+              f"Cell timeout: "
+              f"{timeout}s"
+          )
 
           client = NotebookClient(
               nb,
               timeout=timeout,
-              kernel_name=kernel,
+              kernel_name=ci_kernel,
               allow_errors=False,
               record_timing=True,
           )
 
-
           failure = None
 
-
           try:
-
               client.execute(
                   cwd=notebook_directory
               )
 
-
           except Exception as exc:
-
               failure = exc
 
               print(
@@ -1019,21 +964,17 @@ jobs:
 
               traceback.print_exc()
 
-
           finally:
-
-              # Preserve complete OR partial execution.
+              # Save full OR partial execution.
               with open(
                   destination,
                   "w",
                   encoding="utf-8",
               ) as f:
-
                   nbformat.write(
                       nb,
                       f,
                   )
-
 
               print(
                   "\nExecuted notebook saved to:"
@@ -1043,21 +984,17 @@ jobs:
                   f"  {destination}"
               )
 
-
           if failure:
-
               sys.exit(1)
-
 
           print(
               "\nNotebook execution: PASS"
           )
-
           PY
 
 
       # ============================================================
-      # Validate freshly executed notebook
+      # Validate executed notebook
       # ============================================================
 
       - name: Validate executed notebook
@@ -1069,82 +1006,62 @@ jobs:
           set -euo pipefail
 
           if [[ ! -f "$EXECUTED_NOTEBOOK" ]]; then
-
             echo \
               "::notice::No executed notebook was produced."
 
             exit 0
-
           fi
-
 
           python <<'PY'
           import os
-
           import nbformat
-
 
           path = os.environ[
               "EXECUTED_NOTEBOOK"
           ]
 
-
           with open(
               path,
               encoding="utf-8",
           ) as f:
-
               nb = nbformat.read(
                   f,
                   as_version=4,
               )
 
-
-          # Validate resulting notebook schema.
           nbformat.validate(nb)
 
-
           errors = []
-
           executable = 0
           executed = 0
-
 
           for index, cell in enumerate(
               nb.cells
           ):
-
               if cell.cell_type != "code":
                   continue
-
 
               if not cell.source.strip():
                   continue
 
-
               executable += 1
-
 
               if (
                   cell.execution_count
                   is not None
               ):
-
                   executed += 1
-
 
               for output in cell.get(
                   "outputs",
                   [],
               ):
-
                   if (
                       output.get(
                           "output_type"
                       )
                       == "error"
                   ):
-
                       errors.append(
                           (
                               index,
@@ -1157,7 +1074,6 @@ jobs:
                           )
                       )
 
-
           print(
               f"Executable code cells: "
               f"{executable}"
@@ -1168,47 +1084,48 @@ jobs:
               f"{executed}"
           )
 
-
           if errors:
-
               print(
                   "\nERROR OUTPUTS FOUND:"
               )
-
 
               for (
                   cell,
                   name,
                   value,
               ) in errors:
-
                   print(
                       f"Cell {cell}: "
                       f"{name}: {value}"
                   )
-
 
               raise SystemExit(
                   "Executed notebook contains "
                   "error outputs."
               )
 
+          if executed != executable:
+              raise SystemExit(
+                  "Not all executable code cells "
+                  "were executed successfully."
+              )
 
           print(
               "Executed notebook schema: PASS"
           )
 
           print(
-              "Error output check: PASS"
+              "Execution coverage: PASS"
           )
 
+          print(
+              "Error output check: PASS"
+          )
           PY
 
 
       # ============================================================
-      # ARTIFACT
-      #
-      # Every notebook gets its OWN artifact.
+      # Artifact
       # ============================================================
 
       - name: Upload notebook test artifacts
@@ -1216,18 +1133,14 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: notebook-test-${{ matrix.slug }}-${{ github.run_id }}
-
           path: .notebook-ci/
-
           if-no-files-found: warn
-
           retention-days: 14
-
           include-hidden-files: true
 
 
       # ============================================================
-      # PER-NOTEBOOK SUMMARY
+      # Per-notebook summary
       # ============================================================
 
       - name: Generate notebook test summary
@@ -1238,85 +1151,49 @@ jobs:
             echo "# Notebook Test"
             echo
 
-            echo \
-              "**Notebook:** \`$NOTEBOOK\`"
-
+            echo "**Notebook:** \`$NOTEBOOK\`"
             echo
 
-            echo \
-              "**Requirements:** \`${{ steps.requirements.outputs.requirements-file }}\`"
-
+            echo "**Requirements:** \`${{ steps.requirements.outputs.requirements-file }}\`"
             echo
 
-            echo \
-              "**Runner:** \`${{ runner.name }}\`"
+            echo "**Notebook kernel:** \`${{ steps.kernel.outputs.original-kernel }}\`"
+            echo
 
+            echo "**CI kernel:** \`$CI_KERNEL\`"
             echo
 
             echo "## Core"
             echo
             echo "| Check | Result |"
             echo "|---|---|"
-
-            echo \
-              "| Structure | ${{ steps.schema.outcome }} |"
-
-            echo \
-              "| Execution | ${{ steps.execute.outcome }} |"
-
-            echo \
-              "| Executed notebook validation | ${{ steps.executed-validation.outcome }} |"
-
+            echo "| Structure | ${{ steps.schema.outcome }} |"
+            echo "| Execution | ${{ steps.execute.outcome }} |"
+            echo "| Executed notebook validation | ${{ steps.executed-validation.outcome }} |"
 
             echo
             echo "## Quality"
             echo
             echo "| Check | Result |"
             echo "|---|---|"
-
-            echo \
-              "| PEP8 | ${{ steps.pep8.outcome }} |"
-
-            echo \
-              "| Broken links | ${{ steps.links.outcome }} |"
-
-            echo \
-              "| Accessibility findings | ${{ steps.a11y.outputs.issue-count }} |"
-
+            echo "| PEP8 | ${{ steps.pep8.outcome }} |"
+            echo "| Broken links | ${{ steps.links.outcome }} |"
+            echo "| Accessibility findings | ${{ steps.a11y.outputs.issue-count }} |"
 
             echo
             echo "## Security"
             echo
             echo "| Check | Result |"
             echo "|---|---|"
-
-            echo \
-              "| Secrets | ${{ steps.secrets.outcome }} |"
-
-            echo \
-              "| Bandit | ${{ steps.bandit.outcome }} |"
-
-            echo \
-              "| Dependency audit | ${{ steps.pip-audit.outcome }} |"
+            echo "| Secrets | ${{ steps.secrets.outcome }} |"
+            echo "| Bandit | ${{ steps.bandit.outcome }} |"
+            echo "| Dependency audit | ${{ steps.pip-audit.outcome }} |"
 
           } >> "$GITHUB_STEP_SUMMARY"
 
 
       # ============================================================
-      # PER-NOTEBOOK FINAL RESULT
-      #
-      # Required:
-      #   structure
-      #   execution
-      #   executed notebook validation
-      #   PEP8
-      #   broken links
-      #
-      # Advisory:
-      #   accessibility
-      #   secrets
-      #   Bandit
-      #   dependency CVEs
+      # Per-notebook final result
       # ============================================================
 
       - name: Determine notebook test result
@@ -1332,69 +1209,40 @@ jobs:
           echo "Required checks:"
           echo
 
-
           if [[ "${{ steps.schema.outcome }}" != "success" ]]; then
-
             echo "❌ Notebook structure"
             FAILED=1
-
           else
-
             echo "✅ Notebook structure"
-
           fi
-
 
           if [[ "${{ steps.execute.outcome }}" != "success" ]]; then
-
             echo "❌ Notebook execution"
             FAILED=1
-
           else
-
             echo "✅ Notebook execution"
-
           fi
-
 
           if [[ "${{ steps.executed-validation.outcome }}" != "success" ]]; then
-
-            echo \
-              "❌ Executed notebook validation"
-
+            echo "❌ Executed notebook validation"
             FAILED=1
-
           else
-
-            echo \
-              "✅ Executed notebook validation"
-
+            echo "✅ Executed notebook validation"
           fi
-
 
           if [[ "${{ steps.pep8.outcome }}" != "success" ]]; then
-
             echo "❌ PEP8"
             FAILED=1
-
           else
-
             echo "✅ PEP8"
-
           fi
-
 
           if [[ "${{ steps.links.outcome }}" != "success" ]]; then
-
             echo "❌ Broken links"
             FAILED=1
-
           else
-
             echo "✅ Broken links"
-
           fi
-
 
           echo
           echo "Advisory checks:"
@@ -1414,26 +1262,19 @@ jobs:
 
           echo
 
-
           if [[ "$FAILED" -ne 0 ]]; then
-
             echo \
               "::error::Notebook failed one or more required tests: $NOTEBOOK"
 
             exit 1
-
           fi
-
 
           echo \
             "✅ All required tests passed for $NOTEBOOK"
 
 
-
   # ==============================================================
-  # Overall suite result / summary
-  #
-  # This does not rerun anything.
+  # Overall suite summary
   # ==============================================================
 
   suite-summary:
@@ -1467,18 +1308,12 @@ jobs:
             echo
 
             if [[ "${{ needs.notebook-test.result }}" == "success" ]]; then
-
               echo "## ✅ All notebook runners passed"
-
             else
-
               echo "## ❌ One or more notebook runners failed"
-
               echo
-
               echo \
                 "Open the individual matrix jobs above to see which notebooks failed."
-
             fi
 
           } >> "$GITHUB_STEP_SUMMARY"
@@ -1488,12 +1323,10 @@ jobs:
         shell: bash
         run: |
           if [[ "${{ needs.notebook-test.result }}" != "success" ]]; then
-
             echo \
               "::error::One or more notebook tests failed."
 
             exit 1
-
           fi
 
           echo \
