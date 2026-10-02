@@ -1,0 +1,523 @@
+name: Notebook Deterministic Test
+
+run-name: "Test notebook: ${{ inputs.notebook }}"
+
+on:
+  workflow_dispatch:
+    inputs:
+      notebook:
+        description: "Path to notebook to test"
+        required: true
+        type: string
+
+      python-version:
+        description: "Python version"
+        required: false
+        default: "3.11"
+        type: string
+
+      requirements:
+        description: "Requirements file (leave blank to auto-detect)"
+        required: false
+        default: ""
+        type: string
+
+      timeout:
+        description: "Per-cell timeout in seconds"
+        required: false
+        default: "1200"
+        type: string
+
+      compare-stored-outputs:
+        description: "Also compare fresh execution against committed outputs with nbval"
+        required: false
+        default: false
+        type: boolean
+
+
+permissions:
+  contents: read
+
+
+jobs:
+  notebook-test:
+    name: Test ${{ inputs.notebook }}
+    runs-on: ubuntu-24.04
+
+    env:
+      NOTEBOOK: ${{ inputs.notebook }}
+      EXECUTED_DIR: .notebook-ci
+      EXECUTED_NOTEBOOK: .notebook-ci/executed.ipynb
+
+    steps:
+      # ------------------------------------------------------------
+      # Checkout
+      # ------------------------------------------------------------
+
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+
+      # ------------------------------------------------------------
+      # Validate requested notebook
+      # ------------------------------------------------------------
+
+      - name: Validate notebook path
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [[ "$NOTEBOOK" != *.ipynb ]]; then
+            echo "::error::Requested file is not a .ipynb notebook: $NOTEBOOK"
+            exit 1
+          fi
+
+          if [[ ! -f "$NOTEBOOK" ]]; then
+            echo "::error::Notebook does not exist: $NOTEBOOK"
+            exit 1
+          fi
+
+          echo "Testing notebook:"
+          echo "  $NOTEBOOK"
+
+
+      # ------------------------------------------------------------
+      # Python
+      # ------------------------------------------------------------
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: ${{ inputs.python-version }}
+          cache: pip
+
+
+      # ------------------------------------------------------------
+      # Install CI tooling
+      # ------------------------------------------------------------
+
+      - name: Install notebook test tools
+        shell: bash
+        run: |
+          python -m pip install --upgrade pip
+
+          python -m pip install \
+            nbformat \
+            nbclient \
+            jupyter \
+            ipykernel \
+            pytest \
+            nbval \
+            bandit \
+            detect-secrets \
+            pip-audit
+
+
+      # ------------------------------------------------------------
+      # Install project dependencies
+      # ------------------------------------------------------------
+
+      - name: Install repository dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          REQUIREMENTS="${{ inputs.requirements }}"
+
+          if [[ -n "$REQUIREMENTS" ]]; then
+
+            if [[ ! -f "$REQUIREMENTS" ]]; then
+              echo "::error::Requirements file not found: $REQUIREMENTS"
+              exit 1
+            fi
+
+            echo "Installing explicitly requested requirements:"
+            echo "  $REQUIREMENTS"
+
+            pip install -r "$REQUIREMENTS"
+
+          elif [[ -f requirements.txt ]]; then
+
+            echo "Installing requirements.txt"
+            pip install -r requirements.txt
+
+          elif [[ -f pyproject.toml ]]; then
+
+            echo "Installing project from pyproject.toml"
+            pip install .
+
+          elif [[ -f setup.py ]]; then
+
+            echo "Installing project from setup.py"
+            pip install .
+
+          else
+
+            echo "No repository dependency file detected."
+            echo "Using current Python environment."
+
+          fi
+
+
+      # ------------------------------------------------------------
+      # 1. Notebook structural validation
+      # ------------------------------------------------------------
+
+      - name: Validate notebook structure
+        shell: bash
+        run: |
+          python <<'PY'
+          import os
+          import nbformat
+
+          path = os.environ["NOTEBOOK"]
+
+          print(f"Reading {path}")
+
+          with open(path, "r", encoding="utf-8") as f:
+              nb = nbformat.read(f, as_version=4)
+
+          nbformat.validate(nb)
+
+          code_cells = [
+              cell for cell in nb.cells
+              if cell.cell_type == "code"
+          ]
+
+          print(f"Notebook schema: VALID")
+          print(f"Total cells: {len(nb.cells)}")
+          print(f"Code cells: {len(code_cells)}")
+          PY
+
+
+      # ------------------------------------------------------------
+      # Extract notebook Python for deterministic static analysis
+      # ------------------------------------------------------------
+
+      - name: Extract notebook code
+        shell: bash
+        run: |
+          mkdir -p "$EXECUTED_DIR"
+
+          python <<'PY'
+          import os
+          import nbformat
+
+          notebook = os.environ["NOTEBOOK"]
+          destination = ".notebook-ci/notebook_code.py"
+
+          with open(notebook, encoding="utf-8") as f:
+              nb = nbformat.read(f, as_version=4)
+
+          with open(destination, "w", encoding="utf-8") as f:
+              for number, cell in enumerate(nb.cells):
+                  if cell.cell_type != "code":
+                      continue
+
+                  f.write(
+                      f"\n\n# ========================================\n"
+                      f"# Notebook cell {number}\n"
+                      f"# ========================================\n\n"
+                  )
+
+                  # Ignore IPython/Jupyter magics for static Python analysis.
+                  for line in cell.source.splitlines():
+                      stripped = line.lstrip()
+
+                      if stripped.startswith("%"):
+                          f.write("# JUPYTER MAGIC: " + line + "\n")
+
+                      elif stripped.startswith("!"):
+                          f.write("# SHELL COMMAND: " + line + "\n")
+
+                      else:
+                          f.write(line + "\n")
+
+          print(f"Extracted notebook code to {destination}")
+          PY
+
+
+      # ------------------------------------------------------------
+      # 2. Secret detection
+      # ------------------------------------------------------------
+
+      - name: Scan for secrets
+        shell: bash
+        run: |
+          detect-secrets scan \
+            .notebook-ci/notebook_code.py \
+            > .notebook-ci/secrets.json
+
+          python <<'PY'
+          import json
+
+          path = ".notebook-ci/secrets.json"
+
+          with open(path) as f:
+              result = json.load(f)
+
+          findings = result.get("results", {})
+
+          if findings:
+              print("Potential secrets detected:")
+              for filename, matches in findings.items():
+                  for match in matches:
+                      print(
+                          f"  {filename}:"
+                          f"{match.get('line_number')} "
+                          f"{match.get('type')}"
+                      )
+
+              raise SystemExit(
+                  "Secret scan FAILED."
+              )
+
+          print("Secret scan: PASS")
+          PY
+
+
+      # ------------------------------------------------------------
+      # 3. Static Python security analysis
+      # ------------------------------------------------------------
+
+      - name: Run Bandit security scan
+        shell: bash
+        run: |
+          bandit \
+            --severity-level medium \
+            --confidence-level medium \
+            .notebook-ci/notebook_code.py
+
+
+      # ------------------------------------------------------------
+      # 4. Dependency vulnerability audit
+      # ------------------------------------------------------------
+
+      - name: Audit Python dependencies
+        shell: bash
+        run: |
+          pip-audit
+
+
+      # ------------------------------------------------------------
+      # 5. Execute notebook from scratch
+      #
+      # The notebook is copied first.
+      # The executed copy is always saved, including when execution fails.
+      # ------------------------------------------------------------
+
+      - name: Execute notebook
+        shell: bash
+        env:
+          CELL_TIMEOUT: ${{ inputs.timeout }}
+        run: |
+          python <<'PY'
+          import os
+          import shutil
+          import sys
+          import traceback
+
+          import nbformat
+          from nbclient import NotebookClient
+
+          source = os.environ["NOTEBOOK"]
+          destination = os.environ["EXECUTED_NOTEBOOK"]
+          timeout = int(os.environ["CELL_TIMEOUT"])
+
+          os.makedirs(
+              os.path.dirname(destination),
+              exist_ok=True
+          )
+
+          shutil.copy2(source, destination)
+
+          with open(destination, "r", encoding="utf-8") as f:
+              nb = nbformat.read(f, as_version=4)
+
+          kernel = (
+              nb.metadata
+                .get("kernelspec", {})
+                .get("name", "python3")
+          )
+
+          print(f"Notebook: {source}")
+          print(f"Kernel: {kernel}")
+          print(f"Cell timeout: {timeout}s")
+
+          client = NotebookClient(
+              nb,
+              timeout=timeout,
+              kernel_name=kernel,
+              allow_errors=False,
+              record_timing=True,
+          )
+
+          failure = None
+
+          try:
+              client.execute(
+                  cwd=os.path.dirname(
+                      os.path.abspath(source)
+                  ) or "."
+              )
+
+          except Exception as exc:
+              failure = exc
+
+              print("\nNOTEBOOK EXECUTION FAILED")
+              traceback.print_exc()
+
+          finally:
+              # Always preserve whatever execution produced,
+              # including traceback/error outputs.
+              with open(destination, "w", encoding="utf-8") as f:
+                  nbformat.write(nb, f)
+
+              print(
+                  f"\nExecuted notebook saved to "
+                  f"{destination}"
+              )
+
+          if failure:
+              sys.exit(1)
+
+          print("\nNotebook execution: PASS")
+          PY
+
+
+      # ------------------------------------------------------------
+      # 6. Validate the executed notebook itself
+      # ------------------------------------------------------------
+
+      - name: Validate executed notebook
+        if: always()
+        shell: bash
+        run: |
+          if [[ ! -f "$EXECUTED_NOTEBOOK" ]]; then
+            echo "::error::Executed notebook was not produced."
+            exit 1
+          fi
+
+          python <<'PY'
+          import os
+          import nbformat
+
+          path = os.environ["EXECUTED_NOTEBOOK"]
+
+          with open(path, encoding="utf-8") as f:
+              nb = nbformat.read(f, as_version=4)
+
+          # Validate notebook JSON/schema
+          nbformat.validate(nb)
+
+          errors = []
+
+          executed = 0
+          executable = 0
+
+          for index, cell in enumerate(nb.cells):
+
+              if cell.cell_type != "code":
+                  continue
+
+              if not cell.source.strip():
+                  continue
+
+              executable += 1
+
+              if cell.execution_count is not None:
+                  executed += 1
+
+              for output in cell.get("outputs", []):
+                  if output.get("output_type") == "error":
+                      errors.append(
+                          (
+                              index,
+                              output.get("ename"),
+                              output.get("evalue"),
+                          )
+                      )
+
+          print(f"Executable code cells: {executable}")
+          print(f"Executed cells:        {executed}")
+
+          if errors:
+              print("\nERROR OUTPUTS FOUND:")
+
+              for cell, name, value in errors:
+                  print(
+                      f"Cell {cell}: "
+                      f"{name}: {value}"
+                  )
+
+              raise SystemExit(
+                  "Executed notebook contains error outputs."
+              )
+
+          print("Executed notebook schema: PASS")
+          print("Error output check: PASS")
+          PY
+
+
+      # ------------------------------------------------------------
+      # 7. Optional traditional stored-output regression test
+      #
+      # This is deliberately optional because plots, timestamps,
+      # floating point representations, etc. frequently make nbval
+      # unsuitable as a universal notebook test.
+      # ------------------------------------------------------------
+
+      - name: Compare against committed outputs
+        if: ${{ inputs.compare-stored-outputs }}
+        shell: bash
+        run: |
+          pytest \
+            --nbval \
+            "$NOTEBOOK"
+
+
+      # ------------------------------------------------------------
+      # Artifact is uploaded even when execution/testing fails.
+      # ------------------------------------------------------------
+
+      - name: Upload notebook test artifacts
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: notebook-test-${{ github.run_id }}
+          path: |
+            .notebook-ci/
+          if-no-files-found: warn
+          retention-days: 14
+
+
+      # ------------------------------------------------------------
+      # Human-readable Actions summary
+      # ------------------------------------------------------------
+
+      - name: Test summary
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo "## Notebook deterministic test"
+            echo
+            echo "**Notebook:** \`$NOTEBOOK\`"
+            echo
+            echo "### Tests"
+            echo
+            echo "- Notebook JSON/schema validation"
+            echo "- Secret detection"
+            echo "- Bandit static security analysis"
+            echo "- Python dependency vulnerability audit"
+            echo "- Fresh notebook execution"
+            echo "- Executed notebook schema validation"
+            echo "- Notebook error-output detection"
+
+            if [[ "${{ inputs.compare-stored-outputs }}" == "true" ]]; then
+              echo "- Stored-output regression comparison using nbval"
+            fi
+
+            echo
+            echo "The executed notebook is retained as a workflow artifact."
+          } >> "$GITHUB_STEP_SUMMARY"
