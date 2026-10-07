@@ -1,0 +1,116 @@
+name: Cite and deploy GitHub Pages
+
+on:
+  workflow_run:
+    workflows: [Notebook CI - Main Branch, Notebook CI - On-Demand Actions]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - citation.toml
+      - .github/scripts/add_citation_footer.py
+      - .github/workflows/citation-pages.yml
+
+# The upstream reusable workflow stages generated HTML on gh-pages.
+# This workflow adds missing citations before uploading the actual Pages artifact.
+permissions:
+  contents: read
+
+concurrency:
+  group: citation-pages
+  cancel-in-progress: false
+
+jobs:
+  prepare:
+    if: >-
+      github.event_name != 'workflow_run' ||
+      github.event.workflow_run.head_repository.full_name == github.repository
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
+    outputs:
+      publish: ${{ steps.site.outputs.publish }}
+    steps:
+      - name: Check for a generated site
+        id: site
+        uses: actions/github-script@v7
+        with:
+          script: |
+            if (context.eventName === 'workflow_run') {
+              const jobs = await github.paginate(github.rest.actions.listJobsForWorkflowRun, {
+                ...context.repo, run_id: context.payload.workflow_run.id,
+                filter: 'latest', per_page: 100
+              });
+              const published = jobs.some(job => job.steps?.some(step =>
+                step.name === 'Deploy to GitHub Pages' && step.conclusion === 'success'));
+              if (!published) {
+                core.info('Upstream run did not generate/publish HTML; skipping deployment.');
+                core.setOutput('publish', 'false');
+                return;
+              }
+            }
+            // Resolve once so a concurrent build cannot change the checkout mid-job.
+            const branch = await github.rest.repos.getBranch({...context.repo, branch: 'gh-pages'});
+            core.setOutput('sha', branch.data.commit.sha);
+            core.setOutput('publish', 'true');
+
+      - name: Checkout citation configuration and notebook sources
+        if: steps.site.outputs.publish == 'true'
+        uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 0
+          path: source
+          persist-credentials: false
+
+      - name: Checkout generated HTML
+        if: steps.site.outputs.publish == 'true'
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ steps.site.outputs.sha }}
+          path: site
+          persist-credentials: false
+
+      - name: Set up Python
+        if: steps.site.outputs.publish == 'true'
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+
+      - name: Install citation dependencies
+        if: steps.site.outputs.publish == 'true'
+        run: python -m pip install nbformat beautifulsoup4 markdown-it-py
+
+      - name: Append missing citations to generated notebook HTML
+        if: steps.site.outputs.publish == 'true'
+        run: >-
+          python source/.github/scripts/add_citation_footer.py
+          --config source/citation.toml --path source --html-dir site
+
+      - name: Remove checkout metadata from deployment
+        if: steps.site.outputs.publish == 'true'
+        run: rm -rf site/.git
+
+      - name: Upload cited Pages artifact
+        if: steps.site.outputs.publish == 'true'
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+
+  deploy:
+    needs: prepare
+    if: needs.prepare.outputs.publish == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy cited site to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
