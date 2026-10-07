@@ -3,11 +3,13 @@
 add_citation_footer.py
 
 Append (or refresh) a templated citation footer in every Jupyter notebook
-under a given path. Idempotent: re-running replaces the existing footer
-rather than stacking new ones.
+under a given path. In --html-dir mode, append only missing citations to
+generated notebook HTML and preserve source notebooks and existing citations.
+Both modes are idempotent.
 
 Usage:
     python add_citation_footer.py --config citation.toml [--path .] [--dry-run]
+    python add_citation_footer.py --config citation.toml --path . --html-dir _site
 
 Configuration is read from a TOML file. See citation.toml for the schema.
 """
@@ -113,7 +115,7 @@ def build_variables(nb_path: Path, repo_root: Path, config: Config) -> dict[str,
     # the same name, which is usually what you want.
     variables["notebook_name"] = nb_path.name
     variables["notebook_stem"] = nb_path.stem
-    variables["notebook_path"] = str(nb_path.relative_to(repo_root))
+    variables["notebook_path"] = nb_path.relative_to(repo_root).as_posix()
     variables["release_date"] = resolve_date(nb_path, config.date_source,
                                              config.date_format)
     return variables
@@ -185,6 +187,58 @@ def find_notebooks(root: Path, config: Config) -> list[Path]:
     return sorted(notebooks)
 
 
+def apply_html_footer(html_path: Path, footer_source: str, dry_run: bool) -> str:
+    """Append only missing citations to a notebook's generated article."""
+    from bs4 import BeautifulSoup, Comment
+    from markdown_it import MarkdownIt
+
+    original = html_path.read_text(encoding="utf-8")
+    soup = BeautifulSoup(original, "html.parser")
+    if soup.find(id="citation-footer") or soup.find(
+        string=lambda value: isinstance(value, Comment)
+        and "CITATION_FOOTER:DO_NOT_EDIT" in value
+    ):
+        return "unchanged"
+    rendered = MarkdownIt("commonmark").render(footer_source)
+    fragment = BeautifulSoup(rendered, "html.parser")
+    # Also recognize a rendered citation when the builder removed its comment.
+    text = " ".join(fragment.stripped_strings)
+    if text and text in " ".join(soup.stripped_strings):
+        return "unchanged"
+    article = soup.select_one("article.bd-article") or soup.find("main")
+    if article is None:
+        raise ValueError(f"No article/main container found in {html_path}")
+    footer = soup.new_tag("section", id="citation-footer")
+    footer["aria-label"] = "Notebook citation"
+    for node in list(fragment.contents):
+        footer.append(node)
+    article.append(footer)
+    if not dry_run:
+        html_path.write_text(str(soup), encoding="utf-8")
+    return "added"
+
+
+def process_html(root: Path, html_dir: Path, config: Config, dry_run: bool) -> int:
+    """Map notebook source paths to Jupyter Book HTML, leaving other pages alone."""
+    if not html_dir.is_dir() or not any(html_dir.rglob("*.html")):
+        raise ValueError(f"No generated HTML found under {html_dir}")
+    counts = {"added": 0, "unchanged": 0, "not-built": 0}
+    for notebook in find_notebooks(root, config):
+        page = html_dir / notebook.relative_to(root).with_suffix(".html")
+        if not page.is_file():
+            counts["not-built"] += 1
+            continue
+        variables = build_variables(notebook, root, config)
+        footer = render_footer(config.template, variables)
+        status = apply_html_footer(page, footer, dry_run)
+        counts[status] += 1
+        print(f"  [{status:>9}] {page.relative_to(html_dir)}")
+    if counts["added"] + counts["unchanged"] == 0:
+        raise ValueError("No generated notebook pages matched the source notebooks")
+    print(f"HTML citations: {counts}")
+    return 0
+
+
 # --------------------------------------------------------------------------- #
 # Entry point
 # --------------------------------------------------------------------------- #
@@ -197,10 +251,14 @@ def main(argv: list[str] | None = None) -> int:
                     help="Repo root to scan (default: current directory).")
     ap.add_argument("--dry-run", action="store_true",
                     help="Report what would change without writing files.")
+    ap.add_argument("--html-dir", type=Path,
+                    help="Generated Jupyter Book HTML directory; append missing citations without changing notebooks.")
     args = ap.parse_args(argv)
 
     config = Config.load(args.config)
     root = args.path.resolve()
+    if args.html_dir is not None:
+        return process_html(root, args.html_dir.resolve(), config, args.dry_run)
     notebooks = find_notebooks(root, config)
 
     if not notebooks:
