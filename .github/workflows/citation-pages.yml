@@ -36,7 +36,7 @@ jobs:
     steps:
       - name: Check for a generated site
         id: site
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             if (context.eventName === 'workflow_run') {
@@ -59,7 +59,7 @@ jobs:
 
       - name: Checkout citation configuration and notebook sources
         if: steps.site.outputs.publish == 'true'
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           ref: main
           fetch-depth: 0
@@ -68,7 +68,7 @@ jobs:
 
       - name: Checkout generated HTML
         if: steps.site.outputs.publish == 'true'
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           ref: ${{ steps.site.outputs.sha }}
           path: site
@@ -76,7 +76,7 @@ jobs:
 
       - name: Set up Python
         if: steps.site.outputs.publish == 'true'
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v7
         with:
           python-version: '3.11'
 
@@ -96,7 +96,7 @@ jobs:
 
       - name: Upload cited Pages artifact
         if: steps.site.outputs.publish == 'true'
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v5
         with:
           path: site
 
@@ -113,4 +113,4 @@ jobs:
     steps:
       - name: Deploy cited site to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
