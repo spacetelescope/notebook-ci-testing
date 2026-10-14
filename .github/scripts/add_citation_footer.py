@@ -188,41 +188,67 @@ def find_notebooks(root: Path, config: Config) -> list[Path]:
 
 
 def apply_html_footer(html_path: Path, footer_source: str, dry_run: bool) -> str:
-    """Append only missing citations to a notebook's generated article."""
+    """Append missing citations and refresh styling of generated footers."""
     from bs4 import BeautifulSoup, Comment
     from markdown_it import MarkdownIt
 
     original = html_path.read_text(encoding="utf-8")
     soup = BeautifulSoup(original, "html.parser")
-    if soup.find(id="citation-footer") or soup.find(
-        string=lambda value: isinstance(value, Comment)
-        and "CITATION_FOOTER:DO_NOT_EDIT" in value
-    ):
-        return "unchanged"
-    rendered = MarkdownIt("commonmark").render(footer_source)
-    fragment = BeautifulSoup(rendered, "html.parser")
-    # Also recognize a rendered citation when the builder removed its comment.
-    text = " ".join(fragment.stripped_strings)
-    if text and text in " ".join(soup.stripped_strings):
-        return "unchanged"
-    article = soup.select_one("article.bd-article") or soup.find("main")
-    if article is None:
-        raise ValueError(f"No article/main container found in {html_path}")
-    footer = soup.new_tag("section", id="citation-footer")
-    footer["aria-label"] = "Notebook citation"
-    for node in list(fragment.contents):
-        footer.append(node)
-    article.append(footer)
+    footer = soup.find(id="citation-footer")
+    status = "updated"
+
+    if footer is None:
+        if soup.find(
+            string=lambda value: isinstance(value, Comment)
+            and "CITATION_FOOTER:DO_NOT_EDIT" in value
+        ):
+            return "unchanged"
+        rendered = MarkdownIt("commonmark").render(footer_source)
+        fragment = BeautifulSoup(rendered, "html.parser")
+        # Preserve citations already supplied by the notebook or builder.
+        text = " ".join(fragment.stripped_strings)
+        if text and text in " ".join(soup.stripped_strings):
+            return "unchanged"
+        article = soup.select_one("article.bd-article") or soup.find("main")
+        if article is None:
+            raise ValueError(f"No article/main container found in {html_path}")
+        footer = soup.new_tag("section", id="citation-footer")
+        footer["aria-label"] = "Notebook citation"
+        for node in list(fragment.contents):
+            footer.append(node)
+        article.append(footer)
+        status = "added"
+
+    css = """#citation-footer {
+  font-size: 0.8rem !important;
+  line-height: 1.4;
+}
+#citation-footer * {
+  font-size: inherit !important;
+  line-height: inherit;
+}"""
+    style = soup.find("style", id="citation-footer-style")
+    if style is not None and style.string == css:
+        if status != "added":
+            return "unchanged"
+    else:
+        if style is None:
+            style = soup.new_tag("style", id="citation-footer-style")
+            if soup.head is not None:
+                soup.head.append(style)
+            else:
+                soup.insert(0, style)
+        style.string = css
+
     if not dry_run:
         html_path.write_text(str(soup), encoding="utf-8")
-    return "added"
-
+    return status
 
 def process_html(root: Path, html_dir: Path, config: Config, dry_run: bool) -> int:
     """Map notebook source paths to Jupyter Book HTML, leaving other pages alone."""
     if not html_dir.is_dir() or not any(html_dir.rglob("*.html")):
         raise ValueError(f"No generated HTML found under {html_dir}")
-    counts = {"added": 0, "unchanged": 0, "not-built": 0}
+    counts = {"added": 0, "updated": 0, "unchanged": 0, "not-built": 0}
     for notebook in find_notebooks(root, config):
         page = html_dir / notebook.relative_to(root).with_suffix(".html")
         if not page.is_file():
@@ -233,7 +259,7 @@ def process_html(root: Path, html_dir: Path, config: Config, dry_run: bool) -> i
         status = apply_html_footer(page, footer, dry_run)
         counts[status] += 1
         print(f"  [{status:>9}] {page.relative_to(html_dir)}")
-    if counts["added"] + counts["unchanged"] == 0:
+    if counts["added"] + counts["updated"] + counts["unchanged"] == 0:
         raise ValueError("No generated notebook pages matched the source notebooks")
     print(f"HTML citations: {counts}")
     return 0
