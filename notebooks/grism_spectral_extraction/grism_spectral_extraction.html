@@ -1,185 +1,124 @@
 
 <!DOCTYPE html>
 
-
-<html lang="en" data-content_root="../../" >
-
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <title>Roman Spectroscopy: Grism Spectral Extraction &#8212; STScI Roman Notebooks</title>
-  
-  
-  
-  <script data-cfasync="false">
+<html data-content_root="../../" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Roman Spectroscopy: Grism Spectral Extraction — STScI Roman Notebooks</title>
+<script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!--
+<!--
     this give us a css class that will be invisible only if js is disabled
   -->
-  <noscript>
-    <style>
+<noscript>
+<style>
       .pst-js-only { display: none !important; }
 
     </style>
-  </noscript>
-  
-  <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/table.css?v=cd6c26fb" />
-    <link rel="stylesheet" type="text/css" href="../../_static/main.css?v=b44a18d9" />
-  
-  <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
-  <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
-
-    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../_static/copybutton.js?v=f281be69"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
-    <script>let toggleHintShow = 'Click to show';</script>
-    <script>let toggleHintHide = 'Click to hide';</script>
-    <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js?v=b8b12719"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
-    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-D46G4HKJY3"></script>
-    <script>
+</noscript>
+<!-- Loaded before other Sphinx assets -->
+<link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet"/>
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet"/>
+<link href="../../_static/pygments.css?v=03e43079" rel="stylesheet" type="text/css"/>
+<link href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" rel="stylesheet" type="text/css"/>
+<link href="../../_static/togglebutton.css?v=9c3e77be" rel="stylesheet" type="text/css"/>
+<link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sphinx-thebe.css?v=4fa983c6" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
+<link href="../../_static/table.css?v=cd6c26fb" rel="stylesheet" type="text/css"/>
+<link href="../../_static/main.css?v=b44a18d9" rel="stylesheet" type="text/css"/>
+<!-- So that users can add custom icons -->
+<script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" rel="preload"/>
+<link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" rel="preload"/>
+<script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+<script src="../../_static/doctools.js?v=9a2dae69"></script>
+<script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../../_static/copybutton.js?v=f281be69"></script>
+<script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+<script>let toggleHintShow = 'Click to show';</script>
+<script>let toggleHintHide = 'Click to hide';</script>
+<script>let toggleOpenOnPrint = 'true';</script>
+<script src="../../_static/togglebutton.js?v=b8b12719"></script>
+<script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+<script src="../../_static/design-tabs.js?v=f930bc37"></script>
+<script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-D46G4HKJY3"></script>
+<script>
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){ dataLayer.push(arguments); }
                 gtag('js', new Date());
                 gtag('config', 'G-D46G4HKJY3');
             </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>
+<script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+<script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+<script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+<script>
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){ dataLayer.push(arguments); }
                 gtag('js', new Date());
                 gtag('config', 'G-D46G4HKJY3');
             </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/grism_spectral_extraction/grism_spectral_extraction';</script>
-    <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="The Roman Interactive Sensitivity Tool (RIST)" href="../rist/rist.html" />
-    <link rel="prev" title="Aperture Photometry" href="../aperture_photometry/aperture_photometry.html" />
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
-  </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
-  
-  
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
-  
-  <div id="pst-scroll-pixel-helper"></div>
-  
-  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
-  
-  <dialog id="pst-search-dialog">
-    
-<form class="bd-search d-flex align-items-center"
-      action="../../search.html"
-      method="get">
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search"
-         class="form-control"
-         name="q"
-         placeholder="Search this book..."
-         aria-label="Search this book..."
-         autocomplete="off"
-         autocorrect="off"
-         autocapitalize="off"
-         spellcheck="false"/>
-  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+<script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+<script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+<script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/grism_spectral_extraction/grism_spectral_extraction';</script>
+<link href="../../genindex.html" rel="index" title="Index"/>
+<link href="../../search.html" rel="search" title="Search"/>
+<link href="../rist/rist.html" rel="next" title="The Roman Interactive Sensitivity Tool (RIST)"/>
+<link href="../aperture_photometry/aperture_photometry.html" rel="prev" title="Aperture Photometry"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+<meta content="" name="docsearch:version"/>
+</head>
+<body data-bs-root-margin="0px 0px -60%" data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-default-mode="" data-offset="180">
+<div class="skip-link d-print-none" id="pst-skip-link"><a href="#main-content">Skip to main content</a></div>
+<div id="pst-scroll-pixel-helper"></div>
+<button class="btn rounded-pill" id="pst-back-to-top" type="button">
+<i class="fa-solid fa-arrow-up"></i>Back to top</button>
+<dialog id="pst-search-dialog">
+<form action="../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Search this book..." autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Search this book..." spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form>
-  </dialog>
-
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</dialog>
+<div class="pst-async-banner-revealer d-none">
+<aside aria-label="Version warning" class="d-none d-print-none" id="bd-header-version-warning"></aside>
 </div>
-
-  
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
-    </header>
-  
-
-  <div class="bd-container">
-    <div class="bd-container__inner bd-page-width">
-      
-      
-      
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
-        
-
-  
-  <div class="sidebar-header-items sidebar-primary__section">
-    
-    
-    
-    
-  </div>
-  
-    <div class="sidebar-primary-items__start sidebar-primary__section">
-        <div class="sidebar-primary-item">
-
-  
-    
-  
-
+<header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+</header>
+<div class="bd-container">
+<div class="bd-container__inner bd-page-width">
+<dialog id="pst-primary-sidebar-modal"></dialog>
+<div class="bd-sidebar-primary bd-sidebar" id="pst-primary-sidebar">
+<div class="sidebar-header-items sidebar-primary__section">
+</div>
+<div class="sidebar-primary-items__start sidebar-primary__section">
+<div class="sidebar-primary-item">
 <a class="navbar-brand logo" href="../../intro.html">
-  
-  
-  
-  
-  
-  
-    <p class="title logo__title">STScI Roman Notebooks</p>
-  
+<p class="title logo__title">STScI Roman Notebooks</p>
 </a></div>
-        <div class="sidebar-primary-item">
-
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+<div class="sidebar-primary-item">
+<button aria-label="Search" class="btn search-button-field search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Search">
+<i class="fa-solid fa-magnifying-glass"></i>
+<span class="search-button__default-text">Search</span>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
 </button></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item navbar-nav active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="../../intro.html">
-                    
-                </a>
-            </li>
-        </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">General</span></p>
+<div class="sidebar-primary-item"><nav aria-label="Main" class="bd-links bd-docs-nav">
+<div class="bd-toc-item navbar-nav active">
+<ul class="nav bd-sidenav bd-sidenav__home-link">
+<li class="toctree-l1">
+<a class="reference internal" href="../../intro.html">
+</a>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">General</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../index.html">Home</a></li>
 </ul>
@@ -193,11 +132,8 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Cross-Instrument</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../cross_instrument/asdf_example/asdf_example.html">ASDF Example</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="../cross_instrument/background_estimation_imaging/Imaging_Sky_Background_Estimation.html">Complex 2D Background</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cross_instrument/composite_model_fitting/specfit_demo_3.html">Composite Model Spectral Fitting</a></li>
-
-
 <li class="toctree-l1"><a class="reference internal" href="../cross_instrument/specviz_notebookGUI_interaction/specviz_notebook_gui_interaction_redshift.html">Specviz Simple Demo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cross_instrument/update_pure_parallel_wcs/NIRISS_correct_pure_parallel_WCS.html">Improving Accuracy of WCS of Pure Parallel Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cross_instrument/photometry_extragalactic/imviz.html">Photometry with JWST - Imviz</a></li>
@@ -221,197 +157,102 @@
 <li class="toctree-l1"><a class="reference internal" href="../rist/rist.html">RIST</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../background_visualization_tool/RBVT.html">Background Visualization Tool</a></li>
 </ul>
-
-    </div>
+</div>
 </nav></div>
-    </div>
-  
-  
-  <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
+</div>
+<div class="sidebar-primary-items__end sidebar-primary__section">
+<div class="sidebar-primary-item">
+<div class="flat" data-ea-manual="true" data-ea-publisher="readthedocs" data-ea-type="readthedocs-sidebar" id="ethical-ad-placement">
 </div></div>
-  </div>
-
-
-      </div>
-      
-      <main id="main-content" class="bd-main" role="main">
-        
-        
-
+</div>
+</div>
+<main class="bd-main" id="main-content" role="main">
 <div class="sbt-scroll-pixel-helper"></div>
-
-          <div class="bd-content">
-            <div class="bd-article-container">
-              
-              <div class="bd-header-article d-print-none">
+<div class="bd-content">
+<div class="bd-article-container">
+<div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
-  
-    <div class="header-article-items__start">
-      
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <span class="fa-solid fa-bars"></span>
+<div class="header-article-items__start">
+<div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Toggle primary sidebar">
+<span class="fa-solid fa-bars"></span>
 </button></div>
-      
-    </div>
-  
-  
-    <div class="header-article-items__end">
-      
-        <div class="header-article-item">
-
+</div>
+<div class="header-article-items__end">
+<div class="header-article-item">
 <div class="article-header-buttons">
-
-
-
-
-
 <div class="dropdown dropdown-source-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
-    <i class="fab fa-github"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="https://github.com/spacetelescope/roman_notebooks" target="_blank"
-   class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="Source repository"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
+<button aria-expanded="false" aria-label="Source repositories" class="btn dropdown-toggle" data-bs-toggle="dropdown" type="button">
+<i class="fab fa-github"></i>
+</button>
+<ul class="dropdown-menu">
+<li><a class="btn btn-sm btn-source-repository-button dropdown-item" data-bs-placement="left" data-bs-toggle="tooltip" href="https://github.com/spacetelescope/roman_notebooks" target="_blank" title="Source repository">
 <span class="btn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
+<i class="fab fa-github"></i>
+</span>
 <span class="btn__text-container">Repository</span>
 </a>
 </li>
-      
-      
-      
-      
-      <li><a href="https://github.com/spacetelescope/roman_notebooks/issues/new?title=Issue%20on%20page%20%2Fnotebooks/grism_spectral_extraction/grism_spectral_extraction.html&body=Your%20issue%20content%20here." target="_blank"
-   class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="Open an issue"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
+<li><a class="btn btn-sm btn-source-issues-button dropdown-item" data-bs-placement="left" data-bs-toggle="tooltip" href="https://github.com/spacetelescope/roman_notebooks/issues/new?title=Issue%20on%20page%20%2Fnotebooks/grism_spectral_extraction/grism_spectral_extraction.html&amp;body=Your%20issue%20content%20here." target="_blank" title="Open an issue">
 <span class="btn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
+<i class="fas fa-lightbulb"></i>
+</span>
 <span class="btn__text-container">Open issue</span>
 </a>
 </li>
-      
-  </ul>
+</ul>
 </div>
-
-
-
-
-
-
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
-    <i class="fas fa-download"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="../../_sources/notebooks/grism_spectral_extraction/grism_spectral_extraction.ipynb" target="_blank"
-   class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
+<button aria-expanded="false" aria-label="Download this page" class="btn dropdown-toggle" data-bs-toggle="dropdown" type="button">
+<i class="fas fa-download"></i>
+</button>
+<ul class="dropdown-menu">
+<li><a class="btn btn-sm btn-download-source-button dropdown-item" data-bs-placement="left" data-bs-toggle="tooltip" href="../../_sources/notebooks/grism_spectral_extraction/grism_spectral_extraction.ipynb" target="_blank" title="Download source file">
 <span class="btn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
+<i class="fas fa-file"></i>
+</span>
 <span class="btn__text-container">.ipynb</span>
 </a>
 </li>
-      
-      
-      
-      
-      <li>
-<button onclick="window.print()"
-  class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
-  data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
+<li>
+<button class="btn btn-sm btn-download-pdf-button dropdown-item" data-bs-placement="left" data-bs-toggle="tooltip" onclick="window.print()" title="Print to PDF">
 <span class="btn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
+<i class="fas fa-file-pdf"></i>
+</span>
 <span class="btn__text-container">.pdf</span>
 </button>
 </li>
-      
-  </ul>
+</ul>
 </div>
-
-
-
-
-<button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
-  title="Fullscreen mode"
-  data-bs-placement="bottom" data-bs-toggle="tooltip"
->
-  
-
+<button class="btn btn-sm btn-fullscreen-button pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" onclick="toggleFullScreen()" title="Fullscreen mode">
 <span class="btn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
+<i class="fas fa-expand"></i>
+</span>
 </button>
-
-
-
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+<button aria-label="Color mode" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Light"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Dark"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="System Settings"></i>
 </button>
-
-
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+<button aria-label="Search" class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Search">
+<i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Toggle secondary sidebar">
+<span class="fa-solid fa-list"></span>
 </button>
 </div></div>
-      
-    </div>
-  
 </div>
 </div>
-              
-              
-
-<div id="jb-print-docs-body" class="onlyprint">
-    <h1>Roman Spectroscopy: Grism Spectral Extraction</h1>
-    <!-- Table of contents -->
-    <div id="print-main-content">
-        <div id="jb-print-toc">
-            
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+</div>
+<div class="onlyprint" id="jb-print-docs-body">
+<h1>Roman Spectroscopy: Grism Spectral Extraction</h1>
+<!-- Table of contents -->
+<div id="print-main-content">
+<div id="jb-print-toc">
+<div>
+<h2> Contents </h2>
+</div>
+<nav aria-label="Page">
+<ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kernel-information-and-read-only-status">Kernel Information and Read-Only Status</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
@@ -443,19 +284,15 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-resources">Additional Resources</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-this-notebook">About this Notebook</a></li>
 </ul>
-            </nav>
-        </div>
-    </div>
+</nav>
 </div>
-
-              
-                
+</div>
+</div>
 <div id="searchbox"></div>
-                <article class="bd-article">
-                  
-  <section class="tex2jax_ignore mathjax_ignore" id="roman-spectroscopy-grism-spectral-extraction">
+<article class="bd-article">
+<section class="tex2jax_ignore mathjax_ignore" id="roman-spectroscopy-grism-spectral-extraction">
 <h1>Roman Spectroscopy: Grism Spectral Extraction<a class="headerlink" href="#roman-spectroscopy-grism-spectral-extraction" title="Link to this heading">#</a></h1>
-<hr class="docutils" />
+<hr class="docutils"/>
 <section id="kernel-information-and-read-only-status">
 <h2>Kernel Information and Read-Only Status<a class="headerlink" href="#kernel-information-and-read-only-status" title="Link to this heading">#</a></h2>
 <p>To run this notebook, please select “Roman Research Nexus {VERSION}” kernel at the top right of your window. For example “Roman Research Nexus 2026.1”.</p>
@@ -610,7 +447,7 @@
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Failed to find font weight 600, now using 700.
 </pre></div>
 </div>
-<img alt="../../_images/dad5985cdde7c1d846644f782cac8ba5c92d104078c75076d95eda74b909a1ec.png" src="../../_images/dad5985cdde7c1d846644f782cac8ba5c92d104078c75076d95eda74b909a1ec.png" />
+<img alt="../../_images/dad5985cdde7c1d846644f782cac8ba5c92d104078c75076d95eda74b909a1ec.png" src="../../_images/dad5985cdde7c1d846644f782cac8ba5c92d104078c75076d95eda74b909a1ec.png"/>
 </div>
 </div>
 </section>
@@ -675,7 +512,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/9b62363fdc0f13743a77101d2da2e7353a47f603d9f575d269d1b2bd77d1574a.png" src="../../_images/9b62363fdc0f13743a77101d2da2e7353a47f603d9f575d269d1b2bd77d1574a.png" />
+<img alt="../../_images/9b62363fdc0f13743a77101d2da2e7353a47f603d9f575d269d1b2bd77d1574a.png" src="../../_images/9b62363fdc0f13743a77101d2da2e7353a47f603d9f575d269d1b2bd77d1574a.png"/>
 </div>
 </div>
 <p>Now that we have a 2D cutout of the spectrum, we need to assign wavelength information.</p>
@@ -723,7 +560,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/c8f8d4b64b5f1d76782aba1bfac92082ecc1acb2533dd5272e2e1536176cdc31.png" src="../../_images/c8f8d4b64b5f1d76782aba1bfac92082ecc1acb2533dd5272e2e1536176cdc31.png" />
+<img alt="../../_images/c8f8d4b64b5f1d76782aba1bfac92082ecc1acb2533dd5272e2e1536176cdc31.png" src="../../_images/c8f8d4b64b5f1d76782aba1bfac92082ecc1acb2533dd5272e2e1536176cdc31.png"/>
 </div>
 </div>
 <p>Now, we move to the 1-D spectral extraction.</p>
@@ -778,7 +615,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/14f558c54cf616821fba8d7a767965ecd34d9106c4c3d1b069038a18aef90663.png" src="../../_images/14f558c54cf616821fba8d7a767965ecd34d9106c4c3d1b069038a18aef90663.png" />
+<img alt="../../_images/14f558c54cf616821fba8d7a767965ecd34d9106c4c3d1b069038a18aef90663.png" src="../../_images/14f558c54cf616821fba8d7a767965ecd34d9106c4c3d1b069038a18aef90663.png"/>
 </div>
 </div>
 <p>As noted above, the size of the extraction box is crucial. If it is too small, it may miss flux from the true source; if it is too large, it may include excessive noise, reducing the overall quality of the resulting spectrum. Therefore, we turn to the optimal extraction method.</p>
@@ -854,7 +691,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/134a7fec33e9dd038affef14869a436e1bbffa2aac5a8479e5b075b3d79e9deb.png" src="../../_images/134a7fec33e9dd038affef14869a436e1bbffa2aac5a8479e5b075b3d79e9deb.png" />
+<img alt="../../_images/134a7fec33e9dd038affef14869a436e1bbffa2aac5a8479e5b075b3d79e9deb.png" src="../../_images/134a7fec33e9dd038affef14869a436e1bbffa2aac5a8479e5b075b3d79e9deb.png"/>
 </div>
 </div>
 <section id="masking-neighboring-sources-in-direct-cutouts">
@@ -985,10 +822,10 @@ WARNING: AstropyDeprecationWarning: 'npixels' was deprecated in version 3.0 and 
 WARNING: AstropyDeprecationWarning: 'npixels' was deprecated in version 3.0 and will be removed in version 4.0. Use argument 'n_pixels' instead. [warnings]
 </pre></div>
 </div>
-<img alt="../../_images/6e831d34d17120e14f084ad729638d24935e83ce347f643f602d412b816c58fd.png" src="../../_images/6e831d34d17120e14f084ad729638d24935e83ce347f643f602d412b816c58fd.png" />
-<img alt="../../_images/d70d1f17e48996f6732ab5d04533e08b4098fffc66c836c060dfcf086c7ad3fb.png" src="../../_images/d70d1f17e48996f6732ab5d04533e08b4098fffc66c836c060dfcf086c7ad3fb.png" />
-<img alt="../../_images/52aba03de96bac8829b5886000547fdaf912241d861b1e2cb88a7af1dcb5d13f.png" src="../../_images/52aba03de96bac8829b5886000547fdaf912241d861b1e2cb88a7af1dcb5d13f.png" />
-<img alt="../../_images/16701971300c7b59462e6d2bd81d684ca110dbe475a2ab1c593fdd8ff8c37786.png" src="../../_images/16701971300c7b59462e6d2bd81d684ca110dbe475a2ab1c593fdd8ff8c37786.png" />
+<img alt="../../_images/6e831d34d17120e14f084ad729638d24935e83ce347f643f602d412b816c58fd.png" src="../../_images/6e831d34d17120e14f084ad729638d24935e83ce347f643f602d412b816c58fd.png"/>
+<img alt="../../_images/d70d1f17e48996f6732ab5d04533e08b4098fffc66c836c060dfcf086c7ad3fb.png" src="../../_images/d70d1f17e48996f6732ab5d04533e08b4098fffc66c836c060dfcf086c7ad3fb.png"/>
+<img alt="../../_images/52aba03de96bac8829b5886000547fdaf912241d861b1e2cb88a7af1dcb5d13f.png" src="../../_images/52aba03de96bac8829b5886000547fdaf912241d861b1e2cb88a7af1dcb5d13f.png"/>
+<img alt="../../_images/16701971300c7b59462e6d2bd81d684ca110dbe475a2ab1c593fdd8ff8c37786.png" src="../../_images/16701971300c7b59462e6d2bd81d684ca110dbe475a2ab1c593fdd8ff8c37786.png"/>
 </div>
 </div>
 </section>
@@ -1014,11 +851,11 @@ WARNING: AstropyDeprecationWarning: 'npixels' was deprecated in version 3.0 and 
 WARNING: AstropyDeprecationWarning: 'npixels' was deprecated in version 3.0 and will be removed in version 4.0. Use argument 'n_pixels' instead. [warnings]
 </pre></div>
 </div>
-<img alt="../../_images/4c115ae2083c7ea3e134486e7a60d1ae49053ea8d9009c443603c3700ef625a0.png" src="../../_images/4c115ae2083c7ea3e134486e7a60d1ae49053ea8d9009c443603c3700ef625a0.png" />
-<img alt="../../_images/3476b1d68aadc28b794a78c856c549a49de2686f05fa506dba4265a0c40d7557.png" src="../../_images/3476b1d68aadc28b794a78c856c549a49de2686f05fa506dba4265a0c40d7557.png" />
-<img alt="../../_images/3c95b73bff17481d07cc6cff03a0d8ce5c0a3aa6839079e9a696585b70257606.png" src="../../_images/3c95b73bff17481d07cc6cff03a0d8ce5c0a3aa6839079e9a696585b70257606.png" />
-<img alt="../../_images/ec3c9019731bc85fbf6c49f302d49f8290c71f458d1474fe7aa0eae428a798bf.png" src="../../_images/ec3c9019731bc85fbf6c49f302d49f8290c71f458d1474fe7aa0eae428a798bf.png" />
-<img alt="../../_images/fe06ca8974741e7f28ebf9c22f51163d3a28c38afe3c9e22d4c2b078ca9fad35.png" src="../../_images/fe06ca8974741e7f28ebf9c22f51163d3a28c38afe3c9e22d4c2b078ca9fad35.png" />
+<img alt="../../_images/4c115ae2083c7ea3e134486e7a60d1ae49053ea8d9009c443603c3700ef625a0.png" src="../../_images/4c115ae2083c7ea3e134486e7a60d1ae49053ea8d9009c443603c3700ef625a0.png"/>
+<img alt="../../_images/3476b1d68aadc28b794a78c856c549a49de2686f05fa506dba4265a0c40d7557.png" src="../../_images/3476b1d68aadc28b794a78c856c549a49de2686f05fa506dba4265a0c40d7557.png"/>
+<img alt="../../_images/3c95b73bff17481d07cc6cff03a0d8ce5c0a3aa6839079e9a696585b70257606.png" src="../../_images/3c95b73bff17481d07cc6cff03a0d8ce5c0a3aa6839079e9a696585b70257606.png"/>
+<img alt="../../_images/ec3c9019731bc85fbf6c49f302d49f8290c71f458d1474fe7aa0eae428a798bf.png" src="../../_images/ec3c9019731bc85fbf6c49f302d49f8290c71f458d1474fe7aa0eae428a798bf.png"/>
+<img alt="../../_images/fe06ca8974741e7f28ebf9c22f51163d3a28c38afe3c9e22d4c2b078ca9fad35.png" src="../../_images/fe06ca8974741e7f28ebf9c22f51163d3a28c38afe3c9e22d4c2b078ca9fad35.png"/>
 </div>
 </div>
 </section>
@@ -1045,10 +882,10 @@ WARNING: AstropyDeprecationWarning: 'npixels' was deprecated in version 3.0 and 
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: AstropyDeprecationWarning: 'npixels' was deprecated in version 3.0 and will be removed in version 4.0. Use argument 'n_pixels' instead. [warnings]
 </pre></div>
 </div>
-<img alt="../../_images/f78cafa43041c831f5b397eded06780a9761b29d9903772a5103a7d7cfb92b19.png" src="../../_images/f78cafa43041c831f5b397eded06780a9761b29d9903772a5103a7d7cfb92b19.png" />
-<img alt="../../_images/4c115ae2083c7ea3e134486e7a60d1ae49053ea8d9009c443603c3700ef625a0.png" src="../../_images/4c115ae2083c7ea3e134486e7a60d1ae49053ea8d9009c443603c3700ef625a0.png" />
-<img alt="../../_images/a6105b19e0bf9853464ece25d883e99ed3b0981b550df60cf03c07a28219c752.png" src="../../_images/a6105b19e0bf9853464ece25d883e99ed3b0981b550df60cf03c07a28219c752.png" />
-<img alt="../../_images/f6e58e51db7ee408ebb96e89c49eaa0a262eb9a85344ca926b70c4b0a585154f.png" src="../../_images/f6e58e51db7ee408ebb96e89c49eaa0a262eb9a85344ca926b70c4b0a585154f.png" />
+<img alt="../../_images/f78cafa43041c831f5b397eded06780a9761b29d9903772a5103a7d7cfb92b19.png" src="../../_images/f78cafa43041c831f5b397eded06780a9761b29d9903772a5103a7d7cfb92b19.png"/>
+<img alt="../../_images/4c115ae2083c7ea3e134486e7a60d1ae49053ea8d9009c443603c3700ef625a0.png" src="../../_images/4c115ae2083c7ea3e134486e7a60d1ae49053ea8d9009c443603c3700ef625a0.png"/>
+<img alt="../../_images/a6105b19e0bf9853464ece25d883e99ed3b0981b550df60cf03c07a28219c752.png" src="../../_images/a6105b19e0bf9853464ece25d883e99ed3b0981b550df60cf03c07a28219c752.png"/>
+<img alt="../../_images/f6e58e51db7ee408ebb96e89c49eaa0a262eb9a85344ca926b70c4b0a585154f.png" src="../../_images/f6e58e51db7ee408ebb96e89c49eaa0a262eb9a85344ca926b70c4b0a585154f.png"/>
 </div>
 </div>
 </section>
@@ -1082,7 +919,7 @@ WARNING: AstropyDeprecationWarning: 'npixels' was deprecated in version 3.0 and 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/a9442a6f8864c1a20b2134b7220fd15233d3e6a271e3ae77382256fa20848bde.png" src="../../_images/a9442a6f8864c1a20b2134b7220fd15233d3e6a271e3ae77382256fa20848bde.png" />
+<img alt="../../_images/a9442a6f8864c1a20b2134b7220fd15233d3e6a271e3ae77382256fa20848bde.png" src="../../_images/a9442a6f8864c1a20b2134b7220fd15233d3e6a271e3ae77382256fa20848bde.png"/>
 </div>
 </div>
 <div class="cell docutils container">
@@ -1097,8 +934,8 @@ WARNING: AstropyDeprecationWarning: 'npixels' was deprecated in version 3.0 and 
 WARNING: AstropyDeprecationWarning: 'npixels' was deprecated in version 3.0 and will be removed in version 4.0. Use argument 'n_pixels' instead. [warnings]
 </pre></div>
 </div>
-<img alt="../../_images/b2bf6c5a627e03554c2291a6bc595e71e09118830e193657fbd1c8e1d019f033.png" src="../../_images/b2bf6c5a627e03554c2291a6bc595e71e09118830e193657fbd1c8e1d019f033.png" />
-<img alt="../../_images/4fe1860fc8e5b3abe05dc4f92685b9e6a5cbe7795a76bf95176e229b6a124b84.png" src="../../_images/4fe1860fc8e5b3abe05dc4f92685b9e6a5cbe7795a76bf95176e229b6a124b84.png" />
+<img alt="../../_images/b2bf6c5a627e03554c2291a6bc595e71e09118830e193657fbd1c8e1d019f033.png" src="../../_images/b2bf6c5a627e03554c2291a6bc595e71e09118830e193657fbd1c8e1d019f033.png"/>
+<img alt="../../_images/4fe1860fc8e5b3abe05dc4f92685b9e6a5cbe7795a76bf95176e229b6a124b84.png" src="../../_images/4fe1860fc8e5b3abe05dc4f92685b9e6a5cbe7795a76bf95176e229b6a124b84.png"/>
 </div>
 </div>
 </section>
@@ -1108,27 +945,26 @@ WARNING: AstropyDeprecationWarning: 'npixels' was deprecated in version 3.0 and 
 <li><p><a class="reference external" href="https://roman.gsfc.nasa.gov/science/roses/GDPSforROSES.pdf%5D">GDPS Presentation</a></p></li>
 </ul>
 </section>
-<hr class="docutils" />
+<hr class="docutils"/>
 <section id="about-this-notebook">
 <h2>About this Notebook<a class="headerlink" href="#about-this-notebook" title="Link to this heading">#</a></h2>
-<p><strong>Author:</strong> Vihang Mehta<br />
+<p><strong>Author:</strong> Vihang Mehta<br/>
 <strong>Updated On:</strong> 2025-09-30</p>
-<table width="100%" style="border:none; border-collapse:collapse;">
-  <tr style="border:none;">
-    <td style="border:none; width:180px; white-space:nowrap;">
-       <a href="#top" style="text-decoration:none; color:#0066cc;"> Top of page</a>
-    </td>
-    <td style="border:none; text-align:center;">
-        <img src="https://raw.githubusercontent.com/spacetelescope/roman_notebooks/refs/heads/main/roman_logo.png" alt="roman_logo" width="50px">
-    </td>
-    <td style="border:none; text-align:right;">
-       <img src="https://raw.githubusercontent.com/spacetelescope/roman_notebooks/refs/heads/main/stsci_logo2.png" width="90">
-    </td>
-  </tr>
+<table style="border:none; border-collapse:collapse;" width="100%">
+<tr style="border:none;">
+<td style="border:none; width:180px; white-space:nowrap;">
+<a href="#top" style="text-decoration:none; color:#0066cc;"> Top of page</a>
+</td>
+<td style="border:none; text-align:center;">
+<img alt="roman_logo" src="https://raw.githubusercontent.com/spacetelescope/roman_notebooks/refs/heads/main/roman_logo.png" width="50px"/>
+</td>
+<td style="border:none; text-align:right;">
+<img src="https://raw.githubusercontent.com/spacetelescope/roman_notebooks/refs/heads/main/stsci_logo2.png" width="90"/>
+</td>
+</tr>
 </table></section>
 </section>
-
-    <script type="text/x-thebe-config">
+<script type="text/x-thebe-config">
     {
         requestKernel: true,
         binderOptions: {
@@ -1146,54 +982,40 @@ WARNING: AstropyDeprecationWarning: 'npixels' was deprecated in version 3.0 and 
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'roman-cal'</script>
-
-                </article>
-              
-
-              
-              
-              
-              
-                <footer class="prev-next-footer d-print-none">
-                  
+<script>kernelName = 'roman-cal'</script>
+<section aria-label="Notebook citation" id="citation-footer"><!-- CITATION_FOOTER:DO_NOT_EDIT -->
+<hr/>
+<p><em>This research makes use of the <code>grism_spectral_extraction.ipynb</code>, released on 2026-07-09.
+This notebook is part of the <code>my-notebooks-v2</code> repository
+(Perpetual DOI: <a href="https://doi.org/10.5281/zenodo.0000000">10.5281/zenodo.0000000</a>), developed by
+the Space Telescope Science Institute, which is operated by the Association of Universities for Research in Astronomy, Inc. under NASA contract NAS 5-26555.</em></p>
+</section></article>
+<footer class="prev-next-footer d-print-none">
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="../aperture_photometry/aperture_photometry.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Aperture Photometry</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="../rist/rist.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">The Roman Interactive Sensitivity Tool (RIST)</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
+<a class="left-prev" href="../aperture_photometry/aperture_photometry.html" title="previous page">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">Aperture Photometry</p>
 </div>
-                </footer>
-              
-            </div>
-            
-            
-              
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item"><div
-    id="pst-page-navigation-heading-2"
-    class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
+</a>
+<a class="right-next" href="../rist/rist.html" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">The Roman Interactive Sensitivity Tool (RIST)</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>
+<dialog id="pst-secondary-sidebar-modal"></dialog>
+<div class="bd-sidebar-secondary bd-toc" id="pst-secondary-sidebar"><div class="sidebar-secondary-items sidebar-secondary__inner">
+<div class="sidebar-secondary-item"><div class="page-toc tocsection onthispage" id="pst-page-navigation-heading-2">
+<i class="fa-solid fa-list"></i> Contents
   </div>
-  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
+<nav aria-labelledby="pst-page-navigation-heading-2" class="page-toc" id="pst-page-toc-nav">
+<ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kernel-information-and-read-only-status">Kernel Information and Read-Only Status</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
@@ -1225,57 +1047,36 @@ WARNING: AstropyDeprecationWarning: 'npixels' was deprecated in version 3.0 and 
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-resources">Additional Resources</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-this-notebook">About this Notebook</a></li>
 </ul>
-  </nav></div>
-
+</nav></div>
 </div></div>
-              
-            
-          </div>
-          <footer class="bd-footer-content">
-            
+</div>
+<footer class="bd-footer-content">
 <div class="bd-footer-content__inner container">
-  
-  <div class="footer-item">
-    
+<div class="footer-item">
 <p class="component-author">
 By STScI
 </p>
-
-  </div>
-  
-  <div class="footer-item">
-    
-
-  <p class="copyright">
+</div>
+<div class="footer-item">
+<p class="copyright">
     
       © Copyright 2026.
       <br/>
-    
-  </p>
-
-  </div>
-  
-  <div class="footer-item">
-    
-  </div>
-  
-  <div class="footer-item">
-    
-  </div>
-  
+</p>
 </div>
-          </footer>
-        
-
-      </main>
-    </div>
-  </div>
-  
-  <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
-
-  <footer class="bd-footer">
-  </footer>
-  </body>
+<div class="footer-item">
+</div>
+<div class="footer-item">
+</div>
+</div>
+</footer>
+</main>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script defer="" src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer="" src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+<footer class="bd-footer">
+</footer>
+</body>
 </html>
