@@ -14,7 +14,7 @@ jobs:
       new_updated_html_files: ${{ steps.make-html-list.outputs.html_files }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: 'spacetelescope/${{ github.event.inputs.repository }}'
           ref: 'gh-pages'
@@ -76,7 +76,7 @@ jobs:
           CACHE_KEY=$(printf 'cached_results-%s.json' "${{ github.ref_name }}" | tr -cs 'A-Za-z0-9/._-' '-')
           echo "Generated cache key: $CACHE_KEY"
           echo "cache_key=$CACHE_KEY" >> $GITHUB_OUTPUT
-      - uses: github/accessibility-scanner@v3.4.1
+      - uses: github/accessibility-scanner@v3.5.0
         with:
           urls: ${{ needs.list-files.outputs.new_updated_html_files }}
           repository: 'spacetelescope/${{ github.event.inputs.repository }}'
