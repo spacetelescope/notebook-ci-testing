@@ -3,6 +3,15 @@ import requests
 import tarfile
 import tempfile
 import yaml
+
+
+def _has_valid_data_path(path):
+    """Return True when an environment variable points to usable refdata."""
+    if not path or path in {'.', '***unset***'}:
+        return False
+    return os.path.isdir(path)
+
+
 def _load_yaml(dependencies):
     """Load a YAML file from a local path or URL."""
     if os.path.exists(dependencies):
@@ -84,7 +93,7 @@ def install_files(dependencies='https://raw.githubusercontent.com/spacetelescope
         envvar = yf[package]['environment_variable']
         try:
             test = os.environ[envvar]
-            if test == '***unset***':
+            if not _has_valid_data_path(test):
                 raise KeyError('UNSET PATH')
             if verbose:
                 print(f"Found {package} path {os.environ[envvar]}")
@@ -157,6 +166,6 @@ def setup_env(result,
             print(f"\t{key} = {os.environ[key]} (pre-set, not overwritten)")
 
 
-if __name__ == 'main':
+if __name__ == '__main__':
 
     install_files()
