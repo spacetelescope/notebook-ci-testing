@@ -15,14 +15,23 @@
 template = """
 ---
 
-*This research makes use of the `${notebook_name}`, released on ${release_date}.
-This notebook is part of the `${repo_name}` repository
-(Perpetual DOI: [${doi}](https://doi.org/${doi})), developed by
-${institution}, which is operated by ${parent_org} under ${contract}.*
+*This research makes use of the `${notebook_name}`, released on
+${release_date}. This notebook is part of the `${repo_name}`
+repository (Perpetual DOI: [${doi}](https://doi.org/${doi})),
+developed by ${institution}, which is operated by
+${parent_org} under ${contract}.*
 
-<div class="alert alert-block alert-info"><b>When publishing results that use this notebook, please include a citation in your manuscript. A latex-ready bibliography entry can be copied from the HST Notebooks repository using the "Cite this repository" drop-down on <a href="https://github.com/spacetelescope/hst_notebooks">GitHub</a> or "Export > BibTex" on <a href="https://doi.org/10.5281/zenodo.17179607">Zenodo</a>.</b> </div>
+> [!IMPORTANT]
+> **When publishing results that use this notebook, please
+> include a citation in your manuscript.**
+>
+> A LaTeX-ready bibliography entry can be copied from the
+> [HST Notebooks GitHub repository](https://github.com/spacetelescope/hst_notebooks)
+> using "Cite this repository", or from
+> [Zenodo](https://doi.org/10.5281/zenodo.17179607)
+> using "Export > BibTeX".
 
-<hr>
+---
 """
 
 [variables]
